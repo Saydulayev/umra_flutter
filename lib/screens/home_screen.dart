@@ -3,12 +3,13 @@ import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 import '../providers/localization_provider.dart';
-import '../providers/user_preferences_provider.dart';
 import '../models/step_model.dart';
+import '../models/app_theme.dart';
 import '../screens/step_detail_screen.dart';
 import '../screens/useful_info_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/prayer_time_screen.dart';
+import '../widgets/styled_image_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,7 +17,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
-    final prefsProvider = Provider.of<UserPreferencesProvider>(context);
     final theme = themeProvider.selectedTheme;
 
     return Scaffold(
@@ -31,15 +31,6 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         backgroundColor: theme.backgroundColor,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(
-            prefsProvider.isGridView ? Icons.list : Icons.grid_view,
-            color: Colors.black87,
-          ),
-          onPressed: () {
-            prefsProvider.setIsGridView(!prefsProvider.isGridView);
-          },
-        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.language, color: Colors.black87),
@@ -72,144 +63,105 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: SafeArea(
-        child: prefsProvider.isGridView
-            ? _buildGridView(context, theme)
-            : _buildListView(context, theme),
+        child: _buildListView(context, theme),
       ),
     );
   }
 
-  Widget _buildGridView(BuildContext context, theme) {
-    return GridView.builder(
-      padding: const EdgeInsets.all(16),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
-      ),
-      itemCount: UmraSteps.allSteps.length,
-      itemBuilder: (context, index) {
-        final step = UmraSteps.allSteps[index];
-        return _buildStepCard(context, step, theme, showIndex: true);
-      },
-    );
-  }
-
-  Widget _buildListView(BuildContext context, theme) {
+  Widget _buildListView(BuildContext context, AppTheme theme) {
     return ListView.builder(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
       itemCount: UmraSteps.allSteps.length,
       itemBuilder: (context, index) {
         final step = UmraSteps.allSteps[index];
-        return SizedBox(
-          height: 120,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            child: _buildStepCard(context, step, theme, showIndex: false),
-          ),
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+          child: _buildStepRow(context, step, theme),
         );
       },
     );
   }
 
-  Widget _buildStepCard(BuildContext context, UmraStep step, theme, {required bool showIndex}) {
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: InkWell(
-        onTap: () {
-          if (step.id == 'useful') {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const UsefulInfoScreen(),
-              ),
-            );
-          } else {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => StepDetailScreen(step: step),
-              ),
-            );
-          }
-        },
-        borderRadius: BorderRadius.circular(16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Flexible(
-              child: Container(
-                height: showIndex ? 120 : 80,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [theme.gradientTopColor, Colors.white],
-                  ),
-                ),
-                child: Center(
-                  child: showIndex
-                      ? Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            Icon(
-                              Icons.mosque,
-                              size: 60,
-                              color: theme.primaryColor.withOpacity(0.3),
-                            ),
-                            Text(
-                              '${step.stepNumber}',
-                              style: TextStyle(
-                                fontSize: 32,
-                                fontWeight: FontWeight.bold,
-                                color: theme.primaryColor,
-                              ),
-                            ),
-                          ],
-                        )
-                      : Icon(
-                          Icons.mosque,
-                          size: 40,
-                          color: theme.primaryColor,
-                        ),
-                ),
-              ),
+  /// Виджет для list view (как StepRow в Swift)
+  Widget _buildStepRow(BuildContext context, UmraStep step, AppTheme theme) {
+    return GestureDetector(
+      onTap: () {
+        _navigateToStep(context, step);
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.08),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+          ],
+        ),
+        child: Row(
+          children: [
+            // Изображение
+            StyledImageWithTheme(
+              imageName: step.imageName,
+              theme: theme,
+            ),
+            const SizedBox(width: 15),
+            // Текст
+            Expanded(
               child: Builder(
                 builder: (context) {
                   final l10n = AppLocalizations.of(context);
-                  String title;
-                  try {
-                    // Получаем локализованную строку по ключу
-                    title = _getLocalizedTitle(step.titleKey, l10n);
-                  } catch (e) {
-                    title = step.titleKey;
-                  }
+                  final title = _getLocalizedTitle(step.titleKey, l10n);
                   return Text(
                     title,
-                    style: TextStyle(
-                      fontSize: showIndex ? 12 : 16,
+                    style: const TextStyle(
+                      fontSize: 18,
                       fontWeight: FontWeight.w600,
                       color: Colors.black87,
                     ),
-                    textAlign: TextAlign.center,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
                   );
                 },
+              ),
+            ),
+            // Стрелка
+            Container(
+              width: 24,
+              height: 24,
+              decoration: BoxDecoration(
+                color: Colors.blue.withOpacity(0.1),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.chevron_right,
+                size: 14,
+                color: Colors.black87,
               ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  void _navigateToStep(BuildContext context, UmraStep step) {
+    if (step.id == 'useful') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const UsefulInfoScreen(),
+        ),
+      );
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => StepDetailScreen(step: step),
+        ),
+      );
+    }
   }
 
   String _getLocalizedTitle(String key, AppLocalizations? l10n) {
