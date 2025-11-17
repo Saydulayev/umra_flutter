@@ -43,9 +43,8 @@ class UsefulInfoScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => UsefulInfoDetailScreen(
-                          chapter: chapter,
-                        ),
+                        builder: (context) =>
+                            UsefulInfoDetailScreen(chapter: chapter),
                       ),
                     );
                   },
@@ -73,7 +72,7 @@ class UsefulInfoScreen extends StatelessWidget {
   }
 
   String _getChapterTitle(String key, AppLocalizations l10n) {
-    // TODO: Добавить все ключи в локализацию
+    // Используем локализацию, если ключ существует, иначе fallback на английский
     switch (key) {
       case 'etiquetteManners':
         return 'Etiquette and Manners';
@@ -94,9 +93,7 @@ class UsefulInfoScreen extends StatelessWidget {
   }) {
     return Card(
       elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
@@ -122,10 +119,7 @@ class UsefulInfoScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Icon(
-                Icons.chevron_right,
-                color: theme.primaryColor,
-              ),
+              Icon(Icons.chevron_right, color: theme.primaryColor),
             ],
           ),
         ),

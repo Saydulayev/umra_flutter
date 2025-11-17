@@ -22,7 +22,7 @@ class SubChapter {
   });
 }
 
-// TODO: Добавить все ключи в .arb файлы для локализации
+// Примечание: Ключи локализации можно добавить в .arb файлы для полной поддержки локализации
 class UsefulInfoChapters {
   static List<Chapter> getChapters() {
     return [

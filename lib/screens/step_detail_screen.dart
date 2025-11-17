@@ -15,6 +15,7 @@ import '../widgets/player_widget.dart';
 import '../widgets/counter_tap_widget.dart';
 import '../widgets/custom_toolbar.dart';
 import '../widgets/arabic_text_widget.dart';
+import '../screens/useful_info_screen.dart';
 
 class StepDetailScreen extends StatelessWidget {
   final UmraStep step;
@@ -86,8 +87,7 @@ class StepDetailScreen extends StatelessWidget {
             content = _buildStep7Content(theme, l10n);
             break;
           case 'useful':
-            // TODO: Импортировать UsefulInfoScreen отдельно
-            return _buildDefaultContent(theme);
+            return const UsefulInfoScreen();
           default:
             content = _buildDefaultContent(theme);
         }

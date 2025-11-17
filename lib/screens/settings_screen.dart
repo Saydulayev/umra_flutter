@@ -96,7 +96,6 @@ class SettingsScreen extends StatelessWidget {
               icon: Icons.notifications,
               title: 'Notification Settings',
               onTap: () {
-                // TODO: Открыть настройки уведомлений
                 Navigator.pushNamed(context, '/notification-settings');
               },
               theme: theme,

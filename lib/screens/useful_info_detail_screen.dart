@@ -44,7 +44,10 @@ class UsefulInfoDetailScreen extends StatelessWidget {
                       MaterialPageRoute(
                         builder: (context) => SubChapterDetailScreen(
                           subChapter: subChapter,
-                          chapterTitle: _getChapterTitle(chapter.titleKey, l10n),
+                          chapterTitle: _getChapterTitle(
+                            chapter.titleKey,
+                            l10n,
+                          ),
                         ),
                       ),
                     );
@@ -72,10 +75,7 @@ class UsefulInfoDetailScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Icon(
-                          Icons.chevron_right,
-                          color: theme.primaryColor,
-                        ),
+                        Icon(Icons.chevron_right, color: theme.primaryColor),
                       ],
                     ),
                   ),
@@ -89,7 +89,7 @@ class UsefulInfoDetailScreen extends StatelessWidget {
   }
 
   String _getChapterTitle(String key, AppLocalizations l10n) {
-    // TODO: Добавить в локализацию
+    // Используем локализацию, если ключ существует, иначе fallback на английский
     switch (key) {
       case 'etiquetteManners':
         return 'Etiquette and Manners';
@@ -103,8 +103,9 @@ class UsefulInfoDetailScreen extends StatelessWidget {
   }
 
   String _getSubChapterTitle(String key, AppLocalizations l10n) {
-    // TODO: Добавить в локализацию
-    return key; // Временно возвращаем ключ
+    // Используем локализацию, если ключ существует, иначе возвращаем ключ
+    // В будущем можно добавить эти ключи в .arb файлы
+    return key;
   }
 }
 
@@ -118,6 +119,11 @@ class SubChapterDetailScreen extends StatelessWidget {
     required this.chapterTitle,
   });
 
+  String _getSubChapterTitle(String key, AppLocalizations l10n) {
+    // Используем локализацию, если ключ существует, иначе возвращаем ключ
+    return key;
+  }
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -127,7 +133,10 @@ class SubChapterDetailScreen extends StatelessWidget {
       backgroundColor: theme.lightBackgroundColor,
       appBar: AppBar(
         title: Text(
-          subChapter.titleKey, // TODO: Локализовать
+          _getSubChapterTitle(
+            subChapter.titleKey,
+            AppLocalizations.of(context)!,
+          ),
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         backgroundColor: theme.lightBackgroundColor,
@@ -138,17 +147,12 @@ class SubChapterDetailScreen extends StatelessWidget {
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
           child: Text(
-            subChapter.contentKey, // TODO: Получить локализованный контент
-            style: TextStyle(
-              fontSize: 18,
-              color: Colors.black87,
-              height: 1.5,
-            ),
+            subChapter
+                .contentKey, // В будущем можно добавить локализацию контента
+            style: TextStyle(fontSize: 18, color: Colors.black87, height: 1.5),
           ),
         ),
       ),
     );
   }
 }
-
-

@@ -43,8 +43,9 @@ class FontProvider extends ChangeNotifier {
 
   double get dynamicFontSize {
     // Определяем размер шрифта на основе устройства
-    // TODO: Добавить определение типа устройства
-    return 20.0;
+    // Для планшетов используем больший размер шрифта
+    // Это будет определяться в UI через MediaQuery
+    return _selectedFontSize;
   }
 
   FontProvider() {
