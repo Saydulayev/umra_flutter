@@ -107,8 +107,8 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
               child: Column(
                 children: [
                   // Местоположение и дата
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  Wrap(
+                    alignment: WrapAlignment.center,
                     children: [
                       Text(
                         'Mecca, ',
