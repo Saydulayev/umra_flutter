@@ -873,6 +873,90 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'In conclusion, I ask Allah the Most High to accept all our good deeds and preserve for us the reward for their performance until the Day when we meet with Him,\n\n\"on that Day when neither wealth nor sons will benefit anyone, except those who appear before Allah with a pure heart\"\n\n(Surah \"Ash-Shu\'ara\", verses 88-89).\n\nI also ask Allah the Most High to grant full reward to all who participated in the creation, development and distribution of this application - whether by advice, knowledge, means or a kind word - for every Umrah performed with its help.\n\nAs the Messenger of Allah (peace and blessings of Allah be upon him) said:\n\n\"Whoever points to good, he will receive the same reward as the one who does this good deed\"\n\n(Sahih Muslim, No. 1893).\n\nPraise be to Allah, Lord of the worlds!'**
   String get step7DuaAtEnd;
+
+  /// No description provided for @etiquetteMannersText1.
+  ///
+  /// In en, this message translates to:
+  /// **'The most important thing that a person performing Hajj and \'Umrah is obliged to do is sincerity before Allah. He must get rid of showing off and desire for fame in order to receive reward for this Hajj and this \'Umrah.'**
+  String get etiquetteMannersText1;
+
+  /// No description provided for @etiquetteMannersText2.
+  ///
+  /// In en, this message translates to:
+  /// **'A person who wants to perform Hajj and \'Umrah should make an effort to study the rulings related to Hajj and \'Umrah in order to perform them based on knowledge.'**
+  String get etiquetteMannersText2;
+
+  /// No description provided for @etiquetteMannersText3.
+  ///
+  /// In en, this message translates to:
+  /// **'A person performing Hajj and \'Umrah should try to choose the best companions for the journey to Hajj, in order to benefit from them both in knowledge and in behavior.'**
+  String get etiquetteMannersText3;
+
+  /// No description provided for @etiquetteMannersText4.
+  ///
+  /// In en, this message translates to:
+  /// **'A person performing Hajj and \'Umrah should have a certain amount of money with them so as not to need the money of other people.'**
+  String get etiquetteMannersText4;
+
+  /// No description provided for @etiquetteMannersText5.
+  ///
+  /// In en, this message translates to:
+  /// **'A person performing Hajj and \'Umrah should adorn themselves with noble manners and treat other people in the best way.'**
+  String get etiquetteMannersText5;
+
+  /// No description provided for @etiquetteMannersText6.
+  ///
+  /// In en, this message translates to:
+  /// **'A person performing Hajj and \'Umrah should occupy themselves with remembrance of Allah (dhikr), supplications to Him (du\'a) and requests for forgiveness (istighfar). He should protect his tongue from everything except good speech.'**
+  String get etiquetteMannersText6;
+
+  /// No description provided for @etiquetteMannersText7.
+  ///
+  /// In en, this message translates to:
+  /// **'A person performing Hajj and \'Umrah should beware of offending other people with their word or deed.'**
+  String get etiquetteMannersText7;
+
+  /// No description provided for @hajjUmrahVirtuesText1.
+  ///
+  /// In en, this message translates to:
+  /// **'Authentic hadiths from the Messenger of Allah, may Allah bless him and grant him peace, have come about the virtue of Hajj and \'Umrah. Let us cite some of them.'**
+  String get hajjUmrahVirtuesText1;
+
+  /// No description provided for @hajjUmrahVirtuesText2.
+  ///
+  /// In en, this message translates to:
+  /// **'It is reported from the words of the mother of the believers \'Aisha, may Allah be pleased with her, that she once said: \"O Messenger of Allah, we consider jihad to be the best deed, so should we not take part in it?\" The Prophet, may Allah bless him and grant him peace, replied: \"No! The best jihad for you (women) is the perfect Hajj.\"'**
+  String get hajjUmrahVirtuesText2;
+
+  /// No description provided for @hajjUmrahVirtuesText3.
+  ///
+  /// In en, this message translates to:
+  /// **'It is reported from the words of Abu Huraira, may Allah be pleased with him, that the Prophet, may Allah bless him and grant him peace, said: \"Whoever performs Hajj for the sake of Allah, without approaching his wife and without committing anything sinful and unworthy, will return home as he was on the day his mother gave birth to him.\"'**
+  String get hajjUmrahVirtuesText3;
+
+  /// No description provided for @hajjUmrahVirtuesText4.
+  ///
+  /// In en, this message translates to:
+  /// **'It is reported from the words of Jabir, may Allah be pleased with him, that the Prophet, may Allah bless him and grant him peace, said: \"Learn your religious rites from me, for I do not know - perhaps after this Hajj of mine I will never perform pilgrimage again.\"'**
+  String get hajjUmrahVirtuesText4;
+
+  /// No description provided for @hajjUmrahObligationObligationEvidence.
+  ///
+  /// In en, this message translates to:
+  /// **'Performing Hajj and \'Umrah is obligatory once in a lifetime, and whoever performs them more than once, it will be considered voluntary worship.'**
+  String get hajjUmrahObligationObligationEvidence;
+
+  /// No description provided for @hajjUmrahObligationEvidenceUmrahObligation.
+  ///
+  /// In en, this message translates to:
+  /// **'As for \'Umrah, the following hadiths indicate its obligation:'**
+  String get hajjUmrahObligationEvidenceUmrahObligation;
+
+  /// No description provided for @hajjUmrahObligationConcludingEvidence.
+  ///
+  /// In en, this message translates to:
+  /// **'Hajj and \'Umrah are obligatory for those who have the conditions for performing them. Muslims are unanimous in the obligation of Hajj when all conditions are met.'**
+  String get hajjUmrahObligationConcludingEvidence;
 }
 
 class _AppLocalizationsDelegate

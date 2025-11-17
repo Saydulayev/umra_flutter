@@ -183,12 +183,35 @@ class SubChapterDetailScreen extends StatelessWidget {
   }
 
   String _getSubChapterContent(String key, AppLocalizations l10n) {
-    // Метод для получения локализованного контента подглав
-    // Когда контент будет добавлен в .arb файлы, можно будет использовать switch-case
-    // Пока возвращаем ключ как fallback
-    // TODO: Добавить ключи контента в .arb файлы и использовать их здесь
     switch (key) {
-      // Пока контент не добавлен в локализацию, возвращаем ключ
+      case 'etiquetteMannersText1':
+        return l10n.etiquetteMannersText1;
+      case 'etiquetteMannersText2':
+        return l10n.etiquetteMannersText2;
+      case 'etiquetteMannersText3':
+        return l10n.etiquetteMannersText3;
+      case 'etiquetteMannersText4':
+        return l10n.etiquetteMannersText4;
+      case 'etiquetteMannersText5':
+        return l10n.etiquetteMannersText5;
+      case 'etiquetteMannersText6':
+        return l10n.etiquetteMannersText6;
+      case 'etiquetteMannersText7':
+        return l10n.etiquetteMannersText7;
+      case 'hajjUmrahVirtuesText1':
+        return l10n.hajjUmrahVirtuesText1;
+      case 'hajjUmrahVirtuesText2':
+        return l10n.hajjUmrahVirtuesText2;
+      case 'hajjUmrahVirtuesText3':
+        return l10n.hajjUmrahVirtuesText3;
+      case 'hajjUmrahVirtuesText4':
+        return l10n.hajjUmrahVirtuesText4;
+      case 'hajjUmrahObligationObligationEvidence':
+        return l10n.hajjUmrahObligationObligationEvidence;
+      case 'hajjUmrahObligationEvidenceUmrahObligation':
+        return l10n.hajjUmrahObligationEvidenceUmrahObligation;
+      case 'hajjUmrahObligationConcludingEvidence':
+        return l10n.hajjUmrahObligationConcludingEvidence;
       default:
         return key;
     }

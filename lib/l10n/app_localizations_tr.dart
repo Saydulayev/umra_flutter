@@ -445,4 +445,60 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get step7DuaAtEnd =>
       'Son olarak, Yüce Allah\'tan tüm salih amellerimizi kabul etmesini ve bu amellerimizin sevabını, O\'nun huzuruna çıkacağımız güne kadar korumasını diliyorum.\n    \n«O gün ki, ne mal fayda verir ne de oğullar. Ancak Allah\'a selim bir kalple gelenler müstesna.» \n(Şuara Suresi, 88–89. ayetler).\n    \nAyrıca, bu uygulamanın oluşturulmasına, geliştirilmesine ve yayılmasına herhangi bir şekilde katkıda bulunan herkese – ister bir tavsiye, ister ilim, ister maddi destek veya güzel bir söz olsun – Allah\'ın tam mükafat vermesini niyaz ediyorum. \n    \nÇünkü Allah Resulü (sallallahu aleyhi ve sellem) şöyle buyurmuştur:\n«Kim bir hayra vesile olursa, onu yapanın sevabı kadar sevap kazanır.» \n(Sahih Müslim, Hadis No: 1893).\n\nAlemlerin Rabbi olan Allah\'a hamdolsun!';
+
+  @override
+  String get etiquetteMannersText1 =>
+      'The most important thing that a person performing Hajj and \'Umrah is obliged to do is sincerity before Allah. He must get rid of showing off and desire for fame in order to receive reward for this Hajj and this \'Umrah.';
+
+  @override
+  String get etiquetteMannersText2 =>
+      'A person who wants to perform Hajj and \'Umrah should make an effort to study the rulings related to Hajj and \'Umrah in order to perform them based on knowledge.';
+
+  @override
+  String get etiquetteMannersText3 =>
+      'A person performing Hajj and \'Umrah should try to choose the best companions for the journey to Hajj, in order to benefit from them both in knowledge and in behavior.';
+
+  @override
+  String get etiquetteMannersText4 =>
+      'A person performing Hajj and \'Umrah should have a certain amount of money with them so as not to need the money of other people.';
+
+  @override
+  String get etiquetteMannersText5 =>
+      'A person performing Hajj and \'Umrah should adorn themselves with noble manners and treat other people in the best way.';
+
+  @override
+  String get etiquetteMannersText6 =>
+      'A person performing Hajj and \'Umrah should occupy themselves with remembrance of Allah (dhikr), supplications to Him (du\'a) and requests for forgiveness (istighfar). He should protect his tongue from everything except good speech.';
+
+  @override
+  String get etiquetteMannersText7 =>
+      'A person performing Hajj and \'Umrah should beware of offending other people with their word or deed.';
+
+  @override
+  String get hajjUmrahVirtuesText1 =>
+      'Authentic hadiths from the Messenger of Allah, may Allah bless him and grant him peace, have come about the virtue of Hajj and \'Umrah. Let us cite some of them.';
+
+  @override
+  String get hajjUmrahVirtuesText2 =>
+      'It is reported from the words of the mother of the believers \'Aisha, may Allah be pleased with her, that she once said: \"O Messenger of Allah, we consider jihad to be the best deed, so should we not take part in it?\" The Prophet, may Allah bless him and grant him peace, replied: \"No! The best jihad for you (women) is the perfect Hajj.\"';
+
+  @override
+  String get hajjUmrahVirtuesText3 =>
+      'It is reported from the words of Abu Huraira, may Allah be pleased with him, that the Prophet, may Allah bless him and grant him peace, said: \"Whoever performs Hajj for the sake of Allah, without approaching his wife and without committing anything sinful and unworthy, will return home as he was on the day his mother gave birth to him.\"';
+
+  @override
+  String get hajjUmrahVirtuesText4 =>
+      'It is reported from the words of Jabir, may Allah be pleased with him, that the Prophet, may Allah bless him and grant him peace, said: \"Learn your religious rites from me, for I do not know - perhaps after this Hajj of mine I will never perform pilgrimage again.\"';
+
+  @override
+  String get hajjUmrahObligationObligationEvidence =>
+      'Performing Hajj and \'Umrah is obligatory once in a lifetime, and whoever performs them more than once, it will be considered voluntary worship.';
+
+  @override
+  String get hajjUmrahObligationEvidenceUmrahObligation =>
+      'As for \'Umrah, the following hadiths indicate its obligation:';
+
+  @override
+  String get hajjUmrahObligationConcludingEvidence =>
+      'Hajj and \'Umrah are obligatory for those who have the conditions for performing them. Muslims are unanimous in the obligation of Hajj when all conditions are met.';
 }
