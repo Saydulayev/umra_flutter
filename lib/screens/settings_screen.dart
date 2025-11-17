@@ -89,17 +89,6 @@ class SettingsScreen extends StatelessWidget {
               },
               theme: theme,
             ),
-            const SizedBox(height: 8),
-            // Notification Settings
-            _buildSettingsItem(
-              context,
-              icon: Icons.notifications,
-              title: l10n.notificationSettingsString,
-              onTap: () {
-                Navigator.pushNamed(context, '/notification-settings');
-              },
-              theme: theme,
-            ),
           ],
         ),
       ),
