@@ -1,0 +1,265 @@
+import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:vibration/vibration.dart';
+import '../services/audio_service.dart';
+import '../providers/theme_provider.dart';
+import 'package:provider/provider.dart';
+
+class PlayerWidget extends StatefulWidget {
+  final String fileName;
+
+  const PlayerWidget({super.key, required this.fileName});
+
+  @override
+  State<PlayerWidget> createState() => _PlayerWidgetState();
+}
+
+class _PlayerWidgetState extends State<PlayerWidget> {
+  late AudioPlayer _audioPlayer;
+  bool _isPlaying = false;
+  bool _isRepeating = false;
+  double _playbackRate = 1.0;
+  Duration _duration = Duration.zero;
+  Duration _position = Duration.zero;
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _initAudio();
+  }
+
+  Future<void> _initAudio() async {
+    try {
+      _audioPlayer = await AudioService().loadAudio(widget.fileName);
+      _audioPlayer.durationStream.listen((duration) {
+        if (mounted) {
+          setState(() {
+            _duration = duration ?? Duration.zero;
+            _isLoading = false;
+          });
+        }
+      });
+      _audioPlayer.positionStream.listen((position) {
+        if (mounted) {
+          setState(() {
+            _position = position;
+          });
+        }
+      });
+      _audioPlayer.playerStateStream.listen((state) {
+        if (mounted) {
+          setState(() {
+            _isPlaying = state.playing;
+          });
+        }
+      });
+    } catch (e) {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
+      print('Error initializing audio: $e');
+    }
+  }
+
+  Future<void> _togglePlayPause() async {
+    if (_isPlaying) {
+      await _audioPlayer.pause();
+    } else {
+      await _audioPlayer.play();
+    }
+  }
+
+  Future<void> _toggleRepeat() async {
+    setState(() {
+      _isRepeating = !_isRepeating;
+    });
+    await _audioPlayer.setLoopMode(
+      _isRepeating ? LoopMode.one : LoopMode.off,
+    );
+  }
+
+  Future<void> _cyclePlaybackRate() async {
+    setState(() {
+      if (_playbackRate == 1.0) {
+        _playbackRate = 1.5;
+      } else if (_playbackRate == 1.5) {
+        _playbackRate = 2.0;
+      } else {
+        _playbackRate = 1.0;
+      }
+    });
+    await _audioPlayer.setSpeed(_playbackRate);
+    if (!_isPlaying) {
+      await _audioPlayer.play();
+    }
+    if (await Vibration.hasVibrator() ?? false) {
+      Vibration.vibrate(duration: 50);
+    }
+  }
+
+  String _formatDuration(Duration duration) {
+    String twoDigits(int n) => n.toString().padLeft(2, '0');
+    final minutes = duration.inMinutes.remainder(60);
+    final seconds = duration.inSeconds.remainder(60);
+    return '${twoDigits(minutes)}:${twoDigits(seconds)}';
+  }
+
+  @override
+  void dispose() {
+    _audioPlayer.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.selectedTheme;
+
+    if (_isLoading) {
+      return const Padding(
+        padding: EdgeInsets.all(16.0),
+        child: CircularProgressIndicator(),
+      );
+    }
+
+    return Container(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _buildControlButton(
+                context,
+                icon: Icons.repeat,
+                isActive: _isRepeating,
+                color: Colors.red,
+                onTap: _toggleRepeat,
+                theme: theme,
+              ),
+              const SizedBox(width: 16),
+              _buildControlButton(
+                context,
+                icon: _isPlaying ? Icons.pause : Icons.play_arrow,
+                isActive: _isPlaying,
+                color: Colors.green,
+                onTap: _togglePlayPause,
+                theme: theme,
+              ),
+              const SizedBox(width: 16),
+              _buildRateButton(
+                context,
+                rate: _playbackRate,
+                onTap: _cyclePlaybackRate,
+                theme: theme,
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          Slider(
+            value: _position.inMilliseconds.toDouble(),
+            min: 0,
+            max: _duration.inMilliseconds > 0 ? _duration.inMilliseconds.toDouble() : 1.0,
+            onChanged: (value) {
+              _audioPlayer.seek(Duration(milliseconds: value.toInt()));
+            },
+            activeColor: theme.primaryColor,
+            inactiveColor: theme.primaryColor.withOpacity(0.3),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(_formatDuration(_position)),
+                Text(_formatDuration(_duration)),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildControlButton(
+    BuildContext context, {
+    required IconData icon,
+    required bool isActive,
+    required Color color,
+    required VoidCallback onTap,
+    required theme,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 70,
+        height: 70,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [theme.gradientTopColor, Colors.white],
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 20,
+              offset: const Offset(20, 20),
+            ),
+          ],
+        ),
+        child: Icon(
+          icon,
+          color: isActive ? theme.activeButtonColor : Colors.black54,
+          size: 24,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildRateButton(
+    BuildContext context, {
+    required double rate,
+    required VoidCallback onTap,
+    required theme,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 70,
+        height: 70,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [theme.gradientTopColor, Colors.white],
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 20,
+              offset: const Offset(20, 20),
+            ),
+          ],
+        ),
+        child: Center(
+          child: Text(
+            '${rate}x',
+            style: TextStyle(
+              color: rate > 1.0 ? theme.activeButtonColor : Colors.black54,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+

@@ -1,0 +1,108 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/localization_provider.dart';
+import '../providers/theme_provider.dart';
+import '../providers/user_preferences_provider.dart';
+import 'home_screen.dart';
+
+class LanguageSelectionScreen extends StatelessWidget {
+  const LanguageSelectionScreen({super.key});
+
+  final List<Map<String, String>> languages = const [
+    {'code': 'ru', 'name': 'Русский'},
+    {'code': 'en', 'name': 'English'},
+    {'code': 'de', 'name': 'Deutsch'},
+    {'code': 'fr', 'name': 'Français'},
+    {'code': 'tr', 'name': 'Türkçe'},
+    {'code': 'id', 'name': 'Bahasa Indonesia'},
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final localizationProvider = Provider.of<LocalizationProvider>(context);
+    final prefsProvider = Provider.of<UserPreferencesProvider>(context);
+    final theme = themeProvider.selectedTheme;
+
+    return Scaffold(
+      backgroundColor: const Color(0xFFEBF2FA), // Мягкий светло-синий фон
+      body: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Логотип или заголовок
+              Text(
+                'UMRA',
+                style: TextStyle(
+                  fontSize: 48,
+                  fontWeight: FontWeight.bold,
+                  color: theme.primaryColor,
+                  fontFamily: 'Lato',
+                ),
+              ),
+              const SizedBox(height: 48),
+              Text(
+                'Выберите язык / Select Language',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black87,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 32),
+              // Список языков
+              ...languages.map((lang) {
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      await localizationProvider.setLanguage(lang['code']!);
+                      prefsProvider.setHasSelectedLanguage(true);
+                      if (context.mounted) {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(),
+                          ),
+                        );
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: Colors.black87,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 32,
+                        vertical: 16,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: BorderSide(
+                          color: theme.primaryColor.withOpacity(0.3),
+                          width: 2,
+                        ),
+                      ),
+                      elevation: 4,
+                    ),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Text(
+                        lang['name']!,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                );
+              }).toList(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
