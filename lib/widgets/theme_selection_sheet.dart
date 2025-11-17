@@ -96,7 +96,7 @@ class ThemeSelectionSheet extends StatelessWidget {
                 ),
               ),
             );
-          }).toList(),
+          }),
         ],
       ),
     );

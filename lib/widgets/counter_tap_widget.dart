@@ -62,7 +62,7 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
   }
 
   Future<void> _triggerVibration() async {
-    if (await Vibration.hasVibrator() ?? false) {
+    if (await Vibration.hasVibrator()) {
       Vibration.vibrate(duration: 50);
     }
   }
@@ -128,7 +128,7 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.green.withOpacity(0.3),
+                            color: Colors.green.withValues(alpha: 0.3),
                             blurRadius: 15,
                             offset: const Offset(0, 5),
                           ),

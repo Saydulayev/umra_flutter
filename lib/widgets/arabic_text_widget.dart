@@ -7,7 +7,7 @@ import '../providers/theme_provider.dart';
 class ArabicTextWidget extends StatelessWidget {
   final String text;
 
-  const ArabicTextWidget({Key? key, required this.text}) : super(key: key);
+  const ArabicTextWidget({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class ArabicTextWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 20,
               offset: const Offset(20, 20),
               spreadRadius: 0,
@@ -56,7 +56,7 @@ class ArabicTextWidget extends StatelessWidget {
                     filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.9),
+                        color: Colors.white.withValues(alpha: 0.9),
                       ),
                     ),
                   ),

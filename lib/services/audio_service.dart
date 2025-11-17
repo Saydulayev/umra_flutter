@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:just_audio/just_audio.dart';
 
 class AudioService {
@@ -17,7 +18,7 @@ class AudioService {
       _currentPlayer = player;
       return player;
     } catch (e) {
-      print('Error loading audio: $e');
+      debugPrint('Error loading audio: $e');
       rethrow;
     }
   }

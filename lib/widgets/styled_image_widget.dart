@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:ui';
 import '../models/app_theme.dart';
 
 /// Виджет для изображения с индексом и темой (для grid view)
@@ -24,7 +23,7 @@ class StyledImageWithIndex extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -59,7 +58,7 @@ class StyledImageWithIndex extends StatelessWidget {
                   end: Alignment.bottomCenter,
                   colors: [
                     Colors.transparent,
-                    theme.primaryColor.withOpacity(0.3),
+                    theme.primaryColor.withValues(alpha: 0.3),
                   ],
                 ),
               ),
@@ -76,7 +75,7 @@ class StyledImageWithIndex extends StatelessWidget {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
+                      color: Colors.black.withValues(alpha: 0.2),
                       blurRadius: 4,
                       offset: const Offset(0, 2),
                     ),
@@ -121,7 +120,7 @@ class StyledImageWithTheme extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.08),
+            color: Colors.black.withValues(alpha: 0.08),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -156,7 +155,7 @@ class StyledImageWithTheme extends StatelessWidget {
                   end: Alignment.bottomCenter,
                   colors: [
                     Colors.transparent,
-                    theme.primaryColor.withOpacity(0.2),
+                    theme.primaryColor.withValues(alpha: 0.2),
                   ],
                 ),
               ),
@@ -167,4 +166,3 @@ class StyledImageWithTheme extends StatelessWidget {
     );
   }
 }
-

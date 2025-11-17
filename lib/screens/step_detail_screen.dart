@@ -10,6 +10,7 @@ import 'package:umra_flutter/l10n/app_localizations_tr.dart';
 import '../providers/theme_provider.dart';
 import '../providers/localization_provider.dart';
 import '../models/step_model.dart';
+import '../models/app_theme.dart';
 import '../widgets/player_widget.dart';
 import '../widgets/counter_tap_widget.dart';
 import '../widgets/custom_toolbar.dart';
@@ -114,7 +115,7 @@ class StepDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStep1Content(theme, AppLocalizations l10n) {
+  Widget _buildStep1Content(AppTheme theme, AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -255,7 +256,7 @@ class StepDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStep2Content(theme, AppLocalizations l10n) {
+  Widget _buildStep2Content(AppTheme theme, AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -299,7 +300,7 @@ class StepDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStep3Content(theme, AppLocalizations l10n) {
+  Widget _buildStep3Content(AppTheme theme, AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -333,7 +334,7 @@ class StepDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStep4Content(theme, AppLocalizations l10n) {
+  Widget _buildStep4Content(AppTheme theme, AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -357,7 +358,7 @@ class StepDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStep5Content(theme, AppLocalizations l10n) {
+  Widget _buildStep5Content(AppTheme theme, AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -391,7 +392,7 @@ class StepDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStep6Content(theme, AppLocalizations l10n) {
+  Widget _buildStep6Content(AppTheme theme, AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -493,7 +494,7 @@ class StepDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStep7Content(theme, AppLocalizations l10n) {
+  Widget _buildStep7Content(AppTheme theme, AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -534,7 +535,7 @@ class StepDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDefaultContent(theme) {
+  Widget _buildDefaultContent(AppTheme theme) {
     return Text(
       'Content for ${step.titleKey}',
       style: TextStyle(fontSize: 18, color: Colors.black87),

@@ -196,12 +196,12 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2),
+              color: Colors.black.withValues(alpha: 0.2),
               blurRadius: 20,
               offset: const Offset(20, 20),
             ),
             BoxShadow(
-              color: Colors.black.withOpacity(0.06),
+              color: Colors.black.withValues(alpha: 0.06),
               blurRadius: 3,
               offset: const Offset(0, 2),
             ),
@@ -214,7 +214,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
               // Фоновый цвет
               Container(
                 decoration: BoxDecoration(
-                  color: theme.primaryColor.withOpacity(0.2),
+                  color: theme.primaryColor.withValues(alpha: 0.2),
                 ),
               ),
               // Белый прямоугольник с blur эффектом (смещенный)
@@ -229,7 +229,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                     filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.9),
+                        color: Colors.white.withValues(alpha: 0.9),
                       ),
                     ),
                   ),
@@ -250,7 +250,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: Colors.black.withOpacity(0.08),
+                      color: Colors.black.withValues(alpha: 0.08),
                       width: 1,
                     ),
                   ),
@@ -274,12 +274,12 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2),
+              color: Colors.black.withValues(alpha: 0.2),
               blurRadius: 20,
               offset: const Offset(20, 20),
             ),
             BoxShadow(
-              color: Colors.black.withOpacity(0.06),
+              color: Colors.black.withValues(alpha: 0.06),
               blurRadius: 3,
               offset: const Offset(0, 2),
             ),
@@ -292,7 +292,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
               // Фоновый цвет
               Container(
                 decoration: BoxDecoration(
-                  color: theme.primaryColor.withOpacity(0.1),
+                  color: theme.primaryColor.withValues(alpha: 0.1),
                 ),
               ),
               // Белый прямоугольник с blur эффектом (смещенный)
@@ -307,7 +307,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                     filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.9),
+                        color: Colors.white.withValues(alpha: 0.9),
                       ),
                     ),
                   ),
@@ -328,7 +328,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: Colors.black.withOpacity(0.08),
+                      color: Colors.black.withValues(alpha: 0.08),
                       width: 1,
                     ),
                   ),
@@ -353,7 +353,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
             // Фоновый цвет
             Container(
               decoration: BoxDecoration(
-                color: theme.primaryColor.withOpacity(0.2),
+                color: theme.primaryColor.withValues(alpha: 0.2),
               ),
             ),
             // Белый прямоугольник с blur эффектом (смещенный)
@@ -368,7 +368,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                   filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.9),
+                      color: Colors.white.withValues(alpha: 0.9),
                     ),
                   ),
                 ),
@@ -384,7 +384,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                   colors: [theme.gradientTopColor, Colors.white],
                 ),
                 border: Border.all(
-                  color: Colors.black.withOpacity(0.08),
+                  color: Colors.black.withValues(alpha: 0.08),
                   width: 1,
                 ),
               ),

@@ -79,7 +79,7 @@ class LanguageSelectionScreen extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                         side: BorderSide(
-                          color: theme.primaryColor.withOpacity(0.3),
+                          color: theme.primaryColor.withValues(alpha: 0.3),
                           width: 2,
                         ),
                       ),
@@ -98,7 +98,7 @@ class LanguageSelectionScreen extends StatelessWidget {
                     ),
                   ),
                 );
-              }).toList(),
+              }),
             ],
           ),
         ),

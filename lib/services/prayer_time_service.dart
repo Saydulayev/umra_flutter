@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:adhan_dart/adhan_dart.dart';
 import 'package:intl/intl.dart';
 import 'package:hijri_date/hijri_date.dart';
@@ -62,7 +63,7 @@ class PrayerTimeService {
         isha: prayerTimes.isha.add(meccaOffset),
       );
     } catch (e) {
-      print('Error calculating prayer times: $e');
+      debugPrint('Error calculating prayer times: $e');
       return null;
     }
   }
@@ -99,7 +100,7 @@ class PrayerTimeService {
         isha: prayerTimes.isha.add(meccaOffset),
       );
     } catch (e) {
-      print('Error calculating tomorrow prayer times: $e');
+      debugPrint('Error calculating tomorrow prayer times: $e');
       return null;
     }
   }

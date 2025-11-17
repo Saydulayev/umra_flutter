@@ -12,7 +12,6 @@ class JanazaPrayerScreen extends StatefulWidget {
 class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
   bool _isSecondTakbirExpanded = false;
   bool _isThirdTakbirExpanded = false;
-  bool _isDuaExpanded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -38,14 +37,16 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
             children: [
               _buildSection(
                 title: 'Basic Rules',
-                content: '📌 Essential Rules of the Janazah Prayer (Funeral Prayer).\n\n'
+                content:
+                    '📌 Essential Rules of the Janazah Prayer (Funeral Prayer).\n\n'
                     'The prayer is performed while standing, without bowing (ruku\') or prostration (sujood). '
                     'It consists of four takbirs (saying \'Allahu Akbar\').',
               ),
               const Divider(),
               _buildTakbirSection(
                 title: '1. First Takbir',
-                content: 'Raise your hands to the level of your shoulders or ears and say:\n\n'
+                content:
+                    'Raise your hands to the level of your shoulders or ears and say:\n\n'
                     'اللَّهُ أَكْبَرُ\n'
                     'Allahu Akbar (\'Allah is the Greatest\')\n\n'
                     'Then: Recite Surah Al-Fatihah.',
@@ -53,7 +54,8 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
               const Divider(),
               _buildTakbirSection(
                 title: '2. Second Takbir',
-                content: 'Say the takbir (without raising the hands):\n\n'
+                content:
+                    'Say the takbir (without raising the hands):\n\n'
                     'اللَّهُ أَكْبَرُ - Allahu Akbar\n\n'
                     'Then recite Salawat upon the Prophet ﷺ:'
                     '\n\nاللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ...',
@@ -69,7 +71,8 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
               const Divider(),
               _buildTakbirSection(
                 title: '3. Third Takbir',
-                content: 'Say the takbir (without raising the hands):\n\n'
+                content:
+                    'Say the takbir (without raising the hands):\n\n'
                     'اللَّهُ أَكْبَرُ - Allahu Akbar\n\n'
                     'Recite the dua for the deceased (if male):\n\n'
                     'اللَّهُمَّ اغْفِرْ لَهُ، وَارْحَمْهُ،\n'
@@ -86,14 +89,16 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
               const Divider(),
               _buildTakbirSection(
                 title: '4. Fourth Takbir',
-                content: 'Say the takbir (without raising the hands):\n\n'
+                content:
+                    'Say the takbir (without raising the hands):\n\n'
                     'اللَّهُ أَكْبَرُ - Allahu Akbar\n\n'
                     'You can make a supplication, but it is not obligatory.',
               ),
               const Divider(),
               _buildSection(
                 title: 'Conclusion (Taslim)',
-                content: '📌 You can say the taslim once to the right or twice (to the right and to the left).',
+                content:
+                    '📌 You can say the taslim once to the right or twice (to the right and to the left).',
               ),
             ],
           ),
@@ -102,10 +107,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
     );
   }
 
-  Widget _buildSection({
-    required String title,
-    required String content,
-  }) {
+  Widget _buildSection({required String title, required String content}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -191,5 +193,3 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
     );
   }
 }
-
-

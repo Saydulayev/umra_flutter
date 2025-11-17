@@ -60,7 +60,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           _isLoading = false;
         });
       }
-      print('Error initializing audio: $e');
+      debugPrint('Error initializing audio: $e');
     }
   }
 
@@ -95,7 +95,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
     if (!_isPlaying) {
       await _audioPlayer.play();
     }
-    if (await Vibration.hasVibrator() ?? false) {
+    if (await Vibration.hasVibrator()) {
       Vibration.vibrate(duration: 50);
     }
   }
@@ -167,7 +167,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
               _audioPlayer.seek(Duration(milliseconds: value.toInt()));
             },
             activeColor: theme.primaryColor,
-            inactiveColor: theme.primaryColor.withOpacity(0.3),
+            inactiveColor: theme.primaryColor.withValues(alpha: 0.3),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -206,7 +206,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2),
+              color: Colors.black.withValues(alpha: 0.2),
               blurRadius: 20,
               offset: const Offset(20, 20),
             ),
@@ -241,7 +241,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2),
+              color: Colors.black.withValues(alpha: 0.2),
               blurRadius: 20,
               offset: const Offset(20, 20),
             ),

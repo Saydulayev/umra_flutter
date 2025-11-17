@@ -51,7 +51,7 @@ class UsefulInfoScreen extends StatelessWidget {
                   },
                 ),
               );
-            }).toList(),
+            }),
             const SizedBox(height: 8),
             _buildInfoCard(
               context,
