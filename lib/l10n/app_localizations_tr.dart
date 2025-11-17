@@ -87,6 +87,127 @@ class AppLocalizationsTr extends AppLocalizations {
   String get usefulInfoTitle => 'Yararlı Bilgiler';
 
   @override
+  String get etiquetteManners => 'Adap ve Görgü';
+
+  @override
+  String get hajjUmrahVirtues => 'Hac ve Umre Faziletleri';
+
+  @override
+  String get hajjUmrahObligation => 'Hac ve Umre Yükümlülüğü';
+
+  @override
+  String get janazaPrayerGuide => 'Cenaze Namazı Rehberi';
+
+  @override
+  String get titleJanazaGuide => 'Cenaze Namazı';
+
+  @override
+  String get basicRules => 'Cenaze Namazı Rehberi';
+
+  @override
+  String get janazaBasicRules =>
+      '📌 Cenaze Namazının Temel Kuralları.\n\nNamaz ayakta kılınır, rüku ve secde yapılmaz. Dört tekbirden (\"Allahu Ekber\" demek) oluşur.\n\nHer tekbirden sonra belirli dualar okunur:\n\n1 Fatiha Suresi\n\n2 Peygamber\'e Salavat ﷺ\n\n3 Ölen kişi için dua\n\n4 Dua yapabilir veya namazı bitirebilirsiniz';
+
+  @override
+  String get firstTakbirTitle => '1. Birinci Tekbir';
+
+  @override
+  String get firstTakbirText =>
+      'Ellerinizi omuz veya kulak seviyesine kaldırın ve şunu söyleyin:\n\nاللَّهُ أَكْبَرُ\n\nAllahu Ekber (\"Allah En Büyüktür\")\n\nSonra:\n\nFatiha Suresi\'ni okuyun.';
+
+  @override
+  String get secondTakbirTitle => '2. İkinci Tekbir';
+
+  @override
+  String get secondTakbirText =>
+      'Tekbir söyleyin (elleri kaldırmadan):\n\nاللَّهُ أَكْبَرُ - Allahu Ekber\n\nPeygamber\'e Salavat okuyun ﷺ:\n\nاللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ. اللَّهُمَّ بَارِكْ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ';
+
+  @override
+  String get translateSecondTakbirText =>
+      '\"Ey Yüce Allah, Muhammed\'e ve ailesine rahmet et, İbrahim\'e ve İbrahim\'in ailesine rahmet ettiğin gibi, şüphesiz Sen Hamidsin, Mecidsin! Ey Allah, Muhammed\'e ve ailesine bereket ver, İbrahim\'e ve ailesine verdiğin gibi, şüphesiz Sen Hamidsin, Mecidsin!\".';
+
+  @override
+  String get thirdTakbirTitle => '3. Üçüncü Tekbir';
+
+  @override
+  String get thirdTakbirText =>
+      'Tekbir söyleyin (elleri kaldırmadan):\n\nاللَّهُ أَكْبَرُ - Allahu Ekber\n\nÖlen kişi için dua okuyun (erkek ise):\n\nاللَّهُمَّ اغْفِرْ لَهُ، وَارْحَمْهُ،\n\nAllahumme ğfir lehu, verhamhu.';
+
+  @override
+  String get translateThirdTakbirText =>
+      'Avf bin Malik anlattı: \"Bir gün Allah\'ın Resulü (sallallahu aleyhi ve sellem) cenaze namazı kıldı ve ölen kişi için dua ederken şunu söylediğini hatırladım: \'Ey Allah! Onu bağışla, ona merhamet et, ona rahatlık ver, ona iyi bir kabul göster, mezarını genişlet, onu su, kar ve dolu ile yıka! Onu günahlardan temizle, beyaz elbiseyi kirden temizlediğin gibi, ona evinden daha iyi bir ev, ailesinden daha iyi bir aile, eşinden daha iyi bir eş ver ve onu Cennet\'e koy, onu kabir azabından ve Ateş azabından koru!\'\" - Ebu Abdurrahman dedi: \"Ve ben bile kendim ölen kişinin yerinde olmak istedim\". Müslim 2/663.';
+
+  @override
+  String get duaVariationsTitle => 'Ölen Kişiye Göre Dua Varyasyonları';
+
+  @override
+  String get duaVariationsText =>
+      '📌 Ölen kişi bir erkek ise\n\n- لَهُ (lehu) formunu kullanın\n\n📌 Ölen kişi bir kadın ise\n\n- Tüm formları eril\'den dişil\'e değiştirin: لَهَا (leha)\n\n📌 Ölen kişiler birkaç (sadece erkekler) ise\n\n- Eril çoğul formu kullanın: لَهُمْ (lehum)\n\n📌 Ölen kişiler birkaç (sadece kadınlar) ise\n\n- Dişil çoğul formu kullanın: لَهُنَّ (lehunne)';
+
+  @override
+  String get fourthTakbirTitle => '4. Dördüncü Tekbir';
+
+  @override
+  String get fourthTakbirText =>
+      'Tekbir söyleyin (elleri kaldırmadan):\n\nاللَّهُ أَكْبَرُ - Allahu Ekber\n\nDua yapabilirsiniz, ancak bu zorunlu değildir.';
+
+  @override
+  String get fourthTakbirAdditionalInfo =>
+      'Dördüncü tekbirden sonra ölen kişi için dua yapmanın caizliği hakkında.';
+
+  @override
+  String get taslimTitle => 'Namazın Bitirilmesi (Selam)';
+
+  @override
+  String get taslimText =>
+      '📌 Selamı bir kez sağa veya iki kez (sağa ve sola) söyleyebilirsiniz.\n\nAllah\'ın Resulü (sallallahu aleyhi ve sellem) cenaze namazı kılarken hem bir hem de iki selam yapardı, ancak bir selamı daha sık yapardı.';
+
+  @override
+  String get translateText => 'Çeviri';
+
+  @override
+  String get sincerity => 'Samimiyet';
+
+  @override
+  String get laws => 'Yasalar';
+
+  @override
+  String get choiceOfCompanions => 'Yol Arkadaşı Seçimi';
+
+  @override
+  String get financialIndependence => 'Mali Bağımsızlık';
+
+  @override
+  String get nobleManners => 'Asil Davranışlar';
+
+  @override
+  String get zikrAndPrayers => 'Zikir ve Dualar';
+
+  @override
+  String get cautionInRelationships => 'İlişkilerde Dikkat';
+
+  @override
+  String get atonementAndRewards => 'Kefaret ve Ödüller';
+
+  @override
+  String get hajjForWomen => 'Kadınlar için Hac';
+
+  @override
+  String get perfectHajj => 'Mükemmel Hac';
+
+  @override
+  String get followingTheSunnah => 'Sünnete Uyma';
+
+  @override
+  String get hajjObligationEvidence => 'Hac Yükümlülüğü Kanıtı';
+
+  @override
+  String get umrahObligationEvidence => 'Umre Yükümlülüğü Kanıtı';
+
+  @override
+  String get conclusion => 'Sonuç';
+
+  @override
   String get step1EnterIhram => 'Mikat noktasında ihrama girin.';
 
   @override

@@ -87,6 +87,127 @@ class AppLocalizationsFr extends AppLocalizations {
   String get usefulInfoTitle => 'Informations utiles';
 
   @override
+  String get etiquetteManners => 'Étiquette et manières';
+
+  @override
+  String get hajjUmrahVirtues => 'Vertus du Hajj et de l\'Omra';
+
+  @override
+  String get hajjUmrahObligation => 'Obligation du Hajj et de l\'Omra';
+
+  @override
+  String get janazaPrayerGuide => 'Guide de la prière Janaza';
+
+  @override
+  String get titleJanazaGuide => 'Prière Janaza';
+
+  @override
+  String get basicRules => 'Guide de la prière Janaza';
+
+  @override
+  String get janazaBasicRules =>
+      '📌 Règles essentielles de la prière Janaza (prière funéraire).\n\nLa prière est effectuée debout, sans inclinaison (ruku\') ni prosternation (sujood). Elle consiste en quatre takbirs (dire \'Allahu Akbar\').\n\nAprès chaque takbir, des supplications spécifiques sont récitées:\n\n1 Sourate Al-Fatiha\n\n2 Salawat sur le Prophète ﷺ\n\n3 Dua pour le défunt\n\n4 Vous pouvez faire une supplication ou conclure la prière';
+
+  @override
+  String get firstTakbirTitle => '1. Premier Takbir';
+
+  @override
+  String get firstTakbirText =>
+      'Levez vos mains au niveau de vos épaules ou de vos oreilles et dites:\n\nاللَّهُ أَكْبَرُ\n\nAllahu Akbar (\"Allah est le Plus Grand\")\n\nEnsuite:\n\nRécitez la Sourate Al-Fatiha.';
+
+  @override
+  String get secondTakbirTitle => '2. Deuxième Takbir';
+
+  @override
+  String get secondTakbirText =>
+      'Dites le takbir (sans lever les mains):\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nRécitez Salawat sur le Prophète ﷺ';
+
+  @override
+  String get translateSecondTakbirText =>
+      '\"Ô Allah, bénis Muhammad et sa famille, comme Tu as béni Ibrahim et la famille d\'Ibrahim, en vérité, Tu es Digne de louange, Glorieux!\"';
+
+  @override
+  String get thirdTakbirTitle => '3. Troisième Takbir';
+
+  @override
+  String get thirdTakbirText =>
+      'Dites le takbir (sans lever les mains):\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nRécitez la dua pour le défunt (si homme)';
+
+  @override
+  String get translateThirdTakbirText =>
+      'Awf ibn Malik a rapporté la dua du Prophète pour le défunt.';
+
+  @override
+  String get duaVariationsTitle => 'Variations de Dua selon le défunt';
+
+  @override
+  String get duaVariationsText =>
+      '📌 Si le défunt est un homme\n\n📌 Si la défunte est une femme\n\n📌 Si plusieurs défunts (hommes seulement)\n\n📌 Si plusieurs défunts (femmes seulement)';
+
+  @override
+  String get fourthTakbirTitle => '4. Quatrième Takbir';
+
+  @override
+  String get fourthTakbirText =>
+      'Dites le takbir (sans lever les mains):\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nVous pouvez faire une supplication, mais ce n\'est pas obligatoire.';
+
+  @override
+  String get fourthTakbirAdditionalInfo =>
+      'Sur la licéité de faire une dua pour le défunt après le quatrième takbir.';
+
+  @override
+  String get taslimTitle => 'Conclusion (Taslim)';
+
+  @override
+  String get taslimText =>
+      '📌 Vous pouvez dire le taslim une fois à droite ou deux fois (à droite et à gauche).\n\nLe Messager d\'Allah (paix et bénédictions d\'Allah sur lui), lors de la prière Janaza, faisait à la fois un et deux salutations, mais il faisait une salutation plus souvent.';
+
+  @override
+  String get translateText => 'Traduction';
+
+  @override
+  String get sincerity => 'Sincérité';
+
+  @override
+  String get laws => 'Lois';
+
+  @override
+  String get choiceOfCompanions => 'Choix des compagnons';
+
+  @override
+  String get financialIndependence => 'Indépendance financière';
+
+  @override
+  String get nobleManners => 'Manières nobles';
+
+  @override
+  String get zikrAndPrayers => 'Zikr et prières';
+
+  @override
+  String get cautionInRelationships => 'Prudence dans les relations';
+
+  @override
+  String get atonementAndRewards => 'Expiation et récompenses';
+
+  @override
+  String get hajjForWomen => 'Hajj pour les femmes';
+
+  @override
+  String get perfectHajj => 'Hajj parfait';
+
+  @override
+  String get followingTheSunnah => 'Suivre la Sunnah';
+
+  @override
+  String get hajjObligationEvidence => 'Preuve de l\'obligation du Hajj';
+
+  @override
+  String get umrahObligationEvidence => 'Preuve de l\'obligation de l\'Omra';
+
+  @override
+  String get conclusion => 'Conclusion';
+
+  @override
   String get step1EnterIhram =>
       'Entrez dans l\'état d\'Ihram à l\'endroit prévu à cet effet (Miqat).';
 

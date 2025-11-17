@@ -89,23 +89,51 @@ class UsefulInfoDetailScreen extends StatelessWidget {
   }
 
   String _getChapterTitle(String key, AppLocalizations l10n) {
-    // Используем локализацию, если ключ существует, иначе fallback на английский
     switch (key) {
       case 'etiquetteManners':
-        return 'Etiquette and Manners';
+        return l10n.etiquetteManners;
       case 'hajjUmrahVirtues':
-        return 'Hajj and Umrah Virtues';
+        return l10n.hajjUmrahVirtues;
       case 'hajjUmrahObligation':
-        return 'Hajj and Umrah Obligation';
+        return l10n.hajjUmrahObligation;
       default:
         return key;
     }
   }
 
   String _getSubChapterTitle(String key, AppLocalizations l10n) {
-    // Используем локализацию, если ключ существует, иначе возвращаем ключ
-    // В будущем можно добавить эти ключи в .arb файлы
-    return key;
+    switch (key) {
+      case 'sincerity':
+        return l10n.sincerity;
+      case 'laws':
+        return l10n.laws;
+      case 'choiceOfCompanions':
+        return l10n.choiceOfCompanions;
+      case 'financialIndependence':
+        return l10n.financialIndependence;
+      case 'nobleManners':
+        return l10n.nobleManners;
+      case 'zikrAndPrayers':
+        return l10n.zikrAndPrayers;
+      case 'cautionInRelationships':
+        return l10n.cautionInRelationships;
+      case 'atonementAndRewards':
+        return l10n.atonementAndRewards;
+      case 'hajjForWomen':
+        return l10n.hajjForWomen;
+      case 'perfectHajj':
+        return l10n.perfectHajj;
+      case 'followingTheSunnah':
+        return l10n.followingTheSunnah;
+      case 'hajjObligationEvidence':
+        return l10n.hajjObligationEvidence;
+      case 'umrahObligationEvidence':
+        return l10n.umrahObligationEvidence;
+      case 'conclusion':
+        return l10n.conclusion;
+      default:
+        return key;
+    }
   }
 }
 
@@ -120,8 +148,50 @@ class SubChapterDetailScreen extends StatelessWidget {
   });
 
   String _getSubChapterTitle(String key, AppLocalizations l10n) {
-    // Используем локализацию, если ключ существует, иначе возвращаем ключ
-    return key;
+    switch (key) {
+      case 'sincerity':
+        return l10n.sincerity;
+      case 'laws':
+        return l10n.laws;
+      case 'choiceOfCompanions':
+        return l10n.choiceOfCompanions;
+      case 'financialIndependence':
+        return l10n.financialIndependence;
+      case 'nobleManners':
+        return l10n.nobleManners;
+      case 'zikrAndPrayers':
+        return l10n.zikrAndPrayers;
+      case 'cautionInRelationships':
+        return l10n.cautionInRelationships;
+      case 'atonementAndRewards':
+        return l10n.atonementAndRewards;
+      case 'hajjForWomen':
+        return l10n.hajjForWomen;
+      case 'perfectHajj':
+        return l10n.perfectHajj;
+      case 'followingTheSunnah':
+        return l10n.followingTheSunnah;
+      case 'hajjObligationEvidence':
+        return l10n.hajjObligationEvidence;
+      case 'umrahObligationEvidence':
+        return l10n.umrahObligationEvidence;
+      case 'conclusion':
+        return l10n.conclusion;
+      default:
+        return key;
+    }
+  }
+
+  String _getSubChapterContent(String key, AppLocalizations l10n) {
+    // Метод для получения локализованного контента подглав
+    // Когда контент будет добавлен в .arb файлы, можно будет использовать switch-case
+    // Пока возвращаем ключ как fallback
+    // TODO: Добавить ключи контента в .arb файлы и использовать их здесь
+    switch (key) {
+      // Пока контент не добавлен в локализацию, возвращаем ключ
+      default:
+        return key;
+    }
   }
 
   @override
@@ -147,8 +217,10 @@ class SubChapterDetailScreen extends StatelessWidget {
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
           child: Text(
-            subChapter
-                .contentKey, // В будущем можно добавить локализацию контента
+            _getSubChapterContent(
+              subChapter.contentKey,
+              AppLocalizations.of(context)!,
+            ),
             style: TextStyle(fontSize: 18, color: Colors.black87, height: 1.5),
           ),
         ),

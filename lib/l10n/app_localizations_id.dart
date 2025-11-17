@@ -87,6 +87,127 @@ class AppLocalizationsId extends AppLocalizations {
   String get usefulInfoTitle => 'Informasi Berguna';
 
   @override
+  String get etiquetteManners => 'Etiket dan Tata Krama';
+
+  @override
+  String get hajjUmrahVirtues => 'Keutamaan Haji dan Umrah';
+
+  @override
+  String get hajjUmrahObligation => 'Kewajiban Haji dan Umrah';
+
+  @override
+  String get janazaPrayerGuide => 'Panduan Shalat Janazah';
+
+  @override
+  String get titleJanazaGuide => 'Shalat Janazah';
+
+  @override
+  String get basicRules => 'Panduan Shalat Janazah';
+
+  @override
+  String get janazaBasicRules =>
+      '📌 Aturan Dasar Shalat Janazah (Shalat Jenazah).\n\nShalat dilakukan sambil berdiri, tanpa ruku\' atau sujud. Terdiri dari empat takbir (mengucapkan \'Allahu Akbar\').\n\nSetelah setiap takbir, doa-doa tertentu dibacakan:\n\n1 Surah Al-Fatihah\n\n2 Salawat kepada Nabi ﷺ\n\n3 Dua untuk yang meninggal\n\n4 Anda dapat berdoa atau menyelesaikan shalat';
+
+  @override
+  String get firstTakbirTitle => '1. Takbir Pertama';
+
+  @override
+  String get firstTakbirText =>
+      'Angkat tangan Anda setinggi bahu atau telinga dan ucapkan:\n\nاللَّهُ أَكْبَرُ\n\nAllahu Akbar (\"Allah Maha Besar\")\n\nKemudian:\n\nBacakan Surah Al-Fatihah.';
+
+  @override
+  String get secondTakbirTitle => '2. Takbir Kedua';
+
+  @override
+  String get secondTakbirText =>
+      'Ucapkan takbir (tanpa mengangkat tangan):\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nBacakan Salawat kepada Nabi ﷺ';
+
+  @override
+  String get translateSecondTakbirText =>
+      '\"Ya Allah, berkatilah Muhammad dan keluarganya, sebagaimana Engkau memberkati Ibrahim dan keluarga Ibrahim, sesungguhnya Engkau Maha Terpuji, Maha Mulia!\"';
+
+  @override
+  String get thirdTakbirTitle => '3. Takbir Ketiga';
+
+  @override
+  String get thirdTakbirText =>
+      'Ucapkan takbir (tanpa mengangkat tangan):\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nBacakan dua untuk yang meninggal (jika laki-laki)';
+
+  @override
+  String get translateThirdTakbirText =>
+      'Awf bin Malik meriwayatkan dua Nabi untuk yang meninggal.';
+
+  @override
+  String get duaVariationsTitle => 'Variasi Dua Tergantung yang Meninggal';
+
+  @override
+  String get duaVariationsText =>
+      '📌 Jika yang meninggal adalah seorang laki-laki\n\n📌 Jika yang meninggal adalah seorang perempuan\n\n📌 Jika beberapa yang meninggal (hanya laki-laki)\n\n📌 Jika beberapa yang meninggal (hanya perempuan)';
+
+  @override
+  String get fourthTakbirTitle => '4. Takbir Keempat';
+
+  @override
+  String get fourthTakbirText =>
+      'Ucapkan takbir (tanpa mengangkat tangan):\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nAnda dapat berdoa, tetapi tidak wajib.';
+
+  @override
+  String get fourthTakbirAdditionalInfo =>
+      'Tentang kebolehan berdoa untuk yang meninggal setelah takbir keempat.';
+
+  @override
+  String get taslimTitle => 'Penutup Shalat (Taslim)';
+
+  @override
+  String get taslimText =>
+      '📌 Anda dapat mengucapkan taslim sekali ke kanan atau dua kali (ke kanan dan ke kiri).\n\nRasulullah (shallallahu \'alaihi wa sallam), ketika melakukan shalat Janazah, melakukan baik satu maupun dua salam, tetapi satu salam lebih sering dilakukan.';
+
+  @override
+  String get translateText => 'Terjemahan';
+
+  @override
+  String get sincerity => 'Keikhlasan';
+
+  @override
+  String get laws => 'Hukum';
+
+  @override
+  String get choiceOfCompanions => 'Pemilihan Teman';
+
+  @override
+  String get financialIndependence => 'Kemandirian Finansial';
+
+  @override
+  String get nobleManners => 'Akhlak Mulia';
+
+  @override
+  String get zikrAndPrayers => 'Zikir dan Doa';
+
+  @override
+  String get cautionInRelationships => 'Kehati-hatian dalam Hubungan';
+
+  @override
+  String get atonementAndRewards => 'Penebusan dan Pahala';
+
+  @override
+  String get hajjForWomen => 'Haji untuk Wanita';
+
+  @override
+  String get perfectHajj => 'Haji yang Sempurna';
+
+  @override
+  String get followingTheSunnah => 'Mengikuti Sunnah';
+
+  @override
+  String get hajjObligationEvidence => 'Bukti Kewajiban Haji';
+
+  @override
+  String get umrahObligationEvidence => 'Bukti Kewajiban Umrah';
+
+  @override
+  String get conclusion => 'Kesimpulan';
+
+  @override
   String get step1EnterIhram =>
       'Masuklah ke dalam keadaan Ihram di tempat yang telah ditentukan (Miqat).';
 

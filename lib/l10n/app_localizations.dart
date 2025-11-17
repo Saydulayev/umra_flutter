@@ -262,6 +262,228 @@ abstract class AppLocalizations {
   /// **'Useful Information'**
   String get usefulInfoTitle;
 
+  /// No description provided for @etiquetteManners.
+  ///
+  /// In en, this message translates to:
+  /// **'Etiquette and Manners'**
+  String get etiquetteManners;
+
+  /// No description provided for @hajjUmrahVirtues.
+  ///
+  /// In en, this message translates to:
+  /// **'Hajj and Umrah Virtues'**
+  String get hajjUmrahVirtues;
+
+  /// No description provided for @hajjUmrahObligation.
+  ///
+  /// In en, this message translates to:
+  /// **'Hajj and Umrah Obligation'**
+  String get hajjUmrahObligation;
+
+  /// No description provided for @janazaPrayerGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'Janaza Prayer Guide'**
+  String get janazaPrayerGuide;
+
+  /// No description provided for @titleJanazaGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'Janaza Prayer'**
+  String get titleJanazaGuide;
+
+  /// No description provided for @basicRules.
+  ///
+  /// In en, this message translates to:
+  /// **'Janaza Prayer Guide'**
+  String get basicRules;
+
+  /// No description provided for @janazaBasicRules.
+  ///
+  /// In en, this message translates to:
+  /// **'📌 Essential Rules of the Janazah Prayer (Funeral Prayer).\n\nThe prayer is performed while standing, without bowing (ruku\') or prostration (sujood). It consists of four takbirs (saying \'Allahu Akbar\').\n\nAfter each takbir, specific supplications are recited:\n\n1 Surah Al-Fatihah\n\n2 Salawat upon the Prophet ﷺ\n\n3 Dua for the deceased\n\n4 You can make a supplication or conclude the prayer'**
+  String get janazaBasicRules;
+
+  /// No description provided for @firstTakbirTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'1. First Takbir'**
+  String get firstTakbirTitle;
+
+  /// No description provided for @firstTakbirText.
+  ///
+  /// In en, this message translates to:
+  /// **'Raise your hands to the level of your shoulders or ears and say:\n\nاللَّهُ أَكْبَرُ\n\nAllahu Akbar (\"Allah is the Greatest\")\n\nThen:\n\nRecite Surah Al-Fatihah.'**
+  String get firstTakbirText;
+
+  /// No description provided for @secondTakbirTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'2. Second Takbir'**
+  String get secondTakbirTitle;
+
+  /// No description provided for @secondTakbirText.
+  ///
+  /// In en, this message translates to:
+  /// **'Say the takbir (without raising the hands):\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nRecite Salawat upon the Prophet ﷺ:\n\nاللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ. اللَّهُمَّ بَارِكْ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ\n\nAllahumma salli \'ala Muhammadin wa \'ala ali Muhammadin, kama sallayta \'ala Ibrahima wa \'ala ali Ibrahima, innaka Hamidun, Majidun. Allahumma, barik \'ala Muhammadin wa \'ala ali Muhammadin kama barakta \'ala Ibrahima wa \'ala ali Ibrahima, innaka Hamidun, Majidun!'**
+  String get secondTakbirText;
+
+  /// No description provided for @translateSecondTakbirText.
+  ///
+  /// In en, this message translates to:
+  /// **'\"O Allah, bless Muhammad and his family, as You blessed Ibrahim and Ibrahim\'s family, indeed, You are Praiseworthy, Glorious! O Allah, send blessings to Muhammad and his family, as You sent them to Ibrahim and his family, indeed, You are Praiseworthy, Glorious!\".'**
+  String get translateSecondTakbirText;
+
+  /// No description provided for @thirdTakbirTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'3. Third Takbir'**
+  String get thirdTakbirTitle;
+
+  /// No description provided for @thirdTakbirText.
+  ///
+  /// In en, this message translates to:
+  /// **'Say the takbir (without raising the hands):\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nRecite the dua for the deceased (if male):\n\nاللَّهُمَّ اغْفِرْ لَهُ، وَارْحَمْهُ،\n\nAllahumma ghfir lahu, warhamhu.\n\nOr:\n\nاللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ، وَعَافِهِ، وَاعْفُ عَنْهُ، وَأَكْرِمْ نُزُلَهُ، وَوَسِّعْ مُدْخَلَهُ، وَاغْسِلْهُ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ، وَنَقِّهِ مِنَ الْخَطَايَا كَمَا نَقَّيْتَ الثَّوْبَ الأبْيَضَ مِنَ الدَّنَسِ، وَأَبْدِلْهُ دَاراً خَيْراً مِنْ دَارِهِ، وَأَهْلاً خَيْراً مِنْ أَهْلِهِ، وَزَوْجاً خَيْرا ًمِنْ زَوَجِهِ، وَأَدْخِلْهُ الْجَنَّةَ، وَأَعِذْهُ مِنْ عَذَابِ الْقَبْرِ وَعَذَابِ النَّارِ\n\nAllahumma ghfir lahu, warhamhu, wa \'afihi, wa\'fu \'anhu, wa akrim nuzulah, wa wassi\' mudkhala, wa ghsilhu bilma\'i, was-salji wal-baradi, wa naqqi-hi mina-l-khataya, kama yunaqqa-s-sawbu-l-abyadu mina-d-danas, wa abdil-hu daran khayran min darihi, wa ahlan khayran min ahlihi, wa zawjan khayran min zawjihi, wa adkhilhu-l-jannata, wa a\'iz-hu min \'azabi-l-qabri wa \'azabi-n-nari.'**
+  String get thirdTakbirText;
+
+  /// No description provided for @translateThirdTakbirText.
+  ///
+  /// In en, this message translates to:
+  /// **'Awf ibn Malik reported: \"Once the Messenger of Allah (peace and blessings of Allah be upon him) performed the janaza prayer, and I remembered that, when making dua for the deceased, he said: \'O Allah! Forgive him, and have mercy on him, and grant him relief, and give him a good reception, and make his grave spacious, and wash him with water, snow and hail! Purify him from sins, as You purify white clothes from dirt, and give him in return a house better than his house, and a family better than his family, and a wife better than his wife, and enter him into Paradise and protect him from the torment of the grave and from the torment of the Fire!\'\" - Abu \'Abdur-Rahman said: \"And I even wanted to be in the place of the deceased myself\". Muslim 2/663.'**
+  String get translateThirdTakbirText;
+
+  /// No description provided for @duaVariationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Dua Variations Depending on the Deceased'**
+  String get duaVariationsTitle;
+
+  /// No description provided for @duaVariationsText.
+  ///
+  /// In en, this message translates to:
+  /// **'📌 If the deceased is one man\n\n- Use the form: لَهُ (lahu)\n\nاللَّهُمَّ اغْفِرْ لَهُ، وَارْحَمْهُ،\n\n(Allahumma ghfir lahu, warhamhu.)\n\n📌 If the deceased is one woman\n\n- Replace all forms from masculine to feminine: لَهَا (laha)\n\nاللَّهُمَّ اغْفِرْ لَهَا، وَارْحَمْهَا،\n\n(Allahumma ghfir laha, warhamha.)\n\n📌 If several deceased (men only)\n\n- Use the masculine plural form: لَهُمْ (lahum)\n\nاللَّهُمَّ اغْفِرْ لَهُمْ، وَارْحَمْهُمْ،\n\n(Allahumma ghfir lahum, warhamhum.)\n\n📌 If several deceased (women only)\n\n- Use the feminine plural form: لَهُنَّ (lahunna)\n\nاللَّهُمَّ اغْفِرْ لَهُنَّ، وَارْحَمْهُنَّ،\n\n(Allahumma ghfir lahunna, warhamhunna.)\n\n📌 If it is unknown whether the deceased was a man or a woman, or if several deceased (men and women together), use the form: لَهُمْ (lahum).\n\nاللَّهُمَّ اغْفِرْ لَهُمْ، وَارْحَمْهُمْ،\n\n(Allahumma ghfir lahum, warhamhum.)'**
+  String get duaVariationsText;
+
+  /// No description provided for @fourthTakbirTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'4. Fourth Takbir'**
+  String get fourthTakbirTitle;
+
+  /// No description provided for @fourthTakbirText.
+  ///
+  /// In en, this message translates to:
+  /// **'Say the takbir (without raising the hands):\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nYou can make a supplication, but it is not obligatory.'**
+  String get fourthTakbirText;
+
+  /// No description provided for @fourthTakbirAdditionalInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'On the permissibility of making dua for the deceased after the fourth takbir.\n\nIt is reported that when \'Abdullah ibn Abu Awf performed the janaza prayer over his daughter, he said the takbir four times. After saying it the fourth time, he stood for as long as it took between two takbirs, asking Allah for forgiveness for his daughter and making dua for her, then said: \"This is how the Messenger of Allah (peace and blessings of Allah be upon him) did it\" al-Hakim 1/512. See \"Sahih Sunan Ibn Majah\" 1220.'**
+  String get fourthTakbirAdditionalInfo;
+
+  /// No description provided for @taslimTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Conclusion (Taslim)'**
+  String get taslimTitle;
+
+  /// No description provided for @taslimText.
+  ///
+  /// In en, this message translates to:
+  /// **'📌 You can say the taslim once to the right or twice (to the right and to the left).\n\nThe Messenger of Allah (peace and blessings of Allah be upon him), when performing the janaza prayer, did both one and two greetings, but he did one greeting more often.'**
+  String get taslimText;
+
+  /// No description provided for @translateText.
+  ///
+  /// In en, this message translates to:
+  /// **'Translation'**
+  String get translateText;
+
+  /// No description provided for @sincerity.
+  ///
+  /// In en, this message translates to:
+  /// **'Sincerity'**
+  String get sincerity;
+
+  /// No description provided for @laws.
+  ///
+  /// In en, this message translates to:
+  /// **'Laws'**
+  String get laws;
+
+  /// No description provided for @choiceOfCompanions.
+  ///
+  /// In en, this message translates to:
+  /// **'Choice of Companions'**
+  String get choiceOfCompanions;
+
+  /// No description provided for @financialIndependence.
+  ///
+  /// In en, this message translates to:
+  /// **'Financial Independence'**
+  String get financialIndependence;
+
+  /// No description provided for @nobleManners.
+  ///
+  /// In en, this message translates to:
+  /// **'Noble Manners'**
+  String get nobleManners;
+
+  /// No description provided for @zikrAndPrayers.
+  ///
+  /// In en, this message translates to:
+  /// **'Zikr and Prayers'**
+  String get zikrAndPrayers;
+
+  /// No description provided for @cautionInRelationships.
+  ///
+  /// In en, this message translates to:
+  /// **'Caution in Relationships'**
+  String get cautionInRelationships;
+
+  /// No description provided for @atonementAndRewards.
+  ///
+  /// In en, this message translates to:
+  /// **'Atonement and Rewards'**
+  String get atonementAndRewards;
+
+  /// No description provided for @hajjForWomen.
+  ///
+  /// In en, this message translates to:
+  /// **'Hajj for Women'**
+  String get hajjForWomen;
+
+  /// No description provided for @perfectHajj.
+  ///
+  /// In en, this message translates to:
+  /// **'Perfect Hajj'**
+  String get perfectHajj;
+
+  /// No description provided for @followingTheSunnah.
+  ///
+  /// In en, this message translates to:
+  /// **'Following the Sunnah'**
+  String get followingTheSunnah;
+
+  /// No description provided for @hajjObligationEvidence.
+  ///
+  /// In en, this message translates to:
+  /// **'Hajj Obligation Evidence'**
+  String get hajjObligationEvidence;
+
+  /// No description provided for @umrahObligationEvidence.
+  ///
+  /// In en, this message translates to:
+  /// **'Umrah Obligation Evidence'**
+  String get umrahObligationEvidence;
+
+  /// No description provided for @conclusion.
+  ///
+  /// In en, this message translates to:
+  /// **'Conclusion'**
+  String get conclusion;
+
   /// No description provided for @step1EnterIhram.
   ///
   /// In en, this message translates to:
