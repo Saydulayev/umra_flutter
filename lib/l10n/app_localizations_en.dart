@@ -57,6 +57,21 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectLanguageSettingsString => 'Select language';
 
   @override
+  String get feedbackString => 'Feedback';
+
+  @override
+  String get rateTheAppString => 'Rate the App';
+
+  @override
+  String get appThemeString => 'App Theme';
+
+  @override
+  String get notificationSettingsString => 'Notification Settings';
+
+  @override
+  String get selectLanguageString => 'Select Language';
+
+  @override
   String get themeHeavenly => 'Sky';
 
   @override

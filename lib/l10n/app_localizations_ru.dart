@@ -57,6 +57,21 @@ class AppLocalizationsRu extends AppLocalizations {
   String get selectLanguageSettingsString => 'Выбрать язык';
 
   @override
+  String get feedbackString => 'Обратная связь';
+
+  @override
+  String get rateTheAppString => 'Оценить приложение';
+
+  @override
+  String get appThemeString => 'Тема приложения';
+
+  @override
+  String get notificationSettingsString => 'Настройки уведомлений';
+
+  @override
+  String get selectLanguageString => 'Выбрать язык';
+
+  @override
   String get themeHeavenly => 'Небо';
 
   @override

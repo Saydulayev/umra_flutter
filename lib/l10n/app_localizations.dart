@@ -202,6 +202,36 @@ abstract class AppLocalizations {
   /// **'Select language'**
   String get selectLanguageSettingsString;
 
+  /// No description provided for @feedbackString.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback'**
+  String get feedbackString;
+
+  /// No description provided for @rateTheAppString.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate the App'**
+  String get rateTheAppString;
+
+  /// No description provided for @appThemeString.
+  ///
+  /// In en, this message translates to:
+  /// **'App Theme'**
+  String get appThemeString;
+
+  /// No description provided for @notificationSettingsString.
+  ///
+  /// In en, this message translates to:
+  /// **'Notification Settings'**
+  String get notificationSettingsString;
+
+  /// No description provided for @selectLanguageString.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Language'**
+  String get selectLanguageString;
+
   /// No description provided for @themeHeavenly.
   ///
   /// In en, this message translates to:

@@ -57,6 +57,21 @@ class AppLocalizationsDe extends AppLocalizations {
   String get selectLanguageSettingsString => 'Sprache auswählen';
 
   @override
+  String get feedbackString => 'Feedback';
+
+  @override
+  String get rateTheAppString => 'App bewerten';
+
+  @override
+  String get appThemeString => 'App-Design';
+
+  @override
+  String get notificationSettingsString => 'Benachrichtigungseinstellungen';
+
+  @override
+  String get selectLanguageString => 'Sprache auswählen';
+
+  @override
   String get themeHeavenly => 'Himmel';
 
   @override

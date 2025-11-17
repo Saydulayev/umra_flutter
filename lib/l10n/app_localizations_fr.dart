@@ -57,6 +57,21 @@ class AppLocalizationsFr extends AppLocalizations {
   String get selectLanguageSettingsString => 'Sélectionner la langue';
 
   @override
+  String get feedbackString => 'Commentaires';
+
+  @override
+  String get rateTheAppString => 'Noter l\'application';
+
+  @override
+  String get appThemeString => 'Thème de l\'application';
+
+  @override
+  String get notificationSettingsString => 'Paramètres de notification';
+
+  @override
+  String get selectLanguageString => 'Sélectionner la langue';
+
+  @override
   String get themeHeavenly => 'Ciel';
 
   @override

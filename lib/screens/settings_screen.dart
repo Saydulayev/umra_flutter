@@ -50,7 +50,7 @@ class SettingsScreen extends StatelessWidget {
             _buildSettingsItem(
               context,
               icon: Icons.message,
-              title: 'Feedback',
+              title: l10n.feedbackString,
               onTap: _launchEmail,
               theme: theme,
             ),
@@ -59,7 +59,7 @@ class SettingsScreen extends StatelessWidget {
             _buildSettingsItem(
               context,
               icon: Icons.star,
-              title: 'Rate the App',
+              title: l10n.rateTheAppString,
               onTap: _launchAppStore,
               theme: theme,
             ),
@@ -79,7 +79,7 @@ class SettingsScreen extends StatelessWidget {
             _buildSettingsItem(
               context,
               icon: Icons.palette,
-              title: 'App Theme',
+              title: l10n.appThemeString,
               subtitle: _getThemeName(themeProvider.selectedTheme, l10n),
               onTap: () {
                 showModalBottomSheet(
@@ -94,7 +94,7 @@ class SettingsScreen extends StatelessWidget {
             _buildSettingsItem(
               context,
               icon: Icons.notifications,
-              title: 'Notification Settings',
+              title: l10n.notificationSettingsString,
               onTap: () {
                 Navigator.pushNamed(context, '/notification-settings');
               },
@@ -187,6 +187,7 @@ class SettingsScreen extends StatelessWidget {
     BuildContext context,
     LocalizationProvider localizationProvider,
   ) {
+    final l10n = AppLocalizations.of(context)!;
     final languages = [
       {'code': 'ru', 'name': 'Русский'},
       {'code': 'en', 'name': 'English'},
@@ -199,7 +200,7 @@ class SettingsScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Select Language'),
+        title: Text(l10n.selectLanguageString),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: languages.map((lang) {

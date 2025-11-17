@@ -57,6 +57,21 @@ class AppLocalizationsTr extends AppLocalizations {
   String get selectLanguageSettingsString => 'Dil seçin';
 
   @override
+  String get feedbackString => 'Geri Bildirim';
+
+  @override
+  String get rateTheAppString => 'Uygulamayı Değerlendir';
+
+  @override
+  String get appThemeString => 'Uygulama Teması';
+
+  @override
+  String get notificationSettingsString => 'Bildirim Ayarları';
+
+  @override
+  String get selectLanguageString => 'Dil Seçin';
+
+  @override
   String get themeHeavenly => 'Gök';
 
   @override

@@ -57,6 +57,21 @@ class AppLocalizationsId extends AppLocalizations {
   String get selectLanguageSettingsString => 'Pilih bahasa';
 
   @override
+  String get feedbackString => 'Umpan Balik';
+
+  @override
+  String get rateTheAppString => 'Nilai Aplikasi';
+
+  @override
+  String get appThemeString => 'Tema Aplikasi';
+
+  @override
+  String get notificationSettingsString => 'Pengaturan Notifikasi';
+
+  @override
+  String get selectLanguageString => 'Pilih Bahasa';
+
+  @override
   String get themeHeavenly => 'Langit';
 
   @override
