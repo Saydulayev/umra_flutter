@@ -72,16 +72,19 @@ class AppLocalizationsFr extends AppLocalizations {
   String get usefulInfoTitle => 'Informations utiles';
 
   @override
-  String get step1EnterIhram => 'into the state of Ihram';
+  String get step1EnterIhram =>
+      'Entrez dans l\'état d\'Ihram à l\'endroit prévu à cet effet (Miqat).';
 
   @override
-  String get step1WhenEnteringIhram => 'When entering the state of Ihram, say:';
+  String get step1WhenEnteringIhram =>
+      'Lors de l\'entrée en état d\'Ihram, dites:';
 
   @override
   String get step1FirstArabic => 'لَبَّيْكَ اللَّهُمَّ بِعُمْرَةَ';
 
   @override
-  String get step1TurnToQiblah => 'Turn your face towards the Qiblah and say:';
+  String get step1TurnToQiblah =>
+      'Labbayka Allahumma bi-\'Umrah.\n\nTournez votre visage vers la Qiblah et dites:';
 
   @override
   String get step1SecondArabic =>
@@ -89,43 +92,45 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get step1OAllahUmrah =>
-      'O Allah, this Umrah is without any ostentation or fame';
+      'Allahumma hadhihi \'umrah la riya\'a fiha wa la soum\'a\n    \nÔ Allah, cette \'Umrah – il n\'y a ni ostentation ni recherche de renommée en elle!\n    \nEnsuite, commencez à réciter à haute voix la Talbiyah:';
 
   @override
   String get step1ThirdArabic =>
       'لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيكَ لَكَ لَبَّيْكَ،\nإِنَّ الْحَمْدَ، وَالنِّعْمَةَ، لَكَ وَالْمُلْكَ، لاَ شَرِيكَ لَكَ';
 
   @override
-  String get step1Labbayka => 'Labbayka Allahumma labbayk';
+  String get step1Labbayka =>
+      'Labbayka Allahumma labbayk! Labbayka la sharika laka labbayk! Innal hamda wan ni\'mata laka wal mulk, la sharika laka.\n    \n«Me voici répondant à Ton appel, ô Allah ! Tu n\'as aucun associé, me voici ! La louange et le bienfait T\'appartiennent, ainsi que la Royauté. Tu n\'as aucun associé!».\n    \nAprès avoir atteint la zone sacrée de La Mecque et aperçu les maisons de La Mecque, cessez de réciter la Talbiyah.';
 
   @override
   String get step1EnteringSacredMosque =>
-      'Entering the Sacred Mosque from the right foot';
+      'En entrant dans la Mosquée Sacrée avec le pied droit, dites:';
 
   @override
   String get step1EnteringSacredMosqueDuaArabic =>
       'اَللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَ سَلِّمْ،اَللَّهُمَّ افْتَحْ لِي اَبْوَابَ رَحْمَتِكَ';
 
   @override
-  String get step1EnteringSacredMosqueDua => 'entering the Sacred Mosque';
+  String get step1EnteringSacredMosqueDua =>
+      'Allahumma solli \'ala Muhammad wa sallim!\nAllahumma-ftah li abwaba rohmatika!\n    \nÔ Allah, bénis Muhammad et accorde-lui la paix!\nÔ Allah, ouvre pour moi les portes de Ta miséricorde!';
 
   @override
   String get step1ConditioningHajjArabic =>
       'اَللَّهُمَّ مَحِلِّي حَيْثُ حَبَسْتَنِي';
 
   @override
-  String get step1ConditioningHajj => 'Conditioning for Hajj or Umrah.';
+  String get step1ConditioningHajj => 'Condition pour le Hajj ou l\'\'Umrah.';
 
   @override
   String get step1ConditioningHajjText =>
-      'If a pilgrim fears that some reason may prevent them from completing the Hajj - be it illness or fear, then before reciting the Talbiyah, they may condition their Hajj before the Most High Lord, saying what the Messenger taught, peace and blessings of Allah be upon him:';
+      'Si un pèlerin craint qu\'une raison quelconque puisse l\'empêcher de compléter le Hajj – que ce soit une maladie ou une crainte, avant de réciter la Talbiyah, il peut conditionner son Hajj devant le Seigneur Tout-Puissant en disant ce qu\'a enseigné le Messager, que la paix et les bénédictions d\'Allah soient sur lui:';
 
   @override
   String get step1IhramText1 =>
-      '\"Allahumma mahilli haythu habastani\"\n\n\"O Allah, my place of entering Ihram is where You have detained me.\"\n\nThis hadith is agreed upon. See also \"Sahih Abi Dawud\" (1776).\n\nTherefore, if a pilgrim does this, and something detains them or they become ill, they are allowed to exit the state of Ihram when performing Hajj or Umrah, and they will not need to sacrifice an animal as atonement and repeat the Hajj again, unless it was their first Hajj, which is obligatory, in which case it should be performed again.';
+      '«Allahumma mahilli haythu habastani»\n    \n«Ô Allah, mon lieu de sortie de l\'Ihram est là où Tu m\'as retenu».\n    \nCe hadith est unanimement rapporté. Voir également «Sahih Abi Dawud» (1776).\n    \nAinsi, si le pèlerin agit ainsi et que quelque chose le retient ou s\'il tombe malade, il lui est permis de sortir de l\'état d\'Ihram pour le Hajj ou l\'\'Umrah, et il n\'aura pas besoin de sacrifier un animal en expiation ni de refaire le Hajj, sauf si c\'était son premier Hajj obligatoire, qu\'il devra alors accomplir de nouveau.';
 
   @override
-  String get step1UmrahForParents => 'Umrah for parents';
+  String get step1UmrahForParents => 'Omra pour les parents';
 
   @override
   String get step1UmrahForFatherArabic =>
@@ -133,7 +138,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get step1UmrahForFather =>
-      'Labbayka Allahumma bi-\'umrah \'an abi (father\'s name) - \"O Allah, I am performing \'umrah for my father (name).\"';
+      'Labbayka Allahumma bi-\'umrah \'an abi (nom du père) - «Ô Allah, j\'accomplis l\'omra pour mon père (nom).»';
 
   @override
   String get step1UmrahForMotherArabic =>
@@ -141,42 +146,42 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get step1UmrahForMother =>
-      'Labbayka Allahumma bi-\'umrah \'an ummi (mother\'s name) - \"O Allah, I am performing \'umrah for my mother (name).\"';
+      'Labbayka Allahumma bi-\'umrah \'an ummi (nom de la mère) - «Ô Allah, j\'accomplis l\'omra pour ma mère (nom).»';
 
   @override
   String get step1UmrahForOtherArabic => 'لَبَّيْكَ ٱللّٰهُمَّ بِعُمْرَةٍ عَنْ';
 
   @override
   String get step1UmrahForOther =>
-      'Labbayka Allahumma bi-\'umrah \'an (person\'s name) - \"O Allah, I am performing \'umrah for (person\'s name).\"';
+      'Labbayka Allahumma bi-\'umrah \'an (nom de la personne) - «Ô Allah, j\'accomplis l\'omra pour (nom de la personne).»';
 
   @override
-  String get step1UmrahForFatherTitle => 'Umrah for father:';
+  String get step1UmrahForFatherTitle => 'Omra pour le père:';
 
   @override
-  String get step1UmrahForMotherTitle => 'Umrah for mother:';
+  String get step1UmrahForMotherTitle => 'Omra pour la mère:';
 
   @override
-  String get step1UmrahForOtherTitle => 'Umrah for another person:';
+  String get step1UmrahForOtherTitle => 'Omra pour une autre personne:';
 
   @override
   String get step1UmrahForParentsExplanation =>
-      'If you want to perform Umrah for your parents or another person, instead of the usual Talbiyah, recite one of the given formulas, adding after the words \"abi\" (father), \"ummi\" (mother) or simply after the word \"\'an\" the name of the person for whom Umrah is being performed. After pronouncing the intention and Talbiyah with the mention of the name, all other actions, supplications (dua) and remembrances of Allah (dhikr) are performed as usual, as if you are doing Umrah for yourself. The only difference is the intention.';
+      'Si vous voulez accomplir l\'omra pour vos parents ou une autre personne, au lieu de la talbiyah habituelle, récitez l\'une des formules données, en ajoutant après les mots «abi» (père), «ummi» (mère) ou simplement après le mot «\'an» le nom de la personne pour qui l\'omra est accomplie. Après avoir prononcé l\'intention et la talbiyah avec la mention du nom, toutes les autres actions, supplications (dua) et rappel d\'Allah (dhikr) sont accomplies comme d\'habitude, comme si vous faisiez l\'omra pour vous-même. La seule différence est l\'intention.';
 
   @override
-  String get step2KaabaText1 => 'Tawaf around the Kaaba';
+  String get step2KaabaText1 => 'La Tawaf (Sept tours autour de la Kaaba).';
 
   @override
   String get step2KaabaText2 =>
-      'Begin the seven-fold circumambulation of the Kaaba (Tawaf).\n\nFrom the very beginning of this circumambulation of the Kaaba until its completion, men expose their right shoulder.\n\nAfter this, the pilgrim touches the Black Stone with his hand and kisses it.\n\nIf it is not possible to kiss the Black Stone, one should touch the Black Stone with one\'s hand.\n\nIf it is not possible to touch and kiss the Black Stone, then face it, point to it with your right hand and say the Takbir: \"Allahu Akbar\" Allah is Great. (All of this should be done during each round when circumambulating the Kaaba.)';
+      'Commencez sept tours autour de la Kaaba (tawaf).\nDès le début de cet itinéraire autour de la Kaaba jusqu\'à son achèvement, les hommes découvrent leur épaule droite.\n        \nAprès cela, le pèlerin touche la Pierre Noire avec sa main et l\'embrasse.\n        \nS\'il n\'est pas possible d\'embrasser la pierre noire, il faut la toucher avec la main.\n        \nS\'il n\'est pas possible de toucher et d\'embrasser la pierre noire, il faut la regarder en face, la pointer de la main droite et dire le takbir : «Allahu akbar», Allah est grand. (Tout cela doit être fait à chaque tour de la Kaaba.)';
 
   @override
   String get step2KaabaText3 =>
-      'Begin the seven-fold circumambulation of the Kaaba (Tawaf) from the Black Stone.\n\nPassing from the Black Stone to the Black Stone counts as one round. Starting a new round, point to the Black Stone with your right hand and say the Takbir. The first three rounds, from the Black Stone to the Black Stone, men must walk at a fast pace, and the remaining four - at a normal pace. If possible, touch the Yemeni corner during each round. Every time you pass between the Yemeni corner and the Black Stone, you should say:';
+      'Commencez sept tours autour de la Kaaba (tawaf) à partir de la Pierre Noire.\nLe trajet de la Pierre Noire à la Pierre Noire compte pour un tour. En débutant un nouveau tour, pointez la Pierre Noire de la main droite et récitez le takbir. Les trois premiers tours, de la Pierre Noire à la Pierre Noire, les hommes doivent marcher d\'un pas rapide, et les quatre autres tours à un pas normal. Si possible, touchez l\'angle yéménite pendant chaque tour. Chaque fois que vous passez entre l\'angle yéménite et la Pierre Noire, dites :';
 
   @override
   String get step2KaabaText4 =>
-      'Rabbana, atina fi-d-dunya hasanatan wa fil-akhirati hasanatan wa qina \'azaba-n-nar\n\n\"Our Lord! Grant us good in this world and good in the Hereafter, and protect us from the torment of the Fire!\",\n\nSurah \"Al-Baqarah\", verse 201.';
+      'Rabbana, atina fi-d-dunya khyasanatan va fil-ahiroti khyasanatanan va k\'ina ´azaba-n-n-nar\n        \n«Ô notre Seigneur! Accorde-nous une belle part dans l\'ici-bas, une belle part dans l\'au-delà et protège-nous du châtiment du feu!»,\nsourate «La Vache», verset 201.';
 
   @override
   String get step2DuaArabic =>
@@ -186,11 +191,11 @@ class AppLocalizationsFr extends AppLocalizations {
   String get step2TakbirArabic => 'الله أكبر';
 
   @override
-  String get step3PrayerAfterTawaf => 'Prayer after Tawaf of Kaaba.';
+  String get step3PrayerAfterTawaf => 'La prière après le Tawaf de la Kaaba.';
 
   @override
   String get step3CompletedSevenCircuits =>
-      'Having completed the seven-fold circumambulation of the Kaaba, the man covers his right shoulder. Then head to the place of standing of Ibrahim and say:';
+      'Après avoir terminé les sept tours autour de la Kaaba, l\'homme couvre son épaule droite. Ensuite, dirigez-vous vers le lieu de la station d\'Ibrahim et récitez:';
 
   @override
   String get step3ArabicText =>
@@ -198,33 +203,34 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get step3PlaceOfStanding =>
-      'Wa-ttakhidhu mim-maqami Ibrahima musalla\n\n\"Take the place [of standing] of Ibrahim as a place of prayer\" (Surah 2 \"Al-Baqarah = The Cow\", verse 125).\n\nIf possible, perform two rak\'ahs of prayer behind the place of standing of Ibrahim or anywhere in the Sacred Mosque. Do not forget to set up a barrier in front of you so that no one passes between you and this barrier. In the first rak\'ah after Surah 1 \"Al-Fatiha = The Opening\", read Surah 109 \"Al-Kafirun = The Disbelievers\", and in the second rak\'ah after Surah \"Al-Fatiha\" read Surah 112 \"Al-Ikhlas = The Sincerity\".\n\nAfter completing the prayer, go to the Zamzam water source.';
+      'Wattakhidhu mim maqomi Ibrohima musolla\n    \n«Et prenez le lieu de la station d\'Ibrahim comme lieu de prière» (Sourate 2 «Al-Baqara = La Vache», verset 125).\n    \nSi possible, priez deux rak\'ahs derrière le lieu de la station d\'Ibrahim ou à tout autre endroit dans la Mosquée Sacrée. Assurez-vous de placer une barrière devant vous afin que personne ne passe entre vous et cette barrière. Lors du premier rak\'ah après la sourate 1 «Al-Fatiha = L\'Ouverture», récitez la sourate 109 «Al-Kafirun = Les Mécréants», et au deuxième rak\'ah après la sourate «Al-Fatiha», récitez la sourate 112 «Al-Ikhlas = La Pureté de la foi».\n\nAprès avoir terminé la prière, dirigez-vous vers la source d\'eau de Zamzam.';
 
   @override
-  String get step4DrinkingZamzam => 'Drinking Zamzam water.';
+  String get step4DrinkingZamzam => 'Boire de l\'eau de Zamzam.';
 
   @override
   String get step4ZamzamText =>
-      'Drink the water and pour it on your head.\n\nJabir (may Allah be pleased with him) reported: \"The Prophet (peace and blessings of Allah be upon him) went to the Zamzam well, drank from it and poured it on his head\". Ahmad (3/394), Ibn Khuzaymah (4/305). The authenticity of the hadith was confirmed by az-Zarkashi, Badruddin al-\'Ayni, Shu\'ayb al-Arnaut. See \"\'Umdatul-Qari\" (9/227), \"Hashiya \'ala al-Manasik\" (p. 263), \"Takhrij al-Musnad\" (15243).\n\nIt is reported from Jabir (may Allah be pleased with him) that the Messenger of Allah (peace and blessings of Allah be upon him) said: \"Zamzam water helps to achieve what it is drunk for\".\n\nAhmad (3/357), Ibn Majah (3062), al-Hakim (1739). The authenticity of the hadith was confirmed by Sufyan ibn \'Uyaynah, al-Munziri, ad-Dumyat, Ibn al-Qayyim, az-Zarkashi, Ibn Hajar, al-Albani. See \"al-Mujalasa\" (509), \"al-Matjar ar-rabih\" (982), \"Zad al-Ma\'ad\" (4/393), \"al-Maqasid al-hasana\" (928), \"Fayd al-Qadir\" (7759), \"Sahih at-Targhib\" (1165).\n\nAsh-Shawkani said: \"This hadith contains evidence that drinking Zamzam water benefits the drinker, whatever intention he drinks it with, be it matters of this world or the Eternal world. For the words: \'Helps to achieve what it is drunk for\' are general\". See \"Nayl al-Awtar\" (5/105).\n\nAn-Nawawi said: \"The meaning of this hadith is that whoever drinks this water for something specific, acquires it. Indeed, scholars and righteous people have tried this to achieve their needs related to this world and the Eternal world and received it by the mercy of Allah the Most High\". See \"Tahzib al-asma wa-l-lughat\" (3/139).';
+      'Buvez de l\'eau et versez-en sur votre tête.\n    \nJabir (qu\'Allah soit satisfait de lui) a rapporté: «Le Prophète (que la paix et les bénédictions d\'Allah soient sur lui) s\'est dirigé vers le puits de Zamzam, il en a bu de l\'eau et s\'en est versé sur la tête.» Ahmad (3/394), Ibn Khuzaymah (4/305). L\'authenticité du hadith a été confirmée par Az-Zarkashi, Badr ad-Din al-\'Ayni, Shou\'aib al-Arna\'ut. Voir «\'Umdatul-Qari» (9/227), «Hashiyah \'ala al-Manasik» (p. 263), «Takhrij al-Musnad» (15243).\n    \nSelon Jabir (qu\'Allah soit satisfait de lui), il est rapporté que le Messager d\'Allah (que la paix et les bénédictions d\'Allah soient sur lui) a dit: «L\'eau de Zamzam aide à accomplir ce pour quoi elle est bue.»\nAhmad (3/357), Ibn Majah (3062), al-Hakim (1739). L\'authenticité du hadith a été confirmée par Sufyan ibn \'Uyaynah, al-Munziri, ad-Dumiyati, Ibn al-Qayyim, Az-Zarkashi, Ibn Hajar, al-Albani. Voir \"al-Mujalasa\" (509), \"al-Matjar ar-Rabih\" (982), \"Zadul-Ma\'ad\" (4/393), \"al-Maqasid al-Hasana\" (928), \"Faydul-Qadir\" (7759), \"Sahih at-Targhib\" (1165).\n    \nAsh-Shawkani a dit: «Ce hadith prouve que boire de l\'eau de Zamzam est bénéfique pour celui qui la boit, quelle que soit l\'intention avec laquelle il la boit, que ce soit pour les affaires de ce monde ou pour celles de l\'au-delà. En effet, les mots: \"Elle aide à accomplir ce pour quoi elle est bue\" sont généraux.» Voir \"Nayl al-Awtar\" (5/105).\nAn-Nawawi a dit: «Le sens de ce hadith est que celui qui boit cette eau avec une intention particulière obtient ce qu\'il a demandé. En vérité, les savants et les pieux ont expérimenté cela pour satisfaire leurs besoins liés à ce monde et à l\'au-delà, et ils les ont obtenus par la grâce d\'Allah Tout-Puissant.» Voir \"Tahdhib al-Asma wa-l-Lughat\" (3/139).';
 
   @override
-  String get step5ReturnToBlackStone => 'Return to the Black Stone.';
+  String get step5ReturnToBlackStone => 'Retournez à la Pierre Noire.';
 
   @override
   String get step5ReturnReciteTakbir =>
-      'Return to the Black Stone, recite the Takbir.';
+      'Retournez à la Pierre Noire, récitez le Takbir et touchez-la comme expliqué précédemment. Sinon, pointez-la de la main et récitez le Takbir. Allah est Grand.';
 
   @override
-  String get step5AllahIsGreat => 'Allah is great.';
+  String get step5AllahIsGreat => 'Allahu Akbar.';
 
   @override
   String get step5TakbirArabic => 'الله أكبر';
 
   @override
-  String get step6SafaAndMarwa => 'Safa and Marwa';
+  String get step6SafaAndMarwa => 'As-Safa et Al-Marwa';
 
   @override
-  String get step6HeadTowardsSafa => 'Head towards the hill of Safa';
+  String get step6HeadTowardsSafa =>
+      'Dirigez-vous vers la colline de Safa pour effectuer le rituel des sept passages entre les collines de Safa et Marwa (Sa\'i). Commencez le Sa\'i à la colline de Safa.\n    \n    \nEn vous approchant de Safa, récitez:';
 
   @override
   String get step6SurahBaqarahArabic =>
@@ -235,17 +241,17 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get step6SurahBaqarahText =>
-      'Inna-s-Safa wal-Marwata min sha\'a\'iri-llah, fa-man hajja-l-bayta awi-\'tamara fala junaha \'alayhi ayy-yat\'tawwafa bihima, wa man tatawwa\'a khayran fa-inna-llaha Shakirun \'alim.\n\n\"Indeed, as-Safa and al-Marwah are among the symbols of Allah. Whoever performs Hajj to the Kaaba or \'Umrah, he will not commit a sin if he passes between them. And if anyone voluntarily does a good deed, then indeed Allah is Appreciative, Knowing.\" (Surah \"Al-Baqarah\", verse 158)\n\nThen say:';
+      'Inna-s-Sofa wal-Marwata min sha\'airi-Llah, fa man hajjal-bayta awi\'tamaro fala junaha \'alayhi ay yatt`owwafa bihima, wa man tatowwa\'a khoyron fa inna-Llaha Shakurun \'Alim.\n    \n«En vérité, As-Safa et Al-Marwa font partie des rites prescrits par Allah. Celui qui fait le pèlerinage à la Kaaba ou la \'Umra ne commet aucun péché en passant entre eux. Et quiconque fait de son plein gré une bonne action, Allah en est Reconnaissant et Omniscient.» (Sourate «La Vache», verset 158)\n    \n    Ensuite, dites:';
 
   @override
   String get step6WeBeginArabic => 'نَبْدَأُ بِمَا بَدَأَ اللهُ بِهِ';
 
   @override
-  String get step6WeBegin => 'We begin with that string';
+  String get step6WeBegin => 'Nous commençons par ce qu\'Allah a commencé';
 
   @override
   String get step6WeBeginText =>
-      'Nabda\'u bima bada\'a-llahu bihi\n\n\"We begin with that which Allah began\"\n\nClimb the hill of Safa, turn to face the Kaaba and say:';
+      'Nabdau bima bada Allohu bihi\n\n«Nous commençons par ce qu\'Allah a commencé»\n    \nMontez sur la colline de Safa, tournez-vous vers la Kaaba et dites:';
 
   @override
   String get step6RemembranceArabic =>
@@ -257,7 +263,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get step6RemembranceText =>
-      'Allahu akbar! Allahu akbar! Allahu akbar!\n\nLa ilaha illa-llahu wahdahu la sharika lahu! Lahul-mulku wa lahul-hamdu yuhyi wa yumitu wa huwa \'ala kulli shay\'in qadir! La ilaha illa llahu wahdahu la sharika lahu anjaza wa\'dahu, wa nasara \'abdahu, wa hazama-l-ahzaba wahdahu.\n\n\"Allah is Most Great, Allah is Most Great, Allah is Most Great!\n\nThere is no deity except Allah, the One, Who has no partner! To Him belongs the dominion and to Him belongs praise, He gives life and causes death, and He has power over all things! There is no deity except Allah, the One, Who has no partner! He fulfilled His promise, helped His servant and alone defeated the hostile tribes\"\n\nSay these words three times, raising your hands for dua after the first and second time. Then begin the passage from the hill of Safa to Marwah. One passage from Safa to Marwah counts as one time, and the return journey is the second. On the hill of Marwah, repeat the same order: dhikr - dua - dhikr - dua - dhikr. These dhikrs and duas should be repeated on each ascent to Safa and Marwah, except for the seventh passage. When reaching the first mark, marked in green, men must run to the second mark. The rest of the journey is done at a normal pace.\n\nDuring the Sa\'i ritual, you can turn to Allah with such a supplication:';
+      'Allahu Akbar! Allahu Akbar! Allahu Akbar!\nLa ilaha illa-Llohu wahdahu la sharika lah! Lahul mulku wa lahul hamdu yuhyi wa yumitu wa huwa \'ala kulli shay\'in qodir! La ilaha illa Llahu wahdahu la sharika lah anjaza wa\'dah wa nasara \'abdah wa hazama al-ahzaba wahdah.\n    \n«Allah est Grand, Allah est Grand, Allah est Grand!\nIl n\'y a pas de divinité à part Allah, l\'Unique, qui n\'a pas d\'associé! À Lui appartient la royauté et à Lui revient la louange, Il donne la vie et la mort, et Il est Puissant sur toutes choses! Il n\'y a pas de divinité à part Allah, l\'Unique, qui n\'a pas d\'associé! Il a accompli Sa promesse, aidé Son serviteur et seul Il a vaincu les clans ennemis»\n    \nRécitez ces paroles trois fois, en levant les mains pour la supplication après la première et la deuxième fois. Ensuite, commencez le passage de la colline de Safa à celle de Marwa. Un passage de Safa à Marwa compte pour un tour, et le chemin de retour est compté comme un autre tour. Sur la colline de Marwa, répétez le même ordre: Dhikr – supplication – Dhikr – supplication – Dhikr. Ces Dhikr et supplications doivent être répétés à chaque montée sur Safa et Marwa, sauf lors du septième passage. En atteignant la première marque verte, les hommes doivent courir jusqu\'à la deuxième marque verte. Le reste du chemin se fait en marchant normalement.\n    \nPendant le rituel du Sa\'i, vous pouvez adresser cette supplication à Allah:';
 
   @override
   String get step6DuasDuringSaiArabic =>
@@ -269,7 +275,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get step6DuasDuringSaiText =>
-      'Rabbi-ghfir wa-rham, innaka antal-a\'azzu-l-akram\n\n\"Lord, forgive and have mercy, for You are the Most Great and Most Generous!\",\n\nthere is nothing wrong with this, as this supplication is established from a whole group of righteous predecessors.\n\nUpon completion of the seventh round, the pilgrim no longer recites dhikr and dua on the hill of Marwah. This means that the Sa\'i ritual is complete.\n\nSupplication upon exiting the Sacred Mosque. After completing the seventh passage on the hill of Marwah, exit the Sacred Mosque with your left foot, saying:';
+      'Robbi-ghfir wa-rham, innaka antal a\'azzul akram\n    \n«Seigneur, pardonne et fais miséricorde, car Tu es le Plus Grand et le Plus Noble!»,\n    \ncela n\'est pas blâmable, car cette supplication a été rapportée par plusieurs pieux prédécesseurs.\n\nÀ la fin du septième passage, le pèlerin ne récite plus de Dhikr ni de supplication sur la colline de Marwa. Cela signifie que le rituel du Sa\'i est terminé.\n\nSupplication en sortant de la Mosquée Sacrée. Après avoir terminé le septième passage sur la colline de Marwa, sortez de la Mosquée Sacrée avec le pied gauche en disant:';
 
   @override
   String get step6ExitingSacredMosqueArabic =>
@@ -281,28 +287,28 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get step6ExitingSacredMosqueText =>
-      'Allahumma, salli \'ala Muhammadin wa sallim! Allahumma, inni as\'alu-ka min fadli-ka!\n\nO Allah, bless Muhammad and grant him peace! O Allah, indeed, I ask You for Your Mercy!';
+      'Allahumma solli \'ala Muhammadin wa sallim! Allahumma inni as aluka min fadzlik!\n    \nÔ Allah, bénis Muhammad et accorde-lui la paix! Ô Allah, en vérité, je Te demande Ta Grâce!';
 
   @override
   String get step6RemembranceDuringSai =>
-      'Allahu akbar! Allahu akbar! Allahu akbar!\n\nLa ilaha illa-llahu wahdahu la sharika lahu! Lahul-mulku wa lahul-hamdu yuhyi wa yumitu wa huwa \'ala kulli shay\'in qadir! La ilaha illa llahu wahdahu la sharika lahu anjaza wa\'dahu, wa nasara \'abdahu, wa hazama-l-ahzaba wahdahu.\n\n\"Allah is Most Great, Allah is Most Great, Allah is Most Great!\n\nThere is no deity except Allah, the One, Who has no partner! To Him belongs the dominion and to Him belongs praise, He gives life and causes death, and He has power over all things! There is no deity except Allah, the One, Who has no partner! He fulfilled His promise, helped His servant and alone defeated the hostile tribes\"\n\nSay these words three times, raising your hands for dua after the first and second time. Then begin the passage from the hill of Safa to Marwah. One passage from Safa to Marwah counts as one time, and the return journey is the second. On the hill of Marwah, repeat the same order: dhikr - dua - dhikr - dua - dhikr. These dhikrs and duas should be repeated on each ascent to Safa and Marwah, except for the seventh passage. When reaching the first mark, marked in green, men must run to the second mark. The rest of the journey is done at a normal pace.\n\nDuring the Sa\'i ritual, you can turn to Allah with such a supplication:';
+      'Allahu Akbar! Allahu Akbar! Allahu Akbar!\nLa ilaha illa-Llohu wahdahu la sharika lah! Lahul mulku wa lahul hamdu yuhyi wa yumitu wa huwa \'ala kulli shay\'in qodir! La ilaha illa Llahu wahdahu la sharika lah anjaza wa\'dah wa nasara \'abdah wa hazama al-ahzaba wahdah.\n    \n«Allah est Grand, Allah est Grand, Allah est Grand!\nIl n\'y a pas de divinité à part Allah, l\'Unique, qui n\'a pas d\'associé! À Lui appartient la royauté et à Lui revient la louange, Il donne la vie et la mort, et Il est Puissant sur toutes choses! Il n\'y a pas de divinité à part Allah, l\'Unique, qui n\'a pas d\'associé! Il a accompli Sa promesse, aidé Son serviteur et seul Il a vaincu les clans ennemis»\n    \nRécitez ces paroles trois fois, en levant les mains pour la supplication après la première et la deuxième fois. Ensuite, commencez le passage de la colline de Safa à celle de Marwa. Un passage de Safa à Marwa compte pour un tour, et le chemin de retour est compté comme un autre tour. Sur la colline de Marwa, répétez le même ordre: Dhikr – supplication – Dhikr – supplication – Dhikr. Ces Dhikr et supplications doivent être répétés à chaque montée sur Safa et Marwa, sauf lors du septième passage. En atteignant la première marque verte, les hommes doivent courir jusqu\'à la deuxième marque verte. Le reste du chemin se fait en marchant normalement.\n    \nPendant le rituel du Sa\'i, vous pouvez adresser cette supplication à Allah:';
 
   @override
   String get step6DuasDuringSai =>
-      'Rabbi-ghfir wa-rham, innaka antal-a\'azzu-l-akram\n\n\"Lord, forgive and have mercy, for You are the Most Great and Most Generous!\",\n\nthere is nothing wrong with this, as this supplication is established from a whole group of righteous predecessors.\n\nUpon completion of the seventh round, the pilgrim no longer recites dhikr and dua on the hill of Marwah. This means that the Sa\'i ritual is complete.\n\nSupplication upon exiting the Sacred Mosque. After completing the seventh passage on the hill of Marwah, exit the Sacred Mosque with your left foot, saying:';
+      'Robbi-ghfir wa-rham, innaka antal a\'azzul akram\n    \n«Seigneur, pardonne et fais miséricorde, car Tu es le Plus Grand et le Plus Noble!»,\n    \ncela n\'est pas blâmable, car cette supplication a été rapportée par plusieurs pieux prédécesseurs.\n\nÀ la fin du septième passage, le pèlerin ne récite plus de Dhikr ni de supplication sur la colline de Marwa. Cela signifie que le rituel du Sa\'i est terminé.\n\nSupplication en sortant de la Mosquée Sacrée. Après avoir terminé le septième passage sur la colline de Marwa, sortez de la Mosquée Sacrée avec le pied gauche en disant:';
 
   @override
   String get step6ExitingSacredMosque =>
-      'Allahumma, salli \'ala Muhammadin wa sallim! Allahumma, inni as\'alu-ka min fadli-ka!\n\nO Allah, bless Muhammad and grant him peace! O Allah, indeed, I ask You for Your Mercy!';
+      'Allahumma solli \'ala Muhammadin wa sallim! Allahumma inni as aluka min fadzlik!\n    \nÔ Allah, bénis Muhammad et accorde-lui la paix! Ô Allah, en vérité, je Te demande Ta Grâce!';
 
   @override
-  String get step7ShavingHead => 'Shaving the head or trimming the hair.';
+  String get step7ShavingHead => 'Se raser la tête ou couper les cheveux.';
 
   @override
   String get step7MenShortenHair =>
-      'Then the man evenly shortens the hair on his head or shaves it, and the woman cuts off a lock the size of a third of a finger.\n\nNote:\n\nFor those coming for Hajj, it is better to shorten the hair if they will not have time to grow back after \'Umrah before Hajj, as shaving the head is done during Hajj.\n\nFor those coming to perform only \'Umrah (without Hajj), it is better to shave the head.\n\nComplete exit from the state of Ihram.\n\nAt this point, \'Umrah ends. The man removes the Ihram garment. The restrictions that were in effect in the state of Ihram are lifted.';
+      'Ensuite, l\'homme égalise la longueur de ses cheveux ou rase sa tête, tandis que la femme coupe une mèche de la taille d\'un tiers de doigt.\n\nRemarque:\nPour ceux venus pour le Hajj, il est préférable de couper les cheveux s\'ils n\'ont pas le temps de repousser entre la \'Umra et le Hajj, car le rasage de la tête se fait pendant le Hajj.\nPour ceux qui viennent uniquement pour la \'Umra (sans Hajj), il est préférable de se raser la tête.\n    \nSortie complète de l\'état d\'Ihram.\nÀ ce stade, la \'Umra est terminée. L\'homme enlève le vêtement Ihram. Les restrictions imposées en état d\'Ihram sont levées.';
 
   @override
   String get step7DuaAtEnd =>
-      'In conclusion, I ask Allah the Most High to accept all our good deeds and preserve for us the reward for their performance until the Day when we meet with Him,\n\n\"on that Day when neither wealth nor sons will benefit anyone, except those who appear before Allah with a pure heart\"\n\n(Surah \"Ash-Shu\'ara\", verses 88-89).\n\nI also ask Allah the Most High to grant full reward to all who participated in the creation, development and distribution of this application - whether by advice, knowledge, means or a kind word - for every Umrah performed with its help.\n\nAs the Messenger of Allah (peace and blessings of Allah be upon him) said:\n\n\"Whoever points to good, he will receive the same reward as the one who does this good deed\"\n\n(Sahih Muslim, No. 1893).\n\nPraise be to Allah, Lord of the worlds!';
+      'En conclusion, je demande à Allah, le Tout-Puissant, d\'accepter toutes nos bonnes actions et de préserver leur récompense jusqu\'au Jour où nous Le rencontrerons,\n« Le Jour où ni la richesse ni les enfants ne seront d\'aucune utilité, sauf pour ceux qui se présenteront à Allah avec un cœur pur »\n(Sourate Ash-Shu\'ara, Versets 88–89).\n\nJe demande également à Allah d\'accorder une récompense complète à tous ceux qui ont contribué au développement, à l\'amélioration et à la diffusion de cette application — que ce soit par des conseils, des connaissances, un soutien financier ou des paroles bienveillantes — pour chaque Omra accomplie grâce à son aide.\nComme l\'a dit le Messager d\'Allah (paix et bénédictions d\'Allah sur lui) :\n« Celui qui indique une bonne action recevra une récompense égale à celle de celui qui la réalise »\n(Sahih Mouslim, n° 1893).\n\nLouange à Allah, le Seigneur des mondes !';
 }

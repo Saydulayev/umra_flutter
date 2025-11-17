@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
+import 'package:umra_flutter/l10n/app_localizations_de.dart';
+import 'package:umra_flutter/l10n/app_localizations_en.dart';
+import 'package:umra_flutter/l10n/app_localizations_fr.dart';
+import 'package:umra_flutter/l10n/app_localizations_id.dart';
+import 'package:umra_flutter/l10n/app_localizations_ru.dart';
+import 'package:umra_flutter/l10n/app_localizations_tr.dart';
 import '../providers/theme_provider.dart';
+import '../providers/localization_provider.dart';
 import '../models/step_model.dart';
 import '../widgets/player_widget.dart';
 import '../widgets/counter_tap_widget.dart';
@@ -13,64 +20,97 @@ class StepDetailScreen extends StatelessWidget {
 
   const StepDetailScreen({super.key, required this.step});
 
+  static AppLocalizations _getLocalization(
+    LocalizationProvider localizationProvider,
+  ) {
+    final locale = localizationProvider.currentLocale;
+    switch (locale.languageCode) {
+      case 'de':
+        return AppLocalizationsDe();
+      case 'en':
+        return AppLocalizationsEn();
+      case 'fr':
+        return AppLocalizationsFr();
+      case 'id':
+        return AppLocalizationsId();
+      case 'ru':
+        return AppLocalizationsRu();
+      case 'tr':
+        return AppLocalizationsTr();
+      default:
+        return AppLocalizationsEn();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
-    final theme = themeProvider.selectedTheme;
-    final l10n = AppLocalizations.of(context)!;
+    return Consumer2<ThemeProvider, LocalizationProvider>(
+      builder: (context, themeProvider, localizationProvider, child) {
+        final theme = themeProvider.selectedTheme;
 
-    // Определяем, какой контент показывать в зависимости от шага
-    Widget content;
+        // Получаем локализацию напрямую из провайдера
+        final l10n = _getLocalization(localizationProvider);
 
-    switch (step.id) {
-      case 'step1':
-        content = _buildStep1Content(theme, l10n);
-        break;
-      case 'step2':
-        content = _buildStep2Content(theme, l10n);
-        break;
-      case 'step3':
-        content = _buildStep3Content(theme, l10n);
-        break;
-      case 'step4':
-        content = _buildStep4Content(theme, l10n);
-        break;
-      case 'step5':
-        content = _buildStep5Content(theme, l10n);
-        break;
-      case 'step6':
-        content = _buildStep6Content(theme, l10n);
-        break;
-      case 'step7':
-        content = _buildStep7Content(theme, l10n);
-        break;
-      case 'useful':
-        // TODO: Импортировать UsefulInfoScreen отдельно
-        return _buildDefaultContent(theme);
-      default:
-        content = _buildDefaultContent(theme);
-    }
+        // Отладочная информация
+        debugPrint(
+          'StepDetailScreen: Current locale: ${localizationProvider.currentLocale}',
+        );
+        debugPrint(
+          'StepDetailScreen: AppLocalizations locale: ${l10n.localeName}',
+        );
 
-    return Scaffold(
-      backgroundColor: theme.lightBackgroundColor,
-      appBar: AppBar(
-        title: Text(
-          _getLocalizedTitle(step.titleKey, l10n),
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: theme.lightBackgroundColor,
-        elevation: 0,
-        iconTheme: IconThemeData(color: theme.primaryColor),
-        actions: const [
-          CustomToolbar(),
-        ],
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(10),
-          child: content,
-        ),
-      ),
+        // Определяем, какой контент показывать в зависимости от шага
+        Widget content;
+
+        switch (step.id) {
+          case 'step1':
+            content = _buildStep1Content(theme, l10n);
+            break;
+          case 'step2':
+            content = _buildStep2Content(theme, l10n);
+            break;
+          case 'step3':
+            content = _buildStep3Content(theme, l10n);
+            break;
+          case 'step4':
+            content = _buildStep4Content(theme, l10n);
+            break;
+          case 'step5':
+            content = _buildStep5Content(theme, l10n);
+            break;
+          case 'step6':
+            content = _buildStep6Content(theme, l10n);
+            break;
+          case 'step7':
+            content = _buildStep7Content(theme, l10n);
+            break;
+          case 'useful':
+            // TODO: Импортировать UsefulInfoScreen отдельно
+            return _buildDefaultContent(theme);
+          default:
+            content = _buildDefaultContent(theme);
+        }
+
+        return Scaffold(
+          backgroundColor: theme.lightBackgroundColor,
+          appBar: AppBar(
+            title: Text(
+              _getLocalizedTitle(step.titleKey, l10n),
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            backgroundColor: theme.lightBackgroundColor,
+            elevation: 0,
+            iconTheme: IconThemeData(color: theme.primaryColor),
+            actions: const [CustomToolbar()],
+          ),
+          body: SafeArea(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(10),
+              child: content,
+            ),
+          ),
+        );
+      },
     );
   }
 

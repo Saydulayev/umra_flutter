@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
                   final theme = themeProvider.selectedTheme;
 
                   return MaterialApp(
+                    key: ValueKey(localizationProvider.currentLocale.toString()),
                     title: 'Umra Guide',
                     debugShowCheckedModeBanner: false,
 
@@ -57,13 +58,26 @@ class MyApp extends StatelessWidget {
 
                     // Локализация
                     locale: localizationProvider.currentLocale,
-                    supportedLocales: localizationProvider.supportedLocales,
+                    supportedLocales: AppLocalizations.supportedLocales,
                     localizationsDelegates: const [
                       AppLocalizations.delegate,
                       GlobalMaterialLocalizations.delegate,
                       GlobalWidgetsLocalizations.delegate,
                       GlobalCupertinoLocalizations.delegate,
                     ],
+                    localeResolutionCallback: (locale, supportedLocales) {
+                      if (locale == null) {
+                        return supportedLocales.first;
+                      }
+                      // Проверяем точное совпадение
+                      for (var supportedLocale in supportedLocales) {
+                        if (supportedLocale.languageCode == locale.languageCode) {
+                          return supportedLocale;
+                        }
+                      }
+                      // Если не найдено, возвращаем первый поддерживаемый
+                      return supportedLocales.first;
+                    },
 
                     // Начальный экран
                     home: prefsProvider.hasSelectedLanguage

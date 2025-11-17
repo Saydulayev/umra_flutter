@@ -72,16 +72,17 @@ class AppLocalizationsTr extends AppLocalizations {
   String get usefulInfoTitle => 'Yararlı Bilgiler';
 
   @override
-  String get step1EnterIhram => 'into the state of Ihram';
+  String get step1EnterIhram => 'Mikat noktasında ihrama girin.';
 
   @override
-  String get step1WhenEnteringIhram => 'When entering the state of Ihram, say:';
+  String get step1WhenEnteringIhram => 'İhrama girerken şunu söyleyin:';
 
   @override
   String get step1FirstArabic => 'لَبَّيْكَ اللَّهُمَّ بِعُمْرَةَ';
 
   @override
-  String get step1TurnToQiblah => 'Turn your face towards the Qiblah and say:';
+  String get step1TurnToQiblah =>
+      'Labbayka Allahumma bi-´umrah.\n\nKıbleye yönelin ve şunu söyleyin:';
 
   @override
   String get step1SecondArabic =>
@@ -89,43 +90,45 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step1OAllahUmrah =>
-      'O Allah, this Umrah is without any ostentation or fame';
+      'Allahumma hazihi \'umrah, la riya\'a fiha wa la sum\'ah.\n    \nEy Allah\'ım! Bu umre, gösteriş ve şöhret için değildir!\n    \n    \nDaha sonra yüksek sesle telbiyeye başlayın:';
 
   @override
   String get step1ThirdArabic =>
       'لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيكَ لَكَ لَبَّيْكَ،\nإِنَّ الْحَمْدَ، وَالنِّعْمَةَ، لَكَ وَالْمُلْكَ، لاَ شَرِيكَ لَكَ';
 
   @override
-  String get step1Labbayka => 'Labbayka Allahumma labbayk';
+  String get step1Labbayka =>
+      'Labbayka Allahumma labbayk! Labbayka laa shariika laka labbayka! Innal hamda wanni\'mata laka wal mulk, laa shariika lak\n    \n«Buyur Allah\'ım, buyur! Buyur, Senin hiçbir ortağın yoktur! Buyur! Şüphesiz hamd, nimet ve mülk yalnızca Sana aittir! Senin hiçbir ortağın yoktur!».\n    \n    \nMekke\'nin Harem bölgesine ulaştığınızda ve Mekke\'nin evlerini gördüğünüzde telbiyeyi bırakmalısınız.';
 
   @override
   String get step1EnteringSacredMosque =>
-      'Entering the Sacred Mosque from the right foot';
+      'Mescid-i Haram\'a sağ ayak ile girerken şunu söyleyin:';
 
   @override
   String get step1EnteringSacredMosqueDuaArabic =>
       'اَللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَ سَلِّمْ،اَللَّهُمَّ افْتَحْ لِي اَبْوَابَ رَحْمَتِكَ';
 
   @override
-  String get step1EnteringSacredMosqueDua => 'entering the Sacred Mosque';
+  String get step1EnteringSacredMosqueDua =>
+      'Allahumma, solli ´ala Muhammadin wa sallim! Allahumma - ftah li abwaba rohmati-ka!\n    \nEy Allah\'ım! Muhammed\'e salât ve selam eyle!\nEy Allah\'ım! Bana rahmet kapılarını aç!';
 
   @override
   String get step1ConditioningHajjArabic =>
       'اَللَّهُمَّ مَحِلِّي حَيْثُ حَبَسْتَنِي';
 
   @override
-  String get step1ConditioningHajj => 'Conditioning for Hajj or Umrah.';
+  String get step1ConditioningHajj => 'Hac veya Umre için şart koşma.';
 
   @override
   String get step1ConditioningHajjText =>
-      'If a pilgrim fears that some reason may prevent them from completing the Hajj - be it illness or fear, then before reciting the Talbiyah, they may condition their Hajj before the Most High Lord, saying what the Messenger taught, peace and blessings of Allah be upon him:';
+      'Eğer bir hacı, hastalık veya başka bir sebeple haccını tamamlayamayacağından korkuyorsa, telbiyeyi söylemeden önce, Allah Resulü\'nün (sallallâhu aleyhi ve sellem) öğrettiği şekilde niyetini şartlı olarak yapabilir:';
 
   @override
   String get step1IhramText1 =>
-      '\"Allahumma mahilli haythu habastani\"\n\n\"O Allah, my place of entering Ihram is where You have detained me.\"\n\nThis hadith is agreed upon. See also \"Sahih Abi Dawud\" (1776).\n\nTherefore, if a pilgrim does this, and something detains them or they become ill, they are allowed to exit the state of Ihram when performing Hajj or Umrah, and they will not need to sacrifice an animal as atonement and repeat the Hajj again, unless it was their first Hajj, which is obligatory, in which case it should be performed again.';
+      '«Allahumma mahilli haysu habastani»\n\n«Ey Allah\'ım! Eğer beni bir şey engellerse, ihramdan çıkışım burada olsun.»\n\nBu hadis, sahih olarak kabul edilmiştir. Ayrıca bkz. \"Sahîh Ebû Dâvûd\" (1776).\n\nBundan dolayı, eğer hacı bu şekilde niyet eder ve bir engel çıkarsa ya da hastalanırsa, hac veya umre ibadetini tamamlamadan ihramdan çıkabilir. Bu durumda ceza olarak kurban kesmesi gerekmez ve yeniden hac yapmasına da gerek yoktur. Ancak bu onun farz olan ilk haccı ise, bu durumda onu tekrar yapması gerekir.';
 
   @override
-  String get step1UmrahForParents => 'Umrah for parents';
+  String get step1UmrahForParents => 'Ebeveynler için Umre';
 
   @override
   String get step1UmrahForFatherArabic =>
@@ -133,7 +136,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step1UmrahForFather =>
-      'Labbayka Allahumma bi-\'umrah \'an abi (father\'s name) - \"O Allah, I am performing \'umrah for my father (name).\"';
+      'Labbayka Allahumma bi-\'umrah \'an abi (baba adı) - «Ey Allah\'ım! Babam (adı) için umre yapıyorum.»';
 
   @override
   String get step1UmrahForMotherArabic =>
@@ -141,42 +144,42 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step1UmrahForMother =>
-      'Labbayka Allahumma bi-\'umrah \'an ummi (mother\'s name) - \"O Allah, I am performing \'umrah for my mother (name).\"';
+      'Labbayka Allahumma bi-\'umrah \'an ummi (anne adı) - «Ey Allah\'ım! Annem (adı) için umre yapıyorum.»';
 
   @override
   String get step1UmrahForOtherArabic => 'لَبَّيْكَ ٱللّٰهُمَّ بِعُمْرَةٍ عَنْ';
 
   @override
   String get step1UmrahForOther =>
-      'Labbayka Allahumma bi-\'umrah \'an (person\'s name) - \"O Allah, I am performing \'umrah for (person\'s name).\"';
+      'Labbayka Allahumma bi-\'umrah \'an (kişi adı) - «Ey Allah\'ım! (kişi adı) için umre yapıyorum.»';
 
   @override
-  String get step1UmrahForFatherTitle => 'Umrah for father:';
+  String get step1UmrahForFatherTitle => 'Baba için Umre:';
 
   @override
-  String get step1UmrahForMotherTitle => 'Umrah for mother:';
+  String get step1UmrahForMotherTitle => 'Anne için Umre:';
 
   @override
-  String get step1UmrahForOtherTitle => 'Umrah for another person:';
+  String get step1UmrahForOtherTitle => 'Başka bir kişi için Umre:';
 
   @override
   String get step1UmrahForParentsExplanation =>
-      'If you want to perform Umrah for your parents or another person, instead of the usual Talbiyah, recite one of the given formulas, adding after the words \"abi\" (father), \"ummi\" (mother) or simply after the word \"\'an\" the name of the person for whom Umrah is being performed. After pronouncing the intention and Talbiyah with the mention of the name, all other actions, supplications (dua) and remembrances of Allah (dhikr) are performed as usual, as if you are doing Umrah for yourself. The only difference is the intention.';
+      'Eğer ebeveynleriniz veya başka bir kişi için umre yapmak istiyorsanız, normal telbiye yerine verilen formüllerden birini okuyun, «abi» (baba), «ummi» (anne) kelimelerinden sonra veya sadece «\'an» kelimesinden sonra umrenin yapıldığı kişinin adını ekleyin. Adı belirterek niyet ve telbiyeyi söyledikten sonra, diğer tüm eylemler, dualar (dua) ve Allah\'ı anma (zikir) normal şekilde yapılır, sanki kendiniz için umre yapıyormuş gibi. Tek fark niyettir.';
 
   @override
-  String get step2KaabaText1 => 'Tawaf around the Kaaba';
+  String get step2KaabaText1 => 'Kâbe\'yi Tavaf';
 
   @override
   String get step2KaabaText2 =>
-      'Begin the seven-fold circumambulation of the Kaaba (Tawaf).\n\nFrom the very beginning of this circumambulation of the Kaaba until its completion, men expose their right shoulder.\n\nAfter this, the pilgrim touches the Black Stone with his hand and kisses it.\n\nIf it is not possible to kiss the Black Stone, one should touch the Black Stone with one\'s hand.\n\nIf it is not possible to touch and kiss the Black Stone, then face it, point to it with your right hand and say the Takbir: \"Allahu Akbar\" Allah is Great. (All of this should be done during each round when circumambulating the Kaaba.)';
+      'Kâbe etrafında yedi kez tavaf etmeye başlayın (Tavaf).\nBu tavafın başlangıcından bitimine kadar erkekler sağ omuzlarını açık bırakmalıdır.\n        \nBundan sonra, hacı Kara Taş\'a (Hacerü\'l-Esved) eliyle dokunur ve onu öper.\n        \nEğer Kara Taş\'ı öpmek mümkün değilse, ona eliyle dokunmalıdır.\n\nEğer Kara Taş\'a dokunmak ve öpmek mümkün değilse, o zaman ona yönelin, sağ elinizle işaret edin ve «Allahu Akbar» (Allah en büyüktür) deyin. (Bütün bunlar Kâbe\'yi tavaf ederken her turda yapılmalıdır.)';
 
   @override
   String get step2KaabaText3 =>
-      'Begin the seven-fold circumambulation of the Kaaba (Tawaf) from the Black Stone.\n\nPassing from the Black Stone to the Black Stone counts as one round. Starting a new round, point to the Black Stone with your right hand and say the Takbir. The first three rounds, from the Black Stone to the Black Stone, men must walk at a fast pace, and the remaining four - at a normal pace. If possible, touch the Yemeni corner during each round. Every time you pass between the Yemeni corner and the Black Stone, you should say:';
+      'Kâbe\'nin tavafına Kara Taş\'tan başlayın. Kara Taş\'tan Kara Taş\'a bir tur tamamlanmış sayılır. Her yeni tura başlarken sağ elinizle Kara Taş\'a işaret edin ve tekbir getirin. İlk üç turda, Kara Taş\'tan Kara Taş\'a hızlı adımlarla yürümeleri, geri kalan dört turda ise normal tempoda yürümeleri gerekir. Mümkünse, her turda Yemen Köşesi\'ne dokunun. Yemen Köşesi ile Kara Taş arasından her geçişinizde şu duayı okuyun:';
 
   @override
   String get step2KaabaText4 =>
-      'Rabbana, atina fi-d-dunya hasanatan wa fil-akhirati hasanatan wa qina \'azaba-n-nar\n\n\"Our Lord! Grant us good in this world and good in the Hereafter, and protect us from the torment of the Fire!\",\n\nSurah \"Al-Baqarah\", verse 201.';
+      'Rabbana, atina fid-dunya hasanatan wa fil-akhiroti hasanatan wa qina azaba-n-nar\n        \n«Rabbimiz! Bize dünyada iyilik ver, ahirette de iyilik ver ve bizi ateşin azabından koru!», (Bakara Suresi, 201. ayet).';
 
   @override
   String get step2DuaArabic =>
@@ -186,11 +189,11 @@ class AppLocalizationsTr extends AppLocalizations {
   String get step2TakbirArabic => 'الله أكبر';
 
   @override
-  String get step3PrayerAfterTawaf => 'Prayer after Tawaf of Kaaba.';
+  String get step3PrayerAfterTawaf => 'Tavaftan sonra namaz.';
 
   @override
   String get step3CompletedSevenCircuits =>
-      'Having completed the seven-fold circumambulation of the Kaaba, the man covers his right shoulder. Then head to the place of standing of Ibrahim and say:';
+      'Kâbe etrafında yedi turu tamamladıktan sonra, erkekler sağ omuzlarını kapatır. Sonra İbrahim makamına yönelin ve şunu söyleyin:';
 
   @override
   String get step3ArabicText =>
@@ -198,33 +201,34 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step3PlaceOfStanding =>
-      'Wa-ttakhidhu mim-maqami Ibrahima musalla\n\n\"Take the place [of standing] of Ibrahim as a place of prayer\" (Surah 2 \"Al-Baqarah = The Cow\", verse 125).\n\nIf possible, perform two rak\'ahs of prayer behind the place of standing of Ibrahim or anywhere in the Sacred Mosque. Do not forget to set up a barrier in front of you so that no one passes between you and this barrier. In the first rak\'ah after Surah 1 \"Al-Fatiha = The Opening\", read Surah 109 \"Al-Kafirun = The Disbelievers\", and in the second rak\'ah after Surah \"Al-Fatiha\" read Surah 112 \"Al-Ikhlas = The Sincerity\".\n\nAfter completing the prayer, go to the Zamzam water source.';
+      'Wa-ttahizu mim-maqomi Ibrohima musollya.\n    \n«Ve İbrahim\'in makamını namaz yeri edinin» (Bakara Suresi, 125. ayet).\n    \nEğer mümkünse, İbrahim Makamı\'nda veya Mescid-i Haram\'ın herhangi bir yerinde iki rekât namaz kılın. Önünüze bir engel koymayı unutmayın ki kimse sizinle engel arasından geçmesin.\nİlk rekâtta 1. sure «Al-Fatihah = Fatiha Suresi» okunduktan sonra 109. sure «Al-Kafirun = Kâfirun Suresi» okunur, ikinci rekâtta «Al-Fatihah» okunduktan sonra 112. sure «Al-Ikhlas = İhlas Suresi» okunur.\n\nNamazı tamamladıktan sonra Zemzem suyu kaynağına yönelin.';
 
   @override
-  String get step4DrinkingZamzam => 'Drinking Zamzam water.';
+  String get step4DrinkingZamzam => 'Zemzem Suyu İçme.';
 
   @override
   String get step4ZamzamText =>
-      'Drink the water and pour it on your head.\n\nJabir (may Allah be pleased with him) reported: \"The Prophet (peace and blessings of Allah be upon him) went to the Zamzam well, drank from it and poured it on his head\". Ahmad (3/394), Ibn Khuzaymah (4/305). The authenticity of the hadith was confirmed by az-Zarkashi, Badruddin al-\'Ayni, Shu\'ayb al-Arnaut. See \"\'Umdatul-Qari\" (9/227), \"Hashiya \'ala al-Manasik\" (p. 263), \"Takhrij al-Musnad\" (15243).\n\nIt is reported from Jabir (may Allah be pleased with him) that the Messenger of Allah (peace and blessings of Allah be upon him) said: \"Zamzam water helps to achieve what it is drunk for\".\n\nAhmad (3/357), Ibn Majah (3062), al-Hakim (1739). The authenticity of the hadith was confirmed by Sufyan ibn \'Uyaynah, al-Munziri, ad-Dumyat, Ibn al-Qayyim, az-Zarkashi, Ibn Hajar, al-Albani. See \"al-Mujalasa\" (509), \"al-Matjar ar-rabih\" (982), \"Zad al-Ma\'ad\" (4/393), \"al-Maqasid al-hasana\" (928), \"Fayd al-Qadir\" (7759), \"Sahih at-Targhib\" (1165).\n\nAsh-Shawkani said: \"This hadith contains evidence that drinking Zamzam water benefits the drinker, whatever intention he drinks it with, be it matters of this world or the Eternal world. For the words: \'Helps to achieve what it is drunk for\' are general\". See \"Nayl al-Awtar\" (5/105).\n\nAn-Nawawi said: \"The meaning of this hadith is that whoever drinks this water for something specific, acquires it. Indeed, scholars and righteous people have tried this to achieve their needs related to this world and the Eternal world and received it by the mercy of Allah the Most High\". See \"Tahzib al-asma wa-l-lughat\" (3/139).';
+      'Suyu için ve başınıza dökün.\n    \nCabir (radıyallahu anh) şöyle anlatmıştır: \"Peygamber (sallallahu aleyhi ve sellem) Zemzem kuyusuna yöneldi, ondan su içti ve başına döktü.\" (Ahmed 3/394), (İbn Huzeyme 4/305). Hadisin sahih olduğunu ez-Zerkeşî, Bedruddin el-Aynî, Şuayb el-Arnaût onaylamıştır. Bkz. «Umdetü\'l-Kârî» (9/227), «Haşiye \'alâ\'l-Menâsik» (s. 263), «Tahric el-Müsned» (15243).\n    \nCabir\'den (radıyallahu anh) rivayet edildiğine göre, Allah Resulü (sallallahu aleyhi ve sellem) şöyle buyurdu: «Zemzem suyu, hangi niyetle içilirse ona vesile olur.»\n(Ahmed 3/357), (İbn Mace 3062), (el-Hâkim 1739). Hadisin sahih olduğunu Süfyan ibn Uyeyne, el-Münzirî, ed-Dümyâtî, İbn Kayyim, ez-Zerkeşî, İbn Hacer, el-Elbânî onaylamıştır. Bkz. \"el-Mücâlasa\" (509), \"el-Metcar er-Râbih\" (982), \"Zâdü\'l-Meâd\" (4/393), \"el-Makâsıdü\'l-Hasene\" (928), \"Feyzü\'l-Kadîr\" (7759), \"Sahîh et-Terğîb\" (1165).\n    \neş-Şevkânî şöyle demiştir: \"Bu hadis, Zemzem suyunun hangi niyetle içilirse içilsin içen kişiye fayda sağlayacağına delildir. Çünkü \'hangi niyetle içilirse ona vesile olur\' ifadesi genel bir hüküm içermektedir.\" Bkz. \"Neylü\'l-Evtâr\" (5/105).\n\nen-Nevevî şöyle demiştir: \"Bu hadisin anlamı şudur ki, bir kişi Zemzem suyunu belirli bir niyetle içerse, o niyetine ulaşır. Gerçekten de ilim ehli ve salih kişiler bu suyu dünya ve ahiret işlerinde dileklerine ulaşmak için içmişler ve Allah\'ın lütfuyla istediklerine ulaşmışlardır.\" Bkz. \"Tehzîb el-Esma ve\'l-Luğât\" (3/139).';
 
   @override
-  String get step5ReturnToBlackStone => 'Return to the Black Stone.';
+  String get step5ReturnToBlackStone => 'Hacerü\'l-Esved\'e Dönüş.';
 
   @override
   String get step5ReturnReciteTakbir =>
-      'Return to the Black Stone, recite the Takbir.';
+      'Hacerü\'l-Esved\'e dönün, tekbir getirin ve daha önce açıklandığı gibi ona dokunun. Veya ona elinizle işaret edin ve tekbir getirin. Allah en büyüktür.';
 
   @override
-  String get step5AllahIsGreat => 'Allah is great.';
+  String get step5AllahIsGreat => 'Allahu Akbar.';
 
   @override
   String get step5TakbirArabic => 'الله أكبر';
 
   @override
-  String get step6SafaAndMarwa => 'Safa and Marwa';
+  String get step6SafaAndMarwa => 'Safa ve Merve';
 
   @override
-  String get step6HeadTowardsSafa => 'Head towards the hill of Safa';
+  String get step6HeadTowardsSafa =>
+      'Safa ve Merve tepeleri arasında yedi kez gerçekleştirilen sa\'y ibadetini yerine getirmek için Safa tepesine gidin. Sa\'y ibadetine Safa tepesinden başlayın.\n    \n    \n       Safa\'ya yaklaşırken şu ayeti okuyun:';
 
   @override
   String get step6SurahBaqarahArabic =>
@@ -235,17 +239,17 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step6SurahBaqarahText =>
-      'Inna-s-Safa wal-Marwata min sha\'a\'iri-llah, fa-man hajja-l-bayta awi-\'tamara fala junaha \'alayhi ayy-yat\'tawwafa bihima, wa man tatawwa\'a khayran fa-inna-llaha Shakirun \'alim.\n\n\"Indeed, as-Safa and al-Marwah are among the symbols of Allah. Whoever performs Hajj to the Kaaba or \'Umrah, he will not commit a sin if he passes between them. And if anyone voluntarily does a good deed, then indeed Allah is Appreciative, Knowing.\" (Surah \"Al-Baqarah\", verse 158)\n\nThen say:';
+      'Inna Ssofaa wal-Marwata min sha\'aaa\'iril laah, faman hajjal Baita awi\'tamaro falaa junaaha \'alaihi ayyatt´owwafa bihimaa, wa man tat´owwa\'a hoyron fa-inna-LLAha Shakirun ´alim.\n       \n«Şüphesiz ki Safa ve Merve, Allah\'ın sembollerindendir. Bu nedenle, kim Beytullah\'a hac veya umre için gelirse, onların arasında yürüyerek geçmesinde kendisine bir günah yoktur. Kim gönülden bir iyilik yaparsa, şüphesiz Allah, şükrün karşılığını verendir, bilendir.» (Bakara Suresi, 158. Ayet).\n    \n    Sonra şunu söyleyin:';
 
   @override
   String get step6WeBeginArabic => 'نَبْدَأُ بِمَا بَدَأَ اللهُ بِهِ';
 
   @override
-  String get step6WeBegin => 'We begin with that string';
+  String get step6WeBegin => 'Biz, Allah\'ın başladığı ile başlıyoruz.';
 
   @override
   String get step6WeBeginText =>
-      'Nabda\'u bima bada\'a-llahu bihi\n\n\"We begin with that which Allah began\"\n\nClimb the hill of Safa, turn to face the Kaaba and say:';
+      'Nabdau bima badaa-Llahu bihi\n\n«Biz, Allah\'ın başladığı ile başlıyoruz.»\n    \nSafa tepesine çıkın, yüzünüzü Kâbe\'ye çevirin ve şu zikri okuyun:';
 
   @override
   String get step6RemembranceArabic =>
@@ -257,7 +261,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step6RemembranceText =>
-      'Allahu akbar! Allahu akbar! Allahu akbar!\n\nLa ilaha illa-llahu wahdahu la sharika lahu! Lahul-mulku wa lahul-hamdu yuhyi wa yumitu wa huwa \'ala kulli shay\'in qadir! La ilaha illa llahu wahdahu la sharika lahu anjaza wa\'dahu, wa nasara \'abdahu, wa hazama-l-ahzaba wahdahu.\n\n\"Allah is Most Great, Allah is Most Great, Allah is Most Great!\n\nThere is no deity except Allah, the One, Who has no partner! To Him belongs the dominion and to Him belongs praise, He gives life and causes death, and He has power over all things! There is no deity except Allah, the One, Who has no partner! He fulfilled His promise, helped His servant and alone defeated the hostile tribes\"\n\nSay these words three times, raising your hands for dua after the first and second time. Then begin the passage from the hill of Safa to Marwah. One passage from Safa to Marwah counts as one time, and the return journey is the second. On the hill of Marwah, repeat the same order: dhikr - dua - dhikr - dua - dhikr. These dhikrs and duas should be repeated on each ascent to Safa and Marwah, except for the seventh passage. When reaching the first mark, marked in green, men must run to the second mark. The rest of the journey is done at a normal pace.\n\nDuring the Sa\'i ritual, you can turn to Allah with such a supplication:';
+      'Allahu Akbar! Allahu Akbar! Allahu Akbar!\nLa ilaha illa-Llahu wahdahu la sharika lahu. Lahul mulku wa lahul hamdu yuhyi wa yumitu wa huwa \'ala kulli shay\'in qodir. La ilaha illa-Llahu wahdahu la sharika lah, anjaza wa\'dahu, wa nasaro \'abdahu, wa hazamal ahzaba wahdahu\n\n«Allah en büyüktür! Allah en büyüktür! Allah en büyüktür!\nAllah\'tan başka ilah yoktur, O tektir ve O\'nun ortağı yoktur! Mülk O\'nundur, hamd O\'na aittir. O, diriltir ve öldürür. O, her şeye kadirdir! Allah\'tan başka ilah yoktur, O tektir ve O\'nun ortağı yoktur! O, vaadini yerine getirdi, kuluna yardım etti ve düşman birliklerini tek başına mağlup etti.»\n    \nBu sözleri üç kez tekrarlayın ve ilk iki kez ellerinizi kaldırarak dua edin. Sonra Safa\'dan Merve\'ye doğru yürümeye başlayın. Safa\'dan Merve\'ye gitmek bir tur, Merve\'den Safa\'ya dönmek ikinci tur olarak sayılır. Merve tepesine ulaştığınızda aynı düzeni tekrar edin: zikir – dua – zikir – dua – zikir. Eller dua için ilk iki tekrarda kaldırılmalıdır. Bu zikir ve dualar, yedinci ve son tur hariç, Safa ve Merve tepelerine her çıkışta tekrarlanmalıdır. Yeşil işaretli ilk noktaya ulaştığınızda, erkekler ikinci işarete kadar hızlı koşmalıdır. Yolun geri kalanı normal yürüyerek tamamlanmalıdır.\n\nSa\'y ibadeti sırasında şu duayı okuyabilirsiniz:';
 
   @override
   String get step6DuasDuringSaiArabic =>
@@ -269,7 +273,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step6DuasDuringSaiText =>
-      'Rabbi-ghfir wa-rham, innaka antal-a\'azzu-l-akram\n\n\"Lord, forgive and have mercy, for You are the Most Great and Most Generous!\",\n\nthere is nothing wrong with this, as this supplication is established from a whole group of righteous predecessors.\n\nUpon completion of the seventh round, the pilgrim no longer recites dhikr and dua on the hill of Marwah. This means that the Sa\'i ritual is complete.\n\nSupplication upon exiting the Sacred Mosque. After completing the seventh passage on the hill of Marwah, exit the Sacred Mosque with your left foot, saying:';
+      'Rabbi-ghfir wa rham, innaka anta a´azzul-akram\n    \n«Ey Rabbim! Beni bağışla ve merhamet et! Şüphesiz Sen, en yüce ve en cömert olansın!»\n    \nBu duayı okumakta bir sakınca yoktur, çünkü selef alimlerinden bir grup tarafından kabul edilmiştir.\n\nYedinci turun tamamlanmasının ardından, artık Merve tepesinde zikir ve dua yapılmaz. Bu, sa\'y ibadetinin tamamlandığını gösterir.\n\nMescid-i Haram\'dan çıkarken yapılan dua: Yedinci turun sonunda Merve tepesinde sa\'y ibadetini tamamladıktan sonra, sol ayağınızla Mescid-i Haram\'dan çıkarken şu duayı okuyun:';
 
   @override
   String get step6ExitingSacredMosqueArabic =>
@@ -281,28 +285,28 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step6ExitingSacredMosqueText =>
-      'Allahumma, salli \'ala Muhammadin wa sallim! Allahumma, inni as\'alu-ka min fadli-ka!\n\nO Allah, bless Muhammad and grant him peace! O Allah, indeed, I ask You for Your Mercy!';
+      'Allahumma solli \'ala Muhammadin wa sallim! Allahumma, inni as\'aluka min fadlika!\n    \n«Ey Allah\'ım! Muhammed\'e salât ve selam eyle! Ey Allah\'ım! Şüphesiz, Senin lütfunu diliyorum!»';
 
   @override
   String get step6RemembranceDuringSai =>
-      'Allahu akbar! Allahu akbar! Allahu akbar!\n\nLa ilaha illa-llahu wahdahu la sharika lahu! Lahul-mulku wa lahul-hamdu yuhyi wa yumitu wa huwa \'ala kulli shay\'in qadir! La ilaha illa llahu wahdahu la sharika lahu anjaza wa\'dahu, wa nasara \'abdahu, wa hazama-l-ahzaba wahdahu.\n\n\"Allah is Most Great, Allah is Most Great, Allah is Most Great!\n\nThere is no deity except Allah, the One, Who has no partner! To Him belongs the dominion and to Him belongs praise, He gives life and causes death, and He has power over all things! There is no deity except Allah, the One, Who has no partner! He fulfilled His promise, helped His servant and alone defeated the hostile tribes\"\n\nSay these words three times, raising your hands for dua after the first and second time. Then begin the passage from the hill of Safa to Marwah. One passage from Safa to Marwah counts as one time, and the return journey is the second. On the hill of Marwah, repeat the same order: dhikr - dua - dhikr - dua - dhikr. These dhikrs and duas should be repeated on each ascent to Safa and Marwah, except for the seventh passage. When reaching the first mark, marked in green, men must run to the second mark. The rest of the journey is done at a normal pace.\n\nDuring the Sa\'i ritual, you can turn to Allah with such a supplication:';
+      'Allahu Akbar! Allahu Akbar! Allahu Akbar!\nLa ilaha illa-Llahu wahdahu la sharika lahu. Lahul mulku wa lahul hamdu yuhyi wa yumitu wa huwa \'ala kulli shay\'in qodir. La ilaha illa-Llahu wahdahu la sharika lah, anjaza wa\'dahu, wa nasaro \'abdahu, wa hazamal ahzaba wahdahu\n\n«Allah en büyüktür! Allah en büyüktür! Allah en büyüktür!\nAllah\'tan başka ilah yoktur, O tektir ve O\'nun ortağı yoktur! Mülk O\'nundur, hamd O\'na aittir. O, diriltir ve öldürür. O, her şeye kadirdir! Allah\'tan başka ilah yoktur, O tektir ve O\'nun ortağı yoktur! O, vaadini yerine getirdi, kuluna yardım etti ve düşman birliklerini tek başına mağlup etti.»\n    \nBu sözleri üç kez tekrarlayın ve ilk iki kez ellerinizi kaldırarak dua edin. Sonra Safa\'dan Merve\'ye doğru yürümeye başlayın. Safa\'dan Merve\'ye gitmek bir tur, Merve\'den Safa\'ya dönmek ikinci tur olarak sayılır. Merve tepesine ulaştığınızda aynı düzeni tekrar edin: zikir – dua – zikir – dua – zikir. Eller dua için ilk iki tekrarda kaldırılmalıdır. Bu zikir ve dualar, yedinci ve son tur hariç, Safa ve Merve tepelerine her çıkışta tekrarlanmalıdır. Yeşil işaretli ilk noktaya ulaştığınızda, erkekler ikinci işarete kadar hızlı koşmalıdır. Yolun geri kalanı normal yürüyerek tamamlanmalıdır.\n\nSa\'y ibadeti sırasında şu duayı okuyabilirsiniz:';
 
   @override
   String get step6DuasDuringSai =>
-      'Rabbi-ghfir wa-rham, innaka antal-a\'azzu-l-akram\n\n\"Lord, forgive and have mercy, for You are the Most Great and Most Generous!\",\n\nthere is nothing wrong with this, as this supplication is established from a whole group of righteous predecessors.\n\nUpon completion of the seventh round, the pilgrim no longer recites dhikr and dua on the hill of Marwah. This means that the Sa\'i ritual is complete.\n\nSupplication upon exiting the Sacred Mosque. After completing the seventh passage on the hill of Marwah, exit the Sacred Mosque with your left foot, saying:';
+      'Rabbi-ghfir wa rham, innaka anta a´azzul-akram\n    \n«Ey Rabbim! Beni bağışla ve merhamet et! Şüphesiz Sen, en yüce ve en cömert olansın!»\n    \nBu duayı okumakta bir sakınca yoktur, çünkü selef alimlerinden bir grup tarafından kabul edilmiştir.\n\nYedinci turun tamamlanmasının ardından, artık Merve tepesinde zikir ve dua yapılmaz. Bu, sa\'y ibadetinin tamamlandığını gösterir.\n\nMescid-i Haram\'dan çıkarken yapılan dua: Yedinci turun sonunda Merve tepesinde sa\'y ibadetini tamamladıktan sonra, sol ayağınızla Mescid-i Haram\'dan çıkarken şu duayı okuyun:';
 
   @override
   String get step6ExitingSacredMosque =>
-      'Allahumma, salli \'ala Muhammadin wa sallim! Allahumma, inni as\'alu-ka min fadli-ka!\n\nO Allah, bless Muhammad and grant him peace! O Allah, indeed, I ask You for Your Mercy!';
+      'Allahumma solli \'ala Muhammadin wa sallim! Allahumma, inni as\'aluka min fadlika!\n    \n«Ey Allah\'ım! Muhammed\'e salât ve selam eyle! Ey Allah\'ım! Şüphesiz, Senin lütfunu diliyorum!»';
 
   @override
-  String get step7ShavingHead => 'Shaving the head or trimming the hair.';
+  String get step7ShavingHead => 'Başı tıraş etmek veya saçları kısaltmak.';
 
   @override
   String get step7MenShortenHair =>
-      'Then the man evenly shortens the hair on his head or shaves it, and the woman cuts off a lock the size of a third of a finger.\n\nNote:\n\nFor those coming for Hajj, it is better to shorten the hair if they will not have time to grow back after \'Umrah before Hajj, as shaving the head is done during Hajj.\n\nFor those coming to perform only \'Umrah (without Hajj), it is better to shave the head.\n\nComplete exit from the state of Ihram.\n\nAt this point, \'Umrah ends. The man removes the Ihram garment. The restrictions that were in effect in the state of Ihram are lifted.';
+      'Daha sonra erkekler başındaki saçları eşit şekilde kısaltır veya tamamen tıraş eder, kadınlar ise saçlarından bir parmak boğumu kadar keser.\n\nNot:\nHac için gelenlerin, saçları umreden sonra hacca kadar uzamayacaksa, tıraş yerine saçlarını kısaltmaları daha faziletlidir. Çünkü saç tıraşı hac esnasında yapılır.\nYalnızca umre yapmak için gelenlerin ise saçlarını tamamen tıraş etmeleri daha faziletlidir.\n    \nİhramdan tamamen çıkış gerçekleşir.\nBöylece umre ibadeti tamamlanmış olur. Erkekler ihram elbiselerini çıkarır. İhram halindeyken geçerli olan yasaklar artık kaldırılmıştır.';
 
   @override
   String get step7DuaAtEnd =>
-      'In conclusion, I ask Allah the Most High to accept all our good deeds and preserve for us the reward for their performance until the Day when we meet with Him,\n\n\"on that Day when neither wealth nor sons will benefit anyone, except those who appear before Allah with a pure heart\"\n\n(Surah \"Ash-Shu\'ara\", verses 88-89).\n\nI also ask Allah the Most High to grant full reward to all who participated in the creation, development and distribution of this application - whether by advice, knowledge, means or a kind word - for every Umrah performed with its help.\n\nAs the Messenger of Allah (peace and blessings of Allah be upon him) said:\n\n\"Whoever points to good, he will receive the same reward as the one who does this good deed\"\n\n(Sahih Muslim, No. 1893).\n\nPraise be to Allah, Lord of the worlds!';
+      'Son olarak, Yüce Allah\'tan tüm salih amellerimizi kabul etmesini ve bu amellerimizin sevabını, O\'nun huzuruna çıkacağımız güne kadar korumasını diliyorum.\n    \n«O gün ki, ne mal fayda verir ne de oğullar. Ancak Allah\'a selim bir kalple gelenler müstesna.» \n(Şuara Suresi, 88–89. ayetler).\n    \nAyrıca, bu uygulamanın oluşturulmasına, geliştirilmesine ve yayılmasına herhangi bir şekilde katkıda bulunan herkese – ister bir tavsiye, ister ilim, ister maddi destek veya güzel bir söz olsun – Allah\'ın tam mükafat vermesini niyaz ediyorum. \n    \nÇünkü Allah Resulü (sallallahu aleyhi ve sellem) şöyle buyurmuştur:\n«Kim bir hayra vesile olursa, onu yapanın sevabı kadar sevap kazanır.» \n(Sahih Müslim, Hadis No: 1893).\n\nAlemlerin Rabbi olan Allah\'a hamdolsun!';
 }
