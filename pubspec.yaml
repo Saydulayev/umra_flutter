@@ -20,8 +20,8 @@ dependencies:
   just_audio: ^0.9.36
   audio_service: ^0.18.11
   
-  # Prayer Times (will implement custom service or use alternative)
-  # adhan_dart: ^2.0.0
+  # Prayer Times
+  adhan_dart: ^1.2.0
   
   # In-App Purchases
   in_app_purchase: ^3.1.11

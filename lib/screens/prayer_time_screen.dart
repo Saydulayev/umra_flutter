@@ -13,7 +13,7 @@ class PrayerTimeScreen extends StatefulWidget {
 }
 
 class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
-  PrayerTimes? _prayerTimes;
+  PrayerTimeData? _prayerTimes;
   String _nextPrayerName = 'Fajr';
   Duration _timeUntilNextPrayer = Duration.zero;
 
@@ -39,8 +39,9 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
       _prayerTimes = PrayerTimeService.getTodayPrayerTimes();
       if (_prayerTimes != null) {
         _nextPrayerName = PrayerTimeService.getNextPrayerName(_prayerTimes!);
-        _timeUntilNextPrayer =
-            PrayerTimeService.getTimeUntilNextPrayer(_prayerTimes!);
+        _timeUntilNextPrayer = PrayerTimeService.getTimeUntilNextPrayer(
+          _prayerTimes!,
+        );
       }
     });
   }
@@ -49,8 +50,9 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     if (_prayerTimes != null) {
       setState(() {
         _nextPrayerName = PrayerTimeService.getNextPrayerName(_prayerTimes!);
-        _timeUntilNextPrayer =
-            PrayerTimeService.getTimeUntilNextPrayer(_prayerTimes!);
+        _timeUntilNextPrayer = PrayerTimeService.getTimeUntilNextPrayer(
+          _prayerTimes!,
+        );
       });
     }
   }
@@ -64,12 +66,11 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   }
 
   String _formatTime(DateTime dateTime) {
-    return DateFormat('HH:mm').format(dateTime);
+    return PrayerTimeService.formatPrayerTime(dateTime);
   }
 
   String _getIslamicDate() {
-    // TODO: Реализовать расчет исламской даты
-    return DateFormat('d MMMM yyyy', 'ru').format(DateTime.now());
+    return PrayerTimeService.getIslamicDate();
   }
 
   @override
@@ -86,9 +87,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
           backgroundColor: theme.lightBackgroundColor,
           elevation: 0,
         ),
-        body: const Center(
-          child: CircularProgressIndicator(),
-        ),
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
@@ -163,7 +162,11 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
               ),
               const SizedBox(height: 24),
               // Список времени молитв
-              _buildPrayerTimeRow('Fajr', _formatTime(_prayerTimes!.fajr), theme),
+              _buildPrayerTimeRow(
+                'Fajr',
+                _formatTime(_prayerTimes!.fajr),
+                theme,
+              ),
               const SizedBox(height: 8),
               _buildPrayerTimeRow(
                 'Sunrise',
@@ -172,7 +175,11 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                 isSpecial: true,
               ),
               const SizedBox(height: 8),
-              _buildPrayerTimeRow('Dhuhr', _formatTime(_prayerTimes!.dhuhr), theme),
+              _buildPrayerTimeRow(
+                'Dhuhr',
+                _formatTime(_prayerTimes!.dhuhr),
+                theme,
+              ),
               const SizedBox(height: 8),
               _buildPrayerTimeRow('Asr', _formatTime(_prayerTimes!.asr), theme),
               const SizedBox(height: 8),
@@ -182,7 +189,11 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                 theme,
               ),
               const SizedBox(height: 8),
-              _buildPrayerTimeRow('Isha', _formatTime(_prayerTimes!.isha), theme),
+              _buildPrayerTimeRow(
+                'Isha',
+                _formatTime(_prayerTimes!.isha),
+                theme,
+              ),
               const SizedBox(height: 8),
               if (PrayerTimeService.getQiyamTime() != null)
                 _buildPrayerTimeRow(
@@ -251,5 +262,3 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     );
   }
 }
-
-
