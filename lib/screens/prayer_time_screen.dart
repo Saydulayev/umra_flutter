@@ -82,12 +82,22 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     if (_prayerTimes == null) {
       return Scaffold(
         backgroundColor: theme.lightBackgroundColor,
+        appBar: AppBar(
+          backgroundColor: theme.lightBackgroundColor,
+          elevation: 0,
+          iconTheme: IconThemeData(color: theme.primaryColor),
+        ),
         body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return Scaffold(
       backgroundColor: theme.lightBackgroundColor,
+      appBar: AppBar(
+        backgroundColor: theme.lightBackgroundColor,
+        elevation: 0,
+        iconTheme: IconThemeData(color: theme.primaryColor),
+      ),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
