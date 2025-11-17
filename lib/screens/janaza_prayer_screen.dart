@@ -13,6 +13,7 @@ class JanazaPrayerScreen extends StatefulWidget {
 class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
   bool _isSecondTakbirExpanded = false;
   bool _isThirdTakbirExpanded = false;
+  bool _isDuaVariationsExpanded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -76,9 +77,16 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                 },
               ),
               const Divider(),
-              _buildSection(
+              _buildCollapsibleSection(
+                l10n: l10n,
                 title: l10n.duaVariationsTitle,
                 content: l10n.duaVariationsText,
+                isExpanded: _isDuaVariationsExpanded,
+                onExpandedChanged: (value) {
+                  setState(() {
+                    _isDuaVariationsExpanded = value;
+                  });
+                },
               ),
               const Divider(),
               _buildTakbirSection(
@@ -133,6 +141,46 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
             color: Colors.black87,
             height: 1.5,
           ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCollapsibleSection({
+    required AppLocalizations l10n,
+    required String title,
+    required String content,
+    bool isExpanded = false,
+    ValueChanged<bool>? onExpandedChanged,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ExpansionTile(
+          title: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
+          ),
+          initiallyExpanded: isExpanded,
+          onExpansionChanged: onExpandedChanged,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                content,
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.black87,
+                  height: 1.5,
+                ),
+                textDirection: TextDirection.ltr,
+              ),
+            ),
+          ],
         ),
       ],
     );
