@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'dart:ui';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../providers/theme_provider.dart';
+import '../models/app_theme.dart';
 import '../services/prayer_time_service.dart';
-import 'package:umra_flutter/l10n/app_localizations.dart';
 
 class PrayerTimeScreen extends StatefulWidget {
   const PrayerTimeScreen({super.key});
@@ -77,60 +78,165 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final theme = themeProvider.selectedTheme;
-    final l10n = AppLocalizations.of(context)!;
 
     if (_prayerTimes == null) {
       return Scaffold(
         backgroundColor: theme.lightBackgroundColor,
-        appBar: AppBar(
-          title: const Text('Prayer Times'),
-          backgroundColor: theme.lightBackgroundColor,
-          elevation: 0,
-        ),
         body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return Scaffold(
       backgroundColor: theme.lightBackgroundColor,
-      appBar: AppBar(
-        title: const Text('Prayer Times'),
-        backgroundColor: theme.lightBackgroundColor,
-        elevation: 0,
-        iconTheme: IconThemeData(color: theme.primaryColor),
-      ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24),
-          child: Column(
-            children: [
-              // Местоположение и дата
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+        child: Center(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(16),
+            child: _buildTransparentStyled(
+              theme: theme,
+              child: Column(
                 children: [
-                  const Text(
-                    'Mecca, ',
-                    style: TextStyle(
-                      fontSize: 36,
-                      fontFamily: 'Savoye LET',
-                      color: Colors.black87,
+                  // Местоположение и дата
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Mecca, ',
+                        style: GoogleFonts.greatVibes(
+                          fontSize: 36,
+                          color: Colors.black87,
+                        ),
+                      ),
+                      Text(
+                        _getIslamicDate(),
+                        style: GoogleFonts.greatVibes(
+                          fontSize: 36,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Divider(),
+                  // Следующая молитва (cardStyled)
+                  _buildCardStyled(
+                    theme: theme,
+                    child: Center(
+                      child: Text(
+                        '$_nextPrayerName in ${_formatDuration(_timeUntilNextPrayer)}',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
-                  Text(
-                    _getIslamicDate(),
-                    style: const TextStyle(
-                      fontSize: 36,
-                      fontFamily: 'Savoye LET',
-                      color: Colors.black87,
+                  // Список времени молитв
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Column(
+                      children: [
+                        _buildPrayerTimeRow(
+                          'Fajr',
+                          _formatTime(_prayerTimes!.fajr),
+                        ),
+                        _buildCapsuleStyled(
+                          theme: theme,
+                          child: _buildPrayerTimeRow(
+                            'Sunrise',
+                            _formatTime(_prayerTimes!.sunrise),
+                          ),
+                        ),
+                        _buildPrayerTimeRow(
+                          'Dhuhr',
+                          _formatTime(_prayerTimes!.dhuhr),
+                        ),
+                        _buildPrayerTimeRow(
+                          'Asr',
+                          _formatTime(_prayerTimes!.asr),
+                        ),
+                        _buildPrayerTimeRow(
+                          'Maghrib',
+                          _formatTime(_prayerTimes!.maghrib),
+                        ),
+                        _buildPrayerTimeRow(
+                          'Isha',
+                          _formatTime(_prayerTimes!.isha),
+                        ),
+                        if (PrayerTimeService.getQiyamTime() != null)
+                          _buildCapsuleStyled(
+                            theme: theme,
+                            child: _buildPrayerTimeRow(
+                              'Qiyam',
+                              _formatTime(PrayerTimeService.getQiyamTime()!),
+                            ),
+                          ),
+                      ],
                     ),
                   ),
                 ],
               ),
-              const Divider(),
-              const SizedBox(height: 16),
-              // Следующая молитва
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTransparentStyled({
+    required AppTheme theme,
+    required Widget child,
+  }) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 20,
+              offset: const Offset(20, 20),
+            ),
+            BoxShadow(
+              color: Colors.black.withOpacity(0.06),
+              blurRadius: 3,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Stack(
+            children: [
+              // Фоновый цвет
               Container(
-                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: theme.primaryColor.withOpacity(0.2),
+                ),
+              ),
+              // Белый прямоугольник с blur эффектом (смещенный)
+              Positioned(
+                left: -8,
+                top: -8,
+                right: 8,
+                bottom: 8,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.9),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              // Градиентный слой
+              Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   gradient: LinearGradient(
@@ -138,70 +244,19 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                     end: Alignment.bottomRight,
                     colors: [theme.gradientTopColor, Colors.white],
                   ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      blurRadius: 10,
-                      offset: const Offset(0, 5),
+                ),
+                child: Container(
+                  padding: const EdgeInsets.all(25),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: Colors.black.withOpacity(0.08),
+                      width: 1,
                     ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    Text(
-                      '$_nextPrayerName in ${_formatDuration(_timeUntilNextPrayer)}',
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
+                  ),
+                  child: child,
                 ),
               ),
-              const SizedBox(height: 24),
-              // Список времени молитв
-              _buildPrayerTimeRow(
-                'Fajr',
-                _formatTime(_prayerTimes!.fajr),
-                theme,
-              ),
-              const SizedBox(height: 8),
-              _buildPrayerTimeRow(
-                'Sunrise',
-                _formatTime(_prayerTimes!.sunrise),
-                theme,
-                isSpecial: true,
-              ),
-              const SizedBox(height: 8),
-              _buildPrayerTimeRow(
-                'Dhuhr',
-                _formatTime(_prayerTimes!.dhuhr),
-                theme,
-              ),
-              const SizedBox(height: 8),
-              _buildPrayerTimeRow('Asr', _formatTime(_prayerTimes!.asr), theme),
-              const SizedBox(height: 8),
-              _buildPrayerTimeRow(
-                'Maghrib',
-                _formatTime(_prayerTimes!.maghrib),
-                theme,
-              ),
-              const SizedBox(height: 8),
-              _buildPrayerTimeRow(
-                'Isha',
-                _formatTime(_prayerTimes!.isha),
-                theme,
-              ),
-              const SizedBox(height: 8),
-              if (PrayerTimeService.getQiyamTime() != null)
-                _buildPrayerTimeRow(
-                  'Qiyam',
-                  _formatTime(PrayerTimeService.getQiyamTime()!),
-                  theme,
-                  isSpecial: true,
-                ),
             ],
           ),
         ),
@@ -209,52 +264,158 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     );
   }
 
-  Widget _buildPrayerTimeRow(
-    String prayerName,
-    String prayerTime,
-    theme, {
-    bool isSpecial = false,
-  }) {
+  Widget _buildCardStyled({required AppTheme theme, required Widget child}) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(16),
-        gradient: isSpecial
-            ? LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [
-                  theme.primaryColor.withOpacity(0.2),
-                  theme.gradientTopColor,
-                ],
-              )
-            : null,
-        color: isSpecial ? null : Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 5,
-            offset: const Offset(0, 2),
+      margin: const EdgeInsets.symmetric(vertical: 40),
+      width: double.infinity,
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 20,
+              offset: const Offset(20, 20),
+            ),
+            BoxShadow(
+              color: Colors.black.withOpacity(0.06),
+              blurRadius: 3,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Stack(
+            children: [
+              // Фоновый цвет
+              Container(
+                decoration: BoxDecoration(
+                  color: theme.primaryColor.withOpacity(0.1),
+                ),
+              ),
+              // Белый прямоугольник с blur эффектом (смещенный)
+              Positioned(
+                left: -8,
+                top: -8,
+                right: 8,
+                bottom: 8,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.9),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              // Градиентный слой
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [theme.gradientTopColor, Colors.white],
+                  ),
+                ),
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: Colors.black.withOpacity(0.08),
+                      width: 1,
+                    ),
+                  ),
+                  child: child,
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
+    );
+  }
+
+  Widget _buildCapsuleStyled({required AppTheme theme, required Widget child}) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 4),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: Stack(
+          children: [
+            // Фоновый цвет
+            Container(
+              decoration: BoxDecoration(
+                color: theme.primaryColor.withOpacity(0.2),
+              ),
+            ),
+            // Белый прямоугольник с blur эффектом (смещенный)
+            Positioned(
+              left: -8,
+              top: -8,
+              right: 8,
+              bottom: 8,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.9),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            // Градиентный слой
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [theme.gradientTopColor, Colors.white],
+                ),
+                border: Border.all(
+                  color: Colors.black.withOpacity(0.08),
+                  width: 1,
+                ),
+              ),
+              child: SizedBox(width: double.infinity, child: child),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPrayerTimeRow(String prayerName, String prayerTime) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             prayerName,
-            style: TextStyle(
-              fontSize: 18,
+            style: const TextStyle(
+              fontSize: 17,
               fontWeight: FontWeight.w600,
               color: Colors.black87,
             ),
           ),
           Text(
             prayerTime,
-            style: TextStyle(
-              fontSize: 18,
+            style: const TextStyle(
+              fontSize: 17,
               fontWeight: FontWeight.w600,
-              color: isSpecial ? theme.primaryColor : Colors.black87,
+              color: Colors.black87,
             ),
           ),
         ],

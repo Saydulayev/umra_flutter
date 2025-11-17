@@ -1,5 +1,6 @@
 import 'package:adhan_dart/adhan_dart.dart';
 import 'package:intl/intl.dart';
+import 'package:hijri_date/hijri_date.dart';
 
 class PrayerTimeData {
   final DateTime fajr;
@@ -192,16 +193,19 @@ class PrayerTimeService {
     return DateFormat('HH:mm').format(dateTime);
   }
   
-  // Получить исламскую дату
+  // Получить исламскую дату по календарю UmmAlQura
   static String getIslamicDate() {
     try {
-      // Используем пакет intl для форматирования исламской даты
-      // Для упрощения используем стандартный формат
       final now = DateTime.now();
-      // TODO: Реализовать правильный расчет исламской даты используя исламский календарь
-      // Временно используем григорианскую дату
-      return DateFormat('d MMMM yyyy', 'en').format(now);
+      
+      // Используем библиотеку hijri_date для конвертации в исламский календарь
+      final hijriDate = HijriDate.fromDate(now);
+      
+      // Форматируем дату в формате "d MMMM yyyy" как в Swift
+      // Используем longMonthName из библиотеки для правильного названия месяца
+      return '${hijriDate.hDay} ${hijriDate.longMonthName} ${hijriDate.hYear}';
     } catch (e) {
+      // В случае ошибки возвращаем григорианскую дату
       return DateFormat('d MMMM yyyy', 'en').format(DateTime.now());
     }
   }
