@@ -32,7 +32,7 @@ class PrayerTimeService {
   // Получить время молитв на сегодня
   static PrayerTimeData? getTodayPrayerTimes() {
     try {
-      final now = DateTime.now();
+    final now = DateTime.now();
       final date = DateTime(now.year, now.month, now.day);
       
       // Координаты Мекки
@@ -65,13 +65,13 @@ class PrayerTimeService {
     } catch (e) {
       debugPrint('Error calculating prayer times: $e');
       return null;
-    }
+  }
   }
   
   // Получить время молитв на завтра
   static PrayerTimeData? getTomorrowPrayerTimes() {
     try {
-      final tomorrow = DateTime.now().add(const Duration(days: 1));
+    final tomorrow = DateTime.now().add(const Duration(days: 1));
       final date = DateTime(tomorrow.year, tomorrow.month, tomorrow.day);
       
       // Координаты Мекки
@@ -102,7 +102,7 @@ class PrayerTimeService {
     } catch (e) {
       debugPrint('Error calculating tomorrow prayer times: $e');
       return null;
-    }
+  }
   }
   
   // Получить время Qiyam (последняя треть ночи)
@@ -162,7 +162,7 @@ class PrayerTimeService {
           final tomorrow = getTomorrowPrayerTimes();
           nextPrayerTime = tomorrow?.fajr ?? prayerTimes.fajr.add(const Duration(days: 1));
         } else {
-          nextPrayerTime = prayerTimes.fajr;
+        nextPrayerTime = prayerTimes.fajr;
         }
         break;
       case 'Sunrise':
