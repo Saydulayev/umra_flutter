@@ -109,10 +109,13 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
               duration: const Duration(milliseconds: 600),
               curve: Curves.elasticOut,
               builder: (context, value, child) {
+                // Ограничиваем значение opacity в диапазоне 0.0-1.0
+                final clampedOpacity = value.clamp(0.0, 1.0);
+                final clampedScale = value.clamp(0.0, 1.0);
                 return Transform.scale(
-                  scale: value,
+                  scale: clampedScale,
                   child: Opacity(
-                    opacity: value,
+                    opacity: clampedOpacity,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 24,
