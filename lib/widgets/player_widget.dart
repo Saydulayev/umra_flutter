@@ -22,6 +22,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
   Duration _duration = Duration.zero;
   Duration _position = Duration.zero;
   bool _isLoading = true;
+  bool _isHandlingComplete = false;
 
   @override
   void initState() {
@@ -43,8 +44,23 @@ class _PlayerWidgetState extends State<PlayerWidget> {
       _audioPlayer.positionStream.listen((position) {
         if (mounted) {
           setState(() {
-            _position = position;
+            // Ограничиваем позицию, чтобы она не превышала длительность
+            if (_duration > Duration.zero && position > _duration) {
+              _position = _duration;
+            } else {
+              _position = position;
+            }
           });
+          
+          // Проверяем, достиг ли плеер конца (вне setState)
+          // Если режим повтора включен, не обрабатываем завершение
+          if (_duration > Duration.zero && 
+              position >= _duration && 
+              _isPlaying &&
+              !_isRepeating &&
+              !_isHandlingComplete) {
+            _handlePlaybackComplete();
+          }
         }
       });
       _audioPlayer.playerStateStream.listen((state) {
@@ -52,6 +68,14 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           setState(() {
             _isPlaying = state.playing;
           });
+          
+          // Обрабатываем завершение воспроизведения (вне setState)
+          // Если режим повтора включен, не обрабатываем завершение
+          if (state.processingState == ProcessingState.completed && 
+              !_isRepeating &&
+              !_isHandlingComplete) {
+            _handlePlaybackComplete();
+          }
         }
       });
     } catch (e) {
@@ -64,10 +88,37 @@ class _PlayerWidgetState extends State<PlayerWidget> {
     }
   }
 
+  Future<void> _handlePlaybackComplete() async {
+    if (_isHandlingComplete) return; // Предотвращаем множественные вызовы
+    
+    _isHandlingComplete = true;
+    
+    try {
+      // Останавливаем воспроизведение
+      await _audioPlayer.pause();
+      // Возвращаем позицию на начало
+      await _audioPlayer.seek(Duration.zero);
+      
+      if (mounted) {
+        setState(() {
+          _position = Duration.zero;
+          _isPlaying = false;
+        });
+      }
+    } finally {
+      // Сбрасываем флаг через небольшую задержку
+      Future.delayed(const Duration(milliseconds: 100), () {
+        _isHandlingComplete = false;
+      });
+    }
+  }
+
   Future<void> _togglePlayPause() async {
     if (_isPlaying) {
       await _audioPlayer.pause();
     } else {
+      // Останавливаем все остальные плееры перед запуском этого
+      await AudioService().stopAllExcept(_audioPlayer);
       await _audioPlayer.play();
     }
   }
@@ -93,6 +144,8 @@ class _PlayerWidgetState extends State<PlayerWidget> {
     });
     await _audioPlayer.setSpeed(_playbackRate);
     if (!_isPlaying) {
+      // Останавливаем все остальные плееры перед запуском этого
+      await AudioService().stopAllExcept(_audioPlayer);
       await _audioPlayer.play();
     }
     if (await Vibration.hasVibrator()) {
@@ -107,8 +160,16 @@ class _PlayerWidgetState extends State<PlayerWidget> {
     return '${twoDigits(minutes)}:${twoDigits(seconds)}';
   }
 
+  double _clampPosition(double position, double maxDuration) {
+    if (maxDuration <= 0) return 0.0;
+    // Ограничиваем позицию, чтобы она не превышала длительность
+    return position.clamp(0.0, maxDuration);
+  }
+
   @override
   void dispose() {
+    // Удаляем плеер из списка активных перед удалением
+    AudioService().unregisterPlayer(_audioPlayer);
     _audioPlayer.dispose();
     super.dispose();
   }
@@ -160,7 +221,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           ),
           const SizedBox(height: 16),
           Slider(
-            value: _position.inMilliseconds.toDouble(),
+            value: _clampPosition(_position.inMilliseconds.toDouble(), _duration.inMilliseconds.toDouble()),
             min: 0,
             max: _duration.inMilliseconds > 0 ? _duration.inMilliseconds.toDouble() : 1.0,
             onChanged: (value) {
