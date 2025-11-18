@@ -505,4 +505,73 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get hajjUmrahObligationConcludingEvidence =>
       'Haji dan umrah adalah wajib bagi siapa saja yang telah memenuhi syarat-syaratnya. Kaum muslimin sepakat atas kewajiban haji dalam kondisi tersebut. Perlu diingat, haji atau umrah yang dinadzarkan atau yang telah dimulai harus disempurnakan.';
+
+  @override
+  String get privacyPolicyTitle => 'Privacy Policy';
+
+  @override
+  String get privacyPolicyLastUpdated => 'Last updated: 2024';
+
+  @override
+  String get privacyPolicyIntroductionTitle => '1. Introduction';
+
+  @override
+  String get privacyPolicyIntroduction =>
+      'We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and protect information when you use our Umra Guide application.\n\nBy using this application, you agree to the terms of this Privacy Policy.';
+
+  @override
+  String get privacyPolicyDataCollectionTitle => '2. Data Collection';
+
+  @override
+  String get privacyPolicyDataCollection =>
+      'Our application DOES NOT collect any data.\n\nAll data is stored only locally on your device:\n\n• Local Settings: language, theme, display preferences are stored only on your device\n• Tawaf Counter Data: stored locally on your device\n\nWe DO NOT collect and DO NOT transmit:\n• Personal data (name, email, phone)\n• Location data\n• Analytics or tracking data\n• Data about your app usage\n• Any other data';
+
+  @override
+  String get privacyPolicyDataUsageTitle => '3. Data Usage';
+
+  @override
+  String get privacyPolicyDataUsage =>
+      'Since we do not collect data, all data is used solely locally on your device for:\n\n• Enabling app functionality (saving settings, tawaf counter)\n• Improving app performance (local settings for your convenience)\n\nAll data is stored only on your device and is never shared with third parties or external servers.';
+
+  @override
+  String get privacyPolicyThirdPartyTitle => '4. Third-Party Services';
+
+  @override
+  String get privacyPolicyThirdParty =>
+      'Our application may use the following third-party services:\n\n• Google Fonts: for loading fonts (if used). Google may collect technical information about font requests.\n\nWe do not control and are not responsible for the privacy policies of third-party services. We recommend reviewing their privacy policies.\n\nImportant: Even when using Google Fonts, no data about you or your app usage is transmitted to our servers or third parties.';
+
+  @override
+  String get privacyPolicyDataStorageTitle => '5. Data Storage';
+
+  @override
+  String get privacyPolicyDataStorage =>
+      'All application data is stored locally on your device using:\n\n• SharedPreferences (for settings)\n• Device local storage\n\nData is not transmitted to external servers and is not synchronized between devices. When you delete the app, all data is deleted with it.';
+
+  @override
+  String get privacyPolicyUserRightsTitle => '6. Your Rights';
+
+  @override
+  String get privacyPolicyUserRights =>
+      'In accordance with GDPR and other data protection laws, you have the right to:\n\n• Access your data: all data is stored on your device, you can view it in the app settings\n• Data deletion: you can delete all data by deleting the app from your device\n• Withdraw consent: you can stop using the app at any time\n\nSince we do not collect personal data and do not store it on servers, most rights are automatically respected.';
+
+  @override
+  String get privacyPolicyChildrenTitle => '7. Children';
+
+  @override
+  String get privacyPolicyChildren =>
+      'Our application has a 4+ age rating and is safe for children. We do not collect any personal data from users of any age, including children. All data is stored only locally on the device and is never transmitted anywhere.';
+
+  @override
+  String get privacyPolicyChangesTitle => '8. Changes to Privacy Policy';
+
+  @override
+  String get privacyPolicyChanges =>
+      'We may periodically update this Privacy Policy. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date at the beginning of this document.\n\nWe recommend that you periodically review this Privacy Policy for information on how we protect your data.';
+
+  @override
+  String get privacyPolicyContactTitle => '9. Contact';
+
+  @override
+  String get privacyPolicyContact =>
+      'If you have any questions or suggestions regarding this Privacy Policy, please contact us:\n\nEmail: saydulayev.wien@gmail.com\n\nWe will try to answer your questions as soon as possible.';
 }

@@ -6,6 +6,7 @@ import '../providers/theme_provider.dart';
 import '../providers/localization_provider.dart';
 import '../models/app_theme.dart';
 import '../widgets/theme_selection_sheet.dart';
+import 'privacy_policy_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -85,6 +86,22 @@ class SettingsScreen extends StatelessWidget {
                 showModalBottomSheet(
                   context: context,
                   builder: (context) => const ThemeSelectionSheet(),
+                );
+              },
+              theme: theme,
+            ),
+            const SizedBox(height: 8),
+            // Privacy Policy
+            _buildSettingsItem(
+              context,
+              icon: Icons.privacy_tip,
+              title: l10n.privacyPolicyTitle,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PrivacyPolicyScreen(),
+                  ),
                 );
               },
               theme: theme,

@@ -957,6 +957,126 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Hajj and \'Umrah are obligatory for those who have the conditions for performing them. Muslims are unanimous in the obligation of Hajj when all conditions are met. It is important to note that Hajj and \'Umrah that are performed after a vow or have been started must be completed.'**
   String get hajjUmrahObligationConcludingEvidence;
+
+  /// No description provided for @privacyPolicyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy'**
+  String get privacyPolicyTitle;
+
+  /// No description provided for @privacyPolicyLastUpdated.
+  ///
+  /// In en, this message translates to:
+  /// **'Last updated: 2024'**
+  String get privacyPolicyLastUpdated;
+
+  /// No description provided for @privacyPolicyIntroductionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Introduction'**
+  String get privacyPolicyIntroductionTitle;
+
+  /// No description provided for @privacyPolicyIntroduction.
+  ///
+  /// In en, this message translates to:
+  /// **'We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and protect information when you use our Umra Guide application.\n\nBy using this application, you agree to the terms of this Privacy Policy.'**
+  String get privacyPolicyIntroduction;
+
+  /// No description provided for @privacyPolicyDataCollectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'2. Data Collection'**
+  String get privacyPolicyDataCollectionTitle;
+
+  /// No description provided for @privacyPolicyDataCollection.
+  ///
+  /// In en, this message translates to:
+  /// **'Our application DOES NOT collect any data.\n\nAll data is stored only locally on your device:\n\n• Local Settings: language, theme, display preferences are stored only on your device\n• Tawaf Counter Data: stored locally on your device\n\nWe DO NOT collect and DO NOT transmit:\n• Personal data (name, email, phone)\n• Location data\n• Analytics or tracking data\n• Data about your app usage\n• Any other data'**
+  String get privacyPolicyDataCollection;
+
+  /// No description provided for @privacyPolicyDataUsageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'3. Data Usage'**
+  String get privacyPolicyDataUsageTitle;
+
+  /// No description provided for @privacyPolicyDataUsage.
+  ///
+  /// In en, this message translates to:
+  /// **'Since we do not collect data, all data is used solely locally on your device for:\n\n• Enabling app functionality (saving settings, tawaf counter)\n• Improving app performance (local settings for your convenience)\n\nAll data is stored only on your device and is never shared with third parties or external servers.'**
+  String get privacyPolicyDataUsage;
+
+  /// No description provided for @privacyPolicyThirdPartyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'4. Third-Party Services'**
+  String get privacyPolicyThirdPartyTitle;
+
+  /// No description provided for @privacyPolicyThirdParty.
+  ///
+  /// In en, this message translates to:
+  /// **'Our application may use the following third-party services:\n\n• Google Fonts: for loading fonts (if used). Google may collect technical information about font requests.\n\nWe do not control and are not responsible for the privacy policies of third-party services. We recommend reviewing their privacy policies.\n\nImportant: Even when using Google Fonts, no data about you or your app usage is transmitted to our servers or third parties.'**
+  String get privacyPolicyThirdParty;
+
+  /// No description provided for @privacyPolicyDataStorageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'5. Data Storage'**
+  String get privacyPolicyDataStorageTitle;
+
+  /// No description provided for @privacyPolicyDataStorage.
+  ///
+  /// In en, this message translates to:
+  /// **'All application data is stored locally on your device using:\n\n• SharedPreferences (for settings)\n• Device local storage\n\nData is not transmitted to external servers and is not synchronized between devices. When you delete the app, all data is deleted with it.'**
+  String get privacyPolicyDataStorage;
+
+  /// No description provided for @privacyPolicyUserRightsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'6. Your Rights'**
+  String get privacyPolicyUserRightsTitle;
+
+  /// No description provided for @privacyPolicyUserRights.
+  ///
+  /// In en, this message translates to:
+  /// **'In accordance with GDPR and other data protection laws, you have the right to:\n\n• Access your data: all data is stored on your device, you can view it in the app settings\n• Data deletion: you can delete all data by deleting the app from your device\n• Withdraw consent: you can stop using the app at any time\n\nSince we do not collect personal data and do not store it on servers, most rights are automatically respected.'**
+  String get privacyPolicyUserRights;
+
+  /// No description provided for @privacyPolicyChildrenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'7. Children'**
+  String get privacyPolicyChildrenTitle;
+
+  /// No description provided for @privacyPolicyChildren.
+  ///
+  /// In en, this message translates to:
+  /// **'Our application has a 4+ age rating and is safe for children. We do not collect any personal data from users of any age, including children. All data is stored only locally on the device and is never transmitted anywhere.'**
+  String get privacyPolicyChildren;
+
+  /// No description provided for @privacyPolicyChangesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'8. Changes to Privacy Policy'**
+  String get privacyPolicyChangesTitle;
+
+  /// No description provided for @privacyPolicyChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'We may periodically update this Privacy Policy. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date at the beginning of this document.\n\nWe recommend that you periodically review this Privacy Policy for information on how we protect your data.'**
+  String get privacyPolicyChanges;
+
+  /// No description provided for @privacyPolicyContactTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'9. Contact'**
+  String get privacyPolicyContactTitle;
+
+  /// No description provided for @privacyPolicyContact.
+  ///
+  /// In en, this message translates to:
+  /// **'If you have any questions or suggestions regarding this Privacy Policy, please contact us:\n\nEmail: saydulayev.wien@gmail.com\n\nWe will try to answer your questions as soon as possible.'**
+  String get privacyPolicyContact;
 }
 
 class _AppLocalizationsDelegate
