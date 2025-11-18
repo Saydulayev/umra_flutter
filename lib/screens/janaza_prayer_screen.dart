@@ -77,18 +77,6 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                 },
               ),
               const Divider(),
-              _buildCollapsibleSection(
-                l10n: l10n,
-                title: l10n.duaVariationsTitle,
-                content: l10n.duaVariationsText,
-                isExpanded: _isDuaVariationsExpanded,
-                onExpandedChanged: (value) {
-                  setState(() {
-                    _isDuaVariationsExpanded = value;
-                  });
-                },
-              ),
-              const Divider(),
               _buildTakbirSection(
                 l10n: l10n,
                 title: l10n.fourthTakbirTitle,
@@ -113,6 +101,18 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
               _buildSection(
                 title: l10n.taslimTitle,
                 content: l10n.taslimText,
+              ),
+              const Divider(),
+              _buildCollapsibleSection(
+                l10n: l10n,
+                title: l10n.duaVariationsTitle,
+                content: l10n.duaVariationsText,
+                isExpanded: _isDuaVariationsExpanded,
+                onExpandedChanged: (value) {
+                  setState(() {
+                    _isDuaVariationsExpanded = value;
+                  });
+                },
               ),
             ],
           ),

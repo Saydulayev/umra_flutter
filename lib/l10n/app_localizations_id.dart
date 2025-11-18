@@ -39,13 +39,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get usefulTitle => 'Berguna';
 
   @override
-  String get circleString => 'Perjalanan:';
+  String get circleString => 'Putaran:';
 
   @override
   String get addString => 'Tambah';
 
   @override
-  String get resetString => 'Reset';
+  String get resetString => 'Atur Ulang';
 
   @override
   String get sayFinishedString => 'Sa´y selesai';
@@ -84,10 +84,10 @@ class AppLocalizationsId extends AppLocalizations {
   String get themeTurquoise => 'Laut';
 
   @override
-  String get usefulInfoTitle => 'Informasi Berguna';
+  String get usefulInfoTitle => 'Informasi Bermanfaat';
 
   @override
-  String get etiquetteManners => 'Etiket dan Tata Krama';
+  String get etiquetteManners => 'Etika dan Akhlak';
 
   @override
   String get hajjUmrahVirtues => 'Keutamaan Haji dan Umrah';
@@ -99,80 +99,80 @@ class AppLocalizationsId extends AppLocalizations {
   String get janazaPrayerGuide => 'Panduan Shalat Janazah';
 
   @override
-  String get titleJanazaGuide => 'Shalat Janazah';
+  String get titleJanazaGuide => 'Panduan Sholat Jenazah';
 
   @override
-  String get basicRules => 'Panduan Shalat Janazah';
+  String get basicRules => 'Panduan Dasar Sholat Jenazah';
 
   @override
   String get janazaBasicRules =>
-      '📌 Aturan Dasar Shalat Janazah (Shalat Jenazah).\n\nShalat dilakukan sambil berdiri, tanpa ruku\' atau sujud. Terdiri dari empat takbir (mengucapkan \'Allahu Akbar\').\n\nSetelah setiap takbir, doa-doa tertentu dibacakan:\n\n1 Surah Al-Fatihah\n\n2 Salawat kepada Nabi ﷺ\n\n3 Dua untuk yang meninggal\n\n4 Anda dapat berdoa atau menyelesaikan shalat';
+      '📌 Tata cara dasar sholat jenazah (shalat untuk mayit).\n\nSholat ini dilakukan dalam posisi berdiri, tanpa ruku\' dan sujud, dan terdiri dari empat kali takbir (mengucap \'Allahu Akbar\').\n\nSetelah setiap takbir, dibaca doa sebagai berikut:\n\n1 Surah Al-Fatihah\n\n2 Shalawat atas Nabi ﷺ\n\n3 Doa untuk jenazah\n\n4 Boleh menambahkan doa atau langsung menyelesaikan sholat';
 
   @override
   String get firstTakbirTitle => '1. Takbir Pertama';
 
   @override
   String get firstTakbirText =>
-      'Angkat tangan Anda setinggi bahu atau telinga dan ucapkan:\n\nاللَّهُ أَكْبَرُ\n\nAllahu Akbar (\"Allah Maha Besar\")\n\nKemudian:\n\nBacakan Surah Al-Fatihah.';
+      'Angkat tangan sejajar bahu atau telinga, lalu ucapkan:\n\nاللَّهُ أَكْبَرُ\n\nAllahu Akbar (Allah Maha Besar)\n\nKemudian:\n\nBacalah Surah Al-Fatihah.';
 
   @override
   String get secondTakbirTitle => '2. Takbir Kedua';
 
   @override
   String get secondTakbirText =>
-      'Ucapkan takbir (tanpa mengangkat tangan):\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nBacakan Salawat kepada Nabi ﷺ';
+      'Ucapkan takbir (tanpa mengangkat tangan):\n\nاللَّهُ أَكْبَرُ — Allahu Akbar\n\nLalu bacalah shalawat kepada Nabi ﷺ:\n\nاللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ. اللَّهُمَّ بَارِكْ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ\n\nAllahumma shalli \'ala Muhammad wa \'ala aali Muhammad, kama shallaita \'ala Ibrahim wa \'ala aali Ibrahim, innaka Hamidun Majid. Allahumma barik \'ala Muhammad wa \'ala aali Muhammad, kama barakta \'ala Ibrahim wa \'ala aali Ibrahim, innaka Hamidun Majid.';
 
   @override
   String get translateSecondTakbirText =>
-      '\"Ya Allah, berkatilah Muhammad dan keluarganya, sebagaimana Engkau memberkati Ibrahim dan keluarga Ibrahim, sesungguhnya Engkau Maha Terpuji, Maha Mulia!\"';
+      '\"Ya Allah, limpahkanlah shalawat kepada Muhammad dan keluarganya sebagaimana Engkau melimpahkan shalawat kepada Ibrahim dan keluarganya. Sesungguhnya Engkau Maha Terpuji lagi Maha Mulia. Ya Allah, limpahkanlah keberkahan kepada Muhammad dan keluarganya sebagaimana Engkau memberkahi Ibrahim dan keluarganya. Sesungguhnya Engkau Maha Terpuji lagi Maha Mulia.\"';
 
   @override
   String get thirdTakbirTitle => '3. Takbir Ketiga';
 
   @override
   String get thirdTakbirText =>
-      'Ucapkan takbir (tanpa mengangkat tangan):\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nBacakan dua untuk yang meninggal (jika laki-laki)';
+      'Ucapkan takbir (tanpa mengangkat tangan):\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nBacalah doa untuk jenazah laki-laki:\n\nاللَّهُمَّ اغْفِرْ لَهُ، وَارْحَمْهُ،\n\nAllahummaghfir lahu, warhamhu.\n\nAtau:\n\nاللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ، وَعَافِهِ، وَاعْفُ عَنْهُ، وَأَكْرِمْ نُزُلَهُ، وَوَسِّعْ مُدْخَلَهُ، وَاغْسِلْهُ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ، وَنَقِّهِ مِنَ الْخَطَايَا كَمَا نَقَّيْتَ الثَّوْبَ الأبْيَضَ مِنَ الدَّنَسِ، وَأَبْدِلْهُ دَاراً خَيْراً مِنْ دَارِهِ، وَأَهْلاً خَيْراً مِنْ أَهْلِهِ، وَزَوْجاً خَيْرا ًمِنْ زَوْجِهِ، وَأَدْخِلْهُ الْجَنَّةَ، وَأَعِذْهُ مِنْ عَذَابِ الْقَبْرِ وَعَذَابِ النَّارِ\n\nAllahummaghfir lahu, warhamhu, wa \'afihi, wa\'fu \'anhu, wa akrim nuzulahu, wa wassi\' madkhalahu, waghsilhu bil-ma\'i, was-salji wal-barad, wanaqqihi minal-khataya kama naqqaita ath-thawba al-abyadha minad-danas, wa abdilhu daran khairan min darihi, wa ahlan khairan min ahlihi, wa zawjan khairan min zawjihi, wa adkhilhul-jannah, wa a\'idzhu min \'adzabil-qabri wa \'adzabin-nar.';
 
   @override
   String get translateThirdTakbirText =>
-      'Awf bin Malik meriwayatkan dua Nabi untuk yang meninggal.';
+      'Auf bin Malik meriwayatkan: \"Rasulullah ﷺ melaksanakan shalat jenazah, dan aku menghafal doanya: «Ya Allah! Ampunilah dia, rahmatilah dia, bebaskan dia, muliakan tempat tinggalnya, lapangkan kuburnya, mandikan dia dengan air, salju dan embun. Bersihkan dia dari dosa sebagaimana Engkau membersihkan kain putih dari kotoran. Gantikan untuknya rumah yang lebih baik, keluarga yang lebih baik, pasangan yang lebih baik. Masukkan dia ke surga dan lindungi dia dari siksa kubur dan api neraka.»\" (HR. Muslim, 2/663)';
 
   @override
-  String get duaVariationsTitle => 'Variasi Dua Tergantung yang Meninggal';
+  String get duaVariationsTitle => 'Variasi Doa Sesuai Jenazah';
 
   @override
   String get duaVariationsText =>
-      '📌 Jika yang meninggal adalah seorang laki-laki\n\n📌 Jika yang meninggal adalah seorang perempuan\n\n📌 Jika beberapa yang meninggal (hanya laki-laki)\n\n📌 Jika beberapa yang meninggal (hanya perempuan)';
+      '📌 Jika jenazah satu laki-laki:\n\n- Gunakan bentuk: لَهُ (lahu)\n\nاللَّهُمَّ اغْفِرْ لَهُ، وَارْحَمْهُ،\n\n(Allahummaghfir lahu, warhamhu.)\n\n📌 Jika jenazah satu perempuan:\n\n- Ganti semua bentuk maskulin dengan feminin: لَهَا (laha)\n\nاللَّهُمَّ اغْفِرْ لَهَا، وَارْحَمْهَا،\n\n(Allahummaghfir laha, warhamha.)\n\n📌 Jika jenazah beberapa orang laki-laki:\n\n- Gunakan bentuk jamak maskulin: لَهُمْ (lahum)\n\nاللَّهُمَّ اغْفِرْ لَهُمْ، وَارْحَمْهُمْ،\n\n(Allahummaghfir lahum, warhamhum.)\n\n📌 Jika jenazah beberapa perempuan:\n\n- Gunakan bentuk jamak feminin: لَهُنَّ (lahunna)\n\nاللَّهُمَّ اغْفِرْ لَهُنَّ، وَارْحَمْهُنَّ،\n\n(Allahummaghfir lahunna, warhamhunna.)\n\n📌 Jika tidak diketahui jenis kelamin atau jenazah campuran:\n\n- Gunakan bentuk umum: لَهُمْ (lahum)\n\nاللَّهُمَّ اغْفِرْ لَهُمْ، وَارْحَمْهُمْ،\n\n(Allahummaghfir lahum, warhamhum.)';
 
   @override
   String get fourthTakbirTitle => '4. Takbir Keempat';
 
   @override
   String get fourthTakbirText =>
-      'Ucapkan takbir (tanpa mengangkat tangan):\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nAnda dapat berdoa, tetapi tidak wajib.';
+      'Ucapkan takbir (tanpa mengangkat tangan):\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nBoleh membaca doa tambahan, namun tidak wajib.';
 
   @override
   String get fourthTakbirAdditionalInfo =>
-      'Tentang kebolehan berdoa untuk yang meninggal setelah takbir keempat.';
+      'Tentang bolehnya membaca doa setelah takbir keempat.\n\nDiriwayatkan bahwa \'Abdullah bin Abi Awfa ketika melaksanakan shalat jenazah atas putrinya, beliau mengucapkan empat takbir. Setelah takbir keempat, beliau berdiri selama waktu yang sama antara dua takbir sebelumnya sambil berdoa memohonkan ampunan untuk putrinya. Lalu ia berkata: \"Demikianlah yang dilakukan oleh Rasulullah ﷺ.\" (HR. Al-Hakim, 1/512; Lihat Shahih Sunan Ibnu Majah, 1220)';
 
   @override
-  String get taslimTitle => 'Penutup Shalat (Taslim)';
+  String get taslimTitle => 'Penyelesaian Sholat (Taslim)';
 
   @override
   String get taslimText =>
-      '📌 Anda dapat mengucapkan taslim sekali ke kanan atau dua kali (ke kanan dan ke kiri).\n\nRasulullah (shallallahu \'alaihi wa sallam), ketika melakukan shalat Janazah, melakukan baik satu maupun dua salam, tetapi satu salam lebih sering dilakukan.';
+      '📌 Taslim bisa dilakukan sekali ke kanan, atau dua kali (ke kanan dan ke kiri).\n\nRasulullah ﷺ dalam shalat jenazah terkadang memberi salam sekali, dan terkadang dua kali. Namun, yang lebih sering beliau lakukan adalah salam sekali.';
 
   @override
-  String get translateText => 'Terjemahan';
+  String get translateText => 'terjemahan';
 
   @override
-  String get sincerity => 'Keikhlasan';
+  String get sincerity => 'Ketulusan Niat';
 
   @override
-  String get laws => 'Hukum';
+  String get laws => 'Hukum-Hukum';
 
   @override
-  String get choiceOfCompanions => 'Pemilihan Teman';
+  String get choiceOfCompanions => 'Memilih Teman Perjalanan';
 
   @override
   String get financialIndependence => 'Kemandirian Finansial';
@@ -184,10 +184,10 @@ class AppLocalizationsId extends AppLocalizations {
   String get zikrAndPrayers => 'Zikir dan Doa';
 
   @override
-  String get cautionInRelationships => 'Kehati-hatian dalam Hubungan';
+  String get cautionInRelationships => 'Kewaspadaan dalam Hubungan';
 
   @override
-  String get atonementAndRewards => 'Penebusan dan Pahala';
+  String get atonementAndRewards => 'Pengampunan Dosa dan Pahala';
 
   @override
   String get hajjForWomen => 'Haji untuk Wanita';
@@ -199,17 +199,17 @@ class AppLocalizationsId extends AppLocalizations {
   String get followingTheSunnah => 'Mengikuti Sunnah';
 
   @override
-  String get hajjObligationEvidence => 'Bukti Kewajiban Haji';
+  String get hajjObligationEvidence => 'Dalil Kewajiban Haji';
 
   @override
-  String get umrahObligationEvidence => 'Bukti Kewajiban Umrah';
+  String get umrahObligationEvidence => 'Dalil Kewajiban Umrah';
 
   @override
   String get conclusion => 'Kesimpulan';
 
   @override
   String get step1EnterIhram =>
-      'Masuklah ke dalam keadaan Ihram di tempat yang telah ditentukan (Miqat).';
+      '\nMasuklah ke dalam keadaan Ihram di tempat yang telah ditentukan (Miqat).\n';
 
   @override
   String get step1WhenEnteringIhram =>
@@ -220,7 +220,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get step1TurnToQiblah =>
-      'Labbayk Allahumma bi \'Umrah.\n\nHadapkanlah wajah ke arah kiblat dan ucapkan:';
+      '\nLabbayk Allahumma bi \'Umrah.\n\nHadapkanlah wajah ke arah kiblat dan ucapkan:\n';
 
   @override
   String get step1SecondArabic =>
@@ -240,7 +240,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get step1EnteringSacredMosque =>
-      'Ketika memasuki Masjidil Haram dengan kaki kanan, ucapkan:';
+      '\n\nKetika memasuki Masjidil Haram dengan kaki kanan, ucapkan:\n';
 
   @override
   String get step1EnteringSacredMosqueDuaArabic =>
@@ -255,7 +255,8 @@ class AppLocalizationsId extends AppLocalizations {
       'اَللَّهُمَّ مَحِلِّي حَيْثُ حَبَسْتَنِي';
 
   @override
-  String get step1ConditioningHajj => 'Mensyaratkan dalam Haji atau Umrah.';
+  String get step1ConditioningHajj =>
+      '\n\nMensyaratkan dalam Haji atau Umrah.\n';
 
   @override
   String get step1ConditioningHajjText =>
@@ -266,7 +267,7 @@ class AppLocalizationsId extends AppLocalizations {
       '«Allahumma mahilli haitsu habastani»\n\n«Ya Allah, tempat bertahallul-ku adalah di mana saja Engkau menahanku».\n\nHadis ini muttafaq \'alaih. Lihat juga dalam Shahih Abu Dawud (1776).\n\nJika seseorang melakukan ini, lalu dia tertahan atau sakit, maka ia dibolehkan keluar dari ihram ketika sedang berhaji atau umrah tanpa harus menyembelih hewan dam atau mengulang haji, kecuali jika ini merupakan haji wajib pertamanya, yang dalam kondisi tersebut ia harus mengulanginya di lain waktu.';
 
   @override
-  String get step1UmrahForParents => 'Umrah untuk orang tua';
+  String get step1UmrahForParents => '\n\nUmrah untuk orang tua\n';
 
   @override
   String get step1UmrahForFatherArabic =>
@@ -305,11 +306,11 @@ class AppLocalizationsId extends AppLocalizations {
       'Jika Anda ingin melaksanakan umrah untuk orang tua atau orang lain, alih-alih talbiyah biasa, bacalah salah satu formula yang diberikan, tambahkan setelah kata-kata «abi» (ayah), «ummi» (ibu) atau cukup setelah kata «\'an» nama orang yang umrah dilaksanakan. Setelah mengucapkan niat dan talbiyah dengan menyebutkan nama, semua tindakan lainnya, doa (dua) dan dzikir Allah (dzikir) dilakukan seperti biasa, seolah-olah Anda melakukan umrah untuk diri sendiri. Satu-satunya perbedaan adalah niat.';
 
   @override
-  String get step2KaabaText1 => 'Tawaf Ka\'bah';
+  String get step2KaabaText1 => '\nTawaf Ka\'bah';
 
   @override
   String get step2KaabaText2 =>
-      'Mulailah melakukan tawaf (mengelilingi Ka\'bah) sebanyak tujuh putaran. \nSejak awal hingga selesai tawaf, laki-laki disunnahkan membuka pundak kanan (Idhtiba\').\n\nSetelah itu, jamaah dianjurkan menyentuh Hajar Aswad dengan tangan dan menciumnya.\n\nJika tidak memungkinkan mencium Hajar Aswad, cukup menyentuhnya dengan tangan.\n\nJika tidak memungkinkan menyentuh atau mencium Hajar Aswad, maka hadapilah Hajar Aswad, tunjuklah dengan tangan kanan sambil mengucapkan takbir: «Allahu Akbar» (Allah Maha Besar). (Hal ini dilakukan setiap kali memulai putaran tawaf.)';
+      '\nMulailah melakukan tawaf (mengelilingi Ka\'bah) sebanyak tujuh putaran. \nSejak awal hingga selesai tawaf, laki-laki disunnahkan membuka pundak kanan (Idhtiba\').\n\nSetelah itu, jamaah dianjurkan menyentuh Hajar Aswad dengan tangan dan menciumnya.\n\nJika tidak memungkinkan mencium Hajar Aswad, cukup menyentuhnya dengan tangan.\n\nJika tidak memungkinkan menyentuh atau mencium Hajar Aswad, maka hadapilah Hajar Aswad, tunjuklah dengan tangan kanan sambil mengucapkan takbir: «Allahu Akbar» (Allah Maha Besar). (Hal ini dilakukan setiap kali memulai putaran tawaf.)\n';
 
   @override
   String get step2KaabaText3 =>
@@ -327,12 +328,11 @@ class AppLocalizationsId extends AppLocalizations {
   String get step2TakbirArabic => 'الله أكبر';
 
   @override
-  String get step3PrayerAfterTawaf =>
-      'Shalat dua rakaat setelah Tawaf Ka\'bah.';
+  String get step3PrayerAfterTawaf => '\nShalat setelah Tawaf Ka\'bah.';
 
   @override
   String get step3CompletedSevenCircuits =>
-      'Setelah menyelesaikan tawaf sebanyak tujuh putaran mengelilingi Ka\'bah, laki-laki hendaknya menutup kembali pundak kanannya. Kemudian pergilah menuju Maqam Ibrahim sambil membaca:';
+      '\nSetelah menyelesaikan tawaf sebanyak tujuh putaran mengelilingi Ka\'bah, laki-laki hendaknya menutup kembali pundak kanannya. Kemudian pergilah menuju Maqam Ibrahim sambil membaca:\n';
 
   @override
   String get step3ArabicText =>
@@ -343,31 +343,31 @@ class AppLocalizationsId extends AppLocalizations {
       'Wat-takhidzu mim-maqaami Ibraahiima mushallaa.\n\n«Jadikanlah Maqam Ibrahim sebagai tempat shalat.» (QS. Al-Baqarah [2]: 125).\n\nJika memungkinkan, lakukanlah shalat dua rakaat di belakang Maqam Ibrahim. Jika sulit, maka lakukanlah shalat dua rakaat tersebut di mana saja di dalam Masjidil Haram. Jangan lupa meletakkan pembatas (sutrah) di hadapanmu agar tidak ada orang lewat di antara dirimu dan pembatas tersebut. Pada rakaat pertama setelah membaca Surah Al-Fatihah, bacalah Surah Al-Kafirun (109), dan pada rakaat kedua setelah membaca Surah Al-Fatihah, bacalah Surah Al-Ikhlas (112).\n\nSetelah menyelesaikan shalat dua rakaat ini, pergilah menuju sumur Zamzam.';
 
   @override
-  String get step4DrinkingZamzam => 'Meminum Air Zamzam.';
+  String get step4DrinkingZamzam => '\nMeminum Air Zamzam.';
 
   @override
   String get step4ZamzamText =>
-      'Minumlah air Zamzam dan siramkanlah sebagiannya ke kepala.\n\nJabir (semoga Allah meridainya) meriwayatkan: \"Nabi (shallallahu \'alaihi wa sallam) menuju sumur Zamzam, lalu beliau minum air Zamzam dan menyiramkan sebagiannya ke atas kepala beliau.\" (HR. Ahmad [3/394], Ibnu Khuzaimah [4/305]). Hadis ini telah dinyatakan sahih oleh Az-Zarkasyi, Badruddin al-\'Aini, dan Syu\'aib al-Arnauth. Lihat juga: \'Umdatul-Qari (9/227), Hasyiyah \'ala al-Manasik (hlm. 263), Takhrij al-Musnad (15243).\n\nDari Jabir (semoga Allah meridainya) juga diriwayatkan bahwa Rasulullah (shallallahu \'alaihi wa sallam) bersabda: \"Air Zamzam bermanfaat sesuai dengan niat orang yang meminumnya.\" (HR. Ahmad [3/357], Ibnu Majah [3062], Al-Hakim [1739]). Hadis ini dinyatakan sahih oleh Sufyan bin \'Uyainah, Al-Mundziri, Ad-Dumyathi, Ibnu al-Qayyim, Az-Zarkasyi, Ibnu Hajar, dan Al-Albani. Lihat juga: Al-Mujalasah (509), Al-Matjar ar-Rabih (982), Zadul Ma\'ad (4/393), Al-Maqashid al-Hasanah (928), Faidhul-Qadir (7759), Shahih at-Targhib (1165).\n\nAsy-Syaukani berkata: \"Dalam hadis ini terdapat dalil bahwa minum air Zamzam memberikan manfaat kepada peminumnya sesuai dengan niat apa pun yang diniatkannya, baik urusan dunia maupun akhirat. Karena sabda Nabi \'bermanfaat sesuai niat orang yang meminumnya\' bersifat umum.\" (Nailul Authar, 5/105).\n\nImam An-Nawawi mengatakan: \"Makna hadis ini adalah bahwa siapa pun yang minum air ini dengan tujuan tertentu, maka ia akan memperolehnya. Sesungguhnya para ulama dan orang-orang saleh telah membuktikan manfaat air Zamzam dalam memenuhi kebutuhan duniawi maupun ukhrawi mereka, dan mereka memperolehnya atas rahmat Allah Ta\'ala.\" (Tahdzib al-Asma wal-Lughat, 3/139).';
+      '\nMinumlah air Zamzam dan siramkanlah sebagiannya ke kepala.\n\nJabir (semoga Allah meridainya) meriwayatkan: \"Nabi (shallallahu \'alaihi wa sallam) menuju sumur Zamzam, lalu beliau minum air Zamzam dan menyiramkan sebagiannya ke atas kepala beliau.\" (HR. Ahmad [3/394], Ibnu Khuzaimah [4/305]). Hadis ini telah dinyatakan sahih oleh Az-Zarkasyi, Badruddin al-\'Aini, dan Syu\'aib al-Arnauth. Lihat juga: \'Umdatul-Qari (9/227), Hasyiyah \'ala al-Manasik (hlm. 263), Takhrij al-Musnad (15243).\n\nDari Jabir (semoga Allah meridainya) juga diriwayatkan bahwa Rasulullah (shallallahu \'alaihi wa sallam) bersabda: \"Air Zamzam bermanfaat sesuai dengan niat orang yang meminumnya.\" (HR. Ahmad [3/357], Ibnu Majah [3062], Al-Hakim [1739]). Hadis ini dinyatakan sahih oleh Sufyan bin \'Uyainah, Al-Mundziri, Ad-Dumyathi, Ibnu al-Qayyim, Az-Zarkasyi, Ibnu Hajar, dan Al-Albani. Lihat juga: Al-Mujalasah (509), Al-Matjar ar-Rabih (982), Zadul Ma\'ad (4/393), Al-Maqashid al-Hasanah (928), Faidhul-Qadir (7759), Shahih at-Targhib (1165).\n\nAsy-Syaukani berkata: \"Dalam hadis ini terdapat dalil bahwa minum air Zamzam memberikan manfaat kepada peminumnya sesuai dengan niat apa pun yang diniatkannya, baik urusan dunia maupun akhirat. Karena sabda Nabi \'bermanfaat sesuai niat orang yang meminumnya\' bersifat umum.\" (Nailul Authar, 5/105).\n\nImam An-Nawawi mengatakan: \"Makna hadis ini adalah bahwa siapa pun yang minum air ini dengan tujuan tertentu, maka ia akan memperolehnya. Sesungguhnya para ulama dan orang-orang saleh telah membuktikan manfaat air Zamzam dalam memenuhi kebutuhan duniawi maupun ukhrawi mereka, dan mereka memperolehnya atas rahmat Allah Ta\'ala.\" (Tahdzib al-Asma wal-Lughat, 3/139).';
 
   @override
-  String get step5ReturnToBlackStone => 'Kembali ke Hajar Aswad.';
+  String get step5ReturnToBlackStone => '\nKembali ke Hajar Aswad.';
 
   @override
   String get step5ReturnReciteTakbir =>
-      'Kembalilah menuju Hajar Aswad sambil mengucapkan takbir, lalu sentuh dan ciumlah sebagaimana telah dijelaskan sebelumnya. Jika tidak memungkinkan, cukup tunjukkan ke arahnya dengan tangan sambil mengucapkan takbir. Allah Maha Besar.';
+      '\nKembalilah menuju Hajar Aswad sambil mengucapkan takbir, lalu sentuh dan ciumlah sebagaimana telah dijelaskan sebelumnya. Jika tidak memungkinkan, cukup tunjukkan ke arahnya dengan tangan sambil mengucapkan takbir. Allah Maha Besar.';
 
   @override
-  String get step5AllahIsGreat => 'Allahu Akbar.';
+  String get step5AllahIsGreat => '\nAllahu Akbar.\n';
 
   @override
   String get step5TakbirArabic => 'الله أكبر';
 
   @override
-  String get step6SafaAndMarwa => 'Safa dan Marwah';
+  String get step6SafaAndMarwa => '\nSafa dan Marwah';
 
   @override
   String get step6HeadTowardsSafa =>
-      'Bergeraklah menuju bukit Safa untuk melaksanakan Sa\'i (berjalan antara Safa dan Marwah) sebanyak tujuh kali. Mulailah Sa\'i dari bukit Safa.\n\n\nKetika mendekati bukit Safa, bacalah:';
+      '\nBergeraklah menuju bukit Safa untuk melaksanakan Sa\'i (berjalan antara Safa dan Marwah) sebanyak tujuh kali. Mulailah Sa\'i dari bukit Safa.\n\n\nKetika mendekati bukit Safa, bacalah:\n';
 
   @override
   String get step6SurahBaqarahArabic =>
@@ -378,7 +378,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get step6SurahBaqarahText =>
-      'Innaṣ-ṣafā wal-marwata min sya\'ā`irillāh, faman ḥajja l-baita awi\'-tamara falā junāḥa \'alaihi ay-yaṭṭawwafa bihimā, wa man taṭawwa\'a khairan fa innallāha syākirun \'alīm.\n\n«Sesungguhnya Safa dan Marwah adalah sebagian dari syi\'ar-syi\'ar Allah. Maka barangsiapa beribadah haji ke Baitullah atau berumrah, maka tidak ada dosa baginya mengerjakan Sa\'i antara keduanya. Barangsiapa yang dengan sukarela mengerjakan kebajikan, maka sesungguhnya Allah Maha Mensyukuri lagi Maha Mengetahui.» (QS. Al-Baqarah [2]: 158)\n\nKemudian ucapkanlah:';
+      'Innaṣ-ṣafā wal-marwata min sya\'ā`irillāh, faman ḥajja l-baita awi\'-tamara falā junāḥa \'alaihi ay-yaṭṭawwafa bihimā, wa man taṭawwa\'a khairan fa innallāha syākirun \'alīm.\n\n«Sesungguhnya Safa dan Marwah adalah sebagian dari syi\'ar-syi\'ar Allah. Maka barangsiapa beribadah haji ke Baitullah atau berumrah, maka tidak ada dosa baginya mengerjakan Sa\'i antara keduanya. Barangsiapa yang dengan sukarela mengerjakan kebajikan, maka sesungguhnya Allah Maha Mensyukuri lagi Maha Mengetahui.» (QS. Al-Baqarah [2]: 158)';
 
   @override
   String get step6WeBeginArabic => 'نَبْدَأُ بِمَا بَدَأَ اللهُ بِهِ';
@@ -389,7 +389,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get step6WeBeginText =>
-      'Nabda`u bimā bada`allāhu bihi.\n\n«Kami memulai dengan apa yang telah dimulai oleh Allah.»\n\nNaiklah ke bukit Safa, lalu menghadaplah ke arah Ka\'bah dan ucapkan:';
+      'Nabda`u bimā bada`allāhu bihi.\n\n«Kami memulai dengan apa yang telah dimulai oleh Allah.»\n\nNaiklah ke bukit Safa, lalu menghadaplah ke arah Ka\'bah dan ucapkan:\n';
 
   @override
   String get step6RemembranceArabic =>
@@ -401,7 +401,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get step6RemembranceText =>
-      'Allāhu akbar! Allāhu akbar! Allāhu akbar!  \nLā ilāha illallāhu waḥdahu lā syarīka lah. Lahul-mulku wa lahul-ḥamdu yuḥyī wa yumītu wa huwa \'alā kulli syai\'in qadīr. Lā ilāha illallāhu waḥdahu lā syarīka lah, anjaza wa\'dah, wa naṣara \'abdah, wa hazamal-aḥzāba waḥdah.\n\n«Allah Maha Besar, Allah Maha Besar, Allah Maha Besar!\nTiada Tuhan selain Allah semata, tiada sekutu bagi-Nya! Milik-Nya segala kerajaan dan pujian. Dia yang menghidupkan dan mematikan, dan Dia Maha Kuasa atas segala sesuatu! Tiada Tuhan selain Allah semata, tiada sekutu bagi-Nya! Dialah yang menepati janji-Nya, menolong hamba-Nya, dan menghancurkan golongan musuh sendirian.»\n\nBacalah doa ini sebanyak tiga kali, mengangkat kedua tangan untuk berdoa setelah membaca yang pertama dan kedua. Kemudian mulailah berjalan dari bukit Safa menuju bukit Marwah. Satu kali perjalanan dari Safa ke Marwah dihitung sebagai satu putaran, dan kembali dari Marwah ke Safa dihitung sebagai putaran kedua. Di atas bukit Marwah, ulangilah urutan bacaan zikir—doa—zikir—doa—zikir ini. Bacaan zikir dan doa ini diulang setiap kali menaiki Safa dan Marwah, kecuali pada perjalanan yang ketujuh. Ketika mencapai tanda hijau pertama, laki-laki dianjurkan berlari kecil hingga mencapai tanda hijau kedua. Selebihnya dilalui dengan berjalan biasa.\n\nSelama melaksanakan Sa\'i, boleh berdoa dengan doa berikut ini:';
+      'Allāhu akbar! Allāhu akbar! Allāhu akbar!  \nLā ilāha illallāhu waḥdahu lā syarīka lah. Lahul-mulku wa lahul-ḥamdu yuḥyī wa yumītu wa huwa \'alā kulli syai\'in qadīr. Lā ilāha illallāhu waḥdahu lā syarīka lah, anjaza wa\'dah, wa naṣara \'abdah, wa hazamal-aḥzāba waḥdah.\n\n«Allah Maha Besar, Allah Maha Besar, Allah Maha Besar!\nTiada Tuhan selain Allah semata, tiada sekutu bagi-Nya! Milik-Nya segala kerajaan dan pujian. Dia yang menghidupkan dan mematikan, dan Dia Maha Kuasa atas segala sesuatu! Tiada Tuhan selain Allah semata, tiada sekutu bagi-Nya! Dialah yang menepati janji-Nya, menolong hamba-Nya, dan menghancurkan golongan musuh sendirian.»\n\nBacalah doa ini sebanyak tiga kali, mengangkat kedua tangan untuk berdoa setelah membaca yang pertama dan kedua. Kemudian mulailah berjalan dari bukit Safa menuju bukit Marwah. Satu kali perjalanan dari Safa ke Marwah dihitung sebagai satu putaran, dan kembali dari Marwah ke Safa dihitung sebagai putaran kedua. Di atas bukit Marwah, ulangilah urutan bacaan zikir—doa—zikir—doa—zikir ini. Bacaan zikir dan doa ini diulang setiap kali menaiki Safa dan Marwah, kecuali pada perjalanan yang ketujuh. Ketika mencapai tanda hijau pertama, laki-laki dianjurkan berlari kecil hingga mencapai tanda hijau kedua. Selebihnya dilalui dengan berjalan biasa.\n\nSelama melaksanakan Sa\'i, boleh berdoa dengan doa berikut ini:\n';
 
   @override
   String get step6DuasDuringSaiArabic =>
@@ -440,7 +440,7 @@ class AppLocalizationsId extends AppLocalizations {
       'Allāhumma ṣalli \'alā Muḥammadin wa sallim! Allāhumma innī as\'aluka min faḍlik!\n\nYa Allah, limpahkanlah salawat dan salam kepada Nabi Muhammad! Ya Allah, sesungguhnya aku memohon kepada-Mu dari karunia-Mu!';
 
   @override
-  String get step7ShavingHead => 'Mencukur atau Memendekkan Rambut.';
+  String get step7ShavingHead => '\nMencukur atau Memendekkan Rambut.';
 
   @override
   String get step7MenShortenHair =>

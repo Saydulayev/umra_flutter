@@ -514,14 +514,6 @@ class StepDetailScreen extends StatelessWidget {
             color: Colors.black87,
           ) ?? TextStyle(fontSize: 18, color: Colors.black87),
         ),
-        const SizedBox(height: 8),
-        SelectableText(
-          l10n.step6SurahBaqarahText,
-          style: fontProvider.getTextStyle(
-            fontSize: 18,
-            color: Colors.black87,
-          ) ?? TextStyle(fontSize: 18, color: Colors.black87),
-          ),
         const SizedBox(height: 16),
         // 5. Арабский текст "نَبْدَأُ بِمَا بَدَأَ اللهُ بِهِ" + Player 9
         ArabicTextWidget(text: l10n.step6WeBeginArabic),
@@ -552,14 +544,6 @@ class StepDetailScreen extends StatelessWidget {
         const SizedBox(height: 16),
         // 8. "Remembrance of Allah during the Sa'i of Safa and Marwa." + полный текст
         SelectableText(
-          l10n.step6RemembranceTitle,
-          style: fontProvider.getTextStyle(
-            fontSize: 18,
-            color: Colors.black87,
-          ) ?? TextStyle(fontSize: 18, color: Colors.black87),
-        ),
-        const SizedBox(height: 8),
-        SelectableText(
           l10n.step6RemembranceText,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -573,14 +557,6 @@ class StepDetailScreen extends StatelessWidget {
         const SizedBox(height: 16),
         // 10. "Du'a during the Sa'i ritual of Safa and Marwa." + полный текст
         SelectableText(
-          l10n.step6DuasDuringSaiTitle,
-          style: fontProvider.getTextStyle(
-            fontSize: 18,
-            color: Colors.black87,
-          ) ?? TextStyle(fontSize: 18, color: Colors.black87),
-        ),
-        const SizedBox(height: 8),
-        SelectableText(
           l10n.step6DuasDuringSaiText,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -593,14 +569,6 @@ class StepDetailScreen extends StatelessWidget {
         const PlayerWidget(fileName: '12'),
         const SizedBox(height: 16),
         // 12. "Du'a upon exiting the Sacred Mosque." + полный текст
-        SelectableText(
-          l10n.step6ExitingSacredMosqueTitle,
-          style: fontProvider.getTextStyle(
-            fontSize: 18,
-            color: Colors.black87,
-          ) ?? TextStyle(fontSize: 18, color: Colors.black87),
-        ),
-        const SizedBox(height: 8),
         SelectableText(
           l10n.step6ExitingSacredMosqueText,
           style: fontProvider.getTextStyle(
@@ -637,20 +605,6 @@ class StepDetailScreen extends StatelessWidget {
             fontSize: 18,
             color: Colors.black87,
           ) ?? TextStyle(fontSize: 18, color: Colors.black87),
-        ),
-        const SizedBox(height: 16),
-        // Декоративный разделитель
-        SelectableText(
-          "ⵈ━══════╗◊╔══════━ⵈ",
-          style: fontProvider.getTextStyle(
-            fontSize: 18,
-            color: Colors.black87,
-          )?.copyWith(letterSpacing: 2) ?? TextStyle(
-            fontSize: 18,
-            color: Colors.black87,
-            letterSpacing: 2,
-          ),
-          textAlign: TextAlign.center,
         ),
         const SizedBox(height: 16),
         // Текст "Du'a at the end."

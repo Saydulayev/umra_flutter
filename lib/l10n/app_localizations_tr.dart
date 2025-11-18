@@ -36,7 +36,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get titleShaveHeadScreen => 'Saç Tıraşı';
 
   @override
-  String get usefulTitle => 'Yararlı';
+  String get usefulTitle => 'Faydalı';
 
   @override
   String get circleString => 'Geçiş:';
@@ -84,10 +84,10 @@ class AppLocalizationsTr extends AppLocalizations {
   String get themeTurquoise => 'Deniz';
 
   @override
-  String get usefulInfoTitle => 'Yararlı Bilgiler';
+  String get usefulInfoTitle => 'Faydalı Bilgiler';
 
   @override
-  String get etiquetteManners => 'Adap ve Görgü';
+  String get etiquetteManners => 'Adap ve Ahlak';
 
   @override
   String get hajjUmrahVirtues => 'Hac ve Umre Faziletleri';
@@ -106,70 +106,70 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get janazaBasicRules =>
-      '📌 Cenaze Namazının Temel Kuralları.\n\nNamaz ayakta kılınır, rüku ve secde yapılmaz. Dört tekbirden (\"Allahu Ekber\" demek) oluşur.\n\nHer tekbirden sonra belirli dualar okunur:\n\n1 Fatiha Suresi\n\n2 Peygamber\'e Salavat ﷺ\n\n3 Ölen kişi için dua\n\n4 Dua yapabilir veya namazı bitirebilirsiniz';
+      '📌 Cenaze namazının temel kuralları.\n\nNamaz ayakta kılınır, rükû ve secde yapılmaz. Dört tekbirden («Allahu Ekber») oluşur.\n\nHer tekbirden sonra belirli dualar okunur:\n\n1. Fatiha Suresi\n\n2. Peygamber Efendimiz ﷺ için salavat\n\n3. Merhum için dua\n\n4. Ek bir dua yapılabilir veya doğrudan selam verilerek namaz bitirilebilir.';
 
   @override
   String get firstTakbirTitle => '1. Birinci Tekbir';
 
   @override
   String get firstTakbirText =>
-      'Ellerinizi omuz veya kulak seviyesine kaldırın ve şunu söyleyin:\n\nاللَّهُ أَكْبَرُ\n\nAllahu Ekber (\"Allah En Büyüktür\")\n\nSonra:\n\nFatiha Suresi\'ni okuyun.';
+      'Eller omuz hizasına veya kulak seviyesine kadar kaldırılır ve şöyle denir:\n\nاللَّهُ أَكْبَرُ\n\nAllahu Ekber (\"Allah en büyüktür\")\n\nArdından:\n\nFatiha Suresi okunur.';
 
   @override
   String get secondTakbirTitle => '2. İkinci Tekbir';
 
   @override
   String get secondTakbirText =>
-      'Tekbir söyleyin (elleri kaldırmadan):\n\nاللَّهُ أَكْبَرُ - Allahu Ekber\n\nPeygamber\'e Salavat okuyun ﷺ:\n\nاللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ. اللَّهُمَّ بَارِكْ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ';
+      'Eller kaldırılmadan tekbir getirilir:\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nPeygamber Efendimiz ﷺ için salavat okunur:\n\nاللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ. اللَّهُمَّ بَارِكْ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ\n\nAllahumma salli \'ala Muhammadin wa \'ala ali Muhammadin, kama sallayta \'ala Ibrahima wa \'ala ali Ibrahima, innaka Hamidun Majid.  Allahumma barik \'ala Muhammadin wa \'ala ali Muhammadin, kama barakta \'ala Ibrahima wa \'ala ali Ibrahima, innaka Hamidun Majid!';
 
   @override
   String get translateSecondTakbirText =>
-      '\"Ey Yüce Allah, Muhammed\'e ve ailesine rahmet et, İbrahim\'e ve İbrahim\'in ailesine rahmet ettiğin gibi, şüphesiz Sen Hamidsin, Mecidsin! Ey Allah, Muhammed\'e ve ailesine bereket ver, İbrahim\'e ve ailesine verdiğin gibi, şüphesiz Sen Hamidsin, Mecidsin!\".';
+      '«Ey Yüce Allah! Muhammed\'e ve onun ailesine, İbrahim\'e ve onun ailesine rahmet ettiğin gibi rahmet eyle. Şüphesiz ki Sen övülmeye layıksın ve yücesin! Ey Yüce Allah! Muhammed\'e ve onun ailesine bereket ver, İbrahim\'e ve onun ailesine bereket verdiğin gibi. Şüphesiz ki Sen övülmeye layıksın ve yücesin!».';
 
   @override
   String get thirdTakbirTitle => '3. Üçüncü Tekbir';
 
   @override
   String get thirdTakbirText =>
-      'Tekbir söyleyin (elleri kaldırmadan):\n\nاللَّهُ أَكْبَرُ - Allahu Ekber\n\nÖlen kişi için dua okuyun (erkek ise):\n\nاللَّهُمَّ اغْفِرْ لَهُ، وَارْحَمْهُ،\n\nAllahumme ğfir lehu, verhamhu.';
+      'Eller kaldırılmadan tekbir getirilir:\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nMerhum için dua okunur (eğer erkekse):\n\nاللَّهُمَّ اغْفِرْ لَهُ، وَارْحَمْهُ،\n\nAllahumma ighfir lahu, warhamhu.\n\nVeya:\n\nاللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ، وَعَافِهِ، وَاعْفُ عَنْهُ، وَأَكْرِمْ نُزُلَهُ، وَوَسِّعْ مُدْخَلَهُ، وَاغْسِلْهُ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ، وَنَقِّهِ مِنَ الْخَطَايَا كَمَا نَقَّيْتَ الثَّوْبَ الأبْيَضَ مِنَ الدَّنَسِ، وَأَبْدِلْهُ دَاراً خَيْراً مِنْ دَارِهِ، وَأَهْلاً خَيْراً مِنْ أَهْلِهِ، وَزَوْجاً خَيْرا ًمِنْ زَوَجِهِ، وَأَدْخِلْهُ الْجَنَّةَ، وَأَعِذْهُ مِنْ عَذَابِ الْقَبْرِ وَعَذَابِ النَّارِ\n\nAllahumma ighfir lahu, warhamhu, wa \'afihi, wa\'fu \'anhu, wa akrim nuzulahu, wa wassi\' mudkhalahu, waghsilhu bil-ma\'i, wassalji wal-baradi, wa naqqihi mina-l-khataya kama yunaqqa-th-thawbu-l-abyadu mina-d-danas, wa abdilhu daran khayran min darihi, wa ahlan khayran min ahlihi, wa zawjan khayran min zawjihi, wa adkhilhu-l-jannata, wa a\'iz-hu min \'adhabi-l-qabri wa \'adhabi-n-nar.';
 
   @override
   String get translateThirdTakbirText =>
-      'Avf bin Malik anlattı: \"Bir gün Allah\'ın Resulü (sallallahu aleyhi ve sellem) cenaze namazı kıldı ve ölen kişi için dua ederken şunu söylediğini hatırladım: \'Ey Allah! Onu bağışla, ona merhamet et, ona rahatlık ver, ona iyi bir kabul göster, mezarını genişlet, onu su, kar ve dolu ile yıka! Onu günahlardan temizle, beyaz elbiseyi kirden temizlediğin gibi, ona evinden daha iyi bir ev, ailesinden daha iyi bir aile, eşinden daha iyi bir eş ver ve onu Cennet\'e koy, onu kabir azabından ve Ateş azabından koru!\'\" - Ebu Abdurrahman dedi: \"Ve ben bile kendim ölen kişinin yerinde olmak istedim\". Müslim 2/663.';
+      '\'Awf ibn Malik şöyle rivayet etmiştir: \"Bir gün Allah\'ın Resulü (Allah\'ın selamı ve bereketi onun üzerine olsun) cenaze namazı kıldırdı ve ben onun, vefat eden kişi için yaptığı şu duayı ezberledim:\n\n«Ey Allah\'ım! Onu bağışla, ona merhamet et, onu kurtuluşa eriştir ve onu güzel bir şekilde karşıla. Kabrini genişlet ve onu su, kar ve dolu ile yıka! Onu günahlardan arındır, tıpkı beyaz bir giysiyi kirden arındırdığın gibi. Ona evinin daha hayırlısını, ailesinin daha hayırlısını ve eşinin daha hayırlısını ver. Onu Cennet\'e dahil et ve kabir azabından ve Cehennem ateşinden koru!» - Ebu Abdurrahman dedi ki: \'Bu duayı duyduğumda, vefat edenin yerinde olmayı diledim.\' (Sahih Muslim 2/663).';
 
   @override
-  String get duaVariationsTitle => 'Ölen Kişiye Göre Dua Varyasyonları';
+  String get duaVariationsTitle => 'Merhuma Göre Dua Çeşitleri';
 
   @override
   String get duaVariationsText =>
-      '📌 Ölen kişi bir erkek ise\n\n- لَهُ (lehu) formunu kullanın\n\n📌 Ölen kişi bir kadın ise\n\n- Tüm formları eril\'den dişil\'e değiştirin: لَهَا (leha)\n\n📌 Ölen kişiler birkaç (sadece erkekler) ise\n\n- Eril çoğul formu kullanın: لَهُمْ (lehum)\n\n📌 Ölen kişiler birkaç (sadece kadınlar) ise\n\n- Dişil çoğul formu kullanın: لَهُنَّ (lehunne)';
+      '📌 Eğer vefat eden kişi bir erkekse\n\n- Aşağıdaki formu kullanın: لَهُ (lahu)\n\nاللَّهُمَّ اغْفِرْ لَهُ، وَارْحَمْهُ،\n\n(Allahumma ighfir lahu, warhamhu.)\n\n📌 Eğer vefat eden kişi bir kadınsa\n\n- Erkek formunun yerine kadın formunu kullanın: لَهَا (laha)\n\nاللَّهُمَّ اغْفِرْ لَهَا، وَارْحَمْهَا،\n\n(Allahumma ighfir laha, warhamha.)\n\n📌 Eğer vefat edenler birden fazla erkekse\n\n- Erkek çoğul formunu kullanın: لَهُمْ (lahum)\n\nاللَّهُمَّ اغْفِرْ لَهُمْ، وَارْحَمْهُمْ،\n\n(Allahumma ighfir lahum, warhamhum.)\n\n📌 Eğer vefat edenler birden fazla kadınsa\n\n- Kadın çoğul formunu kullanın: لَهُنَّ (lahunna)\n\nاللَّهُمَّ اغْفِرْ لَهُنَّ، وَارْحَمْهُنَّ،\n\n(Allahumma ighfir lahunna, warhamhunna.)\n\n📌 Eğer vefat eden kişinin cinsiyeti bilinmiyorsa veya vefat edenler birden fazla olup hem erkekler hem kadınlar varsa, şu formu kullanın: لَهُمْ (lahum).\n\nاللَّهُمَّ اغْفِرْ لَهُمْ، وَارْحَمْهُمْ،\n\n(Allahumma ighfir lahum, warhamhum.)';
 
   @override
   String get fourthTakbirTitle => '4. Dördüncü Tekbir';
 
   @override
   String get fourthTakbirText =>
-      'Tekbir söyleyin (elleri kaldırmadan):\n\nاللَّهُ أَكْبَرُ - Allahu Ekber\n\nDua yapabilirsiniz, ancak bu zorunlu değildir.';
+      'Eller kaldırılmadan tekbir getirilir:\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nBir dua yapılabilir, ancak zorunlu değildir.';
 
   @override
   String get fourthTakbirAdditionalInfo =>
-      'Dördüncü tekbirden sonra ölen kişi için dua yapmanın caizliği hakkında.';
+      'Dördüncü tekbirden sonra vefat eden kişi için dua etmenin caizliği hakkında.\n\nRivayet edilir ki, Abdullah ibn Abi Awfa kızının cenaze namazını kıldığında dört kez tekbir getirmiştir. Dördüncü tekbirden sonra, iki tekbir arasındaki süre kadar bekleyerek kızının bağışlanması için Allah\'a dua etmiş ve onun için niyazda bulunmuştur. Daha sonra şöyle demiştir: «Resulullah (Allah\'ın selamı ve bereketi onun üzerine olsun) da böyle yapardı.» (al-Hakim 1/512. Bkz. \"Sahih Sunan İbn Mace\" 1220.)';
 
   @override
-  String get taslimTitle => 'Namazın Bitirilmesi (Selam)';
+  String get taslimTitle => 'Namazın Sonlandırılması (Teslim)';
 
   @override
   String get taslimText =>
-      '📌 Selamı bir kez sağa veya iki kez (sağa ve sola) söyleyebilirsiniz.\n\nAllah\'ın Resulü (sallallahu aleyhi ve sellem) cenaze namazı kılarken hem bir hem de iki selam yapardı, ancak bir selamı daha sık yapardı.';
+      '📌 Teslim, sağ tarafa bir kez veya sağa ve sola iki kez verilebilir.\n\nResulullah (Allah\'ın selamı ve bereketi onun üzerine olsun) cenaze namazında bazen bir, bazen de iki selam verirdi, ancak çoğunlukla tek selamla bitirirdi.';
 
   @override
-  String get translateText => 'Çeviri';
+  String get translateText => 'çeviri';
 
   @override
-  String get sincerity => 'Samimiyet';
+  String get sincerity => 'İhlâs';
 
   @override
-  String get laws => 'Yasalar';
+  String get laws => 'Hükümler';
 
   @override
   String get choiceOfCompanions => 'Yol Arkadaşı Seçimi';
@@ -178,7 +178,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get financialIndependence => 'Mali Bağımsızlık';
 
   @override
-  String get nobleManners => 'Asil Davranışlar';
+  String get nobleManners => 'Asil Ahlak';
 
   @override
   String get zikrAndPrayers => 'Zikir ve Dualar';
@@ -187,28 +187,28 @@ class AppLocalizationsTr extends AppLocalizations {
   String get cautionInRelationships => 'İlişkilerde Dikkat';
 
   @override
-  String get atonementAndRewards => 'Kefaret ve Ödüller';
+  String get atonementAndRewards => 'Günahların Kefareti ve Sevap';
 
   @override
-  String get hajjForWomen => 'Kadınlar için Hac';
+  String get hajjForWomen => 'Kadınlar İçin Hac';
 
   @override
-  String get perfectHajj => 'Mükemmel Hac';
+  String get perfectHajj => 'Kusursuz Hac';
 
   @override
-  String get followingTheSunnah => 'Sünnete Uyma';
+  String get followingTheSunnah => 'Sünnete Uymak';
 
   @override
-  String get hajjObligationEvidence => 'Hac Yükümlülüğü Kanıtı';
+  String get hajjObligationEvidence => 'Haccın Farz Olduğuna Dair Deliller';
 
   @override
-  String get umrahObligationEvidence => 'Umre Yükümlülüğü Kanıtı';
+  String get umrahObligationEvidence => 'Umrenin Farz Olduğuna Dair Deliller';
 
   @override
   String get conclusion => 'Sonuç';
 
   @override
-  String get step1EnterIhram => 'Mikat noktasında ihrama girin.';
+  String get step1EnterIhram => '\nMikat noktasında ihrama girin.\n';
 
   @override
   String get step1WhenEnteringIhram => 'İhrama girerken şunu söyleyin:';
@@ -218,7 +218,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step1TurnToQiblah =>
-      'Labbayka Allahumma bi-´umrah.\n\nKıbleye yönelin ve şunu söyleyin:';
+      '\nLabbayka Allahumma bi-´umrah.\n\nKıbleye yönelin ve şunu söyleyin:\n';
 
   @override
   String get step1SecondArabic =>
@@ -238,7 +238,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step1EnteringSacredMosque =>
-      'Mescid-i Haram\'a sağ ayak ile girerken şunu söyleyin:';
+      '\n    \nMescid-i Haram\'a sağ ayak ile girerken şunu söyleyin:\n';
 
   @override
   String get step1EnteringSacredMosqueDuaArabic =>
@@ -253,7 +253,7 @@ class AppLocalizationsTr extends AppLocalizations {
       'اَللَّهُمَّ مَحِلِّي حَيْثُ حَبَسْتَنِي';
 
   @override
-  String get step1ConditioningHajj => 'Hac veya Umre için şart koşma.';
+  String get step1ConditioningHajj => '\n\nHac veya Umre için şart koşma.\n';
 
   @override
   String get step1ConditioningHajjText =>
@@ -264,7 +264,7 @@ class AppLocalizationsTr extends AppLocalizations {
       '«Allahumma mahilli haysu habastani»\n\n«Ey Allah\'ım! Eğer beni bir şey engellerse, ihramdan çıkışım burada olsun.»\n\nBu hadis, sahih olarak kabul edilmiştir. Ayrıca bkz. \"Sahîh Ebû Dâvûd\" (1776).\n\nBundan dolayı, eğer hacı bu şekilde niyet eder ve bir engel çıkarsa ya da hastalanırsa, hac veya umre ibadetini tamamlamadan ihramdan çıkabilir. Bu durumda ceza olarak kurban kesmesi gerekmez ve yeniden hac yapmasına da gerek yoktur. Ancak bu onun farz olan ilk haccı ise, bu durumda onu tekrar yapması gerekir.';
 
   @override
-  String get step1UmrahForParents => 'Ebeveynler için Umre';
+  String get step1UmrahForParents => '\n\nEbeveynler için Umre\n';
 
   @override
   String get step1UmrahForFatherArabic =>
@@ -303,11 +303,11 @@ class AppLocalizationsTr extends AppLocalizations {
       'Eğer ebeveynleriniz veya başka bir kişi için umre yapmak istiyorsanız, normal telbiye yerine verilen formüllerden birini okuyun, «abi» (baba), «ummi» (anne) kelimelerinden sonra veya sadece «\'an» kelimesinden sonra umrenin yapıldığı kişinin adını ekleyin. Adı belirterek niyet ve telbiyeyi söyledikten sonra, diğer tüm eylemler, dualar (dua) ve Allah\'ı anma (zikir) normal şekilde yapılır, sanki kendiniz için umre yapıyormuş gibi. Tek fark niyettir.';
 
   @override
-  String get step2KaabaText1 => 'Kâbe\'yi Tavaf';
+  String get step2KaabaText1 => '\nKâbe\'yi Tavaf';
 
   @override
   String get step2KaabaText2 =>
-      'Kâbe etrafında yedi kez tavaf etmeye başlayın (Tavaf).\nBu tavafın başlangıcından bitimine kadar erkekler sağ omuzlarını açık bırakmalıdır.\n        \nBundan sonra, hacı Kara Taş\'a (Hacerü\'l-Esved) eliyle dokunur ve onu öper.\n        \nEğer Kara Taş\'ı öpmek mümkün değilse, ona eliyle dokunmalıdır.\n\nEğer Kara Taş\'a dokunmak ve öpmek mümkün değilse, o zaman ona yönelin, sağ elinizle işaret edin ve «Allahu Akbar» (Allah en büyüktür) deyin. (Bütün bunlar Kâbe\'yi tavaf ederken her turda yapılmalıdır.)';
+      '\nKâbe etrafında yedi kez tavaf etmeye başlayın (Tavaf).\nBu tavafın başlangıcından bitimine kadar erkekler sağ omuzlarını açık bırakmalıdır.\n        \nBundan sonra, hacı Kara Taş\'a (Hacerü\'l-Esved) eliyle dokunur ve onu öper.\n        \nEğer Kara Taş\'ı öpmek mümkün değilse, ona eliyle dokunmalıdır.\n\nEğer Kara Taş\'a dokunmak ve öpmek mümkün değilse, o zaman ona yönelin, sağ elinizle işaret edin ve «Allahu Akbar» (Allah en büyüktür) deyin. (Bütün bunlar Kâbe\'yi tavaf ederken her turda yapılmalıdır.)\n';
 
   @override
   String get step2KaabaText3 =>
@@ -325,11 +325,11 @@ class AppLocalizationsTr extends AppLocalizations {
   String get step2TakbirArabic => 'الله أكبر';
 
   @override
-  String get step3PrayerAfterTawaf => 'Tavaftan sonra namaz.';
+  String get step3PrayerAfterTawaf => '\nKâbe\'yi tavaf ettikten sonra namaz';
 
   @override
   String get step3CompletedSevenCircuits =>
-      'Kâbe etrafında yedi turu tamamladıktan sonra, erkekler sağ omuzlarını kapatır. Sonra İbrahim makamına yönelin ve şunu söyleyin:';
+      '\nKâbe etrafında yedi turu tamamladıktan sonra, erkekler sağ omuzlarını kapatır. Sonra İbrahim makamına yönelin ve şunu söyleyin:\n';
 
   @override
   String get step3ArabicText =>
@@ -340,31 +340,31 @@ class AppLocalizationsTr extends AppLocalizations {
       'Wa-ttahizu mim-maqomi Ibrohima musollya.\n    \n«Ve İbrahim\'in makamını namaz yeri edinin» (Bakara Suresi, 125. ayet).\n    \nEğer mümkünse, İbrahim Makamı\'nda veya Mescid-i Haram\'ın herhangi bir yerinde iki rekât namaz kılın. Önünüze bir engel koymayı unutmayın ki kimse sizinle engel arasından geçmesin.\nİlk rekâtta 1. sure «Al-Fatihah = Fatiha Suresi» okunduktan sonra 109. sure «Al-Kafirun = Kâfirun Suresi» okunur, ikinci rekâtta «Al-Fatihah» okunduktan sonra 112. sure «Al-Ikhlas = İhlas Suresi» okunur.\n\nNamazı tamamladıktan sonra Zemzem suyu kaynağına yönelin.';
 
   @override
-  String get step4DrinkingZamzam => 'Zemzem Suyu İçme.';
+  String get step4DrinkingZamzam => '\nZemzem Suyu İçme.';
 
   @override
   String get step4ZamzamText =>
-      'Suyu için ve başınıza dökün.\n    \nCabir (radıyallahu anh) şöyle anlatmıştır: \"Peygamber (sallallahu aleyhi ve sellem) Zemzem kuyusuna yöneldi, ondan su içti ve başına döktü.\" (Ahmed 3/394), (İbn Huzeyme 4/305). Hadisin sahih olduğunu ez-Zerkeşî, Bedruddin el-Aynî, Şuayb el-Arnaût onaylamıştır. Bkz. «Umdetü\'l-Kârî» (9/227), «Haşiye \'alâ\'l-Menâsik» (s. 263), «Tahric el-Müsned» (15243).\n    \nCabir\'den (radıyallahu anh) rivayet edildiğine göre, Allah Resulü (sallallahu aleyhi ve sellem) şöyle buyurdu: «Zemzem suyu, hangi niyetle içilirse ona vesile olur.»\n(Ahmed 3/357), (İbn Mace 3062), (el-Hâkim 1739). Hadisin sahih olduğunu Süfyan ibn Uyeyne, el-Münzirî, ed-Dümyâtî, İbn Kayyim, ez-Zerkeşî, İbn Hacer, el-Elbânî onaylamıştır. Bkz. \"el-Mücâlasa\" (509), \"el-Metcar er-Râbih\" (982), \"Zâdü\'l-Meâd\" (4/393), \"el-Makâsıdü\'l-Hasene\" (928), \"Feyzü\'l-Kadîr\" (7759), \"Sahîh et-Terğîb\" (1165).\n    \neş-Şevkânî şöyle demiştir: \"Bu hadis, Zemzem suyunun hangi niyetle içilirse içilsin içen kişiye fayda sağlayacağına delildir. Çünkü \'hangi niyetle içilirse ona vesile olur\' ifadesi genel bir hüküm içermektedir.\" Bkz. \"Neylü\'l-Evtâr\" (5/105).\n\nen-Nevevî şöyle demiştir: \"Bu hadisin anlamı şudur ki, bir kişi Zemzem suyunu belirli bir niyetle içerse, o niyetine ulaşır. Gerçekten de ilim ehli ve salih kişiler bu suyu dünya ve ahiret işlerinde dileklerine ulaşmak için içmişler ve Allah\'ın lütfuyla istediklerine ulaşmışlardır.\" Bkz. \"Tehzîb el-Esma ve\'l-Luğât\" (3/139).';
+      '\nSuyu için ve başınıza dökün.\n    \nCabir (radıyallahu anh) şöyle anlatmıştır: \"Peygamber (sallallahu aleyhi ve sellem) Zemzem kuyusuna yöneldi, ondan su içti ve başına döktü.\" (Ahmed 3/394), (İbn Huzeyme 4/305). Hadisin sahih olduğunu ez-Zerkeşî, Bedruddin el-Aynî, Şuayb el-Arnaût onaylamıştır. Bkz. «Umdetü\'l-Kârî» (9/227), «Haşiye \'alâ\'l-Menâsik» (s. 263), «Tahric el-Müsned» (15243).\n    \nCabir\'den (radıyallahu anh) rivayet edildiğine göre, Allah Resulü (sallallahu aleyhi ve sellem) şöyle buyurdu: «Zemzem suyu, hangi niyetle içilirse ona vesile olur.»\n(Ahmed 3/357), (İbn Mace 3062), (el-Hâkim 1739). Hadisin sahih olduğunu Süfyan ibn Uyeyne, el-Münzirî, ed-Dümyâtî, İbn Kayyim, ez-Zerkeşî, İbn Hacer, el-Elbânî onaylamıştır. Bkz. \"el-Mücâlasa\" (509), \"el-Metcar er-Râbih\" (982), \"Zâdü\'l-Meâd\" (4/393), \"el-Makâsıdü\'l-Hasene\" (928), \"Feyzü\'l-Kadîr\" (7759), \"Sahîh et-Terğîb\" (1165).\n    \neş-Şevkânî şöyle demiştir: \"Bu hadis, Zemzem suyunun hangi niyetle içilirse içilsin içen kişiye fayda sağlayacağına delildir. Çünkü \'hangi niyetle içilirse ona vesile olur\' ifadesi genel bir hüküm içermektedir.\" Bkz. \"Neylü\'l-Evtâr\" (5/105).\n\nen-Nevevî şöyle demiştir: \"Bu hadisin anlamı şudur ki, bir kişi Zemzem suyunu belirli bir niyetle içerse, o niyetine ulaşır. Gerçekten de ilim ehli ve salih kişiler bu suyu dünya ve ahiret işlerinde dileklerine ulaşmak için içmişler ve Allah\'ın lütfuyla istediklerine ulaşmışlardır.\" Bkz. \"Tehzîb el-Esma ve\'l-Luğât\" (3/139).';
 
   @override
-  String get step5ReturnToBlackStone => 'Hacerü\'l-Esved\'e Dönüş.';
+  String get step5ReturnToBlackStone => '\nHacerü\'l-Esved\'e Dönüş.';
 
   @override
   String get step5ReturnReciteTakbir =>
-      'Hacerü\'l-Esved\'e dönün, tekbir getirin ve daha önce açıklandığı gibi ona dokunun. Veya ona elinizle işaret edin ve tekbir getirin. Allah en büyüktür.';
+      '\nHacerü\'l-Esved\'e dönün, tekbir getirin ve daha önce açıklandığı gibi ona dokunun. Veya ona elinizle işaret edin ve tekbir getirin. Allah en büyüktür.';
 
   @override
-  String get step5AllahIsGreat => 'Allahu Akbar.';
+  String get step5AllahIsGreat => '\nAllahu Akbar.\n';
 
   @override
   String get step5TakbirArabic => 'الله أكبر';
 
   @override
-  String get step6SafaAndMarwa => 'Safa ve Merve';
+  String get step6SafaAndMarwa => '\nSafa ve Merve';
 
   @override
   String get step6HeadTowardsSafa =>
-      'Safa ve Merve tepeleri arasında yedi kez gerçekleştirilen sa\'y ibadetini yerine getirmek için Safa tepesine gidin. Sa\'y ibadetine Safa tepesinden başlayın.\n    \n    \n       Safa\'ya yaklaşırken şu ayeti okuyun:';
+      '\nSafa ve Merve tepeleri arasında yedi kez gerçekleştirilen sa\'y ibadetini yerine getirmek için Safa tepesine gidin. Sa\'y ibadetine Safa tepesinden başlayın.\n    \n    \n       Safa\'ya yaklaşırken şu ayeti okuyun:\n';
 
   @override
   String get step6SurahBaqarahArabic =>
@@ -375,7 +375,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step6SurahBaqarahText =>
-      'Inna Ssofaa wal-Marwata min sha\'aaa\'iril laah, faman hajjal Baita awi\'tamaro falaa junaaha \'alaihi ayyatt´owwafa bihimaa, wa man tat´owwa\'a hoyron fa-inna-LLAha Shakirun ´alim.\n       \n«Şüphesiz ki Safa ve Merve, Allah\'ın sembollerindendir. Bu nedenle, kim Beytullah\'a hac veya umre için gelirse, onların arasında yürüyerek geçmesinde kendisine bir günah yoktur. Kim gönülden bir iyilik yaparsa, şüphesiz Allah, şükrün karşılığını verendir, bilendir.» (Bakara Suresi, 158. Ayet).\n    \n    Sonra şunu söyleyin:';
+      'Inna Ssofaa wal-Marwata min sha\'aaa\'iril laah, faman hajjal Baita awi\'tamaro falaa junaaha \'alaihi ayyatt´owwafa bihimaa, wa man tat´owwa\'a hoyron fa-inna-LLAha Shakirun ´alim.\n       \n«Şüphesiz ki Safa ve Merve, Allah\'ın sembollerindendir. Bu nedenle, kim Beytullah\'a hac veya umre için gelirse, onların arasında yürüyerek geçmesinde kendisine bir günah yoktur. Kim gönülden bir iyilik yaparsa, şüphesiz Allah, şükrün karşılığını verendir, bilendir.» (Bakara Suresi, 158. Ayet).';
 
   @override
   String get step6WeBeginArabic => 'نَبْدَأُ بِمَا بَدَأَ اللهُ بِهِ';
@@ -385,7 +385,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step6WeBeginText =>
-      'Nabdau bima badaa-Llahu bihi\n\n«Biz, Allah\'ın başladığı ile başlıyoruz.»\n    \nSafa tepesine çıkın, yüzünüzü Kâbe\'ye çevirin ve şu zikri okuyun:';
+      'Nabdau bima badaa-Llahu bihi\n\n«Biz, Allah\'ın başladığı ile başlıyoruz.»\n    \nSafa tepesine çıkın, yüzünüzü Kâbe\'ye çevirin ve şu zikri okuyun:\n';
 
   @override
   String get step6RemembranceArabic =>
@@ -397,7 +397,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step6RemembranceText =>
-      'Allahu Akbar! Allahu Akbar! Allahu Akbar!\nLa ilaha illa-Llahu wahdahu la sharika lahu. Lahul mulku wa lahul hamdu yuhyi wa yumitu wa huwa \'ala kulli shay\'in qodir. La ilaha illa-Llahu wahdahu la sharika lah, anjaza wa\'dahu, wa nasaro \'abdahu, wa hazamal ahzaba wahdahu\n\n«Allah en büyüktür! Allah en büyüktür! Allah en büyüktür!\nAllah\'tan başka ilah yoktur, O tektir ve O\'nun ortağı yoktur! Mülk O\'nundur, hamd O\'na aittir. O, diriltir ve öldürür. O, her şeye kadirdir! Allah\'tan başka ilah yoktur, O tektir ve O\'nun ortağı yoktur! O, vaadini yerine getirdi, kuluna yardım etti ve düşman birliklerini tek başına mağlup etti.»\n    \nBu sözleri üç kez tekrarlayın ve ilk iki kez ellerinizi kaldırarak dua edin. Sonra Safa\'dan Merve\'ye doğru yürümeye başlayın. Safa\'dan Merve\'ye gitmek bir tur, Merve\'den Safa\'ya dönmek ikinci tur olarak sayılır. Merve tepesine ulaştığınızda aynı düzeni tekrar edin: zikir – dua – zikir – dua – zikir. Eller dua için ilk iki tekrarda kaldırılmalıdır. Bu zikir ve dualar, yedinci ve son tur hariç, Safa ve Merve tepelerine her çıkışta tekrarlanmalıdır. Yeşil işaretli ilk noktaya ulaştığınızda, erkekler ikinci işarete kadar hızlı koşmalıdır. Yolun geri kalanı normal yürüyerek tamamlanmalıdır.\n\nSa\'y ibadeti sırasında şu duayı okuyabilirsiniz:';
+      'Allahu Akbar! Allahu Akbar! Allahu Akbar!\nLa ilaha illa-Llahu wahdahu la sharika lahu. Lahul mulku wa lahul hamdu yuhyi wa yumitu wa huwa \'ala kulli shay\'in qodir. La ilaha illa-Llahu wahdahu la sharika lah, anjaza wa\'dahu, wa nasaro \'abdahu, wa hazamal ahzaba wahdahu\n\n«Allah en büyüktür! Allah en büyüktür! Allah en büyüktür!\nAllah\'tan başka ilah yoktur, O tektir ve O\'nun ortağı yoktur! Mülk O\'nundur, hamd O\'na aittir. O, diriltir ve öldürür. O, her şeye kadirdir! Allah\'tan başka ilah yoktur, O tektir ve O\'nun ortağı yoktur! O, vaadini yerine getirdi, kuluna yardım etti ve düşman birliklerini tek başına mağlup etti.»\n    \nBu sözleri üç kez tekrarlayın ve ilk iki kez ellerinizi kaldırarak dua edin. Sonra Safa\'dan Merve\'ye doğru yürümeye başlayın. Safa\'dan Merve\'ye gitmek bir tur, Merve\'den Safa\'ya dönmek ikinci tur olarak sayılır. Merve tepesine ulaştığınızda aynı düzeni tekrar edin: zikir – dua – zikir – dua – zikir. Eller dua için ilk iki tekrarda kaldırılmalıdır. Bu zikir ve dualar, yedinci ve son tur hariç, Safa ve Merve tepelerine her çıkışta tekrarlanmalıdır. Yeşil işaretli ilk noktaya ulaştığınızda, erkekler ikinci işarete kadar hızlı koşmalıdır. Yolun geri kalanı normal yürüyerek tamamlanmalıdır.\n\nSa\'y ibadeti sırasında şu duayı okuyabilirsiniz:\n';
 
   @override
   String get step6DuasDuringSaiArabic =>
@@ -436,7 +436,7 @@ class AppLocalizationsTr extends AppLocalizations {
       'Allahumma solli \'ala Muhammadin wa sallim! Allahumma, inni as\'aluka min fadlika!\n    \n«Ey Allah\'ım! Muhammed\'e salât ve selam eyle! Ey Allah\'ım! Şüphesiz, Senin lütfunu diliyorum!»';
 
   @override
-  String get step7ShavingHead => 'Başı tıraş etmek veya saçları kısaltmak.';
+  String get step7ShavingHead => '\nBaşı tıraş etmek veya saçları kısaltmak.';
 
   @override
   String get step7MenShortenHair =>
