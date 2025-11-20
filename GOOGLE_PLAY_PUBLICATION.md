@@ -96,11 +96,30 @@ flutter build apk --release
 **Варианты размещения URL:**
 
 **Вариант 1: GitHub Pages (рекомендуется, бесплатно)**
-1. Создайте репозиторий на GitHub (или используйте существующий)
-2. Создайте ветку `gh-pages` или включите GitHub Pages в настройках репозитория
-3. Загрузите файл `privacy-policy.html` в корень репозитория
-4. URL будет: `https://yourusername.github.io/repository-name/privacy-policy.html`
-5. Или переименуйте файл в `index.html` в папке `docs/` и используйте: `https://yourusername.github.io/repository-name/`
+
+Файл `privacy-policy.html` уже находится в корне вашего проекта. Просто:
+
+1. Запушьте файл в ваш текущий репозиторий (в ветку `main` или `master`):
+   ```bash
+   git add privacy-policy.html
+   git commit -m "Add privacy policy for Google Play"
+   git push origin main
+   ```
+
+2. Включите GitHub Pages в настройках репозитория:
+   - Откройте ваш репозиторий на GitHub
+   - Перейдите в **Settings** → **Pages**
+   - Source: выберите **"Deploy from a branch"**
+   - Branch: выберите **`main`** (или `master` - вашу текущую рабочую ветку)
+   - Folder: выберите **`/ (root)`**
+   - Нажмите **Save**
+
+3. URL будет: `https://yourusername.github.io/repository-name/privacy-policy.html`
+   - Например: `https://yourusername.github.io/umra_flutter/privacy-policy.html`
+
+**Важно:** Не нужно создавать отдельную ветку `gh-pages`! Используйте вашу текущую рабочую ветку (`main` или `master`).
+
+**Примечание:** Файл `privacy-policy.html` уже содержит поддержку двух языков (русский и английский) с автоматическим переключением языков в зависимости от языка браузера пользователя.
 
 **Вариант 2: Другие хостинги**
 - Разместите `privacy-policy.html` на любом веб-хостинге
@@ -111,6 +130,7 @@ flutter build apk --release
 - ✅ Privacy Policy интегрирована в настройки приложения
 - ✅ Локализация на русском и английском языках
 - ✅ HTML файл готов для размещения (`privacy-policy.html`)
+- ✅ HTML файл поддерживает два языка (русский и английский) с переключателем языков
 
 **Что включено в политику:**
 - ✅ Приложение НЕ собирает данные (только локальное хранение)
