@@ -22,9 +22,11 @@ class SettingsScreen extends StatelessWidget {
   }
 
   Future<void> _launchAppStore() async {
-    final Uri appStoreUri = Uri.parse('https://apps.apple.com/app/id1673683355');
-    if (await canLaunchUrl(appStoreUri)) {
-      await launchUrl(appStoreUri, mode: LaunchMode.externalApplication);
+    final Uri playStoreUri = Uri.parse(
+      'https://play.google.com/store/apps/details?id=saydulayev.wien_gmail.com.umra',
+    );
+    if (await canLaunchUrl(playStoreUri)) {
+      await launchUrl(playStoreUri, mode: LaunchMode.externalApplication);
     }
   }
 
@@ -122,9 +124,7 @@ class SettingsScreen extends StatelessWidget {
   }) {
     return Card(
       elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
@@ -157,18 +157,12 @@ class SettingsScreen extends StatelessWidget {
                     if (subtitle != null)
                       Text(
                         subtitle,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black54,
-                        ),
+                        style: TextStyle(fontSize: 14, color: Colors.black54),
                       ),
                   ],
                 ),
               ),
-              Icon(
-                Icons.chevron_right,
-                color: theme.primaryColor,
-              ),
+              Icon(Icons.chevron_right, color: theme.primaryColor),
             ],
           ),
         ),
@@ -212,7 +206,8 @@ class SettingsScreen extends StatelessWidget {
           children: languages.map((lang) {
             return ListTile(
               title: Text(lang['name']!),
-              trailing: localizationProvider.currentLocale.languageCode ==
+              trailing:
+                  localizationProvider.currentLocale.languageCode ==
                       lang['code']
                   ? const Icon(Icons.check, color: Colors.green)
                   : null,
