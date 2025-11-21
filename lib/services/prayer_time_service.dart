@@ -32,7 +32,7 @@ class PrayerTimeService {
   // Получить время молитв на сегодня
   static PrayerTimeData? getTodayPrayerTimes() {
     try {
-      final now = DateTime.now();
+    final now = DateTime.now();
       final date = DateTime(now.year, now.month, now.day);
       
       // Координаты Мекки
@@ -65,13 +65,13 @@ class PrayerTimeService {
     } catch (e) {
       debugPrint('Error calculating prayer times: $e');
       return null;
-    }
+  }
   }
   
   // Получить время молитв на завтра
   static PrayerTimeData? getTomorrowPrayerTimes() {
     try {
-      final tomorrow = DateTime.now().add(const Duration(days: 1));
+    final tomorrow = DateTime.now().add(const Duration(days: 1));
       final date = DateTime(tomorrow.year, tomorrow.month, tomorrow.day);
       
       // Координаты Мекки
@@ -102,7 +102,7 @@ class PrayerTimeService {
     } catch (e) {
       debugPrint('Error calculating tomorrow prayer times: $e');
       return null;
-    }
+  }
   }
   
   // Получить время Qiyam (последняя треть ночи)
@@ -162,7 +162,7 @@ class PrayerTimeService {
           final tomorrow = getTomorrowPrayerTimes();
           nextPrayerTime = tomorrow?.fajr ?? prayerTimes.fajr.add(const Duration(days: 1));
         } else {
-          nextPrayerTime = prayerTimes.fajr;
+        nextPrayerTime = prayerTimes.fajr;
         }
         break;
       case 'Sunrise':
@@ -202,12 +202,24 @@ class PrayerTimeService {
       // Используем библиотеку hijri_date для конвертации в исламский календарь
       final hijriDate = HijriDate.fromDate(now);
       
-      // Форматируем дату в формате "d MMMM yyyy" как в Swift
+      // Форматируем дату в формате "d MMMM" (день и месяц)
       // Используем longMonthName из библиотеки для правильного названия месяца
-      return '${hijriDate.hDay} ${hijriDate.longMonthName} ${hijriDate.hYear}';
+      return '${hijriDate.hDay} ${hijriDate.longMonthName}';
     } catch (e) {
       // В случае ошибки возвращаем григорианскую дату
-      return DateFormat('d MMMM yyyy', 'en').format(DateTime.now());
+      return DateFormat('d MMMM', 'en').format(DateTime.now());
+    }
+  }
+  
+  // Получить исламский год
+  static String getIslamicYear() {
+    try {
+      final now = DateTime.now();
+      final hijriDate = HijriDate.fromDate(now);
+      return hijriDate.hYear.toString();
+    } catch (e) {
+      // В случае ошибки возвращаем григорианский год
+      return DateTime.now().year.toString();
     }
   }
 }

@@ -109,10 +109,13 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
               duration: const Duration(milliseconds: 600),
               curve: Curves.elasticOut,
               builder: (context, value, child) {
+                // Ограничиваем значение opacity в диапазоне 0.0-1.0
+                final clampedOpacity = value.clamp(0.0, 1.0);
+                final clampedScale = value.clamp(0.0, 1.0);
                 return Transform.scale(
-                  scale: value,
+                  scale: clampedScale,
                   child: Opacity(
-                    opacity: value,
+                    opacity: clampedOpacity,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 24,
@@ -166,7 +169,6 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
             _buildButton(
               context,
               label: l10n.addString,
-              icon: Icons.add,
               onPressed: _incrementCounter,
               theme: theme,
               enabled: _counter < 7,
@@ -175,7 +177,6 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
             _buildButton(
               context,
               label: l10n.resetString,
-              icon: Icons.refresh,
               onPressed: _decrementCounter,
               theme: theme,
               enabled: _counter > 0,
@@ -190,7 +191,6 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
   Widget _buildButton(
     BuildContext context, {
     required String label,
-    required IconData icon,
     required VoidCallback onPressed,
     required theme,
     required bool enabled,
@@ -209,19 +209,12 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
         ),
         elevation: 4,
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 28),
-          const SizedBox(height: 8),
-          Text(
-            label,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ],
+      child: Text(
+        label,
+        style: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     );
   }

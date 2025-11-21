@@ -55,7 +55,7 @@ class UsefulInfoScreen extends StatelessWidget {
             _buildInfoCard(
               context,
               theme,
-              title: 'Janaza Prayer Guide',
+              title: l10n.janazaPrayerGuide,
               onTap: () {
                 Navigator.push(
                   context,
@@ -72,14 +72,13 @@ class UsefulInfoScreen extends StatelessWidget {
   }
 
   String _getChapterTitle(String key, AppLocalizations l10n) {
-    // Используем локализацию, если ключ существует, иначе fallback на английский
     switch (key) {
       case 'etiquetteManners':
-        return 'Etiquette and Manners';
+        return l10n.etiquetteManners;
       case 'hajjUmrahVirtues':
-        return 'Hajj and Umrah Virtues';
+        return l10n.hajjUmrahVirtues;
       case 'hajjUmrahObligation':
-        return 'Hajj and Umrah Obligation';
+        return l10n.hajjUmrahObligation;
       default:
         return key;
     }

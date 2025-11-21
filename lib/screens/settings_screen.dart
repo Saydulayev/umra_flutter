@@ -6,6 +6,7 @@ import '../providers/theme_provider.dart';
 import '../providers/localization_provider.dart';
 import '../models/app_theme.dart';
 import '../widgets/theme_selection_sheet.dart';
+import 'privacy_policy_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -21,9 +22,11 @@ class SettingsScreen extends StatelessWidget {
   }
 
   Future<void> _launchAppStore() async {
-    final Uri appStoreUri = Uri.parse('https://apps.apple.com/app/id1673683355');
-    if (await canLaunchUrl(appStoreUri)) {
-      await launchUrl(appStoreUri, mode: LaunchMode.externalApplication);
+    final Uri playStoreUri = Uri.parse(
+      'https://play.google.com/store/apps/details?id=saydulayev.wien_gmail.com.umra',
+    );
+    if (await canLaunchUrl(playStoreUri)) {
+      await launchUrl(playStoreUri, mode: LaunchMode.externalApplication);
     }
   }
 
@@ -50,7 +53,7 @@ class SettingsScreen extends StatelessWidget {
             _buildSettingsItem(
               context,
               icon: Icons.message,
-              title: 'Feedback',
+              title: l10n.feedbackString,
               onTap: _launchEmail,
               theme: theme,
             ),
@@ -59,7 +62,7 @@ class SettingsScreen extends StatelessWidget {
             _buildSettingsItem(
               context,
               icon: Icons.star,
-              title: 'Rate the App',
+              title: l10n.rateTheAppString,
               onTap: _launchAppStore,
               theme: theme,
             ),
@@ -79,7 +82,7 @@ class SettingsScreen extends StatelessWidget {
             _buildSettingsItem(
               context,
               icon: Icons.palette,
-              title: 'App Theme',
+              title: l10n.appThemeString,
               subtitle: _getThemeName(themeProvider.selectedTheme, l10n),
               onTap: () {
                 showModalBottomSheet(
@@ -90,13 +93,18 @@ class SettingsScreen extends StatelessWidget {
               theme: theme,
             ),
             const SizedBox(height: 8),
-            // Notification Settings
+            // Privacy Policy
             _buildSettingsItem(
               context,
-              icon: Icons.notifications,
-              title: 'Notification Settings',
+              icon: Icons.privacy_tip,
+              title: l10n.privacyPolicyTitle,
               onTap: () {
-                Navigator.pushNamed(context, '/notification-settings');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PrivacyPolicyScreen(),
+                  ),
+                );
               },
               theme: theme,
             ),
@@ -116,9 +124,7 @@ class SettingsScreen extends StatelessWidget {
   }) {
     return Card(
       elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
@@ -151,18 +157,12 @@ class SettingsScreen extends StatelessWidget {
                     if (subtitle != null)
                       Text(
                         subtitle,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black54,
-                        ),
+                        style: TextStyle(fontSize: 14, color: Colors.black54),
                       ),
                   ],
                 ),
               ),
-              Icon(
-                Icons.chevron_right,
-                color: theme.primaryColor,
-              ),
+              Icon(Icons.chevron_right, color: theme.primaryColor),
             ],
           ),
         ),
@@ -187,6 +187,7 @@ class SettingsScreen extends StatelessWidget {
     BuildContext context,
     LocalizationProvider localizationProvider,
   ) {
+    final l10n = AppLocalizations.of(context)!;
     final languages = [
       {'code': 'ru', 'name': 'Русский'},
       {'code': 'en', 'name': 'English'},
@@ -199,13 +200,14 @@ class SettingsScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Select Language'),
+        title: Text(l10n.selectLanguageString),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: languages.map((lang) {
             return ListTile(
               title: Text(lang['name']!),
-              trailing: localizationProvider.currentLocale.languageCode ==
+              trailing:
+                  localizationProvider.currentLocale.languageCode ==
                       lang['code']
                   ? const Icon(Icons.check, color: Colors.green)
                   : null,

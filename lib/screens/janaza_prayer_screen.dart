@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 
 class JanazaPrayerScreen extends StatefulWidget {
@@ -12,18 +13,20 @@ class JanazaPrayerScreen extends StatefulWidget {
 class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
   bool _isSecondTakbirExpanded = false;
   bool _isThirdTakbirExpanded = false;
+  bool _isDuaVariationsExpanded = false;
 
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final theme = themeProvider.selectedTheme;
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: theme.lightBackgroundColor,
       appBar: AppBar(
-        title: const Text(
-          'Janaza Prayer Guide',
-          style: TextStyle(fontWeight: FontWeight.bold),
+        title: Text(
+          l10n.titleJanazaGuide,
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         backgroundColor: theme.lightBackgroundColor,
         elevation: 0,
@@ -36,32 +39,23 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildSection(
-                title: 'Basic Rules',
-                content:
-                    '📌 Essential Rules of the Janazah Prayer (Funeral Prayer).\n\n'
-                    'The prayer is performed while standing, without bowing (ruku\') or prostration (sujood). '
-                    'It consists of four takbirs (saying \'Allahu Akbar\').',
+                title: l10n.basicRules,
+                content: l10n.janazaBasicRules,
               ),
               const Divider(),
               _buildTakbirSection(
-                title: '1. First Takbir',
-                content:
-                    'Raise your hands to the level of your shoulders or ears and say:\n\n'
-                    'اللَّهُ أَكْبَرُ\n'
-                    'Allahu Akbar (\'Allah is the Greatest\')\n\n'
-                    'Then: Recite Surah Al-Fatihah.',
+                l10n: l10n,
+                title: l10n.firstTakbirTitle,
+                content: l10n.firstTakbirText,
               ),
               const Divider(),
               _buildTakbirSection(
-                title: '2. Second Takbir',
-                content:
-                    'Say the takbir (without raising the hands):\n\n'
-                    'اللَّهُ أَكْبَرُ - Allahu Akbar\n\n'
-                    'Then recite Salawat upon the Prophet ﷺ:'
-                    '\n\nاللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ...',
+                l10n: l10n,
+                title: l10n.secondTakbirTitle,
+                content: l10n.secondTakbirText,
                 isExpandable: true,
                 isExpanded: _isSecondTakbirExpanded,
-                expandedContent: 'Translation of Salawat...',
+                expandedContent: l10n.translateSecondTakbirText,
                 onExpandedChanged: (value) {
                   setState(() {
                     _isSecondTakbirExpanded = value;
@@ -70,16 +64,12 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
               ),
               const Divider(),
               _buildTakbirSection(
-                title: '3. Third Takbir',
-                content:
-                    'Say the takbir (without raising the hands):\n\n'
-                    'اللَّهُ أَكْبَرُ - Allahu Akbar\n\n'
-                    'Recite the dua for the deceased (if male):\n\n'
-                    'اللَّهُمَّ اغْفِرْ لَهُ، وَارْحَمْهُ،\n'
-                    'Allahumma ighfir lahu wa arhamhu.',
+                l10n: l10n,
+                title: l10n.thirdTakbirTitle,
+                content: l10n.thirdTakbirText,
                 isExpandable: true,
                 isExpanded: _isThirdTakbirExpanded,
-                expandedContent: 'Extended dua translation...',
+                expandedContent: l10n.translateThirdTakbirText,
                 onExpandedChanged: (value) {
                   setState(() {
                     _isThirdTakbirExpanded = value;
@@ -88,17 +78,41 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
               ),
               const Divider(),
               _buildTakbirSection(
-                title: '4. Fourth Takbir',
-                content:
-                    'Say the takbir (without raising the hands):\n\n'
-                    'اللَّهُ أَكْبَرُ - Allahu Akbar\n\n'
-                    'You can make a supplication, but it is not obligatory.',
+                l10n: l10n,
+                title: l10n.fourthTakbirTitle,
+                content: l10n.fourthTakbirText,
               ),
               const Divider(),
+              if (l10n.fourthTakbirAdditionalInfo.isNotEmpty) ...[
+                Padding(
+                  padding: const EdgeInsets.only(top: 8, bottom: 8),
+                  child: Text(
+                    l10n.fourthTakbirAdditionalInfo,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      color: Colors.black87,
+                      height: 1.5,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ),
+                const Divider(),
+              ],
               _buildSection(
-                title: 'Conclusion (Taslim)',
-                content:
-                    '📌 You can say the taslim once to the right or twice (to the right and to the left).',
+                title: l10n.taslimTitle,
+                content: l10n.taslimText,
+              ),
+              const Divider(),
+              _buildCollapsibleSection(
+                l10n: l10n,
+                title: l10n.duaVariationsTitle,
+                content: l10n.duaVariationsText,
+                isExpanded: _isDuaVariationsExpanded,
+                onExpandedChanged: (value) {
+                  setState(() {
+                    _isDuaVariationsExpanded = value;
+                  });
+                },
               ),
             ],
           ),
@@ -132,7 +146,48 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
     );
   }
 
+  Widget _buildCollapsibleSection({
+    required AppLocalizations l10n,
+    required String title,
+    required String content,
+    bool isExpanded = false,
+    ValueChanged<bool>? onExpandedChanged,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ExpansionTile(
+          title: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.black87,
+            ),
+          ),
+          initiallyExpanded: isExpanded,
+          onExpansionChanged: onExpandedChanged,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                content,
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: Colors.black87,
+                  height: 1.5,
+                ),
+                textDirection: TextDirection.ltr,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
   Widget _buildTakbirSection({
+    required AppLocalizations l10n,
     required String title,
     required String content,
     bool isExpandable = false,
@@ -164,9 +219,9 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
         if (isExpandable && expandedContent != null) ...[
           const SizedBox(height: 8),
           ExpansionTile(
-            title: const Text(
-              'Translation',
-              style: TextStyle(
+            title: Text(
+              l10n.translateText,
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
                 color: Colors.blue,

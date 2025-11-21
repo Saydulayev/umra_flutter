@@ -73,6 +73,10 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   String _getIslamicDate() {
     return PrayerTimeService.getIslamicDate();
   }
+  
+  String _getIslamicYear() {
+    return PrayerTimeService.getIslamicYear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -82,12 +86,22 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     if (_prayerTimes == null) {
       return Scaffold(
         backgroundColor: theme.lightBackgroundColor,
+        appBar: AppBar(
+          backgroundColor: theme.lightBackgroundColor,
+          elevation: 0,
+          iconTheme: IconThemeData(color: theme.primaryColor),
+        ),
         body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return Scaffold(
       backgroundColor: theme.lightBackgroundColor,
+      appBar: AppBar(
+        backgroundColor: theme.lightBackgroundColor,
+        elevation: 0,
+        iconTheme: IconThemeData(color: theme.primaryColor),
+      ),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -97,24 +111,37 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
               child: Column(
                 children: [
                   // Местоположение и дата
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Mecca, ',
-                        style: GoogleFonts.greatVibes(
-                          fontSize: 36,
-                          color: Colors.black87,
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Mecca',
+                          style: GoogleFonts.greatVibes(
+                            fontSize: 36,
+                            color: Colors.black87,
+                          ),
                         ),
-                      ),
-                      Text(
-                        _getIslamicDate(),
-                        style: GoogleFonts.greatVibes(
-                          fontSize: 36,
-                          color: Colors.black87,
+                        const SizedBox(width: 8),
+                        Text(
+                          _getIslamicDate(),
+                          style: GoogleFonts.greatVibes(
+                            fontSize: 36,
+                            color: Colors.black87,
+                          ),
                         ),
-                      ),
-                    ],
+                        const SizedBox(width: 8),
+                        Text(
+                          _getIslamicYear(),
+                          style: GoogleFonts.greatVibes(
+                            fontSize: 36,
+                            color: Colors.black87,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   const Divider(),
                   // Следующая молитва (cardStyled)

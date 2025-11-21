@@ -39,13 +39,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get usefulTitle => 'Berguna';
 
   @override
-  String get circleString => 'Perjalanan:';
+  String get circleString => 'Putaran:';
 
   @override
   String get addString => 'Tambah';
 
   @override
-  String get resetString => 'Reset';
+  String get resetString => 'Atur Ulang';
 
   @override
   String get sayFinishedString => 'Sa´y selesai';
@@ -55,6 +55,21 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get selectLanguageSettingsString => 'Pilih bahasa';
+
+  @override
+  String get feedbackString => 'Umpan Balik';
+
+  @override
+  String get rateTheAppString => 'Nilai Aplikasi';
+
+  @override
+  String get appThemeString => 'Tema Aplikasi';
+
+  @override
+  String get notificationSettingsString => 'Pengaturan Notifikasi';
+
+  @override
+  String get selectLanguageString => 'Pilih Bahasa';
 
   @override
   String get themeHeavenly => 'Langit';
@@ -69,11 +84,132 @@ class AppLocalizationsId extends AppLocalizations {
   String get themeTurquoise => 'Laut';
 
   @override
-  String get usefulInfoTitle => 'Informasi Berguna';
+  String get usefulInfoTitle => 'Informasi Bermanfaat';
+
+  @override
+  String get etiquetteManners => 'Etika dan Akhlak';
+
+  @override
+  String get hajjUmrahVirtues => 'Keutamaan Haji dan Umrah';
+
+  @override
+  String get hajjUmrahObligation => 'Kewajiban Haji dan Umrah';
+
+  @override
+  String get janazaPrayerGuide => 'Panduan Shalat Janazah';
+
+  @override
+  String get titleJanazaGuide => 'Panduan Sholat Jenazah';
+
+  @override
+  String get basicRules => 'Panduan Dasar Sholat Jenazah';
+
+  @override
+  String get janazaBasicRules =>
+      '📌 Tata cara dasar sholat jenazah (shalat untuk mayit).\n\nSholat ini dilakukan dalam posisi berdiri, tanpa ruku\' dan sujud, dan terdiri dari empat kali takbir (mengucap \'Allahu Akbar\').\n\nSetelah setiap takbir, dibaca doa sebagai berikut:\n\n1 Surah Al-Fatihah\n\n2 Shalawat atas Nabi ﷺ\n\n3 Doa untuk jenazah\n\n4 Boleh menambahkan doa atau langsung menyelesaikan sholat';
+
+  @override
+  String get firstTakbirTitle => '1. Takbir Pertama';
+
+  @override
+  String get firstTakbirText =>
+      'Angkat tangan sejajar bahu atau telinga, lalu ucapkan:\n\nاللَّهُ أَكْبَرُ\n\nAllahu Akbar (Allah Maha Besar)\n\nKemudian:\n\nBacalah Surah Al-Fatihah.';
+
+  @override
+  String get secondTakbirTitle => '2. Takbir Kedua';
+
+  @override
+  String get secondTakbirText =>
+      'Ucapkan takbir (tanpa mengangkat tangan):\n\nاللَّهُ أَكْبَرُ — Allahu Akbar\n\nLalu bacalah shalawat kepada Nabi ﷺ:\n\nاللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ. اللَّهُمَّ بَارِكْ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ\n\nAllahumma shalli \'ala Muhammad wa \'ala aali Muhammad, kama shallaita \'ala Ibrahim wa \'ala aali Ibrahim, innaka Hamidun Majid. Allahumma barik \'ala Muhammad wa \'ala aali Muhammad, kama barakta \'ala Ibrahim wa \'ala aali Ibrahim, innaka Hamidun Majid.';
+
+  @override
+  String get translateSecondTakbirText =>
+      '\"Ya Allah, limpahkanlah shalawat kepada Muhammad dan keluarganya sebagaimana Engkau melimpahkan shalawat kepada Ibrahim dan keluarganya. Sesungguhnya Engkau Maha Terpuji lagi Maha Mulia. Ya Allah, limpahkanlah keberkahan kepada Muhammad dan keluarganya sebagaimana Engkau memberkahi Ibrahim dan keluarganya. Sesungguhnya Engkau Maha Terpuji lagi Maha Mulia.\"';
+
+  @override
+  String get thirdTakbirTitle => '3. Takbir Ketiga';
+
+  @override
+  String get thirdTakbirText =>
+      'Ucapkan takbir (tanpa mengangkat tangan):\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nBacalah doa untuk jenazah laki-laki:\n\nاللَّهُمَّ اغْفِرْ لَهُ، وَارْحَمْهُ،\n\nAllahummaghfir lahu, warhamhu.\n\nAtau:\n\nاللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ، وَعَافِهِ، وَاعْفُ عَنْهُ، وَأَكْرِمْ نُزُلَهُ، وَوَسِّعْ مُدْخَلَهُ، وَاغْسِلْهُ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ، وَنَقِّهِ مِنَ الْخَطَايَا كَمَا نَقَّيْتَ الثَّوْبَ الأبْيَضَ مِنَ الدَّنَسِ، وَأَبْدِلْهُ دَاراً خَيْراً مِنْ دَارِهِ، وَأَهْلاً خَيْراً مِنْ أَهْلِهِ، وَزَوْجاً خَيْرا ًمِنْ زَوْجِهِ، وَأَدْخِلْهُ الْجَنَّةَ، وَأَعِذْهُ مِنْ عَذَابِ الْقَبْرِ وَعَذَابِ النَّارِ\n\nAllahummaghfir lahu, warhamhu, wa \'afihi, wa\'fu \'anhu, wa akrim nuzulahu, wa wassi\' madkhalahu, waghsilhu bil-ma\'i, was-salji wal-barad, wanaqqihi minal-khataya kama naqqaita ath-thawba al-abyadha minad-danas, wa abdilhu daran khairan min darihi, wa ahlan khairan min ahlihi, wa zawjan khairan min zawjihi, wa adkhilhul-jannah, wa a\'idzhu min \'adzabil-qabri wa \'adzabin-nar.';
+
+  @override
+  String get translateThirdTakbirText =>
+      'Auf bin Malik meriwayatkan: \"Rasulullah ﷺ melaksanakan shalat jenazah, dan aku menghafal doanya: «Ya Allah! Ampunilah dia, rahmatilah dia, bebaskan dia, muliakan tempat tinggalnya, lapangkan kuburnya, mandikan dia dengan air, salju dan embun. Bersihkan dia dari dosa sebagaimana Engkau membersihkan kain putih dari kotoran. Gantikan untuknya rumah yang lebih baik, keluarga yang lebih baik, pasangan yang lebih baik. Masukkan dia ke surga dan lindungi dia dari siksa kubur dan api neraka.»\" (HR. Muslim, 2/663)';
+
+  @override
+  String get duaVariationsTitle => 'Variasi Doa Sesuai Jenazah';
+
+  @override
+  String get duaVariationsText =>
+      '📌 Jika jenazah satu laki-laki:\n\n- Gunakan bentuk: لَهُ (lahu)\n\nاللَّهُمَّ اغْفِرْ لَهُ، وَارْحَمْهُ،\n\n(Allahummaghfir lahu, warhamhu.)\n\n📌 Jika jenazah satu perempuan:\n\n- Ganti semua bentuk maskulin dengan feminin: لَهَا (laha)\n\nاللَّهُمَّ اغْفِرْ لَهَا، وَارْحَمْهَا،\n\n(Allahummaghfir laha, warhamha.)\n\n📌 Jika jenazah beberapa orang laki-laki:\n\n- Gunakan bentuk jamak maskulin: لَهُمْ (lahum)\n\nاللَّهُمَّ اغْفِرْ لَهُمْ، وَارْحَمْهُمْ،\n\n(Allahummaghfir lahum, warhamhum.)\n\n📌 Jika jenazah beberapa perempuan:\n\n- Gunakan bentuk jamak feminin: لَهُنَّ (lahunna)\n\nاللَّهُمَّ اغْفِرْ لَهُنَّ، وَارْحَمْهُنَّ،\n\n(Allahummaghfir lahunna, warhamhunna.)\n\n📌 Jika tidak diketahui jenis kelamin atau jenazah campuran:\n\n- Gunakan bentuk umum: لَهُمْ (lahum)\n\nاللَّهُمَّ اغْفِرْ لَهُمْ، وَارْحَمْهُمْ،\n\n(Allahummaghfir lahum, warhamhum.)';
+
+  @override
+  String get fourthTakbirTitle => '4. Takbir Keempat';
+
+  @override
+  String get fourthTakbirText =>
+      'Ucapkan takbir (tanpa mengangkat tangan):\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nBoleh membaca doa tambahan, namun tidak wajib.';
+
+  @override
+  String get fourthTakbirAdditionalInfo =>
+      'Tentang bolehnya membaca doa setelah takbir keempat.\n\nDiriwayatkan bahwa \'Abdullah bin Abi Awfa ketika melaksanakan shalat jenazah atas putrinya, beliau mengucapkan empat takbir. Setelah takbir keempat, beliau berdiri selama waktu yang sama antara dua takbir sebelumnya sambil berdoa memohonkan ampunan untuk putrinya. Lalu ia berkata: \"Demikianlah yang dilakukan oleh Rasulullah ﷺ.\" (HR. Al-Hakim, 1/512; Lihat Shahih Sunan Ibnu Majah, 1220)';
+
+  @override
+  String get taslimTitle => 'Penyelesaian Sholat (Taslim)';
+
+  @override
+  String get taslimText =>
+      '📌 Taslim bisa dilakukan sekali ke kanan, atau dua kali (ke kanan dan ke kiri).\n\nRasulullah ﷺ dalam shalat jenazah terkadang memberi salam sekali, dan terkadang dua kali. Namun, yang lebih sering beliau lakukan adalah salam sekali.';
+
+  @override
+  String get translateText => 'terjemahan';
+
+  @override
+  String get sincerity => 'Ketulusan Niat';
+
+  @override
+  String get laws => 'Hukum-Hukum';
+
+  @override
+  String get choiceOfCompanions => 'Memilih Teman Perjalanan';
+
+  @override
+  String get financialIndependence => 'Kemandirian Finansial';
+
+  @override
+  String get nobleManners => 'Akhlak Mulia';
+
+  @override
+  String get zikrAndPrayers => 'Zikir dan Doa';
+
+  @override
+  String get cautionInRelationships => 'Kewaspadaan dalam Hubungan';
+
+  @override
+  String get atonementAndRewards => 'Pengampunan Dosa dan Pahala';
+
+  @override
+  String get hajjForWomen => 'Haji untuk Wanita';
+
+  @override
+  String get perfectHajj => 'Haji yang Sempurna';
+
+  @override
+  String get followingTheSunnah => 'Mengikuti Sunnah';
+
+  @override
+  String get hajjObligationEvidence => 'Dalil Kewajiban Haji';
+
+  @override
+  String get umrahObligationEvidence => 'Dalil Kewajiban Umrah';
+
+  @override
+  String get conclusion => 'Kesimpulan';
 
   @override
   String get step1EnterIhram =>
-      'Masuklah ke dalam keadaan Ihram di tempat yang telah ditentukan (Miqat).';
+      '\nMasuklah ke dalam keadaan Ihram di tempat yang telah ditentukan (Miqat).\n';
 
   @override
   String get step1WhenEnteringIhram =>
@@ -84,7 +220,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get step1TurnToQiblah =>
-      'Labbayk Allahumma bi \'Umrah.\n\nHadapkanlah wajah ke arah kiblat dan ucapkan:';
+      '\nLabbayk Allahumma bi \'Umrah.\n\nHadapkanlah wajah ke arah kiblat dan ucapkan:\n';
 
   @override
   String get step1SecondArabic =>
@@ -104,7 +240,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get step1EnteringSacredMosque =>
-      'Ketika memasuki Masjidil Haram dengan kaki kanan, ucapkan:';
+      '\n\nKetika memasuki Masjidil Haram dengan kaki kanan, ucapkan:\n';
 
   @override
   String get step1EnteringSacredMosqueDuaArabic =>
@@ -119,7 +255,8 @@ class AppLocalizationsId extends AppLocalizations {
       'اَللَّهُمَّ مَحِلِّي حَيْثُ حَبَسْتَنِي';
 
   @override
-  String get step1ConditioningHajj => 'Mensyaratkan dalam Haji atau Umrah.';
+  String get step1ConditioningHajj =>
+      '\n\nMensyaratkan dalam Haji atau Umrah.\n';
 
   @override
   String get step1ConditioningHajjText =>
@@ -130,7 +267,7 @@ class AppLocalizationsId extends AppLocalizations {
       '«Allahumma mahilli haitsu habastani»\n\n«Ya Allah, tempat bertahallul-ku adalah di mana saja Engkau menahanku».\n\nHadis ini muttafaq \'alaih. Lihat juga dalam Shahih Abu Dawud (1776).\n\nJika seseorang melakukan ini, lalu dia tertahan atau sakit, maka ia dibolehkan keluar dari ihram ketika sedang berhaji atau umrah tanpa harus menyembelih hewan dam atau mengulang haji, kecuali jika ini merupakan haji wajib pertamanya, yang dalam kondisi tersebut ia harus mengulanginya di lain waktu.';
 
   @override
-  String get step1UmrahForParents => 'Umrah untuk orang tua';
+  String get step1UmrahForParents => '\n\nUmrah untuk orang tua\n';
 
   @override
   String get step1UmrahForFatherArabic =>
@@ -169,11 +306,11 @@ class AppLocalizationsId extends AppLocalizations {
       'Jika Anda ingin melaksanakan umrah untuk orang tua atau orang lain, alih-alih talbiyah biasa, bacalah salah satu formula yang diberikan, tambahkan setelah kata-kata «abi» (ayah), «ummi» (ibu) atau cukup setelah kata «\'an» nama orang yang umrah dilaksanakan. Setelah mengucapkan niat dan talbiyah dengan menyebutkan nama, semua tindakan lainnya, doa (dua) dan dzikir Allah (dzikir) dilakukan seperti biasa, seolah-olah Anda melakukan umrah untuk diri sendiri. Satu-satunya perbedaan adalah niat.';
 
   @override
-  String get step2KaabaText1 => 'Tawaf Ka\'bah';
+  String get step2KaabaText1 => '\nTawaf Ka\'bah';
 
   @override
   String get step2KaabaText2 =>
-      'Mulailah melakukan tawaf (mengelilingi Ka\'bah) sebanyak tujuh putaran. \nSejak awal hingga selesai tawaf, laki-laki disunnahkan membuka pundak kanan (Idhtiba\').\n\nSetelah itu, jamaah dianjurkan menyentuh Hajar Aswad dengan tangan dan menciumnya.\n\nJika tidak memungkinkan mencium Hajar Aswad, cukup menyentuhnya dengan tangan.\n\nJika tidak memungkinkan menyentuh atau mencium Hajar Aswad, maka hadapilah Hajar Aswad, tunjuklah dengan tangan kanan sambil mengucapkan takbir: «Allahu Akbar» (Allah Maha Besar). (Hal ini dilakukan setiap kali memulai putaran tawaf.)';
+      '\nMulailah melakukan tawaf (mengelilingi Ka\'bah) sebanyak tujuh putaran. \nSejak awal hingga selesai tawaf, laki-laki disunnahkan membuka pundak kanan (Idhtiba\').\n\nSetelah itu, jamaah dianjurkan menyentuh Hajar Aswad dengan tangan dan menciumnya.\n\nJika tidak memungkinkan mencium Hajar Aswad, cukup menyentuhnya dengan tangan.\n\nJika tidak memungkinkan menyentuh atau mencium Hajar Aswad, maka hadapilah Hajar Aswad, tunjuklah dengan tangan kanan sambil mengucapkan takbir: «Allahu Akbar» (Allah Maha Besar). (Hal ini dilakukan setiap kali memulai putaran tawaf.)\n';
 
   @override
   String get step2KaabaText3 =>
@@ -191,12 +328,11 @@ class AppLocalizationsId extends AppLocalizations {
   String get step2TakbirArabic => 'الله أكبر';
 
   @override
-  String get step3PrayerAfterTawaf =>
-      'Shalat dua rakaat setelah Tawaf Ka\'bah.';
+  String get step3PrayerAfterTawaf => '\nShalat setelah Tawaf Ka\'bah.';
 
   @override
   String get step3CompletedSevenCircuits =>
-      'Setelah menyelesaikan tawaf sebanyak tujuh putaran mengelilingi Ka\'bah, laki-laki hendaknya menutup kembali pundak kanannya. Kemudian pergilah menuju Maqam Ibrahim sambil membaca:';
+      '\nSetelah menyelesaikan tawaf sebanyak tujuh putaran mengelilingi Ka\'bah, laki-laki hendaknya menutup kembali pundak kanannya. Kemudian pergilah menuju Maqam Ibrahim sambil membaca:\n';
 
   @override
   String get step3ArabicText =>
@@ -207,31 +343,31 @@ class AppLocalizationsId extends AppLocalizations {
       'Wat-takhidzu mim-maqaami Ibraahiima mushallaa.\n\n«Jadikanlah Maqam Ibrahim sebagai tempat shalat.» (QS. Al-Baqarah [2]: 125).\n\nJika memungkinkan, lakukanlah shalat dua rakaat di belakang Maqam Ibrahim. Jika sulit, maka lakukanlah shalat dua rakaat tersebut di mana saja di dalam Masjidil Haram. Jangan lupa meletakkan pembatas (sutrah) di hadapanmu agar tidak ada orang lewat di antara dirimu dan pembatas tersebut. Pada rakaat pertama setelah membaca Surah Al-Fatihah, bacalah Surah Al-Kafirun (109), dan pada rakaat kedua setelah membaca Surah Al-Fatihah, bacalah Surah Al-Ikhlas (112).\n\nSetelah menyelesaikan shalat dua rakaat ini, pergilah menuju sumur Zamzam.';
 
   @override
-  String get step4DrinkingZamzam => 'Meminum Air Zamzam.';
+  String get step4DrinkingZamzam => '\nMeminum Air Zamzam.';
 
   @override
   String get step4ZamzamText =>
-      'Minumlah air Zamzam dan siramkanlah sebagiannya ke kepala.\n\nJabir (semoga Allah meridainya) meriwayatkan: \"Nabi (shallallahu \'alaihi wa sallam) menuju sumur Zamzam, lalu beliau minum air Zamzam dan menyiramkan sebagiannya ke atas kepala beliau.\" (HR. Ahmad [3/394], Ibnu Khuzaimah [4/305]). Hadis ini telah dinyatakan sahih oleh Az-Zarkasyi, Badruddin al-\'Aini, dan Syu\'aib al-Arnauth. Lihat juga: \'Umdatul-Qari (9/227), Hasyiyah \'ala al-Manasik (hlm. 263), Takhrij al-Musnad (15243).\n\nDari Jabir (semoga Allah meridainya) juga diriwayatkan bahwa Rasulullah (shallallahu \'alaihi wa sallam) bersabda: \"Air Zamzam bermanfaat sesuai dengan niat orang yang meminumnya.\" (HR. Ahmad [3/357], Ibnu Majah [3062], Al-Hakim [1739]). Hadis ini dinyatakan sahih oleh Sufyan bin \'Uyainah, Al-Mundziri, Ad-Dumyathi, Ibnu al-Qayyim, Az-Zarkasyi, Ibnu Hajar, dan Al-Albani. Lihat juga: Al-Mujalasah (509), Al-Matjar ar-Rabih (982), Zadul Ma\'ad (4/393), Al-Maqashid al-Hasanah (928), Faidhul-Qadir (7759), Shahih at-Targhib (1165).\n\nAsy-Syaukani berkata: \"Dalam hadis ini terdapat dalil bahwa minum air Zamzam memberikan manfaat kepada peminumnya sesuai dengan niat apa pun yang diniatkannya, baik urusan dunia maupun akhirat. Karena sabda Nabi \'bermanfaat sesuai niat orang yang meminumnya\' bersifat umum.\" (Nailul Authar, 5/105).\n\nImam An-Nawawi mengatakan: \"Makna hadis ini adalah bahwa siapa pun yang minum air ini dengan tujuan tertentu, maka ia akan memperolehnya. Sesungguhnya para ulama dan orang-orang saleh telah membuktikan manfaat air Zamzam dalam memenuhi kebutuhan duniawi maupun ukhrawi mereka, dan mereka memperolehnya atas rahmat Allah Ta\'ala.\" (Tahdzib al-Asma wal-Lughat, 3/139).';
+      '\nMinumlah air Zamzam dan siramkanlah sebagiannya ke kepala.\n\nJabir (semoga Allah meridainya) meriwayatkan: \"Nabi (shallallahu \'alaihi wa sallam) menuju sumur Zamzam, lalu beliau minum air Zamzam dan menyiramkan sebagiannya ke atas kepala beliau.\" (HR. Ahmad [3/394], Ibnu Khuzaimah [4/305]). Hadis ini telah dinyatakan sahih oleh Az-Zarkasyi, Badruddin al-\'Aini, dan Syu\'aib al-Arnauth. Lihat juga: \'Umdatul-Qari (9/227), Hasyiyah \'ala al-Manasik (hlm. 263), Takhrij al-Musnad (15243).\n\nDari Jabir (semoga Allah meridainya) juga diriwayatkan bahwa Rasulullah (shallallahu \'alaihi wa sallam) bersabda: \"Air Zamzam bermanfaat sesuai dengan niat orang yang meminumnya.\" (HR. Ahmad [3/357], Ibnu Majah [3062], Al-Hakim [1739]). Hadis ini dinyatakan sahih oleh Sufyan bin \'Uyainah, Al-Mundziri, Ad-Dumyathi, Ibnu al-Qayyim, Az-Zarkasyi, Ibnu Hajar, dan Al-Albani. Lihat juga: Al-Mujalasah (509), Al-Matjar ar-Rabih (982), Zadul Ma\'ad (4/393), Al-Maqashid al-Hasanah (928), Faidhul-Qadir (7759), Shahih at-Targhib (1165).\n\nAsy-Syaukani berkata: \"Dalam hadis ini terdapat dalil bahwa minum air Zamzam memberikan manfaat kepada peminumnya sesuai dengan niat apa pun yang diniatkannya, baik urusan dunia maupun akhirat. Karena sabda Nabi \'bermanfaat sesuai niat orang yang meminumnya\' bersifat umum.\" (Nailul Authar, 5/105).\n\nImam An-Nawawi mengatakan: \"Makna hadis ini adalah bahwa siapa pun yang minum air ini dengan tujuan tertentu, maka ia akan memperolehnya. Sesungguhnya para ulama dan orang-orang saleh telah membuktikan manfaat air Zamzam dalam memenuhi kebutuhan duniawi maupun ukhrawi mereka, dan mereka memperolehnya atas rahmat Allah Ta\'ala.\" (Tahdzib al-Asma wal-Lughat, 3/139).';
 
   @override
-  String get step5ReturnToBlackStone => 'Kembali ke Hajar Aswad.';
+  String get step5ReturnToBlackStone => '\nKembali ke Hajar Aswad.';
 
   @override
   String get step5ReturnReciteTakbir =>
-      'Kembalilah menuju Hajar Aswad sambil mengucapkan takbir, lalu sentuh dan ciumlah sebagaimana telah dijelaskan sebelumnya. Jika tidak memungkinkan, cukup tunjukkan ke arahnya dengan tangan sambil mengucapkan takbir. Allah Maha Besar.';
+      '\nKembalilah menuju Hajar Aswad sambil mengucapkan takbir, lalu sentuh dan ciumlah sebagaimana telah dijelaskan sebelumnya. Jika tidak memungkinkan, cukup tunjukkan ke arahnya dengan tangan sambil mengucapkan takbir. Allah Maha Besar.';
 
   @override
-  String get step5AllahIsGreat => 'Allahu Akbar.';
+  String get step5AllahIsGreat => '\nAllahu Akbar.\n';
 
   @override
   String get step5TakbirArabic => 'الله أكبر';
 
   @override
-  String get step6SafaAndMarwa => 'Safa dan Marwah';
+  String get step6SafaAndMarwa => '\nSafa dan Marwah';
 
   @override
   String get step6HeadTowardsSafa =>
-      'Bergeraklah menuju bukit Safa untuk melaksanakan Sa\'i (berjalan antara Safa dan Marwah) sebanyak tujuh kali. Mulailah Sa\'i dari bukit Safa.\n\n\nKetika mendekati bukit Safa, bacalah:';
+      '\nBergeraklah menuju bukit Safa untuk melaksanakan Sa\'i (berjalan antara Safa dan Marwah) sebanyak tujuh kali. Mulailah Sa\'i dari bukit Safa.\n\n\nKetika mendekati bukit Safa, bacalah:\n';
 
   @override
   String get step6SurahBaqarahArabic =>
@@ -242,7 +378,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get step6SurahBaqarahText =>
-      'Innaṣ-ṣafā wal-marwata min sya\'ā`irillāh, faman ḥajja l-baita awi\'-tamara falā junāḥa \'alaihi ay-yaṭṭawwafa bihimā, wa man taṭawwa\'a khairan fa innallāha syākirun \'alīm.\n\n«Sesungguhnya Safa dan Marwah adalah sebagian dari syi\'ar-syi\'ar Allah. Maka barangsiapa beribadah haji ke Baitullah atau berumrah, maka tidak ada dosa baginya mengerjakan Sa\'i antara keduanya. Barangsiapa yang dengan sukarela mengerjakan kebajikan, maka sesungguhnya Allah Maha Mensyukuri lagi Maha Mengetahui.» (QS. Al-Baqarah [2]: 158)\n\nKemudian ucapkanlah:';
+      'Innaṣ-ṣafā wal-marwata min sya\'ā`irillāh, faman ḥajja l-baita awi\'-tamara falā junāḥa \'alaihi ay-yaṭṭawwafa bihimā, wa man taṭawwa\'a khairan fa innallāha syākirun \'alīm.\n\n«Sesungguhnya Safa dan Marwah adalah sebagian dari syi\'ar-syi\'ar Allah. Maka barangsiapa beribadah haji ke Baitullah atau berumrah, maka tidak ada dosa baginya mengerjakan Sa\'i antara keduanya. Barangsiapa yang dengan sukarela mengerjakan kebajikan, maka sesungguhnya Allah Maha Mensyukuri lagi Maha Mengetahui.» (QS. Al-Baqarah [2]: 158)';
 
   @override
   String get step6WeBeginArabic => 'نَبْدَأُ بِمَا بَدَأَ اللهُ بِهِ';
@@ -253,7 +389,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get step6WeBeginText =>
-      'Nabda`u bimā bada`allāhu bihi.\n\n«Kami memulai dengan apa yang telah dimulai oleh Allah.»\n\nNaiklah ke bukit Safa, lalu menghadaplah ke arah Ka\'bah dan ucapkan:';
+      'Nabda`u bimā bada`allāhu bihi.\n\n«Kami memulai dengan apa yang telah dimulai oleh Allah.»\n\nNaiklah ke bukit Safa, lalu menghadaplah ke arah Ka\'bah dan ucapkan:\n';
 
   @override
   String get step6RemembranceArabic =>
@@ -265,7 +401,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get step6RemembranceText =>
-      'Allāhu akbar! Allāhu akbar! Allāhu akbar!  \nLā ilāha illallāhu waḥdahu lā syarīka lah. Lahul-mulku wa lahul-ḥamdu yuḥyī wa yumītu wa huwa \'alā kulli syai\'in qadīr. Lā ilāha illallāhu waḥdahu lā syarīka lah, anjaza wa\'dah, wa naṣara \'abdah, wa hazamal-aḥzāba waḥdah.\n\n«Allah Maha Besar, Allah Maha Besar, Allah Maha Besar!\nTiada Tuhan selain Allah semata, tiada sekutu bagi-Nya! Milik-Nya segala kerajaan dan pujian. Dia yang menghidupkan dan mematikan, dan Dia Maha Kuasa atas segala sesuatu! Tiada Tuhan selain Allah semata, tiada sekutu bagi-Nya! Dialah yang menepati janji-Nya, menolong hamba-Nya, dan menghancurkan golongan musuh sendirian.»\n\nBacalah doa ini sebanyak tiga kali, mengangkat kedua tangan untuk berdoa setelah membaca yang pertama dan kedua. Kemudian mulailah berjalan dari bukit Safa menuju bukit Marwah. Satu kali perjalanan dari Safa ke Marwah dihitung sebagai satu putaran, dan kembali dari Marwah ke Safa dihitung sebagai putaran kedua. Di atas bukit Marwah, ulangilah urutan bacaan zikir—doa—zikir—doa—zikir ini. Bacaan zikir dan doa ini diulang setiap kali menaiki Safa dan Marwah, kecuali pada perjalanan yang ketujuh. Ketika mencapai tanda hijau pertama, laki-laki dianjurkan berlari kecil hingga mencapai tanda hijau kedua. Selebihnya dilalui dengan berjalan biasa.\n\nSelama melaksanakan Sa\'i, boleh berdoa dengan doa berikut ini:';
+      'Allāhu akbar! Allāhu akbar! Allāhu akbar!  \nLā ilāha illallāhu waḥdahu lā syarīka lah. Lahul-mulku wa lahul-ḥamdu yuḥyī wa yumītu wa huwa \'alā kulli syai\'in qadīr. Lā ilāha illallāhu waḥdahu lā syarīka lah, anjaza wa\'dah, wa naṣara \'abdah, wa hazamal-aḥzāba waḥdah.\n\n«Allah Maha Besar, Allah Maha Besar, Allah Maha Besar!\nTiada Tuhan selain Allah semata, tiada sekutu bagi-Nya! Milik-Nya segala kerajaan dan pujian. Dia yang menghidupkan dan mematikan, dan Dia Maha Kuasa atas segala sesuatu! Tiada Tuhan selain Allah semata, tiada sekutu bagi-Nya! Dialah yang menepati janji-Nya, menolong hamba-Nya, dan menghancurkan golongan musuh sendirian.»\n\nBacalah doa ini sebanyak tiga kali, mengangkat kedua tangan untuk berdoa setelah membaca yang pertama dan kedua. Kemudian mulailah berjalan dari bukit Safa menuju bukit Marwah. Satu kali perjalanan dari Safa ke Marwah dihitung sebagai satu putaran, dan kembali dari Marwah ke Safa dihitung sebagai putaran kedua. Di atas bukit Marwah, ulangilah urutan bacaan zikir—doa—zikir—doa—zikir ini. Bacaan zikir dan doa ini diulang setiap kali menaiki Safa dan Marwah, kecuali pada perjalanan yang ketujuh. Ketika mencapai tanda hijau pertama, laki-laki dianjurkan berlari kecil hingga mencapai tanda hijau kedua. Selebihnya dilalui dengan berjalan biasa.\n\nSelama melaksanakan Sa\'i, boleh berdoa dengan doa berikut ini:\n';
 
   @override
   String get step6DuasDuringSaiArabic =>
@@ -304,7 +440,7 @@ class AppLocalizationsId extends AppLocalizations {
       'Allāhumma ṣalli \'alā Muḥammadin wa sallim! Allāhumma innī as\'aluka min faḍlik!\n\nYa Allah, limpahkanlah salawat dan salam kepada Nabi Muhammad! Ya Allah, sesungguhnya aku memohon kepada-Mu dari karunia-Mu!';
 
   @override
-  String get step7ShavingHead => 'Mencukur atau Memendekkan Rambut.';
+  String get step7ShavingHead => '\nMencukur atau Memendekkan Rambut.';
 
   @override
   String get step7MenShortenHair =>
@@ -313,4 +449,129 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get step7DuaAtEnd =>
       'Sebagai penutup, aku memohon kepada Allah Yang Maha Tinggi agar menerima semua amal baik kita dan menjaga pahala dari amal-amal tersebut hingga hari pertemuan kita dengan-Nya, \n«Pada hari ketika harta dan anak-anak tidak lagi memberi manfaat, kecuali mereka yang menghadap Allah dengan hati yang bersih.» (QS. Asy-Syu\'ara [26]: 88–89).\n\nAku juga berdoa kepada Allah Yang Maha Tinggi agar memberikan pahala penuh kepada semua orang yang telah berkontribusi dalam membuat, mengembangkan, serta menyebarluaskan aplikasi ini—baik melalui nasihat, ilmu, harta, atau kata-kata baik—atas setiap Umrah yang dikerjakan melalui bantuannya.\nSebagaimana sabda Rasulullah (shallallahu \'alaihi wa sallam):\n«Barangsiapa menunjukkan kepada suatu kebaikan, maka dia mendapatkan pahala seperti pahala orang yang melakukannya.» (HR. Muslim, no. 1893).\n\nSegala puji bagi Allah, Rabb semesta alam!';
+
+  @override
+  String get etiquetteMannersText1 =>
+      'Hal terpenting yang wajib dimiliki oleh seseorang yang melaksanakan haji dan umrah adalah keikhlasan kepada Allah. Ia harus membersihkan niatnya dari riya dan keinginan untuk terkenal, agar amal haji dan umrahnya diterima dan diberi ganjaran oleh Allah.\n\nDiriwayatkan dari Abu Hurairah (semoga Allah meridhainya), Rasulullah (shallallahu \'alaihi wa sallam) bersabda: «Allah Yang Mahatinggi berfirman: \'Aku adalah Dzat yang paling tidak membutuhkan sekutu. Barang siapa melakukan suatu amal dengan menyekutukan-Ku dengan selain-Ku, maka Aku tinggalkan dia dan kesyirikannya.\'» (HR. Muslim, 2985)\n\nJuga diriwayatkan bahwa Rasulullah (shallallahu \'alaihi wa sallam) bersabda: «Ya Allah, jadikanlah haji ini tanpa riya dan tanpa keinginan untuk dikenal.» (HR. Ibnu Majah, 2890)';
+
+  @override
+  String get etiquetteMannersText2 =>
+      'Orang yang berniat melaksanakan haji dan umrah hendaknya bersungguh-sungguh dalam mempelajari hukum-hukum syar\'i yang berkaitan dengan keduanya agar ia dapat melakukannya dengan ilmu dan pemahaman.';
+
+  @override
+  String get etiquetteMannersText3 =>
+      'Seseorang yang menunaikan haji dan umrah hendaknya memilih teman perjalanan yang terbaik, agar dapat mengambil manfaat dari ilmu dan akhlaknya.\n\nDiriwayatkan dari Abu Musa Al-Asy\'ari (semoga Allah meridhainya), Rasulullah (shallallahu \'alaihi wa sallam) bersabda: «Perumpamaan teman yang baik dan teman yang buruk adalah seperti penjual minyak wangi dan pandai besi. Penjual minyak wangi, bisa jadi akan memberimu, atau kamu membelinya darinya, atau kamu mendapatkan aroma harum darinya. Sedangkan pandai besi, bisa jadi ia akan membakar pakaianmu atau kamu mencium bau tak sedap darinya.» (HR. Bukhari, 5534; Muslim, 2628)';
+
+  @override
+  String get etiquetteMannersText4 =>
+      'Orang yang berhaji dan berumrah hendaknya membawa bekal yang cukup agar tidak bergantung pada orang lain secara finansial.\n\nDiriwayatkan dari Abu Sa\'id Al-Khudri (semoga Allah meridhainya), Nabi (shallallahu \'alaihi wa sallam) bersabda: «Barang siapa berusaha untuk menjaga kehormatan dirinya (tidak meminta-minta), Allah akan memberinya kemampuan menjaga diri. Dan barang siapa berusaha mencukupi dirinya, Allah akan mencukupinya.» (HR. Bukhari, 1469; Muslim, 1053)';
+
+  @override
+  String get etiquetteMannersText5 =>
+      'Orang yang melaksanakan haji dan umrah hendaknya menghiasi dirinya dengan akhlak mulia dan bersikap baik terhadap sesama.\n\nDiriwayatkan dari Abu Dzar (semoga Allah meridhainya), Nabi (shallallahu \'alaihi wa sallam) bersabda: «Bertakwalah kepada Allah di mana pun kamu berada! Ikutilah perbuatan buruk dengan perbuatan baik yang akan menghapusnya, dan bergaullah dengan manusia dengan akhlak yang baik.» (HR. Tirmidzi, 1987)\n\nDiriwayatkan dari Abdullah bin Amr bin Al-\'Ash (semoga Allah meridhai beliau dan ayahnya), bahwa Nabi (shallallahu \'alaihi wa sallam) bersabda: «Barang siapa ingin dijauhkan dari neraka dan dimasukkan ke surga, maka hendaknya ia mati dalam keadaan beriman kepada Allah dan hari akhir, dan hendaknya ia memperlakukan manusia sebagaimana ia ingin diperlakukan.» (HR. Muslim, 1844)';
+
+  @override
+  String get etiquetteMannersText6 =>
+      'Orang yang berhaji dan berumrah hendaknya banyak berdzikir, berdoa, dan memohon ampun kepada Allah. Ia harus menjaga lisannya dari ucapan yang sia-sia dan menyibukkan dirinya dengan amalan-amalan yang bermanfaat untuk dunia dan akhiratnya.\n\nDiriwayatkan dari Abu Hurairah (semoga Allah meridhainya), Rasulullah (shallallahu \'alaihi wa sallam) bersabda: «Barang siapa yang beriman kepada Allah dan hari akhir, hendaklah ia berkata baik atau diam.» (HR. Bukhari, 6018; Muslim, 47)\n\nDiriwayatkan dari Ibnu \'Abbas (semoga Allah meridhai keduanya), Rasulullah (shallallahu \'alaihi wa sallam) bersabda: «Dua nikmat yang banyak manusia tertipu karenanya: kesehatan dan waktu luang.» (HR. Bukhari, 6412)';
+
+  @override
+  String get etiquetteMannersText7 =>
+      'Orang yang melaksanakan haji dan umrah hendaknya berhati-hati agar tidak menyakiti orang lain dengan ucapan atau perbuatannya.\n\nNabi (shallallahu \'alaihi wa sallam) bersabda: «Muslim adalah orang yang tidak menyakiti Muslim lainnya dengan lisan dan tangannya.» (HR. Bukhari, 10; Muslim, 41)\n\nSeorang Muslim juga harus menjauhi kebiasaan merokok, apalagi sampai mengganggu orang lain dengan bau asap rokok, terlebih selama berhaji. Ia wajib meninggalkan rokok dan bertaubat kepada Allah, karena rokok membahayakan kesehatan dan merusak hartanya.\n\nSeorang Muslim hendaknya selalu menjaga akhlak-akhlak baik yang telah disebutkan, kapan saja dan di mana saja, khususnya selama perjalanan haji dan umrah.';
+
+  @override
+  String get hajjUmrahVirtuesText1 =>
+      'Keutamaan ibadah haji dan umrah telah dijelaskan dalam hadis-hadis shahih dari Rasulullah shallallahu \'alaihi wa sallam. Berikut beberapa di antaranya:\n\nDiriwayatkan dari Abu Hurairah (semoga Allah meridhainya), bahwa Rasulullah shallallahu \'alaihi wa sallam bersabda: «Umrah yang satu ke umrah berikutnya menjadi penghapus dosa-dosa yang dilakukan di antara keduanya. Dan haji yang mabrur tidak ada balasan baginya kecuali surga.» (HR. Bukhari, 1773; Muslim, 1349)\n\nDiriwayatkan dari Ibnu Mas\'ud (semoga Allah meridhainya), bahwa Rasulullah shallallahu \'alaihi wa sallam bersabda: «Lakukanlah haji dan umrah secara berulang-ulang, karena keduanya menghapus kefakiran dan dosa sebagaimana alat pandai besi menghilangkan karat dari besi, emas, dan perak. Dan haji yang mabrur tidak ada ganjarannya kecuali surga.» (HR. Tirmidzi, 810; An-Nasa\'i, 2631)\n\nDiriwayatkan dari Ibnu \'Abbas (semoga Allah meridhainya dan ayahnya), bahwa Rasulullah shallallahu \'alaihi wa sallam bersabda: «Lakukanlah haji dan umrah secara berulang-ulang, karena keduanya menghilangkan kefakiran dan dosa seperti alat peniup api menghilangkan kotoran dari besi.» (HR. An-Nasa\'i, 2630)';
+
+  @override
+  String get hajjUmrahVirtuesText2 =>
+      'Diriwayatkan dari Ummul Mukminin \'Aisyah (semoga Allah meridhainya), bahwa ia berkata: \"Wahai Rasulullah, kami memandang jihad adalah amal yang paling utama. Bolehkah kami ikut berjihad?\" Maka beliau shallallahu \'alaihi wa sallam menjawab: «Tidak! Jihad terbaik bagi kalian (kaum wanita) adalah haji yang mabrur.» (HR. Bukhari, 1520)\n\nDalam riwayat lain disebutkan bahwa \'Aisyah (semoga Allah meridhainya) berkata: \"Wahai Rasulullah, apakah wanita juga wajib berjihad?\" Beliau menjawab: «Bagi mereka ada jihad yang tidak mengandung peperangan, yaitu haji dan umrah.» (HR. Ibnu Majah, 2901)';
+
+  @override
+  String get hajjUmrahVirtuesText3 =>
+      'Diriwayatkan dari Abu Hurairah (semoga Allah meridhainya), bahwa Nabi shallallahu \'alaihi wa sallam bersabda: «Barang siapa yang menunaikan haji karena Allah, tidak melakukan rafats (hubungan suami-istri) dan tidak berbuat kefasikan, maka ia akan kembali (dari haji) seperti pada hari ia dilahirkan oleh ibunya.» (HR. Bukhari, 1521; Muslim, 1350)\n\nJuga diriwayatkan bahwa Rasulullah shallallahu \'alaihi wa sallam berkata kepada \'Amr bin Al-\'Ash (semoga Allah meridhainya): «Tidakkah engkau tahu bahwa Islam menghapus semua dosa sebelumnya, hijrah menghapus semua dosa sebelumnya, dan haji juga menghapus semua dosa sebelumnya?» (HR. Muslim, 121)\n\nHaji yang mabrur, sebagaimana disebutkan dalam hadis-hadis di atas, adalah haji yang sesuai dengan sunnah Rasulullah shallallahu \'alaihi wa sallam.';
+
+  @override
+  String get hajjUmrahVirtuesText4 =>
+      'Diriwayatkan dari Jabir (semoga Allah meridhainya), bahwa Nabi shallallahu \'alaihi wa sallam bersabda: «Ambillah dariku tata cara ibadah kalian, karena aku tidak tahu, mungkin setelah tahun ini aku tidak akan lagi menunaikan haji.» (HR. Muslim, 1297)\n\nDalam riwayat lain disebutkan bahwa beliau bersabda: «Wahai manusia, ambillah dariku tata cara ibadah kalian, karena aku tidak tahu apakah aku masih akan menunaikan haji setelah tahun ini.» (HR. An-Nasa\'i, 3062)';
+
+  @override
+  String get hajjUmrahObligationObligationEvidence =>
+      'Menunaikan ibadah haji dan umrah adalah kewajiban sekali seumur hidup. Adapun jika seseorang melakukannya lebih dari satu kali, maka itu termasuk ibadah sunnah yang bernilai pahala tambahan.\n\nHaji dan umrah juga bisa menjadi wajib karena nadzar. Jika seseorang bernazar kepada Allah untuk menunaikan haji atau umrah, maka wajib baginya untuk menunaikan nadzarnya.\n\nJika seseorang telah memulai haji atau umrah sunnah, maka ia wajib menyelesaikannya. Allah berfirman: «Sempurnakanlah haji dan umrah karena Allah.» (QS. Al-Baqarah: 196)\n\nKewajiban haji didasarkan pada dalil-dalil dari Al-Qur\'an, Sunnah, dan ijma\' (kesepakatan) kaum muslimin.\n\nAllah Ta\'ala berfirman: «Mengerjakan haji adalah kewajiban manusia terhadap Allah, yaitu (bagi) orang yang sanggup mengadakan perjalanan ke Baitullah. Barang siapa mengingkari (kewajiban haji), maka sesungguhnya Allah Maha Kaya (tidak memerlukan sesuatu) dari semesta alam.» (QS. Ali \'Imran: 97)\n\nRasulullah shallallahu \'alaihi wa sallam bersabda: \"Islam dibangun di atas lima perkara: syahadat bahwa tidak ada ilah selain Allah dan bahwa Muhammad adalah utusan Allah, mendirikan shalat, menunaikan zakat, menunaikan haji, dan berpuasa di bulan Ramadan.\" (HR. Bukhari, 8; Muslim, 16)\n\nBeliau juga bersabda: \"Inti dari Islam adalah engkau bersaksi bahwa tidak ada ilah selain Allah, dan bahwa Muhammad adalah utusan Allah, mendirikan shalat, menunaikan zakat, berpuasa di bulan Ramadan, dan menunaikan haji ke Baitullah jika mampu melakukannya.\" (HR. Muslim, 8)\n\nDiriwayatkan juga dari Abu Hurairah (semoga Allah meridhainya), bahwa Rasulullah shallallahu \'alaihi wa sallam menyampaikan khutbah dan berkata: \"Wahai manusia, Allah telah mewajibkan atas kalian haji, maka laksanakanlah!\" Seseorang bertanya: \"Apakah setiap tahun, wahai Rasulullah?\" Rasul pun diam hingga orang itu mengulang pertanyaannya tiga kali. Kemudian beliau bersabda: \"Kalau aku jawab \'iya\', niscaya itu menjadi kewajiban setiap tahun, dan kalian tidak akan mampu melaksanakannya.\" (HR. Muslim, 1337)\n\nKaum muslimin telah sepakat bahwa haji adalah wajib bagi siapa saja yang telah memenuhi seluruh syarat wajibnya.';
+
+  @override
+  String get hajjUmrahObligationEvidenceUmrahObligation =>
+      'Adapun tentang kewajiban umrah, berikut beberapa hadis yang menunjukkan hal tersebut:\n\n1 — Diriwayatkan dari \'Aisyah (semoga Allah meridhainya) bahwa ia pernah bertanya: \"Wahai Rasulullah, apakah wanita juga wajib berjihad?\" Beliau menjawab: «Ya, mereka diwajibkan jihad yang tidak ada peperangan di dalamnya, yaitu haji dan umrah.» (HR. Ahmad, 6/165; Ibnu Majah, 2901)\n\nSetelah menyebutkan hadis ini, Ibnu Khuzaimah (semoga Allah merahmatinya) berkata: \"Ucapan Nabi shallallahu \'alaihi wa sallam: \'…mereka diwajibkan jihad yang tidak ada peperangan di dalamnya, yaitu haji dan umrah,\' menunjukkan bahwa umrah adalah wajib seperti halnya haji.\" (Shahih Ibnu Khuzaimah, no. 3074)\n\n2 — Diriwayatkan dari Umar bin Khattab (semoga Allah meridhainya), bahwa Rasulullah shallallahu \'alaihi wa sallam bersabda: «Inti Islam adalah bersaksi bahwa tidak ada ilah selain Allah dan Muhammad adalah utusan-Nya, mendirikan shalat, menunaikan zakat, melaksanakan haji dan umrah, mandi janabah secara sempurna, berwudhu dengan sempurna, dan berpuasa di bulan Ramadan.» (Shahih Ibnu Khuzaimah, no. 3065; juga diriwayatkan oleh Ad-Daraquthni, 2/282)\n\n3 — Diriwayatkan dari Abu Razin Al-\'Uqaili, bahwa ia pernah datang kepada Nabi shallallahu \'alaihi wa sallam dan berkata: \"Wahai Rasulullah, ayahku sudah sangat tua, ia tidak mampu melaksanakan haji, umrah, dan bahkan tidak sanggup duduk di atas kendaraan.\" Maka Nabi shallallahu \'alaihi wa sallam menjawab: «Lakukanlah haji dan umrah untuk ayahmu.» (HR. Tirmidzi, 930)\n\n4 — Diriwayatkan dari As-Subai bin Ma\'bad, bahwa ia berkata kepada Umar bin Al-Khattab (semoga Allah meridhainya): \"Wahai Amirul Mukminin, aku adalah orang Badui, dahulu beragama Nasrani, kemudian masuk Islam. Aku ingin berjihad, tetapi aku dapati bahwa haji dan umrah telah diwajibkan kepadaku. Lalu aku bertanya kepada seseorang dari kaumku, dan dia berkata: \'Laksanakan haji dan umrah sekaligus, dan sembelihlah hewan qurban yang mudah bagimu.\' Maka aku pun melakukannya.\" Umar berkata: \"Kamu telah mendapat petunjuk kepada sunnah Nabimu shallallahu \'alaihi wa sallam.\" (HR. Abu Daud, 1799)';
+
+  @override
+  String get hajjUmrahObligationConcludingEvidence =>
+      'Haji dan umrah adalah wajib bagi siapa saja yang telah memenuhi syarat-syaratnya. Kaum muslimin sepakat atas kewajiban haji dalam kondisi tersebut. Perlu diingat, haji atau umrah yang dinadzarkan atau yang telah dimulai harus disempurnakan.';
+
+  @override
+  String get privacyPolicyTitle => 'Privacy Policy';
+
+  @override
+  String get privacyPolicyLastUpdated => 'Last updated: 2024';
+
+  @override
+  String get privacyPolicyIntroductionTitle => '1. Introduction';
+
+  @override
+  String get privacyPolicyIntroduction =>
+      'We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and protect information when you use our Umra Guide application.\n\nBy using this application, you agree to the terms of this Privacy Policy.';
+
+  @override
+  String get privacyPolicyDataCollectionTitle => '2. Data Collection';
+
+  @override
+  String get privacyPolicyDataCollection =>
+      'Our application DOES NOT collect any data.\n\nAll data is stored only locally on your device:\n\n• Local Settings: language, theme, display preferences are stored only on your device\n• Tawaf Counter Data: stored locally on your device\n\nWe DO NOT collect and DO NOT transmit:\n• Personal data (name, email, phone)\n• Location data\n• Analytics or tracking data\n• Data about your app usage\n• Any other data';
+
+  @override
+  String get privacyPolicyDataUsageTitle => '3. Data Usage';
+
+  @override
+  String get privacyPolicyDataUsage =>
+      'Since we do not collect data, all data is used solely locally on your device for:\n\n• Enabling app functionality (saving settings, tawaf counter)\n• Improving app performance (local settings for your convenience)\n\nAll data is stored only on your device and is never shared with third parties or external servers.';
+
+  @override
+  String get privacyPolicyThirdPartyTitle => '4. Third-Party Services';
+
+  @override
+  String get privacyPolicyThirdParty =>
+      'Our application may use the following third-party services:\n\n• Google Fonts: for loading fonts (if used). Google may collect technical information about font requests.\n\nWe do not control and are not responsible for the privacy policies of third-party services. We recommend reviewing their privacy policies.\n\nImportant: Even when using Google Fonts, no data about you or your app usage is transmitted to our servers or third parties.';
+
+  @override
+  String get privacyPolicyDataStorageTitle => '5. Data Storage';
+
+  @override
+  String get privacyPolicyDataStorage =>
+      'All application data is stored locally on your device using:\n\n• SharedPreferences (for settings)\n• Device local storage\n\nData is not transmitted to external servers and is not synchronized between devices. When you delete the app, all data is deleted with it.';
+
+  @override
+  String get privacyPolicyUserRightsTitle => '6. Your Rights';
+
+  @override
+  String get privacyPolicyUserRights =>
+      'In accordance with GDPR and other data protection laws, you have the right to:\n\n• Access your data: all data is stored on your device, you can view it in the app settings\n• Data deletion: you can delete all data by deleting the app from your device\n• Withdraw consent: you can stop using the app at any time\n\nSince we do not collect personal data and do not store it on servers, most rights are automatically respected.';
+
+  @override
+  String get privacyPolicyChildrenTitle => '7. Children';
+
+  @override
+  String get privacyPolicyChildren =>
+      'Our application has a 4+ age rating and is safe for children. We do not collect any personal data from users of any age, including children. All data is stored only locally on the device and is never transmitted anywhere.';
+
+  @override
+  String get privacyPolicyChangesTitle => '8. Changes to Privacy Policy';
+
+  @override
+  String get privacyPolicyChanges =>
+      'We may periodically update this Privacy Policy. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date at the beginning of this document.\n\nWe recommend that you periodically review this Privacy Policy for information on how we protect your data.';
+
+  @override
+  String get privacyPolicyContactTitle => '9. Contact';
+
+  @override
+  String get privacyPolicyContact =>
+      'If you have any questions or suggestions regarding this Privacy Policy, please contact us:\n\nEmail: saydulayev.wien@gmail.com\n\nWe will try to answer your questions as soon as possible.';
 }

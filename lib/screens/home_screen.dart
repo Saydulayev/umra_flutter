@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
-import '../providers/localization_provider.dart';
 import '../models/step_model.dart';
 import '../models/app_theme.dart';
 import '../screens/step_detail_screen.dart';
@@ -33,9 +32,14 @@ class HomeScreen extends StatelessWidget {
         elevation: 0,
         actions: [
           IconButton(
-            icon: const Icon(Icons.language, color: Colors.black87),
+            icon: const Icon(Icons.access_time, color: Colors.black87),
             onPressed: () {
-              _showLanguageDialog(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const PrayerTimeScreen(),
+                ),
+              );
             },
           ),
           IconButton(
@@ -45,17 +49,6 @@ class HomeScreen extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const SettingsScreen(),
-                ),
-              );
-            },
-          ),
-          IconButton(
-            icon: const Icon(Icons.access_time, color: Colors.black87),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const PrayerTimeScreen(),
                 ),
               );
             },
@@ -189,42 +182,4 @@ class HomeScreen extends StatelessWidget {
     }
   }
 
-  void _showLanguageDialog(BuildContext context) {
-    final languages = [
-      {'code': 'ru', 'name': 'Русский'},
-      {'code': 'en', 'name': 'English'},
-      {'code': 'de', 'name': 'Deutsch'},
-      {'code': 'fr', 'name': 'Français'},
-      {'code': 'tr', 'name': 'Türkçe'},
-      {'code': 'id', 'name': 'Bahasa Indonesia'},
-    ];
-
-    showDialog(
-      context: context,
-      builder: (dialogContext) => Consumer<LocalizationProvider>(
-        builder: (context, locProvider, child) {
-          return AlertDialog(
-            title: const Text('Select Language'),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: languages.map((lang) {
-                return ListTile(
-                  title: Text(lang['name']!),
-                  trailing: locProvider.currentLocale.languageCode == lang['code']
-                      ? const Icon(Icons.check, color: Colors.green)
-                      : null,
-                  onTap: () async {
-                    await locProvider.setLanguage(lang['code']!);
-                    if (dialogContext.mounted) {
-                      Navigator.pop(dialogContext);
-                    }
-                  },
-                );
-              }).toList(),
-            ),
-          );
-        },
-      ),
-    );
-  }
 }

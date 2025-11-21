@@ -36,7 +36,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get titleShaveHeadScreen => 'Saç Tıraşı';
 
   @override
-  String get usefulTitle => 'Yararlı';
+  String get usefulTitle => 'Faydalı';
 
   @override
   String get circleString => 'Geçiş:';
@@ -57,6 +57,21 @@ class AppLocalizationsTr extends AppLocalizations {
   String get selectLanguageSettingsString => 'Dil seçin';
 
   @override
+  String get feedbackString => 'Geri Bildirim';
+
+  @override
+  String get rateTheAppString => 'Uygulamayı Değerlendir';
+
+  @override
+  String get appThemeString => 'Uygulama Teması';
+
+  @override
+  String get notificationSettingsString => 'Bildirim Ayarları';
+
+  @override
+  String get selectLanguageString => 'Dil Seçin';
+
+  @override
   String get themeHeavenly => 'Gök';
 
   @override
@@ -69,10 +84,131 @@ class AppLocalizationsTr extends AppLocalizations {
   String get themeTurquoise => 'Deniz';
 
   @override
-  String get usefulInfoTitle => 'Yararlı Bilgiler';
+  String get usefulInfoTitle => 'Faydalı Bilgiler';
 
   @override
-  String get step1EnterIhram => 'Mikat noktasında ihrama girin.';
+  String get etiquetteManners => 'Adap ve Ahlak';
+
+  @override
+  String get hajjUmrahVirtues => 'Hac ve Umre Faziletleri';
+
+  @override
+  String get hajjUmrahObligation => 'Hac ve Umre Yükümlülüğü';
+
+  @override
+  String get janazaPrayerGuide => 'Cenaze Namazı Rehberi';
+
+  @override
+  String get titleJanazaGuide => 'Cenaze Namazı';
+
+  @override
+  String get basicRules => 'Cenaze Namazı Rehberi';
+
+  @override
+  String get janazaBasicRules =>
+      '📌 Cenaze namazının temel kuralları.\n\nNamaz ayakta kılınır, rükû ve secde yapılmaz. Dört tekbirden («Allahu Ekber») oluşur.\n\nHer tekbirden sonra belirli dualar okunur:\n\n1. Fatiha Suresi\n\n2. Peygamber Efendimiz ﷺ için salavat\n\n3. Merhum için dua\n\n4. Ek bir dua yapılabilir veya doğrudan selam verilerek namaz bitirilebilir.';
+
+  @override
+  String get firstTakbirTitle => '1. Birinci Tekbir';
+
+  @override
+  String get firstTakbirText =>
+      'Eller omuz hizasına veya kulak seviyesine kadar kaldırılır ve şöyle denir:\n\nاللَّهُ أَكْبَرُ\n\nAllahu Ekber (\"Allah en büyüktür\")\n\nArdından:\n\nFatiha Suresi okunur.';
+
+  @override
+  String get secondTakbirTitle => '2. İkinci Tekbir';
+
+  @override
+  String get secondTakbirText =>
+      'Eller kaldırılmadan tekbir getirilir:\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nPeygamber Efendimiz ﷺ için salavat okunur:\n\nاللَّهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ. اللَّهُمَّ بَارِكْ عَلَىٰ مُحَمَّدٍ وَعَلَىٰ آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَىٰ إِبْرَاهِيمَ وَعَلَىٰ آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ\n\nAllahumma salli \'ala Muhammadin wa \'ala ali Muhammadin, kama sallayta \'ala Ibrahima wa \'ala ali Ibrahima, innaka Hamidun Majid.  Allahumma barik \'ala Muhammadin wa \'ala ali Muhammadin, kama barakta \'ala Ibrahima wa \'ala ali Ibrahima, innaka Hamidun Majid!';
+
+  @override
+  String get translateSecondTakbirText =>
+      '«Ey Yüce Allah! Muhammed\'e ve onun ailesine, İbrahim\'e ve onun ailesine rahmet ettiğin gibi rahmet eyle. Şüphesiz ki Sen övülmeye layıksın ve yücesin! Ey Yüce Allah! Muhammed\'e ve onun ailesine bereket ver, İbrahim\'e ve onun ailesine bereket verdiğin gibi. Şüphesiz ki Sen övülmeye layıksın ve yücesin!».';
+
+  @override
+  String get thirdTakbirTitle => '3. Üçüncü Tekbir';
+
+  @override
+  String get thirdTakbirText =>
+      'Eller kaldırılmadan tekbir getirilir:\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nMerhum için dua okunur (eğer erkekse):\n\nاللَّهُمَّ اغْفِرْ لَهُ، وَارْحَمْهُ،\n\nAllahumma ighfir lahu, warhamhu.\n\nVeya:\n\nاللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ، وَعَافِهِ، وَاعْفُ عَنْهُ، وَأَكْرِمْ نُزُلَهُ، وَوَسِّعْ مُدْخَلَهُ، وَاغْسِلْهُ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ، وَنَقِّهِ مِنَ الْخَطَايَا كَمَا نَقَّيْتَ الثَّوْبَ الأبْيَضَ مِنَ الدَّنَسِ، وَأَبْدِلْهُ دَاراً خَيْراً مِنْ دَارِهِ، وَأَهْلاً خَيْراً مِنْ أَهْلِهِ، وَزَوْجاً خَيْرا ًمِنْ زَوَجِهِ، وَأَدْخِلْهُ الْجَنَّةَ، وَأَعِذْهُ مِنْ عَذَابِ الْقَبْرِ وَعَذَابِ النَّارِ\n\nAllahumma ighfir lahu, warhamhu, wa \'afihi, wa\'fu \'anhu, wa akrim nuzulahu, wa wassi\' mudkhalahu, waghsilhu bil-ma\'i, wassalji wal-baradi, wa naqqihi mina-l-khataya kama yunaqqa-th-thawbu-l-abyadu mina-d-danas, wa abdilhu daran khayran min darihi, wa ahlan khayran min ahlihi, wa zawjan khayran min zawjihi, wa adkhilhu-l-jannata, wa a\'iz-hu min \'adhabi-l-qabri wa \'adhabi-n-nar.';
+
+  @override
+  String get translateThirdTakbirText =>
+      '\'Awf ibn Malik şöyle rivayet etmiştir: \"Bir gün Allah\'ın Resulü (Allah\'ın selamı ve bereketi onun üzerine olsun) cenaze namazı kıldırdı ve ben onun, vefat eden kişi için yaptığı şu duayı ezberledim:\n\n«Ey Allah\'ım! Onu bağışla, ona merhamet et, onu kurtuluşa eriştir ve onu güzel bir şekilde karşıla. Kabrini genişlet ve onu su, kar ve dolu ile yıka! Onu günahlardan arındır, tıpkı beyaz bir giysiyi kirden arındırdığın gibi. Ona evinin daha hayırlısını, ailesinin daha hayırlısını ve eşinin daha hayırlısını ver. Onu Cennet\'e dahil et ve kabir azabından ve Cehennem ateşinden koru!» - Ebu Abdurrahman dedi ki: \'Bu duayı duyduğumda, vefat edenin yerinde olmayı diledim.\' (Sahih Muslim 2/663).';
+
+  @override
+  String get duaVariationsTitle => 'Merhuma Göre Dua Çeşitleri';
+
+  @override
+  String get duaVariationsText =>
+      '📌 Eğer vefat eden kişi bir erkekse\n\n- Aşağıdaki formu kullanın: لَهُ (lahu)\n\nاللَّهُمَّ اغْفِرْ لَهُ، وَارْحَمْهُ،\n\n(Allahumma ighfir lahu, warhamhu.)\n\n📌 Eğer vefat eden kişi bir kadınsa\n\n- Erkek formunun yerine kadın formunu kullanın: لَهَا (laha)\n\nاللَّهُمَّ اغْفِرْ لَهَا، وَارْحَمْهَا،\n\n(Allahumma ighfir laha, warhamha.)\n\n📌 Eğer vefat edenler birden fazla erkekse\n\n- Erkek çoğul formunu kullanın: لَهُمْ (lahum)\n\nاللَّهُمَّ اغْفِرْ لَهُمْ، وَارْحَمْهُمْ،\n\n(Allahumma ighfir lahum, warhamhum.)\n\n📌 Eğer vefat edenler birden fazla kadınsa\n\n- Kadın çoğul formunu kullanın: لَهُنَّ (lahunna)\n\nاللَّهُمَّ اغْفِرْ لَهُنَّ، وَارْحَمْهُنَّ،\n\n(Allahumma ighfir lahunna, warhamhunna.)\n\n📌 Eğer vefat eden kişinin cinsiyeti bilinmiyorsa veya vefat edenler birden fazla olup hem erkekler hem kadınlar varsa, şu formu kullanın: لَهُمْ (lahum).\n\nاللَّهُمَّ اغْفِرْ لَهُمْ، وَارْحَمْهُمْ،\n\n(Allahumma ighfir lahum, warhamhum.)';
+
+  @override
+  String get fourthTakbirTitle => '4. Dördüncü Tekbir';
+
+  @override
+  String get fourthTakbirText =>
+      'Eller kaldırılmadan tekbir getirilir:\n\nاللَّهُ أَكْبَرُ - Allahu Akbar\n\nBir dua yapılabilir, ancak zorunlu değildir.';
+
+  @override
+  String get fourthTakbirAdditionalInfo =>
+      'Dördüncü tekbirden sonra vefat eden kişi için dua etmenin caizliği hakkında.\n\nRivayet edilir ki, Abdullah ibn Abi Awfa kızının cenaze namazını kıldığında dört kez tekbir getirmiştir. Dördüncü tekbirden sonra, iki tekbir arasındaki süre kadar bekleyerek kızının bağışlanması için Allah\'a dua etmiş ve onun için niyazda bulunmuştur. Daha sonra şöyle demiştir: «Resulullah (Allah\'ın selamı ve bereketi onun üzerine olsun) da böyle yapardı.» (al-Hakim 1/512. Bkz. \"Sahih Sunan İbn Mace\" 1220.)';
+
+  @override
+  String get taslimTitle => 'Namazın Sonlandırılması (Teslim)';
+
+  @override
+  String get taslimText =>
+      '📌 Teslim, sağ tarafa bir kez veya sağa ve sola iki kez verilebilir.\n\nResulullah (Allah\'ın selamı ve bereketi onun üzerine olsun) cenaze namazında bazen bir, bazen de iki selam verirdi, ancak çoğunlukla tek selamla bitirirdi.';
+
+  @override
+  String get translateText => 'çeviri';
+
+  @override
+  String get sincerity => 'İhlâs';
+
+  @override
+  String get laws => 'Hükümler';
+
+  @override
+  String get choiceOfCompanions => 'Yol Arkadaşı Seçimi';
+
+  @override
+  String get financialIndependence => 'Mali Bağımsızlık';
+
+  @override
+  String get nobleManners => 'Asil Ahlak';
+
+  @override
+  String get zikrAndPrayers => 'Zikir ve Dualar';
+
+  @override
+  String get cautionInRelationships => 'İlişkilerde Dikkat';
+
+  @override
+  String get atonementAndRewards => 'Günahların Kefareti ve Sevap';
+
+  @override
+  String get hajjForWomen => 'Kadınlar İçin Hac';
+
+  @override
+  String get perfectHajj => 'Kusursuz Hac';
+
+  @override
+  String get followingTheSunnah => 'Sünnete Uymak';
+
+  @override
+  String get hajjObligationEvidence => 'Haccın Farz Olduğuna Dair Deliller';
+
+  @override
+  String get umrahObligationEvidence => 'Umrenin Farz Olduğuna Dair Deliller';
+
+  @override
+  String get conclusion => 'Sonuç';
+
+  @override
+  String get step1EnterIhram => '\nMikat noktasında ihrama girin.\n';
 
   @override
   String get step1WhenEnteringIhram => 'İhrama girerken şunu söyleyin:';
@@ -82,7 +218,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step1TurnToQiblah =>
-      'Labbayka Allahumma bi-´umrah.\n\nKıbleye yönelin ve şunu söyleyin:';
+      '\nLabbayka Allahumma bi-´umrah.\n\nKıbleye yönelin ve şunu söyleyin:\n';
 
   @override
   String get step1SecondArabic =>
@@ -102,7 +238,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step1EnteringSacredMosque =>
-      'Mescid-i Haram\'a sağ ayak ile girerken şunu söyleyin:';
+      '\n    \nMescid-i Haram\'a sağ ayak ile girerken şunu söyleyin:\n';
 
   @override
   String get step1EnteringSacredMosqueDuaArabic =>
@@ -117,7 +253,7 @@ class AppLocalizationsTr extends AppLocalizations {
       'اَللَّهُمَّ مَحِلِّي حَيْثُ حَبَسْتَنِي';
 
   @override
-  String get step1ConditioningHajj => 'Hac veya Umre için şart koşma.';
+  String get step1ConditioningHajj => '\n\nHac veya Umre için şart koşma.\n';
 
   @override
   String get step1ConditioningHajjText =>
@@ -128,7 +264,7 @@ class AppLocalizationsTr extends AppLocalizations {
       '«Allahumma mahilli haysu habastani»\n\n«Ey Allah\'ım! Eğer beni bir şey engellerse, ihramdan çıkışım burada olsun.»\n\nBu hadis, sahih olarak kabul edilmiştir. Ayrıca bkz. \"Sahîh Ebû Dâvûd\" (1776).\n\nBundan dolayı, eğer hacı bu şekilde niyet eder ve bir engel çıkarsa ya da hastalanırsa, hac veya umre ibadetini tamamlamadan ihramdan çıkabilir. Bu durumda ceza olarak kurban kesmesi gerekmez ve yeniden hac yapmasına da gerek yoktur. Ancak bu onun farz olan ilk haccı ise, bu durumda onu tekrar yapması gerekir.';
 
   @override
-  String get step1UmrahForParents => 'Ebeveynler için Umre';
+  String get step1UmrahForParents => '\n\nEbeveynler için Umre\n';
 
   @override
   String get step1UmrahForFatherArabic =>
@@ -167,11 +303,11 @@ class AppLocalizationsTr extends AppLocalizations {
       'Eğer ebeveynleriniz veya başka bir kişi için umre yapmak istiyorsanız, normal telbiye yerine verilen formüllerden birini okuyun, «abi» (baba), «ummi» (anne) kelimelerinden sonra veya sadece «\'an» kelimesinden sonra umrenin yapıldığı kişinin adını ekleyin. Adı belirterek niyet ve telbiyeyi söyledikten sonra, diğer tüm eylemler, dualar (dua) ve Allah\'ı anma (zikir) normal şekilde yapılır, sanki kendiniz için umre yapıyormuş gibi. Tek fark niyettir.';
 
   @override
-  String get step2KaabaText1 => 'Kâbe\'yi Tavaf';
+  String get step2KaabaText1 => '\nKâbe\'yi Tavaf';
 
   @override
   String get step2KaabaText2 =>
-      'Kâbe etrafında yedi kez tavaf etmeye başlayın (Tavaf).\nBu tavafın başlangıcından bitimine kadar erkekler sağ omuzlarını açık bırakmalıdır.\n        \nBundan sonra, hacı Kara Taş\'a (Hacerü\'l-Esved) eliyle dokunur ve onu öper.\n        \nEğer Kara Taş\'ı öpmek mümkün değilse, ona eliyle dokunmalıdır.\n\nEğer Kara Taş\'a dokunmak ve öpmek mümkün değilse, o zaman ona yönelin, sağ elinizle işaret edin ve «Allahu Akbar» (Allah en büyüktür) deyin. (Bütün bunlar Kâbe\'yi tavaf ederken her turda yapılmalıdır.)';
+      '\nKâbe etrafında yedi kez tavaf etmeye başlayın (Tavaf).\nBu tavafın başlangıcından bitimine kadar erkekler sağ omuzlarını açık bırakmalıdır.\n        \nBundan sonra, hacı Kara Taş\'a (Hacerü\'l-Esved) eliyle dokunur ve onu öper.\n        \nEğer Kara Taş\'ı öpmek mümkün değilse, ona eliyle dokunmalıdır.\n\nEğer Kara Taş\'a dokunmak ve öpmek mümkün değilse, o zaman ona yönelin, sağ elinizle işaret edin ve «Allahu Akbar» (Allah en büyüktür) deyin. (Bütün bunlar Kâbe\'yi tavaf ederken her turda yapılmalıdır.)\n';
 
   @override
   String get step2KaabaText3 =>
@@ -189,11 +325,11 @@ class AppLocalizationsTr extends AppLocalizations {
   String get step2TakbirArabic => 'الله أكبر';
 
   @override
-  String get step3PrayerAfterTawaf => 'Tavaftan sonra namaz.';
+  String get step3PrayerAfterTawaf => '\nKâbe\'yi tavaf ettikten sonra namaz';
 
   @override
   String get step3CompletedSevenCircuits =>
-      'Kâbe etrafında yedi turu tamamladıktan sonra, erkekler sağ omuzlarını kapatır. Sonra İbrahim makamına yönelin ve şunu söyleyin:';
+      '\nKâbe etrafında yedi turu tamamladıktan sonra, erkekler sağ omuzlarını kapatır. Sonra İbrahim makamına yönelin ve şunu söyleyin:\n';
 
   @override
   String get step3ArabicText =>
@@ -204,31 +340,31 @@ class AppLocalizationsTr extends AppLocalizations {
       'Wa-ttahizu mim-maqomi Ibrohima musollya.\n    \n«Ve İbrahim\'in makamını namaz yeri edinin» (Bakara Suresi, 125. ayet).\n    \nEğer mümkünse, İbrahim Makamı\'nda veya Mescid-i Haram\'ın herhangi bir yerinde iki rekât namaz kılın. Önünüze bir engel koymayı unutmayın ki kimse sizinle engel arasından geçmesin.\nİlk rekâtta 1. sure «Al-Fatihah = Fatiha Suresi» okunduktan sonra 109. sure «Al-Kafirun = Kâfirun Suresi» okunur, ikinci rekâtta «Al-Fatihah» okunduktan sonra 112. sure «Al-Ikhlas = İhlas Suresi» okunur.\n\nNamazı tamamladıktan sonra Zemzem suyu kaynağına yönelin.';
 
   @override
-  String get step4DrinkingZamzam => 'Zemzem Suyu İçme.';
+  String get step4DrinkingZamzam => '\nZemzem Suyu İçme.';
 
   @override
   String get step4ZamzamText =>
-      'Suyu için ve başınıza dökün.\n    \nCabir (radıyallahu anh) şöyle anlatmıştır: \"Peygamber (sallallahu aleyhi ve sellem) Zemzem kuyusuna yöneldi, ondan su içti ve başına döktü.\" (Ahmed 3/394), (İbn Huzeyme 4/305). Hadisin sahih olduğunu ez-Zerkeşî, Bedruddin el-Aynî, Şuayb el-Arnaût onaylamıştır. Bkz. «Umdetü\'l-Kârî» (9/227), «Haşiye \'alâ\'l-Menâsik» (s. 263), «Tahric el-Müsned» (15243).\n    \nCabir\'den (radıyallahu anh) rivayet edildiğine göre, Allah Resulü (sallallahu aleyhi ve sellem) şöyle buyurdu: «Zemzem suyu, hangi niyetle içilirse ona vesile olur.»\n(Ahmed 3/357), (İbn Mace 3062), (el-Hâkim 1739). Hadisin sahih olduğunu Süfyan ibn Uyeyne, el-Münzirî, ed-Dümyâtî, İbn Kayyim, ez-Zerkeşî, İbn Hacer, el-Elbânî onaylamıştır. Bkz. \"el-Mücâlasa\" (509), \"el-Metcar er-Râbih\" (982), \"Zâdü\'l-Meâd\" (4/393), \"el-Makâsıdü\'l-Hasene\" (928), \"Feyzü\'l-Kadîr\" (7759), \"Sahîh et-Terğîb\" (1165).\n    \neş-Şevkânî şöyle demiştir: \"Bu hadis, Zemzem suyunun hangi niyetle içilirse içilsin içen kişiye fayda sağlayacağına delildir. Çünkü \'hangi niyetle içilirse ona vesile olur\' ifadesi genel bir hüküm içermektedir.\" Bkz. \"Neylü\'l-Evtâr\" (5/105).\n\nen-Nevevî şöyle demiştir: \"Bu hadisin anlamı şudur ki, bir kişi Zemzem suyunu belirli bir niyetle içerse, o niyetine ulaşır. Gerçekten de ilim ehli ve salih kişiler bu suyu dünya ve ahiret işlerinde dileklerine ulaşmak için içmişler ve Allah\'ın lütfuyla istediklerine ulaşmışlardır.\" Bkz. \"Tehzîb el-Esma ve\'l-Luğât\" (3/139).';
+      '\nSuyu için ve başınıza dökün.\n    \nCabir (radıyallahu anh) şöyle anlatmıştır: \"Peygamber (sallallahu aleyhi ve sellem) Zemzem kuyusuna yöneldi, ondan su içti ve başına döktü.\" (Ahmed 3/394), (İbn Huzeyme 4/305). Hadisin sahih olduğunu ez-Zerkeşî, Bedruddin el-Aynî, Şuayb el-Arnaût onaylamıştır. Bkz. «Umdetü\'l-Kârî» (9/227), «Haşiye \'alâ\'l-Menâsik» (s. 263), «Tahric el-Müsned» (15243).\n    \nCabir\'den (radıyallahu anh) rivayet edildiğine göre, Allah Resulü (sallallahu aleyhi ve sellem) şöyle buyurdu: «Zemzem suyu, hangi niyetle içilirse ona vesile olur.»\n(Ahmed 3/357), (İbn Mace 3062), (el-Hâkim 1739). Hadisin sahih olduğunu Süfyan ibn Uyeyne, el-Münzirî, ed-Dümyâtî, İbn Kayyim, ez-Zerkeşî, İbn Hacer, el-Elbânî onaylamıştır. Bkz. \"el-Mücâlasa\" (509), \"el-Metcar er-Râbih\" (982), \"Zâdü\'l-Meâd\" (4/393), \"el-Makâsıdü\'l-Hasene\" (928), \"Feyzü\'l-Kadîr\" (7759), \"Sahîh et-Terğîb\" (1165).\n    \neş-Şevkânî şöyle demiştir: \"Bu hadis, Zemzem suyunun hangi niyetle içilirse içilsin içen kişiye fayda sağlayacağına delildir. Çünkü \'hangi niyetle içilirse ona vesile olur\' ifadesi genel bir hüküm içermektedir.\" Bkz. \"Neylü\'l-Evtâr\" (5/105).\n\nen-Nevevî şöyle demiştir: \"Bu hadisin anlamı şudur ki, bir kişi Zemzem suyunu belirli bir niyetle içerse, o niyetine ulaşır. Gerçekten de ilim ehli ve salih kişiler bu suyu dünya ve ahiret işlerinde dileklerine ulaşmak için içmişler ve Allah\'ın lütfuyla istediklerine ulaşmışlardır.\" Bkz. \"Tehzîb el-Esma ve\'l-Luğât\" (3/139).';
 
   @override
-  String get step5ReturnToBlackStone => 'Hacerü\'l-Esved\'e Dönüş.';
+  String get step5ReturnToBlackStone => '\nHacerü\'l-Esved\'e Dönüş.';
 
   @override
   String get step5ReturnReciteTakbir =>
-      'Hacerü\'l-Esved\'e dönün, tekbir getirin ve daha önce açıklandığı gibi ona dokunun. Veya ona elinizle işaret edin ve tekbir getirin. Allah en büyüktür.';
+      '\nHacerü\'l-Esved\'e dönün, tekbir getirin ve daha önce açıklandığı gibi ona dokunun. Veya ona elinizle işaret edin ve tekbir getirin. Allah en büyüktür.';
 
   @override
-  String get step5AllahIsGreat => 'Allahu Akbar.';
+  String get step5AllahIsGreat => '\nAllahu Akbar.\n';
 
   @override
   String get step5TakbirArabic => 'الله أكبر';
 
   @override
-  String get step6SafaAndMarwa => 'Safa ve Merve';
+  String get step6SafaAndMarwa => '\nSafa ve Merve';
 
   @override
   String get step6HeadTowardsSafa =>
-      'Safa ve Merve tepeleri arasında yedi kez gerçekleştirilen sa\'y ibadetini yerine getirmek için Safa tepesine gidin. Sa\'y ibadetine Safa tepesinden başlayın.\n    \n    \n       Safa\'ya yaklaşırken şu ayeti okuyun:';
+      '\nSafa ve Merve tepeleri arasında yedi kez gerçekleştirilen sa\'y ibadetini yerine getirmek için Safa tepesine gidin. Sa\'y ibadetine Safa tepesinden başlayın.\n    \n    \n       Safa\'ya yaklaşırken şu ayeti okuyun:\n';
 
   @override
   String get step6SurahBaqarahArabic =>
@@ -239,7 +375,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step6SurahBaqarahText =>
-      'Inna Ssofaa wal-Marwata min sha\'aaa\'iril laah, faman hajjal Baita awi\'tamaro falaa junaaha \'alaihi ayyatt´owwafa bihimaa, wa man tat´owwa\'a hoyron fa-inna-LLAha Shakirun ´alim.\n       \n«Şüphesiz ki Safa ve Merve, Allah\'ın sembollerindendir. Bu nedenle, kim Beytullah\'a hac veya umre için gelirse, onların arasında yürüyerek geçmesinde kendisine bir günah yoktur. Kim gönülden bir iyilik yaparsa, şüphesiz Allah, şükrün karşılığını verendir, bilendir.» (Bakara Suresi, 158. Ayet).\n    \n    Sonra şunu söyleyin:';
+      'Inna Ssofaa wal-Marwata min sha\'aaa\'iril laah, faman hajjal Baita awi\'tamaro falaa junaaha \'alaihi ayyatt´owwafa bihimaa, wa man tat´owwa\'a hoyron fa-inna-LLAha Shakirun ´alim.\n       \n«Şüphesiz ki Safa ve Merve, Allah\'ın sembollerindendir. Bu nedenle, kim Beytullah\'a hac veya umre için gelirse, onların arasında yürüyerek geçmesinde kendisine bir günah yoktur. Kim gönülden bir iyilik yaparsa, şüphesiz Allah, şükrün karşılığını verendir, bilendir.» (Bakara Suresi, 158. Ayet).';
 
   @override
   String get step6WeBeginArabic => 'نَبْدَأُ بِمَا بَدَأَ اللهُ بِهِ';
@@ -249,7 +385,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step6WeBeginText =>
-      'Nabdau bima badaa-Llahu bihi\n\n«Biz, Allah\'ın başladığı ile başlıyoruz.»\n    \nSafa tepesine çıkın, yüzünüzü Kâbe\'ye çevirin ve şu zikri okuyun:';
+      'Nabdau bima badaa-Llahu bihi\n\n«Biz, Allah\'ın başladığı ile başlıyoruz.»\n    \nSafa tepesine çıkın, yüzünüzü Kâbe\'ye çevirin ve şu zikri okuyun:\n';
 
   @override
   String get step6RemembranceArabic =>
@@ -261,7 +397,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step6RemembranceText =>
-      'Allahu Akbar! Allahu Akbar! Allahu Akbar!\nLa ilaha illa-Llahu wahdahu la sharika lahu. Lahul mulku wa lahul hamdu yuhyi wa yumitu wa huwa \'ala kulli shay\'in qodir. La ilaha illa-Llahu wahdahu la sharika lah, anjaza wa\'dahu, wa nasaro \'abdahu, wa hazamal ahzaba wahdahu\n\n«Allah en büyüktür! Allah en büyüktür! Allah en büyüktür!\nAllah\'tan başka ilah yoktur, O tektir ve O\'nun ortağı yoktur! Mülk O\'nundur, hamd O\'na aittir. O, diriltir ve öldürür. O, her şeye kadirdir! Allah\'tan başka ilah yoktur, O tektir ve O\'nun ortağı yoktur! O, vaadini yerine getirdi, kuluna yardım etti ve düşman birliklerini tek başına mağlup etti.»\n    \nBu sözleri üç kez tekrarlayın ve ilk iki kez ellerinizi kaldırarak dua edin. Sonra Safa\'dan Merve\'ye doğru yürümeye başlayın. Safa\'dan Merve\'ye gitmek bir tur, Merve\'den Safa\'ya dönmek ikinci tur olarak sayılır. Merve tepesine ulaştığınızda aynı düzeni tekrar edin: zikir – dua – zikir – dua – zikir. Eller dua için ilk iki tekrarda kaldırılmalıdır. Bu zikir ve dualar, yedinci ve son tur hariç, Safa ve Merve tepelerine her çıkışta tekrarlanmalıdır. Yeşil işaretli ilk noktaya ulaştığınızda, erkekler ikinci işarete kadar hızlı koşmalıdır. Yolun geri kalanı normal yürüyerek tamamlanmalıdır.\n\nSa\'y ibadeti sırasında şu duayı okuyabilirsiniz:';
+      'Allahu Akbar! Allahu Akbar! Allahu Akbar!\nLa ilaha illa-Llahu wahdahu la sharika lahu. Lahul mulku wa lahul hamdu yuhyi wa yumitu wa huwa \'ala kulli shay\'in qodir. La ilaha illa-Llahu wahdahu la sharika lah, anjaza wa\'dahu, wa nasaro \'abdahu, wa hazamal ahzaba wahdahu\n\n«Allah en büyüktür! Allah en büyüktür! Allah en büyüktür!\nAllah\'tan başka ilah yoktur, O tektir ve O\'nun ortağı yoktur! Mülk O\'nundur, hamd O\'na aittir. O, diriltir ve öldürür. O, her şeye kadirdir! Allah\'tan başka ilah yoktur, O tektir ve O\'nun ortağı yoktur! O, vaadini yerine getirdi, kuluna yardım etti ve düşman birliklerini tek başına mağlup etti.»\n    \nBu sözleri üç kez tekrarlayın ve ilk iki kez ellerinizi kaldırarak dua edin. Sonra Safa\'dan Merve\'ye doğru yürümeye başlayın. Safa\'dan Merve\'ye gitmek bir tur, Merve\'den Safa\'ya dönmek ikinci tur olarak sayılır. Merve tepesine ulaştığınızda aynı düzeni tekrar edin: zikir – dua – zikir – dua – zikir. Eller dua için ilk iki tekrarda kaldırılmalıdır. Bu zikir ve dualar, yedinci ve son tur hariç, Safa ve Merve tepelerine her çıkışta tekrarlanmalıdır. Yeşil işaretli ilk noktaya ulaştığınızda, erkekler ikinci işarete kadar hızlı koşmalıdır. Yolun geri kalanı normal yürüyerek tamamlanmalıdır.\n\nSa\'y ibadeti sırasında şu duayı okuyabilirsiniz:\n';
 
   @override
   String get step6DuasDuringSaiArabic =>
@@ -300,7 +436,7 @@ class AppLocalizationsTr extends AppLocalizations {
       'Allahumma solli \'ala Muhammadin wa sallim! Allahumma, inni as\'aluka min fadlika!\n    \n«Ey Allah\'ım! Muhammed\'e salât ve selam eyle! Ey Allah\'ım! Şüphesiz, Senin lütfunu diliyorum!»';
 
   @override
-  String get step7ShavingHead => 'Başı tıraş etmek veya saçları kısaltmak.';
+  String get step7ShavingHead => '\nBaşı tıraş etmek veya saçları kısaltmak.';
 
   @override
   String get step7MenShortenHair =>
@@ -309,4 +445,129 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get step7DuaAtEnd =>
       'Son olarak, Yüce Allah\'tan tüm salih amellerimizi kabul etmesini ve bu amellerimizin sevabını, O\'nun huzuruna çıkacağımız güne kadar korumasını diliyorum.\n    \n«O gün ki, ne mal fayda verir ne de oğullar. Ancak Allah\'a selim bir kalple gelenler müstesna.» \n(Şuara Suresi, 88–89. ayetler).\n    \nAyrıca, bu uygulamanın oluşturulmasına, geliştirilmesine ve yayılmasına herhangi bir şekilde katkıda bulunan herkese – ister bir tavsiye, ister ilim, ister maddi destek veya güzel bir söz olsun – Allah\'ın tam mükafat vermesini niyaz ediyorum. \n    \nÇünkü Allah Resulü (sallallahu aleyhi ve sellem) şöyle buyurmuştur:\n«Kim bir hayra vesile olursa, onu yapanın sevabı kadar sevap kazanır.» \n(Sahih Müslim, Hadis No: 1893).\n\nAlemlerin Rabbi olan Allah\'a hamdolsun!';
+
+  @override
+  String get etiquetteMannersText1 =>
+      'Hac ve umre yapan kişinin en önemli vazifesi, Allah\'a karşı ihlaslı olmaktır. O, riyadan ve şöhret arzusundan arınmalı, böylece bu hac ve umre ibadetinin mükafatını almalıdır.\n\nEbu Hureyre\'den (radıyallahu anh) rivayet edildiğine göre, Resulullah (sallallahu aleyhi ve sellem) şöyle buyurdu: «Allah Teâlâ buyurdu ki: \'Ben, ortak koşulmasından en fazla müstağni olanım. Kim bir amel işler ve onda Beni başkasıyla ortak kılarsa, onu da, o şirkini de reddederim!\'». (Müslim, 2985)\n\nAyrıca, Resulullah (sallallahu aleyhi ve sellem) şöyle dua etmiştir: «Allah\'ım! Riyadan ve gösterişten uzak bir hac nasip eyle!» (İbn Mâce, 2890).';
+
+  @override
+  String get etiquetteMannersText2 =>
+      'Hac ve umre yapmak isteyen kişi, bu ibadetleri ilme dayalı bir şekilde yerine getirebilmek için hac ve umreyle ilgili fıkhî hükümleri öğrenmeye gayret etmelidir.';
+
+  @override
+  String get etiquetteMannersText3 =>
+      'Hac ve umre yapan kişi, yolculuk esnasında kendisine en hayırlı arkadaşları seçmeye özen göstermelidir. Böylece onlardan hem ilim hem de ahlak açısından fayda görebilir.\n\nEbu Musa el-Eş\'arî\'den (radıyallahu anh) rivayet edildiğine göre, Resulullah (sallallahu aleyhi ve sellem) şöyle buyurdu: «Salih dost ile kötü dostun misali, misk satıcısı ile körük üfleyen demirciye benzer. Misk satıcısı ya sana hediye verir, ya sen ondan misk satın alırsın ya da en azından güzel kokusunu duyarsın. Körük üfleyen demirci ise ya elbiseni yakar ya da ondan gelen kötü kokuyu duyarsın.» (Buhari, 5534; Müslim, 2628).';
+
+  @override
+  String get etiquetteMannersText4 =>
+      'Hac ve umre yapan kişi, başkalarına muhtaç olmamak için yeterli maddi imkana sahip olmalıdır.\n\nEbu Said el-Hudrî\'den (radıyallahu anh) rivayet edildiğine göre, Peygamberimiz (sallallahu aleyhi ve sellem) şöyle buyurmuştur: «Kim iffetli olmaya çalışırsa, Allah ona iffet ihsan eder; kim başkasına muhtaç olmamaya çalışırsa, Allah onu başkasına muhtaç olmaktan kurtarır.» (Buhari, 1469; Müslim, 1053).';
+
+  @override
+  String get etiquetteMannersText5 =>
+      'Hac ve umre yapan kişi, güzel ahlak sahibi olmalı ve insanlara en güzel şekilde davranmalıdır.\n\nEbu Zerr\'den (radıyallahu anh) rivayet edildiğine göre, Resulullah (sallallahu aleyhi ve sellem) şöyle buyurdu: «Nerede olursan ol, Allah\'tan kork! Kötü bir amel işlersen hemen ardından onu silecek bir iyilik yap ve insanlara güzel ahlak ile muamele et.» (Tirmizî, 1987).\n\nAbdullah ibn Amr ibn Âs\'tan (radıyallahu anh) rivayet edildiğine göre, Peygamber (sallallahu aleyhi ve sellem) şöyle buyurmuştur: «Kim cehennemden uzaklaştırılıp cennete girmek isterse, Allah\'a ve ahiret gününe iman etmiş olarak ölsün ve insanlara, kendisine nasıl davranılmasını istiyorsa öyle davransın.» (Müslim, 1844).';
+
+  @override
+  String get etiquetteMannersText6 =>
+      'Hac ve umre yapan kişi, Allah\'ı zikretmeye, dua etmeye ve istiğfarda bulunmaya önem vermelidir. Dilini hayırdan başka şeyle meşgul etmemeli, dünya ve ahiret hayatı için kendisine faydalı olan işlerle zamanını değerlendirmelidir.\n\nEbu Hureyre\'den (radıyallahu anh) rivayet edildiğine göre, Resulullah (sallallahu aleyhi ve sellem) şöyle buyurmuştur: «Kim Allah\'a ve ahiret gününe iman ediyorsa, ya hayır söylesin ya da sussun!» (Buhari, 6018; Müslim, 47).\n\nİbn Abbas\'tan (radıyallahu anh) rivayet edildiğine göre, Peygamber (sallallahu aleyhi ve sellem) şöyle buyurmuştur: «İnsanların çoğunun farkına varmadığı iki büyük nimet vardır: Sağlık ve boş vakit.» (Buhari, 6412).';
+
+  @override
+  String get etiquetteMannersText7 =>
+      'Hac ve umre yapan kişi, başkalarına söz veya fiil ile zarar vermekten sakınmalıdır.\n\nResulullah (sallallahu aleyhi ve sellem) şöyle buyurmuştur: «Müslüman, diğer Müslümanların elinden ve dilinden emin olduğu kişidir.» (Buhari, 10; Müslim, 41).\n\nAyrıca, hac ve umre yapan kişinin, sigara içiyorsa, dumanının başkalarına zarar vermemesine dikkat etmesi gerekir. Zira zaten sigarayı bırakmak ve Allah\'a tövbe etmek bir müslümana vaciptir. Çünkü sigara sağlığa zararlıdır ve kişinin malını israf etmesine sebep olur.\n\nMüslüman, burada zikredilen güzel ahlaki özellikleri her zaman ve her yerde benimsemeli, özellikle hac ve umre yolculuğunda daha fazla dikkat göstermelidir.';
+
+  @override
+  String get hajjUmrahVirtuesText1 =>
+      'Hac ve umrenin fazileti hakkında Resulullah\'tan (sallallahu aleyhi ve sellem) sahih hadisler rivayet edilmiştir. Bunlardan bazılarını zikredelim:\n\nEbu Hureyre\'den (radıyallahu anh) rivayet edildiğine göre, Resulullah (sallallahu aleyhi ve sellem) şöyle buyurmuştur: «Bir umreden diğerine kadar işlenen günahlar affedilir. Makbul bir haccın karşılığı ise ancak cennettir.» (Buhari, 1773; Müslim, 1349).\n\nAbdullah ibn Mes\'ud\'dan (radıyallahu anh) rivayet edildiğine göre, Resulullah (sallallahu aleyhi ve sellem) şöyle buyurmuştur: «Hac ve umreyi peş peşe yapınız. Çünkü bu ikisi, demircinin körüğü demir, altın ve gümüşün paslarını giderdiği gibi fakirliği ve günahları giderir. Makbul bir haccın karşılığı ise ancak cennettir.» (Tirmizî, 810; Nesâî, 2631).\n\nİbn Abbas\'tan (radıyallahu anh) rivayet edildiğine göre, Resulullah (sallallahu aleyhi ve sellem) şöyle buyurmuştur: «Hac ve umreyi peş peşe yapınız. Çünkü bunlar, demircinin körüğünün demirden kiri giderdiği gibi fakirliği ve günahları giderir.» (Nesâî, 2630).';
+
+  @override
+  String get hajjUmrahVirtuesText2 =>
+      'Müminlerin annesi Âişe\'den (radıyallahu anha) rivayet edildiğine göre, bir gün şöyle dedi: «Ey Allah\'ın Resulü! Biz, cihadın en faziletli amel olduğunu düşünüyoruz. Peki, biz de cihada katılmalı mıyız?» Resulullah (sallallahu aleyhi ve sellem) şöyle buyurdu: «Hayır! Sizin (kadınlar için) en faziletli cihadınız makbul bir hacdır.» (Buhari, 1520).\n\nBir diğer rivayette ise Âişe (radıyallahu anha) şöyle demiştir: «Ey Allah\'ın Resulü! Kadınlar cihad etmeli mi?» Resulullah (sallallahu aleyhi ve sellem) şöyle buyurdu: «Onlar, içinde savaş bulunmayan bir cihad yapmalıdır. Bu da hac ve umredir.» (İbn Mâce, 2901).';
+
+  @override
+  String get hajjUmrahVirtuesText3 =>
+      'Ebu Hureyre\'den (radıyallahu anh) rivayet edildiğine göre, Resulullah (sallallahu aleyhi ve sellem) şöyle buyurmuştur: «Kim Allah için hacceder ve bu esnada eşiyle ilişkiye girmez, günah işlemez ve kötü söz söylemezse, annesinden doğduğu günkü gibi günahlarından arınmış olarak döner.» (Buhari, 1521; Müslim, 1350).\n\nAyrıca Resulullah (sallallahu aleyhi ve sellem), Amr ibn Âs\'a (radıyallahu anh) şöyle buyurmuştur: «Bilmiyor musun ki, İslam, daha önce işlenen günahları siler? Hicret, daha önce işlenen günahları siler. Hac da daha önce işlenen günahları siler.» (Müslim, 121).\n\nHadislerde geçen \"makbul hac\" (hacc-ı mebrur), Resulullah\'ın (sallallahu aleyhi ve sellem) sünnetine uygun bir şekilde yerine getirilen hacdır.';
+
+  @override
+  String get hajjUmrahVirtuesText4 =>
+      'Câbir\'den (radıyallahu anh) rivayet edildiğine göre, Resulullah (sallallahu aleyhi ve sellem) şöyle buyurmuştur: «Benden hac menasikini öğrenin! Çünkü ben, bu hactan sonra bir daha hac yapamayabilirim.» (Müslim, 1297).\n\nBu hadisin bir başka rivayetinde ise Resulullah (sallallahu aleyhi ve sellem) şöyle buyurmuştur: «Ey insanlar! Hac menasikini benden öğrenin. Çünkü bu yıldan sonra bir daha hac yapmayabilirim.» (Nesâî, 3062).';
+
+  @override
+  String get hajjUmrahObligationObligationEvidence =>
+      'Hac ve umrenin ömründe bir kez yapılması farzdır. Kim hac ve umreyi birden fazla yaparsa, bu artık nafile ibadet olur.\n\nAyrıca, hac ve umre, adak olarak adandığında da farz hale gelir. Eğer bir kişi Allah\'a hac veya umre yapacağına dair adakta bulunmuşsa, bu adağını yerine getirmesi gereklidir.\n\nEğer kişi, nafile olarak hac veya umreye başlamışsa, artık onu tamamlaması gerekir. Çünkü Allah Teâlâ şöyle buyurmuştur: «Haccı ve umreyi Allah için tamamlayın.» (Bakara Suresi, 196. ayet).\n\nHaccın farz olduğu; Kur\'an, Sünnet ve İslam âlimlerinin icmaı ile sabittir.\n\nAllah Teâlâ şöyle buyurmuştur: «İnsanlar, oraya gitmeye gücü yetenlerin Allah için Beytullah\'ı haccetmeleri gerekir. Kim inkâr ederse bilsin ki Allah, âlemlerden müstağnidir.» (Âl-i İmran Suresi, 97. ayet).\n\nResulullah (sallallahu aleyhi ve sellem) şöyle buyurmuştur: «İslam beş temel üzerine kurulmuştur: Allah\'tan başka ilah olmadığına ve Muhammed\'in O\'nun resulü olduğuna şehadet etmek, namaz kılmak, zekât vermek, haccetmek ve Ramazan orucunu tutmak.» (Buhari, 8; Müslim, 16).\n\nBir diğer hadiste ise: «İslam\'ın esası, Allah\'tan başka ilah olmadığına ve Muhammed\'in O\'nun resulü olduğuna şahitlik etmen, namaz kılman, zekât vermen, Ramazan orucunu tutman ve gücün yettiğinde Beytullah\'ı haccetmendir.» (Müslim, 8).\n\nEbu Hureyre\'den (radıyallahu anh) rivayet edildiğine göre, Resulullah (sallallahu aleyhi ve sellem) bir gün hutbe vererek şöyle buyurdu: «Ey insanlar! Size hac farz kılındı, o halde haccı yerine getirin.» Bir adam sordu: «Ey Allah\'ın Resulü! Her yıl mı?» Resulullah (sallallahu aleyhi ve sellem) ona cevap vermedi. Adam üç kez soruyu tekrarladıktan sonra Resulullah (sallallahu aleyhi ve sellem) şöyle buyurdu: «Eğer \'evet\' deseydim, her yıl yapmak üzerinize farz olurdu, ancak siz bunu yerine getiremezdiniz.» (Müslim, 1337).\n\nMüslümanlar, haccın farz olduğu konusunda icma etmişlerdir. Haccın farz olabilmesi için gereken şartlar bir kişide bulunduğunda, onun için hac yapmak bir zorunluluktur.';
+
+  @override
+  String get hajjUmrahObligationEvidenceUmrahObligation =>
+      'Umrenin farz olduğuna dair şu hadisler delil olarak getirilmiştir:\n\n1 — Âişe\'den (radıyallahu anha) rivayet edildiğine göre, bir gün Peygamberimiz\'e (sallallahu aleyhi ve sellem) şöyle sordu: «Ey Allah\'ın Resulü! Kadınlar da cihad etmeli mi?» Resulullah (sallallahu aleyhi ve sellem) şöyle buyurdu: «Evet, onlar savaş bulunmayan bir cihad yapmak zorundadır. Bu da hac ve umredir.» (Ahmed, 6/165; İbn Mâce, 2901).\n\nBu hadisi zikreden İbn Huzeyme (rahimehullah) şöyle demiştir: «Resulullah\'ın (sallallahu aleyhi ve sellem) \'Onlar savaşsız bir cihad yapmalıdır ve bu da hac ile umredir.\' sözünde, umrenin de hac gibi farz olduğuna dair açıklık vardır.» (Sahih İbn Huzeyme, Hadis No: 3074).\n\n2 — Ömer\'den (radıyallahu anh) rivayet edildiğine göre, Resulullah (sallallahu aleyhi ve sellem) şöyle buyurmuştur: «İslam\'ın temeli şudur: Allah\'tan başka ilah olmadığına ve Muhammed\'in O\'nun resulü olduğuna şahitlik etmek, namaz kılmak, zekât vermek, hac ve umre yapmak, cünüplükten sonra gusletmek, abdest almak ve Ramazan ayında oruç tutmaktır.» (Sahih İbn Huzeyme, Hadis No: 3065; Darakutni, 2/282).\n\n3 — Ebu Razin el-Uqayli\'den rivayet edildiğine göre, bir gün Resulullah\'a (sallallahu aleyhi ve sellem) gelerek şöyle dedi: «Ey Allah\'ın Resulü! Babam çok yaşlıdır, ne hac ne de umre yapabilir, hatta hayvana bile binemez.» Resulullah (sallallahu aleyhi ve sellem) şöyle buyurdu: «Babanın yerine hac ve umre yap.» (Tirmizî, 930).\n\n4 — Es-Subey\'î ibn Ma\'bad\'dan rivayet edildiğine göre, Ömer ibn Hattab\'a (radıyallahu anh) şöyle dedi: «Ey müminlerin emiri! Ben önceden bedevi bir Hristiyandım, sonra İslam\'a girdim ve cihada gitmek istedim. Ancak hac ve umrenin bana farz kılındığını öğrendim. Kavmimden birine sordum ve bana, \'Hac ve umreyi birlikte yap ve gücünün yettiği bir kurban kes\' dedi. Ben de hac ve umreyi birlikte yaptım.» Bunun üzerine Ömer (radıyallahu anh) şöyle dedi: «Sen, Resulullah\'ın (sallallahu aleyhi ve sellem) sünnetine uygun davrandın.» (Ebu Davud, 1799).';
+
+  @override
+  String get hajjUmrahObligationConcludingEvidence =>
+      'Hac ve umre, şartları taşıyan her Müslüman için farzdır. Haccın farz olduğu konusunda Müslümanlar icma etmişlerdir. Ayrıca, yapılan bir adaktan dolayı hac ve umre farz hale gelebilir ve başlanılan nafile bir hac veya umre tamamlanmalıdır.';
+
+  @override
+  String get privacyPolicyTitle => 'Privacy Policy';
+
+  @override
+  String get privacyPolicyLastUpdated => 'Last updated: 2024';
+
+  @override
+  String get privacyPolicyIntroductionTitle => '1. Introduction';
+
+  @override
+  String get privacyPolicyIntroduction =>
+      'We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and protect information when you use our Umra Guide application.\n\nBy using this application, you agree to the terms of this Privacy Policy.';
+
+  @override
+  String get privacyPolicyDataCollectionTitle => '2. Data Collection';
+
+  @override
+  String get privacyPolicyDataCollection =>
+      'Our application DOES NOT collect any data.\n\nAll data is stored only locally on your device:\n\n• Local Settings: language, theme, display preferences are stored only on your device\n• Tawaf Counter Data: stored locally on your device\n\nWe DO NOT collect and DO NOT transmit:\n• Personal data (name, email, phone)\n• Location data\n• Analytics or tracking data\n• Data about your app usage\n• Any other data';
+
+  @override
+  String get privacyPolicyDataUsageTitle => '3. Data Usage';
+
+  @override
+  String get privacyPolicyDataUsage =>
+      'Since we do not collect data, all data is used solely locally on your device for:\n\n• Enabling app functionality (saving settings, tawaf counter)\n• Improving app performance (local settings for your convenience)\n\nAll data is stored only on your device and is never shared with third parties or external servers.';
+
+  @override
+  String get privacyPolicyThirdPartyTitle => '4. Third-Party Services';
+
+  @override
+  String get privacyPolicyThirdParty =>
+      'Our application may use the following third-party services:\n\n• Google Fonts: for loading fonts (if used). Google may collect technical information about font requests.\n\nWe do not control and are not responsible for the privacy policies of third-party services. We recommend reviewing their privacy policies.\n\nImportant: Even when using Google Fonts, no data about you or your app usage is transmitted to our servers or third parties.';
+
+  @override
+  String get privacyPolicyDataStorageTitle => '5. Data Storage';
+
+  @override
+  String get privacyPolicyDataStorage =>
+      'All application data is stored locally on your device using:\n\n• SharedPreferences (for settings)\n• Device local storage\n\nData is not transmitted to external servers and is not synchronized between devices. When you delete the app, all data is deleted with it.';
+
+  @override
+  String get privacyPolicyUserRightsTitle => '6. Your Rights';
+
+  @override
+  String get privacyPolicyUserRights =>
+      'In accordance with GDPR and other data protection laws, you have the right to:\n\n• Access your data: all data is stored on your device, you can view it in the app settings\n• Data deletion: you can delete all data by deleting the app from your device\n• Withdraw consent: you can stop using the app at any time\n\nSince we do not collect personal data and do not store it on servers, most rights are automatically respected.';
+
+  @override
+  String get privacyPolicyChildrenTitle => '7. Children';
+
+  @override
+  String get privacyPolicyChildren =>
+      'Our application has a 4+ age rating and is safe for children. We do not collect any personal data from users of any age, including children. All data is stored only locally on the device and is never transmitted anywhere.';
+
+  @override
+  String get privacyPolicyChangesTitle => '8. Changes to Privacy Policy';
+
+  @override
+  String get privacyPolicyChanges =>
+      'We may periodically update this Privacy Policy. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date at the beginning of this document.\n\nWe recommend that you periodically review this Privacy Policy for information on how we protect your data.';
+
+  @override
+  String get privacyPolicyContactTitle => '9. Contact';
+
+  @override
+  String get privacyPolicyContact =>
+      'If you have any questions or suggestions regarding this Privacy Policy, please contact us:\n\nEmail: saydulayev.wien@gmail.com\n\nWe will try to answer your questions as soon as possible.';
 }

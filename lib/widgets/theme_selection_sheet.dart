@@ -61,18 +61,12 @@ class ThemeSelectionSheet extends StatelessWidget {
                       gradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
-                        colors: [
-                          appTheme.gradientTopColor,
-                          Colors.white,
-                        ],
+                        colors: [appTheme.gradientTopColor, Colors.white],
                       ),
                     ),
                     child: Row(
                       children: [
-                        Circle(
-                          color: appTheme.previewColor,
-                          size: 50,
-                        ),
+                        Circle(color: appTheme.previewColor, size: 50),
                         const SizedBox(width: 16),
                         Expanded(
                           child: Text(
@@ -121,23 +115,14 @@ class Circle extends StatelessWidget {
   final Color color;
   final double size;
 
-  const Circle({
-    super.key,
-    required this.color,
-    this.size = 50,
-  });
+  const Circle({super.key, required this.color, this.size = 50});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: size,
       height: size,
-      decoration: BoxDecoration(
-        color: color,
-        shape: BoxShape.circle,
-      ),
+      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
     );
   }
 }
-
-
