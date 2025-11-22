@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
@@ -12,19 +13,101 @@ class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   Future<void> _launchEmail(BuildContext context) async {
-    final Uri emailUri = Uri.parse('mailto:saydulayev.wien@gmail.com');
-    if (await canLaunchUrl(emailUri)) {
-      await launchUrl(emailUri);
-    } else {
-      // Если не удалось открыть почтовое приложение, показываем сообщение
+    const String email = 'saydulayev.wien@gmail.com';
+    final Uri emailUri = Uri.parse('mailto:$email');
+
+    try {
+      // Пробуем открыть с разными режимами запуска
+      bool launched = false;
+
+      // Сначала пробуем platformDefault
+      if (await canLaunchUrl(emailUri)) {
+        try {
+          await launchUrl(emailUri, mode: LaunchMode.platformDefault);
+          launched = true;
+        } catch (e) {
+          // Если не получилось, пробуем externalApplication
+          try {
+            await launchUrl(emailUri, mode: LaunchMode.externalApplication);
+            launched = true;
+          } catch (e2) {
+            // Если и это не сработало, пробуем externalNonBrowserApplication
+            try {
+              await launchUrl(
+                emailUri,
+                mode: LaunchMode.externalNonBrowserApplication,
+              );
+              launched = true;
+            } catch (e3) {
+              // Все попытки не удались
+            }
+          }
+        }
+      }
+
+      // Если не удалось открыть почтовое приложение, показываем диалог с email
+      if (!launched && context.mounted) {
+        _showEmailDialog(context, email);
+      }
+    } catch (e) {
+      // Обработка исключений при открытии почтового приложения
       if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Не удалось открыть почтовое приложение'),
-          ),
-        );
+        _showEmailDialog(context, email);
       }
     }
+  }
+
+  void _showEmailDialog(BuildContext context, String email) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Обратная связь'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text(
+              'Не удалось открыть почтовое приложение.\n\nСкопируйте email адрес:',
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: SelectableText(
+                email,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Отмена'),
+          ),
+          ElevatedButton.icon(
+            onPressed: () {
+              Clipboard.setData(ClipboardData(text: email));
+              Navigator.pop(context);
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Email адрес скопирован в буфер обмена'),
+                  duration: Duration(seconds: 2),
+                ),
+              );
+            },
+            icon: const Icon(Icons.copy),
+            label: const Text('Скопировать'),
+          ),
+        ],
+      ),
+    );
   }
 
   Future<void> _launchAppStore() async {
