@@ -11,13 +11,19 @@ import 'privacy_policy_screen.dart';
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
-  Future<void> _launchEmail() async {
-    final Uri emailUri = Uri(
-      scheme: 'mailto',
-      path: 'saydulayev.wien@gmail.com',
-    );
+  Future<void> _launchEmail(BuildContext context) async {
+    final Uri emailUri = Uri.parse('mailto:saydulayev.wien@gmail.com');
     if (await canLaunchUrl(emailUri)) {
       await launchUrl(emailUri);
+    } else {
+      // Если не удалось открыть почтовое приложение, показываем сообщение
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Не удалось открыть почтовое приложение'),
+          ),
+        );
+      }
     }
   }
 
@@ -54,7 +60,7 @@ class SettingsScreen extends StatelessWidget {
               context,
               icon: Icons.message,
               title: l10n.feedbackString,
-              onTap: _launchEmail,
+              onTap: () => _launchEmail(context),
               theme: theme,
             ),
             const SizedBox(height: 8),
