@@ -223,14 +223,16 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.2),
-              blurRadius: 20,
-              offset: const Offset(20, 20),
+              color: Colors.black.withValues(alpha: 0.08),
+              blurRadius: 15,
+              offset: const Offset(0, 4),
+              spreadRadius: 0,
             ),
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.06),
-              blurRadius: 3,
+              color: Colors.black.withValues(alpha: 0.04),
+              blurRadius: 8,
               offset: const Offset(0, 2),
+              spreadRadius: -2,
             ),
           ],
         ),
@@ -299,18 +301,6 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.2),
-              blurRadius: 20,
-              offset: const Offset(20, 20),
-            ),
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.06),
-              blurRadius: 3,
-              offset: const Offset(0, 2),
-            ),
-          ],
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
