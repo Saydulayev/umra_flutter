@@ -43,6 +43,17 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
         _timeUntilNextPrayer = PrayerTimeService.getTimeUntilNextPrayer(
           _prayerTimes!,
         );
+      } else {
+        // Показываем ошибку пользователю, если не удалось загрузить время молитв
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Не удалось загрузить время молитв. Пожалуйста, попробуйте позже.'),
+              duration: Duration(seconds: 3),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
       }
     });
   }

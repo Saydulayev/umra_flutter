@@ -83,6 +83,14 @@ class _PlayerWidgetState extends State<PlayerWidget> {
         setState(() {
           _isLoading = false;
         });
+        // Показываем ошибку пользователю
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Ошибка загрузки аудио: ${e.toString()}'),
+            duration: const Duration(seconds: 3),
+            backgroundColor: Colors.red,
+          ),
+        );
       }
       debugPrint('Error initializing audio: $e');
     }

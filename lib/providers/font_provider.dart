@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../repositories/preferences_repository.dart';
+import '../constants/app_constants.dart';
 
 class FontProvider extends ChangeNotifier {
   List<String> fonts = [
@@ -68,7 +69,8 @@ class FontProvider extends ChangeNotifier {
   }
 
   // Получить TextStyle с выбранным шрифтом
-  TextStyle? getTextStyle({
+  // Всегда возвращает валидный TextStyle с fallback на системный шрифт
+  TextStyle getTextStyle({
     double? fontSize,
     FontWeight? fontWeight,
     Color? color,
@@ -85,11 +87,22 @@ class FontProvider extends ChangeNotifier {
           fontStyle: fontStyle,
         );
       } catch (e) {
-        // Если шрифт не найден, возвращаем null
-        return null;
+        // Если шрифт не найден, возвращаем системный шрифт
+        return TextStyle(
+          fontSize: fontSize,
+          fontWeight: fontWeight,
+          color: color,
+          fontStyle: fontStyle,
+        );
       }
     }
-    return null;
+    // Fallback на системный шрифт
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: fontWeight,
+      color: color,
+      fontStyle: fontStyle,
+    );
   }
 
   String _selectedFont = 'Lato';
@@ -105,28 +118,29 @@ class FontProvider extends ChangeNotifier {
     return _selectedFontSize;
   }
 
+  final PreferencesRepository _prefsRepo = PreferencesRepository();
+
   FontProvider() {
     _loadFontPreferences();
   }
 
   Future<void> _loadFontPreferences() async {
-    final prefs = await SharedPreferences.getInstance();
-    _selectedFont = prefs.getString('SelectedFont') ?? 'Lato';
-    _selectedFontSize = prefs.getDouble('SelectedFontSize') ?? 20.0;
+    _selectedFont =
+        await _prefsRepo.getString(PrefsKeys.selectedFont) ?? 'Lato';
+    _selectedFontSize =
+        await _prefsRepo.getDouble(PrefsKeys.selectedFontSize) ?? 20.0;
     notifyListeners();
   }
 
   Future<void> setFont(String font) async {
     _selectedFont = font;
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('SelectedFont', font);
+    await _prefsRepo.setString(PrefsKeys.selectedFont, font);
     notifyListeners();
   }
 
   Future<void> setFontSize(double size) async {
     _selectedFontSize = size;
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setDouble('SelectedFontSize', size);
+    await _prefsRepo.setDouble(PrefsKeys.selectedFontSize, size);
     notifyListeners();
   }
 }

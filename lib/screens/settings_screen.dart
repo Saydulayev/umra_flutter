@@ -7,13 +7,14 @@ import '../providers/theme_provider.dart';
 import '../providers/localization_provider.dart';
 import '../models/app_theme.dart';
 import '../widgets/theme_selection_sheet.dart';
+import '../constants/app_constants.dart';
 import 'privacy_policy_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   Future<void> _launchEmail(BuildContext context) async {
-    const String email = 'saydulayev.wien@gmail.com';
+    const String email = AppStrings.contactEmail;
     final Uri emailUri = Uri.parse('mailto:$email');
 
     try {
@@ -111,9 +112,7 @@ class SettingsScreen extends StatelessWidget {
   }
 
   Future<void> _launchAppStore() async {
-    final Uri playStoreUri = Uri.parse(
-      'https://play.google.com/store/apps/details?id=saydulayev.wien_gmail.com.umra',
-    );
+    final Uri playStoreUri = Uri.parse(AppStrings.playStoreUrl);
     if (await canLaunchUrl(playStoreUri)) {
       await launchUrl(playStoreUri, mode: LaunchMode.externalApplication);
     }

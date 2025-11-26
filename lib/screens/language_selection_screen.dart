@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/localization_provider.dart';
 import '../providers/theme_provider.dart';
-import '../providers/user_preferences_provider.dart';
 import 'home_screen.dart';
 
 class LanguageSelectionScreen extends StatelessWidget {
@@ -21,7 +20,6 @@ class LanguageSelectionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final localizationProvider = Provider.of<LocalizationProvider>(context);
-    final prefsProvider = Provider.of<UserPreferencesProvider>(context);
     final theme = themeProvider.selectedTheme;
 
     return Scaffold(
@@ -60,13 +58,12 @@ class LanguageSelectionScreen extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () async {
                       await localizationProvider.setLanguage(lang['code']!);
-                      prefsProvider.setHasSelectedLanguage(true);
                       if (context.mounted) {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (context) => const HomeScreen(),
-                        ),
-                      );
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(),
+                          ),
+                        );
                       }
                     },
                     style: ElevatedButton.styleFrom(

@@ -80,7 +80,7 @@ class MyApp extends StatelessWidget {
                     },
             
             // Начальный экран
-            home: prefsProvider.hasSelectedLanguage
+            home: localizationProvider.hasSelectedLanguage
                 ? const HomeScreen()
                 : const LanguageSelectionScreen(),
                     // Важно: отключаем кэширование роутов для правильной работы локализации

@@ -63,9 +63,12 @@ class PrayerTimeService {
         isha: prayerTimes.isha.add(meccaOffset),
       );
     } catch (e) {
-      debugPrint('Error calculating prayer times: $e');
+      debugPrint(
+        'Error calculating today prayer times for Mecca: $e. '
+        'Coordinates: ($meccaLatitude, $meccaLongitude)',
+      );
       return null;
-  }
+    }
   }
   
   // Получить время молитв на завтра
@@ -100,9 +103,12 @@ class PrayerTimeService {
         isha: prayerTimes.isha.add(meccaOffset),
       );
     } catch (e) {
-      debugPrint('Error calculating tomorrow prayer times: $e');
+      debugPrint(
+        'Error calculating tomorrow prayer times for Mecca: $e. '
+        'Coordinates: ($meccaLatitude, $meccaLongitude)',
+      );
       return null;
-  }
+    }
   }
   
   // Получить время Qiyam (последняя треть ночи)
