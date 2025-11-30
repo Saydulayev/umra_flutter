@@ -295,7 +295,7 @@ abstract class AppLocalizations {
   /// No description provided for @janazaPrayerGuide.
   ///
   /// In en, this message translates to:
-  /// **'Janaza Prayer Guide'**
+  /// **'Janaza Prayer'**
   String get janazaPrayerGuide;
 
   /// No description provided for @titleJanazaGuide.

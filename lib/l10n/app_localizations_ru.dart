@@ -102,7 +102,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get hajjUmrahObligation => 'Обязательность хаджа и умры';
 
   @override
-  String get janazaPrayerGuide => 'Руководство по джаназа-намазу';
+  String get janazaPrayerGuide => 'Молитва Джаназа';
 
   @override
   String get titleJanazaGuide => 'Молитва Джаназа';

@@ -102,7 +102,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get hajjUmrahObligation => 'Kewajiban Haji dan Umrah';
 
   @override
-  String get janazaPrayerGuide => 'Panduan Shalat Janazah';
+  String get janazaPrayerGuide => 'Shalat Janazah';
 
   @override
   String get titleJanazaGuide => 'Panduan Sholat Jenazah';
