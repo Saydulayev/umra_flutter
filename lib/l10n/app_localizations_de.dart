@@ -84,6 +84,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get themeTurquoise => 'Meer';
 
   @override
+  String get themeDark => 'Nacht';
+
+  @override
+  String get themeSelectTitle => 'App-Design wählen';
+
+  @override
   String get usefulInfoTitle => 'Nützliche Informationen';
 
   @override

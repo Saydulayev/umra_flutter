@@ -22,7 +22,7 @@ class UsefulInfoScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           l10n.usefulInfoTitle,
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, color: theme.textColor),
         ),
         backgroundColor: theme.lightBackgroundColor,
         elevation: 0,
@@ -103,7 +103,7 @@ class UsefulInfoScreen extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [theme.gradientTopColor, Colors.white],
+              colors: [theme.gradientTopColor, theme.lightBackgroundColor],
             ),
           ),
           child: Row(
@@ -111,10 +111,10 @@ class UsefulInfoScreen extends StatelessWidget {
               Expanded(
                 child: Text(
                   title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w600,
-                    color: Colors.black87,
+                    color: theme.textColor,
                   ),
                 ),
               ),

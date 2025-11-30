@@ -243,8 +243,8 @@ class _PlayerWidgetState extends State<PlayerWidget> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(_formatDuration(_position)),
-                Text(_formatDuration(_duration)),
+                Text(_formatDuration(_position), style: TextStyle(color: theme.textColor)),
+                Text(_formatDuration(_duration), style: TextStyle(color: theme.textColor)),
               ],
             ),
           ),
@@ -271,11 +271,13 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [theme.gradientTopColor, Colors.white],
+            colors: [theme.gradientTopColor, theme.lightBackgroundColor],
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.2),
+              color: theme.isDark 
+                  ? Colors.black.withValues(alpha: 0.4) 
+                  : Colors.black.withValues(alpha: 0.2),
               blurRadius: 20,
               offset: const Offset(20, 20),
             ),
@@ -283,7 +285,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
         ),
         child: Icon(
           icon,
-          color: isActive ? theme.activeButtonColor : Colors.black54,
+          color: isActive ? theme.activeButtonColor : theme.secondaryTextColor,
           size: 24,
         ),
       ),
@@ -306,11 +308,13 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [theme.gradientTopColor, Colors.white],
+            colors: [theme.gradientTopColor, theme.lightBackgroundColor],
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.2),
+              color: theme.isDark 
+                  ? Colors.black.withValues(alpha: 0.4) 
+                  : Colors.black.withValues(alpha: 0.2),
               blurRadius: 20,
               offset: const Offset(20, 20),
             ),
@@ -320,7 +324,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           child: Text(
             '${rate}x',
             style: TextStyle(
-              color: rate > 1.0 ? theme.activeButtonColor : Colors.black54,
+              color: rate > 1.0 ? theme.activeButtonColor : theme.secondaryTextColor,
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),

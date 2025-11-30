@@ -26,7 +26,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
       appBar: AppBar(
         title: Text(
           l10n.titleJanazaGuide,
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, color: theme.textColor),
         ),
         backgroundColor: theme.lightBackgroundColor,
         elevation: 0,
@@ -41,14 +41,17 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
               _buildSection(
                 title: l10n.basicRules,
                 content: l10n.janazaBasicRules,
+                textColor: theme.textColor,
               ),
-              const Divider(),
+              Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
               _buildTakbirSection(
                 l10n: l10n,
                 title: l10n.firstTakbirTitle,
                 content: l10n.firstTakbirText,
+                textColor: theme.textColor,
+                accentColor: theme.primaryColor,
               ),
-              const Divider(),
+              Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
               _buildTakbirSection(
                 l10n: l10n,
                 title: l10n.secondTakbirTitle,
@@ -61,8 +64,10 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                     _isSecondTakbirExpanded = value;
                   });
                 },
+                textColor: theme.textColor,
+                accentColor: theme.primaryColor,
               ),
-              const Divider(),
+              Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
               _buildTakbirSection(
                 l10n: l10n,
                 title: l10n.thirdTakbirTitle,
@@ -75,34 +80,39 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                     _isThirdTakbirExpanded = value;
                   });
                 },
+                textColor: theme.textColor,
+                accentColor: theme.primaryColor,
               ),
-              const Divider(),
+              Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
               _buildTakbirSection(
                 l10n: l10n,
                 title: l10n.fourthTakbirTitle,
                 content: l10n.fourthTakbirText,
+                textColor: theme.textColor,
+                accentColor: theme.primaryColor,
               ),
-              const Divider(),
+              Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
               if (l10n.fourthTakbirAdditionalInfo.isNotEmpty) ...[
                 Padding(
                   padding: const EdgeInsets.only(top: 8, bottom: 8),
                   child: Text(
                     l10n.fourthTakbirAdditionalInfo,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 16,
-                      color: Colors.black87,
+                      color: theme.textColor,
                       height: 1.5,
                       fontStyle: FontStyle.italic,
                     ),
                   ),
                 ),
-                const Divider(),
+                Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
               ],
               _buildSection(
                 title: l10n.taslimTitle,
                 content: l10n.taslimText,
+                textColor: theme.textColor,
               ),
-              const Divider(),
+              Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
               _buildCollapsibleSection(
                 l10n: l10n,
                 title: l10n.duaVariationsTitle,
@@ -113,6 +123,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                     _isDuaVariationsExpanded = value;
                   });
                 },
+                textColor: theme.textColor,
               ),
             ],
           ),
@@ -121,24 +132,25 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
     );
   }
 
-  Widget _buildSection({required String title, required String content}) {
+  Widget _buildSection({required String title, required String content, Color? textColor}) {
+    final color = textColor ?? Colors.black87;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Colors.black87,
+            color: color,
           ),
         ),
         const SizedBox(height: 8),
         Text(
           content,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
-            color: Colors.black87,
+            color: color,
             height: 1.5,
           ),
         ),
@@ -152,17 +164,19 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
     required String content,
     bool isExpanded = false,
     ValueChanged<bool>? onExpandedChanged,
+    Color? textColor,
   }) {
+    final color = textColor ?? Colors.black87;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ExpansionTile(
           title: Text(
             title,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Colors.black87,
+              color: color,
             ),
           ),
           initiallyExpanded: isExpanded,
@@ -172,9 +186,9 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 content,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 16,
-                  color: Colors.black87,
+                  color: color,
                   height: 1.5,
                 ),
                 textDirection: TextDirection.ltr,
@@ -194,24 +208,28 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
     bool isExpanded = false,
     String? expandedContent,
     ValueChanged<bool>? onExpandedChanged,
+    Color? textColor,
+    Color? accentColor,
   }) {
+    final color = textColor ?? Colors.black87;
+    final accent = accentColor ?? Colors.blue;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Colors.black87,
+            color: color,
           ),
         ),
         const SizedBox(height: 8),
         Text(
           content,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
-            color: Colors.black87,
+            color: color,
             height: 1.5,
           ),
           textDirection: TextDirection.ltr,
@@ -221,10 +239,10 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
           ExpansionTile(
             title: Text(
               l10n.translateText,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: Colors.blue,
+                color: accent,
               ),
             ),
             initiallyExpanded: isExpanded,
@@ -234,9 +252,9 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
                   expandedContent,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 16,
-                    color: Colors.black87,
+                    color: color,
                     height: 1.5,
                   ),
                 ),

@@ -132,7 +132,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                           'Mecca',
                           style: GoogleFonts.greatVibes(
                             fontSize: 36,
-                            color: Colors.black87,
+                            color: theme.textColor,
                           ),
                         ),
                         const SizedBox(width: 8),
@@ -140,7 +140,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                           _getIslamicDate(),
                           style: GoogleFonts.greatVibes(
                             fontSize: 36,
-                            color: Colors.black87,
+                            color: theme.textColor,
                           ),
                         ),
                         const SizedBox(width: 8),
@@ -148,7 +148,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                           _getIslamicYear(),
                           style: GoogleFonts.greatVibes(
                             fontSize: 36,
-                            color: Colors.black87,
+                            color: theme.textColor,
                           ),
                         ),
                       ],
@@ -161,10 +161,10 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                     child: Center(
                       child: Text(
                         '$_nextPrayerName in ${_formatDuration(_timeUntilNextPrayer)}',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black87,
+                          color: theme.textColor,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -178,29 +178,35 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                         _buildPrayerTimeRow(
                           'Fajr',
                           _formatTime(_prayerTimes!.fajr),
+                          textColor: theme.textColor,
                         ),
                         _buildCapsuleStyled(
                           theme: theme,
                           child: _buildPrayerTimeRow(
                             'Sunrise',
                             _formatTime(_prayerTimes!.sunrise),
+                            textColor: theme.textColor,
                           ),
                         ),
                         _buildPrayerTimeRow(
                           'Dhuhr',
                           _formatTime(_prayerTimes!.dhuhr),
+                          textColor: theme.textColor,
                         ),
                         _buildPrayerTimeRow(
                           'Asr',
                           _formatTime(_prayerTimes!.asr),
+                          textColor: theme.textColor,
                         ),
                         _buildPrayerTimeRow(
                           'Maghrib',
                           _formatTime(_prayerTimes!.maghrib),
+                          textColor: theme.textColor,
                         ),
                         _buildPrayerTimeRow(
                           'Isha',
                           _formatTime(_prayerTimes!.isha),
+                          textColor: theme.textColor,
                         ),
                         if (PrayerTimeService.getQiyamTime() != null)
                           _buildCapsuleStyled(
@@ -208,6 +214,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                             child: _buildPrayerTimeRow(
                               'Qiyam',
                               _formatTime(PrayerTimeService.getQiyamTime()!),
+                              textColor: theme.textColor,
                             ),
                           ),
                       ],
@@ -269,7 +276,9 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                     filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.9),
+                        color: theme.isDark
+                            ? theme.lightBackgroundColor.withValues(alpha: 0.9)
+                            : Colors.white.withValues(alpha: 0.9),
                       ),
                     ),
                   ),
@@ -282,7 +291,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: [theme.gradientTopColor, Colors.white],
+                    colors: [theme.gradientTopColor, theme.lightBackgroundColor],
                   ),
                 ),
                 child: Container(
@@ -290,7 +299,9 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: Colors.black.withValues(alpha: 0.08),
+                      color: theme.isDark 
+                          ? Colors.white.withValues(alpha: 0.1) 
+                          : Colors.black.withValues(alpha: 0.08),
                       width: 1,
                     ),
                   ),
@@ -335,7 +346,9 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                     filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.9),
+                        color: theme.isDark 
+                            ? theme.lightBackgroundColor.withValues(alpha: 0.9)
+                            : Colors.white.withValues(alpha: 0.9),
                       ),
                     ),
                   ),
@@ -348,7 +361,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: [theme.gradientTopColor, Colors.white],
+                    colors: [theme.gradientTopColor, theme.lightBackgroundColor],
                   ),
                 ),
                 child: Container(
@@ -356,7 +369,9 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: Colors.black.withValues(alpha: 0.08),
+                      color: theme.isDark
+                          ? Colors.white.withValues(alpha: 0.1)
+                          : Colors.black.withValues(alpha: 0.08),
                       width: 1,
                     ),
                   ),
@@ -396,7 +411,9 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                   filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.9),
+                      color: theme.isDark
+                          ? theme.lightBackgroundColor.withValues(alpha: 0.9)
+                          : Colors.white.withValues(alpha: 0.9),
                     ),
                   ),
                 ),
@@ -409,10 +426,12 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [theme.gradientTopColor, Colors.white],
+                  colors: [theme.gradientTopColor, theme.lightBackgroundColor],
                 ),
                 border: Border.all(
-                  color: Colors.black.withValues(alpha: 0.08),
+                  color: theme.isDark
+                      ? Colors.white.withValues(alpha: 0.1)
+                      : Colors.black.withValues(alpha: 0.08),
                   width: 1,
                 ),
               ),
@@ -424,7 +443,8 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     );
   }
 
-  Widget _buildPrayerTimeRow(String prayerName, String prayerTime) {
+  Widget _buildPrayerTimeRow(String prayerName, String prayerTime, {Color? textColor}) {
+    final color = textColor ?? Colors.black87;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: Row(
@@ -432,18 +452,18 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
         children: [
           Text(
             prayerName,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 17,
               fontWeight: FontWeight.w600,
-              color: Colors.black87,
+              color: color,
             ),
           ),
           Text(
             prayerTime,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 17,
               fontWeight: FontWeight.w600,
-              color: Colors.black87,
+              color: color,
             ),
           ),
         ],

@@ -21,10 +21,11 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: theme.backgroundColor,
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           'UMRA',
           style: TextStyle(
             fontWeight: FontWeight.bold,
+            color: theme.textColor,
           ),
         ),
         centerTitle: true,
@@ -32,7 +33,7 @@ class HomeScreen extends StatelessWidget {
         elevation: 0,
         actions: [
           IconButton(
-            icon: const Icon(Icons.access_time, color: Colors.black87),
+            icon: Icon(Icons.access_time, color: theme.textColor),
             onPressed: () {
               Navigator.push(
                 context,
@@ -43,7 +44,7 @@ class HomeScreen extends StatelessWidget {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.settings, color: Colors.black87),
+            icon: Icon(Icons.settings, color: theme.textColor),
             onPressed: () {
               Navigator.push(
                 context,
@@ -84,11 +85,13 @@ class HomeScreen extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: theme.lightBackgroundColor,
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.08),
+              color: theme.isDark 
+                  ? Colors.black.withValues(alpha: 0.3) 
+                  : Colors.black.withValues(alpha: 0.08),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),
@@ -110,10 +113,10 @@ class HomeScreen extends StatelessWidget {
                   final title = _getLocalizedTitle(step.titleKey, l10n);
                   return Text(
                     title,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
-                      color: Colors.black87,
+                      color: theme.textColor,
                     ),
                   );
                 },
@@ -124,13 +127,13 @@ class HomeScreen extends StatelessWidget {
               width: 24,
               height: 24,
               decoration: BoxDecoration(
-                color: Colors.blue.withValues(alpha: 0.1),
+                color: theme.primaryColor.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
+              child: Icon(
                 Icons.chevron_right,
                 size: 14,
-                color: Colors.black87,
+                color: theme.textColor,
               ),
             ),
           ],

@@ -128,7 +128,10 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: theme.lightBackgroundColor,
       appBar: AppBar(
-        title: Text(l10n.settingsString),
+        title: Text(
+          l10n.settingsString,
+          style: TextStyle(color: theme.textColor),
+        ),
         backgroundColor: theme.lightBackgroundColor,
         elevation: 0,
         iconTheme: IconThemeData(color: theme.primaryColor),
@@ -223,7 +226,7 @@ class SettingsScreen extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [theme.gradientTopColor, Colors.white],
+              colors: [theme.gradientTopColor, theme.lightBackgroundColor],
             ),
           ),
           child: Row(
@@ -236,16 +239,16 @@ class SettingsScreen extends StatelessWidget {
                   children: [
                     Text(
                       title,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
-                        color: Colors.black87,
+                        color: theme.textColor,
                       ),
                     ),
                     if (subtitle != null)
                       Text(
                         subtitle,
-                        style: TextStyle(fontSize: 14, color: Colors.black54),
+                        style: TextStyle(fontSize: 14, color: theme.secondaryTextColor),
                       ),
                   ],
                 ),
@@ -268,6 +271,8 @@ class SettingsScreen extends StatelessWidget {
         return l10n.themeGold;
       case AppTheme.turquoise:
         return l10n.themeTurquoise;
+      case AppTheme.dark:
+        return l10n.themeDark;
     }
   }
 

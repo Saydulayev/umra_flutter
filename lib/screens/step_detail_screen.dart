@@ -63,7 +63,7 @@ class StepDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           _getLocalizedTitle(step.titleKey, l10n),
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, color: theme.textColor),
         ),
         backgroundColor: theme.lightBackgroundColor,
         elevation: 0,
@@ -102,7 +102,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step1TurnToQiblah,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: 8),
@@ -126,7 +126,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step1Labbayka,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -135,7 +135,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step1EnteringSacredMosque,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: 8),
@@ -150,7 +150,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step1EnteringSacredMosqueDua,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingExtraLarge),
@@ -162,7 +162,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step1ConditioningHajjText,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: 8),
@@ -177,7 +177,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step1IhramText1,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingExtraLarge),
@@ -189,7 +189,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step1UmrahForParentsExplanation,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -201,7 +201,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step1UmrahForFather,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -213,7 +213,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step1UmrahForMother,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
           ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -225,7 +225,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step1UmrahForOther,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
       ],
@@ -242,7 +242,7 @@ class StepDetailScreen extends StatelessWidget {
           style: fontProvider.getTextStyle(
             fontSize: 26,
             fontWeight: FontWeight.bold,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -251,7 +251,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step2KaabaText2,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -264,7 +264,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step2KaabaText3,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
           ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -277,7 +277,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step2KaabaText4,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
       ],
@@ -294,7 +294,7 @@ class StepDetailScreen extends StatelessWidget {
           style: fontProvider.getTextStyle(
             fontSize: 26,
             fontWeight: FontWeight.bold,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -303,7 +303,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step3CompletedSevenCircuits,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -316,7 +316,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step3PlaceOfStanding,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
       ],
@@ -333,7 +333,7 @@ class StepDetailScreen extends StatelessWidget {
           style: fontProvider.getTextStyle(
             fontSize: 26,
             fontWeight: FontWeight.bold,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -342,7 +342,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step4ZamzamText,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
       ],
@@ -359,7 +359,7 @@ class StepDetailScreen extends StatelessWidget {
           style: fontProvider.getTextStyle(
             fontSize: 26,
             fontWeight: FontWeight.bold,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -368,7 +368,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step5ReturnReciteTakbir,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: 32),
@@ -377,7 +377,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step5AllahIsGreat,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -398,7 +398,7 @@ class StepDetailScreen extends StatelessWidget {
           style: fontProvider.getTextStyle(
             fontSize: 26,
             fontWeight: FontWeight.bold,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -408,7 +408,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step6HeadTowardsSafa,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -421,7 +421,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step6SurahBaqarahVerse,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -434,7 +434,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step6WeBegin,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: 8),
@@ -442,7 +442,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step6WeBeginText,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -457,7 +457,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step6RemembranceText,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
           ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -470,7 +470,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step6DuasDuringSaiText,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -483,7 +483,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step6ExitingSacredMosqueText,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
       ],
@@ -500,7 +500,7 @@ class StepDetailScreen extends StatelessWidget {
           style: fontProvider.getTextStyle(
             fontSize: 26,
             fontWeight: FontWeight.bold,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -509,7 +509,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step7MenShortenHair,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
@@ -518,7 +518,7 @@ class StepDetailScreen extends StatelessWidget {
           l10n.step7DuaAtEnd,
           style: fontProvider.getTextStyle(
             fontSize: 18,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
       ],

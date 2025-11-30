@@ -4,7 +4,8 @@ enum AppTheme {
   blue,
   green,
   gold,
-  turquoise;
+  turquoise,
+  dark;
 
   String get name {
     switch (this) {
@@ -16,6 +17,8 @@ enum AppTheme {
         return 'theme_gold';
       case AppTheme.turquoise:
         return 'theme_turquoise';
+      case AppTheme.dark:
+        return 'theme_dark';
     }
   }
 
@@ -29,6 +32,8 @@ enum AppTheme {
         return const Color(0xFFCC991A); // RGB: 0.8, 0.6, 0.1
       case AppTheme.turquoise:
         return const Color(0xFF1AB3B3); // RGB: 0.1, 0.7, 0.7
+      case AppTheme.dark:
+        return const Color(0xFF6B7280); // Gray-blue accent
     }
   }
 
@@ -42,6 +47,8 @@ enum AppTheme {
         return const Color(0xFFFAF2E0);
       case AppTheme.turquoise:
         return const Color(0xFFF2FAFA);
+      case AppTheme.dark:
+        return const Color(0xFF1F2937); // Dark gray
     }
   }
 
@@ -55,6 +62,8 @@ enum AppTheme {
         return const Color(0xFFF2E6B3);
       case AppTheme.turquoise:
         return const Color(0xFFE6F2F2);
+      case AppTheme.dark:
+        return const Color(0xFF111827); // Dark background
     }
   }
 
@@ -68,6 +77,8 @@ enum AppTheme {
         return const Color(0xFFFFFDF8);
       case AppTheme.turquoise:
         return const Color(0xFFFCFDFD);
+      case AppTheme.dark:
+        return const Color(0xFF1F2937); // Slightly lighter dark
     }
   }
 
@@ -81,6 +92,8 @@ enum AppTheme {
         return const Color(0xFFFFCC00);
       case AppTheme.turquoise:
         return const Color(0xFF00CCCC);
+      case AppTheme.dark:
+        return const Color(0xFF3B82F6); // Bright blue accent
     }
   }
 
@@ -94,6 +107,8 @@ enum AppTheme {
         return const Color(0xFFD4AF37);
       case AppTheme.turquoise:
         return const Color(0xFF26A69A);
+      case AppTheme.dark:
+        return const Color(0xFF374151); // Dark gray for preview
     }
   }
 
@@ -107,6 +122,17 @@ enum AppTheme {
         return const Color(0xFFF2E6B3);
       case AppTheme.turquoise:
         return const Color(0xFFE6F2F2);
+      case AppTheme.dark:
+        return const Color(0xFF1F2937); // Dark text background
     }
   }
+
+  /// Returns true if this is a dark theme
+  bool get isDark => this == AppTheme.dark;
+
+  /// Text color appropriate for this theme
+  Color get textColor => isDark ? const Color(0xFFE5E7EB) : const Color(0xFF1F2937);
+
+  /// Secondary text color appropriate for this theme
+  Color get secondaryTextColor => isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
 }

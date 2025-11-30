@@ -256,6 +256,18 @@ abstract class AppLocalizations {
   /// **'Sea'**
   String get themeTurquoise;
 
+  /// No description provided for @themeDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Night'**
+  String get themeDark;
+
+  /// No description provided for @themeSelectTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose App Theme'**
+  String get themeSelectTitle;
+
   /// No description provided for @usefulInfoTitle.
   ///
   /// In en, this message translates to:

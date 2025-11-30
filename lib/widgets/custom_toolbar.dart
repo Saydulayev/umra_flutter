@@ -14,9 +14,7 @@ class CustomToolbar extends StatelessWidget {
     return PopupMenuButton<String>(
       icon: Icon(
         Icons.text_fields,
-        color: Theme.of(context).brightness == Brightness.dark
-            ? Colors.white
-            : Colors.black87,
+        color: themeProvider.selectedTheme.textColor,
       ),
       onSelected: (String font) {
         fontProvider.setFont(font);

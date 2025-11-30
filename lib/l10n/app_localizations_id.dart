@@ -84,6 +84,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get themeTurquoise => 'Laut';
 
   @override
+  String get themeDark => 'Malam';
+
+  @override
+  String get themeSelectTitle => 'Pilih Tema Aplikasi';
+
+  @override
   String get usefulInfoTitle => 'Informasi Bermanfaat';
 
   @override

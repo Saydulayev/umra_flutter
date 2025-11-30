@@ -23,7 +23,7 @@ class LanguageSelectionScreen extends StatelessWidget {
     final theme = themeProvider.selectedTheme;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFEBF2FA), // Мягкий светло-синий фон
+      backgroundColor: theme.backgroundColor,
       body: Center(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24.0),
@@ -46,7 +46,7 @@ class LanguageSelectionScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w500,
-                  color: Colors.black87,
+                  color: theme.textColor,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -67,8 +67,8 @@ class LanguageSelectionScreen extends StatelessWidget {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      foregroundColor: Colors.black87,
+                      backgroundColor: theme.lightBackgroundColor,
+                      foregroundColor: theme.textColor,
                       padding: const EdgeInsets.symmetric(
                         horizontal: 32,
                         vertical: 16,

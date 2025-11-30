@@ -28,7 +28,9 @@ class ArabicTextWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.1),
+              color: theme.isDark
+                  ? Colors.black.withValues(alpha: 0.3)
+                  : Colors.black.withValues(alpha: 0.1),
               blurRadius: 20,
               offset: const Offset(20, 20),
               spreadRadius: 0,
@@ -56,7 +58,9 @@ class ArabicTextWidget extends StatelessWidget {
                     filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white.withValues(alpha: 0.9),
+                        color: theme.isDark
+                            ? theme.lightBackgroundColor.withValues(alpha: 0.9)
+                            : Colors.white.withValues(alpha: 0.9),
                       ),
                     ),
                   ),
@@ -70,14 +74,14 @@ class ArabicTextWidget extends StatelessWidget {
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: [theme.gradientTopColor, Colors.white],
+                    colors: [theme.gradientTopColor, theme.lightBackgroundColor],
                   ),
                 ),
                 child: Container(
                   padding: EdgeInsets.all(customPadding),
                   child: DefaultTextStyle(
                     style: TextStyle(
-                      color: Colors.black87,
+                      color: theme.textColor,
                       fontSize: fontSize,
                       height: 1.4,
                       fontFamily: GoogleFonts.notoNaskhArabic().fontFamily,
@@ -88,7 +92,7 @@ class ArabicTextWidget extends StatelessWidget {
                       textDirection: TextDirection.rtl,
                       style: TextStyle(
                         foreground: Paint()
-                          ..color = Colors.black87
+                          ..color = theme.textColor
                           ..style = PaintingStyle.fill,
                       ),
                     ),

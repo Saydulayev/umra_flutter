@@ -16,7 +16,10 @@ class PrivacyPolicyScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: theme.lightBackgroundColor,
       appBar: AppBar(
-        title: Text(l10n.privacyPolicyTitle),
+        title: Text(
+          l10n.privacyPolicyTitle,
+          style: TextStyle(color: theme.textColor),
+        ),
         backgroundColor: theme.lightBackgroundColor,
         elevation: 0,
         iconTheme: IconThemeData(color: theme.primaryColor),
@@ -31,7 +34,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
                 l10n.privacyPolicyLastUpdated,
                 style: TextStyle(
                   fontSize: 12,
-                  color: Colors.grey[600],
+                  color: theme.secondaryTextColor,
                   fontStyle: FontStyle.italic,
                 ),
               ),
@@ -126,10 +129,10 @@ class PrivacyPolicyScreen extends StatelessWidget {
         const SizedBox(height: 12),
         Text(
           content,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
             height: 1.6,
-            color: Colors.black87,
+            color: theme.textColor,
           ),
         ),
       ],

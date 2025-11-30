@@ -87,7 +87,7 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black87,
+                  color: theme.textColor,
                 ),
               ),
               Text(
@@ -198,8 +198,8 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
     return ElevatedButton(
       onPressed: enabled ? onPressed : null,
       style: ElevatedButton.styleFrom(
-        backgroundColor: enabled ? Colors.white : Colors.grey.shade300,
-        foregroundColor: enabled ? theme.primaryColor : Colors.grey,
+        backgroundColor: enabled ? theme.lightBackgroundColor : (theme.isDark ? Colors.grey.shade700 : Colors.grey.shade300),
+        foregroundColor: enabled ? theme.primaryColor : (theme.isDark ? Colors.grey.shade400 : Colors.grey),
         padding: const EdgeInsets.symmetric(
           horizontal: 24,
           vertical: 16,

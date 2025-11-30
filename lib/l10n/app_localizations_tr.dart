@@ -84,6 +84,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get themeTurquoise => 'Deniz';
 
   @override
+  String get themeDark => 'Gece';
+
+  @override
+  String get themeSelectTitle => 'Uygulama Teması Seçin';
+
+  @override
   String get usefulInfoTitle => 'Faydalı Bilgiler';
 
   @override

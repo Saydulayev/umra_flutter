@@ -20,7 +20,7 @@ class UsefulInfoDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           _getChapterTitle(chapter.titleKey, l10n),
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, color: theme.textColor),
         ),
         backgroundColor: theme.lightBackgroundColor,
         elevation: 0,
@@ -60,7 +60,7 @@ class UsefulInfoDetailScreen extends StatelessWidget {
                       gradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
-                        colors: [theme.gradientTopColor, Colors.white],
+                        colors: [theme.gradientTopColor, theme.lightBackgroundColor],
                       ),
                     ),
                     child: Row(
@@ -68,10 +68,10 @@ class UsefulInfoDetailScreen extends StatelessWidget {
                         Expanded(
                           child: Text(
                             _getSubChapterTitle(subChapter.titleKey, l10n),
-                            style: const TextStyle(
+                            style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
-                              color: Colors.black87,
+                              color: theme.textColor,
                             ),
                           ),
                         ),
@@ -230,7 +230,7 @@ class SubChapterDetailScreen extends StatelessWidget {
             subChapter.titleKey,
             AppLocalizations.of(context)!,
           ),
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, color: theme.textColor),
         ),
         backgroundColor: theme.lightBackgroundColor,
         elevation: 0,
@@ -244,7 +244,7 @@ class SubChapterDetailScreen extends StatelessWidget {
               subChapter.contentKey,
               AppLocalizations.of(context)!,
             ),
-            style: TextStyle(fontSize: 18, color: Colors.black87, height: 1.5),
+            style: TextStyle(fontSize: 18, color: theme.textColor, height: 1.5),
           ),
         ),
       ),

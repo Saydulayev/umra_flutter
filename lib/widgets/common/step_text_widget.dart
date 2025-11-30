@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/font_provider.dart';
+import '../../providers/theme_provider.dart';
 import '../../constants/app_constants.dart';
 
 /// Виджет для текста шагов
@@ -15,12 +16,14 @@ class StepTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fontProvider = Provider.of<FontProvider>(context);
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final theme = themeProvider.selectedTheme;
 
     return SelectableText(
       text,
       style: fontProvider.getTextStyle(
         fontSize: AppDimensions.fontSizeMedium,
-        color: Colors.black87,
+        color: theme.textColor,
       ),
     );
   }
