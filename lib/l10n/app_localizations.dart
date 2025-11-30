@@ -1089,6 +1089,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'If you have any questions or suggestions regarding this Privacy Policy, please contact us:\n\nEmail: saydulayev.wien@gmail.com\n\nWe will try to answer your questions as soon as possible.'**
   String get privacyPolicyContact;
+
+  /// No description provided for @feedbackDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback'**
+  String get feedbackDialogTitle;
+
+  /// No description provided for @feedbackDialogMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not open email app.\n\nPlease copy the email address:'**
+  String get feedbackDialogMessage;
+
+  /// No description provided for @feedbackDialogCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get feedbackDialogCancel;
+
+  /// No description provided for @feedbackDialogCopy.
+  ///
+  /// In en, this message translates to:
+  /// **'Copy'**
+  String get feedbackDialogCopy;
+
+  /// No description provided for @feedbackEmailCopied.
+  ///
+  /// In en, this message translates to:
+  /// **'Email address copied to clipboard'**
+  String get feedbackEmailCopied;
+
+  /// No description provided for @feedbackEmailSubject.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback from Umra App'**
+  String get feedbackEmailSubject;
+
+  /// No description provided for @feedbackEmailBody.
+  ///
+  /// In en, this message translates to:
+  /// **'Hello!\n\nI would like to share feedback about the Umra app:\n\n'**
+  String get feedbackEmailBody;
 }
 
 class _AppLocalizationsDelegate

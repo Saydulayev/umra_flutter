@@ -580,4 +580,27 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get privacyPolicyContact =>
       'Если у вас есть вопросы или предложения относительно этой Политики конфиденциальности, пожалуйста, свяжитесь с нами:\n\nEmail: saydulayev.wien@gmail.com\n\nМы постараемся ответить на ваши вопросы в кратчайшие сроки.';
+
+  @override
+  String get feedbackDialogTitle => 'Обратная связь';
+
+  @override
+  String get feedbackDialogMessage =>
+      'Не удалось открыть почтовое приложение.\n\nСкопируйте email адрес:';
+
+  @override
+  String get feedbackDialogCancel => 'Отмена';
+
+  @override
+  String get feedbackDialogCopy => 'Скопировать';
+
+  @override
+  String get feedbackEmailCopied => 'Email адрес скопирован в буфер обмена';
+
+  @override
+  String get feedbackEmailSubject => 'Обратная связь из приложения Umra';
+
+  @override
+  String get feedbackEmailBody =>
+      'Здравствуйте!\n\nХочу поделиться отзывом о приложении Umra:\n\n';
 }

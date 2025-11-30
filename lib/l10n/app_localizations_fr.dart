@@ -580,4 +580,28 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get privacyPolicyContact =>
       'If you have any questions or suggestions regarding this Privacy Policy, please contact us:\n\nEmail: saydulayev.wien@gmail.com\n\nWe will try to answer your questions as soon as possible.';
+
+  @override
+  String get feedbackDialogTitle => 'Commentaires';
+
+  @override
+  String get feedbackDialogMessage =>
+      'Impossible d\'ouvrir l\'application e-mail.\n\nVeuillez copier l\'adresse e-mail :';
+
+  @override
+  String get feedbackDialogCancel => 'Annuler';
+
+  @override
+  String get feedbackDialogCopy => 'Copier';
+
+  @override
+  String get feedbackEmailCopied =>
+      'Adresse e-mail copiée dans le presse-papiers';
+
+  @override
+  String get feedbackEmailSubject => 'Commentaires de l\'application Umra';
+
+  @override
+  String get feedbackEmailBody =>
+      'Bonjour !\n\nJe souhaite partager mes commentaires sur l\'application Umra :\n\n';
 }

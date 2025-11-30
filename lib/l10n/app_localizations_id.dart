@@ -580,4 +580,27 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get privacyPolicyContact =>
       'If you have any questions or suggestions regarding this Privacy Policy, please contact us:\n\nEmail: saydulayev.wien@gmail.com\n\nWe will try to answer your questions as soon as possible.';
+
+  @override
+  String get feedbackDialogTitle => 'Umpan Balik';
+
+  @override
+  String get feedbackDialogMessage =>
+      'Tidak dapat membuka aplikasi email.\n\nSilakan salin alamat email:';
+
+  @override
+  String get feedbackDialogCancel => 'Batal';
+
+  @override
+  String get feedbackDialogCopy => 'Salin';
+
+  @override
+  String get feedbackEmailCopied => 'Alamat email disalin ke clipboard';
+
+  @override
+  String get feedbackEmailSubject => 'Umpan Balik dari Aplikasi Umra';
+
+  @override
+  String get feedbackEmailBody =>
+      'Halo!\n\nSaya ingin berbagi umpan balik tentang aplikasi Umra:\n\n';
 }

@@ -164,5 +164,12 @@
   "privacyPolicyChangesTitle": "8. Changes to Privacy Policy",
   "privacyPolicyChanges": "We may periodically update this Privacy Policy. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date at the beginning of this document.\n\nWe recommend that you periodically review this Privacy Policy for information on how we protect your data.",
   "privacyPolicyContactTitle": "9. Contact",
-  "privacyPolicyContact": "If you have any questions or suggestions regarding this Privacy Policy, please contact us:\n\nEmail: saydulayev.wien@gmail.com\n\nWe will try to answer your questions as soon as possible."
+  "privacyPolicyContact": "If you have any questions or suggestions regarding this Privacy Policy, please contact us:\n\nEmail: saydulayev.wien@gmail.com\n\nWe will try to answer your questions as soon as possible.",
+  "feedbackDialogTitle": "Feedback",
+  "feedbackDialogMessage": "Could not open email app.\n\nPlease copy the email address:",
+  "feedbackDialogCancel": "Cancel",
+  "feedbackDialogCopy": "Copy",
+  "feedbackEmailCopied": "Email address copied to clipboard",
+  "feedbackEmailSubject": "Feedback from Umra App",
+  "feedbackEmailBody": "Hello!\n\nI would like to share feedback about the Umra app:\n\n"
 }

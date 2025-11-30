@@ -14,39 +14,42 @@ class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
   Future<void> _launchEmail(BuildContext context) async {
+    final l10n = AppLocalizations.of(context)!;
     const String email = AppStrings.contactEmail;
-    final Uri emailUri = Uri.parse('mailto:$email');
+    
+    // Получаем локализованные тему и тело письма
+    final String subject = Uri.encodeComponent(l10n.feedbackEmailSubject);
+    final String body = Uri.encodeComponent(l10n.feedbackEmailBody);
+    
+    // Создаем URI с предзаполненной темой и телом письма
+    final Uri emailUri = Uri.parse('mailto:$email?subject=$subject&body=$body');
 
     try {
-      // Пробуем открыть с разными режимами запуска
+      // Пробуем открыть почтовое приложение
+      // На Android externalApplication обычно работает лучше
       bool launched = false;
 
-      // Сначала пробуем platformDefault
-      if (await canLaunchUrl(emailUri)) {
+      try {
+        await launchUrl(
+          emailUri,
+          mode: LaunchMode.externalApplication,
+        );
+        launched = true;
+      } catch (e) {
+        // Если не получилось, пробуем platformDefault
         try {
-          await launchUrl(emailUri, mode: LaunchMode.platformDefault);
+          await launchUrl(
+            emailUri,
+            mode: LaunchMode.platformDefault,
+          );
           launched = true;
-        } catch (e) {
-          // Если не получилось, пробуем externalApplication
-          try {
-            await launchUrl(emailUri, mode: LaunchMode.externalApplication);
-            launched = true;
-          } catch (e2) {
-            // Если и это не сработало, пробуем externalNonBrowserApplication
-            try {
-              await launchUrl(
-                emailUri,
-                mode: LaunchMode.externalNonBrowserApplication,
-              );
-              launched = true;
-            } catch (e3) {
-              // Все попытки не удались
-            }
-          }
+        } catch (e2) {
+          // Не удалось открыть почтовое приложение
+          launched = false;
         }
       }
 
-      // Если не удалось открыть почтовое приложение, показываем диалог с email
+      // Если не получилось открыть, показываем диалог с email
       if (!launched && context.mounted) {
         _showEmailDialog(context, email);
       }
@@ -59,15 +62,16 @@ class SettingsScreen extends StatelessWidget {
   }
 
   void _showEmailDialog(BuildContext context, String email) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Обратная связь'),
+        title: Text(l10n.feedbackDialogTitle),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text(
-              'Не удалось открыть почтовое приложение.\n\nСкопируйте email адрес:',
+            Text(
+              l10n.feedbackDialogMessage,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
@@ -90,21 +94,21 @@ class SettingsScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Отмена'),
+            child: Text(l10n.feedbackDialogCancel),
           ),
           ElevatedButton.icon(
             onPressed: () {
               Clipboard.setData(ClipboardData(text: email));
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Email адрес скопирован в буфер обмена'),
-                  duration: Duration(seconds: 2),
+                SnackBar(
+                  content: Text(l10n.feedbackEmailCopied),
+                  duration: const Duration(seconds: 2),
                 ),
               );
             },
             icon: const Icon(Icons.copy),
-            label: const Text('Скопировать'),
+            label: Text(l10n.feedbackDialogCopy),
           ),
         ],
       ),
