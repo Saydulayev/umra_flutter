@@ -602,5 +602,5 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get feedbackEmailBody =>
-      'Здравствуйте!\n\nХочу поделиться отзывом о приложении Umra:\n\n';
+      'Ас-Саламу алайкум!\n\nХочу поделиться отзывом о приложении Umra:\n\n';
 }

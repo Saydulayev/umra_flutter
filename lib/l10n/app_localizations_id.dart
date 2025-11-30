@@ -602,5 +602,5 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get feedbackEmailBody =>
-      'Halo!\n\nSaya ingin berbagi umpan balik tentang aplikasi Umra:\n\n';
+      'As-Salaamu Alaikum!\n\nSaya ingin berbagi umpan balik tentang aplikasi Umra:\n\n';
 }

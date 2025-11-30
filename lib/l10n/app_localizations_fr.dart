@@ -603,5 +603,5 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get feedbackEmailBody =>
-      'Bonjour !\n\nJe souhaite partager mes commentaires sur l\'application Umra :\n\n';
+      'As-Salaamu Alaikum !\n\nJe souhaite partager mes commentaires sur l\'application Umra :\n\n';
 }

@@ -1129,7 +1129,7 @@ abstract class AppLocalizations {
   /// No description provided for @feedbackEmailBody.
   ///
   /// In en, this message translates to:
-  /// **'Hello!\n\nI would like to share feedback about the Umra app:\n\n'**
+  /// **'As-Salaamu Alaikum!\n\nI would like to share feedback about the Umra app:\n\n'**
   String get feedbackEmailBody;
 }
 

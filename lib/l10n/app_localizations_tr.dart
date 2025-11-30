@@ -598,5 +598,5 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get feedbackEmailBody =>
-      'Merhaba!\n\nUmra uygulaması hakkında geri bildirim paylaşmak istiyorum:\n\n';
+      'As-Salaamu Alaikum!\n\nUmra uygulaması hakkında geri bildirim paylaşmak istiyorum:\n\n';
 }

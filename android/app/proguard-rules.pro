@@ -32,12 +32,6 @@
 -keep class com.dexterous.flutterlocalnotifications.** { *; }
 -dontwarn com.dexterous.flutterlocalnotifications.**
 
-# in_app_purchase
--keep class com.android.billingclient.** { *; }
--dontwarn com.android.billingclient.**
--keep class com.android.vending.billing.** { *; }
--dontwarn com.android.vending.billing.**
-
 # shared_preferences
 -keep class io.flutter.plugins.sharedpreferences.** { *; }
 -dontwarn io.flutter.plugins.sharedpreferences.**
