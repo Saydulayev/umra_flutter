@@ -47,3 +47,4 @@ app.*.map.json
 # Keystore files
 /android/key.properties
 /android/app/upload-keystore.jks
+/android/app/upload-keystore_old.bak
