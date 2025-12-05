@@ -48,3 +48,7 @@ app.*.map.json
 /android/key.properties
 /android/app/upload-keystore.jks
 /android/app/upload-keystore_old.bak
+
+# Backup gitignore files (used only for backup-full branch)
+.gitignore.backup
+.gitignore.main
