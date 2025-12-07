@@ -36,6 +36,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get titleShaveHeadScreen => 'Shave head or cut hair';
 
   @override
+  String get titleSettingsScreen => 'Settings';
+
+  @override
+  String get titleLinkBookScreen => 'Books';
+
+  @override
   String get usefulTitle => 'Helpful';
 
   @override
@@ -60,7 +66,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get feedbackString => 'Feedback';
 
   @override
+  String get textButtonFeedbackString => 'Feedback';
+
+  @override
+  String get evaluateTheAppString => 'EVALUATE THE APP';
+
+  @override
+  String get textButtonRateTheAppString => 'Rate the App';
+
+  @override
   String get rateTheAppString => 'Rate the App';
+
+  @override
+  String get supportTheDeveloperString => 'SUPPORT THE DEVELOPER';
+
+  @override
+  String get textButtonSupportString => 'Support Developer';
 
   @override
   String get appThemeString => 'App Theme';
@@ -87,7 +108,54 @@ class AppLocalizationsEn extends AppLocalizations {
   String get themeDark => 'Night';
 
   @override
+  String get themeAppTitle => 'App Theme';
+
+  @override
   String get themeSelectTitle => 'Choose App Theme';
+
+  @override
+  String get doneButton => 'Done';
+
+  @override
+  String get backgroundColor => 'Background color';
+
+  @override
+  String get textColor => 'Text color';
+
+  @override
+  String get size => 'Size';
+
+  @override
+  String get font => 'Font';
+
+  @override
+  String get donateButton => 'Donate';
+
+  @override
+  String get selectTheAmount => 'Select the amount:';
+
+  @override
+  String get contributionToApplicationDevelopment =>
+      'We made this app free so it can benefit everyone. If you have a desire, you can contribute and become part of this good. Your donation is completely voluntary, one-time, and not related to any subscription or additional features.';
+
+  @override
+  String get thirtyMinuteNotifications => 'Notify 30 minutes before prayer';
+
+  @override
+  String get prayerTimeNotifications => 'Notify at prayer time';
+
+  @override
+  String get sunriseNotifications => 'Notify at sunrise';
+
+  @override
+  String get openIOSNotificationSettings => 'Open iOS notification settings';
+
+  @override
+  String get soonAvailableText =>
+      'This text has been translated from Russian to other languages using AI. If you notice a translation error, please let us know through feedback.';
+
+  @override
+  String get close => 'Close';
 
   @override
   String get usefulInfoTitle => 'Useful Information';

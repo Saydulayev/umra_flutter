@@ -36,6 +36,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get titleShaveHeadScreen => 'Mencukur Rambut';
 
   @override
+  String get titleSettingsScreen => 'Pengaturan';
+
+  @override
+  String get titleLinkBookScreen => 'Buku';
+
+  @override
   String get usefulTitle => 'Berguna';
 
   @override
@@ -60,7 +66,22 @@ class AppLocalizationsId extends AppLocalizations {
   String get feedbackString => 'Umpan Balik';
 
   @override
+  String get textButtonFeedbackString => 'Kirim Masukan';
+
+  @override
+  String get evaluateTheAppString => 'NILAI APLIKASI';
+
+  @override
+  String get textButtonRateTheAppString => 'Beri Nilai Aplikasi';
+
+  @override
   String get rateTheAppString => 'Nilai Aplikasi';
+
+  @override
+  String get supportTheDeveloperString => 'DUKUNG PENGEMBANG';
+
+  @override
+  String get textButtonSupportString => 'Dukung Pengembang';
 
   @override
   String get appThemeString => 'Tema Aplikasi';
@@ -87,7 +108,55 @@ class AppLocalizationsId extends AppLocalizations {
   String get themeDark => 'Malam';
 
   @override
+  String get themeAppTitle => 'Tema Aplikasi';
+
+  @override
   String get themeSelectTitle => 'Pilih Tema Aplikasi';
+
+  @override
+  String get doneButton => 'Selesai';
+
+  @override
+  String get backgroundColor => 'Warna latar belakang';
+
+  @override
+  String get textColor => 'Warna teks';
+
+  @override
+  String get size => 'Ukuran';
+
+  @override
+  String get font => 'Jenis huruf';
+
+  @override
+  String get donateButton => 'Donasi';
+
+  @override
+  String get selectTheAmount => 'Pilih jumlah:';
+
+  @override
+  String get contributionToApplicationDevelopment =>
+      'Kami membuat aplikasi ini gratis agar bisa bermanfaat untuk semua orang. Jika ada keinginan di hati, Anda dapat berkontribusi dan menjadi bagian dari kebaikan ini. Donasi Anda sepenuhnya sukarela, sekali saja, dan tidak terkait dengan langganan atau fitur tambahan apa pun.';
+
+  @override
+  String get thirtyMinuteNotifications =>
+      'Notifikasi 30 menit sebelum waktu shalat';
+
+  @override
+  String get prayerTimeNotifications => 'Notifikasi saat masuk waktu shalat';
+
+  @override
+  String get sunriseNotifications => 'Notifikasi waktu matahari terbit';
+
+  @override
+  String get openIOSNotificationSettings => 'Buka pengaturan notifikasi iOS';
+
+  @override
+  String get soonAvailableText =>
+      'Teks ini diterjemahkan dari bahasa Rusia ke bahasa lain menggunakan AI. Jika Anda menemukan kesalahan terjemahan, mohon beri tahu kami melalui fitur masukan.';
+
+  @override
+  String get close => 'Tutup';
 
   @override
   String get usefulInfoTitle => 'Informasi Bermanfaat';
@@ -513,73 +582,73 @@ class AppLocalizationsId extends AppLocalizations {
       'Haji dan umrah adalah wajib bagi siapa saja yang telah memenuhi syarat-syaratnya. Kaum muslimin sepakat atas kewajiban haji dalam kondisi tersebut. Perlu diingat, haji atau umrah yang dinadzarkan atau yang telah dimulai harus disempurnakan.';
 
   @override
-  String get privacyPolicyTitle => 'Privacy Policy';
+  String get privacyPolicyTitle => 'Kebijakan Privasi';
 
   @override
-  String get privacyPolicyLastUpdated => 'Last updated: 2024';
+  String get privacyPolicyLastUpdated => 'Terakhir diperbarui: 2024';
 
   @override
-  String get privacyPolicyIntroductionTitle => '1. Introduction';
+  String get privacyPolicyIntroductionTitle => '1. Pengantar';
 
   @override
   String get privacyPolicyIntroduction =>
-      'We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and protect information when you use our Umra Guide application.\n\nBy using this application, you agree to the terms of this Privacy Policy.';
+      'Kami menghormati privasi Anda dan berkomitmen untuk melindungi data pribadi Anda. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi saat Anda menggunakan aplikasi Umra Guide kami.\n\nDengan menggunakan aplikasi ini, Anda menyetujui ketentuan Kebijakan Privasi ini.';
 
   @override
-  String get privacyPolicyDataCollectionTitle => '2. Data Collection';
+  String get privacyPolicyDataCollectionTitle => '2. Pengumpulan Data';
 
   @override
   String get privacyPolicyDataCollection =>
-      'Our application DOES NOT collect any data.\n\nAll data is stored only locally on your device:\n\n• Local Settings: language, theme, display preferences are stored only on your device\n• Tawaf Counter Data: stored locally on your device\n\nWe DO NOT collect and DO NOT transmit:\n• Personal data (name, email, phone)\n• Location data\n• Analytics or tracking data\n• Data about your app usage\n• Any other data';
+      'Aplikasi kami TIDAK mengumpulkan data apa pun.\n\nSemua data disimpan hanya secara lokal di perangkat Anda:\n\n• Pengaturan Lokal: bahasa, tema, preferensi tampilan disimpan hanya di perangkat Anda\n• Data Penghitung Tawaf: disimpan secara lokal di perangkat Anda\n\nKami TIDAK mengumpulkan dan TIDAK mengirimkan:\n• Data pribadi (nama, email, telepon)\n• Data lokasi\n• Data analitik atau pelacakan\n• Data tentang penggunaan aplikasi Anda\n• Data lainnya';
 
   @override
-  String get privacyPolicyDataUsageTitle => '3. Data Usage';
+  String get privacyPolicyDataUsageTitle => '3. Penggunaan Data';
 
   @override
   String get privacyPolicyDataUsage =>
-      'Since we do not collect data, all data is used solely locally on your device for:\n\n• Enabling app functionality (saving settings, tawaf counter)\n• Improving app performance (local settings for your convenience)\n\nAll data is stored only on your device and is never shared with third parties or external servers.';
+      'Karena kami tidak mengumpulkan data, semua data digunakan semata-mata secara lokal di perangkat Anda untuk:\n\n• Mengaktifkan fungsionalitas aplikasi (menyimpan pengaturan, penghitung tawaf)\n• Meningkatkan kinerja aplikasi (pengaturan lokal untuk kenyamanan Anda)\n\nSemua data disimpan hanya di perangkat Anda dan tidak pernah dibagikan dengan pihak ketiga atau server eksternal.';
 
   @override
-  String get privacyPolicyThirdPartyTitle => '4. Third-Party Services';
+  String get privacyPolicyThirdPartyTitle => '4. Layanan Pihak Ketiga';
 
   @override
   String get privacyPolicyThirdParty =>
-      'Our application may use the following third-party services:\n\n• Google Fonts: for loading fonts (if used). Google may collect technical information about font requests.\n\nWe do not control and are not responsible for the privacy policies of third-party services. We recommend reviewing their privacy policies.\n\nImportant: Even when using Google Fonts, no data about you or your app usage is transmitted to our servers or third parties.';
+      'Aplikasi kami dapat menggunakan layanan pihak ketiga berikut:\n\n• Google Fonts: untuk memuat font (jika digunakan). Google dapat mengumpulkan informasi teknis tentang permintaan font.\n\nKami tidak mengontrol dan tidak bertanggung jawab atas kebijakan privasi layanan pihak ketiga. Kami merekomendasikan untuk meninjau kebijakan privasi mereka.\n\nPenting: Bahkan saat menggunakan Google Fonts, tidak ada data tentang Anda atau penggunaan aplikasi Anda yang dikirimkan ke server kami atau pihak ketiga.';
 
   @override
-  String get privacyPolicyDataStorageTitle => '5. Data Storage';
+  String get privacyPolicyDataStorageTitle => '5. Penyimpanan Data';
 
   @override
   String get privacyPolicyDataStorage =>
-      'All application data is stored locally on your device using:\n\n• SharedPreferences (for settings)\n• Device local storage\n\nData is not transmitted to external servers and is not synchronized between devices. When you delete the app, all data is deleted with it.';
+      'Semua data aplikasi disimpan secara lokal di perangkat Anda menggunakan:\n\n• SharedPreferences (untuk pengaturan)\n• Penyimpanan lokal perangkat\n\nData tidak dikirimkan ke server eksternal dan tidak disinkronkan antar perangkat. Saat Anda menghapus aplikasi, semua data dihapus bersamanya.';
 
   @override
-  String get privacyPolicyUserRightsTitle => '6. Your Rights';
+  String get privacyPolicyUserRightsTitle => '6. Hak Anda';
 
   @override
   String get privacyPolicyUserRights =>
-      'In accordance with GDPR and other data protection laws, you have the right to:\n\n• Access your data: all data is stored on your device, you can view it in the app settings\n• Data deletion: you can delete all data by deleting the app from your device\n• Withdraw consent: you can stop using the app at any time\n\nSince we do not collect personal data and do not store it on servers, most rights are automatically respected.';
+      'Sesuai dengan GDPR dan undang-undang perlindungan data lainnya, Anda berhak:\n\n• Akses ke data Anda: semua data disimpan di perangkat Anda, Anda dapat melihatnya di pengaturan aplikasi\n• Penghapusan data: Anda dapat menghapus semua data dengan menghapus aplikasi dari perangkat Anda\n• Mencabut persetujuan: Anda dapat berhenti menggunakan aplikasi kapan saja\n\nKarena kami tidak mengumpulkan data pribadi dan tidak menyimpannya di server, sebagian besar hak secara otomatis dihormati.';
 
   @override
-  String get privacyPolicyChildrenTitle => '7. Children';
+  String get privacyPolicyChildrenTitle => '7. Anak-anak';
 
   @override
   String get privacyPolicyChildren =>
-      'Our application has a 4+ age rating and is safe for children. We do not collect any personal data from users of any age, including children. All data is stored only locally on the device and is never transmitted anywhere.';
+      'Aplikasi kami memiliki peringkat usia 4+ dan aman untuk anak-anak. Kami tidak mengumpulkan data pribadi dari pengguna segala usia, termasuk anak-anak. Semua data disimpan hanya secara lokal di perangkat dan tidak pernah dikirimkan ke mana pun.';
 
   @override
-  String get privacyPolicyChangesTitle => '8. Changes to Privacy Policy';
+  String get privacyPolicyChangesTitle => '8. Perubahan Kebijakan Privasi';
 
   @override
   String get privacyPolicyChanges =>
-      'We may periodically update this Privacy Policy. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date at the beginning of this document.\n\nWe recommend that you periodically review this Privacy Policy for information on how we protect your data.';
+      'Kami dapat memperbarui Kebijakan Privasi ini secara berkala. Kami akan memberi tahu Anda tentang perubahan apa pun dengan memposting Kebijakan Privasi baru di halaman ini dan memperbarui tanggal \"Terakhir diperbarui\" di awal dokumen ini.\n\nKami merekomendasikan untuk meninjau Kebijakan Privasi ini secara berkala untuk mendapatkan informasi tentang bagaimana kami melindungi data Anda.';
 
   @override
-  String get privacyPolicyContactTitle => '9. Contact';
+  String get privacyPolicyContactTitle => '9. Kontak';
 
   @override
   String get privacyPolicyContact =>
-      'If you have any questions or suggestions regarding this Privacy Policy, please contact us:\n\nEmail: saydulayev.wien@gmail.com\n\nWe will try to answer your questions as soon as possible.';
+      'Jika Anda memiliki pertanyaan atau saran mengenai Kebijakan Privasi ini, silakan hubungi kami:\n\nEmail: saydulayev.wien@gmail.com\n\nKami akan berusaha menjawab pertanyaan Anda sesegera mungkin.';
 
   @override
   String get feedbackDialogTitle => 'Umpan Balik';

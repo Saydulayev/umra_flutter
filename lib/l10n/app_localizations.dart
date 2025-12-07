@@ -160,6 +160,18 @@ abstract class AppLocalizations {
   /// **'Shave head or cut hair'**
   String get titleShaveHeadScreen;
 
+  /// No description provided for @titleSettingsScreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get titleSettingsScreen;
+
+  /// No description provided for @titleLinkBookScreen.
+  ///
+  /// In en, this message translates to:
+  /// **'Books'**
+  String get titleLinkBookScreen;
+
   /// No description provided for @usefulTitle.
   ///
   /// In en, this message translates to:
@@ -208,11 +220,41 @@ abstract class AppLocalizations {
   /// **'Feedback'**
   String get feedbackString;
 
+  /// No description provided for @textButtonFeedbackString.
+  ///
+  /// In en, this message translates to:
+  /// **'Feedback'**
+  String get textButtonFeedbackString;
+
+  /// No description provided for @evaluateTheAppString.
+  ///
+  /// In en, this message translates to:
+  /// **'EVALUATE THE APP'**
+  String get evaluateTheAppString;
+
+  /// No description provided for @textButtonRateTheAppString.
+  ///
+  /// In en, this message translates to:
+  /// **'Rate the App'**
+  String get textButtonRateTheAppString;
+
   /// No description provided for @rateTheAppString.
   ///
   /// In en, this message translates to:
   /// **'Rate the App'**
   String get rateTheAppString;
+
+  /// No description provided for @supportTheDeveloperString.
+  ///
+  /// In en, this message translates to:
+  /// **'SUPPORT THE DEVELOPER'**
+  String get supportTheDeveloperString;
+
+  /// No description provided for @textButtonSupportString.
+  ///
+  /// In en, this message translates to:
+  /// **'Support Developer'**
+  String get textButtonSupportString;
 
   /// No description provided for @appThemeString.
   ///
@@ -262,11 +304,101 @@ abstract class AppLocalizations {
   /// **'Night'**
   String get themeDark;
 
+  /// No description provided for @themeAppTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'App Theme'**
+  String get themeAppTitle;
+
   /// No description provided for @themeSelectTitle.
   ///
   /// In en, this message translates to:
   /// **'Choose App Theme'**
   String get themeSelectTitle;
+
+  /// No description provided for @doneButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get doneButton;
+
+  /// No description provided for @backgroundColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Background color'**
+  String get backgroundColor;
+
+  /// No description provided for @textColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Text color'**
+  String get textColor;
+
+  /// No description provided for @size.
+  ///
+  /// In en, this message translates to:
+  /// **'Size'**
+  String get size;
+
+  /// No description provided for @font.
+  ///
+  /// In en, this message translates to:
+  /// **'Font'**
+  String get font;
+
+  /// No description provided for @donateButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Donate'**
+  String get donateButton;
+
+  /// No description provided for @selectTheAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Select the amount:'**
+  String get selectTheAmount;
+
+  /// No description provided for @contributionToApplicationDevelopment.
+  ///
+  /// In en, this message translates to:
+  /// **'We made this app free so it can benefit everyone. If you have a desire, you can contribute and become part of this good. Your donation is completely voluntary, one-time, and not related to any subscription or additional features.'**
+  String get contributionToApplicationDevelopment;
+
+  /// No description provided for @thirtyMinuteNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notify 30 minutes before prayer'**
+  String get thirtyMinuteNotifications;
+
+  /// No description provided for @prayerTimeNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notify at prayer time'**
+  String get prayerTimeNotifications;
+
+  /// No description provided for @sunriseNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notify at sunrise'**
+  String get sunriseNotifications;
+
+  /// No description provided for @openIOSNotificationSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Open iOS notification settings'**
+  String get openIOSNotificationSettings;
+
+  /// No description provided for @soonAvailableText.
+  ///
+  /// In en, this message translates to:
+  /// **'This text has been translated from Russian to other languages using AI. If you notice a translation error, please let us know through feedback.'**
+  String get soonAvailableText;
+
+  /// No description provided for @close.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
 
   /// No description provided for @usefulInfoTitle.
   ///

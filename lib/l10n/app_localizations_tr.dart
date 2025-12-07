@@ -36,6 +36,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get titleShaveHeadScreen => 'Saç Tıraşı';
 
   @override
+  String get titleSettingsScreen => 'Ayarlar';
+
+  @override
+  String get titleLinkBookScreen => 'Kitaplar';
+
+  @override
   String get usefulTitle => 'Faydalı';
 
   @override
@@ -60,7 +66,22 @@ class AppLocalizationsTr extends AppLocalizations {
   String get feedbackString => 'Geri Bildirim';
 
   @override
+  String get textButtonFeedbackString => 'Geri Bildirim';
+
+  @override
+  String get evaluateTheAppString => 'UYGULAMAYI DEĞERLENDİRİN';
+
+  @override
+  String get textButtonRateTheAppString => 'Uygulamayı Değerlendir';
+
+  @override
   String get rateTheAppString => 'Uygulamayı Değerlendir';
+
+  @override
+  String get supportTheDeveloperString => 'GELİŞTİRİCİYİ DESTEKLEYİN';
+
+  @override
+  String get textButtonSupportString => 'Geliştiriciyi Destekle';
 
   @override
   String get appThemeString => 'Uygulama Teması';
@@ -87,7 +108,55 @@ class AppLocalizationsTr extends AppLocalizations {
   String get themeDark => 'Gece';
 
   @override
+  String get themeAppTitle => 'Uygulama Teması';
+
+  @override
   String get themeSelectTitle => 'Uygulama Teması Seçin';
+
+  @override
+  String get doneButton => 'Tamam';
+
+  @override
+  String get backgroundColor => 'Arka plan rengi';
+
+  @override
+  String get textColor => 'Metin rengi';
+
+  @override
+  String get size => 'Boyut';
+
+  @override
+  String get font => 'Yazı tipi';
+
+  @override
+  String get donateButton => 'Bağış Yap';
+
+  @override
+  String get selectTheAmount => 'Miktarı seçin:';
+
+  @override
+  String get contributionToApplicationDevelopment =>
+      'Bu uygulamayı herkes faydalansın diye ücretsiz yaptık. Eğer içinizde bir istek olursa, katkıda bulunabilir ve bu hayrın bir parçası olabilirsiniz. Bağışınız tamamen gönüllüdür, tek seferliktir ve herhangi bir abonelikle veya ek özelliklerle bağlantılı değildir.';
+
+  @override
+  String get thirtyMinuteNotifications =>
+      'Namazdan 30 dakika önce bildirim gönder';
+
+  @override
+  String get prayerTimeNotifications => 'Namaz vakti bildirimi gönder';
+
+  @override
+  String get sunriseNotifications => 'Güneş doğuşu bildirimi gönder';
+
+  @override
+  String get openIOSNotificationSettings => 'iOS Bildirim Ayarlarını Aç';
+
+  @override
+  String get soonAvailableText =>
+      'Bu metin yapay zeka kullanılarak Rusçadan diğer dillere çevrildi. Çeviride bir hata fark ederseniz, lütfen geri bildirim yoluyla bize bildirin.';
+
+  @override
+  String get close => 'Kapat';
 
   @override
   String get usefulInfoTitle => 'Faydalı Bilgiler';
@@ -509,73 +578,74 @@ class AppLocalizationsTr extends AppLocalizations {
       'Hac ve umre, şartları taşıyan her Müslüman için farzdır. Haccın farz olduğu konusunda Müslümanlar icma etmişlerdir. Ayrıca, yapılan bir adaktan dolayı hac ve umre farz hale gelebilir ve başlanılan nafile bir hac veya umre tamamlanmalıdır.';
 
   @override
-  String get privacyPolicyTitle => 'Privacy Policy';
+  String get privacyPolicyTitle => 'Gizlilik Politikası';
 
   @override
-  String get privacyPolicyLastUpdated => 'Last updated: 2024';
+  String get privacyPolicyLastUpdated => 'Son güncelleme: 2024';
 
   @override
-  String get privacyPolicyIntroductionTitle => '1. Introduction';
+  String get privacyPolicyIntroductionTitle => '1. Giriş';
 
   @override
   String get privacyPolicyIntroduction =>
-      'We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and protect information when you use our Umra Guide application.\n\nBy using this application, you agree to the terms of this Privacy Policy.';
+      'Gizliliğinize saygı duyuyoruz ve kişisel verilerinizi korumaya kararlıyız. Bu Gizlilik Politikası, Umra Guide uygulamamızı kullandığınızda bilgileri nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklar.\n\nBu uygulamayı kullanarak, bu Gizlilik Politikasının şartlarını kabul etmiş olursunuz.';
 
   @override
-  String get privacyPolicyDataCollectionTitle => '2. Data Collection';
+  String get privacyPolicyDataCollectionTitle => '2. Veri Toplama';
 
   @override
   String get privacyPolicyDataCollection =>
-      'Our application DOES NOT collect any data.\n\nAll data is stored only locally on your device:\n\n• Local Settings: language, theme, display preferences are stored only on your device\n• Tawaf Counter Data: stored locally on your device\n\nWe DO NOT collect and DO NOT transmit:\n• Personal data (name, email, phone)\n• Location data\n• Analytics or tracking data\n• Data about your app usage\n• Any other data';
+      'Uygulamamız HİÇBİR veri toplamaz.\n\nTüm veriler yalnızca cihazınızda yerel olarak saklanır:\n\n• Yerel Ayarlar: dil, tema, görüntü tercihleri yalnızca cihazınızda saklanır\n• Tavaf Sayaç Verileri: cihazınızda yerel olarak saklanır\n\nToplamıyoruz ve iletmiyoruz:\n• Kişisel veriler (ad, e-posta, telefon)\n• Konum verileri\n• Analitik veya izleme verileri\n• Uygulama kullanımınız hakkındaki veriler\n• Diğer tüm veriler';
 
   @override
-  String get privacyPolicyDataUsageTitle => '3. Data Usage';
+  String get privacyPolicyDataUsageTitle => '3. Veri Kullanımı';
 
   @override
   String get privacyPolicyDataUsage =>
-      'Since we do not collect data, all data is used solely locally on your device for:\n\n• Enabling app functionality (saving settings, tawaf counter)\n• Improving app performance (local settings for your convenience)\n\nAll data is stored only on your device and is never shared with third parties or external servers.';
+      'Veri toplamadığımız için, tüm veriler yalnızca cihazınızda yerel olarak şunlar için kullanılır:\n\n• Uygulama işlevselliğini etkinleştirme (ayarları kaydetme, tavaf sayacı)\n• Uygulama performansını iyileştirme (kolaylığınız için yerel ayarlar)\n\nTüm veriler yalnızca cihazınızda saklanır ve asla üçüncü taraflara veya harici sunuculara paylaşılmaz.';
 
   @override
-  String get privacyPolicyThirdPartyTitle => '4. Third-Party Services';
+  String get privacyPolicyThirdPartyTitle => '4. Üçüncü Taraf Hizmetleri';
 
   @override
   String get privacyPolicyThirdParty =>
-      'Our application may use the following third-party services:\n\n• Google Fonts: for loading fonts (if used). Google may collect technical information about font requests.\n\nWe do not control and are not responsible for the privacy policies of third-party services. We recommend reviewing their privacy policies.\n\nImportant: Even when using Google Fonts, no data about you or your app usage is transmitted to our servers or third parties.';
+      'Uygulamamız aşağıdaki üçüncü taraf hizmetlerini kullanabilir:\n\n• Google Fonts: yazı tiplerini yüklemek için (kullanılıyorsa). Google, yazı tipi istekleri hakkında teknik bilgiler toplayabilir.\n\nÜçüncü taraf hizmetlerinin gizlilik politikalarını kontrol etmiyoruz ve bunlardan sorumlu değiliz. Gizlilik politikalarını incelemenizi öneririz.\n\nÖnemli: Google Fonts kullanırken bile, sizin veya uygulama kullanımınız hakkındaki hiçbir veri sunucularımıza veya üçüncü taraflara iletilmez.';
 
   @override
-  String get privacyPolicyDataStorageTitle => '5. Data Storage';
+  String get privacyPolicyDataStorageTitle => '5. Veri Depolama';
 
   @override
   String get privacyPolicyDataStorage =>
-      'All application data is stored locally on your device using:\n\n• SharedPreferences (for settings)\n• Device local storage\n\nData is not transmitted to external servers and is not synchronized between devices. When you delete the app, all data is deleted with it.';
+      'Tüm uygulama verileri şunları kullanarak cihazınızda yerel olarak saklanır:\n\n• SharedPreferences (ayarlar için)\n• Cihaz yerel depolama\n\nVeriler harici sunuculara iletilmez ve cihazlar arasında senkronize edilmez. Uygulamayı sildiğinizde, tüm veriler onunla birlikte silinir.';
 
   @override
-  String get privacyPolicyUserRightsTitle => '6. Your Rights';
+  String get privacyPolicyUserRightsTitle => '6. Haklarınız';
 
   @override
   String get privacyPolicyUserRights =>
-      'In accordance with GDPR and other data protection laws, you have the right to:\n\n• Access your data: all data is stored on your device, you can view it in the app settings\n• Data deletion: you can delete all data by deleting the app from your device\n• Withdraw consent: you can stop using the app at any time\n\nSince we do not collect personal data and do not store it on servers, most rights are automatically respected.';
+      'GDPR ve diğer veri koruma yasalarına uygun olarak, şu haklara sahipsiniz:\n\n• Verilerinize erişim: tüm veriler cihazınızda saklanır, bunları uygulama ayarlarında görüntüleyebilirsiniz\n• Veri silme: uygulamayı cihazınızdan silerek tüm verileri silebilirsiniz\n• Rıza geri çekme: uygulamayı kullanmayı istediğiniz zaman durdurabilirsiniz\n\nKişisel veri toplamadığımız ve sunucularda saklamadığımız için, çoğu hak otomatik olarak saygı gösterilir.';
 
   @override
-  String get privacyPolicyChildrenTitle => '7. Children';
+  String get privacyPolicyChildrenTitle => '7. Çocuklar';
 
   @override
   String get privacyPolicyChildren =>
-      'Our application has a 4+ age rating and is safe for children. We do not collect any personal data from users of any age, including children. All data is stored only locally on the device and is never transmitted anywhere.';
+      'Uygulamamız 4+ yaş sınıflandırmasına sahiptir ve çocuklar için güvenlidir. Çocuklar dahil olmak üzere her yaştan kullanıcıdan kişisel veri toplamıyoruz. Tüm veriler yalnızca cihazda yerel olarak saklanır ve asla hiçbir yere iletilmez.';
 
   @override
-  String get privacyPolicyChangesTitle => '8. Changes to Privacy Policy';
+  String get privacyPolicyChangesTitle =>
+      '8. Gizlilik Politikasındaki Değişiklikler';
 
   @override
   String get privacyPolicyChanges =>
-      'We may periodically update this Privacy Policy. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date at the beginning of this document.\n\nWe recommend that you periodically review this Privacy Policy for information on how we protect your data.';
+      'Bu Gizlilik Politikasını periyodik olarak güncelleyebiliriz. Yeni Gizlilik Politikasını bu sayfada yayınlayarak ve bu belgenin başındaki \"Son güncelleme\" tarihini güncelleyerek sizi herhangi bir değişiklikten haberdar edeceğiz.\n\nVerilerinizi nasıl koruduğumuz hakkında bilgi almak için bu Gizlilik Politikasını periyodik olarak gözden geçirmenizi öneririz.';
 
   @override
-  String get privacyPolicyContactTitle => '9. Contact';
+  String get privacyPolicyContactTitle => '9. İletişim';
 
   @override
   String get privacyPolicyContact =>
-      'If you have any questions or suggestions regarding this Privacy Policy, please contact us:\n\nEmail: saydulayev.wien@gmail.com\n\nWe will try to answer your questions as soon as possible.';
+      'Bu Gizlilik Politikası hakkında sorularınız veya önerileriniz varsa, lütfen bizimle iletişime geçin:\n\nE-posta: saydulayev.wien@gmail.com\n\nSorularınızı en kısa sürede yanıtlamaya çalışacağız.';
 
   @override
   String get feedbackDialogTitle => 'Geri Bildirim';

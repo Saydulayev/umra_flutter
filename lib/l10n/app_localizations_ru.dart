@@ -36,6 +36,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get titleShaveHeadScreen => 'Бритье головы';
 
   @override
+  String get titleSettingsScreen => 'Настройки';
+
+  @override
+  String get titleLinkBookScreen => 'Книги';
+
+  @override
   String get usefulTitle => 'Полезное';
 
   @override
@@ -60,7 +66,22 @@ class AppLocalizationsRu extends AppLocalizations {
   String get feedbackString => 'Обратная связь';
 
   @override
+  String get textButtonFeedbackString => 'Обратная связь';
+
+  @override
+  String get evaluateTheAppString => 'EVALUATE THE APP';
+
+  @override
+  String get textButtonRateTheAppString => 'Оценить приложение';
+
+  @override
   String get rateTheAppString => 'Оценить приложение';
+
+  @override
+  String get supportTheDeveloperString => 'SUPPORT THE DEVELOPER';
+
+  @override
+  String get textButtonSupportString => 'Поддержать разработчика';
 
   @override
   String get appThemeString => 'Тема приложения';
@@ -87,7 +108,54 @@ class AppLocalizationsRu extends AppLocalizations {
   String get themeDark => 'Ночь';
 
   @override
+  String get themeAppTitle => 'Тема приложения';
+
+  @override
   String get themeSelectTitle => 'Выберите тему приложения';
+
+  @override
+  String get doneButton => 'Готово';
+
+  @override
+  String get backgroundColor => 'Цвет фона';
+
+  @override
+  String get textColor => 'Цвет текста';
+
+  @override
+  String get size => 'Размер';
+
+  @override
+  String get font => 'Шрифт';
+
+  @override
+  String get donateButton => 'Пожертвовать';
+
+  @override
+  String get selectTheAmount => 'Выберите сумму:';
+
+  @override
+  String get contributionToApplicationDevelopment =>
+      'Мы сделали это приложение бесплатным, чтобы оно приносило пользу всем. Если у вас будет желание, вы можете внести свой вклад и стать частью этого добра. Ваше пожертвование — полностью добровольное, одноразовое и не связано с подпиской или дополнительными функциями.';
+
+  @override
+  String get thirtyMinuteNotifications => 'Уведомлять за 30 минут до молитвы';
+
+  @override
+  String get prayerTimeNotifications => 'Уведомлять во время молитвы';
+
+  @override
+  String get sunriseNotifications => 'Уведомлять о восходе солнца';
+
+  @override
+  String get openIOSNotificationSettings => 'Открыть настройки уведомлений iOS';
+
+  @override
+  String get soonAvailableText =>
+      'Этот текст был переведен с русского языка на другие языки с использованием ИИ. Если вы заметите ошибку в переводе, пожалуйста, сообщите нам через обратную связь.';
+
+  @override
+  String get close => 'Закрыть';
 
   @override
   String get usefulInfoTitle => 'Полезная информация';

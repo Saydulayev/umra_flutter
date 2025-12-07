@@ -36,6 +36,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String get titleShaveHeadScreen => 'Rasage de la tête';
 
   @override
+  String get titleSettingsScreen => 'Paramètres';
+
+  @override
+  String get titleLinkBookScreen => 'Livres';
+
+  @override
   String get usefulTitle => 'Utile';
 
   @override
@@ -60,7 +66,22 @@ class AppLocalizationsFr extends AppLocalizations {
   String get feedbackString => 'Commentaires';
 
   @override
+  String get textButtonFeedbackString => 'Retour d\'information';
+
+  @override
+  String get evaluateTheAppString => 'ÉVALUER L\'APPLICATION';
+
+  @override
+  String get textButtonRateTheAppString => 'Évaluer l\'application';
+
+  @override
   String get rateTheAppString => 'Noter l\'application';
+
+  @override
+  String get supportTheDeveloperString => 'SOUTENIR LE DÉVELOPPEUR';
+
+  @override
+  String get textButtonSupportString => 'Soutenir le développeur';
 
   @override
   String get appThemeString => 'Thème de l\'application';
@@ -87,7 +108,55 @@ class AppLocalizationsFr extends AppLocalizations {
   String get themeDark => 'Nuit';
 
   @override
+  String get themeAppTitle => 'Thème de l\'application';
+
+  @override
   String get themeSelectTitle => 'Choisir le thème de l\'application';
+
+  @override
+  String get doneButton => 'Terminé';
+
+  @override
+  String get backgroundColor => 'Couleur de fond';
+
+  @override
+  String get textColor => 'Couleur du texte';
+
+  @override
+  String get size => 'Taille';
+
+  @override
+  String get font => 'Police';
+
+  @override
+  String get donateButton => 'Faire un don';
+
+  @override
+  String get selectTheAmount => 'Choisissez le montant:';
+
+  @override
+  String get contributionToApplicationDevelopment =>
+      'Nous avons créé cette application gratuitement afin qu\'elle profite à tous. Si vous en avez le désir, vous pouvez contribuer et faire partie de ce bien. Votre don est entièrement volontaire, unique, et n\'est lié à aucun abonnement ni à des fonctionnalités supplémentaires.';
+
+  @override
+  String get thirtyMinuteNotifications => 'Notifier 30 minutes avant la prière';
+
+  @override
+  String get prayerTimeNotifications => 'Notifier à l\'heure de la prière';
+
+  @override
+  String get sunriseNotifications => 'Notifier au lever du soleil';
+
+  @override
+  String get openIOSNotificationSettings =>
+      'Ouvrir les paramètres de notifications iOS';
+
+  @override
+  String get soonAvailableText =>
+      'Ce texte a été traduit du russe à l\'aide de l\'IA. Si vous remarquez des erreurs ou des inexactitudes, veuillez nous en informer via les retours.';
+
+  @override
+  String get close => 'Fermer';
 
   @override
   String get usefulInfoTitle => 'Informations utiles';
@@ -513,73 +582,74 @@ class AppLocalizationsFr extends AppLocalizations {
       'Le Hajj et la \'Umrah sont obligatoires pour ceux qui remplissent les conditions nécessaires à leur accomplissement. Les musulmans sont unanimes sur l\'obligation du Hajj lorsque toutes les conditions sont réunies. Il est important de noter que le Hajj et la \'Umrah, accomplis après un vœu ou commencés, doivent être achevés.';
 
   @override
-  String get privacyPolicyTitle => 'Privacy Policy';
+  String get privacyPolicyTitle => 'Politique de confidentialité';
 
   @override
-  String get privacyPolicyLastUpdated => 'Last updated: 2024';
+  String get privacyPolicyLastUpdated => 'Dernière mise à jour : 2024';
 
   @override
   String get privacyPolicyIntroductionTitle => '1. Introduction';
 
   @override
   String get privacyPolicyIntroduction =>
-      'We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and protect information when you use our Umra Guide application.\n\nBy using this application, you agree to the terms of this Privacy Policy.';
+      'Nous respectons votre vie privée et nous nous engageons à protéger vos données personnelles. Cette Politique de confidentialité explique comment nous collectons, utilisons et protégeons les informations lorsque vous utilisez notre application Umra Guide.\n\nEn utilisant cette application, vous acceptez les termes de cette Politique de confidentialité.';
 
   @override
-  String get privacyPolicyDataCollectionTitle => '2. Data Collection';
+  String get privacyPolicyDataCollectionTitle => '2. Collecte de données';
 
   @override
   String get privacyPolicyDataCollection =>
-      'Our application DOES NOT collect any data.\n\nAll data is stored only locally on your device:\n\n• Local Settings: language, theme, display preferences are stored only on your device\n• Tawaf Counter Data: stored locally on your device\n\nWe DO NOT collect and DO NOT transmit:\n• Personal data (name, email, phone)\n• Location data\n• Analytics or tracking data\n• Data about your app usage\n• Any other data';
+      'Notre application NE collecte AUCUNE donnée.\n\nToutes les données sont stockées uniquement localement sur votre appareil :\n\n• Paramètres locaux : langue, thème, préférences d\'affichage sont stockés uniquement sur votre appareil\n• Données du compteur Tawaf : stockées localement sur votre appareil\n\nNous NE collectons PAS et NE transmettons PAS :\n• Données personnelles (nom, e-mail, téléphone)\n• Données de localisation\n• Données d\'analyse ou de suivi\n• Données sur votre utilisation de l\'application\n• Toute autre donnée';
 
   @override
-  String get privacyPolicyDataUsageTitle => '3. Data Usage';
+  String get privacyPolicyDataUsageTitle => '3. Utilisation des données';
 
   @override
   String get privacyPolicyDataUsage =>
-      'Since we do not collect data, all data is used solely locally on your device for:\n\n• Enabling app functionality (saving settings, tawaf counter)\n• Improving app performance (local settings for your convenience)\n\nAll data is stored only on your device and is never shared with third parties or external servers.';
+      'Puisque nous ne collectons pas de données, toutes les données sont utilisées uniquement localement sur votre appareil pour :\n\n• Activer les fonctionnalités de l\'application (sauvegarde des paramètres, compteur Tawaf)\n• Améliorer les performances de l\'application (paramètres locaux pour votre commodité)\n\nToutes les données sont stockées uniquement sur votre appareil et ne sont jamais partagées avec des tiers ou des serveurs externes.';
 
   @override
-  String get privacyPolicyThirdPartyTitle => '4. Third-Party Services';
+  String get privacyPolicyThirdPartyTitle => '4. Services tiers';
 
   @override
   String get privacyPolicyThirdParty =>
-      'Our application may use the following third-party services:\n\n• Google Fonts: for loading fonts (if used). Google may collect technical information about font requests.\n\nWe do not control and are not responsible for the privacy policies of third-party services. We recommend reviewing their privacy policies.\n\nImportant: Even when using Google Fonts, no data about you or your app usage is transmitted to our servers or third parties.';
+      'Notre application peut utiliser les services tiers suivants :\n\n• Google Fonts : pour charger les polices (si utilisé). Google peut collecter des informations techniques sur les demandes de polices.\n\nNous ne contrôlons pas et ne sommes pas responsables des politiques de confidentialité des services tiers. Nous recommandons de consulter leurs politiques de confidentialité.\n\nImportant : Même lors de l\'utilisation de Google Fonts, aucune donnée vous concernant ou concernant votre utilisation de l\'application n\'est transmise à nos serveurs ou à des tiers.';
 
   @override
-  String get privacyPolicyDataStorageTitle => '5. Data Storage';
+  String get privacyPolicyDataStorageTitle => '5. Stockage des données';
 
   @override
   String get privacyPolicyDataStorage =>
-      'All application data is stored locally on your device using:\n\n• SharedPreferences (for settings)\n• Device local storage\n\nData is not transmitted to external servers and is not synchronized between devices. When you delete the app, all data is deleted with it.';
+      'Toutes les données de l\'application sont stockées localement sur votre appareil en utilisant :\n\n• SharedPreferences (pour les paramètres)\n• Stockage local de l\'appareil\n\nLes données ne sont pas transmises à des serveurs externes et ne sont pas synchronisées entre les appareils. Lorsque vous supprimez l\'application, toutes les données sont supprimées avec elle.';
 
   @override
-  String get privacyPolicyUserRightsTitle => '6. Your Rights';
+  String get privacyPolicyUserRightsTitle => '6. Vos droits';
 
   @override
   String get privacyPolicyUserRights =>
-      'In accordance with GDPR and other data protection laws, you have the right to:\n\n• Access your data: all data is stored on your device, you can view it in the app settings\n• Data deletion: you can delete all data by deleting the app from your device\n• Withdraw consent: you can stop using the app at any time\n\nSince we do not collect personal data and do not store it on servers, most rights are automatically respected.';
+      'Conformément au RGPD et à d\'autres lois sur la protection des données, vous avez le droit de :\n\n• Accéder à vos données : toutes les données sont stockées sur votre appareil, vous pouvez les consulter dans les paramètres de l\'application\n• Suppression des données : vous pouvez supprimer toutes les données en supprimant l\'application de votre appareil\n• Retirer votre consentement : vous pouvez cesser d\'utiliser l\'application à tout moment\n\nPuisque nous ne collectons pas de données personnelles et ne les stockons pas sur des serveurs, la plupart des droits sont automatiquement respectés.';
 
   @override
-  String get privacyPolicyChildrenTitle => '7. Children';
+  String get privacyPolicyChildrenTitle => '7. Enfants';
 
   @override
   String get privacyPolicyChildren =>
-      'Our application has a 4+ age rating and is safe for children. We do not collect any personal data from users of any age, including children. All data is stored only locally on the device and is never transmitted anywhere.';
+      'Notre application a une classification d\'âge 4+ et est sûre pour les enfants. Nous ne collectons aucune donnée personnelle des utilisateurs de tout âge, y compris les enfants. Toutes les données sont stockées uniquement localement sur l\'appareil et ne sont jamais transmises nulle part.';
 
   @override
-  String get privacyPolicyChangesTitle => '8. Changes to Privacy Policy';
+  String get privacyPolicyChangesTitle =>
+      '8. Modifications de la Politique de confidentialité';
 
   @override
   String get privacyPolicyChanges =>
-      'We may periodically update this Privacy Policy. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last updated\" date at the beginning of this document.\n\nWe recommend that you periodically review this Privacy Policy for information on how we protect your data.';
+      'Nous pouvons mettre à jour périodiquement cette Politique de confidentialité. Nous vous informerons de tout changement en publiant la nouvelle Politique de confidentialité sur cette page et en mettant à jour la date « Dernière mise à jour » au début de ce document.\n\nNous vous recommandons de consulter périodiquement cette Politique de confidentialité pour obtenir des informations sur la façon dont nous protégeons vos données.';
 
   @override
   String get privacyPolicyContactTitle => '9. Contact';
 
   @override
   String get privacyPolicyContact =>
-      'If you have any questions or suggestions regarding this Privacy Policy, please contact us:\n\nEmail: saydulayev.wien@gmail.com\n\nWe will try to answer your questions as soon as possible.';
+      'Si vous avez des questions ou des suggestions concernant cette Politique de confidentialité, veuillez nous contacter :\n\nE-mail : saydulayev.wien@gmail.com\n\nNous essaierons de répondre à vos questions dans les plus brefs délais.';
 
   @override
   String get feedbackDialogTitle => 'Commentaires';
