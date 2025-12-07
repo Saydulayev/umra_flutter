@@ -31,7 +31,7 @@
   "evaluateTheAppString": "EVALUATE THE APP",
   "textButtonRateTheAppString": "Оценить приложение",
   "rateTheAppString": "Оценить приложение",
-  "supportTheDeveloperString": "SUPPORT THE DEVELOPER",
+  "supportTheDeveloperString": "Поддержать разработчика",
   "textButtonSupportString": "Поддержать разработчика",
   "appThemeString": "Тема приложения",
   "notificationSettingsString": "Настройки уведомлений",
@@ -192,5 +192,14 @@
   "feedbackDialogCopy": "Скопировать",
   "feedbackEmailCopied": "Email адрес скопирован в буфер обмена",
   "feedbackEmailSubject": "Обратная связь из приложения Umra",
-  "feedbackEmailBody": "Ас-Саламу алайкум!\n\nХочу поделиться отзывом о приложении Umra:\n\n"
+  "feedbackEmailBody": "Ас-Саламу алайкум!\n\nХочу поделиться отзывом о приложении Umra:\n\n",
+  "donationScreenTitle": "Поддержать разработчика",
+  "donationSmall": "Небольшое пожертвование",
+  "donationSmallDescription": "Небольшая сумма для поддержки разработки",
+  "donationMedium": "Среднее пожертвование",
+  "donationMediumDescription": "Средняя сумма для поддержки разработки",
+  "donationLarge": "Большое пожертвование",
+  "donationLargeDescription": "Большая сумма для поддержки разработки",
+  "donationProductsNotAvailable": "Продукты пожертвований временно недоступны. Пожалуйста, попробуйте позже.",
+  "donationInfo": "Ваше пожертвование помогает поддерживать разработку и улучшение приложения. Все пожертвования являются добровольными и не предоставляют дополнительных функций."
 }

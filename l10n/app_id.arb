@@ -22,7 +22,7 @@
   "textButtonFeedbackString": "Kirim Masukan",
   "evaluateTheAppString": "NILAI APLIKASI",
   "textButtonRateTheAppString": "Beri Nilai Aplikasi",
-  "supportTheDeveloperString": "DUKUNG PENGEMBANG",
+  "supportTheDeveloperString": "Dukung pengembang",
   "textButtonSupportString": "Dukung Pengembang",
   "rateTheAppString": "Nilai Aplikasi",
   "appThemeString": "Tema Aplikasi",
@@ -192,5 +192,14 @@
   "privacyPolicyChangesTitle": "8. Perubahan Kebijakan Privasi",
   "privacyPolicyChanges": "Kami dapat memperbarui Kebijakan Privasi ini secara berkala. Kami akan memberi tahu Anda tentang perubahan apa pun dengan memposting Kebijakan Privasi baru di halaman ini dan memperbarui tanggal \"Terakhir diperbarui\" di awal dokumen ini.\n\nKami merekomendasikan untuk meninjau Kebijakan Privasi ini secara berkala untuk mendapatkan informasi tentang bagaimana kami melindungi data Anda.",
   "privacyPolicyContactTitle": "9. Kontak",
-  "privacyPolicyContact": "Jika Anda memiliki pertanyaan atau saran mengenai Kebijakan Privasi ini, silakan hubungi kami:\n\nEmail: saydulayev.wien@gmail.com\n\nKami akan berusaha menjawab pertanyaan Anda sesegera mungkin."
+  "privacyPolicyContact": "Jika Anda memiliki pertanyaan atau saran mengenai Kebijakan Privasi ini, silakan hubungi kami:\n\nEmail: saydulayev.wien@gmail.com\n\nKami akan berusaha menjawab pertanyaan Anda sesegera mungkin.",
+  "donationScreenTitle": "Dukung Pengembang",
+  "donationSmall": "Donasi Kecil",
+  "donationSmallDescription": "Jumlah kecil untuk mendukung pengembangan",
+  "donationMedium": "Donasi Sedang",
+  "donationMediumDescription": "Jumlah sedang untuk mendukung pengembangan",
+  "donationLarge": "Donasi Besar",
+  "donationLargeDescription": "Jumlah besar untuk mendukung pengembangan",
+  "donationProductsNotAvailable": "Produk donasi untuk sementara tidak tersedia. Silakan coba lagi nanti.",
+  "donationInfo": "Donasi Anda membantu mendukung pengembangan dan peningkatan aplikasi. Semua donasi bersifat sukarela dan tidak menyediakan fitur tambahan."
 }

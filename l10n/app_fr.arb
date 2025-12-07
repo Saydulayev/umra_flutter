@@ -22,7 +22,7 @@
   "textButtonFeedbackString": "Retour d'information",
   "evaluateTheAppString": "ÉVALUER L'APPLICATION",
   "textButtonRateTheAppString": "Évaluer l'application",
-  "supportTheDeveloperString": "SOUTENIR LE DÉVELOPPEUR",
+  "supportTheDeveloperString": "Soutenir le développeur",
   "textButtonSupportString": "Soutenir le développeur",
   "rateTheAppString": "Noter l'application",
   "appThemeString": "Thème de l'application",
@@ -192,5 +192,14 @@
   "privacyPolicyChangesTitle": "8. Modifications de la Politique de confidentialité",
   "privacyPolicyChanges": "Nous pouvons mettre à jour périodiquement cette Politique de confidentialité. Nous vous informerons de tout changement en publiant la nouvelle Politique de confidentialité sur cette page et en mettant à jour la date « Dernière mise à jour » au début de ce document.\n\nNous vous recommandons de consulter périodiquement cette Politique de confidentialité pour obtenir des informations sur la façon dont nous protégeons vos données.",
   "privacyPolicyContactTitle": "9. Contact",
-  "privacyPolicyContact": "Si vous avez des questions ou des suggestions concernant cette Politique de confidentialité, veuillez nous contacter :\n\nE-mail : saydulayev.wien@gmail.com\n\nNous essaierons de répondre à vos questions dans les plus brefs délais."
+  "privacyPolicyContact": "Si vous avez des questions ou des suggestions concernant cette Politique de confidentialité, veuillez nous contacter :\n\nE-mail : saydulayev.wien@gmail.com\n\nNous essaierons de répondre à vos questions dans les plus brefs délais.",
+  "donationScreenTitle": "Soutenir le développeur",
+  "donationSmall": "Petit don",
+  "donationSmallDescription": "Un petit montant pour soutenir le développement",
+  "donationMedium": "Don moyen",
+  "donationMediumDescription": "Un montant moyen pour soutenir le développement",
+  "donationLarge": "Grand don",
+  "donationLargeDescription": "Un grand montant pour soutenir le développement",
+  "donationProductsNotAvailable": "Les produits de don ne sont temporairement pas disponibles. Veuillez réessayer plus tard.",
+  "donationInfo": "Votre don aide à soutenir le développement et l'amélioration de l'application. Tous les dons sont volontaires et ne fournissent pas de fonctionnalités supplémentaires."
 }

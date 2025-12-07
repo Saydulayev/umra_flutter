@@ -78,7 +78,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rateTheAppString => 'Uygulamayı Değerlendir';
 
   @override
-  String get supportTheDeveloperString => 'GELİŞTİRİCİYİ DESTEKLEYİN';
+  String get supportTheDeveloperString => 'Geliştiriciyi destekle';
 
   @override
   String get textButtonSupportString => 'Geliştiriciyi Destekle';
@@ -669,4 +669,36 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get feedbackEmailBody =>
       'As-Salaamu Alaikum!\n\nUmra uygulaması hakkında geri bildirim paylaşmak istiyorum:\n\n';
+
+  @override
+  String get donationScreenTitle => 'Geliştiriciyi Destekle';
+
+  @override
+  String get donationSmall => 'Küçük Bağış';
+
+  @override
+  String get donationSmallDescription =>
+      'Geliştirmeyi desteklemek için küçük bir miktar';
+
+  @override
+  String get donationMedium => 'Orta Bağış';
+
+  @override
+  String get donationMediumDescription =>
+      'Geliştirmeyi desteklemek için orta bir miktar';
+
+  @override
+  String get donationLarge => 'Büyük Bağış';
+
+  @override
+  String get donationLargeDescription =>
+      'Geliştirmeyi desteklemek için büyük bir miktar';
+
+  @override
+  String get donationProductsNotAvailable =>
+      'Bağış ürünleri geçici olarak kullanılamıyor. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get donationInfo =>
+      'Bağışınız uygulamanın geliştirilmesine ve iyileştirilmesine yardımcı olur. Tüm bağışlar gönüllüdür ve ek özellikler sağlamaz.';
 }

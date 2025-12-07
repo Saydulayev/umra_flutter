@@ -9,6 +9,7 @@ import '../models/app_theme.dart';
 import '../widgets/theme_selection_sheet.dart';
 import '../constants/app_constants.dart';
 import 'privacy_policy_screen.dart';
+import 'donation_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -16,11 +17,11 @@ class SettingsScreen extends StatelessWidget {
   Future<void> _launchEmail(BuildContext context) async {
     final l10n = AppLocalizations.of(context)!;
     const String email = AppStrings.contactEmail;
-    
+
     // Получаем локализованные тему и тело письма
     final String subject = Uri.encodeComponent(l10n.feedbackEmailSubject);
     final String body = Uri.encodeComponent(l10n.feedbackEmailBody);
-    
+
     // Создаем URI с предзаполненной темой и телом письма
     final Uri emailUri = Uri.parse('mailto:$email?subject=$subject&body=$body');
 
@@ -30,18 +31,12 @@ class SettingsScreen extends StatelessWidget {
       bool launched = false;
 
       try {
-        await launchUrl(
-          emailUri,
-          mode: LaunchMode.externalApplication,
-        );
+        await launchUrl(emailUri, mode: LaunchMode.externalApplication);
         launched = true;
       } catch (e) {
         // Если не получилось, пробуем platformDefault
         try {
-          await launchUrl(
-            emailUri,
-            mode: LaunchMode.platformDefault,
-          );
+          await launchUrl(emailUri, mode: LaunchMode.platformDefault);
           launched = true;
         } catch (e2) {
           // Не удалось открыть почтовое приложение
@@ -70,10 +65,7 @@ class SettingsScreen extends StatelessWidget {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              l10n.feedbackDialogMessage,
-              textAlign: TextAlign.center,
-            ),
+            Text(l10n.feedbackDialogMessage, textAlign: TextAlign.center),
             const SizedBox(height: 16),
             Container(
               padding: const EdgeInsets.all(12),
@@ -178,11 +170,26 @@ class SettingsScreen extends StatelessWidget {
               context,
               icon: Icons.palette,
               title: l10n.appThemeString,
-              subtitle: _getThemeName(themeProvider.selectedTheme, l10n),
               onTap: () {
                 showModalBottomSheet(
                   context: context,
                   builder: (context) => const ThemeSelectionSheet(),
+                );
+              },
+              theme: theme,
+            ),
+            const SizedBox(height: 8),
+            // Support Developer / Donations
+            _buildSettingsItem(
+              context,
+              icon: Icons.favorite,
+              title: l10n.supportTheDeveloperString,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const DonationScreen(),
+                  ),
                 );
               },
               theme: theme,
@@ -252,7 +259,10 @@ class SettingsScreen extends StatelessWidget {
                     if (subtitle != null)
                       Text(
                         subtitle,
-                        style: TextStyle(fontSize: 14, color: theme.secondaryTextColor),
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: theme.secondaryTextColor,
+                        ),
                       ),
                   ],
                 ),

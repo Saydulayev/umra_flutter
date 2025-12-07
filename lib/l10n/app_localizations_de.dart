@@ -63,7 +63,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get selectLanguageSettingsString => 'Sprache auswählen';
 
   @override
-  String get feedbackString => 'FEEDBACK';
+  String get feedbackString => 'Feedback';
 
   @override
   String get textButtonFeedbackString => 'Feedback';
@@ -78,7 +78,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get rateTheAppString => 'App bewerten';
 
   @override
-  String get supportTheDeveloperString => 'SUPPORT THE DEVELOPER';
+  String get supportTheDeveloperString => 'Entwickler unterstützen';
 
   @override
   String get textButtonSupportString => 'Entwickler unterstützen';
@@ -676,4 +676,36 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get feedbackEmailBody =>
       'As-Salaamu Alaikum!\n\nIch möchte Feedback zur Umra App geben:\n\n';
+
+  @override
+  String get donationScreenTitle => 'Entwickler unterstützen';
+
+  @override
+  String get donationSmall => 'Kleine Spende';
+
+  @override
+  String get donationSmallDescription =>
+      'Ein kleiner Betrag zur Unterstützung der Entwicklung';
+
+  @override
+  String get donationMedium => 'Mittlere Spende';
+
+  @override
+  String get donationMediumDescription =>
+      'Ein mittlerer Betrag zur Unterstützung der Entwicklung';
+
+  @override
+  String get donationLarge => 'Große Spende';
+
+  @override
+  String get donationLargeDescription =>
+      'Ein großer Betrag zur Unterstützung der Entwicklung';
+
+  @override
+  String get donationProductsNotAvailable =>
+      'Spendenprodukte sind vorübergehend nicht verfügbar. Bitte versuchen Sie es später erneut.';
+
+  @override
+  String get donationInfo =>
+      'Ihre Spende hilft bei der Entwicklung und Verbesserung der App. Alle Spenden sind freiwillig und bieten keine zusätzlichen Funktionen.';
 }

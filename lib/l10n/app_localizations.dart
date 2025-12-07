@@ -247,7 +247,7 @@ abstract class AppLocalizations {
   /// No description provided for @supportTheDeveloperString.
   ///
   /// In en, this message translates to:
-  /// **'SUPPORT THE DEVELOPER'**
+  /// **'Support the developer'**
   String get supportTheDeveloperString;
 
   /// No description provided for @textButtonSupportString.
@@ -1263,6 +1263,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'As-Salaamu Alaikum!\n\nI would like to share feedback about the Umra app:\n\n'**
   String get feedbackEmailBody;
+
+  /// No description provided for @donationScreenTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Support the Developer'**
+  String get donationScreenTitle;
+
+  /// No description provided for @donationSmall.
+  ///
+  /// In en, this message translates to:
+  /// **'Small Donation'**
+  String get donationSmall;
+
+  /// No description provided for @donationSmallDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'A small amount to support development'**
+  String get donationSmallDescription;
+
+  /// No description provided for @donationMedium.
+  ///
+  /// In en, this message translates to:
+  /// **'Medium Donation'**
+  String get donationMedium;
+
+  /// No description provided for @donationMediumDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'A medium amount to support development'**
+  String get donationMediumDescription;
+
+  /// No description provided for @donationLarge.
+  ///
+  /// In en, this message translates to:
+  /// **'Large Donation'**
+  String get donationLarge;
+
+  /// No description provided for @donationLargeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'A large amount to support development'**
+  String get donationLargeDescription;
+
+  /// No description provided for @donationProductsNotAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Donation products are temporarily unavailable. Please try again later.'**
+  String get donationProductsNotAvailable;
+
+  /// No description provided for @donationInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Your donation helps support the development and improvement of the app. All donations are voluntary and do not provide additional features.'**
+  String get donationInfo;
 }
 
 class _AppLocalizationsDelegate

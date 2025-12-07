@@ -78,7 +78,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get rateTheAppString => 'Noter l\'application';
 
   @override
-  String get supportTheDeveloperString => 'SOUTENIR LE DÉVELOPPEUR';
+  String get supportTheDeveloperString => 'Soutenir le développeur';
 
   @override
   String get textButtonSupportString => 'Soutenir le développeur';
@@ -674,4 +674,36 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get feedbackEmailBody =>
       'As-Salaamu Alaikum !\n\nJe souhaite partager mes commentaires sur l\'application Umra :\n\n';
+
+  @override
+  String get donationScreenTitle => 'Soutenir le développeur';
+
+  @override
+  String get donationSmall => 'Petit don';
+
+  @override
+  String get donationSmallDescription =>
+      'Un petit montant pour soutenir le développement';
+
+  @override
+  String get donationMedium => 'Don moyen';
+
+  @override
+  String get donationMediumDescription =>
+      'Un montant moyen pour soutenir le développement';
+
+  @override
+  String get donationLarge => 'Grand don';
+
+  @override
+  String get donationLargeDescription =>
+      'Un grand montant pour soutenir le développement';
+
+  @override
+  String get donationProductsNotAvailable =>
+      'Les produits de don ne sont temporairement pas disponibles. Veuillez réessayer plus tard.';
+
+  @override
+  String get donationInfo =>
+      'Votre don aide à soutenir le développement et l\'amélioration de l\'application. Tous les dons sont volontaires et ne fournissent pas de fonctionnalités supplémentaires.';
 }

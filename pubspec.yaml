@@ -48,6 +48,9 @@ dependencies:
   path_provider: ^2.1.2
   url_launcher: ^6.2.5
   
+  # In-App Purchases
+  in_app_purchase: ^3.2.0
+  
   cupertino_icons: ^1.0.8
 
 dev_dependencies:

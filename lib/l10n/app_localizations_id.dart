@@ -78,7 +78,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get rateTheAppString => 'Nilai Aplikasi';
 
   @override
-  String get supportTheDeveloperString => 'DUKUNG PENGEMBANG';
+  String get supportTheDeveloperString => 'Dukung pengembang';
 
   @override
   String get textButtonSupportString => 'Dukung Pengembang';
@@ -672,4 +672,36 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get feedbackEmailBody =>
       'As-Salaamu Alaikum!\n\nSaya ingin berbagi umpan balik tentang aplikasi Umra:\n\n';
+
+  @override
+  String get donationScreenTitle => 'Dukung Pengembang';
+
+  @override
+  String get donationSmall => 'Donasi Kecil';
+
+  @override
+  String get donationSmallDescription =>
+      'Jumlah kecil untuk mendukung pengembangan';
+
+  @override
+  String get donationMedium => 'Donasi Sedang';
+
+  @override
+  String get donationMediumDescription =>
+      'Jumlah sedang untuk mendukung pengembangan';
+
+  @override
+  String get donationLarge => 'Donasi Besar';
+
+  @override
+  String get donationLargeDescription =>
+      'Jumlah besar untuk mendukung pengembangan';
+
+  @override
+  String get donationProductsNotAvailable =>
+      'Produk donasi untuk sementara tidak tersedia. Silakan coba lagi nanti.';
+
+  @override
+  String get donationInfo =>
+      'Donasi Anda membantu mendukung pengembangan dan peningkatan aplikasi. Semua donasi bersifat sukarela dan tidak menyediakan fitur tambahan.';
 }

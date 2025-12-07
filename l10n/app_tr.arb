@@ -22,7 +22,7 @@
   "textButtonFeedbackString": "Geri Bildirim",
   "evaluateTheAppString": "UYGULAMAYI DEĞERLENDİRİN",
   "textButtonRateTheAppString": "Uygulamayı Değerlendir",
-  "supportTheDeveloperString": "GELİŞTİRİCİYİ DESTEKLEYİN",
+  "supportTheDeveloperString": "Geliştiriciyi destekle",
   "textButtonSupportString": "Geliştiriciyi Destekle",
   "rateTheAppString": "Uygulamayı Değerlendir",
   "appThemeString": "Uygulama Teması",
@@ -192,5 +192,14 @@
   "privacyPolicyChangesTitle": "8. Gizlilik Politikasındaki Değişiklikler",
   "privacyPolicyChanges": "Bu Gizlilik Politikasını periyodik olarak güncelleyebiliriz. Yeni Gizlilik Politikasını bu sayfada yayınlayarak ve bu belgenin başındaki \"Son güncelleme\" tarihini güncelleyerek sizi herhangi bir değişiklikten haberdar edeceğiz.\n\nVerilerinizi nasıl koruduğumuz hakkında bilgi almak için bu Gizlilik Politikasını periyodik olarak gözden geçirmenizi öneririz.",
   "privacyPolicyContactTitle": "9. İletişim",
-  "privacyPolicyContact": "Bu Gizlilik Politikası hakkında sorularınız veya önerileriniz varsa, lütfen bizimle iletişime geçin:\n\nE-posta: saydulayev.wien@gmail.com\n\nSorularınızı en kısa sürede yanıtlamaya çalışacağız."
+  "privacyPolicyContact": "Bu Gizlilik Politikası hakkında sorularınız veya önerileriniz varsa, lütfen bizimle iletişime geçin:\n\nE-posta: saydulayev.wien@gmail.com\n\nSorularınızı en kısa sürede yanıtlamaya çalışacağız.",
+  "donationScreenTitle": "Geliştiriciyi Destekle",
+  "donationSmall": "Küçük Bağış",
+  "donationSmallDescription": "Geliştirmeyi desteklemek için küçük bir miktar",
+  "donationMedium": "Orta Bağış",
+  "donationMediumDescription": "Geliştirmeyi desteklemek için orta bir miktar",
+  "donationLarge": "Büyük Bağış",
+  "donationLargeDescription": "Geliştirmeyi desteklemek için büyük bir miktar",
+  "donationProductsNotAvailable": "Bağış ürünleri geçici olarak kullanılamıyor. Lütfen daha sonra tekrar deneyin.",
+  "donationInfo": "Bağışınız uygulamanın geliştirilmesine ve iyileştirilmesine yardımcı olur. Tüm bağışlar gönüllüdür ve ek özellikler sağlamaz."
 }

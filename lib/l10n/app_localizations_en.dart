@@ -78,7 +78,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rateTheAppString => 'Rate the App';
 
   @override
-  String get supportTheDeveloperString => 'SUPPORT THE DEVELOPER';
+  String get supportTheDeveloperString => 'Support the developer';
 
   @override
   String get textButtonSupportString => 'Support Developer';
@@ -671,4 +671,36 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get feedbackEmailBody =>
       'As-Salaamu Alaikum!\n\nI would like to share feedback about the Umra app:\n\n';
+
+  @override
+  String get donationScreenTitle => 'Support the Developer';
+
+  @override
+  String get donationSmall => 'Small Donation';
+
+  @override
+  String get donationSmallDescription =>
+      'A small amount to support development';
+
+  @override
+  String get donationMedium => 'Medium Donation';
+
+  @override
+  String get donationMediumDescription =>
+      'A medium amount to support development';
+
+  @override
+  String get donationLarge => 'Large Donation';
+
+  @override
+  String get donationLargeDescription =>
+      'A large amount to support development';
+
+  @override
+  String get donationProductsNotAvailable =>
+      'Donation products are temporarily unavailable. Please try again later.';
+
+  @override
+  String get donationInfo =>
+      'Your donation helps support the development and improvement of the app. All donations are voluntary and do not provide additional features.';
 }

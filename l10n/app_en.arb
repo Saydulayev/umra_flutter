@@ -24,7 +24,7 @@
   "evaluateTheAppString": "EVALUATE THE APP",
   "textButtonRateTheAppString": "Rate the App",
   "rateTheAppString": "Rate the App",
-  "supportTheDeveloperString": "SUPPORT THE DEVELOPER",
+  "supportTheDeveloperString": "Support the developer",
   "textButtonSupportString": "Support Developer",
   "appThemeString": "App Theme",
   "notificationSettingsString": "Notification Settings",
@@ -193,5 +193,14 @@
   "feedbackDialogCopy": "Copy",
   "feedbackEmailCopied": "Email address copied to clipboard",
   "feedbackEmailSubject": "Feedback from Umra App",
-  "feedbackEmailBody": "As-Salaamu Alaikum!\n\nI would like to share feedback about the Umra app:\n\n"
+  "feedbackEmailBody": "As-Salaamu Alaikum!\n\nI would like to share feedback about the Umra app:\n\n",
+  "donationScreenTitle": "Support the Developer",
+  "donationSmall": "Small Donation",
+  "donationSmallDescription": "A small amount to support development",
+  "donationMedium": "Medium Donation",
+  "donationMediumDescription": "A medium amount to support development",
+  "donationLarge": "Large Donation",
+  "donationLargeDescription": "A large amount to support development",
+  "donationProductsNotAvailable": "Donation products are temporarily unavailable. Please try again later.",
+  "donationInfo": "Your donation helps support the development and improvement of the app. All donations are voluntary and do not provide additional features."
 }

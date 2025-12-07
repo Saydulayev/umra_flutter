@@ -78,7 +78,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get rateTheAppString => 'Оценить приложение';
 
   @override
-  String get supportTheDeveloperString => 'SUPPORT THE DEVELOPER';
+  String get supportTheDeveloperString => 'Поддержать разработчика';
 
   @override
   String get textButtonSupportString => 'Поддержать разработчика';
@@ -671,4 +671,36 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get feedbackEmailBody =>
       'Ас-Саламу алайкум!\n\nХочу поделиться отзывом о приложении Umra:\n\n';
+
+  @override
+  String get donationScreenTitle => 'Поддержать разработчика';
+
+  @override
+  String get donationSmall => 'Небольшое пожертвование';
+
+  @override
+  String get donationSmallDescription =>
+      'Небольшая сумма для поддержки разработки';
+
+  @override
+  String get donationMedium => 'Среднее пожертвование';
+
+  @override
+  String get donationMediumDescription =>
+      'Средняя сумма для поддержки разработки';
+
+  @override
+  String get donationLarge => 'Большое пожертвование';
+
+  @override
+  String get donationLargeDescription =>
+      'Большая сумма для поддержки разработки';
+
+  @override
+  String get donationProductsNotAvailable =>
+      'Продукты пожертвований временно недоступны. Пожалуйста, попробуйте позже.';
+
+  @override
+  String get donationInfo =>
+      'Ваше пожертвование помогает поддерживать разработку и улучшение приложения. Все пожертвования являются добровольными и не предоставляют дополнительных функций.';
 }
