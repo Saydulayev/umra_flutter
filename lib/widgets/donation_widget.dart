@@ -123,32 +123,6 @@ class _DonationProductCard extends StatelessWidget {
     required this.onPurchase,
   });
 
-  String _getProductName() {
-    switch (donationProduct.nameKey) {
-      case 'donationSmall':
-        return l10n.donationSmall;
-      case 'donationMedium':
-        return l10n.donationMedium;
-      case 'donationLarge':
-        return l10n.donationLarge;
-      default:
-        return productDetails.title;
-    }
-  }
-
-  String _getProductDescription() {
-    switch (donationProduct.descriptionKey) {
-      case 'donationSmallDescription':
-        return l10n.donationSmallDescription;
-      case 'donationMediumDescription':
-        return l10n.donationMediumDescription;
-      case 'donationLargeDescription':
-        return l10n.donationLargeDescription;
-      default:
-        return productDetails.description;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -192,7 +166,7 @@ class _DonationProductCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        _getProductName(),
+                        l10n.supportTheDeveloperString,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
@@ -201,17 +175,9 @@ class _DonationProductCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        _getProductDescription(),
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: theme.secondaryTextColor,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
                         productDetails.price,
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: theme.primaryColor,
                         ),

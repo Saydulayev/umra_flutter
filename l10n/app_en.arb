@@ -195,6 +195,7 @@
   "feedbackEmailSubject": "Feedback from Umra App",
   "feedbackEmailBody": "As-Salaamu Alaikum!\n\nI would like to share feedback about the Umra app:\n\n",
   "donationScreenTitle": "Support the Developer",
+  "donationTitle": "Donation",
   "donationSmall": "Small Donation",
   "donationSmallDescription": "A small amount to support development",
   "donationMedium": "Medium Donation",

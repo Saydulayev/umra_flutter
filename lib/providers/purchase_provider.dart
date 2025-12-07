@@ -58,6 +58,21 @@ class PurchaseProvider with ChangeNotifier {
 
     try {
       _availableProducts = await _purchaseService.loadProducts();
+
+      if (_availableProducts.isEmpty) {
+        // Проверяем, доступен ли Google Play Billing
+        if (!_purchaseService.isAvailable) {
+          _errorMessage =
+              'Google Play Billing недоступен. Убедитесь, что устройство поддерживает Google Play Services.';
+        } else {
+          _errorMessage =
+              'Продукты не найдены. Возможные причины:\n'
+              '1. Продукты еще не активированы в Google Play Console (может занять несколько часов)\n'
+              '2. Приложение не опубликовано в тестовом треке\n'
+              '3. Неправильные ID продуктов\n'
+              '4. Необходимо войти в Google Play под тестовым аккаунтом';
+        }
+      }
     } catch (e) {
       _errorMessage = 'Ошибка загрузки продуктов: $e';
     } finally {

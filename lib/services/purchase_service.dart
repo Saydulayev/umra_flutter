@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import '../models/donation_product.dart';
 
@@ -31,6 +32,7 @@ class PurchaseService {
   /// Загрузка доступных продуктов
   Future<List<ProductDetails>> loadProducts() async {
     if (!_isAvailable) {
+      debugPrint('PurchaseService: Google Play Billing недоступен');
       return [];
     }
 
@@ -38,12 +40,28 @@ class PurchaseService {
         .map((product) => product.id)
         .toSet();
 
+    debugPrint(
+      'PurchaseService: Запрос продуктов с ID: ${productIds.join(", ")}',
+    );
+
     final ProductDetailsResponse response = await _inAppPurchase
         .queryProductDetails(productIds);
 
-    if (response.notFoundIDs.isNotEmpty) {
-      // Некоторые продукты не найдены
+    if (response.error != null) {
+      debugPrint(
+        'PurchaseService: Ошибка загрузки продуктов: ${response.error}',
+      );
     }
+
+    if (response.notFoundIDs.isNotEmpty) {
+      debugPrint(
+        'PurchaseService: Продукты не найдены: ${response.notFoundIDs.join(", ")}',
+      );
+    }
+
+    debugPrint(
+      'PurchaseService: Загружено продуктов: ${response.productDetails.length} из ${productIds.length}',
+    );
 
     return response.productDetails;
   }

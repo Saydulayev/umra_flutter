@@ -676,6 +676,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get donationScreenTitle => 'Поддержать разработчика';
 
   @override
+  String get donationTitle => 'Пожертвование';
+
+  @override
   String get donationSmall => 'Небольшое пожертвование';
 
   @override

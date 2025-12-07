@@ -194,6 +194,7 @@
   "feedbackEmailSubject": "Обратная связь из приложения Umra",
   "feedbackEmailBody": "Ас-Саламу алайкум!\n\nХочу поделиться отзывом о приложении Umra:\n\n",
   "donationScreenTitle": "Поддержать разработчика",
+  "donationTitle": "Пожертвование",
   "donationSmall": "Небольшое пожертвование",
   "donationSmallDescription": "Небольшая сумма для поддержки разработки",
   "donationMedium": "Среднее пожертвование",

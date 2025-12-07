@@ -677,6 +677,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get donationScreenTitle => 'Dukung Pengembang';
 
   @override
+  String get donationTitle => 'Donasi';
+
+  @override
   String get donationSmall => 'Donasi Kecil';
 
   @override

@@ -674,6 +674,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get donationScreenTitle => 'Geliştiriciyi Destekle';
 
   @override
+  String get donationTitle => 'Bağış';
+
+  @override
   String get donationSmall => 'Küçük Bağış';
 
   @override

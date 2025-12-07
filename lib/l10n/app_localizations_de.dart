@@ -681,6 +681,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get donationScreenTitle => 'Entwickler unterstützen';
 
   @override
+  String get donationTitle => 'Spende';
+
+  @override
   String get donationSmall => 'Kleine Spende';
 
   @override

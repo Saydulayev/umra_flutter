@@ -679,6 +679,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get donationScreenTitle => 'Soutenir le développeur';
 
   @override
+  String get donationTitle => 'Don';
+
+  @override
   String get donationSmall => 'Petit don';
 
   @override

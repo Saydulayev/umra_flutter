@@ -1270,6 +1270,12 @@ abstract class AppLocalizations {
   /// **'Support the Developer'**
   String get donationScreenTitle;
 
+  /// No description provided for @donationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Donation'**
+  String get donationTitle;
+
   /// No description provided for @donationSmall.
   ///
   /// In en, this message translates to:
