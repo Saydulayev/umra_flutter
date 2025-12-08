@@ -185,12 +185,7 @@ class SettingsScreen extends StatelessWidget {
               icon: Icons.favorite,
               title: l10n.supportTheDeveloperString,
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const DonationScreen(),
-                  ),
-                );
+                showDonationBottomSheet(context);
               },
               theme: theme,
             ),

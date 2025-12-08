@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
@@ -8,8 +9,15 @@ import '../models/app_theme.dart';
 import '../models/donation_product.dart';
 
 /// Виджет для отображения вариантов пожертвований
-class DonationWidget extends StatelessWidget {
+class DonationWidget extends StatefulWidget {
   const DonationWidget({super.key});
+
+  @override
+  State<DonationWidget> createState() => _DonationWidgetState();
+}
+
+class _DonationWidgetState extends State<DonationWidget> {
+  ProductDetails? _selectedProduct;
 
   @override
   Widget build(BuildContext context) {
@@ -18,189 +26,493 @@ class DonationWidget extends StatelessWidget {
     final theme = themeProvider.selectedTheme;
     final l10n = AppLocalizations.of(context)!;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        // Описание пожертвований
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text(
-            l10n.contributionToApplicationDevelopment,
-            style: TextStyle(
-              fontSize: 14,
-              color: theme.secondaryTextColor,
-              height: 1.5,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ),
+    // Если продукты загружены и не выбран продукт, выбираем первый доступный
+    if (!purchaseProvider.isLoading &&
+        purchaseProvider.availableProducts.isNotEmpty &&
+        _selectedProduct == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        final firstProduct = purchaseProvider.availableProducts.firstWhere(
+          (product) =>
+              DonationProduct.allProducts.any((dp) => dp.id == product.id),
+          orElse: () => purchaseProvider.availableProducts.first,
+        );
+        setState(() {
+          _selectedProduct = firstProduct;
+        });
+      });
+    }
 
-        // Список продуктов
-        if (purchaseProvider.isLoading)
-          const Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Center(child: CircularProgressIndicator()),
-          )
-        else if (purchaseProvider.availableProducts.isEmpty)
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              l10n.donationProductsNotAvailable,
-              style: TextStyle(fontSize: 14, color: theme.secondaryTextColor),
-              textAlign: TextAlign.center,
-            ),
-          )
-        else
-          ...DonationProduct.allProducts.map((donationProduct) {
-            final productDetails = purchaseProvider.getProductById(
-              donationProduct.id,
-            );
-            if (productDetails == null) return const SizedBox.shrink();
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(color: theme.lightBackgroundColor),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // Прокручиваемый контент
+          Expanded(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return SingleChildScrollView(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        // Текст о пожертвовании в рамке (стиль как у арабского текста)
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: theme.isDark
+                                      ? Colors.black.withValues(alpha: 0.3)
+                                      : Colors.black.withValues(alpha: 0.1),
+                                  blurRadius: 20,
+                                  offset: const Offset(20, 20),
+                                  spreadRadius: 0,
+                                ),
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Stack(
+                                children: [
+                                  // Фоновый цвет
+                                  Container(
+                                    width: double.infinity,
+                                    decoration: BoxDecoration(
+                                      color: theme.textBackgroundColor,
+                                    ),
+                                  ),
+                                  // Белый прямоугольник с blur эффектом (смещенный)
+                                  Positioned(
+                                    left: -8,
+                                    top: -8,
+                                    right: 8,
+                                    bottom: 8,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: BackdropFilter(
+                                        filter: ImageFilter.blur(
+                                          sigmaX: 4,
+                                          sigmaY: 4,
+                                        ),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: theme.isDark
+                                                ? theme.lightBackgroundColor
+                                                      .withValues(alpha: 0.9)
+                                                : Colors.white.withValues(
+                                                    alpha: 0.9,
+                                                  ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  // Градиентный слой с padding
+                                  Container(
+                                    width: double.infinity,
+                                    padding: const EdgeInsets.all(2),
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                        colors: [
+                                          theme.gradientTopColor,
+                                          theme.lightBackgroundColor,
+                                        ],
+                                      ),
+                                    ),
+                                    child: Container(
+                                      padding: const EdgeInsets.all(16),
+                                      child: Text(
+                                        l10n.contributionToApplicationDevelopment,
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: theme.textColor,
+                                          height: 1.5,
+                                        ),
+                                        textAlign: TextAlign.left,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 24),
 
-            return _DonationProductCard(
-              productDetails: productDetails,
-              donationProduct: donationProduct,
-              theme: theme,
-              l10n: l10n,
-              isPurchasing: purchaseProvider.isPurchasing,
-              onPurchase: () =>
-                  purchaseProvider.purchaseProduct(productDetails),
-            );
-          }).toList(),
+                        // Выбор суммы
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                l10n.selectTheAmount,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: theme.textColor,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              _buildAmountSelector(
+                                context,
+                                purchaseProvider,
+                                theme,
+                                l10n,
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 24),
 
-        // Сообщение об ошибке
-        if (purchaseProvider.errorMessage != null)
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: Colors.red.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: Colors.red.withValues(alpha: 0.3)),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.error_outline, color: Colors.red, size: 20),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      purchaseProvider.errorMessage!,
-                      style: TextStyle(fontSize: 12, color: Colors.red[700]),
+                        // Сообщение об ошибке
+                        if (purchaseProvider.errorMessage != null)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 16.0),
+                            child: Container(
+                              padding: const EdgeInsets.all(12),
+                              decoration: BoxDecoration(
+                                color: Colors.red.withValues(alpha: 0.1),
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(
+                                  color: Colors.red.withValues(alpha: 0.3),
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.error_outline,
+                                    color: Colors.red,
+                                    size: 20,
+                                  ),
+                                  const SizedBox(width: 8),
+                                  Expanded(
+                                    child: Text(
+                                      purchaseProvider.errorMessage!,
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.red[700],
+                                      ),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    icon: const Icon(Icons.close, size: 18),
+                                    onPressed: () =>
+                                        purchaseProvider.clearError(),
+                                    color: Colors.red[700],
+                                    padding: EdgeInsets.zero,
+                                    constraints: const BoxConstraints(),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.close, size: 18),
-                    onPressed: () => purchaseProvider.clearError(),
-                    color: Colors.red[700],
-                    padding: EdgeInsets.zero,
-                    constraints: const BoxConstraints(),
-                  ),
-                ],
-              ),
+                );
+              },
             ),
           ),
-      ],
+
+          // Кнопка пожертвования (внизу экрана)
+          if (purchaseProvider.isLoading)
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 16.0),
+              child: Center(child: CircularProgressIndicator()),
+            )
+          else if (purchaseProvider.availableProducts.isEmpty)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: Text(
+                l10n.donationProductsNotAvailable,
+                style: TextStyle(fontSize: 14, color: theme.secondaryTextColor),
+                textAlign: TextAlign.center,
+              ),
+            )
+          else
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Opacity(
+                opacity: _selectedProduct == null ? 0.5 : 1.0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: _selectedProduct == null
+                        ? []
+                        : [
+                            BoxShadow(
+                              color: theme.isDark
+                                  ? Colors.black.withValues(alpha: 0.3)
+                                  : Colors.black.withValues(alpha: 0.1),
+                              blurRadius: 20,
+                              offset: const Offset(20, 20),
+                              spreadRadius: 0,
+                            ),
+                          ],
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Stack(
+                      children: [
+                        // Фоновый цвет
+                        Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: theme.textBackgroundColor,
+                          ),
+                        ),
+                        // Белый прямоугольник с blur эффектом (смещенный)
+                        Positioned(
+                          left: -8,
+                          top: -8,
+                          right: 8,
+                          bottom: 8,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: theme.isDark
+                                      ? theme.lightBackgroundColor.withValues(
+                                          alpha: 0.9,
+                                        )
+                                      : Colors.white.withValues(alpha: 0.9),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        // Градиентный слой с padding
+                        Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(2),
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                theme.gradientTopColor,
+                                theme.lightBackgroundColor,
+                              ],
+                            ),
+                          ),
+                          child: Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              onTap:
+                                  purchaseProvider.isPurchasing ||
+                                      _selectedProduct == null
+                                  ? null
+                                  : () => purchaseProvider.purchaseProduct(
+                                      _selectedProduct!,
+                                    ),
+                              borderRadius: BorderRadius.circular(20),
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 16,
+                                ),
+                                alignment: Alignment.center,
+                                child: purchaseProvider.isPurchasing
+                                    ? const SizedBox(
+                                        width: 20,
+                                        height: 20,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2,
+                                        ),
+                                      )
+                                    : Text(
+                                        l10n.donateButton,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: _selectedProduct == null
+                                              ? theme.secondaryTextColor
+                                              : theme.textColor,
+                                        ),
+                                      ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+        ],
+      ),
     );
   }
-}
 
-/// Карточка продукта пожертвования
-class _DonationProductCard extends StatelessWidget {
-  final ProductDetails productDetails;
-  final DonationProduct donationProduct;
-  final AppTheme theme;
-  final AppLocalizations l10n;
-  final bool isPurchasing;
-  final VoidCallback onPurchase;
+  Widget _buildAmountSelector(
+    BuildContext context,
+    PurchaseProvider purchaseProvider,
+    AppTheme theme,
+    AppLocalizations l10n,
+  ) {
+    if (purchaseProvider.isLoading) {
+      return const SizedBox(
+        width: 24,
+        height: 24,
+        child: CircularProgressIndicator(strokeWidth: 2),
+      );
+    }
 
-  const _DonationProductCard({
-    required this.productDetails,
-    required this.donationProduct,
-    required this.theme,
-    required this.l10n,
-    required this.isPurchasing,
-    required this.onPurchase,
-  });
+    if (purchaseProvider.availableProducts.isEmpty) {
+      return Text(
+        '-',
+        style: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          color: theme.textColor,
+        ),
+      );
+    }
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Card(
-        elevation: 2,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        child: InkWell(
-          onTap: isPurchasing ? null : onPurchase,
-          borderRadius: BorderRadius.circular(12),
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(12),
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [theme.gradientTopColor, theme.lightBackgroundColor],
+    final availableProducts = purchaseProvider.availableProducts
+        .where(
+          (product) =>
+              DonationProduct.allProducts.any((dp) => dp.id == product.id),
+        )
+        .toList();
+
+    if (availableProducts.isEmpty) {
+      return Text(
+        '-',
+        style: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          color: theme.textColor,
+        ),
+      );
+    }
+
+    // Если продукт не выбран, выбираем первый
+    if (_selectedProduct == null ||
+        !availableProducts.any((p) => p.id == _selectedProduct!.id)) {
+      _selectedProduct = availableProducts.first;
+    }
+
+    return GestureDetector(
+      onTap: () =>
+          _showProductSelector(context, availableProducts, theme, l10n),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        decoration: BoxDecoration(
+          color: theme.isDark ? const Color(0xFF2D3748) : Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: theme.isDark
+                ? const Color(0xFF4A5568)
+                : const Color(0xFFE0E0E0),
+            width: 1,
+          ),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              _selectedProduct?.price ?? '-',
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF4D99E6), // Фиксированный синий цвет
               ),
             ),
-            child: Row(
-              children: [
-                // Иконка
-                Container(
-                  width: 48,
-                  height: 48,
-                  decoration: BoxDecoration(
-                    color: theme.primaryColor.withValues(alpha: 0.1),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(
-                    Icons.favorite,
-                    color: theme.primaryColor,
-                    size: 24,
-                  ),
-                ),
-                const SizedBox(width: 16),
-                // Информация о продукте
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        l10n.supportTheDeveloperString,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: theme.textColor,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        productDetails.price,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: theme.primaryColor,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                // Кнопка покупки
-                if (isPurchasing)
-                  const SizedBox(
-                    width: 24,
-                    height: 24,
-                    child: CircularProgressIndicator(strokeWidth: 2),
-                  )
-                else
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    color: theme.primaryColor,
-                    size: 20,
-                  ),
-              ],
+            const SizedBox(width: 8),
+            const Icon(
+              Icons.keyboard_arrow_down,
+              color: Color(0xFF4D99E6), // Фиксированный синий цвет
+              size: 20,
             ),
-          ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _showProductSelector(
+    BuildContext context,
+    List<ProductDetails> availableProducts,
+    AppTheme theme,
+    AppLocalizations l10n,
+  ) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context) => Container(
+        decoration: BoxDecoration(
+          color: theme.lightBackgroundColor,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 12),
+              width: 40,
+              height: 4,
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                l10n.selectTheAmount,
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: theme.textColor,
+                ),
+              ),
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: availableProducts.length,
+              itemBuilder: (context, index) {
+                final product = availableProducts[index];
+                final isSelected = _selectedProduct?.id == product.id;
+
+                return ListTile(
+                  title: Text(
+                    product.price,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: isSelected
+                          ? FontWeight.bold
+                          : FontWeight.normal,
+                      color: theme.textColor,
+                    ),
+                  ),
+                  trailing: isSelected
+                      ? Icon(Icons.check, color: theme.primaryColor)
+                      : null,
+                  onTap: () {
+                    setState(() {
+                      _selectedProduct = product;
+                    });
+                    Navigator.pop(context);
+                  },
+                );
+              },
+            ),
+            const SizedBox(height: 16),
+          ],
         ),
       ),
     );
