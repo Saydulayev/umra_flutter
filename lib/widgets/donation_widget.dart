@@ -61,6 +61,7 @@ class _DonationWidgetState extends State<DonationWidget> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
+                        const SizedBox(height: 40),
                         // Текст о пожертвовании в рамке (стиль как у арабского текста)
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -147,7 +148,7 @@ class _DonationWidgetState extends State<DonationWidget> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 24),
+                        const SizedBox(height: 68),
 
                         // Выбор суммы
                         Padding(
