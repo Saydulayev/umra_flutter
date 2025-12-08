@@ -16,38 +16,38 @@ class DonationProduct {
   /// ВРЕМЕННО: только один продукт для тестирования
   static const List<DonationProduct> allProducts = [
     DonationProduct(
-      id: 'donation-0-99',
+      id: 'donation_099', // Идентификатор товара в Google Play Console (новый, так как donation_0_99 был удален)
       nameKey: 'donation0_99',
       descriptionKey: 'donation0_99Description',
       amount: 0.99,
     ),
     // Временно закомментировано для тестирования одного продукта
     // DonationProduct(
-    //   id: 'donation-4-99',
+    //   id: 'donation_4_99', // Идентификатор товара в Google Play Console
     //   nameKey: 'donation4_99',
     //   descriptionKey: 'donation4_99Description',
     //   amount: 4.99,
     // ),
     // DonationProduct(
-    //   id: 'donation-9-99',
+    //   id: 'donation_9_99',
     //   nameKey: 'donation9_99',
     //   descriptionKey: 'donation9_99Description',
     //   amount: 9.99,
     // ),
     // DonationProduct(
-    //   id: 'donation-19-99',
+    //   id: 'donation_19_99',
     //   nameKey: 'donation19_99',
     //   descriptionKey: 'donation19_99Description',
     //   amount: 19.99,
     // ),
     // DonationProduct(
-    //   id: 'donation-49-99',
+    //   id: 'donation_49_99',
     //   nameKey: 'donation49_99',
     //   descriptionKey: 'donation49_99Description',
     //   amount: 49.99,
     // ),
     // DonationProduct(
-    //   id: 'donation-99-99',
+    //   id: 'donation_99_99',
     //   nameKey: 'donation99_99',
     //   descriptionKey: 'donation99_99Description',
     //   amount: 99.99,
