@@ -115,10 +115,8 @@ class PurchaseService {
         _consumePurchase(purchaseDetails);
       } else if (purchaseDetails.status == PurchaseStatus.error) {
         // Ошибка покупки - извлекаем код ошибки для локализации
-        final errorCode =
-            purchaseDetails.error?.code?.toString() ??
-            purchaseDetails.error?.message ??
-            'unknown';
+        final error = purchaseDetails.error;
+        final errorCode = error != null ? (error.code.toString()) : 'unknown';
         _onPurchaseError?.call(errorCode);
       }
 
