@@ -203,5 +203,21 @@
   "donationLargeDescription": "Geliştirmeyi desteklemek için büyük bir miktar",
   "donationProductsNotAvailable": "Bağış ürünleri geçici olarak kullanılamıyor. Lütfen daha sonra tekrar deneyin.",
   "donationInfo": "Bağışınız uygulamanın geliştirilmesine ve iyileştirilmesine yardımcı olur. Tüm bağışlar gönüllüdür ve ek özellikler sağlamaz.",
-  "donationSuccessMessage": "Ödeme başarıyla tamamlandı. Allah sizi mükafatlandırsın!"
+  "donationSuccessMessage": "Ödeme başarıyla tamamlandı. Allah sizi mükafatlandırsın!",
+  "donationProcessing": "İşleniyor...",
+  "donationErrorBillingUnavailable": "Ödeme sistemi geçici olarak kullanılamıyor. Lütfen daha sonra tekrar deneyin.",
+  "donationErrorDeveloperError": "Ödeme işlenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+  "donationErrorFeatureNotSupported": "Bu özellik cihazınızda desteklenmiyor.",
+  "donationErrorItemAlreadyOwned": "Bu öğe zaten satın alınmış.",
+  "donationErrorItemUnavailable": "Öğe geçici olarak kullanılamıyor. Lütfen daha sonra tekrar deneyin.",
+  "donationErrorServiceDisconnected": "Ödeme sistemine bağlantı kesildi. Lütfen tekrar deneyin.",
+  "donationErrorServiceUnavailable": "Ödeme sistemi geçici olarak kullanılamıyor. Lütfen daha sonra tekrar deneyin.",
+  "donationErrorUserCanceled": "Ödeme iptal edildi.",
+  "donationErrorNetworkError": "Ağ hatası. İnternet bağlantınızı kontrol edin ve tekrar deneyin.",
+  "donationErrorUnknown": "Ödeme işlenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+  "donationErrorBillingUnavailableInit": "Google Play Billing kullanılamıyor. Cihazınızın Google Play Services'i desteklediğinden emin olun.",
+  "donationErrorInitializationFailed": "Ödeme sistemi başlatma hatası. Lütfen daha sonra tekrar deneyin.",
+  "donationErrorLoadProductsFailed": "Ürünler yüklenirken hata oluştu. Lütfen daha sonra tekrar deneyin.",
+  "donationErrorPurchaseStartFailed": "Satın alma başlatılamadı. Lütfen tekrar deneyin.",
+  "donationErrorProductsNotFound": "Ürünler bulunamadı. Olası nedenler:\n1. Ürünler henüz Google Play Console'da etkinleştirilmedi (birkaç saat sürebilir)\n2. Uygulama test izinde yayınlanmadı\n3. Yanlış ürün kimlikleri\n4. Google Play'e test hesabıyla giriş yapmanız gerekiyor"
 }

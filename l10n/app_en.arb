@@ -204,5 +204,21 @@
   "donationLargeDescription": "A large amount to support development",
   "donationProductsNotAvailable": "Donation products are temporarily unavailable. Please try again later.",
   "donationInfo": "Your donation helps support the development and improvement of the app. All donations are voluntary and do not provide additional features.",
-  "donationSuccessMessage": "Payment completed successfully. May Allah reward you!"
+  "donationSuccessMessage": "Payment completed successfully. May Allah reward you!",
+  "donationProcessing": "Processing...",
+  "donationErrorBillingUnavailable": "Billing service is temporarily unavailable. Please try again later.",
+  "donationErrorDeveloperError": "An error occurred while processing the payment. Please try again later.",
+  "donationErrorFeatureNotSupported": "This feature is not supported on your device.",
+  "donationErrorItemAlreadyOwned": "This item has already been purchased.",
+  "donationErrorItemUnavailable": "Item is temporarily unavailable. Please try again later.",
+  "donationErrorServiceDisconnected": "Connection to the billing service was lost. Please try again.",
+  "donationErrorServiceUnavailable": "Billing service is temporarily unavailable. Please try again later.",
+  "donationErrorUserCanceled": "Payment was canceled.",
+  "donationErrorNetworkError": "Network error. Please check your internet connection and try again.",
+  "donationErrorUnknown": "An error occurred while processing the payment. Please try again later.",
+  "donationErrorBillingUnavailableInit": "Google Play Billing is unavailable. Make sure your device supports Google Play Services.",
+  "donationErrorInitializationFailed": "Payment system initialization error. Please try again later.",
+  "donationErrorLoadProductsFailed": "Error loading products. Please try again later.",
+  "donationErrorPurchaseStartFailed": "Failed to start purchase. Please try again.",
+  "donationErrorProductsNotFound": "Products not found. Possible reasons:\n1. Products are not yet activated in Google Play Console (may take several hours)\n2. App is not published in the test track\n3. Incorrect product IDs\n4. Need to sign in to Google Play with a test account"
 }

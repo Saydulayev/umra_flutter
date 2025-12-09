@@ -711,4 +711,65 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get donationSuccessMessage =>
       'Pembayaran berhasil diselesaikan. Semoga Allah membalas kebaikan Anda!';
+
+  @override
+  String get donationProcessing => 'Memproses...';
+
+  @override
+  String get donationErrorBillingUnavailable =>
+      'Layanan pembayaran sementara tidak tersedia. Silakan coba lagi nanti.';
+
+  @override
+  String get donationErrorDeveloperError =>
+      'Terjadi kesalahan saat memproses pembayaran. Silakan coba lagi nanti.';
+
+  @override
+  String get donationErrorFeatureNotSupported =>
+      'Fitur ini tidak didukung di perangkat Anda.';
+
+  @override
+  String get donationErrorItemAlreadyOwned => 'Item ini sudah dibeli.';
+
+  @override
+  String get donationErrorItemUnavailable =>
+      'Item sementara tidak tersedia. Silakan coba lagi nanti.';
+
+  @override
+  String get donationErrorServiceDisconnected =>
+      'Koneksi ke layanan pembayaran terputus. Silakan coba lagi.';
+
+  @override
+  String get donationErrorServiceUnavailable =>
+      'Layanan pembayaran sementara tidak tersedia. Silakan coba lagi nanti.';
+
+  @override
+  String get donationErrorUserCanceled => 'Pembayaran dibatalkan.';
+
+  @override
+  String get donationErrorNetworkError =>
+      'Kesalahan jaringan. Periksa koneksi internet Anda dan coba lagi.';
+
+  @override
+  String get donationErrorUnknown =>
+      'Terjadi kesalahan saat memproses pembayaran. Silakan coba lagi nanti.';
+
+  @override
+  String get donationErrorBillingUnavailableInit =>
+      'Google Play Billing tidak tersedia. Pastikan perangkat Anda mendukung Google Play Services.';
+
+  @override
+  String get donationErrorInitializationFailed =>
+      'Kesalahan inisialisasi sistem pembayaran. Silakan coba lagi nanti.';
+
+  @override
+  String get donationErrorLoadProductsFailed =>
+      'Kesalahan memuat produk. Silakan coba lagi nanti.';
+
+  @override
+  String get donationErrorPurchaseStartFailed =>
+      'Gagal memulai pembelian. Silakan coba lagi.';
+
+  @override
+  String get donationErrorProductsNotFound =>
+      'Produk tidak ditemukan. Kemungkinan penyebab:\n1. Produk belum diaktifkan di Google Play Console (dapat memakan waktu beberapa jam)\n2. Aplikasi tidak dipublikasikan di track pengujian\n3. ID produk salah\n4. Perlu masuk ke Google Play dengan akun pengujian';
 }

@@ -710,4 +710,66 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get donationSuccessMessage =>
       'Payment completed successfully. May Allah reward you!';
+
+  @override
+  String get donationProcessing => 'Processing...';
+
+  @override
+  String get donationErrorBillingUnavailable =>
+      'Billing service is temporarily unavailable. Please try again later.';
+
+  @override
+  String get donationErrorDeveloperError =>
+      'An error occurred while processing the payment. Please try again later.';
+
+  @override
+  String get donationErrorFeatureNotSupported =>
+      'This feature is not supported on your device.';
+
+  @override
+  String get donationErrorItemAlreadyOwned =>
+      'This item has already been purchased.';
+
+  @override
+  String get donationErrorItemUnavailable =>
+      'Item is temporarily unavailable. Please try again later.';
+
+  @override
+  String get donationErrorServiceDisconnected =>
+      'Connection to the billing service was lost. Please try again.';
+
+  @override
+  String get donationErrorServiceUnavailable =>
+      'Billing service is temporarily unavailable. Please try again later.';
+
+  @override
+  String get donationErrorUserCanceled => 'Payment was canceled.';
+
+  @override
+  String get donationErrorNetworkError =>
+      'Network error. Please check your internet connection and try again.';
+
+  @override
+  String get donationErrorUnknown =>
+      'An error occurred while processing the payment. Please try again later.';
+
+  @override
+  String get donationErrorBillingUnavailableInit =>
+      'Google Play Billing is unavailable. Make sure your device supports Google Play Services.';
+
+  @override
+  String get donationErrorInitializationFailed =>
+      'Payment system initialization error. Please try again later.';
+
+  @override
+  String get donationErrorLoadProductsFailed =>
+      'Error loading products. Please try again later.';
+
+  @override
+  String get donationErrorPurchaseStartFailed =>
+      'Failed to start purchase. Please try again.';
+
+  @override
+  String get donationErrorProductsNotFound =>
+      'Products not found. Possible reasons:\n1. Products are not yet activated in Google Play Console (may take several hours)\n2. App is not published in the test track\n3. Incorrect product IDs\n4. Need to sign in to Google Play with a test account';
 }

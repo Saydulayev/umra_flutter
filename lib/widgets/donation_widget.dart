@@ -7,6 +7,7 @@ import '../providers/purchase_provider.dart';
 import '../providers/theme_provider.dart';
 import '../models/app_theme.dart';
 import '../models/donation_product.dart';
+import '../utils/donation_error_helper.dart';
 
 /// Виджет для отображения вариантов пожертвований
 class DonationWidget extends StatefulWidget {
@@ -217,8 +218,8 @@ class _DonationWidgetState extends State<DonationWidget> {
                         ),
                         const SizedBox(height: 24),
 
-                        // Сообщение об ошибке
-                        if (purchaseProvider.errorMessage != null)
+                        // Сообщение об ошибке (локализованное)
+                        if (purchaseProvider.errorCode != null)
                           Padding(
                             padding: const EdgeInsets.only(bottom: 16.0),
                             child: Container(
@@ -240,7 +241,10 @@ class _DonationWidgetState extends State<DonationWidget> {
                                   const SizedBox(width: 8),
                                   Expanded(
                                     child: Text(
-                                      purchaseProvider.errorMessage!,
+                                      DonationErrorHelper.getLocalizedErrorMessage(
+                                        purchaseProvider.errorCode,
+                                        l10n,
+                                      ),
                                       style: TextStyle(
                                         fontSize: 12,
                                         color: Colors.red[700],
@@ -355,6 +359,7 @@ class _DonationWidgetState extends State<DonationWidget> {
                             child: InkWell(
                               onTap:
                                   purchaseProvider.isPurchasing ||
+                                      purchaseProvider.isPurchasePending ||
                                       _selectedProduct == null
                                   ? null
                                   : () => purchaseProvider.purchaseProduct(
@@ -366,13 +371,32 @@ class _DonationWidgetState extends State<DonationWidget> {
                                   vertical: 16,
                                 ),
                                 alignment: Alignment.center,
-                                child: purchaseProvider.isPurchasing
-                                    ? const SizedBox(
-                                        width: 20,
-                                        height: 20,
-                                        child: CircularProgressIndicator(
-                                          strokeWidth: 2,
-                                        ),
+                                child:
+                                    purchaseProvider.isPurchasing ||
+                                        purchaseProvider.isPurchasePending
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          const SizedBox(
+                                            width: 20,
+                                            height: 20,
+                                            child: CircularProgressIndicator(
+                                              strokeWidth: 2,
+                                            ),
+                                          ),
+                                          if (purchaseProvider
+                                              .isPurchasePending) ...[
+                                            const SizedBox(width: 12),
+                                            Text(
+                                              l10n.donationProcessing,
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                color: theme.textColor,
+                                              ),
+                                            ),
+                                          ],
+                                        ],
                                       )
                                     : Text(
                                         l10n.donateButton,

@@ -203,5 +203,21 @@
   "donationLargeDescription": "Un grand montant pour soutenir le développement",
   "donationProductsNotAvailable": "Les produits de don ne sont temporairement pas disponibles. Veuillez réessayer plus tard.",
   "donationInfo": "Votre don aide à soutenir le développement et l'amélioration de l'application. Tous les dons sont volontaires et ne fournissent pas de fonctionnalités supplémentaires.",
-  "donationSuccessMessage": "Paiement effectué avec succès. Qu'Allah vous récompense !"
+  "donationSuccessMessage": "Paiement effectué avec succès. Qu'Allah vous récompense !",
+  "donationProcessing": "Traitement en cours...",
+  "donationErrorBillingUnavailable": "Le service de paiement est temporairement indisponible. Veuillez réessayer plus tard.",
+  "donationErrorDeveloperError": "Une erreur s'est produite lors du traitement du paiement. Veuillez réessayer plus tard.",
+  "donationErrorFeatureNotSupported": "Cette fonctionnalité n'est pas prise en charge sur votre appareil.",
+  "donationErrorItemAlreadyOwned": "Cet article a déjà été acheté.",
+  "donationErrorItemUnavailable": "L'article est temporairement indisponible. Veuillez réessayer plus tard.",
+  "donationErrorServiceDisconnected": "La connexion au service de paiement a été perdue. Veuillez réessayer.",
+  "donationErrorServiceUnavailable": "Le service de paiement est temporairement indisponible. Veuillez réessayer plus tard.",
+  "donationErrorUserCanceled": "Le paiement a été annulé.",
+  "donationErrorNetworkError": "Erreur réseau. Veuillez vérifier votre connexion Internet et réessayer.",
+  "donationErrorUnknown": "Une erreur s'est produite lors du traitement du paiement. Veuillez réessayer plus tard.",
+  "donationErrorBillingUnavailableInit": "Google Play Billing n'est pas disponible. Assurez-vous que votre appareil prend en charge Google Play Services.",
+  "donationErrorInitializationFailed": "Erreur d'initialisation du système de paiement. Veuillez réessayer plus tard.",
+  "donationErrorLoadProductsFailed": "Erreur lors du chargement des produits. Veuillez réessayer plus tard.",
+  "donationErrorPurchaseStartFailed": "Échec du démarrage de l'achat. Veuillez réessayer.",
+  "donationErrorProductsNotFound": "Produits introuvables. Raisons possibles :\n1. Les produits ne sont pas encore activés dans Google Play Console (peut prendre plusieurs heures)\n2. L'application n'est pas publiée dans la piste de test\n3. IDs de produits incorrects\n4. Vous devez vous connecter à Google Play avec un compte de test"
 }

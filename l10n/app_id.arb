@@ -203,5 +203,21 @@
   "donationLargeDescription": "Jumlah besar untuk mendukung pengembangan",
   "donationProductsNotAvailable": "Produk donasi untuk sementara tidak tersedia. Silakan coba lagi nanti.",
   "donationInfo": "Donasi Anda membantu mendukung pengembangan dan peningkatan aplikasi. Semua donasi bersifat sukarela dan tidak menyediakan fitur tambahan.",
-  "donationSuccessMessage": "Pembayaran berhasil diselesaikan. Semoga Allah membalas kebaikan Anda!"
+  "donationSuccessMessage": "Pembayaran berhasil diselesaikan. Semoga Allah membalas kebaikan Anda!",
+  "donationProcessing": "Memproses...",
+  "donationErrorBillingUnavailable": "Layanan pembayaran sementara tidak tersedia. Silakan coba lagi nanti.",
+  "donationErrorDeveloperError": "Terjadi kesalahan saat memproses pembayaran. Silakan coba lagi nanti.",
+  "donationErrorFeatureNotSupported": "Fitur ini tidak didukung di perangkat Anda.",
+  "donationErrorItemAlreadyOwned": "Item ini sudah dibeli.",
+  "donationErrorItemUnavailable": "Item sementara tidak tersedia. Silakan coba lagi nanti.",
+  "donationErrorServiceDisconnected": "Koneksi ke layanan pembayaran terputus. Silakan coba lagi.",
+  "donationErrorServiceUnavailable": "Layanan pembayaran sementara tidak tersedia. Silakan coba lagi nanti.",
+  "donationErrorUserCanceled": "Pembayaran dibatalkan.",
+  "donationErrorNetworkError": "Kesalahan jaringan. Periksa koneksi internet Anda dan coba lagi.",
+  "donationErrorUnknown": "Terjadi kesalahan saat memproses pembayaran. Silakan coba lagi nanti.",
+  "donationErrorBillingUnavailableInit": "Google Play Billing tidak tersedia. Pastikan perangkat Anda mendukung Google Play Services.",
+  "donationErrorInitializationFailed": "Kesalahan inisialisasi sistem pembayaran. Silakan coba lagi nanti.",
+  "donationErrorLoadProductsFailed": "Kesalahan memuat produk. Silakan coba lagi nanti.",
+  "donationErrorPurchaseStartFailed": "Gagal memulai pembelian. Silakan coba lagi.",
+  "donationErrorProductsNotFound": "Produk tidak ditemukan. Kemungkinan penyebab:\n1. Produk belum diaktifkan di Google Play Console (dapat memakan waktu beberapa jam)\n2. Aplikasi tidak dipublikasikan di track pengujian\n3. ID produk salah\n4. Perlu masuk ke Google Play dengan akun pengujian"
 }

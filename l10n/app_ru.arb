@@ -203,5 +203,21 @@
   "donationLargeDescription": "Большая сумма для поддержки разработки",
   "donationProductsNotAvailable": "Продукты пожертвований временно недоступны. Пожалуйста, попробуйте позже.",
   "donationInfo": "Ваше пожертвование помогает поддерживать разработку и улучшение приложения. Все пожертвования являются добровольными и не предоставляют дополнительных функций.",
-  "donationSuccessMessage": "Платеж успешно выполнен. Да вознаградит вас Аллах!"
+  "donationSuccessMessage": "Платеж успешно выполнен. Да вознаградит вас Аллах!",
+  "donationProcessing": "Обработка...",
+  "donationErrorBillingUnavailable": "Платежная система временно недоступна. Пожалуйста, попробуйте позже.",
+  "donationErrorDeveloperError": "Ошибка при обработке платежа. Пожалуйста, попробуйте позже.",
+  "donationErrorFeatureNotSupported": "Эта функция не поддерживается на вашем устройстве.",
+  "donationErrorItemAlreadyOwned": "Этот товар уже был приобретен.",
+  "donationErrorItemUnavailable": "Товар временно недоступен. Пожалуйста, попробуйте позже.",
+  "donationErrorServiceDisconnected": "Соединение с платежной системой потеряно. Пожалуйста, попробуйте снова.",
+  "donationErrorServiceUnavailable": "Платежная система временно недоступна. Пожалуйста, попробуйте позже.",
+  "donationErrorUserCanceled": "Платеж был отменен.",
+  "donationErrorNetworkError": "Ошибка сети. Проверьте подключение к интернету и попробуйте снова.",
+  "donationErrorUnknown": "Произошла ошибка при обработке платежа. Пожалуйста, попробуйте позже.",
+  "donationErrorBillingUnavailableInit": "Google Play Billing недоступен. Убедитесь, что устройство поддерживает Google Play Services.",
+  "donationErrorInitializationFailed": "Ошибка инициализации платежной системы. Пожалуйста, попробуйте позже.",
+  "donationErrorLoadProductsFailed": "Ошибка загрузки продуктов. Пожалуйста, попробуйте позже.",
+  "donationErrorPurchaseStartFailed": "Не удалось начать покупку. Пожалуйста, попробуйте снова.",
+  "donationErrorProductsNotFound": "Продукты не найдены. Возможные причины:\n1. Продукты еще не активированы в Google Play Console (может занять несколько часов)\n2. Приложение не опубликовано в тестовом треке\n3. Неправильные ID продуктов\n4. Необходимо войти в Google Play под тестовым аккаунтом"
 }

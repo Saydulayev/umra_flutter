@@ -8,6 +8,8 @@ class PurchaseService {
   final InAppPurchase _inAppPurchase = InAppPurchase.instance;
   StreamSubscription<List<PurchaseDetails>>? _subscription;
   VoidCallback? _onPurchaseSuccess;
+  Function(String)? _onPurchaseError; // Передает код ошибки
+  VoidCallback? _onPurchasePending;
 
   bool _isAvailable = false;
   bool get isAvailable => _isAvailable;
@@ -15,6 +17,17 @@ class PurchaseService {
   /// Установить callback для успешной покупки
   void setOnPurchaseSuccess(VoidCallback? callback) {
     _onPurchaseSuccess = callback;
+  }
+
+  /// Установить callback для ошибки покупки
+  /// Принимает код ошибки (например, "BillingResponse.billingUnavailable")
+  void setOnPurchaseError(Function(String)? callback) {
+    _onPurchaseError = callback;
+  }
+
+  /// Установить callback для покупки в ожидании
+  void setOnPurchasePending(VoidCallback? callback) {
+    _onPurchasePending = callback;
   }
 
   /// Инициализация сервиса покупок
@@ -90,7 +103,8 @@ class PurchaseService {
   void _handlePurchaseUpdates(List<PurchaseDetails> purchaseDetailsList) {
     for (final PurchaseDetails purchaseDetails in purchaseDetailsList) {
       if (purchaseDetails.status == PurchaseStatus.pending) {
-        // Покупка ожидает подтверждения
+        // Покупка ожидает подтверждения (для медленных тестовых карт)
+        _onPurchasePending?.call();
       } else if (purchaseDetails.status == PurchaseStatus.purchased) {
         // Покупка успешна - потребляем продукт для возможности повторной покупки
         _consumePurchase(purchaseDetails);
@@ -100,7 +114,12 @@ class PurchaseService {
         // Восстановленная покупка - потребляем, но не показываем уведомление
         _consumePurchase(purchaseDetails);
       } else if (purchaseDetails.status == PurchaseStatus.error) {
-        // Ошибка покупки
+        // Ошибка покупки - извлекаем код ошибки для локализации
+        final errorCode =
+            purchaseDetails.error?.code?.toString() ??
+            purchaseDetails.error?.message ??
+            'unknown';
+        _onPurchaseError?.call(errorCode);
       }
 
       if (purchaseDetails.pendingCompletePurchase) {

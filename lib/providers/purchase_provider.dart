@@ -9,14 +9,18 @@ class PurchaseProvider with ChangeNotifier {
   bool _isInitialized = false;
   bool _isLoading = false;
   bool _isPurchasing = false;
+  bool _isPurchasePending = false;
   String? _errorMessage;
+  String? _errorCode; // Код ошибки для локализации
   List<ProductDetails> _availableProducts = [];
   bool _purchaseSuccess = false;
 
   bool get isInitialized => _isInitialized;
   bool get isLoading => _isLoading;
   bool get isPurchasing => _isPurchasing;
+  bool get isPurchasePending => _isPurchasePending;
   String? get errorMessage => _errorMessage;
+  String? get errorCode => _errorCode; // Код ошибки для локализации
   List<ProductDetails> get availableProducts => _availableProducts;
   bool get isAvailable => _purchaseService.isAvailable;
   bool get purchaseSuccess => _purchaseSuccess;
@@ -33,6 +37,26 @@ class PurchaseProvider with ChangeNotifier {
       // Устанавливаем callback для успешной покупки
       _purchaseService.setOnPurchaseSuccess(() {
         setPurchaseSuccess(true);
+        _isPurchasePending = false;
+        _isPurchasing = false;
+        notifyListeners();
+      });
+
+      // Устанавливаем callback для ошибки покупки
+      // Принимает код ошибки, локализация будет в виджете
+      _purchaseService.setOnPurchaseError((errorCode) {
+        _errorCode = errorCode;
+        _errorMessage = errorCode; // Временно, будет заменено в виджете
+        _isPurchasePending = false;
+        _isPurchasing = false;
+        notifyListeners();
+      });
+
+      // Устанавливаем callback для покупки в ожидании
+      _purchaseService.setOnPurchasePending(() {
+        _isPurchasePending = true;
+        _errorMessage = null;
+        notifyListeners();
       });
 
       final success = await _purchaseService.initialize();
@@ -41,10 +65,12 @@ class PurchaseProvider with ChangeNotifier {
       if (success) {
         await loadProducts();
       } else {
-        _errorMessage = 'Google Play Billing недоступен';
+        _errorCode = 'INIT_BILLING_UNAVAILABLE';
+        _errorMessage = 'INIT_BILLING_UNAVAILABLE';
       }
     } catch (e) {
-      _errorMessage = 'Ошибка инициализации: $e';
+      _errorCode = 'INIT_ERROR';
+      _errorMessage = 'INIT_ERROR';
       _isInitialized = false;
     } finally {
       _isLoading = false;
@@ -69,19 +95,16 @@ class PurchaseProvider with ChangeNotifier {
       if (_availableProducts.isEmpty) {
         // Проверяем, доступен ли Google Play Billing
         if (!_purchaseService.isAvailable) {
-          _errorMessage =
-              'Google Play Billing недоступен. Убедитесь, что устройство поддерживает Google Play Services.';
+          _errorCode = 'INIT_BILLING_UNAVAILABLE';
+          _errorMessage = 'INIT_BILLING_UNAVAILABLE';
         } else {
-          _errorMessage =
-              'Продукты не найдены. Возможные причины:\n'
-              '1. Продукты еще не активированы в Google Play Console (может занять несколько часов)\n'
-              '2. Приложение не опубликовано в тестовом треке\n'
-              '3. Неправильные ID продуктов\n'
-              '4. Необходимо войти в Google Play под тестовым аккаунтом';
+          _errorCode = 'PRODUCTS_NOT_FOUND';
+          _errorMessage = 'PRODUCTS_NOT_FOUND';
         }
       }
     } catch (e) {
-      _errorMessage = 'Ошибка загрузки продуктов: $e';
+      _errorCode = 'LOAD_PRODUCTS_ERROR';
+      _errorMessage = 'LOAD_PRODUCTS_ERROR';
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -98,21 +121,27 @@ class PurchaseProvider with ChangeNotifier {
     }
 
     _isPurchasing = true;
+    _isPurchasePending = false;
     _errorMessage = null;
     notifyListeners();
 
     try {
       final success = await _purchaseService.buyProduct(productDetails);
       if (!success) {
-        _errorMessage = 'Не удалось начать покупку';
+        _errorCode = 'PURCHASE_START_ERROR';
+        _errorMessage = 'PURCHASE_START_ERROR';
+        _isPurchasing = false;
+        notifyListeners();
       }
+      // Если успешно, статус будет обновлен через callback (pending/purchased/error)
       return success;
     } catch (e) {
-      _errorMessage = 'Ошибка покупки: $e';
-      return false;
-    } finally {
+      _errorCode = 'PURCHASE_START_ERROR';
+      _errorMessage = 'PURCHASE_START_ERROR';
       _isPurchasing = false;
+      _isPurchasePending = false;
       notifyListeners();
+      return false;
     }
   }
 
@@ -130,6 +159,7 @@ class PurchaseProvider with ChangeNotifier {
   /// Очистка ошибки
   void clearError() {
     _errorMessage = null;
+    _errorCode = null;
     notifyListeners();
   }
 

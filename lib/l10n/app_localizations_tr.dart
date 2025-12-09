@@ -708,4 +708,65 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get donationSuccessMessage =>
       'Ödeme başarıyla tamamlandı. Allah sizi mükafatlandırsın!';
+
+  @override
+  String get donationProcessing => 'İşleniyor...';
+
+  @override
+  String get donationErrorBillingUnavailable =>
+      'Ödeme sistemi geçici olarak kullanılamıyor. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get donationErrorDeveloperError =>
+      'Ödeme işlenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get donationErrorFeatureNotSupported =>
+      'Bu özellik cihazınızda desteklenmiyor.';
+
+  @override
+  String get donationErrorItemAlreadyOwned => 'Bu öğe zaten satın alınmış.';
+
+  @override
+  String get donationErrorItemUnavailable =>
+      'Öğe geçici olarak kullanılamıyor. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get donationErrorServiceDisconnected =>
+      'Ödeme sistemine bağlantı kesildi. Lütfen tekrar deneyin.';
+
+  @override
+  String get donationErrorServiceUnavailable =>
+      'Ödeme sistemi geçici olarak kullanılamıyor. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get donationErrorUserCanceled => 'Ödeme iptal edildi.';
+
+  @override
+  String get donationErrorNetworkError =>
+      'Ağ hatası. İnternet bağlantınızı kontrol edin ve tekrar deneyin.';
+
+  @override
+  String get donationErrorUnknown =>
+      'Ödeme işlenirken bir hata oluştu. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get donationErrorBillingUnavailableInit =>
+      'Google Play Billing kullanılamıyor. Cihazınızın Google Play Services\'i desteklediğinden emin olun.';
+
+  @override
+  String get donationErrorInitializationFailed =>
+      'Ödeme sistemi başlatma hatası. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get donationErrorLoadProductsFailed =>
+      'Ürünler yüklenirken hata oluştu. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get donationErrorPurchaseStartFailed =>
+      'Satın alma başlatılamadı. Lütfen tekrar deneyin.';
+
+  @override
+  String get donationErrorProductsNotFound =>
+      'Ürünler bulunamadı. Olası nedenler:\n1. Ürünler henüz Google Play Console\'da etkinleştirilmedi (birkaç saat sürebilir)\n2. Uygulama test izinde yayınlanmadı\n3. Yanlış ürün kimlikleri\n4. Google Play\'e test hesabıyla giriş yapmanız gerekiyor';
 }

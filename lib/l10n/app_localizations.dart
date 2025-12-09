@@ -1329,6 +1329,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Payment completed successfully. May Allah reward you!'**
   String get donationSuccessMessage;
+
+  /// No description provided for @donationProcessing.
+  ///
+  /// In en, this message translates to:
+  /// **'Processing...'**
+  String get donationProcessing;
+
+  /// No description provided for @donationErrorBillingUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Billing service is temporarily unavailable. Please try again later.'**
+  String get donationErrorBillingUnavailable;
+
+  /// No description provided for @donationErrorDeveloperError.
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred while processing the payment. Please try again later.'**
+  String get donationErrorDeveloperError;
+
+  /// No description provided for @donationErrorFeatureNotSupported.
+  ///
+  /// In en, this message translates to:
+  /// **'This feature is not supported on your device.'**
+  String get donationErrorFeatureNotSupported;
+
+  /// No description provided for @donationErrorItemAlreadyOwned.
+  ///
+  /// In en, this message translates to:
+  /// **'This item has already been purchased.'**
+  String get donationErrorItemAlreadyOwned;
+
+  /// No description provided for @donationErrorItemUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Item is temporarily unavailable. Please try again later.'**
+  String get donationErrorItemUnavailable;
+
+  /// No description provided for @donationErrorServiceDisconnected.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection to the billing service was lost. Please try again.'**
+  String get donationErrorServiceDisconnected;
+
+  /// No description provided for @donationErrorServiceUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Billing service is temporarily unavailable. Please try again later.'**
+  String get donationErrorServiceUnavailable;
+
+  /// No description provided for @donationErrorUserCanceled.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment was canceled.'**
+  String get donationErrorUserCanceled;
+
+  /// No description provided for @donationErrorNetworkError.
+  ///
+  /// In en, this message translates to:
+  /// **'Network error. Please check your internet connection and try again.'**
+  String get donationErrorNetworkError;
+
+  /// No description provided for @donationErrorUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred while processing the payment. Please try again later.'**
+  String get donationErrorUnknown;
+
+  /// No description provided for @donationErrorBillingUnavailableInit.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Play Billing is unavailable. Make sure your device supports Google Play Services.'**
+  String get donationErrorBillingUnavailableInit;
+
+  /// No description provided for @donationErrorInitializationFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment system initialization error. Please try again later.'**
+  String get donationErrorInitializationFailed;
+
+  /// No description provided for @donationErrorLoadProductsFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading products. Please try again later.'**
+  String get donationErrorLoadProductsFailed;
+
+  /// No description provided for @donationErrorPurchaseStartFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to start purchase. Please try again.'**
+  String get donationErrorPurchaseStartFailed;
+
+  /// No description provided for @donationErrorProductsNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Products not found. Possible reasons:\n1. Products are not yet activated in Google Play Console (may take several hours)\n2. App is not published in the test track\n3. Incorrect product IDs\n4. Need to sign in to Google Play with a test account'**
+  String get donationErrorProductsNotFound;
 }
 
 class _AppLocalizationsDelegate

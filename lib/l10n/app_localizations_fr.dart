@@ -713,4 +713,65 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get donationSuccessMessage =>
       'Paiement effectué avec succès. Qu\'Allah vous récompense !';
+
+  @override
+  String get donationProcessing => 'Traitement en cours...';
+
+  @override
+  String get donationErrorBillingUnavailable =>
+      'Le service de paiement est temporairement indisponible. Veuillez réessayer plus tard.';
+
+  @override
+  String get donationErrorDeveloperError =>
+      'Une erreur s\'est produite lors du traitement du paiement. Veuillez réessayer plus tard.';
+
+  @override
+  String get donationErrorFeatureNotSupported =>
+      'Cette fonctionnalité n\'est pas prise en charge sur votre appareil.';
+
+  @override
+  String get donationErrorItemAlreadyOwned => 'Cet article a déjà été acheté.';
+
+  @override
+  String get donationErrorItemUnavailable =>
+      'L\'article est temporairement indisponible. Veuillez réessayer plus tard.';
+
+  @override
+  String get donationErrorServiceDisconnected =>
+      'La connexion au service de paiement a été perdue. Veuillez réessayer.';
+
+  @override
+  String get donationErrorServiceUnavailable =>
+      'Le service de paiement est temporairement indisponible. Veuillez réessayer plus tard.';
+
+  @override
+  String get donationErrorUserCanceled => 'Le paiement a été annulé.';
+
+  @override
+  String get donationErrorNetworkError =>
+      'Erreur réseau. Veuillez vérifier votre connexion Internet et réessayer.';
+
+  @override
+  String get donationErrorUnknown =>
+      'Une erreur s\'est produite lors du traitement du paiement. Veuillez réessayer plus tard.';
+
+  @override
+  String get donationErrorBillingUnavailableInit =>
+      'Google Play Billing n\'est pas disponible. Assurez-vous que votre appareil prend en charge Google Play Services.';
+
+  @override
+  String get donationErrorInitializationFailed =>
+      'Erreur d\'initialisation du système de paiement. Veuillez réessayer plus tard.';
+
+  @override
+  String get donationErrorLoadProductsFailed =>
+      'Erreur lors du chargement des produits. Veuillez réessayer plus tard.';
+
+  @override
+  String get donationErrorPurchaseStartFailed =>
+      'Échec du démarrage de l\'achat. Veuillez réessayer.';
+
+  @override
+  String get donationErrorProductsNotFound =>
+      'Produits introuvables. Raisons possibles :\n1. Les produits ne sont pas encore activés dans Google Play Console (peut prendre plusieurs heures)\n2. L\'application n\'est pas publiée dans la piste de test\n3. IDs de produits incorrects\n4. Vous devez vous connecter à Google Play avec un compte de test';
 }
