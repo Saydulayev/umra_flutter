@@ -106,10 +106,11 @@ class PurchaseService {
         // Покупка ожидает подтверждения (для медленных тестовых карт)
         _onPurchasePending?.call();
       } else if (purchaseDetails.status == PurchaseStatus.purchased) {
-        // Покупка успешна - потребляем продукт для возможности повторной покупки
-        _consumePurchase(purchaseDetails);
-        // Уведомляем об успешной покупке (только для новых покупок, не для восстановленных)
+        // Покупка успешна - уведомляем об успешной покупке ПЕРЕД потреблением
+        // (только для новых покупок, не для восстановленных)
         _onPurchaseSuccess?.call();
+        // Потребляем продукт для возможности повторной покупки
+        _consumePurchase(purchaseDetails);
       } else if (purchaseDetails.status == PurchaseStatus.restored) {
         // Восстановленная покупка - потребляем, но не показываем уведомление
         _consumePurchase(purchaseDetails);
@@ -121,9 +122,11 @@ class PurchaseService {
         _onPurchaseError?.call(errorCode);
       }
 
-      // Завершаем покупку для всех статусов, включая ошибки
-      // Это важно для правильной очистки состояния
-      if (purchaseDetails.pendingCompletePurchase) {
+      // Завершаем покупку для статусов, которые еще не были завершены
+      // (purchased и restored уже обрабатываются в _consumePurchase)
+      if (purchaseDetails.pendingCompletePurchase &&
+          purchaseDetails.status != PurchaseStatus.purchased &&
+          purchaseDetails.status != PurchaseStatus.restored) {
         _inAppPurchase.completePurchase(purchaseDetails);
       }
     }

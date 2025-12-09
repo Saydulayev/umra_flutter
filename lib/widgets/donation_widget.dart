@@ -20,6 +20,8 @@ class DonationWidget extends StatefulWidget {
 class _DonationWidgetState extends State<DonationWidget> {
   ProductDetails? _selectedProduct;
   PurchaseProvider? _purchaseProvider;
+  bool _hasShownSuccessMessage =
+      false; // Флаг для предотвращения двойного показа
 
   @override
   void didChangeDependencies() {
@@ -33,6 +35,8 @@ class _DonationWidgetState extends State<DonationWidget> {
       _purchaseProvider?.removeListener(_onPurchaseProviderChanged);
       _purchaseProvider = purchaseProvider;
       _purchaseProvider?.addListener(_onPurchaseProviderChanged);
+      // Сбрасываем флаг при смене провайдера
+      _hasShownSuccessMessage = false;
     }
   }
 
@@ -46,8 +50,11 @@ class _DonationWidgetState extends State<DonationWidget> {
     if (!mounted) return;
 
     final purchaseProvider = _purchaseProvider;
-    if (purchaseProvider != null && purchaseProvider.purchaseSuccess) {
-      // Показываем уведомление
+    if (purchaseProvider != null &&
+        purchaseProvider.purchaseSuccess &&
+        !_hasShownSuccessMessage) {
+      // Показываем уведомление только один раз
+      _hasShownSuccessMessage = true;
       final l10n = AppLocalizations.of(context)!;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -56,8 +63,14 @@ class _DonationWidgetState extends State<DonationWidget> {
           duration: const Duration(seconds: 3),
         ),
       );
-      // Сбрасываем флаг
+      // Сбрасываем флаг в провайдере
       purchaseProvider.clearPurchaseSuccess();
+      // Сбрасываем локальный флаг после задержки, чтобы можно было показать сообщение снова при новой покупке
+      Future.delayed(const Duration(seconds: 4), () {
+        if (mounted) {
+          _hasShownSuccessMessage = false;
+        }
+      });
     }
   }
 

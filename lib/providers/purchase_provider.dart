@@ -42,10 +42,14 @@ class PurchaseProvider with ChangeNotifier {
         _purchaseTimeoutTimer?.cancel();
         _purchaseTimeoutTimer = null;
 
-        setPurchaseSuccess(true);
-        _isPurchasePending = false;
-        _isPurchasing = false;
-        notifyListeners();
+        // Устанавливаем флаг успеха только если он еще не установлен
+        // Это предотвращает двойное показ сообщения
+        if (!_purchaseSuccess) {
+          setPurchaseSuccess(true);
+          _isPurchasePending = false;
+          _isPurchasing = false;
+          notifyListeners();
+        }
       });
 
       // Устанавливаем callback для ошибки покупки
