@@ -59,7 +59,15 @@ class _DonationScreenState extends State<DonationScreen> {
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
-      body: SafeArea(child: const DonationWidget()),
+      body: Builder(
+        builder: (context) {
+          final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+          return Padding(
+            padding: EdgeInsets.only(bottom: bottomPadding),
+            child: const DonationWidget(),
+          );
+        },
+      ),
     );
   }
 }

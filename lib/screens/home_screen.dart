@@ -23,10 +23,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'UMRA',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: theme.textColor,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, color: theme.textColor),
         ),
         centerTitle: true,
         backgroundColor: theme.backgroundColor,
@@ -48,23 +45,25 @@ class HomeScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => const SettingsScreen(),
-                ),
+                MaterialPageRoute(builder: (context) => const SettingsScreen()),
               );
             },
           ),
         ],
       ),
-      body: SafeArea(
-        child: _buildListView(context, theme),
-      ),
+      body: _buildListView(context, theme),
     );
   }
 
   Widget _buildListView(BuildContext context, AppTheme theme) {
+    final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
     return ListView.builder(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+      padding: EdgeInsets.only(
+        top: 10,
+        bottom: bottomPadding + 10,
+        left: 8,
+        right: 8,
+      ),
       itemCount: UmraSteps.allSteps.length,
       itemBuilder: (context, index) {
         final step = UmraSteps.allSteps[index];
@@ -89,8 +88,8 @@ class HomeScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: theme.isDark 
-                  ? Colors.black.withValues(alpha: 0.3) 
+              color: theme.isDark
+                  ? Colors.black.withValues(alpha: 0.3)
                   : Colors.black.withValues(alpha: 0.08),
               blurRadius: 8,
               offset: const Offset(0, 2),
@@ -100,10 +99,7 @@ class HomeScreen extends StatelessWidget {
         child: Row(
           children: [
             // Изображение
-            StyledImageWithTheme(
-              imageName: step.imageName,
-              theme: theme,
-            ),
+            StyledImageWithTheme(imageName: step.imageName, theme: theme),
             const SizedBox(width: 15),
             // Текст
             Expanded(
@@ -146,16 +142,12 @@ class HomeScreen extends StatelessWidget {
     if (step.id == 'useful') {
       Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) => const UsefulInfoScreen(),
-        ),
+        MaterialPageRoute(builder: (context) => const UsefulInfoScreen()),
       );
     } else {
       Navigator.push(
         context,
-        MaterialPageRoute(
-          builder: (context) => StepDetailScreen(step: step),
-        ),
+        MaterialPageRoute(builder: (context) => StepDetailScreen(step: step)),
       );
     }
   }
@@ -184,5 +176,4 @@ class HomeScreen extends StatelessWidget {
         return key;
     }
   }
-
 }

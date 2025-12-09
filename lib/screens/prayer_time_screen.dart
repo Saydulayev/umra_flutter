@@ -129,118 +129,126 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
         elevation: 0,
         iconTheme: IconThemeData(color: theme.primaryColor),
       ),
-      body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16),
-            child: _buildTransparentStyled(
-              theme: theme,
-              child: Column(
-                children: [
-                  // Местоположение и дата
-                  FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Mecca',
-                          style: GoogleFonts.greatVibes(
-                            fontSize: 36,
-                            color: theme.textColor,
+      body: Builder(
+        builder: (context) {
+          final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+          return Center(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.only(
+                top: 16,
+                bottom: bottomPadding + 16,
+                left: 16,
+                right: 16,
+              ),
+              child: _buildTransparentStyled(
+                theme: theme,
+                child: Column(
+                  children: [
+                    // Местоположение и дата
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            'Mecca',
+                            style: GoogleFonts.greatVibes(
+                              fontSize: 36,
+                              color: theme.textColor,
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          _getIslamicDate(),
-                          style: GoogleFonts.greatVibes(
-                            fontSize: 36,
-                            color: theme.textColor,
+                          const SizedBox(width: 8),
+                          Text(
+                            _getIslamicDate(),
+                            style: GoogleFonts.greatVibes(
+                              fontSize: 36,
+                              color: theme.textColor,
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          _getIslamicYear(),
-                          style: GoogleFonts.greatVibes(
-                            fontSize: 36,
-                            color: theme.textColor,
+                          const SizedBox(width: 8),
+                          Text(
+                            _getIslamicYear(),
+                            style: GoogleFonts.greatVibes(
+                              fontSize: 36,
+                              color: theme.textColor,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Divider(),
-                  // Следующая молитва (cardStyled)
-                  _buildCardStyled(
-                    theme: theme,
-                    child: Center(
-                      child: Text(
-                        '$_nextPrayerName in ${_formatDuration(_timeUntilNextPrayer)}',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: theme.textColor,
-                        ),
-                        textAlign: TextAlign.center,
+                        ],
                       ),
                     ),
-                  ),
-                  // Список времени молитв
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Column(
-                      children: [
-                        _buildPrayerTimeRow(
-                          'Fajr',
-                          _formatTime(_prayerTimes!.fajr),
-                          textColor: theme.textColor,
+                    const Divider(),
+                    // Следующая молитва (cardStyled)
+                    _buildCardStyled(
+                      theme: theme,
+                      child: Center(
+                        child: Text(
+                          '$_nextPrayerName in ${_formatDuration(_timeUntilNextPrayer)}',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: theme.textColor,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        _buildCapsuleStyled(
-                          theme: theme,
-                          child: _buildPrayerTimeRow(
-                            'Sunrise',
-                            _formatTime(_prayerTimes!.sunrise),
+                      ),
+                    ),
+                    // Список времени молитв
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Column(
+                        children: [
+                          _buildPrayerTimeRow(
+                            'Fajr',
+                            _formatTime(_prayerTimes!.fajr),
                             textColor: theme.textColor,
                           ),
-                        ),
-                        _buildPrayerTimeRow(
-                          'Dhuhr',
-                          _formatTime(_prayerTimes!.dhuhr),
-                          textColor: theme.textColor,
-                        ),
-                        _buildPrayerTimeRow(
-                          'Asr',
-                          _formatTime(_prayerTimes!.asr),
-                          textColor: theme.textColor,
-                        ),
-                        _buildPrayerTimeRow(
-                          'Maghrib',
-                          _formatTime(_prayerTimes!.maghrib),
-                          textColor: theme.textColor,
-                        ),
-                        _buildPrayerTimeRow(
-                          'Isha',
-                          _formatTime(_prayerTimes!.isha),
-                          textColor: theme.textColor,
-                        ),
-                        if (PrayerTimeService.getQiyamTime() != null)
                           _buildCapsuleStyled(
                             theme: theme,
                             child: _buildPrayerTimeRow(
-                              'Qiyam',
-                              _formatTime(PrayerTimeService.getQiyamTime()!),
+                              'Sunrise',
+                              _formatTime(_prayerTimes!.sunrise),
                               textColor: theme.textColor,
                             ),
                           ),
-                      ],
+                          _buildPrayerTimeRow(
+                            'Dhuhr',
+                            _formatTime(_prayerTimes!.dhuhr),
+                            textColor: theme.textColor,
+                          ),
+                          _buildPrayerTimeRow(
+                            'Asr',
+                            _formatTime(_prayerTimes!.asr),
+                            textColor: theme.textColor,
+                          ),
+                          _buildPrayerTimeRow(
+                            'Maghrib',
+                            _formatTime(_prayerTimes!.maghrib),
+                            textColor: theme.textColor,
+                          ),
+                          _buildPrayerTimeRow(
+                            'Isha',
+                            _formatTime(_prayerTimes!.isha),
+                            textColor: theme.textColor,
+                          ),
+                          if (PrayerTimeService.getQiyamTime() != null)
+                            _buildCapsuleStyled(
+                              theme: theme,
+                              child: _buildPrayerTimeRow(
+                                'Qiyam',
+                                _formatTime(PrayerTimeService.getQiyamTime()!),
+                                textColor: theme.textColor,
+                              ),
+                            ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

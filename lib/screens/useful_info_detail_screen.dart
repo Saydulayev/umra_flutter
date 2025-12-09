@@ -26,64 +26,75 @@ class UsefulInfoDetailScreen extends StatelessWidget {
         elevation: 0,
         iconTheme: IconThemeData(color: theme.primaryColor),
       ),
-      body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.all(16),
-          children: chapter.subChapters.map((subChapter) {
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: Card(
-                elevation: 2,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SubChapterDetailScreen(
-                          subChapter: subChapter,
-                          chapterTitle: _getChapterTitle(
-                            chapter.titleKey,
-                            l10n,
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                  borderRadius: BorderRadius.circular(12),
-                  child: Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [theme.gradientTopColor, theme.lightBackgroundColor],
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Text(
-                            _getSubChapterTitle(subChapter.titleKey, l10n),
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: theme.textColor,
+      body: Builder(
+        builder: (context) {
+          final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+          return ListView(
+            padding: EdgeInsets.only(
+              top: 16,
+              bottom: bottomPadding + 16,
+              left: 16,
+              right: 16,
+            ),
+            children: chapter.subChapters.map((subChapter) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Card(
+                  elevation: 2,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SubChapterDetailScreen(
+                            subChapter: subChapter,
+                            chapterTitle: _getChapterTitle(
+                              chapter.titleKey,
+                              l10n,
                             ),
                           ),
                         ),
-                        Icon(Icons.chevron_right, color: theme.primaryColor),
-                      ],
+                      );
+                    },
+                    borderRadius: BorderRadius.circular(12),
+                    child: Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            theme.gradientTopColor,
+                            theme.lightBackgroundColor,
+                          ],
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              _getSubChapterTitle(subChapter.titleKey, l10n),
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                color: theme.textColor,
+                              ),
+                            ),
+                          ),
+                          Icon(Icons.chevron_right, color: theme.primaryColor),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            );
-          }).toList(),
-        ),
+              );
+            }).toList(),
+          );
+        },
       ),
     );
   }
@@ -236,17 +247,29 @@ class SubChapterDetailScreen extends StatelessWidget {
         elevation: 0,
         iconTheme: IconThemeData(color: theme.primaryColor),
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
-          child: Text(
-            _getSubChapterContent(
-              subChapter.contentKey,
-              AppLocalizations.of(context)!,
+      body: Builder(
+        builder: (context) {
+          final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+          return SingleChildScrollView(
+            padding: EdgeInsets.only(
+              top: 16,
+              bottom: bottomPadding + 16,
+              left: 16,
+              right: 16,
             ),
-            style: TextStyle(fontSize: 18, color: theme.textColor, height: 1.5),
-          ),
-        ),
+            child: Text(
+              _getSubChapterContent(
+                subChapter.contentKey,
+                AppLocalizations.of(context)!,
+              ),
+              style: TextStyle(
+                fontSize: 18,
+                color: theme.textColor,
+                height: 1.5,
+              ),
+            ),
+          );
+        },
       ),
     );
   }

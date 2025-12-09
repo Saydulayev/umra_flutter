@@ -132,81 +132,89 @@ class SettingsScreen extends StatelessWidget {
         elevation: 0,
         iconTheme: IconThemeData(color: theme.primaryColor),
       ),
-      body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.all(16),
-          children: [
-            // Feedback Button
-            _buildSettingsItem(
-              context,
-              icon: Icons.message,
-              title: l10n.feedbackString,
-              onTap: () => _launchEmail(context),
-              theme: theme,
+      body: Builder(
+        builder: (context) {
+          final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+          return ListView(
+            padding: EdgeInsets.only(
+              top: 16,
+              bottom: bottomPadding + 16,
+              left: 16,
+              right: 16,
             ),
-            const SizedBox(height: 8),
-            // Rate the App Button
-            _buildSettingsItem(
-              context,
-              icon: Icons.star,
-              title: l10n.rateTheAppString,
-              onTap: _launchAppStore,
-              theme: theme,
-            ),
-            const SizedBox(height: 8),
-            // Language Selection
-            _buildSettingsItem(
-              context,
-              icon: Icons.language,
-              title: l10n.selectLanguageSettingsString,
-              onTap: () {
-                _showLanguageDialog(context, localizationProvider);
-              },
-              theme: theme,
-            ),
-            const SizedBox(height: 8),
-            // Theme Selection
-            _buildSettingsItem(
-              context,
-              icon: Icons.palette,
-              title: l10n.appThemeString,
-              onTap: () {
-                showModalBottomSheet(
-                  context: context,
-                  builder: (context) => const ThemeSelectionSheet(),
-                );
-              },
-              theme: theme,
-            ),
-            const SizedBox(height: 8),
-            // Support Developer / Donations
-            _buildSettingsItem(
-              context,
-              icon: Icons.favorite,
-              title: l10n.supportTheDeveloperString,
-              onTap: () {
-                showDonationBottomSheet(context);
-              },
-              theme: theme,
-            ),
-            const SizedBox(height: 8),
-            // Privacy Policy
-            _buildSettingsItem(
-              context,
-              icon: Icons.privacy_tip,
-              title: l10n.privacyPolicyTitle,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const PrivacyPolicyScreen(),
-                  ),
-                );
-              },
-              theme: theme,
-            ),
-          ],
-        ),
+            children: [
+              // Feedback Button
+              _buildSettingsItem(
+                context,
+                icon: Icons.message,
+                title: l10n.feedbackString,
+                onTap: () => _launchEmail(context),
+                theme: theme,
+              ),
+              const SizedBox(height: 8),
+              // Rate the App Button
+              _buildSettingsItem(
+                context,
+                icon: Icons.star,
+                title: l10n.rateTheAppString,
+                onTap: _launchAppStore,
+                theme: theme,
+              ),
+              const SizedBox(height: 8),
+              // Language Selection
+              _buildSettingsItem(
+                context,
+                icon: Icons.language,
+                title: l10n.selectLanguageSettingsString,
+                onTap: () {
+                  _showLanguageDialog(context, localizationProvider);
+                },
+                theme: theme,
+              ),
+              const SizedBox(height: 8),
+              // Theme Selection
+              _buildSettingsItem(
+                context,
+                icon: Icons.palette,
+                title: l10n.appThemeString,
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (context) => const ThemeSelectionSheet(),
+                  );
+                },
+                theme: theme,
+              ),
+              const SizedBox(height: 8),
+              // Support Developer / Donations
+              _buildSettingsItem(
+                context,
+                icon: Icons.favorite,
+                title: l10n.supportTheDeveloperString,
+                onTap: () {
+                  showDonationBottomSheet(context);
+                },
+                theme: theme,
+              ),
+              const SizedBox(height: 8),
+              // Privacy Policy
+              _buildSettingsItem(
+                context,
+                icon: Icons.privacy_tip,
+                title: l10n.privacyPolicyTitle,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PrivacyPolicyScreen(),
+                    ),
+                  );
+                },
+                theme: theme,
+              ),
+            ],
+          );
+        },
       ),
     );
   }

@@ -27,61 +27,76 @@ class StepDetailScreen extends StatelessWidget {
         final theme = themeProvider.selectedTheme;
         final l10n = AppLocalizations.of(context)!;
 
-    // Определяем, какой контент показывать в зависимости от шага
-    Widget content;
+        // Определяем, какой контент показывать в зависимости от шага
+        Widget content;
 
-    switch (step.id) {
-      case 'step1':
+        switch (step.id) {
+          case 'step1':
             content = _buildStep1Content(theme, l10n, fontProvider);
-        break;
-      case 'step2':
+            break;
+          case 'step2':
             content = _buildStep2Content(theme, l10n, fontProvider);
-        break;
-      case 'step3':
+            break;
+          case 'step3':
             content = _buildStep3Content(theme, l10n, fontProvider);
-        break;
-      case 'step4':
+            break;
+          case 'step4':
             content = _buildStep4Content(theme, l10n, fontProvider);
-        break;
-      case 'step5':
+            break;
+          case 'step5':
             content = _buildStep5Content(theme, l10n, fontProvider);
-        break;
-      case 'step6':
+            break;
+          case 'step6':
             content = _buildStep6Content(theme, l10n, fontProvider);
-        break;
-      case 'step7':
+            break;
+          case 'step7':
             content = _buildStep7Content(theme, l10n, fontProvider);
-        break;
-      case 'useful':
+            break;
+          case 'useful':
             return const UsefulInfoScreen();
-      default:
-        content = _buildDefaultContent(theme, fontProvider);
-    }
+          default:
+            content = _buildDefaultContent(theme, fontProvider);
+        }
 
-    return Scaffold(
-      backgroundColor: theme.lightBackgroundColor,
-      appBar: AppBar(
-        title: Text(
-          _getLocalizedTitle(step.titleKey, l10n),
-          style: TextStyle(fontWeight: FontWeight.bold, color: theme.textColor),
-        ),
-        backgroundColor: theme.lightBackgroundColor,
-        elevation: 0,
-        iconTheme: IconThemeData(color: theme.primaryColor),
+        return Scaffold(
+          backgroundColor: theme.lightBackgroundColor,
+          appBar: AppBar(
+            title: Text(
+              _getLocalizedTitle(step.titleKey, l10n),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: theme.textColor,
+              ),
+            ),
+            backgroundColor: theme.lightBackgroundColor,
+            elevation: 0,
+            iconTheme: IconThemeData(color: theme.primaryColor),
             actions: const [CustomToolbar()],
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(10),
-          child: content,
-        ),
-      ),
+          ),
+          body: Builder(
+            builder: (context) {
+              final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+              return SingleChildScrollView(
+                padding: EdgeInsets.only(
+                  top: 10,
+                  bottom: bottomPadding + 10,
+                  left: 10,
+                  right: 10,
+                ),
+                child: content,
+              );
+            },
+          ),
         );
       },
     );
   }
 
-  Widget _buildStep1Content(AppTheme theme, AppLocalizations l10n, FontProvider fontProvider) {
+  Widget _buildStep1Content(
+    AppTheme theme,
+    AppLocalizations l10n,
+    FontProvider fontProvider,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -215,7 +230,7 @@ class StepDetailScreen extends StatelessWidget {
             fontSize: 18,
             color: theme.textColor,
           ),
-          ),
+        ),
         const SizedBox(height: AppDimensions.paddingLarge),
         // 22. "Umrah for other person arabic"
         ArabicTextWidget(text: l10n.step1UmrahForOtherArabic),
@@ -232,7 +247,11 @@ class StepDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStep2Content(AppTheme theme, AppLocalizations l10n, FontProvider fontProvider) {
+  Widget _buildStep2Content(
+    AppTheme theme,
+    AppLocalizations l10n,
+    FontProvider fontProvider,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -266,7 +285,7 @@ class StepDetailScreen extends StatelessWidget {
             fontSize: 18,
             color: theme.textColor,
           ),
-          ),
+        ),
         const SizedBox(height: AppDimensions.paddingLarge),
         // 5. Арабский текст дуа + Player 7
         ArabicTextWidget(text: l10n.step2DuaArabic),
@@ -284,7 +303,11 @@ class StepDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStep3Content(AppTheme theme, AppLocalizations l10n, FontProvider fontProvider) {
+  Widget _buildStep3Content(
+    AppTheme theme,
+    AppLocalizations l10n,
+    FontProvider fontProvider,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -323,7 +346,11 @@ class StepDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStep4Content(AppTheme theme, AppLocalizations l10n, FontProvider fontProvider) {
+  Widget _buildStep4Content(
+    AppTheme theme,
+    AppLocalizations l10n,
+    FontProvider fontProvider,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -349,7 +376,11 @@ class StepDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStep5Content(AppTheme theme, AppLocalizations l10n, FontProvider fontProvider) {
+  Widget _buildStep5Content(
+    AppTheme theme,
+    AppLocalizations l10n,
+    FontProvider fontProvider,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -388,7 +419,11 @@ class StepDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStep6Content(AppTheme theme, AppLocalizations l10n, FontProvider fontProvider) {
+  Widget _buildStep6Content(
+    AppTheme theme,
+    AppLocalizations l10n,
+    FontProvider fontProvider,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -459,7 +494,7 @@ class StepDetailScreen extends StatelessWidget {
             fontSize: 18,
             color: theme.textColor,
           ),
-          ),
+        ),
         const SizedBox(height: AppDimensions.paddingLarge),
         // 9. Арабский текст дуа + Player 11
         ArabicTextWidget(text: l10n.step6DuasDuringSaiArabic),
@@ -490,7 +525,11 @@ class StepDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStep7Content(AppTheme theme, AppLocalizations l10n, FontProvider fontProvider) {
+  Widget _buildStep7Content(
+    AppTheme theme,
+    AppLocalizations l10n,
+    FontProvider fontProvider,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -528,10 +567,7 @@ class StepDetailScreen extends StatelessWidget {
   Widget _buildDefaultContent(AppTheme theme, FontProvider fontProvider) {
     return SelectableText(
       'Content for ${step.titleKey}',
-      style: fontProvider.getTextStyle(
-        fontSize: 18,
-        color: Colors.black87,
-      ),
+      style: fontProvider.getTextStyle(fontSize: 18, color: Colors.black87),
     );
   }
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +13,9 @@ import 'screens/language_selection_screen.dart';
 import 'models/app_theme.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Включаем edge-to-edge для Android 15
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   runApp(const MyApp());
 }
 

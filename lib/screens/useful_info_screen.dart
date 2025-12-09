@@ -28,45 +28,53 @@ class UsefulInfoScreen extends StatelessWidget {
         elevation: 0,
         iconTheme: IconThemeData(color: theme.primaryColor),
       ),
-      body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.all(16),
-          children: [
-            ...chapters.map((chapter) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: _buildInfoCard(
-                  context,
-                  theme,
-                  title: _getChapterTitle(chapter.titleKey, l10n),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            UsefulInfoDetailScreen(chapter: chapter),
-                      ),
-                    );
-                  },
-                ),
-              );
-            }),
-            const SizedBox(height: 8),
-            _buildInfoCard(
-              context,
-              theme,
-              title: l10n.janazaPrayerGuide,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const JanazaPrayerScreen(),
+      body: Builder(
+        builder: (context) {
+          final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+          return ListView(
+            padding: EdgeInsets.only(
+              top: 16,
+              bottom: bottomPadding + 16,
+              left: 16,
+              right: 16,
+            ),
+            children: [
+              ...chapters.map((chapter) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: _buildInfoCard(
+                    context,
+                    theme,
+                    title: _getChapterTitle(chapter.titleKey, l10n),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              UsefulInfoDetailScreen(chapter: chapter),
+                        ),
+                      );
+                    },
                   ),
                 );
-              },
-            ),
-          ],
-        ),
+              }),
+              const SizedBox(height: 8),
+              _buildInfoCard(
+                context,
+                theme,
+                title: l10n.janazaPrayerGuide,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const JanazaPrayerScreen(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          );
+        },
       ),
     );
   }

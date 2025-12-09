@@ -24,87 +24,95 @@ class PrivacyPolicyScreen extends StatelessWidget {
         elevation: 0,
         iconTheme: IconThemeData(color: theme.primaryColor),
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                l10n.privacyPolicyLastUpdated,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: theme.secondaryTextColor,
-                  fontStyle: FontStyle.italic,
+      body: Builder(
+        builder: (context) {
+          final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+          return SingleChildScrollView(
+            padding: EdgeInsets.only(
+              top: 16,
+              bottom: bottomPadding + 16,
+              left: 16,
+              right: 16,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  l10n.privacyPolicyLastUpdated,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: theme.secondaryTextColor,
+                    fontStyle: FontStyle.italic,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 24),
-              _buildSection(
-                context,
-                title: l10n.privacyPolicyIntroductionTitle,
-                content: l10n.privacyPolicyIntroduction,
-                theme: theme,
-              ),
-              const SizedBox(height: 24),
-              _buildSection(
-                context,
-                title: l10n.privacyPolicyDataCollectionTitle,
-                content: l10n.privacyPolicyDataCollection,
-                theme: theme,
-              ),
-              const SizedBox(height: 24),
-              _buildSection(
-                context,
-                title: l10n.privacyPolicyDataUsageTitle,
-                content: l10n.privacyPolicyDataUsage,
-                theme: theme,
-              ),
-              const SizedBox(height: 24),
-              _buildSection(
-                context,
-                title: l10n.privacyPolicyThirdPartyTitle,
-                content: l10n.privacyPolicyThirdParty,
-                theme: theme,
-              ),
-              const SizedBox(height: 24),
-              _buildSection(
-                context,
-                title: l10n.privacyPolicyDataStorageTitle,
-                content: l10n.privacyPolicyDataStorage,
-                theme: theme,
-              ),
-              const SizedBox(height: 24),
-              _buildSection(
-                context,
-                title: l10n.privacyPolicyUserRightsTitle,
-                content: l10n.privacyPolicyUserRights,
-                theme: theme,
-              ),
-              const SizedBox(height: 24),
-              _buildSection(
-                context,
-                title: l10n.privacyPolicyChildrenTitle,
-                content: l10n.privacyPolicyChildren,
-                theme: theme,
-              ),
-              const SizedBox(height: 24),
-              _buildSection(
-                context,
-                title: l10n.privacyPolicyChangesTitle,
-                content: l10n.privacyPolicyChanges,
-                theme: theme,
-              ),
-              const SizedBox(height: 24),
-              _buildSection(
-                context,
-                title: l10n.privacyPolicyContactTitle,
-                content: l10n.privacyPolicyContact,
-                theme: theme,
-              ),
-              const SizedBox(height: 24),
-            ],
-          ),
-        ),
+                const SizedBox(height: 24),
+                _buildSection(
+                  context,
+                  title: l10n.privacyPolicyIntroductionTitle,
+                  content: l10n.privacyPolicyIntroduction,
+                  theme: theme,
+                ),
+                const SizedBox(height: 24),
+                _buildSection(
+                  context,
+                  title: l10n.privacyPolicyDataCollectionTitle,
+                  content: l10n.privacyPolicyDataCollection,
+                  theme: theme,
+                ),
+                const SizedBox(height: 24),
+                _buildSection(
+                  context,
+                  title: l10n.privacyPolicyDataUsageTitle,
+                  content: l10n.privacyPolicyDataUsage,
+                  theme: theme,
+                ),
+                const SizedBox(height: 24),
+                _buildSection(
+                  context,
+                  title: l10n.privacyPolicyThirdPartyTitle,
+                  content: l10n.privacyPolicyThirdParty,
+                  theme: theme,
+                ),
+                const SizedBox(height: 24),
+                _buildSection(
+                  context,
+                  title: l10n.privacyPolicyDataStorageTitle,
+                  content: l10n.privacyPolicyDataStorage,
+                  theme: theme,
+                ),
+                const SizedBox(height: 24),
+                _buildSection(
+                  context,
+                  title: l10n.privacyPolicyUserRightsTitle,
+                  content: l10n.privacyPolicyUserRights,
+                  theme: theme,
+                ),
+                const SizedBox(height: 24),
+                _buildSection(
+                  context,
+                  title: l10n.privacyPolicyChildrenTitle,
+                  content: l10n.privacyPolicyChildren,
+                  theme: theme,
+                ),
+                const SizedBox(height: 24),
+                _buildSection(
+                  context,
+                  title: l10n.privacyPolicyChangesTitle,
+                  content: l10n.privacyPolicyChanges,
+                  theme: theme,
+                ),
+                const SizedBox(height: 24),
+                _buildSection(
+                  context,
+                  title: l10n.privacyPolicyContactTitle,
+                  content: l10n.privacyPolicyContact,
+                  theme: theme,
+                ),
+                const SizedBox(height: 24),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
@@ -129,11 +137,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
         const SizedBox(height: 12),
         Text(
           content,
-          style: TextStyle(
-            fontSize: 16,
-            height: 1.6,
-            color: theme.textColor,
-          ),
+          style: TextStyle(fontSize: 16, height: 1.6, color: theme.textColor),
         ),
       ],
     );
