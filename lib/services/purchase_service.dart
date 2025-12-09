@@ -117,9 +117,12 @@ class PurchaseService {
         // Ошибка покупки - извлекаем код ошибки для локализации
         final error = purchaseDetails.error;
         final errorCode = error != null ? (error.code.toString()) : 'unknown';
+        // Уведомляем об ошибке ПЕРЕД завершением покупки
         _onPurchaseError?.call(errorCode);
       }
 
+      // Завершаем покупку для всех статусов, включая ошибки
+      // Это важно для правильной очистки состояния
       if (purchaseDetails.pendingCompletePurchase) {
         _inAppPurchase.completePurchase(purchaseDetails);
       }
