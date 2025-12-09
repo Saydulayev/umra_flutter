@@ -45,9 +45,6 @@ class MyApp extends StatelessWidget {
                   final theme = themeProvider.selectedTheme;
 
                   return MaterialApp(
-                    key: ValueKey(
-                      localizationProvider.currentLocale.toString(),
-                    ),
                     title: 'Umra Guide',
                     debugShowCheckedModeBanner: false,
 
