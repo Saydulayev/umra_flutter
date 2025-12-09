@@ -401,6 +401,17 @@ class _DonationWidgetState extends State<DonationWidget> {
       );
     }
 
+    // Сортируем продукты по возрастанию цены
+    availableProducts.sort((a, b) {
+      final aProduct = DonationProduct.allProducts.firstWhere(
+        (dp) => dp.id == a.id,
+      );
+      final bProduct = DonationProduct.allProducts.firstWhere(
+        (dp) => dp.id == b.id,
+      );
+      return aProduct.amount.compareTo(bProduct.amount);
+    });
+
     // Если продукт не выбран, выбираем первый
     if (_selectedProduct == null ||
         !availableProducts.any((p) => p.id == _selectedProduct!.id)) {
@@ -451,6 +462,18 @@ class _DonationWidgetState extends State<DonationWidget> {
     AppTheme theme,
     AppLocalizations l10n,
   ) {
+    // Сортируем продукты по возрастанию цены
+    final sortedProducts = List<ProductDetails>.from(availableProducts);
+    sortedProducts.sort((a, b) {
+      final aProduct = DonationProduct.allProducts.firstWhere(
+        (dp) => dp.id == a.id,
+      );
+      final bProduct = DonationProduct.allProducts.firstWhere(
+        (dp) => dp.id == b.id,
+      );
+      return aProduct.amount.compareTo(bProduct.amount);
+    });
+
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -484,9 +507,9 @@ class _DonationWidgetState extends State<DonationWidget> {
             ),
             ListView.builder(
               shrinkWrap: true,
-              itemCount: availableProducts.length,
+              itemCount: sortedProducts.length,
               itemBuilder: (context, index) {
-                final product = availableProducts[index];
+                final product = sortedProducts[index];
                 final isSelected = _selectedProduct?.id == product.id;
 
                 return ListTile(
