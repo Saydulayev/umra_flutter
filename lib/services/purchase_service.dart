@@ -7,9 +7,15 @@ import '../models/donation_product.dart';
 class PurchaseService {
   final InAppPurchase _inAppPurchase = InAppPurchase.instance;
   StreamSubscription<List<PurchaseDetails>>? _subscription;
+  VoidCallback? _onPurchaseSuccess;
 
   bool _isAvailable = false;
   bool get isAvailable => _isAvailable;
+
+  /// Установить callback для успешной покупки
+  void setOnPurchaseSuccess(VoidCallback? callback) {
+    _onPurchaseSuccess = callback;
+  }
 
   /// Инициализация сервиса покупок
   Future<bool> initialize() async {
@@ -85,9 +91,13 @@ class PurchaseService {
     for (final PurchaseDetails purchaseDetails in purchaseDetailsList) {
       if (purchaseDetails.status == PurchaseStatus.pending) {
         // Покупка ожидает подтверждения
-      } else if (purchaseDetails.status == PurchaseStatus.purchased ||
-          purchaseDetails.status == PurchaseStatus.restored) {
+      } else if (purchaseDetails.status == PurchaseStatus.purchased) {
         // Покупка успешна - потребляем продукт для возможности повторной покупки
+        _consumePurchase(purchaseDetails);
+        // Уведомляем об успешной покупке (только для новых покупок, не для восстановленных)
+        _onPurchaseSuccess?.call();
+      } else if (purchaseDetails.status == PurchaseStatus.restored) {
+        // Восстановленная покупка - потребляем, но не показываем уведомление
         _consumePurchase(purchaseDetails);
       } else if (purchaseDetails.status == PurchaseStatus.error) {
         // Ошибка покупки

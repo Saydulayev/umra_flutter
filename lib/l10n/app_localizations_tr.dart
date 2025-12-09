@@ -704,4 +704,8 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get donationInfo =>
       'Bağışınız uygulamanın geliştirilmesine ve iyileştirilmesine yardımcı olur. Tüm bağışlar gönüllüdür ve ek özellikler sağlamaz.';
+
+  @override
+  String get donationSuccessMessage =>
+      'Ödeme başarıyla tamamlandı. Allah sizi mükafatlandırsın!';
 }

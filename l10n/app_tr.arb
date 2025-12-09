@@ -202,5 +202,6 @@
   "donationLarge": "Büyük Bağış",
   "donationLargeDescription": "Geliştirmeyi desteklemek için büyük bir miktar",
   "donationProductsNotAvailable": "Bağış ürünleri geçici olarak kullanılamıyor. Lütfen daha sonra tekrar deneyin.",
-  "donationInfo": "Bağışınız uygulamanın geliştirilmesine ve iyileştirilmesine yardımcı olur. Tüm bağışlar gönüllüdür ve ek özellikler sağlamaz."
+  "donationInfo": "Bağışınız uygulamanın geliştirilmesine ve iyileştirilmesine yardımcı olur. Tüm bağışlar gönüllüdür ve ek özellikler sağlamaz.",
+  "donationSuccessMessage": "Ödeme başarıyla tamamlandı. Allah sizi mükafatlandırsın!"
 }

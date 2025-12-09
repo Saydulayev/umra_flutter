@@ -202,5 +202,6 @@
   "donationLarge": "Donasi Besar",
   "donationLargeDescription": "Jumlah besar untuk mendukung pengembangan",
   "donationProductsNotAvailable": "Produk donasi untuk sementara tidak tersedia. Silakan coba lagi nanti.",
-  "donationInfo": "Donasi Anda membantu mendukung pengembangan dan peningkatan aplikasi. Semua donasi bersifat sukarela dan tidak menyediakan fitur tambahan."
+  "donationInfo": "Donasi Anda membantu mendukung pengembangan dan peningkatan aplikasi. Semua donasi bersifat sukarela dan tidak menyediakan fitur tambahan.",
+  "donationSuccessMessage": "Pembayaran berhasil diselesaikan. Semoga Allah membalas kebaikan Anda!"
 }

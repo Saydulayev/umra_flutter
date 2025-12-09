@@ -203,5 +203,6 @@
   "donationLarge": "Large Donation",
   "donationLargeDescription": "A large amount to support development",
   "donationProductsNotAvailable": "Donation products are temporarily unavailable. Please try again later.",
-  "donationInfo": "Your donation helps support the development and improvement of the app. All donations are voluntary and do not provide additional features."
+  "donationInfo": "Your donation helps support the development and improvement of the app. All donations are voluntary and do not provide additional features.",
+  "donationSuccessMessage": "Payment completed successfully. May Allah reward you!"
 }

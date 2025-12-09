@@ -202,5 +202,6 @@
   "donationLarge": "Große Spende",
   "donationLargeDescription": "Ein großer Betrag zur Unterstützung der Entwicklung",
   "donationProductsNotAvailable": "Spendenprodukte sind vorübergehend nicht verfügbar. Bitte versuchen Sie es später erneut.",
-  "donationInfo": "Ihre Spende hilft bei der Entwicklung und Verbesserung der App. Alle Spenden sind freiwillig und bieten keine zusätzlichen Funktionen."
+  "donationInfo": "Ihre Spende hilft bei der Entwicklung und Verbesserung der App. Alle Spenden sind freiwillig und bieten keine zusätzlichen Funktionen.",
+  "donationSuccessMessage": "Zahlung erfolgreich abgeschlossen. Möge Allah Sie belohnen!"
 }

@@ -18,6 +18,47 @@ class DonationWidget extends StatefulWidget {
 
 class _DonationWidgetState extends State<DonationWidget> {
   ProductDetails? _selectedProduct;
+  PurchaseProvider? _purchaseProvider;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Слушаем изменения в провайдере для показа уведомления
+    final purchaseProvider = Provider.of<PurchaseProvider>(
+      context,
+      listen: false,
+    );
+    if (_purchaseProvider != purchaseProvider) {
+      _purchaseProvider?.removeListener(_onPurchaseProviderChanged);
+      _purchaseProvider = purchaseProvider;
+      _purchaseProvider?.addListener(_onPurchaseProviderChanged);
+    }
+  }
+
+  @override
+  void dispose() {
+    _purchaseProvider?.removeListener(_onPurchaseProviderChanged);
+    super.dispose();
+  }
+
+  void _onPurchaseProviderChanged() {
+    if (!mounted) return;
+
+    final purchaseProvider = _purchaseProvider;
+    if (purchaseProvider != null && purchaseProvider.purchaseSuccess) {
+      // Показываем уведомление
+      final l10n = AppLocalizations.of(context)!;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.donationSuccessMessage),
+          backgroundColor: Colors.green,
+          duration: const Duration(seconds: 3),
+        ),
+      );
+      // Сбрасываем флаг
+      purchaseProvider.clearPurchaseSuccess();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

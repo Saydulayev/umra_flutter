@@ -202,5 +202,6 @@
   "donationLarge": "Grand don",
   "donationLargeDescription": "Un grand montant pour soutenir le développement",
   "donationProductsNotAvailable": "Les produits de don ne sont temporairement pas disponibles. Veuillez réessayer plus tard.",
-  "donationInfo": "Votre don aide à soutenir le développement et l'amélioration de l'application. Tous les dons sont volontaires et ne fournissent pas de fonctionnalités supplémentaires."
+  "donationInfo": "Votre don aide à soutenir le développement et l'amélioration de l'application. Tous les dons sont volontaires et ne fournissent pas de fonctionnalités supplémentaires.",
+  "donationSuccessMessage": "Paiement effectué avec succès. Qu'Allah vous récompense !"
 }

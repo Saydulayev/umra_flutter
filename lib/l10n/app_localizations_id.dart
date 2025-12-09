@@ -707,4 +707,8 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get donationInfo =>
       'Donasi Anda membantu mendukung pengembangan dan peningkatan aplikasi. Semua donasi bersifat sukarela dan tidak menyediakan fitur tambahan.';
+
+  @override
+  String get donationSuccessMessage =>
+      'Pembayaran berhasil diselesaikan. Semoga Allah membalas kebaikan Anda!';
 }

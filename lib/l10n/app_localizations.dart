@@ -1323,6 +1323,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your donation helps support the development and improvement of the app. All donations are voluntary and do not provide additional features.'**
   String get donationInfo;
+
+  /// No description provided for @donationSuccessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment completed successfully. May Allah reward you!'**
+  String get donationSuccessMessage;
 }
 
 class _AppLocalizationsDelegate

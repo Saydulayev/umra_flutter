@@ -11,6 +11,7 @@ class PurchaseProvider with ChangeNotifier {
   bool _isPurchasing = false;
   String? _errorMessage;
   List<ProductDetails> _availableProducts = [];
+  bool _purchaseSuccess = false;
 
   bool get isInitialized => _isInitialized;
   bool get isLoading => _isLoading;
@@ -18,6 +19,7 @@ class PurchaseProvider with ChangeNotifier {
   String? get errorMessage => _errorMessage;
   List<ProductDetails> get availableProducts => _availableProducts;
   bool get isAvailable => _purchaseService.isAvailable;
+  bool get purchaseSuccess => _purchaseSuccess;
 
   /// Инициализация сервиса покупок
   Future<void> initialize() async {
@@ -28,6 +30,11 @@ class PurchaseProvider with ChangeNotifier {
     notifyListeners();
 
     try {
+      // Устанавливаем callback для успешной покупки
+      _purchaseService.setOnPurchaseSuccess(() {
+        setPurchaseSuccess(true);
+      });
+
       final success = await _purchaseService.initialize();
       _isInitialized = success;
 
@@ -123,6 +130,18 @@ class PurchaseProvider with ChangeNotifier {
   /// Очистка ошибки
   void clearError() {
     _errorMessage = null;
+    notifyListeners();
+  }
+
+  /// Установить успешную покупку
+  void setPurchaseSuccess(bool success) {
+    _purchaseSuccess = success;
+    notifyListeners();
+  }
+
+  /// Сбросить флаг успешной покупки
+  void clearPurchaseSuccess() {
+    _purchaseSuccess = false;
     notifyListeners();
   }
 

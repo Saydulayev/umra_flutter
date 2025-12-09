@@ -711,4 +711,8 @@ class AppLocalizationsDe extends AppLocalizations {
   @override
   String get donationInfo =>
       'Ihre Spende hilft bei der Entwicklung und Verbesserung der App. Alle Spenden sind freiwillig und bieten keine zusätzlichen Funktionen.';
+
+  @override
+  String get donationSuccessMessage =>
+      'Zahlung erfolgreich abgeschlossen. Möge Allah Sie belohnen!';
 }

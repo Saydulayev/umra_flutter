@@ -706,4 +706,8 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get donationInfo =>
       'Ваше пожертвование помогает поддерживать разработку и улучшение приложения. Все пожертвования являются добровольными и не предоставляют дополнительных функций.';
+
+  @override
+  String get donationSuccessMessage =>
+      'Платеж успешно выполнен. Да вознаградит вас Аллах!';
 }
