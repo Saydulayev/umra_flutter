@@ -270,21 +270,6 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
-  String _getThemeName(AppTheme theme, AppLocalizations l10n) {
-    switch (theme) {
-      case AppTheme.blue:
-        return l10n.themeHeavenly;
-      case AppTheme.green:
-        return l10n.themeOasis;
-      case AppTheme.gold:
-        return l10n.themeGold;
-      case AppTheme.turquoise:
-        return l10n.themeTurquoise;
-      case AppTheme.dark:
-        return l10n.themeDark;
-    }
-  }
-
   void _showLanguageDialog(
     BuildContext context,
     LocalizationProvider localizationProvider,
