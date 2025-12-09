@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:provider/provider.dart';
@@ -18,19 +19,25 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   String _nextPrayerName = 'Fajr';
   Duration _timeUntilNextPrayer = Duration.zero;
 
+  // КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Добавляем Timer для правильной отмены
+  Timer? _timer;
+
   @override
   void initState() {
     super.initState();
     _updatePrayerTimes();
     // Обновляем каждую секунду
-    Future.microtask(() => _startTimer());
+    _startTimer();
   }
 
   void _startTimer() {
-    Future.delayed(const Duration(seconds: 1), () {
+    // КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Используем Timer.periodic вместо рекурсивного Future.delayed
+    _timer?.cancel(); // Отменяем предыдущий таймер, если есть
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (mounted) {
         _updateCountdown();
-        _startTimer();
+      } else {
+        timer.cancel();
       }
     });
   }
@@ -48,7 +55,9 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text('Не удалось загрузить время молитв. Пожалуйста, попробуйте позже.'),
+              content: Text(
+                'Не удалось загрузить время молитв. Пожалуйста, попробуйте позже.',
+              ),
               duration: Duration(seconds: 3),
               backgroundColor: Colors.red,
             ),
@@ -84,9 +93,16 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   String _getIslamicDate() {
     return PrayerTimeService.getIslamicDate();
   }
-  
+
   String _getIslamicYear() {
     return PrayerTimeService.getIslamicYear();
+  }
+
+  // КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Добавляем dispose для отмены таймера
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -291,7 +307,10 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: [theme.gradientTopColor, theme.lightBackgroundColor],
+                    colors: [
+                      theme.gradientTopColor,
+                      theme.lightBackgroundColor,
+                    ],
                   ),
                 ),
                 child: Container(
@@ -299,8 +318,8 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: theme.isDark 
-                          ? Colors.white.withValues(alpha: 0.1) 
+                      color: theme.isDark
+                          ? Colors.white.withValues(alpha: 0.1)
                           : Colors.black.withValues(alpha: 0.08),
                       width: 1,
                     ),
@@ -321,9 +340,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
       width: double.infinity,
       child: Container(
         padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-        ),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: Stack(
@@ -346,7 +363,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                     filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: theme.isDark 
+                        color: theme.isDark
                             ? theme.lightBackgroundColor.withValues(alpha: 0.9)
                             : Colors.white.withValues(alpha: 0.9),
                       ),
@@ -361,7 +378,10 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: [theme.gradientTopColor, theme.lightBackgroundColor],
+                    colors: [
+                      theme.gradientTopColor,
+                      theme.lightBackgroundColor,
+                    ],
                   ),
                 ),
                 child: Container(
@@ -443,7 +463,11 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     );
   }
 
-  Widget _buildPrayerTimeRow(String prayerName, String prayerTime, {Color? textColor}) {
+  Widget _buildPrayerTimeRow(
+    String prayerName,
+    String prayerTime, {
+    Color? textColor,
+  }) {
     final color = textColor ?? Colors.black87;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),

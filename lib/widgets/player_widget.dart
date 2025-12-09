@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:vibration/vibration.dart';
@@ -24,6 +25,11 @@ class _PlayerWidgetState extends State<PlayerWidget> {
   bool _isLoading = true;
   bool _isHandlingComplete = false;
 
+  // КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Добавляем подписки для правильной очистки
+  StreamSubscription<Duration?>? _durationSubscription;
+  StreamSubscription<Duration>? _positionSubscription;
+  StreamSubscription<PlayerState>? _playerStateSubscription;
+
   @override
   void initState() {
     super.initState();
@@ -33,7 +39,9 @@ class _PlayerWidgetState extends State<PlayerWidget> {
   Future<void> _initAudio() async {
     try {
       _audioPlayer = await AudioService().loadAudio(widget.fileName);
-      _audioPlayer.durationStream.listen((duration) {
+
+      // КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Сохраняем подписки для отмены в dispose
+      _durationSubscription = _audioPlayer.durationStream.listen((duration) {
         if (mounted) {
           setState(() {
             _duration = duration ?? Duration.zero;
@@ -41,7 +49,8 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           });
         }
       });
-      _audioPlayer.positionStream.listen((position) {
+
+      _positionSubscription = _audioPlayer.positionStream.listen((position) {
         if (mounted) {
           setState(() {
             // Ограничиваем позицию, чтобы она не превышала длительность
@@ -51,11 +60,11 @@ class _PlayerWidgetState extends State<PlayerWidget> {
               _position = position;
             }
           });
-          
+
           // Проверяем, достиг ли плеер конца (вне setState)
           // Если режим повтора включен, не обрабатываем завершение
-          if (_duration > Duration.zero && 
-              position >= _duration && 
+          if (_duration > Duration.zero &&
+              position >= _duration &&
               _isPlaying &&
               !_isRepeating &&
               !_isHandlingComplete) {
@@ -63,15 +72,16 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           }
         }
       });
-      _audioPlayer.playerStateStream.listen((state) {
+
+      _playerStateSubscription = _audioPlayer.playerStateStream.listen((state) {
         if (mounted) {
           setState(() {
             _isPlaying = state.playing;
           });
-          
+
           // Обрабатываем завершение воспроизведения (вне setState)
           // Если режим повтора включен, не обрабатываем завершение
-          if (state.processingState == ProcessingState.completed && 
+          if (state.processingState == ProcessingState.completed &&
               !_isRepeating &&
               !_isHandlingComplete) {
             _handlePlaybackComplete();
@@ -98,15 +108,15 @@ class _PlayerWidgetState extends State<PlayerWidget> {
 
   Future<void> _handlePlaybackComplete() async {
     if (_isHandlingComplete) return; // Предотвращаем множественные вызовы
-    
+
     _isHandlingComplete = true;
-    
+
     try {
       // Останавливаем воспроизведение
       await _audioPlayer.pause();
       // Возвращаем позицию на начало
       await _audioPlayer.seek(Duration.zero);
-      
+
       if (mounted) {
         setState(() {
           _position = Duration.zero;
@@ -116,7 +126,9 @@ class _PlayerWidgetState extends State<PlayerWidget> {
     } finally {
       // Сбрасываем флаг через небольшую задержку
       Future.delayed(const Duration(milliseconds: 100), () {
-        _isHandlingComplete = false;
+        if (mounted) {
+          _isHandlingComplete = false;
+        }
       });
     }
   }
@@ -135,9 +147,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
     setState(() {
       _isRepeating = !_isRepeating;
     });
-    await _audioPlayer.setLoopMode(
-      _isRepeating ? LoopMode.one : LoopMode.off,
-    );
+    await _audioPlayer.setLoopMode(_isRepeating ? LoopMode.one : LoopMode.off);
   }
 
   Future<void> _cyclePlaybackRate() async {
@@ -176,6 +186,11 @@ class _PlayerWidgetState extends State<PlayerWidget> {
 
   @override
   void dispose() {
+    // КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Отменяем все подписки перед dispose
+    _durationSubscription?.cancel();
+    _positionSubscription?.cancel();
+    _playerStateSubscription?.cancel();
+
     // Удаляем плеер из списка активных перед удалением
     AudioService().unregisterPlayer(_audioPlayer);
     _audioPlayer.dispose();
@@ -229,9 +244,14 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           ),
           const SizedBox(height: 16),
           Slider(
-            value: _clampPosition(_position.inMilliseconds.toDouble(), _duration.inMilliseconds.toDouble()),
+            value: _clampPosition(
+              _position.inMilliseconds.toDouble(),
+              _duration.inMilliseconds.toDouble(),
+            ),
             min: 0,
-            max: _duration.inMilliseconds > 0 ? _duration.inMilliseconds.toDouble() : 1.0,
+            max: _duration.inMilliseconds > 0
+                ? _duration.inMilliseconds.toDouble()
+                : 1.0,
             onChanged: (value) {
               _audioPlayer.seek(Duration(milliseconds: value.toInt()));
             },
@@ -243,8 +263,14 @@ class _PlayerWidgetState extends State<PlayerWidget> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(_formatDuration(_position), style: TextStyle(color: theme.textColor)),
-                Text(_formatDuration(_duration), style: TextStyle(color: theme.textColor)),
+                Text(
+                  _formatDuration(_position),
+                  style: TextStyle(color: theme.textColor),
+                ),
+                Text(
+                  _formatDuration(_duration),
+                  style: TextStyle(color: theme.textColor),
+                ),
               ],
             ),
           ),
@@ -275,8 +301,8 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           ),
           boxShadow: [
             BoxShadow(
-              color: theme.isDark 
-                  ? Colors.black.withValues(alpha: 0.4) 
+              color: theme.isDark
+                  ? Colors.black.withValues(alpha: 0.4)
                   : Colors.black.withValues(alpha: 0.2),
               blurRadius: 20,
               offset: const Offset(20, 20),
@@ -312,8 +338,8 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           ),
           boxShadow: [
             BoxShadow(
-              color: theme.isDark 
-                  ? Colors.black.withValues(alpha: 0.4) 
+              color: theme.isDark
+                  ? Colors.black.withValues(alpha: 0.4)
                   : Colors.black.withValues(alpha: 0.2),
               blurRadius: 20,
               offset: const Offset(20, 20),
@@ -324,7 +350,9 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           child: Text(
             '${rate}x',
             style: TextStyle(
-              color: rate > 1.0 ? theme.activeButtonColor : theme.secondaryTextColor,
+              color: rate > 1.0
+                  ? theme.activeButtonColor
+                  : theme.secondaryTextColor,
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),
@@ -334,5 +362,3 @@ class _PlayerWidgetState extends State<PlayerWidget> {
     );
   }
 }
-
-
