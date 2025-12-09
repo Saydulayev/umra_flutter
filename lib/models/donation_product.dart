@@ -21,31 +21,31 @@ class DonationProduct {
       amount: 0.99,
     ),
     DonationProduct(
-      id: 'donation_4_99', // Идентификатор товара в Google Play Console
+      id: 'donation_499', // Идентификатор товара в Google Play Console
       nameKey: 'donation4_99',
       descriptionKey: 'donation4_99Description',
       amount: 4.99,
     ),
     DonationProduct(
-      id: 'donation_9_99',
+      id: 'donation_999', // Идентификатор товара в Google Play Console
       nameKey: 'donation9_99',
       descriptionKey: 'donation9_99Description',
       amount: 9.99,
     ),
     DonationProduct(
-      id: 'donation_19_99',
+      id: 'donation_1999', // Идентификатор товара в Google Play Console
       nameKey: 'donation19_99',
       descriptionKey: 'donation19_99Description',
       amount: 19.99,
     ),
     DonationProduct(
-      id: 'donation_49_99',
+      id: 'donation_4999', // Идентификатор товара в Google Play Console
       nameKey: 'donation49_99',
       descriptionKey: 'donation49_99Description',
       amount: 49.99,
     ),
     DonationProduct(
-      id: 'donation_99_99',
+      id: 'donation_9999', // Идентификатор товара в Google Play Console
       nameKey: 'donation99_99',
       descriptionKey: 'donation99_99Description',
       amount: 99.99,
