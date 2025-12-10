@@ -52,6 +52,17 @@ class MyApp extends StatelessWidget {
                   child,
                 ) {
                   final theme = themeProvider.selectedTheme;
+                  final overlayStyle = SystemUiOverlayStyle(
+                    statusBarIconBrightness: theme.isDark
+                        ? Brightness.light
+                        : Brightness.dark,
+                    systemNavigationBarIconBrightness: theme.isDark
+                        ? Brightness.light
+                        : Brightness.dark,
+                    systemStatusBarContrastEnforced: false,
+                    systemNavigationBarContrastEnforced: false,
+                  );
+                  SystemChrome.setSystemUIOverlayStyle(overlayStyle);
 
                   return MaterialApp(
                     title: 'Umra Guide',
