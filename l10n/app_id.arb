@@ -219,5 +219,6 @@
   "donationErrorInitializationFailed": "Kesalahan inisialisasi sistem pembayaran. Silakan coba lagi nanti.",
   "donationErrorLoadProductsFailed": "Kesalahan memuat produk. Silakan coba lagi nanti.",
   "donationErrorPurchaseStartFailed": "Gagal memulai pembelian. Silakan coba lagi.",
-  "donationErrorProductsNotFound": "Produk tidak ditemukan. Kemungkinan penyebab:\n1. Produk belum diaktifkan di Google Play Console (dapat memakan waktu beberapa jam)\n2. Aplikasi tidak dipublikasikan di track pengujian\n3. ID produk salah\n4. Perlu masuk ke Google Play dengan akun pengujian"
+  "donationErrorProductsNotFound": "Produk tidak ditemukan. Kemungkinan penyebab:\n1. Produk belum diaktifkan di Google Play Console (dapat memakan waktu beberapa jam)\n2. Aplikasi tidak dipublikasikan di track pengujian\n3. ID produk salah\n4. Perlu masuk ke Google Play dengan akun pengujian",
+  "audioLoadError": "Kesalahan memuat audio"
 }

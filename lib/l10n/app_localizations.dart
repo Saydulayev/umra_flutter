@@ -1425,6 +1425,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Products not found. Possible reasons:\n1. Products are not yet activated in Google Play Console (may take several hours)\n2. App is not published in the test track\n3. Incorrect product IDs\n4. Need to sign in to Google Play with a test account'**
   String get donationErrorProductsNotFound;
+
+  /// No description provided for @audioLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading audio'**
+  String get audioLoadError;
 }
 
 class _AppLocalizationsDelegate

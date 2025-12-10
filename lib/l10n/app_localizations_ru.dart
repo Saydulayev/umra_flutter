@@ -771,4 +771,7 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get donationErrorProductsNotFound =>
       'Продукты не найдены. Возможные причины:\n1. Продукты еще не активированы в Google Play Console (может занять несколько часов)\n2. Приложение не опубликовано в тестовом треке\n3. Неправильные ID продуктов\n4. Необходимо войти в Google Play под тестовым аккаунтом';
+
+  @override
+  String get audioLoadError => 'Ошибка загрузки аудио';
 }

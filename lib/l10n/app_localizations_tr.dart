@@ -769,4 +769,7 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get donationErrorProductsNotFound =>
       'Ürünler bulunamadı. Olası nedenler:\n1. Ürünler henüz Google Play Console\'da etkinleştirilmedi (birkaç saat sürebilir)\n2. Uygulama test izinde yayınlanmadı\n3. Yanlış ürün kimlikleri\n4. Google Play\'e test hesabıyla giriş yapmanız gerekiyor';
+
+  @override
+  String get audioLoadError => 'Ses yüklenirken hata oluştu';
 }

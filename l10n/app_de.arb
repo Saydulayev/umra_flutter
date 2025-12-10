@@ -219,5 +219,6 @@
   "donationErrorInitializationFailed": "Fehler bei der Initialisierung des Zahlungssystems. Bitte versuchen Sie es später erneut.",
   "donationErrorLoadProductsFailed": "Fehler beim Laden der Produkte. Bitte versuchen Sie es später erneut.",
   "donationErrorPurchaseStartFailed": "Fehler beim Starten des Kaufs. Bitte versuchen Sie es erneut.",
-  "donationErrorProductsNotFound": "Produkte nicht gefunden. Mögliche Gründe:\n1. Produkte sind noch nicht in der Google Play Console aktiviert (kann mehrere Stunden dauern)\n2. App ist nicht im Test-Track veröffentlicht\n3. Falsche Produkt-IDs\n4. Sie müssen sich mit einem Testkonto bei Google Play anmelden"
+  "donationErrorProductsNotFound": "Produkte nicht gefunden. Mögliche Gründe:\n1. Produkte sind noch nicht in der Google Play Console aktiviert (kann mehrere Stunden dauern)\n2. App ist nicht im Test-Track veröffentlicht\n3. Falsche Produkt-IDs\n4. Sie müssen sich mit einem Testkonto bei Google Play anmelden",
+  "audioLoadError": "Fehler beim Laden des Audios"
 }

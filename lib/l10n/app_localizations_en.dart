@@ -772,4 +772,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get donationErrorProductsNotFound =>
       'Products not found. Possible reasons:\n1. Products are not yet activated in Google Play Console (may take several hours)\n2. App is not published in the test track\n3. Incorrect product IDs\n4. Need to sign in to Google Play with a test account';
+
+  @override
+  String get audioLoadError => 'Error loading audio';
 }

@@ -772,4 +772,7 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get donationErrorProductsNotFound =>
       'Produk tidak ditemukan. Kemungkinan penyebab:\n1. Produk belum diaktifkan di Google Play Console (dapat memakan waktu beberapa jam)\n2. Aplikasi tidak dipublikasikan di track pengujian\n3. ID produk salah\n4. Perlu masuk ke Google Play dengan akun pengujian';
+
+  @override
+  String get audioLoadError => 'Kesalahan memuat audio';
 }

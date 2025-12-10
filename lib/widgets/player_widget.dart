@@ -5,6 +5,7 @@ import 'package:vibration/vibration.dart';
 import '../services/audio_service.dart';
 import '../providers/theme_provider.dart';
 import 'package:provider/provider.dart';
+import '../l10n/app_localizations.dart';
 
 class PlayerWidget extends StatefulWidget {
   final String fileName;
@@ -94,13 +95,16 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           _isLoading = false;
         });
         // Показываем ошибку пользователю
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Ошибка загрузки аудио: ${e.toString()}'),
-            duration: const Duration(seconds: 3),
-            backgroundColor: Colors.red,
-          ),
-        );
+        final l10n = AppLocalizations.of(context);
+        if (l10n != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('${l10n.audioLoadError}: ${e.toString()}'),
+              duration: const Duration(seconds: 3),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
       }
       debugPrint('Error initializing audio: $e');
     }
