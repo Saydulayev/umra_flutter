@@ -5,9 +5,11 @@ import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 import '../providers/localization_provider.dart';
+import '../providers/user_preferences_provider.dart';
 import '../models/app_theme.dart';
 import '../widgets/theme_selection_sheet.dart';
 import '../constants/app_constants.dart';
+import '../constants/review_config.dart';
 import 'privacy_policy_screen.dart';
 import 'donation_screen.dart';
 
@@ -212,6 +214,31 @@ class SettingsScreen extends StatelessWidget {
                 },
                 theme: theme,
               ),
+              // Reset Review State (только в тестовом режиме)
+              if (ReviewConfig.isTestMode) ...[
+                const SizedBox(height: 8),
+                _buildSettingsItem(
+                  context,
+                  icon: Icons.refresh,
+                  title: 'Сбросить состояние оценки (тест)',
+                  onTap: () async {
+                    final prefsProvider = Provider.of<UserPreferencesProvider>(
+                      context,
+                      listen: false,
+                    );
+                    await prefsProvider.resetReviewState();
+                    if (context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Состояние оценки сброшено'),
+                          duration: Duration(seconds: 2),
+                        ),
+                      );
+                    }
+                  },
+                  theme: theme,
+                ),
+              ],
             ],
           );
         },

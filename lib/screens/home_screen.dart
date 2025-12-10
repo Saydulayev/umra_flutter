@@ -1,7 +1,9 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
+import '../providers/user_preferences_provider.dart';
 import '../models/step_model.dart';
 import '../models/app_theme.dart';
 import '../screens/step_detail_screen.dart';
@@ -10,8 +12,92 @@ import '../screens/settings_screen.dart';
 import '../screens/prayer_time_screen.dart';
 import '../widgets/styled_image_widget.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
+  Timer? _reviewCheckTimer;
+  bool _isCheckingReview =
+      false; // Флаг для предотвращения параллельных проверок
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    // Проверяем сразу и затем периодически
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _checkAndShowReviewDialog();
+      // Проверяем каждые 5 секунд
+      _reviewCheckTimer = Timer.periodic(const Duration(seconds: 5), (timer) {
+        _checkAndShowReviewDialog();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    _reviewCheckTimer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    // Проверяем при возврате в приложение
+    if (state == AppLifecycleState.resumed) {
+      _checkAndShowReviewDialog();
+    }
+  }
+
+  Future<void> _checkAndShowReviewDialog() async {
+    if (!mounted || _isCheckingReview) return;
+
+    final prefsProvider = Provider.of<UserPreferencesProvider>(
+      context,
+      listen: false,
+    );
+
+    // Не проверяем, если диалог уже показывается
+    if (prefsProvider.isShowingDialog) {
+      return;
+    }
+
+    _isCheckingReview = true;
+    try {
+      // Проверяем условия
+      await prefsProvider.checkAndShowReviewIfNeeded();
+
+      // Если нужно показать диалог, показываем его
+      if (prefsProvider.hasShownReviewDialog &&
+          !prefsProvider.hasRatedApp &&
+          !prefsProvider.isShowingDialog) {
+        // Останавливаем периодическую проверку, пока диалог открыт
+        _reviewCheckTimer?.cancel();
+
+        // Небольшая задержка перед показом диалога для лучшего UX
+        await Future.delayed(const Duration(milliseconds: 500));
+        if (mounted && !prefsProvider.isShowingDialog) {
+          await prefsProvider.showReviewDialog(context);
+        }
+
+        // Возобновляем проверку после закрытия диалога
+        if (mounted && !prefsProvider.hasRatedApp) {
+          _reviewCheckTimer = Timer.periodic(const Duration(seconds: 5), (
+            timer,
+          ) {
+            _checkAndShowReviewDialog();
+          });
+        }
+      }
+    } finally {
+      _isCheckingReview = false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

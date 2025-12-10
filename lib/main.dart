@@ -11,11 +11,16 @@ import 'providers/purchase_provider.dart';
 import 'screens/home_screen.dart';
 import 'screens/language_selection_screen.dart';
 import 'models/app_theme.dart';
+import 'services/app_usage_tracker.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Включаем edge-to-edge для Android 15
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
+  // Инициализируем трекер использования приложения
+  await AppUsageTracker().initialize();
+
   runApp(const MyApp());
 }
 

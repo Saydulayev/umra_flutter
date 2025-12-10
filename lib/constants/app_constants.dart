@@ -17,6 +17,11 @@ class PrefsKeys {
   // Пользовательские настройки
   static const String isGridView = 'isGridView';
   static const String hasRatedApp = 'hasRatedApp';
+  static const String firstAppLaunchTime = 'firstAppLaunchTime';
+  static const String totalAppUsageTime = 'totalAppUsageTime';
+  static const String lastReviewDialogShownTime = 'lastReviewDialogShownTime';
+  static const String appLaunchCount = 'appLaunchCount';
+  static const String reviewDialogShownCount = 'reviewDialogShownCount';
 
   // Шрифты
   static const String selectedFont = 'SelectedFont';
@@ -62,11 +67,11 @@ class LocalizationKeys {
 
   static const String titleIhramScreen = 'titleIhramScreen';
   static const String titleRoundKaabaScreen = 'titleRoundKaabaScreen';
-  static const String titlePlaceIbrohimStandScreen = 'titlePlaceIbrohimStandScreen';
+  static const String titlePlaceIbrohimStandScreen =
+      'titlePlaceIbrohimStandScreen';
   static const String titleWaterZamzamScreen = 'titleWaterZamzamScreen';
   static const String titleBlackStoneScreen = 'titleBlackStoneScreen';
   static const String titleSafaAndMarvaScreen = 'titleSafaAndMarvaScreen';
   static const String titleShaveHeadScreen = 'titleShaveHeadScreen';
   static const String usefulTitle = 'usefulTitle';
 }
-
