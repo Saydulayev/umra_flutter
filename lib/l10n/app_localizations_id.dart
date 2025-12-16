@@ -775,4 +775,35 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get audioLoadError => 'Kesalahan memuat audio';
+
+  @override
+  String get mecca => 'Mekah';
+
+  @override
+  String get fajr => 'Fajar';
+
+  @override
+  String get sunrise => 'Terbit Matahari';
+
+  @override
+  String get dhuhr => 'Dzuhur';
+
+  @override
+  String get asr => 'Ashar';
+
+  @override
+  String get maghrib => 'Maghrib';
+
+  @override
+  String get isha => 'Isya';
+
+  @override
+  String get qiyam => 'Qiyam';
+
+  @override
+  String get prayerTimeIn => 'dalam';
+
+  @override
+  String get prayerTimeLoadError =>
+      'Gagal memuat waktu shalat. Silakan coba lagi nanti.';
 }

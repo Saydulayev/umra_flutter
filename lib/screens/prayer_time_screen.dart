@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../providers/theme_provider.dart';
 import '../models/app_theme.dart';
 import '../services/prayer_time_service.dart';
+import '../l10n/app_localizations.dart';
 
 class PrayerTimeScreen extends StatefulWidget {
   const PrayerTimeScreen({super.key});
@@ -53,12 +54,11 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
       } else {
         // Показываем ошибку пользователю, если не удалось загрузить время молитв
         if (mounted) {
+          final l10n = AppLocalizations.of(context)!;
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text(
-                'Не удалось загрузить время молитв. Пожалуйста, попробуйте позже.',
-              ),
-              duration: Duration(seconds: 3),
+            SnackBar(
+              content: Text(l10n.prayerTimeLoadError),
+              duration: const Duration(seconds: 3),
               backgroundColor: Colors.red,
             ),
           );
@@ -105,10 +105,32 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     super.dispose();
   }
 
+  String _getLocalizedPrayerName(String englishName, AppLocalizations l10n) {
+    switch (englishName) {
+      case 'Fajr':
+        return l10n.fajr;
+      case 'Sunrise':
+        return l10n.sunrise;
+      case 'Dhuhr':
+        return l10n.dhuhr;
+      case 'Asr':
+        return l10n.asr;
+      case 'Maghrib':
+        return l10n.maghrib;
+      case 'Isha':
+        return l10n.isha;
+      case 'Qiyam':
+        return l10n.qiyam;
+      default:
+        return englishName;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final theme = themeProvider.selectedTheme;
+    final l10n = AppLocalizations.of(context)!;
 
     if (_prayerTimes == null) {
       return Scaffold(
@@ -152,7 +174,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            'Mecca',
+                            l10n.mecca,
                             style: GoogleFonts.greatVibes(
                               fontSize: 36,
                               color: theme.textColor,
@@ -183,7 +205,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                       theme: theme,
                       child: Center(
                         child: Text(
-                          '$_nextPrayerName in ${_formatDuration(_timeUntilNextPrayer)}',
+                          '${_getLocalizedPrayerName(_nextPrayerName, l10n)} ${l10n.prayerTimeIn} ${_formatDuration(_timeUntilNextPrayer)}',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -199,35 +221,35 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                       child: Column(
                         children: [
                           _buildPrayerTimeRow(
-                            'Fajr',
+                            l10n.fajr,
                             _formatTime(_prayerTimes!.fajr),
                             textColor: theme.textColor,
                           ),
                           _buildCapsuleStyled(
                             theme: theme,
                             child: _buildPrayerTimeRow(
-                              'Sunrise',
+                              l10n.sunrise,
                               _formatTime(_prayerTimes!.sunrise),
                               textColor: theme.textColor,
                             ),
                           ),
                           _buildPrayerTimeRow(
-                            'Dhuhr',
+                            l10n.dhuhr,
                             _formatTime(_prayerTimes!.dhuhr),
                             textColor: theme.textColor,
                           ),
                           _buildPrayerTimeRow(
-                            'Asr',
+                            l10n.asr,
                             _formatTime(_prayerTimes!.asr),
                             textColor: theme.textColor,
                           ),
                           _buildPrayerTimeRow(
-                            'Maghrib',
+                            l10n.maghrib,
                             _formatTime(_prayerTimes!.maghrib),
                             textColor: theme.textColor,
                           ),
                           _buildPrayerTimeRow(
-                            'Isha',
+                            l10n.isha,
                             _formatTime(_prayerTimes!.isha),
                             textColor: theme.textColor,
                           ),
@@ -235,7 +257,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                             _buildCapsuleStyled(
                               theme: theme,
                               child: _buildPrayerTimeRow(
-                                'Qiyam',
+                                l10n.qiyam,
                                 _formatTime(PrayerTimeService.getQiyamTime()!),
                                 textColor: theme.textColor,
                               ),

@@ -220,5 +220,15 @@
   "donationErrorLoadProductsFailed": "Kesalahan memuat produk. Silakan coba lagi nanti.",
   "donationErrorPurchaseStartFailed": "Gagal memulai pembelian. Silakan coba lagi.",
   "donationErrorProductsNotFound": "Produk tidak ditemukan. Kemungkinan penyebab:\n1. Produk belum diaktifkan di Google Play Console (dapat memakan waktu beberapa jam)\n2. Aplikasi tidak dipublikasikan di track pengujian\n3. ID produk salah\n4. Perlu masuk ke Google Play dengan akun pengujian",
-  "audioLoadError": "Kesalahan memuat audio"
+  "audioLoadError": "Kesalahan memuat audio",
+  "mecca": "Mekah",
+  "fajr": "Fajar",
+  "sunrise": "Terbit Matahari",
+  "dhuhr": "Dzuhur",
+  "asr": "Ashar",
+  "maghrib": "Maghrib",
+  "isha": "Isya",
+  "qiyam": "Qiyam",
+  "prayerTimeIn": "dalam",
+  "prayerTimeLoadError": "Gagal memuat waktu shalat. Silakan coba lagi nanti."
 }

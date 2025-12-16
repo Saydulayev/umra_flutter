@@ -1431,6 +1431,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error loading audio'**
   String get audioLoadError;
+
+  /// No description provided for @mecca.
+  ///
+  /// In en, this message translates to:
+  /// **'Mecca'**
+  String get mecca;
+
+  /// No description provided for @fajr.
+  ///
+  /// In en, this message translates to:
+  /// **'Fajr'**
+  String get fajr;
+
+  /// No description provided for @sunrise.
+  ///
+  /// In en, this message translates to:
+  /// **'Sunrise'**
+  String get sunrise;
+
+  /// No description provided for @dhuhr.
+  ///
+  /// In en, this message translates to:
+  /// **'Dhuhr'**
+  String get dhuhr;
+
+  /// No description provided for @asr.
+  ///
+  /// In en, this message translates to:
+  /// **'Asr'**
+  String get asr;
+
+  /// No description provided for @maghrib.
+  ///
+  /// In en, this message translates to:
+  /// **'Maghrib'**
+  String get maghrib;
+
+  /// No description provided for @isha.
+  ///
+  /// In en, this message translates to:
+  /// **'Isha'**
+  String get isha;
+
+  /// No description provided for @qiyam.
+  ///
+  /// In en, this message translates to:
+  /// **'Qiyam'**
+  String get qiyam;
+
+  /// No description provided for @prayerTimeIn.
+  ///
+  /// In en, this message translates to:
+  /// **'in'**
+  String get prayerTimeIn;
+
+  /// No description provided for @prayerTimeLoadError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load prayer times. Please try again later.'**
+  String get prayerTimeLoadError;
 }
 
 class _AppLocalizationsDelegate

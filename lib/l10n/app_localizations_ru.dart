@@ -774,4 +774,35 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get audioLoadError => 'Ошибка загрузки аудио';
+
+  @override
+  String get mecca => 'Мекка';
+
+  @override
+  String get fajr => 'Фаджр';
+
+  @override
+  String get sunrise => 'Восход';
+
+  @override
+  String get dhuhr => 'Зухр';
+
+  @override
+  String get asr => 'Аср';
+
+  @override
+  String get maghrib => 'Магриб';
+
+  @override
+  String get isha => 'Иша';
+
+  @override
+  String get qiyam => 'Кийам';
+
+  @override
+  String get prayerTimeIn => 'через';
+
+  @override
+  String get prayerTimeLoadError =>
+      'Не удалось загрузить время молитв. Пожалуйста, попробуйте позже.';
 }

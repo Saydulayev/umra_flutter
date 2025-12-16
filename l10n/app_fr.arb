@@ -220,5 +220,15 @@
   "donationErrorLoadProductsFailed": "Erreur lors du chargement des produits. Veuillez réessayer plus tard.",
   "donationErrorPurchaseStartFailed": "Échec du démarrage de l'achat. Veuillez réessayer.",
   "donationErrorProductsNotFound": "Produits introuvables. Raisons possibles :\n1. Les produits ne sont pas encore activés dans Google Play Console (peut prendre plusieurs heures)\n2. L'application n'est pas publiée dans la piste de test\n3. IDs de produits incorrects\n4. Vous devez vous connecter à Google Play avec un compte de test",
-  "audioLoadError": "Erreur lors du chargement de l'audio"
+  "audioLoadError": "Erreur lors du chargement de l'audio",
+  "mecca": "La Mecque",
+  "fajr": "Fajr",
+  "sunrise": "Lever du soleil",
+  "dhuhr": "Dhuhr",
+  "asr": "Asr",
+  "maghrib": "Maghrib",
+  "isha": "Isha",
+  "qiyam": "Qiyam",
+  "prayerTimeIn": "dans",
+  "prayerTimeLoadError": "Impossible de charger les heures de prière. Veuillez réessayer plus tard."
 }

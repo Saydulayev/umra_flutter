@@ -775,4 +775,35 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get audioLoadError => 'Error loading audio';
+
+  @override
+  String get mecca => 'Mecca';
+
+  @override
+  String get fajr => 'Fajr';
+
+  @override
+  String get sunrise => 'Sunrise';
+
+  @override
+  String get dhuhr => 'Dhuhr';
+
+  @override
+  String get asr => 'Asr';
+
+  @override
+  String get maghrib => 'Maghrib';
+
+  @override
+  String get isha => 'Isha';
+
+  @override
+  String get qiyam => 'Qiyam';
+
+  @override
+  String get prayerTimeIn => 'in';
+
+  @override
+  String get prayerTimeLoadError =>
+      'Failed to load prayer times. Please try again later.';
 }

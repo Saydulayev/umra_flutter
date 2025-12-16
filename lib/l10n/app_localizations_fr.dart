@@ -777,4 +777,35 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get audioLoadError => 'Erreur lors du chargement de l\'audio';
+
+  @override
+  String get mecca => 'La Mecque';
+
+  @override
+  String get fajr => 'Fajr';
+
+  @override
+  String get sunrise => 'Lever du soleil';
+
+  @override
+  String get dhuhr => 'Dhuhr';
+
+  @override
+  String get asr => 'Asr';
+
+  @override
+  String get maghrib => 'Maghrib';
+
+  @override
+  String get isha => 'Isha';
+
+  @override
+  String get qiyam => 'Qiyam';
+
+  @override
+  String get prayerTimeIn => 'dans';
+
+  @override
+  String get prayerTimeLoadError =>
+      'Impossible de charger les heures de prière. Veuillez réessayer plus tard.';
 }

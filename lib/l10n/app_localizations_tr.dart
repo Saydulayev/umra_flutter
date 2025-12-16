@@ -772,4 +772,35 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get audioLoadError => 'Ses yüklenirken hata oluştu';
+
+  @override
+  String get mecca => 'Mekke';
+
+  @override
+  String get fajr => 'Fecir';
+
+  @override
+  String get sunrise => 'Güneş Doğuşu';
+
+  @override
+  String get dhuhr => 'Öğle';
+
+  @override
+  String get asr => 'İkindi';
+
+  @override
+  String get maghrib => 'Akşam';
+
+  @override
+  String get isha => 'Yatsı';
+
+  @override
+  String get qiyam => 'Kıyam';
+
+  @override
+  String get prayerTimeIn => 'içinde';
+
+  @override
+  String get prayerTimeLoadError =>
+      'Namaz vakitleri yüklenemedi. Lütfen daha sonra tekrar deneyin.';
 }
