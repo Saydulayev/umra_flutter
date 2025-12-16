@@ -10,7 +10,6 @@ import '../models/app_theme.dart';
 import '../widgets/theme_selection_sheet.dart';
 import '../constants/app_constants.dart';
 import '../constants/review_config.dart';
-import 'privacy_policy_screen.dart';
 import 'donation_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -195,22 +194,6 @@ class SettingsScreen extends StatelessWidget {
                 title: l10n.supportTheDeveloperString,
                 onTap: () {
                   showDonationBottomSheet(context);
-                },
-                theme: theme,
-              ),
-              const SizedBox(height: 8),
-              // Privacy Policy
-              _buildSettingsItem(
-                context,
-                icon: Icons.privacy_tip,
-                title: l10n.privacyPolicyTitle,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const PrivacyPolicyScreen(),
-                    ),
-                  );
                 },
                 theme: theme,
               ),
