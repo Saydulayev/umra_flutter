@@ -721,7 +721,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get asr => 'Аср';
 
   @override
-  String get maghrib => 'Магриб';
+  String get maghrib => 'Маг\'риб';
 
   @override
   String get isha => 'Иша';
