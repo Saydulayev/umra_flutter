@@ -797,7 +797,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get isha => 'Иша';
 
   @override
-  String get qiyam => 'Кийам';
+  String get qiyam => 'Кыям';
 
   @override
   String get prayerTimeIn => 'через';
