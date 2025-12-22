@@ -297,7 +297,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step1SecondArabic =>
-      'اَللُّهُمَّ هَذِهِ عُمْرَةً لاٰ رِيَاءَ فِيهَا وَلَا سُمْعَةَ';
+      'اَللَّهُمَّ هَذِهِ عُمْرَةٌ لَا رِيَاءَ فِيهَا وَلَا سُمْعَةَ';
 
   @override
   String get step1OAllahUmrah =>
@@ -733,4 +733,34 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get prayerTimeLoadError =>
       'Namaz vakitleri yüklenemedi. Lütfen daha sonra tekrar deneyin.';
+
+  @override
+  String get hajjTarwiyahTitle => 'Terviye Günü';
+
+  @override
+  String get hajjTarwiyahSubtitle => 'Zilhicce\'nin 8\'i';
+
+  @override
+  String get hajjArafatTitle => 'Arafat\'ta Durma Günü';
+
+  @override
+  String get hajjArafatSubtitle => 'Zilhicce\'nin 9\'u';
+
+  @override
+  String get hajjNahrTitle => 'Kurban Günü';
+
+  @override
+  String get hajjNahrSubtitle => 'Zilhicce\'nin 10\'u';
+
+  @override
+  String get hajjTashriqTitle => 'Teşrik Günleri';
+
+  @override
+  String get hajjTashriqSubtitle => 'Zilhicce\'nin 11, 12 ve 13\'ü';
+
+  @override
+  String get hajjWadaTitle => 'Veda Tavafı';
+
+  @override
+  String get hajj => 'Hac';
 }

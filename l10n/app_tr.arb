@@ -91,7 +91,7 @@
   "step1WhenEnteringIhram": "İhrama girerken şunu söyleyin:",
   "step1FirstArabic": "لَبَّيْكَ اللَّهُمَّ بِعُمْرَةَ",
   "step1TurnToQiblah": "\nLabbayka Allahumma bi-´umrah.\n\nKıbleye yönelin ve şunu söyleyin:\n",
-  "step1SecondArabic": "اَللُّهُمَّ هَذِهِ عُمْرَةً لاٰ رِيَاءَ فِيهَا وَلَا سُمْعَةَ",
+  "step1SecondArabic": "اَللَّهُمَّ هَذِهِ عُمْرَةٌ لَا رِيَاءَ فِيهَا وَلَا سُمْعَةَ",
   "step1OAllahUmrah": "Allahumma hazihi 'umrah, la riya'a fiha wa la sum'ah.\n    \nEy Allah'ım! Bu umre, gösteriş ve şöhret için değildir!\n    \n    \nDaha sonra yüksek sesle telbiyeye başlayın:",
   "step1ThirdArabic": "لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيكَ لَكَ لَبَّيْكَ،\nإِنَّ الْحَمْدَ، وَالنِّعْمَةَ، لَكَ وَالْمُلْكَ، لاَ شَرِيكَ لَكَ",
   "step1Labbayka": "Labbayka Allahumma labbayk! Labbayka laa shariika laka labbayka! Innal hamda wanni'mata laka wal mulk, laa shariika lak\n    \n«Buyur Allah'ım, buyur! Buyur, Senin hiçbir ortağın yoktur! Buyur! Şüphesiz hamd, nimet ve mülk yalnızca Sana aittir! Senin hiçbir ortağın yoktur!».\n    \n    \nMekke'nin Harem bölgesine ulaştığınızda ve Mekke'nin evlerini gördüğünüzde telbiyeyi bırakmalısınız.",
@@ -210,5 +210,15 @@
   "isha": "Yatsı",
   "qiyam": "Kıyam",
   "prayerTimeIn": "içinde",
-  "prayerTimeLoadError": "Namaz vakitleri yüklenemedi. Lütfen daha sonra tekrar deneyin."
+  "prayerTimeLoadError": "Namaz vakitleri yüklenemedi. Lütfen daha sonra tekrar deneyin.",
+  "hajjTarwiyahTitle": "Terviye Günü",
+  "hajjTarwiyahSubtitle": "Zilhicce'nin 8'i",
+  "hajjArafatTitle": "Arafat'ta Durma Günü",
+  "hajjArafatSubtitle": "Zilhicce'nin 9'u",
+  "hajjNahrTitle": "Kurban Günü",
+  "hajjNahrSubtitle": "Zilhicce'nin 10'u",
+  "hajjTashriqTitle": "Teşrik Günleri",
+  "hajjTashriqSubtitle": "Zilhicce'nin 11, 12 ve 13'ü",
+  "hajjWadaTitle": "Veda Tavafı",
+  "hajj": "Hac"
 }

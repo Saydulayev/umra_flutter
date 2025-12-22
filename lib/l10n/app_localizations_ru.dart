@@ -298,7 +298,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get step1SecondArabic =>
-      'اَللُّهُمَّ هَذِهِ عُمْرَةً لاٰ رِيَاءَ فِيهَا وَلَا سُمْعَةَ';
+      'اَللَّهُمَّ هَذِهِ عُمْرَةٌ لَا رِيَاءَ فِيهَا وَلَا سُمْعَةَ';
 
   @override
   String get step1OAllahUmrah =>
@@ -735,4 +735,34 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get prayerTimeLoadError =>
       'Не удалось загрузить время молитв. Пожалуйста, попробуйте позже.';
+
+  @override
+  String get hajjTarwiyahTitle => 'День ат-тарвия';
+
+  @override
+  String get hajjTarwiyahSubtitle => '8-е зу-ль-хиджжа';
+
+  @override
+  String get hajjArafatTitle => 'День стояния на Арафате';
+
+  @override
+  String get hajjArafatSubtitle => '9-е зу-ль-хиджжа';
+
+  @override
+  String get hajjNahrTitle => 'День жертвоприношения';
+
+  @override
+  String get hajjNahrSubtitle => '10-е зу-ль-хиджжа';
+
+  @override
+  String get hajjTashriqTitle => 'Дни ат-ташрик';
+
+  @override
+  String get hajjTashriqSubtitle => '11, 12 и 13-е зу-ль-хиджжа';
+
+  @override
+  String get hajjWadaTitle => 'Прощальный обход Каабы';
+
+  @override
+  String get hajj => 'Хадж';
 }

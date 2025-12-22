@@ -91,7 +91,7 @@
   "step1WhenEnteringIhram": "Lors de l'entrée en état d'Ihram, dites:",
   "step1FirstArabic": "لَبَّيْكَ اللَّهُمَّ بِعُمْرَةَ",
   "step1TurnToQiblah": "\nLabbayka Allahumma bi-'Umrah.\n\nTournez votre visage vers la Qiblah et dites:\n",
-  "step1SecondArabic": "اَللُّهُمَّ هَذِهِ عُمْرَةً لاٰ رِيَاءَ فِيهَا وَلَا سُمْعَةَ",
+  "step1SecondArabic": "اَللَّهُمَّ هَذِهِ عُمْرَةٌ لَا رِيَاءَ فِيهَا وَلَا سُمْعَةَ",
   "step1OAllahUmrah": "Allahumma hadhihi 'umrah la riya'a fiha wa la soum'a\n    \nÔ Allah, cette 'Umrah – il n'y a ni ostentation ni recherche de renommée en elle!\n    \nEnsuite, commencez à réciter à haute voix la Talbiyah:",
   "step1ThirdArabic": "لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيكَ لَكَ لَبَّيْكَ،\nإِنَّ الْحَمْدَ، وَالنِّعْمَةَ، لَكَ وَالْمُلْكَ، لاَ شَرِيكَ لَكَ",
   "step1Labbayka": "Labbayka Allahumma labbayk! Labbayka la sharika laka labbayk! Innal hamda wan ni'mata laka wal mulk, la sharika laka.\n    \n«Me voici répondant à Ton appel, ô Allah ! Tu n'as aucun associé, me voici ! La louange et le bienfait T'appartiennent, ainsi que la Royauté. Tu n'as aucun associé!».\n    \nAprès avoir atteint la zone sacrée de La Mecque et aperçu les maisons de La Mecque, cessez de réciter la Talbiyah.",
@@ -210,5 +210,15 @@
   "isha": "Isha",
   "qiyam": "Qiyam",
   "prayerTimeIn": "dans",
-  "prayerTimeLoadError": "Impossible de charger les heures de prière. Veuillez réessayer plus tard."
+  "prayerTimeLoadError": "Impossible de charger les heures de prière. Veuillez réessayer plus tard.",
+  "hajjTarwiyahTitle": "Jour de Tarwiyah",
+  "hajjTarwiyahSubtitle": "8 Dhul-Hijjah",
+  "hajjArafatTitle": "Jour de la station à Arafat",
+  "hajjArafatSubtitle": "9 Dhul-Hijjah",
+  "hajjNahrTitle": "Jour du sacrifice",
+  "hajjNahrSubtitle": "10 Dhul-Hijjah",
+  "hajjTashriqTitle": "Jours de Tashriq",
+  "hajjTashriqSubtitle": "11, 12 et 13 Dhul-Hijjah",
+  "hajjWadaTitle": "Tawaf d'adieu",
+  "hajj": "Hajj"
 }

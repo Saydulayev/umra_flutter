@@ -10,7 +10,10 @@ import '../screens/step_detail_screen.dart';
 import '../screens/useful_info_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/prayer_time_screen.dart';
-import '../widgets/styled_image_widget.dart';
+import '../widgets/ios_segmented_control.dart';
+import '../widgets/hajj_icon_widget.dart';
+
+enum PilgrimageType { umra, hajj }
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   Timer? _reviewCheckTimer;
   bool _isCheckingReview =
       false; // Флаг для предотвращения параллельных проверок
+  PilgrimageType _selectedType = PilgrimageType.umra;
 
   @override
   void initState() {
@@ -103,12 +107,15 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final theme = themeProvider.selectedTheme;
+    final l10n = AppLocalizations.of(context);
 
     return Scaffold(
       backgroundColor: theme.backgroundColor,
       appBar: AppBar(
         title: Text(
-          'UMRA',
+          _selectedType == PilgrimageType.umra
+              ? (l10n?.mainScreenNameString ?? 'UMRA')
+              : (l10n?.hajj.toUpperCase() ?? 'ХАДЖ'),
           style: TextStyle(fontWeight: FontWeight.bold, color: theme.textColor),
         ),
         centerTitle: true,
@@ -137,26 +144,77 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           ),
         ],
       ),
-      body: _buildListView(context, theme),
+      body: Stack(
+        children: [
+          _buildListView(context, theme),
+          // Сегментированный контрол внизу экрана
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: SafeArea(
+              child: Container(
+                color: theme.backgroundColor,
+                child: IOSSegmentedControl<PilgrimageType>(
+                  segments: [
+                    SegmentItem<PilgrimageType>(
+                      value: PilgrimageType.umra,
+                      label: l10n?.mainScreenNameString ?? 'UMRA',
+                      icon: 'U',
+                    ),
+                    SegmentItem<PilgrimageType>(
+                      value: PilgrimageType.hajj,
+                      label: l10n?.hajj ?? 'Хадж',
+                      icon: 'H',
+                    ),
+                  ],
+                  selectedValue: _selectedType,
+                  onValueChanged: (type) {
+                    setState(() {
+                      _selectedType = type;
+                    });
+                  },
+                  activeColor: theme.primaryColor,
+                  inactiveColor: theme.isDark
+                      ? Colors.grey.shade600
+                      : Colors.grey.shade400,
+                  backgroundColor: theme.lightBackgroundColor,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
   Widget _buildListView(BuildContext context, AppTheme theme) {
     final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+    // Добавляем отступ снизу для сегментированного контрола
     return ListView.builder(
       padding: EdgeInsets.only(
         top: 10,
-        bottom: bottomPadding + 10,
+        bottom: bottomPadding + 100, // Место для сегментированного контрола
         left: 8,
         right: 8,
       ),
-      itemCount: UmraSteps.allSteps.length,
+      itemCount: _selectedType == PilgrimageType.umra
+          ? UmraSteps.allSteps.length
+          : HajjSteps.allSteps.length,
       itemBuilder: (context, index) {
-        final step = UmraSteps.allSteps[index];
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-          child: _buildStepRow(context, step, theme),
-        );
+        if (_selectedType == PilgrimageType.umra) {
+          final step = UmraSteps.allSteps[index];
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            child: _buildStepRow(context, step, theme),
+          );
+        } else {
+          final step = HajjSteps.allSteps[index];
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            child: _buildHajjStepRow(context, step, theme),
+          );
+        }
       },
     );
   }
@@ -184,8 +242,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         ),
         child: Row(
           children: [
-            // Изображение
-            StyledImageWithTheme(imageName: step.imageName, theme: theme),
+            // Иконка с текстом (как для Хаджа)
+            HajjIconWidget(iconText: step.iconText, theme: theme),
             const SizedBox(width: 15),
             // Текст
             Expanded(
@@ -238,6 +296,98 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     }
   }
 
+  void _navigateToHajjStep(BuildContext context, HajjStep step) {
+    // TODO: Создать экран деталей для шагов Хаджа
+    // Пока что просто ничего не делаем или показываем заглушку
+  }
+
+  /// Виджет для отображения шага Хаджа с подзаголовком
+  Widget _buildHajjStepRow(
+    BuildContext context,
+    HajjStep step,
+    AppTheme theme,
+  ) {
+    return GestureDetector(
+      onTap: () {
+        _navigateToHajjStep(context, step);
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+        decoration: BoxDecoration(
+          color: theme.lightBackgroundColor,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: theme.isDark
+                  ? Colors.black.withValues(alpha: 0.3)
+                  : Colors.black.withValues(alpha: 0.08),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            // Иконка с текстом
+            HajjIconWidget(iconText: step.iconText, theme: theme),
+            const SizedBox(width: 15),
+            // Текст с заголовком и подзаголовком
+            Expanded(
+              child: Builder(
+                builder: (context) {
+                  final l10n = AppLocalizations.of(context);
+                  final title = _getLocalizedHajjTitle(step.titleKey, l10n);
+                  final subtitle = step.subtitleKey != null
+                      ? _getLocalizedHajjSubtitle(step.subtitleKey!, l10n)
+                      : null;
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        title,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: theme.textColor,
+                        ),
+                      ),
+                      if (subtitle != null) ...[
+                        const SizedBox(height: 4),
+                        Text(
+                          subtitle,
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.normal,
+                            color: theme.secondaryTextColor,
+                          ),
+                        ),
+                      ],
+                    ],
+                  );
+                },
+              ),
+            ),
+            // Стрелка
+            Container(
+              width: 24,
+              height: 24,
+              decoration: BoxDecoration(
+                color: theme.primaryColor.withValues(alpha: 0.1),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.chevron_right,
+                size: 14,
+                color: theme.textColor,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   String _getLocalizedTitle(String key, AppLocalizations? l10n) {
     if (l10n == null) return key;
 
@@ -258,6 +408,42 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         return l10n.titleShaveHeadScreen;
       case 'usefulTitle':
         return l10n.usefulTitle;
+      default:
+        return key;
+    }
+  }
+
+  String _getLocalizedHajjTitle(String key, AppLocalizations? l10n) {
+    if (l10n == null) return key;
+
+    switch (key) {
+      case 'hajjTarwiyahTitle':
+        return l10n.hajjTarwiyahTitle;
+      case 'hajjArafatTitle':
+        return l10n.hajjArafatTitle;
+      case 'hajjNahrTitle':
+        return l10n.hajjNahrTitle;
+      case 'hajjTashriqTitle':
+        return l10n.hajjTashriqTitle;
+      case 'hajjWadaTitle':
+        return l10n.hajjWadaTitle;
+      default:
+        return key;
+    }
+  }
+
+  String _getLocalizedHajjSubtitle(String key, AppLocalizations? l10n) {
+    if (l10n == null) return key;
+
+    switch (key) {
+      case 'hajjTarwiyahSubtitle':
+        return l10n.hajjTarwiyahSubtitle;
+      case 'hajjArafatSubtitle':
+        return l10n.hajjArafatSubtitle;
+      case 'hajjNahrSubtitle':
+        return l10n.hajjNahrSubtitle;
+      case 'hajjTashriqSubtitle':
+        return l10n.hajjTashriqSubtitle;
       default:
         return key;
     }

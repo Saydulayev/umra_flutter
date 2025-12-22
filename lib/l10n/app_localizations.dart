@@ -655,7 +655,7 @@ abstract class AppLocalizations {
   /// No description provided for @step1SecondArabic.
   ///
   /// In en, this message translates to:
-  /// **'اَللُّهُمَّ هَذِهِ عُمْرَةً لاٰ رِيَاءَ فِيهَا وَلَا سُمْعَةَ'**
+  /// **'اَللَّهُمَّ هَذِهِ عُمْرَةٌ لَا رِيَاءَ فِيهَا وَلَا سُمْعَةَ'**
   String get step1SecondArabic;
 
   /// No description provided for @step1OAllahUmrah.
@@ -1371,6 +1371,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to load prayer times. Please try again later.'**
   String get prayerTimeLoadError;
+
+  /// No description provided for @hajjTarwiyahTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Day of Tarwiyah'**
+  String get hajjTarwiyahTitle;
+
+  /// No description provided for @hajjTarwiyahSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'8th of Dhu al-Hijjah'**
+  String get hajjTarwiyahSubtitle;
+
+  /// No description provided for @hajjArafatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Day of Standing at Arafat'**
+  String get hajjArafatTitle;
+
+  /// No description provided for @hajjArafatSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'9th of Dhu al-Hijjah'**
+  String get hajjArafatSubtitle;
+
+  /// No description provided for @hajjNahrTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Day of Sacrifice'**
+  String get hajjNahrTitle;
+
+  /// No description provided for @hajjNahrSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'10th of Dhu al-Hijjah'**
+  String get hajjNahrSubtitle;
+
+  /// No description provided for @hajjTashriqTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Days of Tashriq'**
+  String get hajjTashriqTitle;
+
+  /// No description provided for @hajjTashriqSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'11th, 12th and 13th of Dhu al-Hijjah'**
+  String get hajjTashriqSubtitle;
+
+  /// No description provided for @hajjWadaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Farewell Tawaf'**
+  String get hajjWadaTitle;
+
+  /// No description provided for @hajj.
+  ///
+  /// In en, this message translates to:
+  /// **'Hajj'**
+  String get hajj;
 }
 
 class _AppLocalizationsDelegate

@@ -300,7 +300,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get step1SecondArabic =>
-      'اَللُّهُمَّ هَذِهِ عُمْرَةً لاٰ رِيَاءَ فِيهَا وَلَا سُمْعَةَ';
+      'اَللَّهُمَّ هَذِهِ عُمْرَةٌ لَا رِيَاءَ فِيهَا وَلَا سُمْعَةَ';
 
   @override
   String get step1OAllahUmrah =>
@@ -738,4 +738,34 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get prayerTimeLoadError =>
       'Impossible de charger les heures de prière. Veuillez réessayer plus tard.';
+
+  @override
+  String get hajjTarwiyahTitle => 'Jour de Tarwiyah';
+
+  @override
+  String get hajjTarwiyahSubtitle => '8 Dhul-Hijjah';
+
+  @override
+  String get hajjArafatTitle => 'Jour de la station à Arafat';
+
+  @override
+  String get hajjArafatSubtitle => '9 Dhul-Hijjah';
+
+  @override
+  String get hajjNahrTitle => 'Jour du sacrifice';
+
+  @override
+  String get hajjNahrSubtitle => '10 Dhul-Hijjah';
+
+  @override
+  String get hajjTashriqTitle => 'Jours de Tashriq';
+
+  @override
+  String get hajjTashriqSubtitle => '11, 12 et 13 Dhul-Hijjah';
+
+  @override
+  String get hajjWadaTitle => 'Tawaf d\'adieu';
+
+  @override
+  String get hajj => 'Hajj';
 }

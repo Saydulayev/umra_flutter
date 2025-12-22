@@ -91,7 +91,7 @@
   "step1WhenEnteringIhram": "Ketika memasuki keadaan Ihram, ucapkan:",
   "step1FirstArabic": "لَبَّيْكَ اللَّهُمَّ بِعُمْرَةَ",
   "step1TurnToQiblah": "\nLabbayk Allahumma bi 'Umrah.\n\nHadapkanlah wajah ke arah kiblat dan ucapkan:\n",
-  "step1SecondArabic": "اَللُّهُمَّ هَذِهِ عُمْرَةً لاٰ رِيَاءَ فِيهَا وَلَا سُمْعَةَ",
+  "step1SecondArabic": "اَللَّهُمَّ هَذِهِ عُمْرَةٌ لَا رِيَاءَ فِيهَا وَلَا سُمْعَةَ",
   "step1OAllahUmrah": "Allahumma hadzihil 'Umrata la riyaa-a fiiha wa laa sum'ah.\n\nYa Allah, Umrah ini tidak ada unsur riya (pamer) di dalamnya dan tidak pula untuk mencari ketenaran!\n\nKemudian mulailah mengucapkan Talbiyah dengan suara keras:",
   "step1ThirdArabic": "لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيكَ لَكَ لَبَّيْكَ،\nإِنَّ الْحَمْدَ، وَالنِّعْمَةَ، لَكَ وَالْمُلْكَ، لاَ شَرِيكَ لَكَ",
   "step1Labbayka": "Labbayk Allahumma labbayk! Labbayka laa syariika laka labbayk! Innal hamda wan-ni'mata laka wal-mulk, laa syariika lak.\n\n«Aku memenuhi panggilan-Mu, ya Allah! Aku memenuhi panggilan-Mu! Aku memenuhi panggilan-Mu, tiada sekutu bagi-Mu! Aku memenuhi panggilan-Mu! Sesungguhnya segala puji, nikmat, dan kekuasaan hanya milik-Mu. Tiada sekutu bagi-Mu!».\n\nKetika mencapai tanah suci Mekah dan melihat rumah-rumah Mekah, hentikan bacaan Talbiyah.",
@@ -210,5 +210,15 @@
   "isha": "Isya",
   "qiyam": "Qiyam",
   "prayerTimeIn": "dalam",
-  "prayerTimeLoadError": "Gagal memuat waktu shalat. Silakan coba lagi nanti."
+  "prayerTimeLoadError": "Gagal memuat waktu shalat. Silakan coba lagi nanti.",
+  "hajjTarwiyahTitle": "Hari Tarwiyah",
+  "hajjTarwiyahSubtitle": "8 Dzulhijjah",
+  "hajjArafatTitle": "Hari Wukuf di Arafat",
+  "hajjArafatSubtitle": "9 Dzulhijjah",
+  "hajjNahrTitle": "Hari Penyembelihan",
+  "hajjNahrSubtitle": "10 Dzulhijjah",
+  "hajjTashriqTitle": "Hari-hari Tasyrik",
+  "hajjTashriqSubtitle": "11, 12 dan 13 Dzulhijjah",
+  "hajjWadaTitle": "Tawaf Wada'",
+  "hajj": "Haji"
 }
