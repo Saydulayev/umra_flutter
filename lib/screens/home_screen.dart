@@ -154,11 +154,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             bottom: 0,
             child: SafeArea(
               child: Container(
-                // Используем приглушенный цвет фона для контейнера
-                color: theme.isDark
-                    ? theme.backgroundColor
-                    : Color.lerp(theme.backgroundColor, Colors.white, 0.3) ??
-                          theme.backgroundColor,
+                color: Colors.transparent,
                 child: IOSSegmentedControl<PilgrimageType>(
                   segments: [
                     SegmentItem<PilgrimageType>(

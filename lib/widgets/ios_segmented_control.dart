@@ -72,11 +72,25 @@ class IOSSegmentedControl<T> extends StatelessWidget {
     }
 
     if (theme!.isDark) {
-      return Colors.black.withValues(alpha: 0.4);
+      return Colors.black.withValues(alpha: 0.6);
     }
 
-    // Легкая темная тень на основе цвета темы
-    return theme!.backgroundColor.withValues(alpha: 0.6);
+    // Более темная тень на основе цвета темы для лучшей видимости
+    return theme!.backgroundColor.withValues(alpha: 0.8);
+  }
+
+  /// Получить цвет обводки для активного сегмента
+  Color _getActiveBorderColor() {
+    if (theme == null) {
+      return const Color(0xFF8E9AAF);
+    }
+
+    if (theme!.isDark) {
+      return Colors.white.withValues(alpha: 0.3);
+    }
+
+    // Темная обводка на основе цвета темы
+    return theme!.backgroundColor.withValues(alpha: 0.7);
   }
 
   /// Получить цвет светлой тени в зависимости от темы
@@ -155,6 +169,9 @@ class IOSSegmentedControl<T> extends StatelessWidget {
                           end: Alignment.bottomRight,
                           colors: _getActiveGradient(),
                         )
+                      : null,
+                  border: isSelected
+                      ? Border.all(color: _getActiveBorderColor(), width: 1.5)
                       : null,
                   boxShadow: isSelected
                       ? [
