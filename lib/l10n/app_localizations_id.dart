@@ -766,5 +766,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get hajjWadaTitle => 'Tawaf Wada\'';
 
   @override
+  String get umra => 'Umrah';
+
+  @override
   String get hajj => 'Haji';
 }

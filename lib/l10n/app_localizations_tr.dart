@@ -762,5 +762,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get hajjWadaTitle => 'Veda Tavafı';
 
   @override
+  String get umra => 'Umre';
+
+  @override
   String get hajj => 'Hac';
 }

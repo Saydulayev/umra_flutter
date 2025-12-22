@@ -767,5 +767,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get hajjWadaTitle => 'Tawaf d\'adieu';
 
   @override
+  String get umra => 'Omra';
+
+  @override
   String get hajj => 'Hajj';
 }

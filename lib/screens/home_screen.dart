@@ -114,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       appBar: AppBar(
         title: Text(
           _selectedType == PilgrimageType.umra
-              ? (l10n?.mainScreenNameString ?? 'UMRA')
+              ? (l10n?.umra.toUpperCase() ?? 'UMRA')
               : (l10n?.hajj.toUpperCase() ?? 'ХАДЖ'),
           style: TextStyle(fontWeight: FontWeight.bold, color: theme.textColor),
         ),
@@ -154,12 +154,16 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
             bottom: 0,
             child: SafeArea(
               child: Container(
-                color: theme.backgroundColor,
+                // Используем приглушенный цвет фона для контейнера
+                color: theme.isDark
+                    ? theme.backgroundColor
+                    : Color.lerp(theme.backgroundColor, Colors.white, 0.3) ??
+                          theme.backgroundColor,
                 child: IOSSegmentedControl<PilgrimageType>(
                   segments: [
                     SegmentItem<PilgrimageType>(
                       value: PilgrimageType.umra,
-                      label: l10n?.mainScreenNameString ?? 'UMRA',
+                      label: l10n?.umra ?? 'Умра',
                       icon: 'U',
                     ),
                     SegmentItem<PilgrimageType>(
@@ -175,10 +179,9 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
                     });
                   },
                   activeColor: theme.primaryColor,
-                  inactiveColor: theme.isDark
-                      ? Colors.grey.shade600
-                      : Colors.grey.shade400,
+                  inactiveColor: Colors.black87,
                   backgroundColor: theme.lightBackgroundColor,
+                  theme: theme,
                 ),
               ),
             ),

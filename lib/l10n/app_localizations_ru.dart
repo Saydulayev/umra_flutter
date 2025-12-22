@@ -764,5 +764,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get hajjWadaTitle => 'Прощальный обход Каабы';
 
   @override
+  String get umra => 'Умра';
+
+  @override
   String get hajj => 'Хадж';
 }

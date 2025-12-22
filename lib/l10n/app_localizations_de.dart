@@ -770,5 +770,8 @@ class AppLocalizationsDe extends AppLocalizations {
   String get hajjWadaTitle => 'Abschieds-Tawaf';
 
   @override
-  String get hajj => 'Hadsch';
+  String get umra => 'Umra';
+
+  @override
+  String get hajj => 'Haddsch';
 }

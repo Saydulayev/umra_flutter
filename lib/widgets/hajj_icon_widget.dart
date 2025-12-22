@@ -46,8 +46,10 @@ class HajjIconWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final backgroundColor = theme.lightBackgroundColor;
-    final textColor = theme.isDark ? Colors.grey.shade300 : Colors.black87;
+    final backgroundColor = theme.isDark
+        ? Colors.white
+        : theme.lightBackgroundColor;
+    final textColor = theme.isDark ? Colors.black87 : Colors.black87;
 
     return Container(
       width: 100,

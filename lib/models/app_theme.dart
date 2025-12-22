@@ -59,7 +59,7 @@ enum AppTheme {
       case AppTheme.green:
         return const Color(0xFFE6F3E6);
       case AppTheme.gold:
-        return const Color(0xFFF2E6B3);
+        return const Color(0xFFFAF7ED);
       case AppTheme.turquoise:
         return const Color(0xFFE6F2F2);
       case AppTheme.dark:
@@ -119,7 +119,7 @@ enum AppTheme {
       case AppTheme.green:
         return const Color(0xFFE6F3E6);
       case AppTheme.gold:
-        return const Color(0xFFF2E6B3);
+        return const Color(0xFFFAF7ED);
       case AppTheme.turquoise:
         return const Color(0xFFE6F2F2);
       case AppTheme.dark:
@@ -131,8 +131,10 @@ enum AppTheme {
   bool get isDark => this == AppTheme.dark;
 
   /// Text color appropriate for this theme
-  Color get textColor => isDark ? const Color(0xFFE5E7EB) : const Color(0xFF1F2937);
+  Color get textColor =>
+      isDark ? const Color(0xFFE5E7EB) : const Color(0xFF1F2937);
 
   /// Secondary text color appropriate for this theme
-  Color get secondaryTextColor => isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
+  Color get secondaryTextColor =>
+      isDark ? const Color(0xFF9CA3AF) : const Color(0xFF6B7280);
 }

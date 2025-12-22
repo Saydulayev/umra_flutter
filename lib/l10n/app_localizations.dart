@@ -1426,6 +1426,12 @@ abstract class AppLocalizations {
   /// **'Farewell Tawaf'**
   String get hajjWadaTitle;
 
+  /// No description provided for @umra.
+  ///
+  /// In en, this message translates to:
+  /// **'Umra'**
+  String get umra;
+
   /// No description provided for @hajj.
   ///
   /// In en, this message translates to:
