@@ -7,6 +7,7 @@ import '../providers/user_preferences_provider.dart';
 import '../models/step_model.dart';
 import '../models/app_theme.dart';
 import '../screens/step_detail_screen.dart';
+import '../screens/hajj_step_detail_screen.dart';
 import '../screens/useful_info_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/prayer_time_screen.dart';
@@ -296,8 +297,12 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   }
 
   void _navigateToHajjStep(BuildContext context, HajjStep step) {
-    // TODO: Создать экран деталей для шагов Хаджа
-    // Пока что просто ничего не делаем или показываем заглушку
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HajjStepDetailScreen(step: step),
+      ),
+    );
   }
 
   /// Виджет для отображения шага Хаджа с подзаголовком
