@@ -771,4 +771,218 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get hajj => 'Hajj';
+
+  @override
+  String get hajj_step1_title => '8 Dhou al-Hidjdja — Jour d\'at-Tarwiya';
+
+  @override
+  String get hajj_step1_ihram_title => 'Entrée en état d\'Ihram';
+
+  @override
+  String get hajj_step1_ihram_text =>
+      'Entrez en état d\'Ihram à votre lieu de résidence après l\'aube (Fadjr) et avant midi (Zouhr).\n\nFormulez l\'intention d\'accomplir le Haddj et dites :';
+
+  @override
+  String get hajj_step1_ihram_arabic => 'لَبَّيْكَ اللَّهُمَّ بِحَجٍّ';
+
+  @override
+  String get hajj_step1_ihram_transliteration => 'Labbayka Allahoumma bi-Haddj';
+
+  @override
+  String get hajj_step1_ihram_translation =>
+      'Me voici devant Toi, ô Allah, [pour accomplir] le Haddj.\n\nTournez-vous en direction de la Qibla et dites :';
+
+  @override
+  String get hajj_step1_ihram_dua_arabic =>
+      'اللَّهُمَّ هَذِهِ حِجَّةٌ لَا رِيَاءَ فِيهَا وَلَا سُمْعَةَ';
+
+  @override
+  String get hajj_step1_ihram_dua_transliteration =>
+      'Allahoumma khazihi hiddja la riyâ\' fî-ha wa la soum\'a';
+
+  @override
+  String get hajj_step1_ihram_dua_translation =>
+      'Ô Allah, ce Haddj est exempt d\'ostentation et de recherche de renommée !';
+
+  @override
+  String get hajj_step1_talbiyah_title => 'Talbiya';
+
+  @override
+  String get hajj_step1_talbiyah_text =>
+      'Commencez à réciter la Talbiya à voix haute, en la répétant continuellement jusqu\'à ce que vous jetiez les cailloux sur la Grande Stèle (le 10 Dhou al-Hidjdja) :';
+
+  @override
+  String get hajj_step1_talbiyah_arabic =>
+      'لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ، وَالنِّعْمَةَ، لَكَ وَالْمُلْكَ، لاَ شَرِيكَ لَكَ';
+
+  @override
+  String get hajj_step1_talbiyah_transliteration =>
+      'Labbayka Allahoumma labbayk ! Labbayka lâ charîka laka labbayk ! Inna l-hamda wa n-ni\'mata laka wa l-moulk, lâ charîka lak';
+
+  @override
+  String get hajj_step1_talbiyah_translation =>
+      'Me voici devant Toi, ô Allah ! Me voici devant Toi ! Me voici devant Toi, Tu n\'as aucun associé ! Me voici devant Toi ! En vérité, la louange, le bienfait et la souveraineté T\'appartiennent ! Tu n\'as aucun associé !';
+
+  @override
+  String get hajj_step1_mina_title => 'Déplacement vers la vallée de Mina';
+
+  @override
+  String get hajj_step1_mina_text =>
+      'Ensuite, rendez-vous calmement dans la vallée de Mina et accomplissez-y :\n• la prière de midi (Zouhr),\n• la prière de l\'après-midi (\'Asr),\n• la prière du coucher du soleil (Maghrib),\n• la prière de la nuit (\'Icha),\n\nen les raccourcissant sans les regrouper.\n\nPassez la nuit dans la vallée de Mina.';
+
+  @override
+  String get hajj_step2_title =>
+      '9 Dhou al-Hidjdja — Jour de la station à \'Arafat';
+
+  @override
+  String get hajj_step2_arafat_title =>
+      'Déplacement vers la vallée de \'Arafat';
+
+  @override
+  String get hajj_step2_arafat_text =>
+      'Accomplissez la prière de l\'aube (Fadjr) dans la vallée de Mina, puis après le lever du soleil, dirigez-vous vers la vallée de \'Arafat. Récitez continuellement la Talbiya et le Takbir (les paroles « Allahou akbar »).\n\nSi possible, arrêtez-vous à l\'endroit appelé Namira, près de \'Arafat, et restez-y jusqu\'à midi. Ensuite, dirigez-vous vers le Wadi \'Ourana (avant \'Arafat).\n\nÉcoutez le sermon de l\'imam, puis lorsque l\'heure de la prière de midi arrive, accomplissez avec lui la prière de midi (Zouhr) et la prière de l\'après-midi (\'Asr) sous forme raccourcie et regroupée. Pour ces deux prières, un seul Adhan et deux Iqama sont proclamés. Aucune prière supplémentaire n\'est accomplie entre ces deux prières.';
+
+  @override
+  String get hajj_step2_standing_title => 'Station à \'Arafat';
+
+  @override
+  String get hajj_step2_standing_text =>
+      'Dirigez-vous ensuite vers \'Arafat et demeurez-y jusqu\'au coucher du soleil. Si possible, placez-vous près des grandes pierres dispersées au pied du mont Rahma (Djabal ar-Rahma). Si cela n\'est pas possible, alors toute la vallée de \'Arafat constitue le lieu de la station.\n\nIl convient de rester debout, tourné vers la Qibla, en levant les mains, en invoquant Allah par des supplications et en récitant la Talbiya.\n\nIl est également fortement recommandé de réciter l\'invocation suivante :';
+
+  @override
+  String get hajj_step2_dua_arabic =>
+      'لَا إِلٰهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ';
+
+  @override
+  String get hajj_step2_dua_transliteration =>
+      'Lā ilāha illā Llāhou wahda-hou lā charîka la-hou ! La-hou l-moulkou wa la-hou l-hamdou wa houwa \'alā koulli chay\'in qadîr !';
+
+  @override
+  String get hajj_step2_dua_translation =>
+      'Il n\'y a de divinité qu\'Allah, Seul, sans associé ! À Lui appartiennent la souveraineté et la louange, et Il est capable de toute chose !';
+
+  @override
+  String get hajj_step2_muzdalifah_title =>
+      'Déplacement de \'Arafat vers Mouzdalifa';
+
+  @override
+  String get hajj_step2_muzdalifah_text =>
+      'Après le coucher du soleil, partez de \'Arafat vers Mouzdalifa en faisant preuve de calme.';
+
+  @override
+  String get hajj_step2_night_title => 'Nuitée à Mouzdalifa';
+
+  @override
+  String get hajj_step2_night_text =>
+      'Une fois arrivés à Mouzdalifa, accomplissez la prière du coucher du soleil (Maghrib) et la prière de la nuit (\'Icha) sous forme raccourcie et regroupée. L\'Adhan est proclamé, puis l\'Iqama, et la prière du Maghrib est accomplie en trois Rak\'a ; ensuite, l\'Iqama est proclamée et la prière de la nuit (\'Icha) raccourcie est accomplie en deux Rak\'a. Aucune prière supplémentaire n\'est accomplie entre ces deux prières. Ensuite, reposez-vous jusqu\'à l\'aube.';
+
+  @override
+  String get hajj_step3_title => '10 Dhou al-Hidjdja — Jour du sacrifice';
+
+  @override
+  String get hajj_step3_fajr_title => 'Fadjr';
+
+  @override
+  String get hajj_step3_fajr_text =>
+      'Accomplissez la prière de l\'aube (Fadjr) à Mouzdalifa au tout début du temps qui lui est prescrit.';
+
+  @override
+  String get hajj_step3_mashaar_title =>
+      'Déplacement vers al-Mach\'ar al-Haram';
+
+  @override
+  String get hajj_step3_mashaar_text =>
+      'Dirigez-vous ensuite vers al-Mach\'ar al-Haram (une montagne située à Mouzdalifa), montez-y et tournez-vous en direction de la Qibla. Prononcez des paroles de louange envers Allah (al-hamdou li-Llah), de glorification de Sa grandeur (Allahou akbar) et d\'affirmation de l\'unicité (lā ilāha illā Llah). Invoquez Allah par des supplications jusqu\'à ce qu\'il fasse complètement jour.\n\nS\'il n\'est pas possible de se rendre à al-Mach\'ar al-Haram, cela peut être fait en tout endroit de la vallée de Mouzdalifa.';
+
+  @override
+  String get hajj_step3_mina_title => 'Déplacement vers la vallée de Mina';
+
+  @override
+  String get hajj_step3_mina_text =>
+      'Ensuite, avant le lever du soleil, partez de Mouzdalifa vers Mina en faisant preuve de calme.';
+
+  @override
+  String get hajj_step3_jamarat_title => 'Jet des cailloux sur la Grande Stèle';
+
+  @override
+  String get hajj_step3_jamarat_text =>
+      'À votre arrivée dans la vallée de Mina, rassemblez-y sept cailloux légèrement plus gros qu\'un pois pour le jet sur la Grande Stèle. Si possible, accomplissez ce rite avant midi. Si cela n\'est pas possible, il peut être accompli jusqu\'à la tombée de la nuit.\n\nTournez-vous face à la Grande Stèle et placez-vous de sorte que La Mecque soit à votre gauche et Mina à votre droite.\n\nJetez les cailloux sur la Grande Stèle un par un. À chaque jet, prononcez les paroles « Allahou akbar » (« Allah est le Plus Grand »).';
+
+  @override
+  String get hajj_step3_partial_exit_title =>
+      'Sortie partielle de l\'état d\'Ihram';
+
+  @override
+  String get hajj_step3_partial_exit_text =>
+      'Après avoir jeté le dernier caillou, cessez de réciter la Talbiya, retournez à votre lieu de résidence à Mina, revêtez des vêtements ordinaires et appliquez des parfums. Après le jet des cailloux sur la Grande Stèle, toutes les interdictions liées à l\'Ihram sont levées, à l\'exception des relations conjugales.';
+
+  @override
+  String get hajj_step3_sacrifice_title => 'Sacrifice';
+
+  @override
+  String get hajj_step3_sacrifice_text =>
+      'Si vous avez acheté un certificat pour le sacrifice d\'un animal, cela est permis. Dans le cas contraire, rendez-vous à l\'abattoir et accomplissez le sacrifice.';
+
+  @override
+  String get hajj_step3_shaving_title => 'Rasage de la tête';
+
+  @override
+  String get hajj_step3_shaving_text =>
+      'Après le sacrifice, l\'homme se rase la tête (ce qui est préférable) ou raccourcit uniformément ses cheveux (ce qui est moins préférable), tandis que la femme coupe une mèche de cheveux d\'une longueur équivalente au tiers d\'un doigt.';
+
+  @override
+  String get hajj_step3_tawaf_title => 'Tawaf principal de la Kaaba';
+
+  @override
+  String get hajj_step3_tawaf_text =>
+      'Ensuite, rendez-vous à La Mecque pour accomplir le Tawaf principal de la Kaaba (Tawaf al-Ifada). Il n\'est pas nécessaire de revêtir les vêtements de l\'Ihram.\n\nEn entrant dans la Mosquée sacrée, accomplissez tout ce que vous accomplissiez lors de la \'Umra : l\'invocation à l\'entrée de la mosquée, le Tawaf autour de la Kaaba en sept tours, la prière supplémentaire de deux Rak\'a après le Tawaf, la consommation de l\'eau de la source de Zamzam, le parcours en sept passages entre les collines de Safa et Marwa, ainsi que l\'invocation à la sortie de la mosquée.\n\nAttention ! Ce Tawaf est accompli à un rythme de marche normal du début à la fin.';
+
+  @override
+  String get hajj_step3_attention_title =>
+      'À l\'attention de ceux qui n\'ont pas pu accomplir le Tawaf principal le 10 Dhou al-Hidjdja !';
+
+  @override
+  String get hajj_step3_attention_text =>
+      'Le pèlerin qui n\'a pas pu accomplir le Tawaf principal de la Kaaba avant l\'arrivée du soir du 10 Dhou al-Hidjdja doit de nouveau entrer dans l\'état d\'Ihram dans lequel il se trouvait avant le jet des cailloux : il doit retirer ses vêtements ordinaires, revêtir les vêtements de l\'Ihram et demeurer en état d\'Ihram jusqu\'à ce qu\'il accomplisse le Tawaf principal de la Kaaba. Le Prophète ﷺ a dit :\n\n« Si le soir vous atteint avant que vous n\'ayez accompli le Tawaf de cette Maison, alors vous retournez au même état d\'Ihram dans lequel vous étiez avant le jet des cailloux, jusqu\'à ce que vous accomplissiez le Tawaf de la Kaaba. » [Abou Dawoud. Sounan. n° 1999 ; Ibn Khouzayma. Sahih. n° 2958 ; al-Hakim. Moustadrak. n° 1800 ; al-Bayhaqi. As-Sounan al-Koubra. n° 9601].';
+
+  @override
+  String get hajj_step3_full_exit_title =>
+      'Sortie complète de l\'état d\'Ihram';
+
+  @override
+  String get hajj_step3_full_exit_text =>
+      'Après l\'achèvement du parcours entre Safa et Marwa, le pèlerin sort définitivement de l\'état d\'Ihram. Toutes les restrictions liées à l\'Ihram sont levées, y compris les relations conjugales.';
+
+  @override
+  String get hajj_step3_return_title => 'Retour vers la vallée de Mina';
+
+  @override
+  String get hajj_step3_return_text =>
+      'Après l\'accomplissement du Tawaf principal de la Kaaba, retournez à votre lieu de résidence dans la vallée de Mina.';
+
+  @override
+  String get hajj_step4_title =>
+      '11, 12 et 13 Dhou al-Hidjdja — Jours d\'at-Tachriq';
+
+  @override
+  String get hajj_step4_stay_title => 'Séjour à Mina';
+
+  @override
+  String get hajj_step4_stay_text =>
+      'Pendant les trois jours (Ayyam at-Tachriq), passez la nuit à votre lieu de résidence à Mina.';
+
+  @override
+  String get hajj_step4_jamarat_title =>
+      'Jet des cailloux sur les trois stèles';
+
+  @override
+  String get hajj_step4_jamarat_text =>
+      'Le temps de l\'accomplissement de ce rite commence après midi et se poursuit jusqu\'à la tombée de la nuit. Chaque jour, rassemblez vingt-et-un cailloux, légèrement plus gros qu\'un pois, pour le jet sur les trois stèles (sept pour chaque stèle).\n\nDirigez-vous pour le jet des cailloux vers la première stèle en faisant preuve de calme. Tournez-vous face à la Petite Stèle et placez-vous de sorte que La Mecque soit à votre gauche et Mina à votre droite.\n\nJetez les cailloux sur la Petite Stèle un par un. À chaque jet, prononcez les paroles « Allahou akbar » (« Allah est le Plus Grand »). Une fois le jet terminé sur la première stèle, tournez-vous vers la Qibla, levez les mains et formulez l\'invocation de votre choix.\n\nDirigez-vous ensuite pour le jet des cailloux vers la deuxième stèle en faisant preuve de calme. Tournez-vous face à la Stèle Moyenne et placez-vous de sorte que La Mecque soit à votre gauche et Mina à votre droite.\n\nJetez les cailloux sur la Stèle Moyenne un par un. À chaque jet, prononcez les paroles « Allahou akbar » (« Allah est le Plus Grand »). Une fois le jet terminé sur la deuxième stèle, tournez-vous vers la Qibla, levez les mains et formulez l\'invocation de votre choix.\n\nDirigez-vous ensuite pour le jet des cailloux vers la troisième stèle en faisant preuve de calme. Tournez-vous face à la Grande Stèle et placez-vous de sorte que La Mecque soit à votre gauche et Mina à votre droite.\n\nJetez les cailloux sur la Grande Stèle un par un. À chaque jet, prononcez les paroles « Allahou akbar » (« Allah est le Plus Grand »). Une fois le jet terminé sur la troisième et dernière stèle, poursuivez votre chemin sans formuler d\'invocations, contrairement aux deux premières fois.\n\nCe rite est accompli durant les trois jours d\'at-Tachriq. Après avoir achevé le jet des cailloux le 13 Dhou al-Hidjdja, retournez à La Mecque.';
+
+  @override
+  String get hajj_step5_title => 'Tawaf d\'adieu de la Kaaba';
+
+  @override
+  String get hajj_step5_farewell_text =>
+      'Avant de rentrer chez vous, il convient d\'accomplir le Tawaf d\'adieu de la Kaaba. Il n\'est pas nécessaire de revêtir les vêtements de l\'Ihram.\n\nEn entrant dans la Mosquée sacrée, accomplissez tout ce que vous accomplissiez lors de la \'Umra : l\'invocation à l\'entrée de la mosquée, le Tawaf autour de la Kaaba en sept tours, ainsi que l\'invocation à la sortie de la mosquée.\n\nAttention : ce Tawaf est accompli à un rythme de marche normal du début à la fin. Le parcours rituel entre les collines de Safa et Marwa n\'est pas accompli.\n\n\nQu\'Allah, le Très-Haut, accepte votre Haddj !';
 }

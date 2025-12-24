@@ -774,4 +774,219 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get hajj => 'Haddsch';
+
+  @override
+  String get hajj_step1_title => '8. Dhu al-Hiddscha — Tag von at-Tarwiya';
+
+  @override
+  String get hajj_step1_ihram_title => 'Eintritt in den Ihram-Zustand';
+
+  @override
+  String get hajj_step1_ihram_text =>
+      'Tretet nach dem Morgengrauen (Fadschr) und vor dem Mittag (Zuhr) an eurem Aufenthaltsort in den Zustand des Ihram ein.\n\nFasst die Absicht, den Haddsch zu vollziehen, und sprecht:';
+
+  @override
+  String get hajj_step1_ihram_arabic => 'لَبَّيْكَ اللَّهُمَّ بِحَجٍّ';
+
+  @override
+  String get hajj_step1_ihram_transliteration =>
+      'Labbayka Allahumma bi-Haddsch';
+
+  @override
+  String get hajj_step1_ihram_translation =>
+      'Hier bin ich vor Dir, o Allah, [um] den Haddsch [zu vollziehen].\n\nWendet euch mit dem Gesicht zur Qibla und sprecht:';
+
+  @override
+  String get hajj_step1_ihram_dua_arabic =>
+      'اللَّهُمَّ هَذِهِ حِجَّةٌ لَا رِيَاءَ فِيهَا وَلَا سُمْعَةَ';
+
+  @override
+  String get hajj_step1_ihram_dua_transliteration =>
+      'Allahumma khazihi hiddja la rija\' fi-ha wa la sum\'a';
+
+  @override
+  String get hajj_step1_ihram_dua_translation =>
+      'O Allah, dies ist ein Haddsch ohne Zurschaustellung und ohne Streben nach Ruhm!';
+
+  @override
+  String get hajj_step1_talbiyah_title => 'Talbiya';
+
+  @override
+  String get hajj_step1_talbiyah_text =>
+      'Beginnt, die Talbiya laut auszusprechen und sie fortwährend zu wiederholen, bis ihr die Steinchen auf die Große Säule werft (am 10. Dhu al-Hiddscha):';
+
+  @override
+  String get hajj_step1_talbiyah_arabic =>
+      'لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ، وَالنِّعْمَةَ، لَكَ وَالْمُلْكَ، لاَ شَرِيكَ لَكَ';
+
+  @override
+  String get hajj_step1_talbiyah_transliteration =>
+      'Labbayka Allahumma labbayk! Labbayka lā scharīka laka labbayk! Inna l-hamda wa n-ni\'mata laka wa l-mulk, lā scharīka lak';
+
+  @override
+  String get hajj_step1_talbiyah_translation =>
+      'Hier bin ich vor Dir, o Allah! Hier bin ich vor Dir! Hier bin ich vor Dir, Du hast keinen Teilhaber! Hier bin ich vor Dir! Wahrlich, alles Lob, alle Gnade und die Herrschaft gehören Dir! Du hast keinen Teilhaber!';
+
+  @override
+  String get hajj_step1_mina_title => 'Weiterreise ins Tal von Mina';
+
+  @override
+  String get hajj_step1_mina_text =>
+      'Begebt euch anschließend ruhig ins Tal von Mina und verrichtet dort:\n• das Mittagsgebet (Zuhr),\n• das Nachmittagsgebet (\'Asr),\n• das Abendgebet (Maghrib),\n• das Nachtgebet (\'Ischa),\n\nindem ihr sie verkürzt, aber nicht zusammenlegt.\n\nVerbringt die Nacht im Tal von Mina.';
+
+  @override
+  String get hajj_step2_title =>
+      '9. Dhu al-Hiddscha — Tag des Stehens auf \'Arafat';
+
+  @override
+  String get hajj_step2_arafat_title => 'Weiterreise ins Tal von \'Arafat';
+
+  @override
+  String get hajj_step2_arafat_text =>
+      'Verrichtet das Morgengebet (Fadschr) im Tal von Mina und begebt euch nach Sonnenaufgang ins Tal von \'Arafat. Sprecht fortwährend die Talbiya und den Takbir (die Worte \"Allahu akbar\").\n\nWenn möglich, haltet euch an dem Ort Namira in der Nähe von \'Arafat auf und bleibt dort bis zum Mittag. Anschließend begebt euch zum Wadi \'Urana (vor \'Arafat).\n\nHört die Predigt des Imams an und verrichtet anschließend, wenn die Zeit des Mittagsgebets eintritt, gemeinsam mit ihm das Mittagsgebet (Zuhr) und das Nachmittagsgebet (\'Asr) in verkürzter und zusammengelegter Form. Für beide Gebete wird ein Adhan und zwei Iqamas ausgerufen. Zwischen diesen beiden Gebeten werden keine zusätzlichen Gebete verrichtet.';
+
+  @override
+  String get hajj_step2_standing_title => 'Stehen auf \'Arafat';
+
+  @override
+  String get hajj_step2_standing_text =>
+      'Begebt euch anschließend nach \'Arafat und bleibt dort bis zum Sonnenuntergang. Wenn möglich, haltet euch bei den großen Steinen am Fuß des Berges Rahma (Dschabal ar-Rahma) auf. Ist dies nicht möglich, so gilt das gesamte Tal von \'Arafat als Ort des Stehens.\n\nMan soll stehend der Qibla zugewandt sein, die Hände erheben, Allah mit Bittgebeten anrufen und die Talbiya sprechen.\n\nEs ist außerdem sehr empfohlen, folgendes Bittgebet zu sprechen:';
+
+  @override
+  String get hajj_step2_dua_arabic =>
+      'لَا إِلٰهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ';
+
+  @override
+  String get hajj_step2_dua_transliteration =>
+      'Lā ilāha illā Llāhu wahda-hu lā scharīka la-hu! La-hu l-mulku wa la-hu l-hamdu wa huwa \'alā kulli schai\'in qadīr!';
+
+  @override
+  String get hajj_step2_dua_translation =>
+      'Es gibt keine Gottheit außer Allah allein, Der keinen Teilhaber hat! Ihm gehört die Herrschaft und Ihm gebührt alles Lob, und Er hat Macht über alle Dinge!';
+
+  @override
+  String get hajj_step2_muzdalifah_title =>
+      'Weiterreise von \'Arafat nach Muzdalifa';
+
+  @override
+  String get hajj_step2_muzdalifah_text =>
+      'Begebt euch nach Sonnenuntergang von \'Arafat nach Muzdalifa und bewahrt dabei Ruhe.';
+
+  @override
+  String get hajj_step2_night_title => 'Übernachtung in Muzdalifa';
+
+  @override
+  String get hajj_step2_night_text =>
+      'Nach dem Eintreffen in Muzdalifa verrichtet das Abendgebet (Maghrib) und das Nachtgebet (\'Ischa) in verkürzter und zusammengelegter Form. Es wird der Adhan ausgerufen, danach die Iqama, und das Abendgebet (Maghrib) wird mit drei Rak\'a verrichtet; anschließend wird die Iqama ausgerufen und das verkürzte Nachtgebet (\'Ischa) mit zwei Rak\'a verrichtet. Zwischen diesen beiden Gebeten werden keine zusätzlichen Gebete verrichtet. Danach legt euch bis zum Morgengrauen schlafen.';
+
+  @override
+  String get hajj_step3_title => '10. Dhu al-Hiddscha — Tag des Opfers';
+
+  @override
+  String get hajj_step3_fajr_title => 'Fadschr';
+
+  @override
+  String get hajj_step3_fajr_text =>
+      'Verrichtet das Morgengebet (Fadschr) in Muzdalifa zur frühestmöglichen dafür vorgesehenen Zeit.';
+
+  @override
+  String get hajj_step3_mashaar_title =>
+      'Weiterreise nach al-Masch\'ar al-Haram';
+
+  @override
+  String get hajj_step3_mashaar_text =>
+      'Begebt euch anschließend nach al-Masch\'ar al-Haram (ein Berg in Muzdalifa), steigt auf ihn hinauf und wendet euch der Qibla zu. Sprecht Worte des Lobpreises Allahs (al-hamdu li-Llah), der Erhabenheit Seiner Größe (Allahu akbar) und des Bekenntnisses zur Einzigkeit (lā ilāha illā Llah). Ruft Allah mit Bittgebeten an, bis es vollständig hell wird.\n\nIst es nicht möglich, al-Masch\'ar al-Haram zu erreichen, so kann dies an jedem Ort im Tal von Muzdalifa getan werden.';
+
+  @override
+  String get hajj_step3_mina_title => 'Weiterreise ins Tal von Mina';
+
+  @override
+  String get hajj_step3_mina_text =>
+      'Begebt euch anschließend vor Sonnenaufgang von Muzdalifa nach Mina und bewahrt dabei Ruhe.';
+
+  @override
+  String get hajj_step3_jamarat_title =>
+      'Werfen der Steinchen auf die Große Säule';
+
+  @override
+  String get hajj_step3_jamarat_text =>
+      'Nach eurer Ankunft im Tal von Mina sammelt dort sieben Steinchen, etwas größer als eine Erbse, für das Werfen auf die Große Säule. Wenn möglich, vollzieht dieses Ritual vor dem Mittag. Ist dies nicht möglich, so kann es bis zum Einbruch der Nacht durchgeführt werden.\n\nWendet euch der Großen Säule zu und stellt euch so hin, dass Mekka zu eurer linken und Mina zu eurer rechten Seite liegt.\n\nWerft die Steinchen einzeln auf die Große Säule. Bei jedem Wurf sprecht die Worte \"Allahu akbar\" (\"Allah ist der Größte\").';
+
+  @override
+  String get hajj_step3_partial_exit_title =>
+      'Teilweiser Austritt aus dem Ihram-Zustand';
+
+  @override
+  String get hajj_step3_partial_exit_text =>
+      'Nachdem ihr das letzte Steinchen geworfen habt, beendet das Sprechen der Talbiya, kehrt zu eurem Aufenthaltsort in Mina zurück, zieht normale Kleidung an und verwendet Duftstoffe. Nach dem Werfen der Steinchen auf die Große Säule werden alle Ihram-Beschränkungen aufgehoben, außer den ehelichen Beziehungen.';
+
+  @override
+  String get hajj_step3_sacrifice_title => 'Opferhandlung';
+
+  @override
+  String get hajj_step3_sacrifice_text =>
+      'Wenn ihr ein Zertifikat für die Darbringung eines Opfertieres erworben habt, ist dies zulässig. Falls nicht, begebt euch zum Schlachthof und vollzieht die Opferhandlung.';
+
+  @override
+  String get hajj_step3_shaving_title => 'Rasieren des Kopfes';
+
+  @override
+  String get hajj_step3_shaving_text =>
+      'Nach der Opferhandlung rasiert der Mann sein Kopfhaar (was vorzuziehen ist) oder kürzt es gleichmäßig (was weniger vorzuziehen ist), während die Frau eine Haarsträhne in der Länge eines Drittels eines Fingers abschneidet.';
+
+  @override
+  String get hajj_step3_tawaf_title => 'Haupt-Tawaf der Kaaba';
+
+  @override
+  String get hajj_step3_tawaf_text =>
+      'Begebt euch anschließend nach Mekka, um den Haupt-Tawaf der Kaaba (Tawaf al-Ifada) zu vollziehen. Das Anlegen der Ihram-Gewänder ist hierfür nicht erforderlich.\n\nNach dem Betreten der Heiligen Moschee verrichtet alles, was ihr während der \'Umra verrichtet habt: das Bittgebet beim Betreten der Moschee, den siebenfachen Tawaf um die Kaaba, das zusätzliche Gebet von zwei Rak\'a nach dem Tawaf, das Trinken des Wassers aus der Zamzam-Quelle, das siebenfache Gehen zwischen den Hügeln Safa und Marwa sowie das Bittgebet beim Verlassen der Moschee.\n\nAchtung! Dieser Tawaf wird vom Anfang bis zum Ende in normalem Gehtempo vollzogen.';
+
+  @override
+  String get hajj_step3_attention_title =>
+      'Hinweis für diejenigen, die den Haupt-Tawaf am 10. Dhu al-Hiddscha nicht vollziehen konnten!';
+
+  @override
+  String get hajj_step3_attention_text =>
+      'Ein Pilger, der den Haupt-Tawaf der Kaaba nicht vor dem Eintritt des Abends am 10. Dhu al-Hiddscha vollziehen konnte, muss erneut in den Ihram-Zustand eintreten, in dem er sich vor dem Werfen der Steinchen befand: Er hat seine normale Kleidung abzulegen, die Ihram-Gewänder anzulegen und im Ihram-Zustand zu verbleiben, bis er den Haupt-Tawaf der Kaaba vollzogen hat. Der Prophet ﷺ sagte:\n\n\"Wenn euch der Abend erreicht, bevor ihr den Tawaf um dieses Haus vollzogen habt, so kehrt ihr in denselben Ihram-Zustand zurück, in dem ihr euch vor dem Werfen der Steinchen befandet, bis ihr den Tawaf der Kaaba vollzieht.\" [Abu Dawud. Sunan. Nr. 1999; Ibn Chuzaima. Sahih. Nr. 2958; al-Hakim. Mustadrak. Nr. 1800; al-Baihaqi. As-Sunan al-Kubra. Nr. 9601].';
+
+  @override
+  String get hajj_step3_full_exit_title =>
+      'Vollständiger Austritt aus dem Ihram-Zustand';
+
+  @override
+  String get hajj_step3_full_exit_text =>
+      'Nach dem Abschluss des Gehens zwischen Safa und Marwa tritt der Pilger vollständig aus dem Ihram-Zustand aus. Alle Beschränkungen des Ihram werden aufgehoben, einschließlich der ehelichen Beziehungen.';
+
+  @override
+  String get hajj_step3_return_title => 'Rückkehr ins Tal von Mina';
+
+  @override
+  String get hajj_step3_return_text =>
+      'Nach dem Abschluss des Haupt-Tawaf der Kaaba kehrt zu eurem Aufenthaltsort im Tal von Mina zurück.';
+
+  @override
+  String get hajj_step4_title =>
+      '11., 12. und 13. Dhu al-Hiddscha — Tage der at-Taschriq';
+
+  @override
+  String get hajj_step4_stay_title => 'Aufenthalt in Mina';
+
+  @override
+  String get hajj_step4_stay_text =>
+      'Während der drei Tage (Ayyam at-Taschriq) verbringt die Nächte an eurem Aufenthaltsort in Mina.';
+
+  @override
+  String get hajj_step4_jamarat_title =>
+      'Werfen der Steinchen auf die drei Säulen';
+
+  @override
+  String get hajj_step4_jamarat_text =>
+      'Die Zeit für die Durchführung dieses Rituals beginnt nach dem Mittag und dauert bis zum Einbruch der Nacht. Sammelt jeden Tag einundzwanzig Steinchen, etwas größer als eine Erbse, für das Werfen auf die drei Säulen (jeweils sieben für jede Säule).\n\nBegebt euch zum Werfen der Steinchen an die erste Säule und bewahrt dabei Ruhe. Wendet euch der Kleinen Säule zu und stellt euch so hin, dass Mekka zu eurer linken und Mina zu eurer rechten Seite liegt.\n\nWerft die Steinchen einzeln auf die Kleine Säule. Bei jedem Wurf sprecht die Worte \"Allahu akbar\" (\"Allah ist der Größte\"). Nachdem ihr das Werfen auf die erste Säule abgeschlossen habt, wendet euch der Qibla zu, erhebt die Hände und sprecht ein Bittgebet eurer Wahl.\n\nBegebt euch anschließend zum Werfen der Steinchen an die zweite Säule und bewahrt dabei Ruhe. Wendet euch der Mittleren Säule zu und stellt euch so hin, dass Mekka zu eurer linken und Mina zu eurer rechten Seite liegt.\n\nWerft die Steinchen einzeln auf die Mittlere Säule. Bei jedem Wurf sprecht die Worte \"Allahu akbar\" (\"Allah ist der Größte\"). Nachdem ihr das Werfen auf die zweite Säule abgeschlossen habt, wendet euch der Qibla zu, erhebt die Hände und sprecht ein Bittgebet eurer Wahl.\n\nBegebt euch anschließend zum Werfen der Steinchen an die dritte Säule und bewahrt dabei Ruhe. Wendet euch der Großen Säule zu und stellt euch so hin, dass Mekka zu eurer linken und Mina zu eurer rechten Seite liegt.\n\nWerft die Steinchen einzeln auf die Große Säule. Bei jedem Wurf sprecht die Worte \"Allahu akbar\" (\"Allah ist der Größte\"). Nachdem ihr das Werfen auf die dritte und letzte Säule abgeschlossen habt, geht weiter, ohne Bittgebete zu sprechen, wie es bei den ersten beiden Malen der Fall war.\n\nDieses Ritual wird an allen drei Tagen der at-Taschriq vollzogen. Nach dem Abschluss des Werfens der Steinchen am 13. Dhu al-Hiddscha kehrt nach Mekka zurück.';
+
+  @override
+  String get hajj_step5_title => 'Abschieds-Tawaf der Kaaba';
+
+  @override
+  String get hajj_step5_farewell_text =>
+      'Bevor ihr die Heimreise antretet, sollt ihr den Abschieds-Tawaf der Kaaba vollziehen. Das Anlegen der Ihram-Gewänder ist hierfür nicht erforderlich.\n\nNach dem Betreten der Heiligen Moschee verrichtet alles, was ihr während der \'Umra verrichtet habt: das Bittgebet beim Betreten der Moschee, den siebenfachen Tawaf um die Kaaba sowie das Bittgebet beim Verlassen der Moschee.\n\nAchtung: Dieser Tawaf wird vom Anfang bis zum Ende in normalem Gehtempo vollzogen. Das rituelle Gehen zwischen den Hügeln Safa und Marwa wird nicht durchgeführt.\n\n\nMöge der Erhabene Allah euren Haddsch annehmen!';
 }

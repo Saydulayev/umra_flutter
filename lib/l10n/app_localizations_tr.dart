@@ -766,4 +766,210 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get hajj => 'Hac';
+
+  @override
+  String get hajj_step1_title => '8 Zilhicce — Terviye Günü';
+
+  @override
+  String get hajj_step1_ihram_title => 'İhram durumuna giriş';
+
+  @override
+  String get hajj_step1_ihram_text =>
+      'İkamet ettiğiniz yerde, tan yerinin ağarmasından (Fecr) sonra ve öğle vaktinden (Öğle) önce ihrama girin.\n\nHaccı eda etmeye niyet edin ve şöyle deyin:';
+
+  @override
+  String get hajj_step1_ihram_arabic => 'لَبَّيْكَ اللَّهُمَّ بِحَجٍّ';
+
+  @override
+  String get hajj_step1_ihram_transliteration => 'Lyabbay-ka Llahumma bi-hajj';
+
+  @override
+  String get hajj_step1_ihram_translation =>
+      'Buyur, ey Allah\'ım, huzurundayım, [hac yapmak üzere].\n\nKıbleye yönelin ve şöyle deyin:';
+
+  @override
+  String get hajj_step1_ihram_dua_arabic =>
+      'اللَّهُمَّ هَذِهِ حِجَّةٌ لَا رِيَاءَ فِيهَا وَلَا سُمْعَةَ';
+
+  @override
+  String get hajj_step1_ihram_dua_transliteration =>
+      'Allahumma hazihi hijja la riyā\'a fī-hā wa la sum\'ah';
+
+  @override
+  String get hajj_step1_ihram_dua_translation =>
+      'Ey Allah\'ım, bu hacda gösteriş ve şöhret arzusu yoktur!';
+
+  @override
+  String get hajj_step1_talbiyah_title => 'Telbiye';
+
+  @override
+  String get hajj_step1_talbiyah_text =>
+      'Telbiyeyi yüksek sesle söylemeye başlayın ve Büyük Cemre\'ye (10 Zilhicce) taş atıncaya kadar sürekli tekrar edin:';
+
+  @override
+  String get hajj_step1_talbiyah_arabic =>
+      'لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ، وَالنِّعْمَةَ، لَكَ وَالْمُلْكَ، لاَ شَرِيكَ لَكَ';
+
+  @override
+  String get hajj_step1_talbiyah_transliteration =>
+      'Lyabbay-ka Llahumma lyabbay-ka! Lyabbay-ka la sharika la-ka lyabbay-ka! Inna l-hamda wa ni\'mata la-ka wa l-mulk la sharika la-ka';
+
+  @override
+  String get hajj_step1_talbiyah_translation =>
+      'Buyur, ey Allah\'ım, huzurundayım! Buyur, huzurundayım! Buyur, huzurundayım, Sen\'in ortağın yoktur! Buyur, huzurundayım! Şüphesiz hamd, nimet ve hükümranlık Sana aittir! Sen\'in ortağın yoktur!';
+
+  @override
+  String get hajj_step1_mina_title => 'Mina vadisine geçiş';
+
+  @override
+  String get hajj_step1_mina_text =>
+      'Ardından sakin bir şekilde Mina vadisine gidin ve orada:\n• öğle namazını (Öğle),\n• ikindi namazını (İkindi),\n• akşam namazını (Akşam),\n• yatsı namazını (Yatsı)\n\nkısaltarak, ancak birleştirmeden kılın.\n\nGeceyi Mina vadisinde geçirin.';
+
+  @override
+  String get hajj_step2_title => '9 Zilhicce — Arafat Vakfesi Günü';
+
+  @override
+  String get hajj_step2_arafat_title => 'Arafat vadisine geçiş';
+
+  @override
+  String get hajj_step2_arafat_text =>
+      'Mina vadisinde sabah namazını (Fecr) kılın, güneş doğduktan sonra Arafat vadisine doğru yola çıkın. Telbiyeyi ve tekbiri («Allahu ekber» sözlerini) sürekli olarak söyleyin.\n\nMümkünse Arafat yakınındaki Nemire mevkiinde durun ve öğle vaktine kadar orada kalın. Ardından Arafat\'tan önce bulunan Uranâ Vadisi\'ne yönelin.\n\nİmamın hutbesini dinleyin. Daha sonra öğle namazının vakti girince, onunla birlikte öğle (Öğle) ve ikindi (İkindi) namazlarını kısaltılmış ve birleştirilmiş olarak kılın. Bu iki namaz için bir ezan ve iki kamet okunur. Bu iki namaz arasında nafile namaz kılınmaz.';
+
+  @override
+  String get hajj_step2_standing_title => 'Arafat\'ta vakfe';
+
+  @override
+  String get hajj_step2_standing_text =>
+      'Daha sonra Arafat\'a yönelin ve güneş batıncaya kadar orada kalın. Mümkünse Rahme Dağı\'nın (Cebel-i Rahme) eteğindeki büyük taşların yanında durun. Bu mümkün değilse, Arafat vadisinin tamamı vakfe yeridir.\n\nKıbleye dönerek ayakta durmak, elleri kaldırarak Allah\'a dua etmek ve Telbiye söylemek gerekir.\n\nAyrıca aşağıdaki duayı okumak özellikle tavsiye edilir:';
+
+  @override
+  String get hajj_step2_dua_arabic =>
+      'لَا إِلٰهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ';
+
+  @override
+  String get hajj_step2_dua_transliteration =>
+      'Lya ilyaha illya Llahu wahda-hu lya sharika lya-hu! Lya-hu l-mulku wa lya-hu l-hamdu wa huwa \'alya kulli shay\'in qadir!';
+
+  @override
+  String get hajj_step2_dua_translation =>
+      'Allah\'tan başka ilah yoktur. O tektir, ortağı yoktur! Mülk O\'nundur, hamd O\'na mahsustur ve O her şeye kadirdir!';
+
+  @override
+  String get hajj_step2_muzdalifah_title => 'Arafat\'tan Müzdelife\'ye geçiş';
+
+  @override
+  String get hajj_step2_muzdalifah_text =>
+      'Güneş battıktan sonra sakin bir şekilde Arafat\'tan Müzdelife\'ye hareket edin.';
+
+  @override
+  String get hajj_step2_night_title => 'Müzdelife\'de geceleme';
+
+  @override
+  String get hajj_step2_night_text =>
+      'Müzdelife\'ye vardığınızda akşam (Akşam) ve yatsı (Yatsı) namazlarını kısaltılmış ve birleştirilmiş olarak kılın. Ezan okunur, ardından kamet getirilir ve akşam namazı üç rekât olarak kılınır; sonra tekrar kamet getirilir ve yatsı namazı iki rekât olarak kılınır. Bu iki namaz arasında nafile namaz kılınmaz. Ardından fecre kadar istirahat edin.';
+
+  @override
+  String get hajj_step3_title => '10 Zilhicce — Kurban Günü';
+
+  @override
+  String get hajj_step3_fajr_title => 'Fecr';
+
+  @override
+  String get hajj_step3_fajr_text =>
+      'Müzdelife\'de sabah namazını (Fecr) vakti girer girmez en erken zamanında kılın.';
+
+  @override
+  String get hajj_step3_mashaar_title => 'el-Meş\'ar el-Haram\'a geçiş';
+
+  @override
+  String get hajj_step3_mashaar_text =>
+      'Daha sonra Müzdelife\'de bulunan el-Meş\'ar el-Haram\'a (bir dağ) gidin, üzerine çıkın ve Kıble\'ye yönelin. Allah\'ı hamd ile anın (el-hamdü li\'llah), O\'nu tekbir ile yüceltin (Allahu ekber) ve tevhidi dile getirin (la ilahe illallah). Ortalık tamamen aydınlanıncaya kadar Allah\'a dua edin.\n\nEğer el-Meş\'ar el-Haram\'a gitme imkânı yoksa, bu ameller Müzdelife vadisinin herhangi bir yerinde yapılabilir.';
+
+  @override
+  String get hajj_step3_mina_title => 'Mina vadisine geçiş';
+
+  @override
+  String get hajj_step3_mina_text =>
+      'Daha sonra, güneş doğmadan önce sakin bir şekilde Müzdelife\'den Mina\'ya hareket edin.';
+
+  @override
+  String get hajj_step3_jamarat_title => 'Büyük Cemre\'ye taş atma';
+
+  @override
+  String get hajj_step3_jamarat_text =>
+      'Mina vadisine vardığınızda, Büyük Cemre\'ye atmak üzere bezelyeden biraz büyük yedi taş toplayın. Mümkünse bu ibadeti öğleden önce yerine getirin. Bu mümkün değilse, geceye kadar yapılabilir.\n\nBüyük Cemre\'ye yönelin ve Mekke sol tarafınızda, Mina ise sağ tarafınızda olacak şekilde durun.\n\nTaşları Büyük Cemre\'ye birer birer atın. Her taş atışında «Allahu ekber» sözünü söyleyin.';
+
+  @override
+  String get hajj_step3_partial_exit_title => 'İhramdan kısmi çıkış';
+
+  @override
+  String get hajj_step3_partial_exit_text =>
+      'Son taşı attıktan sonra Telbiye söylemeyi bırakın, Mina\'daki konaklama yerinize dönün, normal elbiselerinizi giyin ve güzel koku sürünün. Büyük Cemre\'ye taş attıktan sonra, ihramlı kimseye yasak olan hususların tamamı kaldırılır; ancak cinsel ilişkiler bunun dışındadır.';
+
+  @override
+  String get hajj_step3_sacrifice_title => 'Kurban kesme';
+
+  @override
+  String get hajj_step3_sacrifice_text =>
+      'Eğer bir kurban kesim sertifikası satın aldıysanız, bu caizdir. Aksi takdirde mezbahaya gidin ve kurbanınızı kesin.';
+
+  @override
+  String get hajj_step3_shaving_title => 'Saçların tıraş edilmesi';
+
+  @override
+  String get hajj_step3_shaving_text =>
+      'Kurban kesildikten sonra erkek başındaki saçları tamamen tıraş eder (daha faziletlidir) veya eşit şekilde kısaltır (daha az faziletlidir); kadın ise saçından bir tutamı, parmağın üçte biri kadar keser.';
+
+  @override
+  String get hajj_step3_tawaf_title => 'Ana Kâbe tavafı';
+
+  @override
+  String get hajj_step3_tawaf_text =>
+      'Daha sonra Ana Kâbe tavafını (Tavaf-ı İfada) yapmak üzere Mekke\'ye gidin. Bu tavaf için ihram elbiselerini giymek gerekmez.\n\nMescid-i Haram\'a girdiğinizde, \'umre sırasında yaptıklarınızın aynısını yapın: mescide girerken dua etmek, Kâbe\'nin etrafında yedi şavt tavaf yapmak, tavaftan sonra iki rekât nafile namaz kılmak, Zemzem suyundan içmek, Safa ile Merve tepeleri arasında yedi defa sa\'y yapmak ve mescidden çıkarken dua etmek.\n\nDikkat! Bu tavaf, başından sonuna kadar normal yürüyüş temposuyla yapılır.';
+
+  @override
+  String get hajj_step3_attention_title =>
+      '10 Zilhicce günü ana tavafı yapamayanlar için dikkat!';
+
+  @override
+  String get hajj_step3_attention_text =>
+      '10 Zilhicce günü akşam olmadan Ana Kâbe tavafını yapamayan hacı, taş atmadan önce bulunduğu ihram durumuna yeniden girmek zorundadır: normal elbiselerini çıkarır, ihram elbiselerini giyer ve Ana Kâbe tavafını yapıncaya kadar ihramlı olarak kalır. Peygamber ﷺ şöyle buyurmuştur:\n\n«Eğer bu Ev\'i tavaf etmeden önce akşam olursa, taş atmadan önce bulunduğunuz ihram hâline geri dönersiniz ve Kâbe\'yi tavaf edinceye kadar bu hâlde kalırsınız.» [Ebû Dâvûd, Sünen, No: 1999; İbn Huzeyme, Sahih, No: 2958; el-Hâkim, Müstedrek, No: 1800; el-Beyhakî, es-Sünenü\'l-Kübrâ, No: 9601].';
+
+  @override
+  String get hajj_step3_full_exit_title => 'İhramdan tamamen çıkış';
+
+  @override
+  String get hajj_step3_full_exit_text =>
+      'Safa ile Merve arasındaki sa\'y tamamlandıktan sonra hacı ihramdan tamamen çıkar. İhramlıya yasak olan bütün hususlar, cinsel ilişkiler dâhil olmak üzere, kaldırılır.';
+
+  @override
+  String get hajj_step3_return_title => 'Mina vadisine dönüş';
+
+  @override
+  String get hajj_step3_return_text =>
+      'Ana Kâbe tavafını tamamladıktan sonra Mina vadisindeki konaklama yerinize geri dönün.';
+
+  @override
+  String get hajj_step4_title => '11, 12 ve 13 Zilhicce — Teşrik Günleri';
+
+  @override
+  String get hajj_step4_stay_title => 'Mina\'da kalış';
+
+  @override
+  String get hajj_step4_stay_text =>
+      'Üç gün boyunca (Teşrik günleri) Mina\'daki konaklama yerinizde geceleyin.';
+
+  @override
+  String get hajj_step4_jamarat_title => 'Üç Cemre\'ye taş atma';
+
+  @override
+  String get hajj_step4_jamarat_text =>
+      'Bu ibadetin vakti öğleden sonra başlar ve geceye kadar devam eder. Her gün, üç Cemre\'ye atmak üzere bezelyeden biraz büyük yirmi bir taş toplayın (her bir Cemre için yedi taş).\n\nTaş atmak için ilk Cemre\'ye sakin bir şekilde gidin. Küçük Cemre\'ye yönelin ve Mekke sol tarafınızda, Mina ise sağ tarafınızda olacak şekilde durun.\n\nTaşları Küçük Cemre\'ye birer birer atın. Her taş atışında «Allahu ekber» sözünü söyleyin. Birinci Cemre\'ye taş atmayı tamamladıktan sonra Kıble\'ye yönelin, ellerinizi kaldırın ve dilediğiniz duayı yapın.\n\nArdından taş atmak için ikinci Cemre\'ye sakin bir şekilde gidin. Orta Cemre\'ye yönelin ve Mekke sol tarafınızda, Mina ise sağ tarafınızda olacak şekilde durun.\n\nTaşları Orta Cemre\'ye birer birer atın. Her taş atışında «Allahu ekber» sözünü söyleyin. İkinci Cemre\'ye taş atmayı tamamladıktan sonra Kıble\'ye yönelin, ellerinizi kaldırın ve dilediğiniz duayı yapın.\n\nArdından taş atmak için üçüncü Cemre\'ye sakin bir şekilde gidin. Büyük Cemre\'ye yönelin ve Mekke sol tarafınızda, Mina ise sağ tarafınızda olacak şekilde durun.\n\nTaşları Büyük Cemre\'ye birer birer atın. Her taş atışında «Allahu ekber» sözünü söyleyin. Üçüncü ve son Cemre\'ye taş atmayı tamamladıktan sonra, ilk iki seferde olduğu gibi dua etmeksizin yolunuza devam edin.\n\nBu ibadet Teşrik günlerinin üçünde de yerine getirilir. 13 Zilhicce günü taş atmayı tamamladıktan sonra Mekke\'ye dönün.';
+
+  @override
+  String get hajj_step5_title => 'Kâbe\'nin Veda Tavafı';
+
+  @override
+  String get hajj_step5_farewell_text =>
+      'Eve dönmeden önce Kâbe\'nin Veda Tavafı\'nı yapmak gerekir. Bunun için ihram elbiselerini giymek şart değildir.\n\nMescid-i Haram\'a girdiğinizde, \'umre sırasında yaptıklarınızın aynısını yapın: mescide girerken dua etmek, Kâbe\'nin etrafında yedi şavt tavaf yapmak ve mescidden çıkarken dua etmek.\n\nDikkat: Bu tavaf, başından sonuna kadar normal yürüyüş temposuyla yapılır. Safa ile Merve tepeleri arasında yapılan sa\'y gerçekleştirilmez.\n\n\nYüce Allah haccınızı kabul etsin!';
 }

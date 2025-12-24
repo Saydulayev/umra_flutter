@@ -770,4 +770,216 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get hajj => 'Hajj';
+
+  @override
+  String get hajj_step1_title => '8th of Dhu al-Hijjah — Day of at-Tarwiyah';
+
+  @override
+  String get hajj_step1_ihram_title => 'Entering the state of Ihram';
+
+  @override
+  String get hajj_step1_ihram_text =>
+      'Enter the state of ihram at your place of residence after dawn (fajr) and before noon (zuhr).\n\nMake the intention to perform Hajj and say:';
+
+  @override
+  String get hajj_step1_ihram_arabic => 'لَبَّيْكَ اللَّهُمَّ بِحَجٍّ';
+
+  @override
+  String get hajj_step1_ihram_transliteration => 'Lyabbay-ka Llahumma bi-hajj';
+
+  @override
+  String get hajj_step1_ihram_translation =>
+      'Here I am before You, O Allah, [performing] Hajj.\n\nTurn your face toward the Qiblah and say:';
+
+  @override
+  String get hajj_step1_ihram_dua_arabic =>
+      'اللَّهُمَّ هَذِهِ حِجَّةٌ لَا رِيَاءَ فِيهَا وَلَا سُمْعَةَ';
+
+  @override
+  String get hajj_step1_ihram_dua_transliteration =>
+      'Allahumma hazihi hijja la riyā\' fī-hā wa la sum\'ah';
+
+  @override
+  String get hajj_step1_ihram_dua_translation =>
+      'O Allah, this Hajj is free from showing off and seeking fame!';
+
+  @override
+  String get hajj_step1_talbiyah_title => 'Talbiyah';
+
+  @override
+  String get hajj_step1_talbiyah_text =>
+      'Begin reciting the Talbiyah aloud, repeating it continuously until you throw the pebbles at the Large Pillar (on the 10th of Dhu al-Hijjah):';
+
+  @override
+  String get hajj_step1_talbiyah_arabic =>
+      'لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لاَ شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ، وَالنِّعْمَةَ، لَكَ وَالْمُلْكَ، لاَ شَرِيكَ لَكَ';
+
+  @override
+  String get hajj_step1_talbiyah_transliteration =>
+      'Lyabbay-ka Llahumma lyabbay-ka! Lyabbay-ka la sharika la-ka lyabbay-ka! Inna l-hamda wa ni\'mata la-ka wa l-mulk la sharika la-ka';
+
+  @override
+  String get hajj_step1_talbiyah_translation =>
+      'Here I am before You, O Allah! Here I am before You! Here I am before You, You have no partner! Here I am before You! Truly, all praise, all blessings, and sovereignty belong to You! You have no partner!';
+
+  @override
+  String get hajj_step1_mina_title => 'Proceeding to the Valley of Mina';
+
+  @override
+  String get hajj_step1_mina_text =>
+      'Then calmly proceed to the Valley of Mina and perform there:\n• the noon prayer (zuhr),\n• the afternoon prayer (\'asr),\n• the sunset prayer (maghrib),\n• the night prayer (\'isha),\n\nshortening them but not combining them.\n\nSpend the night in the Valley of Mina.';
+
+  @override
+  String get hajj_step2_title =>
+      '9th of Dhu al-Hijjah — Day of Standing at \'Arafat';
+
+  @override
+  String get hajj_step2_arafat_title => 'Proceeding to the Valley of \'Arafat';
+
+  @override
+  String get hajj_step2_arafat_text =>
+      'Perform the dawn prayer (fajr) in the Valley of Mina, and after sunrise proceed to the Valley of \'Arafat. Continuously recite the Talbiyah and the Takbir (the words \"Allahu Akbar\").\n\nIf possible, stop at the place called Namirah near \'Arafat and remain there until noon. Then proceed to the valley of \'Uranah (before \'Arafat).\n\nListen to the imam\'s sermon, and then, when the time for the noon prayer arrives, perform the noon (zuhr) and afternoon (\'asr) prayers together with him in shortened and combined form. For both of these prayers, one adhan and two iqamahs are pronounced. No additional prayers are performed between these two prayers.';
+
+  @override
+  String get hajj_step2_standing_title => 'Standing at \'Arafat';
+
+  @override
+  String get hajj_step2_standing_text =>
+      'Then proceed to \'Arafat and remain there until sunset. If possible, stay near the large stones scattered at the foot of Mount Rahmah (Jabal ar-Rahmah). If this is not possible, then the entire Valley of \'Arafat is a place of standing.\n\nOne should stand facing the Qiblah, raising the hands, calling upon Allah with supplications and reciting the Talbiyah.\n\nIt is also highly recommended to recite the following supplication:';
+
+  @override
+  String get hajj_step2_dua_arabic =>
+      'لَا إِلٰهَ إِلَّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ';
+
+  @override
+  String get hajj_step2_dua_transliteration =>
+      'Lya ilyaha illya Llahu wahda-hu lya sharika lya-hu! Lya-hu l-mulku wa lya-hu l-hamdu wa huwa \'alya kulli shay\'in qadir!';
+
+  @override
+  String get hajj_step2_dua_translation =>
+      'There is no deity except Allah alone, Who has no partner! To Him belongs sovereignty and to Him belongs praise, and He has power over all things!';
+
+  @override
+  String get hajj_step2_muzdalifah_title =>
+      'Proceeding from \'Arafat to Muzdalifah';
+
+  @override
+  String get hajj_step2_muzdalifah_text =>
+      'After sunset, proceed from \'Arafat to Muzdalifah, maintaining calmness.';
+
+  @override
+  String get hajj_step2_night_title => 'Overnight Stay in Muzdalifah';
+
+  @override
+  String get hajj_step2_night_text =>
+      'Upon reaching Muzdalifah, perform the sunset (maghrib) and night (\'isha\') prayers in shortened and combined form. The adhan is pronounced, then the iqamah, and the sunset prayer (maghrib) is performed in three rak\'ahs, after which the iqamah is pronounced and the shortened night prayer (\'isha\') is performed in two rak\'ahs. No additional prayers are performed between these two prayers. Then lie down to sleep until dawn.';
+
+  @override
+  String get hajj_step3_title => '10th of Dhu al-Hijjah — Day of Sacrifice';
+
+  @override
+  String get hajj_step3_fajr_title => 'Fajr';
+
+  @override
+  String get hajj_step3_fajr_text =>
+      'Perform the dawn prayer (fajr) in Muzdalifah at the earliest time prescribed for it.';
+
+  @override
+  String get hajj_step3_mashaar_title => 'Proceeding to al-Mash\'ar al-Haram';
+
+  @override
+  String get hajj_step3_mashaar_text =>
+      'Then proceed to al-Mash\'ar al-Haram (a mountain located in Muzdalifah), ascend it, and face the Qiblah. Pronounce words of praising Allah (al-hamdu li-Llah), glorifying Him (Allahu akbar), and affirming His oneness (la ilyaha illa Llah). Call upon Allah with supplications until it becomes fully light.\n\nIf it is not possible to reach al-Mash\'ar al-Haram, this may be done anywhere in the Valley of Muzdalifah.';
+
+  @override
+  String get hajj_step3_mina_title => 'Proceeding to the Valley of Mina';
+
+  @override
+  String get hajj_step3_mina_text =>
+      'Then, before sunrise, proceed from Muzdalifah to Mina, maintaining calmness.';
+
+  @override
+  String get hajj_step3_jamarat_title => 'Throwing Pebbles at the Large Pillar';
+
+  @override
+  String get hajj_step3_jamarat_text =>
+      'Upon arriving in the Valley of Mina, collect seven pebbles slightly larger than a pea for throwing at the Large Pillar. If possible, perform this rite before noon. If this is not possible, it may be done before nightfall.\n\nFace the Large Pillar and stand so that Mecca is on your left and Mina is on your right.\n\nThrow the pebbles at the Large Pillar one by one. With each throw of a pebble, pronounce the words \"Allahu akbar\" (\"Allah is the Greatest\").';
+
+  @override
+  String get hajj_step3_partial_exit_title =>
+      'Partial Exit from the State of Ihram';
+
+  @override
+  String get hajj_step3_partial_exit_text =>
+      'After throwing the last pebble, stop reciting the Talbiyah, return to your place of residence in Mina, put on regular clothing, and apply perfume. After throwing the pebbles at the Large Pillar, all restrictions of ihram are lifted except for intimate relations.';
+
+  @override
+  String get hajj_step3_sacrifice_title => 'Sacrifice';
+
+  @override
+  String get hajj_step3_sacrifice_text =>
+      'If you have purchased a certificate for the sacrifice of an animal, this is permissible. If not, proceed to the slaughterhouse and perform the sacrifice.';
+
+  @override
+  String get hajj_step3_shaving_title => 'Shaving the Head';
+
+  @override
+  String get hajj_step3_shaving_text =>
+      'After the sacrifice, a man shaves the hair of his head (which is more preferable) or shortens it evenly (which is less preferable), while a woman cuts a lock of hair equal to the length of one-third of a finger.';
+
+  @override
+  String get hajj_step3_tawaf_title => 'Main Circumambulation of the Kaaba';
+
+  @override
+  String get hajj_step3_tawaf_text =>
+      'Then proceed to Mecca to perform the main circumambulation of the Kaaba (tawaf al-ifadah). There is no need to wear the ihram garments.\n\nUpon entering the Sacred Mosque, perform everything you did during \'umrah: the supplication upon entering the mosque, the sevenfold circumambulation of the Kaaba (tawaf), the two rak\'ahs of additional prayer after the tawaf, drinking water from the Zamzam source, the sevenfold walking between the hills of Safa and Marwah, and the supplication upon exiting the mosque.\n\nAttention! This circumambulation of the Kaaba is performed at a normal walking pace from beginning to end.';
+
+  @override
+  String get hajj_step3_attention_title =>
+      'Attention for Those Who Were Unable to Perform the Main Circumambulation on the 10th of Dhu al-Hijjah!';
+
+  @override
+  String get hajj_step3_attention_text =>
+      'A pilgrim who was unable to perform the main circumambulation of the Kaaba before the evening of the 10th of Dhu al-Hijjah must re-enter the state of ihram he was in before throwing the pebbles: he must remove his regular clothing, put on the ihram garments, and remain in the state of ihram until he performs the main circumambulation of the Kaaba. The Prophet ﷺ said:\n\n\"If evening comes upon you before you have circumambulated this House, then you return to the same state of ihram in which you were before throwing the pebbles, until you circumambulate the Kaaba.\" [Abu Dawud. Sunan. No. 1999; Ibn Khuzaymah. Sahih. No. 2958; al-Hakim. Mustadrak. No. 1800; al-Bayhaqi. As-Sunan al-Kubra. No. 9601].';
+
+  @override
+  String get hajj_step3_full_exit_title =>
+      'Complete Exit from the State of Ihram';
+
+  @override
+  String get hajj_step3_full_exit_text =>
+      'After completing the walking between Safa and Marwah, the pilgrim fully exits the state of ihram. All restrictions of ihram are lifted, including intimate relations.';
+
+  @override
+  String get hajj_step3_return_title => 'Return to the Valley of Mina';
+
+  @override
+  String get hajj_step3_return_text =>
+      'After completing the main circumambulation of the Kaaba, return to your place of residence in the Valley of Mina.';
+
+  @override
+  String get hajj_step4_title =>
+      '11th, 12th, 13th of Dhu al-Hijjah — Days of at-Tashriq';
+
+  @override
+  String get hajj_step4_stay_title => 'Staying in Mina';
+
+  @override
+  String get hajj_step4_stay_text =>
+      'During the three days (Ayyam at-Tashriq), spend the nights at your place of residence in Mina.';
+
+  @override
+  String get hajj_step4_jamarat_title =>
+      'Throwing Pebbles at the Three Pillars';
+
+  @override
+  String get hajj_step4_jamarat_text =>
+      'The time for performing this rite begins after noon and lasts until nightfall. Each day, collect twenty-one pebbles slightly larger than a pea for throwing at the three pillars (seven for each pillar).\n\nProceed to throw the pebbles at the first pillar, maintaining calmness. Face the Small Pillar and stand so that Mecca is on your left and Mina is on your right.\n\nThrow the pebbles at the Small Pillar one by one. With each throw of a pebble, pronounce the words \"Allahu akbar\" (\"Allah is the Greatest\"). After completing the throwing at the first pillar, turn to face the Qiblah, raise your hands, and offer any supplication you wish.\n\nThen proceed to throw the pebbles at the second pillar, maintaining calmness. Face the Middle Pillar and stand so that Mecca is on your left and Mina is on your right.\n\nThrow the pebbles at the Middle Pillar one by one. With each throw of a pebble, pronounce the words \"Allahu akbar\" (\"Allah is the Greatest\"). After completing the throwing at the second pillar, turn to face the Qiblah, raise your hands, and offer any supplication you wish.\n\nThen proceed to throw the pebbles at the third pillar, maintaining calmness. Face the Large Pillar and stand so that Mecca is on your left and Mina is on your right.\n\nThrow the pebbles at the Large Pillar one by one. With each throw of a pebble, pronounce the words \"Allahu akbar\" (\"Allah is the Greatest\"). After completing the throwing at the third and final pillar, move on without offering supplications, unlike the first two times.\n\nThis rite is performed on all three days of at-Tashriq. After completing the throwing of pebbles on the 13th of Dhu al-Hijjah, return to Mecca.';
+
+  @override
+  String get hajj_step5_title => 'Farewell Tawaf of the Kaaba';
+
+  @override
+  String get hajj_step5_farewell_text =>
+      'Before departing for home, one should perform the farewell circumambulation of the Kaaba. There is no need to wear the ihram garments.\n\nUpon entering the Sacred Mosque, perform everything you did during \'umrah: the supplication upon entering the mosque, the sevenfold circumambulation of the Kaaba (tawaf), and the supplication upon exiting the mosque.\n\nAttention: this circumambulation of the Kaaba is performed at a normal walking pace from beginning to end. The ritual walking between the hills of Safa and Marwah is not performed.\n\n\nMay Almighty Allah accept your Hajj!';
 }
