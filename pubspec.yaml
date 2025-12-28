@@ -2,7 +2,7 @@ name: umra_flutter
 description: "Umrah Guide for Muslims - Flutter version"
 publish_to: 'none'
 
-version: 1.3.0+16
+version: 1.4.0+17
 
 environment:
   sdk: ^3.10.0
