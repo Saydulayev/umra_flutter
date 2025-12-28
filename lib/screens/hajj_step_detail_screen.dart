@@ -31,16 +31,16 @@ class HajjStepDetailScreen extends StatelessWidget {
             content = _buildTarwiyahContent(theme, l10n, fontProvider);
             break;
           case 'hajj_arafat':
-            content = _buildDefaultContent(theme, fontProvider);
+            content = _buildArafatContent(theme, l10n, fontProvider);
             break;
           case 'hajj_nahr':
-            content = _buildDefaultContent(theme, fontProvider);
+            content = _buildNahrContent(theme, l10n, fontProvider);
             break;
           case 'hajj_tashriq':
-            content = _buildDefaultContent(theme, fontProvider);
+            content = _buildTashriqContent(theme, l10n, fontProvider);
             break;
           case 'hajj_wada':
-            content = _buildDefaultContent(theme, fontProvider);
+            content = _buildWadaContent(theme, l10n, fontProvider);
             break;
           default:
             content = _buildDefaultContent(theme, fontProvider);
@@ -179,6 +179,177 @@ class HajjStepDetailScreen extends StatelessWidget {
         StepTitleWidget(text: l10n.hajj_step1_mina_title),
         const SizedBox(height: AppDimensions.paddingLarge),
         StepTextWidget(text: l10n.hajj_step1_mina_text),
+      ],
+    );
+  }
+
+  Widget _buildArafatContent(
+    AppTheme theme,
+    AppLocalizations l10n,
+    FontProvider fontProvider,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Раздел: Перемещение в долину Арафат
+        StepTitleWidget(text: l10n.hajj_step2_arafat_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.hajj_step2_arafat_text),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
+
+        // Раздел: Стояние на Арафате
+        StepTitleWidget(text: l10n.hajj_step2_standing_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.hajj_step2_standing_text),
+        const SizedBox(height: AppDimensions.paddingLarge),
+
+        // Арабский текст дуа
+        StepArabicSection(
+          arabicText: l10n.hajj_step2_dua_arabic,
+          audioFileName: '16', // TODO: заменить на правильный файл аудио
+        ),
+        const SizedBox(height: AppDimensions.paddingSmall),
+
+        // Транслитерация и перевод дуа
+        SelectableText(
+          l10n.hajj_step2_dua_transliteration,
+          style: fontProvider.getTextStyle(
+            fontSize: 18,
+            color: theme.textColor,
+          ),
+        ),
+        const SizedBox(height: AppDimensions.paddingSmall),
+        SelectableText(
+          l10n.hajj_step2_dua_translation,
+          style: fontProvider.getTextStyle(
+            fontSize: 18,
+            color: theme.textColor,
+          ),
+        ),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
+
+        // Раздел: Перемещение из Арафата в Муздалифу
+        StepTitleWidget(text: l10n.hajj_step2_muzdalifah_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.hajj_step2_muzdalifah_text),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
+
+        // Раздел: Ночёвка в Муздалифе
+        StepTitleWidget(text: l10n.hajj_step2_night_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.hajj_step2_night_text),
+      ],
+    );
+  }
+
+  Widget _buildNahrContent(
+    AppTheme theme,
+    AppLocalizations l10n,
+    FontProvider fontProvider,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Раздел: Фаджр
+        StepTitleWidget(text: l10n.hajj_step3_fajr_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.hajj_step3_fajr_text),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
+
+        // Раздел: Перемещение в Аль-Маш'ар-аль-Харам
+        StepTitleWidget(text: l10n.hajj_step3_mashaar_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.hajj_step3_mashaar_text),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
+
+        // Раздел: Перемещение в долину Мина
+        StepTitleWidget(text: l10n.hajj_step3_mina_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.hajj_step3_mina_text),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
+
+        // Раздел: Бросание камешков в Большой столб
+        StepTitleWidget(text: l10n.hajj_step3_jamarat_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.hajj_step3_jamarat_text),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
+
+        // Раздел: Частичный выход из состояния ихрама
+        StepTitleWidget(text: l10n.hajj_step3_partial_exit_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.hajj_step3_partial_exit_text),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
+
+        // Раздел: Жертвоприношение
+        StepTitleWidget(text: l10n.hajj_step3_sacrifice_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.hajj_step3_sacrifice_text),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
+
+        // Раздел: Бритьё головы
+        StepTitleWidget(text: l10n.hajj_step3_shaving_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.hajj_step3_shaving_text),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
+
+        // Раздел: Основной обход Каабы
+        StepTitleWidget(text: l10n.hajj_step3_tawaf_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.hajj_step3_tawaf_text),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
+
+        // Раздел: Вниманию тех, кто не смог совершить основной обход Каабы
+        StepTitleWidget(text: l10n.hajj_step3_attention_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.hajj_step3_attention_text),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
+
+        // Раздел: Полный выход из состояния ихрама
+        StepTitleWidget(text: l10n.hajj_step3_full_exit_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.hajj_step3_full_exit_text),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
+
+        // Раздел: Возвращение в долину Мина
+        StepTitleWidget(text: l10n.hajj_step3_return_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.hajj_step3_return_text),
+      ],
+    );
+  }
+
+  Widget _buildTashriqContent(
+    AppTheme theme,
+    AppLocalizations l10n,
+    FontProvider fontProvider,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Раздел: Пребывание в Мине
+        StepTitleWidget(text: l10n.hajj_step4_stay_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.hajj_step4_stay_text),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
+
+        // Раздел: Бросание камешков в три столба
+        StepTitleWidget(text: l10n.hajj_step4_jamarat_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.hajj_step4_jamarat_text),
+      ],
+    );
+  }
+
+  Widget _buildWadaContent(
+    AppTheme theme,
+    AppLocalizations l10n,
+    FontProvider fontProvider,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Прощальный обход Каабы
+        StepTextWidget(text: l10n.hajj_step5_farewell_text),
       ],
     );
   }
