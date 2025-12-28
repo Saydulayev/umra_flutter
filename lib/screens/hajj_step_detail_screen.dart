@@ -47,7 +47,7 @@ class HajjStepDetailScreen extends StatelessWidget {
         }
 
         return Scaffold(
-          backgroundColor: theme.lightBackgroundColor,
+          backgroundColor: theme.backgroundColor,
           appBar: AppBar(
             title: Text(
               _getLocalizedTitle(step.titleKey, l10n),
@@ -56,7 +56,7 @@ class HajjStepDetailScreen extends StatelessWidget {
                 color: theme.textColor,
               ),
             ),
-            backgroundColor: theme.lightBackgroundColor,
+            backgroundColor: theme.backgroundColor,
             elevation: 0,
             iconTheme: IconThemeData(color: theme.primaryColor),
             actions: const [CustomToolbar()],

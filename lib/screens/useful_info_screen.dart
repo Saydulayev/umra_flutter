@@ -18,13 +18,13 @@ class UsefulInfoScreen extends StatelessWidget {
     final chapters = UsefulInfoChapters.getChapters();
 
     return Scaffold(
-      backgroundColor: theme.lightBackgroundColor,
+      backgroundColor: theme.backgroundColor,
       appBar: AppBar(
         title: Text(
           l10n.usefulInfoTitle,
           style: TextStyle(fontWeight: FontWeight.bold, color: theme.textColor),
         ),
-        backgroundColor: theme.lightBackgroundColor,
+        backgroundColor: theme.backgroundColor,
         elevation: 0,
         iconTheme: IconThemeData(color: theme.primaryColor),
       ),

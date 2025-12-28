@@ -22,13 +22,13 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      backgroundColor: theme.lightBackgroundColor,
+      backgroundColor: theme.backgroundColor,
       appBar: AppBar(
         title: Text(
           l10n.titleJanazaGuide,
           style: TextStyle(fontWeight: FontWeight.bold, color: theme.textColor),
         ),
-        backgroundColor: theme.lightBackgroundColor,
+        backgroundColor: theme.backgroundColor,
         elevation: 0,
         iconTheme: IconThemeData(color: theme.primaryColor),
       ),

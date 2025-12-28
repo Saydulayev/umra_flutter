@@ -58,9 +58,7 @@ class ArabicTextWidget extends StatelessWidget {
                     filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: theme.isDark
-                            ? theme.lightBackgroundColor.withValues(alpha: 0.9)
-                            : Colors.white.withValues(alpha: 0.9),
+                        color: theme.lightBackgroundColor.withValues(alpha: 0.9),
                       ),
                     ),
                   ),

@@ -59,6 +59,8 @@ class SettingsScreen extends StatelessWidget {
 
   void _showEmailDialog(BuildContext context, String email) {
     final l10n = AppLocalizations.of(context)!;
+    final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    final theme = themeProvider.selectedTheme;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -71,7 +73,7 @@ class SettingsScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.grey[200],
+                color: theme.lightBackgroundColor,
                 borderRadius: BorderRadius.circular(8),
               ),
               child: SelectableText(
@@ -123,13 +125,13 @@ class SettingsScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      backgroundColor: theme.lightBackgroundColor,
+      backgroundColor: theme.backgroundColor,
       appBar: AppBar(
         title: Text(
           l10n.settingsString,
           style: TextStyle(color: theme.textColor),
         ),
-        backgroundColor: theme.lightBackgroundColor,
+        backgroundColor: theme.backgroundColor,
         elevation: 0,
         iconTheme: IconThemeData(color: theme.primaryColor),
       ),

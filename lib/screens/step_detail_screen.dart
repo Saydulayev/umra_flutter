@@ -59,7 +59,7 @@ class StepDetailScreen extends StatelessWidget {
         }
 
         return Scaffold(
-          backgroundColor: theme.lightBackgroundColor,
+          backgroundColor: theme.backgroundColor,
           appBar: AppBar(
             title: Text(
               _getLocalizedTitle(step.titleKey, l10n),
@@ -68,7 +68,7 @@ class StepDetailScreen extends StatelessWidget {
                 color: theme.textColor,
               ),
             ),
-            backgroundColor: theme.lightBackgroundColor,
+            backgroundColor: theme.backgroundColor,
             elevation: 0,
             iconTheme: IconThemeData(color: theme.primaryColor),
             actions: const [CustomToolbar()],
@@ -567,7 +567,7 @@ class StepDetailScreen extends StatelessWidget {
   Widget _buildDefaultContent(AppTheme theme, FontProvider fontProvider) {
     return SelectableText(
       'Content for ${step.titleKey}',
-      style: fontProvider.getTextStyle(fontSize: 18, color: Colors.black87),
+      style: fontProvider.getTextStyle(fontSize: 18, color: theme.textColor),
     );
   }
 

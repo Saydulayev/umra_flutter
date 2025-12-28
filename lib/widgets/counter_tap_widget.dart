@@ -198,8 +198,8 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
     return ElevatedButton(
       onPressed: enabled ? onPressed : null,
       style: ElevatedButton.styleFrom(
-        backgroundColor: enabled ? theme.lightBackgroundColor : (theme.isDark ? Colors.grey.shade700 : Colors.grey.shade300),
-        foregroundColor: enabled ? theme.primaryColor : (theme.isDark ? Colors.grey.shade400 : Colors.grey),
+        backgroundColor: enabled ? theme.lightBackgroundColor : theme.disabledButtonBackgroundColor,
+        foregroundColor: enabled ? theme.primaryColor : theme.disabledButtonForegroundColor,
         padding: const EdgeInsets.symmetric(
           horizontal: 24,
           vertical: 16,

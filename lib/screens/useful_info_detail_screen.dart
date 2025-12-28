@@ -16,13 +16,13 @@ class UsefulInfoDetailScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      backgroundColor: theme.lightBackgroundColor,
+      backgroundColor: theme.backgroundColor,
       appBar: AppBar(
         title: Text(
           _getChapterTitle(chapter.titleKey, l10n),
           style: TextStyle(fontWeight: FontWeight.bold, color: theme.textColor),
         ),
-        backgroundColor: theme.lightBackgroundColor,
+        backgroundColor: theme.backgroundColor,
         elevation: 0,
         iconTheme: IconThemeData(color: theme.primaryColor),
       ),
@@ -234,7 +234,7 @@ class SubChapterDetailScreen extends StatelessWidget {
     final theme = themeProvider.selectedTheme;
 
     return Scaffold(
-      backgroundColor: theme.lightBackgroundColor,
+      backgroundColor: theme.backgroundColor,
       appBar: AppBar(
         title: Text(
           _getSubChapterTitle(
@@ -243,7 +243,7 @@ class SubChapterDetailScreen extends StatelessWidget {
           ),
           style: TextStyle(fontWeight: FontWeight.bold, color: theme.textColor),
         ),
-        backgroundColor: theme.lightBackgroundColor,
+        backgroundColor: theme.backgroundColor,
         elevation: 0,
         iconTheme: IconThemeData(color: theme.primaryColor),
       ),

@@ -50,9 +50,9 @@ class _DonationScreenState extends State<DonationScreen> {
     final theme = themeProvider.selectedTheme;
 
     return Scaffold(
-      backgroundColor: theme.lightBackgroundColor,
+      backgroundColor: theme.backgroundColor,
       appBar: AppBar(
-        backgroundColor: theme.lightBackgroundColor,
+        backgroundColor: theme.backgroundColor,
         elevation: 0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: theme.textColor),

@@ -56,10 +56,12 @@ class _DonationWidgetState extends State<DonationWidget> {
       // Показываем уведомление только один раз
       _hasShownSuccessMessage = true;
       final l10n = AppLocalizations.of(context)!;
+      final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+      final theme = themeProvider.selectedTheme;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(l10n.donationSuccessMessage),
-          backgroundColor: Colors.green,
+          backgroundColor: theme.successColor,
           duration: const Duration(seconds: 3),
         ),
       );
@@ -99,7 +101,7 @@ class _DonationWidgetState extends State<DonationWidget> {
 
     return Container(
       padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(color: theme.lightBackgroundColor),
+      decoration: BoxDecoration(color: theme.backgroundColor),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [

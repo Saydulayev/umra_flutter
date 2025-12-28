@@ -1,3 +1,4 @@
+import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -12,6 +13,9 @@ import 'screens/home_screen.dart';
 import 'screens/language_selection_screen.dart';
 import 'models/app_theme.dart';
 import 'services/app_usage_tracker.dart';
+
+// Платформенный канал для обновления системного UI на Android
+const MethodChannel _systemUIChannel = MethodChannel('saydulayev.wien_gmail.com.umra/system_ui');
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,17 +56,36 @@ class MyApp extends StatelessWidget {
                   child,
                 ) {
                   final theme = themeProvider.selectedTheme;
-                  final overlayStyle = SystemUiOverlayStyle(
-                    statusBarIconBrightness: theme.isDark
-                        ? Brightness.light
-                        : Brightness.dark,
-                    systemNavigationBarIconBrightness: theme.isDark
-                        ? Brightness.light
-                        : Brightness.dark,
-                    systemStatusBarContrastEnforced: false,
-                    systemNavigationBarContrastEnforced: false,
-                  );
-                  SystemChrome.setSystemUIOverlayStyle(overlayStyle);
+                  
+                  // ВАЖНО: Для Android 15+ (API 35+) Flutter SDK использует устаревшие API через SystemChrome
+                  // (setStatusBarColor, setNavigationBarColor, setNavigationBarDividerColor)
+                  // Эти API не поддерживаются в Android 15+
+                  // 
+                  // Решение: НЕ используем SystemChrome.setSystemUIOverlayStyle() для Android
+                  // Вместо этого управляем внешним видом через WindowInsetsControllerCompat в MainActivity
+                  // через платформенный канал
+                  if (Platform.isAndroid) {
+                    // Обновляем яркость иконок через платформенный канал
+                    // Это предотвращает использование устаревших API в Android 15+
+                    _systemUIChannel.invokeMethod('updateSystemUIAppearance', {
+                      'isDark': theme.isDark,
+                    }).catchError((error) {
+                      // Игнорируем ошибки, если канал недоступен
+                    });
+                  } else if (Platform.isIOS) {
+                    // Для iOS используем обычный подход
+                    final overlayStyle = SystemUiOverlayStyle(
+                      statusBarIconBrightness: theme.isDark
+                          ? Brightness.light
+                          : Brightness.dark,
+                      systemNavigationBarIconBrightness: theme.isDark
+                          ? Brightness.light
+                          : Brightness.dark,
+                      systemStatusBarContrastEnforced: false,
+                      systemNavigationBarContrastEnforced: false,
+                    );
+                    SystemChrome.setSystemUIOverlayStyle(overlayStyle);
+                  }
 
                   return MaterialApp(
                     title: 'Umra Guide',

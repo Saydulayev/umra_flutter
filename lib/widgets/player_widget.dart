@@ -96,12 +96,14 @@ class _PlayerWidgetState extends State<PlayerWidget> {
         });
         // Показываем ошибку пользователю
         final l10n = AppLocalizations.of(context);
-        if (l10n != null) {
+        if (l10n != null && mounted) {
+          final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+          final theme = themeProvider.selectedTheme;
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text('${l10n.audioLoadError}: ${e.toString()}'),
               duration: const Duration(seconds: 3),
-              backgroundColor: Colors.red,
+              backgroundColor: theme.errorColor,
             ),
           );
         }
