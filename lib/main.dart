@@ -1,4 +1,3 @@
-import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -14,13 +13,25 @@ import 'screens/language_selection_screen.dart';
 import 'models/app_theme.dart';
 import 'services/app_usage_tracker.dart';
 
-// Платформенный канал для обновления системного UI на Android
-const MethodChannel _systemUIChannel = MethodChannel('saydulayev.wien_gmail.com.umra/system_ui');
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // Включаем edge-to-edge для Android 15
+
+  // Edge-to-edge: начиная с Android 15 (targetSdk=35) включено по умолчанию.
+  // Для обратной совместимости оставляем явное включение.
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
+  // ВАЖНО для Android 15+: не задаём цвета системных панелей (status/navigation)
+  // через SystemUiOverlayStyle, т.к. Flutter Android embedding внутри использует
+  // setStatusBarColor/setNavigationBarColor/setNavigationBarDividerColor.
+  // Задаём только яркость иконок и политику контраста.
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarIconBrightness: Brightness.dark,
+      systemStatusBarContrastEnforced: false,
+      systemNavigationBarContrastEnforced: false,
+    ),
+  );
 
   // Инициализируем трекер использования приложения
   await AppUsageTracker().initialize();
@@ -56,36 +67,20 @@ class MyApp extends StatelessWidget {
                   child,
                 ) {
                   final theme = themeProvider.selectedTheme;
-                  
-                  // ВАЖНО: Для Android 15+ (API 35+) Flutter SDK использует устаревшие API через SystemChrome
-                  // (setStatusBarColor, setNavigationBarColor, setNavigationBarDividerColor)
-                  // Эти API не поддерживаются в Android 15+
-                  // 
-                  // Решение: НЕ используем SystemChrome.setSystemUIOverlayStyle() для Android
-                  // Вместо этого управляем внешним видом через WindowInsetsControllerCompat в MainActivity
-                  // через платформенный канал
-                  if (Platform.isAndroid) {
-                    // Обновляем яркость иконок через платформенный канал
-                    // Это предотвращает использование устаревших API в Android 15+
-                    _systemUIChannel.invokeMethod('updateSystemUIAppearance', {
-                      'isDark': theme.isDark,
-                    }).catchError((error) {
-                      // Игнорируем ошибки, если канал недоступен
-                    });
-                  } else if (Platform.isIOS) {
-                    // Для iOS используем обычный подход
-                    final overlayStyle = SystemUiOverlayStyle(
-                      statusBarIconBrightness: theme.isDark
-                          ? Brightness.light
-                          : Brightness.dark,
-                      systemNavigationBarIconBrightness: theme.isDark
-                          ? Brightness.light
-                          : Brightness.dark,
-                      systemStatusBarContrastEnforced: false,
-                      systemNavigationBarContrastEnforced: false,
-                    );
-                    SystemChrome.setSystemUIOverlayStyle(overlayStyle);
-                  }
+
+                  // Для Android 15+ не задаём цвета системных панелей (status/navigation),
+                  // только яркость иконок. Это предотвращает вызовы setStatusBarColor/
+                  // setNavigationBarColor/setNavigationBarDividerColor из Android embedding.
+                  final overlayStyle = SystemUiOverlayStyle(
+                    statusBarBrightness:
+                        theme.isDark ? Brightness.dark : Brightness.light, // iOS
+                    statusBarIconBrightness:
+                        theme.isDark ? Brightness.light : Brightness.dark, // Android
+                    systemNavigationBarIconBrightness:
+                        theme.isDark ? Brightness.light : Brightness.dark, // Android
+                    systemStatusBarContrastEnforced: false,
+                    systemNavigationBarContrastEnforced: false,
+                  );
 
                   return MaterialApp(
                     title: 'Umra Guide',
@@ -98,6 +93,7 @@ class MyApp extends StatelessWidget {
                       scaffoldBackgroundColor: theme.backgroundColor,
                       fontFamily: 'Lato',
                       useMaterial3: true,
+                      appBarTheme: AppBarTheme(systemOverlayStyle: overlayStyle),
                     ),
 
                     // Локализация
@@ -130,11 +126,14 @@ class MyApp extends StatelessWidget {
                         : const LanguageSelectionScreen(),
                     // Важно: отключаем кэширование роутов для правильной работы локализации
                     builder: (context, child) {
-                      return MediaQuery(
-                        data: MediaQuery.of(
-                          context,
-                        ).copyWith(textScaler: const TextScaler.linear(1.0)),
-                        child: child!,
+                      return AnnotatedRegion<SystemUiOverlayStyle>(
+                        value: overlayStyle,
+                        child: MediaQuery(
+                          data: MediaQuery.of(
+                            context,
+                          ).copyWith(textScaler: const TextScaler.linear(1.0)),
+                          child: child!,
+                        ),
                       );
                     },
                   );
