@@ -19,7 +19,7 @@ class ThemeSelectionSheet extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: theme.lightBackgroundColor,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -49,7 +49,7 @@ class ThemeSelectionSheet extends StatelessWidget {
                     child: Card(
                       elevation: isSelected ? 4 : 2,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(24),
                         side: BorderSide(
                           color: isSelected
                               ? appTheme.primaryColor
@@ -62,18 +62,22 @@ class ThemeSelectionSheet extends StatelessWidget {
                           themeProvider.setTheme(appTheme);
                           Navigator.pop(context);
                         },
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(24),
                         child: Container(
                           padding: const EdgeInsets.all(16),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(24),
                             gradient: appTheme.isDark
                                 ? LinearGradient(
                                     begin: Alignment.topLeft,
                                     end: Alignment.bottomRight,
                                     colors: [
-                                      const Color(0xFFE5E7EB), // Светло-серый верх
-                                      const Color(0xFFF3F4F6), // Ещё светлее низ
+                                      const Color(
+                                        0xFFE5E7EB,
+                                      ), // Светло-серый верх
+                                      const Color(
+                                        0xFFF3F4F6,
+                                      ), // Ещё светлее низ
                                     ],
                                   )
                                 : LinearGradient(
@@ -96,7 +100,9 @@ class ThemeSelectionSheet extends StatelessWidget {
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
                                     color: appTheme.isDark
-                                        ? const Color(0xFF111827) // Тёмный текст для светлого фона
+                                        ? const Color(
+                                            0xFF111827,
+                                          ) // Тёмный текст для светлого фона
                                         : appTheme.textColor,
                                   ),
                                 ),

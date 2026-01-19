@@ -17,7 +17,16 @@ class HajjIconWidget extends StatelessWidget {
     if (theme.isDark) {
       return [const Color(0xFF2D3748), const Color(0xFF1F2937)];
     }
-    return [const Color(0xFFffffff), const Color(0xFFf0f0f5)];
+
+    // Делаем градиент ближе к фону главного экрана текущей темы
+    // (меньше контраст/насыщенность, чем от primaryColor).
+    final top =
+        Color.lerp(theme.gradientTopColor, Colors.white, 0.35) ??
+        theme.gradientTopColor;
+    final bottom =
+        Color.lerp(theme.lightBackgroundColor, Colors.white, 0.2) ??
+        theme.lightBackgroundColor;
+    return [top, bottom];
   }
 
   /// Получить цвет темной тени в зависимости от темы
@@ -25,7 +34,8 @@ class HajjIconWidget extends StatelessWidget {
     if (theme.isDark) {
       return Colors.black.withValues(alpha: 0.4);
     }
-    return const Color(0xFFd1d1d6);
+    // Для светлых тем тень должна оставаться темной (а не серой).
+    return Colors.black.withValues(alpha: 0.18);
   }
 
   /// Получить цвет светлой тени в зависимости от темы
@@ -33,7 +43,7 @@ class HajjIconWidget extends StatelessWidget {
     if (theme.isDark) {
       return Colors.white.withValues(alpha: 0.05);
     }
-    return const Color(0xFFffffff);
+    return Colors.white.withValues(alpha: 0.65);
   }
 
   /// Получить цвет тени для круга в зависимости от темы
@@ -64,10 +74,18 @@ class HajjIconWidget extends StatelessWidget {
         border: Border.all(
           color: theme.isDark
               ? Colors.white.withValues(alpha: 0.1)
-              : Colors.grey.shade300.withValues(alpha: 0.3),
+              : theme.backgroundColor.withValues(alpha: 0.22),
           width: 1,
         ),
         boxShadow: [
+          // Дополнительная более четкая тень, чтобы лучше читалась граница рамки
+          if (!theme.isDark)
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.08),
+              offset: const Offset(3, 3),
+              blurRadius: 8,
+              spreadRadius: 0,
+            ),
           // Темная тень справа-внизу
           BoxShadow(
             color: _getDarkShadowColor(),

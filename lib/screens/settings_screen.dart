@@ -15,6 +15,8 @@ import 'donation_screen.dart';
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
+  static const double _settingsItemRadius = 24;
+
   Future<void> _launchEmail(BuildContext context) async {
     final l10n = AppLocalizations.of(context)!;
     const String email = AppStrings.contactEmail;
@@ -187,6 +189,7 @@ class SettingsScreen extends StatelessWidget {
                   );
                 },
                 theme: theme,
+                trailing: _buildThemeValue(theme, l10n),
               ),
               const SizedBox(height: 8),
               // Support Developer / Donations
@@ -238,17 +241,19 @@ class SettingsScreen extends StatelessWidget {
     String? subtitle,
     required VoidCallback onTap,
     required AppTheme theme,
+    Widget? trailing,
   }) {
+    final itemBorderRadius = BorderRadius.circular(_settingsItemRadius);
     return Card(
       elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(borderRadius: itemBorderRadius),
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: itemBorderRadius,
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: itemBorderRadius,
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -282,12 +287,53 @@ class SettingsScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Icon(Icons.chevron_right, color: theme.primaryColor),
+              trailing ?? Icon(Icons.chevron_right, color: theme.primaryColor),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Widget _buildThemeValue(AppTheme theme, AppLocalizations l10n) {
+    final themeName = _getThemeName(theme, l10n);
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 18,
+          height: 18,
+          decoration: BoxDecoration(
+            color: theme.previewColor,
+            shape: BoxShape.circle,
+          ),
+        ),
+        const SizedBox(width: 10),
+        Text(
+          themeName,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: theme.secondaryTextColor,
+          ),
+        ),
+      ],
+    );
+  }
+
+  String _getThemeName(AppTheme theme, AppLocalizations l10n) {
+    switch (theme) {
+      case AppTheme.blue:
+        return l10n.themeHeavenly;
+      case AppTheme.green:
+        return l10n.themeOasis;
+      case AppTheme.gold:
+        return l10n.themeGold;
+      case AppTheme.turquoise:
+        return l10n.themeTurquoise;
+      case AppTheme.dark:
+        return l10n.themeDark;
+    }
   }
 
   void _showLanguageDialog(
