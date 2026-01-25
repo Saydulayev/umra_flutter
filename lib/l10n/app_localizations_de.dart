@@ -284,6 +284,13 @@ class AppLocalizationsDe extends AppLocalizations {
   String get conclusion => 'Schlussfolgerung';
 
   @override
+  String get preparation_before_ihram_title => 'Vorbereitung auf den Ihram';
+
+  @override
+  String get preparation_before_ihram_text =>
+      'Vor dem Eintritt in den Ihram (d.h. vor der Absichtserklärung und dem Beginn der Talbiyah) wird empfohlen:\n\nGhusl (vollständige rituelle Waschung) durchzuführen, dies ist Sunnah.\n\nSich gemäß der \"Fitrah\" zu pflegen: Nägel schneiden, Scham- und Achselhaare entfernen (Männer sollten auch den Schnurrbart stutzen), damit man dies nicht bereits im Ihram tun muss.\n\nMänner sollten nach dem Ghusl Parfüm auf den Körper auftragen (nicht auf die Ihram-Kleidung).\n\nIhram-Kleidung anziehen (Männer — Izar und Rida; Frauen — normale bescheidene Kleidung, ohne Niqab und Handschuhe im Ihram-Zustand).\n\nWenn die Zeit für ein obligatorisches Gebet gekommen ist — es verrichten, dann am Miqat die Absicht für Umrah/Hajj fassen und die Talbiyah sprechen — ab diesem Moment befindet man sich im Ihram, und seine Verbote treten in Kraft.';
+
+  @override
   String get step1EnterIhram =>
       '\nTreten Sie am Ort des Mikats in den Zustand des Ihrams ein.\n';
 

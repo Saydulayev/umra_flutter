@@ -88,6 +88,13 @@ class HajjStepDetailScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // Раздел: Подготовка к ихраму
+        StepTitleWidget(text: l10n.preparation_before_ihram_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        StepTextWidget(text: l10n.preparation_before_ihram_text),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
+        const Divider(),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
         // Раздел: Вхождение в состояние ихрама
         StepTitleWidget(text: l10n.hajj_step1_ihram_title),
         const SizedBox(height: AppDimensions.paddingLarge),

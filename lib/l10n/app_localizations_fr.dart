@@ -284,6 +284,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get conclusion => 'Conclusion';
 
   @override
+  String get preparation_before_ihram_title => 'Préparation à l\'Ihram';
+
+  @override
+  String get preparation_before_ihram_text =>
+      'Avant d\'entrer en état d\'Ihram (c\'est-à-dire avant de formuler l\'intention et de commencer la Talbiyah), il est recommandé :\n\nEffectuer le ghusl (ablution complète), c\'est une Sunnah.\n\nSe préparer selon la \"fitrah\" : couper les ongles, enlever les poils pubiens et des aisselles (les hommes doivent également tailler leur moustache), afin de ne pas avoir à le faire une fois en état d\'Ihram.\n\nLes hommes doivent appliquer du parfum sur le corps après le ghusl (pas sur les vêtements d\'Ihram).\n\nRevêtir les vêtements d\'Ihram (hommes — izar et rida ; femmes — vêtements modestes ordinaires, sans niqab et sans gants en état d\'Ihram).\n\nSi c\'est l\'heure d\'une prière obligatoire — l\'accomplir, puis au miqat formuler l\'intention pour l\'Omra/le Haddj et réciter la Talbiyah — à partir de ce moment, vous êtes en état d\'Ihram, et ses restrictions commencent à s\'appliquer.';
+
+  @override
   String get step1EnterIhram =>
       '\nEntrez dans l\'état d\'Ihram à l\'endroit prévu à cet effet (Miqat).\n';
 

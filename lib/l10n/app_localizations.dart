@@ -628,6 +628,18 @@ abstract class AppLocalizations {
   /// **'Conclusion'**
   String get conclusion;
 
+  /// No description provided for @preparation_before_ihram_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Preparation for Ihram'**
+  String get preparation_before_ihram_title;
+
+  /// No description provided for @preparation_before_ihram_text.
+  ///
+  /// In en, this message translates to:
+  /// **'Before entering Ihram (i.e., before making the intention and starting the Talbiyah), it is recommended:\n\nPerform ghusl (full ablution), this is Sunnah.\n\nGroom yourself according to \"fitrah\": trim nails, remove pubic and underarm hair (men should also trim their mustaches), so that you don\'t have to do this while in Ihram.\n\nMen should apply perfume to the body after ghusl (not on Ihram clothing).\n\nPut on Ihram clothing (men — izar and rida; women — regular modest clothing, without niqab and gloves while in Ihram).\n\nIf it is time for an obligatory prayer — perform it, then at the miqat make the intention for Umrah/Hajj and recite the Talbiyah — from this moment you are in Ihram, and its restrictions begin to apply.'**
+  String get preparation_before_ihram_text;
+
   /// No description provided for @step1EnterIhram.
   ///
   /// In en, this message translates to:
