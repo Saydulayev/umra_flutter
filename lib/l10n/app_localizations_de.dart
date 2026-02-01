@@ -48,6 +48,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get circleString => 'Komplettlösung:';
 
   @override
+  String get tawafCircleString => 'Runde:';
+
+  @override
+  String get sayPassageString => 'Durchgang:';
+
+  @override
   String get addString => 'Hinzufügen';
 
   @override
@@ -55,6 +61,9 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get sayFinishedString => 'Sa´y ist fertig';
+
+  @override
+  String get tawafFinishedString => 'Tawaf beendet';
 
   @override
   String get settingsString => 'Einstellungen';

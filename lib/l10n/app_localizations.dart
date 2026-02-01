@@ -184,6 +184,18 @@ abstract class AppLocalizations {
   /// **'Walkthrough:'**
   String get circleString;
 
+  /// No description provided for @tawafCircleString.
+  ///
+  /// In en, this message translates to:
+  /// **'Circle:'**
+  String get tawafCircleString;
+
+  /// No description provided for @sayPassageString.
+  ///
+  /// In en, this message translates to:
+  /// **'Passage:'**
+  String get sayPassageString;
+
   /// No description provided for @addString.
   ///
   /// In en, this message translates to:
@@ -201,6 +213,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sa´y finished'**
   String get sayFinishedString;
+
+  /// No description provided for @tawafFinishedString.
+  ///
+  /// In en, this message translates to:
+  /// **'Tawaf finished'**
+  String get tawafFinishedString;
 
   /// No description provided for @settingsString.
   ///

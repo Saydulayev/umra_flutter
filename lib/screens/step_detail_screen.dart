@@ -298,6 +298,13 @@ class StepDetailScreen extends StatelessWidget {
         ArabicTextWidget(text: l10n.step2DuaArabic),
         const PlayerWidget(fileName: '7'),
         const SizedBox(height: AppDimensions.paddingLarge),
+        // 5a. Счётчик тавафа (7 кругов) — под плеером и ползунком
+        CounterTapWidget(
+          prefsKey: 'tawaf_counter',
+          labelString: l10n.tawafCircleString,
+          finishedString: l10n.tawafFinishedString,
+        ),
+        const SizedBox(height: AppDimensions.paddingLarge),
         // 6. "Kaaba text4"
         SelectableText(
           l10n.step2KaabaText4,
@@ -489,10 +496,14 @@ class StepDetailScreen extends StatelessWidget {
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
         // Group 2
-        // 7. Арабский текст зикра + CounterTapWidget + Player 10
+        // 7. Арабский текст зикра + Player 10 + счётчик Саʿй под плеером
         ArabicTextWidget(text: l10n.step6RemembranceArabic),
-        const CounterTapWidget(),
         const PlayerWidget(fileName: '10'),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        CounterTapWidget(
+          prefsKey: 'say_counter',
+          labelString: l10n.sayPassageString,
+        ),
         const SizedBox(height: AppDimensions.paddingLarge),
         // 8. "Remembrance of Allah during the Sa'i of Safa and Marwa." + полный текст
         SelectableText(

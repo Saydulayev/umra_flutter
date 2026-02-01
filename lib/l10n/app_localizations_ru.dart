@@ -48,6 +48,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get circleString => 'Прохождение:';
 
   @override
+  String get tawafCircleString => 'Круг:';
+
+  @override
+  String get sayPassageString => 'Прохождение:';
+
+  @override
   String get addString => 'Добавить';
 
   @override
@@ -55,6 +61,9 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get sayFinishedString => 'Cа´й закончено';
+
+  @override
+  String get tawafFinishedString => 'Таваф завершён';
 
   @override
   String get settingsString => 'Настройки';

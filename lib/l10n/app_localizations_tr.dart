@@ -48,6 +48,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get circleString => 'Geçiş:';
 
   @override
+  String get tawafCircleString => 'Tur:';
+
+  @override
+  String get sayPassageString => 'Geçiş:';
+
+  @override
   String get addString => 'Ekle';
 
   @override
@@ -55,6 +61,9 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get sayFinishedString => 'Sa´y tamamlandı';
+
+  @override
+  String get tawafFinishedString => 'Tawaf tamamlandı';
 
   @override
   String get settingsString => 'Ayarlar';

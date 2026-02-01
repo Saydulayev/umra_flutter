@@ -6,7 +6,24 @@ import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 
 class CounterTapWidget extends StatefulWidget {
-  const CounterTapWidget({super.key});
+  /// Ключ для сохранения счётчика в SharedPreferences.
+  /// Для тавафа: 'tawaf_counter', для саʿй: 'say_counter'.
+  final String prefsKey;
+
+  /// Подпись перед числом: для тавафа — «Круг», для саʿй — «Прохождение».
+  /// Если не задан, используется [AppLocalizations.circleString].
+  final String? labelString;
+
+  /// Текст сообщения при завершении (7 кругов).
+  /// Если не задан, используется [AppLocalizations.sayFinishedString].
+  final String? finishedString;
+
+  const CounterTapWidget({
+    super.key,
+    this.prefsKey = 'tawaf_counter',
+    this.labelString,
+    this.finishedString,
+  });
 
   @override
   State<CounterTapWidget> createState() => _CounterTapWidgetState();
@@ -24,14 +41,16 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
 
   Future<void> _loadCounter() async {
     final prefs = await SharedPreferences.getInstance();
+    final loaded = prefs.getInt(widget.prefsKey) ?? 0;
     setState(() {
-      _counter = prefs.getInt('tawaf_counter') ?? 0;
+      _counter = loaded;
+      _showCelebration = (loaded == 7);
     });
   }
 
   Future<void> _saveCounter(int value) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setInt('tawaf_counter', value);
+    await prefs.setInt(widget.prefsKey, value);
   }
 
   Future<void> _incrementCounter() async {
@@ -72,6 +91,8 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final theme = themeProvider.selectedTheme;
     final l10n = AppLocalizations.of(context)!;
+    final label = widget.labelString ?? l10n.circleString;
+    final finishedMessage = widget.finishedString ?? l10n.sayFinishedString;
 
     return Container(
       padding: const EdgeInsets.all(24.0),
@@ -83,7 +104,7 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                '${l10n.circleString} ',
+                '$label ',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
@@ -123,15 +144,21 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
                       ),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
                           colors: [
-                            Colors.green.shade400,
-                            Colors.teal.shade300,
+                            theme.primaryColor,
+                            Color.lerp(
+                              theme.primaryColor,
+                              theme.isDark ? Colors.black : Colors.white,
+                              0.25,
+                            )!,
                           ],
                         ),
                         borderRadius: BorderRadius.circular(20),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.green.withValues(alpha: 0.3),
+                            color: theme.primaryColor.withValues(alpha: 0.35),
                             blurRadius: 15,
                             offset: const Offset(0, 5),
                           ),
@@ -139,18 +166,22 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
                       ),
                       child: Column(
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.check_circle,
-                            color: Colors.white,
+                            color: theme.isDark
+                                ? theme.textColor
+                                : Colors.white,
                             size: 48,
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            l10n.sayFinishedString,
+                            finishedMessage,
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              color: theme.isDark
+                                  ? theme.textColor
+                                  : Colors.white,
                             ),
                           ),
                         ],
@@ -166,21 +197,21 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-            _buildButton(
-              context,
-              label: l10n.addString,
-              onPressed: _incrementCounter,
-              theme: theme,
-              enabled: _counter < 7,
-            ),
-            const SizedBox(width: 24),
-            _buildButton(
-              context,
-              label: l10n.resetString,
-              onPressed: _decrementCounter,
-              theme: theme,
-              enabled: _counter > 0,
-            ),
+              _buildButton(
+                context,
+                label: l10n.addString,
+                onPressed: _incrementCounter,
+                theme: theme,
+                enabled: _counter < 7,
+              ),
+              const SizedBox(width: 24),
+              _buildButton(
+                context,
+                label: l10n.resetString,
+                onPressed: _decrementCounter,
+                theme: theme,
+                enabled: _counter > 0,
+              ),
             ],
           ),
         ],
@@ -198,23 +229,19 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
     return ElevatedButton(
       onPressed: enabled ? onPressed : null,
       style: ElevatedButton.styleFrom(
-        backgroundColor: enabled ? theme.lightBackgroundColor : theme.disabledButtonBackgroundColor,
-        foregroundColor: enabled ? theme.primaryColor : theme.disabledButtonForegroundColor,
-        padding: const EdgeInsets.symmetric(
-          horizontal: 24,
-          vertical: 16,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+        backgroundColor: enabled
+            ? theme.lightBackgroundColor
+            : theme.disabledButtonBackgroundColor,
+        foregroundColor: enabled
+            ? theme.primaryColor
+            : theme.disabledButtonForegroundColor,
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         elevation: 4,
       ),
       child: Text(
         label,
-        style: const TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w600,
-        ),
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
       ),
     );
   }

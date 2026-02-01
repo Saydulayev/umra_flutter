@@ -48,6 +48,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get circleString => 'Putaran:';
 
   @override
+  String get tawafCircleString => 'Putaran:';
+
+  @override
+  String get sayPassageString => 'Perjalanan:';
+
+  @override
   String get addString => 'Tambah';
 
   @override
@@ -55,6 +61,9 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get sayFinishedString => 'Sa´y selesai';
+
+  @override
+  String get tawafFinishedString => 'Tawaf selesai';
 
   @override
   String get settingsString => 'Pengaturan';

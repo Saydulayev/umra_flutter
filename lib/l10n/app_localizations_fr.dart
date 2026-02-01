@@ -48,6 +48,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String get circleString => 'Passage:';
 
   @override
+  String get tawafCircleString => 'Tour:';
+
+  @override
+  String get sayPassageString => 'Passage:';
+
+  @override
   String get addString => 'Ajouter';
 
   @override
@@ -55,6 +61,9 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get sayFinishedString => 'Sa´y terminé';
+
+  @override
+  String get tawafFinishedString => 'Tawaf terminé';
 
   @override
   String get settingsString => 'Paramètres';
