@@ -15,7 +15,8 @@ import 'donation_screen.dart';
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
-  static const double _settingsItemRadius = 24;
+  static const double _cardRadius = 12;
+  static const double _spacingBetweenBlocks = 12;
 
   Future<void> _launchEmail(BuildContext context) async {
     final l10n = AppLocalizations.of(context)!;
@@ -148,83 +149,108 @@ class SettingsScreen extends StatelessWidget {
               right: 16,
             ),
             children: [
-              // Feedback Button
-              _buildSettingsItem(
+              // Блок 1: Обратная связь, Оценить приложение
+              _buildSettingsBlock(
                 context,
-                icon: Icons.message,
-                title: l10n.feedbackString,
-                onTap: () => _launchEmail(context),
                 theme: theme,
+                children: [
+                  _buildSettingsRow(
+                    context,
+                    icon: Icons.feedback_outlined,
+                    title: l10n.feedbackString,
+                    onTap: () => _launchEmail(context),
+                    theme: theme,
+                  ),
+                  _buildDivider(theme),
+                  _buildSettingsRow(
+                    context,
+                    icon: Icons.star_outline,
+                    title: l10n.rateTheAppString,
+                    onTap: _launchAppStore,
+                    theme: theme,
+                  ),
+                ],
               ),
-              const SizedBox(height: 8),
-              // Rate the App Button
-              _buildSettingsItem(
+              const SizedBox(height: _spacingBetweenBlocks),
+              // Блок 2: Выбрать язык, Тема приложения
+              _buildSettingsBlock(
                 context,
-                icon: Icons.star,
-                title: l10n.rateTheAppString,
-                onTap: _launchAppStore,
                 theme: theme,
+                children: [
+                  _buildSettingsRow(
+                    context,
+                    icon: Icons.language,
+                    title: l10n.selectLanguageSettingsString,
+                    onTap: () {
+                      _showLanguageDialog(context, localizationProvider);
+                    },
+                    theme: theme,
+                    trailing: _buildLanguageValue(
+                      context,
+                      localizationProvider,
+                    ),
+                  ),
+                  _buildDivider(theme),
+                  _buildSettingsRow(
+                    context,
+                    icon: Icons.palette_outlined,
+                    title: l10n.appThemeString,
+                    onTap: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) => const ThemeSelectionSheet(),
+                      );
+                    },
+                    theme: theme,
+                    trailing: _buildThemeValue(theme, l10n),
+                  ),
+                ],
               ),
-              const SizedBox(height: 8),
-              // Language Selection
-              _buildSettingsItem(
+              const SizedBox(height: _spacingBetweenBlocks),
+              // Блок 3: Поддержать разработчика
+              _buildSettingsBlock(
                 context,
-                icon: Icons.language,
-                title: l10n.selectLanguageSettingsString,
-                onTap: () {
-                  _showLanguageDialog(context, localizationProvider);
-                },
                 theme: theme,
-              ),
-              const SizedBox(height: 8),
-              // Theme Selection
-              _buildSettingsItem(
-                context,
-                icon: Icons.palette,
-                title: l10n.appThemeString,
-                onTap: () {
-                  showModalBottomSheet(
-                    context: context,
-                    builder: (context) => const ThemeSelectionSheet(),
-                  );
-                },
-                theme: theme,
-                trailing: _buildThemeValue(theme, l10n),
-              ),
-              const SizedBox(height: 8),
-              // Support Developer / Donations
-              _buildSettingsItem(
-                context,
-                icon: Icons.favorite,
-                title: l10n.supportTheDeveloperString,
-                onTap: () {
-                  showDonationBottomSheet(context);
-                },
-                theme: theme,
+                children: [
+                  _buildSettingsRow(
+                    context,
+                    icon: Icons.paid_outlined,
+                    title: l10n.supportTheDeveloperString,
+                    onTap: () => showDonationBottomSheet(context),
+                    theme: theme,
+                  ),
+                ],
               ),
               // Reset Review State (только в тестовом режиме)
               if (ReviewConfig.isTestMode) ...[
-                const SizedBox(height: 8),
-                _buildSettingsItem(
+                const SizedBox(height: _spacingBetweenBlocks),
+                _buildSettingsBlock(
                   context,
-                  icon: Icons.refresh,
-                  title: 'Сбросить состояние оценки (тест)',
-                  onTap: () async {
-                    final prefsProvider = Provider.of<UserPreferencesProvider>(
-                      context,
-                      listen: false,
-                    );
-                    await prefsProvider.resetReviewState();
-                    if (context.mounted) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('Состояние оценки сброшено'),
-                          duration: Duration(seconds: 2),
-                        ),
-                      );
-                    }
-                  },
                   theme: theme,
+                  children: [
+                    _buildSettingsRow(
+                      context,
+                      icon: Icons.refresh,
+                      title: 'Сбросить состояние оценки (тест)',
+                      onTap: () async {
+                        final prefsProvider =
+                            Provider.of<UserPreferencesProvider>(
+                              context,
+                              listen: false,
+                            );
+                        await prefsProvider.resetReviewState();
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Состояние оценки сброшено'),
+                              duration: Duration(seconds: 2),
+                            ),
+                          );
+                        }
+                      },
+                      theme: theme,
+                    ),
+                  ],
                 ),
               ],
             ],
@@ -234,65 +260,114 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSettingsItem(
+  Widget _buildSettingsBlock(
+    BuildContext context, {
+    required AppTheme theme,
+    required List<Widget> children,
+  }) {
+    return Container(
+      decoration: BoxDecoration(
+        color: theme.lightBackgroundColor,
+        borderRadius: BorderRadius.circular(_cardRadius),
+        border: Border.all(color: theme.borderColor, width: 1),
+        boxShadow: [
+          BoxShadow(
+            color: theme.isDark
+                ? Colors.black.withValues(alpha: 0.2)
+                : Colors.black.withValues(alpha: 0.06),
+            blurRadius: 8,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(_cardRadius),
+        child: Column(mainAxisSize: MainAxisSize.min, children: children),
+      ),
+    );
+  }
+
+  Widget _buildDivider(AppTheme theme) {
+    return Divider(
+      height: 1,
+      thickness: 1,
+      indent: 56,
+      endIndent: 16,
+      color: theme.borderColor,
+    );
+  }
+
+  Widget _buildSettingsRow(
     BuildContext context, {
     required IconData icon,
     required String title,
-    String? subtitle,
     required VoidCallback onTap,
     required AppTheme theme,
     Widget? trailing,
   }) {
-    final itemBorderRadius = BorderRadius.circular(_settingsItemRadius);
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: itemBorderRadius),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: itemBorderRadius,
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            borderRadius: itemBorderRadius,
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [theme.gradientTopColor, theme.lightBackgroundColor],
-            ),
-          ),
-          child: Row(
-            children: [
-              Icon(icon, color: theme.primaryColor, size: 24),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: theme.textColor,
-                      ),
-                    ),
-                    if (subtitle != null)
-                      Text(
-                        subtitle,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: theme.secondaryTextColor,
-                        ),
-                      ),
-                  ],
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        child: Row(
+          children: [
+            Icon(icon, color: theme.primaryColor, size: 24),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                  color: theme.textColor,
                 ),
               ),
-              trailing ?? Icon(Icons.chevron_right, color: theme.primaryColor),
-            ],
-          ),
+            ),
+            if (trailing != null) ...[trailing, const SizedBox(width: 4)],
+            Icon(
+              Icons.chevron_right,
+              color: theme.secondaryTextColor,
+              size: 24,
+            ),
+          ],
         ),
       ),
     );
+  }
+
+  Widget _buildLanguageValue(
+    BuildContext context,
+    LocalizationProvider localizationProvider,
+  ) {
+    final theme = Provider.of<ThemeProvider>(
+      context,
+      listen: false,
+    ).selectedTheme;
+    final locale = localizationProvider.currentLocale;
+    final languageName = _getLanguageName(locale.languageCode);
+    return Text(
+      languageName,
+      style: TextStyle(fontSize: 16, color: theme.secondaryTextColor),
+    );
+  }
+
+  String _getLanguageName(String code) {
+    switch (code) {
+      case 'ru':
+        return 'Русский';
+      case 'en':
+        return 'English';
+      case 'de':
+        return 'Deutsch';
+      case 'fr':
+        return 'Français';
+      case 'tr':
+        return 'Türkçe';
+      case 'id':
+        return 'Bahasa Indonesia';
+      default:
+        return code;
+    }
   }
 
   Widget _buildThemeValue(AppTheme theme, AppLocalizations l10n) {
@@ -301,21 +376,17 @@ class SettingsScreen extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          width: 18,
-          height: 18,
+          width: 10,
+          height: 10,
           decoration: BoxDecoration(
-            color: theme.previewColor,
+            color: theme.primaryColor,
             shape: BoxShape.circle,
           ),
         ),
-        const SizedBox(width: 10),
+        const SizedBox(width: 8),
         Text(
           themeName,
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: theme.secondaryTextColor,
-          ),
+          style: TextStyle(fontSize: 16, color: theme.secondaryTextColor),
         ),
       ],
     );
