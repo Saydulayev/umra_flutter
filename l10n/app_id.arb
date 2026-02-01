@@ -207,6 +207,7 @@
   "donationErrorProductsNotFound": "Produk tidak ditemukan. Kemungkinan penyebab:\n1. Produk belum diaktifkan di Google Play Console (dapat memakan waktu beberapa jam)\n2. Aplikasi tidak dipublikasikan di track pengujian\n3. ID produk salah\n4. Perlu masuk ke Google Play dengan akun pengujian",
   "audioLoadError": "Kesalahan memuat audio",
   "mecca": "Mekah",
+  "medina": "Madinah",
   "fajr": "Fajar",
   "sunrise": "Terbit Matahari",
   "dhuhr": "Dzuhur",

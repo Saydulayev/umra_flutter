@@ -21,100 +21,114 @@ class PrayerTimeData {
   });
 }
 
+/// Город для расчёта времени намаза
+enum PrayerCity {
+  mecca,
+  medina,
+}
+
+extension PrayerCityExtension on PrayerCity {
+  String get value => name;
+}
+
+PrayerCity prayerCityFromString(String? value) {
+  if (value == PrayerCity.medina.value) return PrayerCity.medina;
+  return PrayerCity.mecca;
+}
+
 class PrayerTimeService {
   // Координаты Мекки
   static const double meccaLatitude = 21.4225;
   static const double meccaLongitude = 39.8262;
-  
-  // Часовой пояс Мекки (UTC+3)
+
+  // Координаты Медины
+  static const double medinaLatitude = 24.4672;
+  static const double medinaLongitude = 39.6111;
+
+  // Часовой пояс (Мекка и Медина: Asia/Riyadh UTC+3)
   static const int meccaTimeZoneOffset = 3;
-  
-  // Получить время молитв на сегодня
-  static PrayerTimeData? getTodayPrayerTimes() {
+
+  static Coordinates _coordinatesFor(PrayerCity city) {
+    switch (city) {
+      case PrayerCity.mecca:
+        return Coordinates(meccaLatitude, meccaLongitude);
+      case PrayerCity.medina:
+        return Coordinates(medinaLatitude, medinaLongitude);
+    }
+  }
+
+  // Получить время молитв на сегодня для выбранного города
+  static PrayerTimeData? getTodayPrayerTimes([PrayerCity city = PrayerCity.mecca]) {
     try {
-    final now = DateTime.now();
+      final now = DateTime.now();
       final date = DateTime(now.year, now.month, now.day);
-      
-      // Координаты Мекки
-      final coordinates = Coordinates(meccaLatitude, meccaLongitude);
-      
-      // Параметры расчета: UmmAlQura с мадхабом Shafi
+      final coordinates = _coordinatesFor(city);
+
       final params = CalculationMethodParameters.ummAlQura();
       params.madhab = Madhab.shafi;
-      
-      // Получаем время молитв из adhan_dart
-      // adhan_dart возвращает DateTime в локальном времени устройства
-      // Но для координат Мекки это будет время в часовом поясе Мекки
+
       final prayerTimes = PrayerTimes(
         coordinates: coordinates,
         date: date,
         calculationParameters: params,
       );
-      
-      // adhan_dart возвращает время в UTC, нужно конвертировать в часовой пояс Мекки (UTC+3)
-      final meccaOffset = Duration(hours: meccaTimeZoneOffset);
-      
+
+      final offset = Duration(hours: meccaTimeZoneOffset);
+
       return PrayerTimeData(
-        fajr: prayerTimes.fajr.add(meccaOffset),
-        sunrise: prayerTimes.sunrise.add(meccaOffset),
-        dhuhr: prayerTimes.dhuhr.add(meccaOffset),
-        asr: prayerTimes.asr.add(meccaOffset),
-        maghrib: prayerTimes.maghrib.add(meccaOffset),
-        isha: prayerTimes.isha.add(meccaOffset),
+        fajr: prayerTimes.fajr.add(offset),
+        sunrise: prayerTimes.sunrise.add(offset),
+        dhuhr: prayerTimes.dhuhr.add(offset),
+        asr: prayerTimes.asr.add(offset),
+        maghrib: prayerTimes.maghrib.add(offset),
+        isha: prayerTimes.isha.add(offset),
       );
     } catch (e) {
       debugPrint(
-        'Error calculating today prayer times for Mecca: $e. '
-        'Coordinates: ($meccaLatitude, $meccaLongitude)',
+        'Error calculating today prayer times for $city: $e.',
       );
       return null;
     }
   }
-  
-  // Получить время молитв на завтра
-  static PrayerTimeData? getTomorrowPrayerTimes() {
+
+  // Получить время молитв на завтра для выбранного города
+  static PrayerTimeData? getTomorrowPrayerTimes([PrayerCity city = PrayerCity.mecca]) {
     try {
-    final tomorrow = DateTime.now().add(const Duration(days: 1));
+      final tomorrow = DateTime.now().add(const Duration(days: 1));
       final date = DateTime(tomorrow.year, tomorrow.month, tomorrow.day);
-      
-      // Координаты Мекки
-      final coordinates = Coordinates(meccaLatitude, meccaLongitude);
-      
-      // Параметры расчета: UmmAlQura с мадхабом Shafi
+      final coordinates = _coordinatesFor(city);
+
       final params = CalculationMethodParameters.ummAlQura();
       params.madhab = Madhab.shafi;
-      
-      // Получаем время молитв из adhan_dart
+
       final prayerTimes = PrayerTimes(
         coordinates: coordinates,
         date: date,
         calculationParameters: params,
       );
-      
-      // adhan_dart возвращает время в UTC, нужно конвертировать в часовой пояс Мекки (UTC+3)
-      final meccaOffset = Duration(hours: meccaTimeZoneOffset);
-      
+
+      final offset = Duration(hours: meccaTimeZoneOffset);
+
       return PrayerTimeData(
-        fajr: prayerTimes.fajr.add(meccaOffset),
-        sunrise: prayerTimes.sunrise.add(meccaOffset),
-        dhuhr: prayerTimes.dhuhr.add(meccaOffset),
-        asr: prayerTimes.asr.add(meccaOffset),
-        maghrib: prayerTimes.maghrib.add(meccaOffset),
-        isha: prayerTimes.isha.add(meccaOffset),
+        fajr: prayerTimes.fajr.add(offset),
+        sunrise: prayerTimes.sunrise.add(offset),
+        dhuhr: prayerTimes.dhuhr.add(offset),
+        asr: prayerTimes.asr.add(offset),
+        maghrib: prayerTimes.maghrib.add(offset),
+        isha: prayerTimes.isha.add(offset),
       );
     } catch (e) {
       debugPrint(
-        'Error calculating tomorrow prayer times for Mecca: $e. '
-        'Coordinates: ($meccaLatitude, $meccaLongitude)',
+        'Error calculating tomorrow prayer times for $city: $e.',
       );
       return null;
     }
   }
-  
-  // Получить время Qiyam (последняя треть ночи)
-  static DateTime? getQiyamTime() {
-    final today = getTodayPrayerTimes();
-    final tomorrow = getTomorrowPrayerTimes();
+
+  // Получить время Qiyam (последняя треть ночи) для выбранного города
+  static DateTime? getQiyamTime([PrayerCity city = PrayerCity.mecca]) {
+    final today = getTodayPrayerTimes(city);
+    final tomorrow = getTomorrowPrayerTimes(city);
     
     if (today == null || tomorrow == null) return null;
     
@@ -154,21 +168,19 @@ class PrayerTimeService {
     return 'Fajr';
   }
   
-  // Получить время до следующей молитвы
-  static Duration getTimeUntilNextPrayer(PrayerTimeData prayerTimes) {
+  // Получить время до следующей молитвы (city нужен для Fajr завтра)
+  static Duration getTimeUntilNextPrayer(PrayerTimeData prayerTimes, [PrayerCity city = PrayerCity.mecca]) {
     final now = _getCurrentMeccaTime();
     final nextPrayerName = getNextPrayerName(prayerTimes);
-    
+
     DateTime nextPrayerTime;
     switch (nextPrayerName) {
       case 'Fajr':
-        // Проверяем, прошла ли уже сегодняшняя Fajr
         if (prayerTimes.fajr.isBefore(now)) {
-          // Берем Fajr завтра
-          final tomorrow = getTomorrowPrayerTimes();
+          final tomorrow = getTomorrowPrayerTimes(city);
           nextPrayerTime = tomorrow?.fajr ?? prayerTimes.fajr.add(const Duration(days: 1));
         } else {
-        nextPrayerTime = prayerTimes.fajr;
+          nextPrayerTime = prayerTimes.fajr;
         }
         break;
       case 'Sunrise':
@@ -187,11 +199,10 @@ class PrayerTimeService {
         nextPrayerTime = prayerTimes.isha;
         break;
       default:
-        // Если все молитвы прошли, следующая - Fajr завтра
-        final tomorrow = getTomorrowPrayerTimes();
+        final tomorrow = getTomorrowPrayerTimes(city);
         nextPrayerTime = tomorrow?.fajr ?? prayerTimes.fajr.add(const Duration(days: 1));
     }
-    
+
     return nextPrayerTime.difference(now);
   }
   

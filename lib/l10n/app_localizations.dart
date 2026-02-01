@@ -1348,6 +1348,12 @@ abstract class AppLocalizations {
   /// **'Mecca'**
   String get mecca;
 
+  /// No description provided for @medina.
+  ///
+  /// In en, this message translates to:
+  /// **'Medina'**
+  String get medina;
+
   /// No description provided for @fajr.
   ///
   /// In en, this message translates to:

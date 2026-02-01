@@ -727,6 +727,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get mecca => 'Mecca';
 
   @override
+  String get medina => 'Medina';
+
+  @override
   String get fajr => 'Fajr';
 
   @override

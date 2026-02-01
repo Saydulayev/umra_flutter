@@ -26,6 +26,9 @@ class PrefsKeys {
   // Шрифты
   static const String selectedFont = 'SelectedFont';
   static const String selectedFontSize = 'SelectedFontSize';
+
+  // Город для расчёта времени намаза (mecca / medina)
+  static const String prayerCity = 'prayerCity';
 }
 
 /// Размеры и отступы приложения

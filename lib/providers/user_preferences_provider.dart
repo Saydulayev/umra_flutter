@@ -11,11 +11,13 @@ class UserPreferencesProvider extends ChangeNotifier {
   bool _hasShownReviewDialog = false;
   bool _isShowingDialog =
       false; // Флаг для предотвращения множественных показов
+  String _prayerCity = 'mecca'; // mecca | medina
 
   bool get isGridView => _isGridView;
   bool get hasRatedApp => _hasRatedApp;
   bool get hasShownReviewDialog => _hasShownReviewDialog;
   bool get isShowingDialog => _isShowingDialog;
+  String get prayerCity => _prayerCity;
 
   final PreferencesRepository _prefsRepo = PreferencesRepository();
   final AppUsageTracker _usageTracker = AppUsageTracker();
@@ -29,6 +31,14 @@ class UserPreferencesProvider extends ChangeNotifier {
   Future<void> _loadPreferences() async {
     _isGridView = await _prefsRepo.getBool(PrefsKeys.isGridView) ?? false;
     _hasRatedApp = await _prefsRepo.getBool(PrefsKeys.hasRatedApp) ?? false;
+    _prayerCity = await _prefsRepo.getString(PrefsKeys.prayerCity) ?? 'mecca';
+    notifyListeners();
+  }
+
+  Future<void> setPrayerCity(String city) async {
+    if (city != 'mecca' && city != 'medina') return;
+    _prayerCity = city;
+    await _prefsRepo.setString(PrefsKeys.prayerCity, city);
     notifyListeners();
   }
 

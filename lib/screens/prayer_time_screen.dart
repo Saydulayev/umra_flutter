@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../providers/theme_provider.dart';
+import '../providers/user_preferences_provider.dart';
 import '../models/app_theme.dart';
 import '../services/prayer_time_service.dart';
 import '../l10n/app_localizations.dart';
@@ -19,21 +20,29 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   PrayerTimeData? _prayerTimes;
   String _nextPrayerName = 'Fajr';
   Duration _timeUntilNextPrayer = Duration.zero;
+  String _currentCityKey = 'mecca';
 
-  // КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Добавляем Timer для правильной отмены
   Timer? _timer;
 
   @override
   void initState() {
     super.initState();
-    _updatePrayerTimes();
-    // Обновляем каждую секунду
     _startTimer();
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final prefs = Provider.of<UserPreferencesProvider>(context);
+    final cityKey = prefs.prayerCity;
+    if (_prayerTimes == null || cityKey != _currentCityKey) {
+      _currentCityKey = cityKey;
+      _recomputePrayerTimes(prayerCityFromString(cityKey));
+    }
+  }
+
   void _startTimer() {
-    // КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Используем Timer.periodic вместо рекурсивного Future.delayed
-    _timer?.cancel(); // Отменяем предыдущий таймер, если есть
+    _timer?.cancel();
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (mounted) {
         _updateCountdown();
@@ -43,16 +52,16 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     });
   }
 
-  void _updatePrayerTimes() {
+  void _recomputePrayerTimes(PrayerCity city) {
     setState(() {
-      _prayerTimes = PrayerTimeService.getTodayPrayerTimes();
+      _prayerTimes = PrayerTimeService.getTodayPrayerTimes(city);
       if (_prayerTimes != null) {
         _nextPrayerName = PrayerTimeService.getNextPrayerName(_prayerTimes!);
         _timeUntilNextPrayer = PrayerTimeService.getTimeUntilNextPrayer(
           _prayerTimes!,
+          city,
         );
       } else {
-        // Показываем ошибку пользователю, если не удалось загрузить время молитв
         if (mounted) {
           final l10n = AppLocalizations.of(context)!;
           final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
@@ -70,14 +79,23 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   }
 
   void _updateCountdown() {
+    final city = prayerCityFromString(_currentCityKey);
     if (_prayerTimes != null) {
       setState(() {
         _nextPrayerName = PrayerTimeService.getNextPrayerName(_prayerTimes!);
         _timeUntilNextPrayer = PrayerTimeService.getTimeUntilNextPrayer(
           _prayerTimes!,
+          city,
         );
       });
     }
+  }
+
+  Future<void> _onCityChanged(String cityKey) async {
+    final prefs = Provider.of<UserPreferencesProvider>(context, listen: false);
+    await prefs.setPrayerCity(cityKey);
+    _currentCityKey = cityKey;
+    _recomputePrayerTimes(prayerCityFromString(cityKey));
   }
 
   String _formatDuration(Duration duration) {
@@ -128,9 +146,14 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     }
   }
 
+  String _cityTitle(AppLocalizations l10n) {
+    return _currentCityKey == 'medina' ? l10n.medina : l10n.mecca;
+  }
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    final prefs = Provider.of<UserPreferencesProvider>(context);
     final theme = themeProvider.selectedTheme;
     final l10n = AppLocalizations.of(context)!;
 
@@ -168,110 +191,67 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                 theme: theme,
                 child: Column(
                   children: [
-                    // Местоположение и дата
-                    FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            l10n.mecca,
-                            style: GoogleFonts.greatVibes(
-                              fontSize: 36,
-                              color: theme.textColor,
+                    // Заголовок (календарь): город и дата — фиксированная высота, чтобы не сдвигалось при смене Мекка/Медина
+                    SizedBox(
+                      height: 44,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: Alignment.center,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              _cityTitle(l10n),
+                              style: GoogleFonts.greatVibes(
+                                fontSize: 36,
+                                color: theme.textColor,
+                              ),
                             ),
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            _getIslamicDate(),
-                            style: GoogleFonts.greatVibes(
-                              fontSize: 36,
-                              color: theme.textColor,
+                            const SizedBox(width: 8),
+                            Text(
+                              _getIslamicDate(),
+                              style: GoogleFonts.greatVibes(
+                                fontSize: 36,
+                                color: theme.textColor,
+                              ),
                             ),
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            _getIslamicYear(),
-                            style: GoogleFonts.greatVibes(
-                              fontSize: 36,
-                              color: theme.textColor,
+                            const SizedBox(width: 8),
+                            Text(
+                              _getIslamicYear(),
+                              style: GoogleFonts.greatVibes(
+                                fontSize: 36,
+                                color: theme.textColor,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const Divider(),
-                    // Следующая молитва (cardStyled)
-                    _buildCardStyled(
-                      theme: theme,
-                      child: Center(
-                        child: Text(
-                          '${_getLocalizedPrayerName(_nextPrayerName, l10n)} ${l10n.prayerTimeIn} ${_formatDuration(_timeUntilNextPrayer)}',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: theme.textColor,
-                          ),
-                          textAlign: TextAlign.center,
+                          ],
                         ),
                       ),
                     ),
-                    // Список времени молитв
+                    // Дивайдер внизу календаря (тонкая светло-серая линия)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 12, bottom: 12),
+                      child: Divider(
+                        height: 1,
+                        thickness: 1,
+                        color: theme.textColor.withValues(alpha: 0.12),
+                      ),
+                    ),
+                    // Переключатель города: Мекка | Медина
+                    _buildCitySegmentedControl(
+                      context: context,
+                      theme: theme,
+                      l10n: l10n,
+                      selectedCity: prefs.prayerCity,
+                      onCityChanged: _onCityChanged,
+                    ),
+                    // Блок обратного отсчёта — форма «таблетки», сильное скругление
+                    _buildCountdownPill(theme: theme, l10n: l10n),
+                    // Список времени намазов с разделителями между строками
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Column(
-                        children: [
-                          _buildPrayerTimeRow(
-                            l10n.fajr,
-                            _formatTime(_prayerTimes!.fajr),
-                            textColor: theme.textColor,
-                            theme: theme,
-                          ),
-                          _buildCapsuleStyled(
-                            theme: theme,
-                            child: _buildPrayerTimeRow(
-                              l10n.sunrise,
-                              _formatTime(_prayerTimes!.sunrise),
-                              textColor: theme.textColor,
-                              theme: theme,
-                            ),
-                          ),
-                          _buildPrayerTimeRow(
-                            l10n.dhuhr,
-                            _formatTime(_prayerTimes!.dhuhr),
-                            textColor: theme.textColor,
-                            theme: theme,
-                          ),
-                          _buildPrayerTimeRow(
-                            l10n.asr,
-                            _formatTime(_prayerTimes!.asr),
-                            textColor: theme.textColor,
-                            theme: theme,
-                          ),
-                          _buildPrayerTimeRow(
-                            l10n.maghrib,
-                            _formatTime(_prayerTimes!.maghrib),
-                            textColor: theme.textColor,
-                            theme: theme,
-                          ),
-                          _buildPrayerTimeRow(
-                            l10n.isha,
-                            _formatTime(_prayerTimes!.isha),
-                            textColor: theme.textColor,
-                            theme: theme,
-                          ),
-                          if (PrayerTimeService.getQiyamTime() != null)
-                            _buildCapsuleStyled(
-                              theme: theme,
-                              child: _buildPrayerTimeRow(
-                                l10n.qiyam,
-                                _formatTime(PrayerTimeService.getQiyamTime()!),
-                                textColor: theme.textColor,
-                                theme: theme,
-                              ),
-                            ),
-                        ],
+                        children: _buildPrayerListWithDividers(theme, l10n),
                       ),
                     ),
                   ],
@@ -296,16 +276,12 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.08),
-              blurRadius: 15,
-              offset: const Offset(0, 4),
+              color: theme.isDark
+                  ? theme.textColor.withValues(alpha: 0.15)
+                  : theme.textColor.withValues(alpha: 0.06),
+              blurRadius: 12,
+              offset: const Offset(3, 3),
               spreadRadius: 0,
-            ),
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.04),
-              blurRadius: 8,
-              offset: const Offset(0, 2),
-              spreadRadius: -2,
             ),
           ],
         ),
@@ -369,71 +345,124 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     );
   }
 
-  Widget _buildCardStyled({required AppTheme theme, required Widget child}) {
+  /// Блок обратного отсчёта до следующего намаза — в рамке как у арабского текста (градиентная обводка, скругление).
+  /// Тень внизу слева создаёт эффект «витания». Все слои одного размера — ровное закругление без изгибов.
+  Widget _buildCountdownPill({required AppTheme theme, required AppLocalizations l10n}) {
+    const radius = 50.0;
+    const borderWidth = 2.0;
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 40),
+      margin: const EdgeInsets.only(top: 24, bottom: 24),
       width: double.infinity,
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Stack(
-            children: [
-              // Фоновый цвет
-              Container(
-                decoration: BoxDecoration(
-                  color: theme.primaryColor.withValues(alpha: 0.1),
-                ),
-              ),
-              // Белый прямоугольник с blur эффектом (смещенный)
-              Positioned(
-                left: -8,
-                top: -8,
-                right: 8,
-                bottom: 8,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: theme.lightBackgroundColor.withValues(alpha: 0.9),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              // Градиентный слой
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [
-                      theme.gradientTopColor,
-                      theme.lightBackgroundColor,
-                    ],
-                  ),
-                ),
-                child: Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: theme.borderColor,
-                      width: 1,
-                    ),
-                  ),
-                  child: child,
-                ),
-              ),
-            ],
+      constraints: const BoxConstraints(minHeight: 40),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(radius),
+        boxShadow: [
+          BoxShadow(
+            color: theme.isDark
+                ? theme.textColor.withValues(alpha: 0.25)
+                : theme.textColor.withValues(alpha: 0.12),
+            blurRadius: 16,
+            offset: const Offset(-4, 6),
+            spreadRadius: -2,
           ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(radius),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Container(
+                decoration: BoxDecoration(color: theme.textBackgroundColor),
+              ),
+            ),
+            Positioned.fill(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(radius),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: theme.lightBackgroundColor.withValues(alpha: 0.9),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.all(borderWidth),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(radius - borderWidth),
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        theme.gradientTopColor,
+                        theme.lightBackgroundColor,
+                      ],
+                    ),
+                  ),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(radius - borderWidth),
+                      color: theme.lightBackgroundColor,
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                    '${_getLocalizedPrayerName(_nextPrayerName, l10n)} ${l10n.prayerTimeIn} ${_formatDuration(_timeUntilNextPrayer)}',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: theme.textColor,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ),
+            ),
+          ],
         ),
       ),
     );
+  }
+
+  /// Список намазов (без линий между строками).
+  List<Widget> _buildPrayerListWithDividers(AppTheme theme, AppLocalizations l10n) {
+    final rows = <Widget>[
+      _buildPrayerTimeRow(l10n.fajr, _formatTime(_prayerTimes!.fajr), textColor: theme.textColor, theme: theme),
+      _buildCapsuleStyled(
+        theme: theme,
+        child: _buildPrayerTimeRow(
+          l10n.sunrise,
+          _formatTime(_prayerTimes!.sunrise),
+          textColor: theme.textColor,
+          theme: theme,
+        ),
+      ),
+      _buildPrayerTimeRow(l10n.dhuhr, _formatTime(_prayerTimes!.dhuhr), textColor: theme.textColor, theme: theme),
+      _buildPrayerTimeRow(l10n.asr, _formatTime(_prayerTimes!.asr), textColor: theme.textColor, theme: theme),
+      _buildPrayerTimeRow(l10n.maghrib, _formatTime(_prayerTimes!.maghrib), textColor: theme.textColor, theme: theme),
+      _buildPrayerTimeRow(l10n.isha, _formatTime(_prayerTimes!.isha), textColor: theme.textColor, theme: theme),
+    ];
+    if (PrayerTimeService.getQiyamTime(prayerCityFromString(_currentCityKey)) != null) {
+      rows.add(
+        _buildCapsuleStyled(
+          theme: theme,
+          child: _buildPrayerTimeRow(
+            l10n.qiyam,
+            _formatTime(PrayerTimeService.getQiyamTime(prayerCityFromString(_currentCityKey))!),
+            textColor: theme.textColor,
+            theme: theme,
+          ),
+        ),
+      );
+    }
+    return rows;
   }
 
   Widget _buildCapsuleStyled({required AppTheme theme, required Widget child}) {
@@ -496,7 +525,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     Color? textColor,
     AppTheme? theme,
   }) {
-    final color = textColor ?? (theme?.textColor ?? Colors.black87);
+    final color = textColor ?? (theme?.textColor ?? const Color(0xFF1F2937));
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: Row(
@@ -516,6 +545,86 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
               fontSize: 17,
               fontWeight: FontWeight.w600,
               color: color,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Переключатель города: цвета из темы (активный/неактивный фон и текст, тень).
+  Widget _buildCitySegmentedControl({
+    required BuildContext context,
+    required AppTheme theme,
+    required AppLocalizations l10n,
+    required String selectedCity,
+    required Future<void> Function(String) onCityChanged,
+  }) {
+    final inactiveBg = theme.gradientTopColor;
+    final activeBg = theme.textColor;
+    final inactiveText = theme.secondaryTextColor;
+    final activeText = theme.lightBackgroundColor;
+
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(50),
+        color: inactiveBg,
+        border: Border.all(color: theme.borderColor, width: 1),
+        boxShadow: [
+          BoxShadow(
+            color: theme.isDark
+                ? theme.textColor.withValues(alpha: 0.12)
+                : theme.textColor.withValues(alpha: 0.06),
+            blurRadius: 6,
+            offset: const Offset(2, 2),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: GestureDetector(
+              onTap: () => onCityChanged('mecca'),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                padding: const EdgeInsets.symmetric(vertical: 2),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: selectedCity == 'mecca' ? activeBg : null,
+                ),
+                alignment: Alignment.center,
+                child: Text(
+                  l10n.mecca,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    color: selectedCity == 'mecca' ? activeText : inactiveText,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Expanded(
+            child: GestureDetector(
+              onTap: () => onCityChanged('medina'),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                padding: const EdgeInsets.symmetric(vertical: 2),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: selectedCity == 'medina' ? activeBg : null,
+                ),
+                alignment: Alignment.center,
+                child: Text(
+                  l10n.medina,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                    color: selectedCity == 'medina' ? activeText : inactiveText,
+                  ),
+                ),
+              ),
             ),
           ),
         ],

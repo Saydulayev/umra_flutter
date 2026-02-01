@@ -725,6 +725,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get mecca => 'Мекка';
 
   @override
+  String get medina => 'Медина';
+
+  @override
   String get fajr => 'Фаджр';
 
   @override

@@ -731,6 +731,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get mecca => 'Mekka';
 
   @override
+  String get medina => 'Medina';
+
+  @override
   String get fajr => 'Fadschr';
 
   @override
