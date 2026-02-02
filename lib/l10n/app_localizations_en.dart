@@ -291,11 +291,11 @@ class AppLocalizationsEn extends AppLocalizations {
   String get conclusion => 'Conclusion';
 
   @override
-  String get preparation_before_ihram_title => 'Preparation for Ihram';
+  String get preparation_before_ihram_title => 'Preparation before Ihram';
 
   @override
   String get preparation_before_ihram_text =>
-      'Before entering Ihram (i.e., before making the intention and starting the Talbiyah), it is recommended:\n\nPerform ghusl (full ablution), this is Sunnah.\n\nGroom yourself according to \"fitrah\": trim nails, remove pubic and underarm hair (men should also trim their mustaches), so that you don\'t have to do this while in Ihram.\n\nMen should apply perfume to the body after ghusl (not on Ihram clothing).\n\nPut on Ihram clothing (men — izar and rida; women — regular modest clothing, without niqab and gloves while in Ihram).\n\nIf it is time for an obligatory prayer — perform it, then at the miqat make the intention for Umrah/Hajj and recite the Talbiyah — from this moment you are in Ihram, and its restrictions begin to apply.';
+      'Before entering the state of Ihram (i.e., before the intention and beginning of Talbiyah), it is recommended:\n\nPerform ghusl (full ablution), this is sunnah.\n\nPrepare yourself according to \"fitrah\": trim nails, remove pubic and underarm hair (men should also trim their mustache), so that you don\'t have to do this while in Ihram.\n\nMen should apply perfume to the body after ghusl (not on Ihram clothing).\n\nPut on Ihram clothing (men - izaar and rida; women - regular modest clothing, without niqab and gloves while in Ihram).\n\nIf it is time for obligatory prayer - perform it, then at the Miqat make intention for Umrah/Hajj and recite Talbiyah - from this moment you are in Ihram, and its prohibitions begin to apply.';
 
   @override
   String get step1EnterIhram =>
