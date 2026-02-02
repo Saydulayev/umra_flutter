@@ -292,11 +292,11 @@ class AppLocalizationsId extends AppLocalizations {
   String get conclusion => 'Kesimpulan';
 
   @override
-  String get preparation_before_ihram_title => 'Persiapan Ihram';
+  String get preparation_before_ihram_title => 'Persiapan sebelum Ihram';
 
   @override
   String get preparation_before_ihram_text =>
-      'Sebelum memasuki ihram (yaitu sebelum niat dan memulai talbiyah), dianjurkan:\n\nMelakukan ghusl (mandi wajib), ini adalah sunnah.\n\nMerapikan diri sesuai \"fitrah\": memotong kuku, mencabut bulu kemaluan dan ketiak (laki-laki juga harus memotong kumis), agar tidak perlu melakukannya saat sudah dalam keadaan ihram.\n\nLaki-laki hendaknya memakai wewangian pada tubuh setelah ghusl (bukan pada pakaian ihram).\n\nMemakai pakaian ihram (laki-laki — izar dan rida; perempuan — pakaian sederhana biasa, tanpa niqab dan sarung tangan saat dalam keadaan ihram).\n\nJika sudah masuk waktu salat wajib — lakukan salat tersebut, kemudian di miqat lakukan niat untuk umrah/haji dan ucapkan talbiyah — mulai saat ini Anda dalam keadaan ihram, dan larangan-larangannya mulai berlaku.';
+      'Sebelum memasuki keadaan Ihram (yaitu sebelum niat dan memulai Talbiyah), disarankan:\n\nMelakukan ghusl (mandi wajib penuh), ini adalah sunnah.\n\nMerapikan diri sesuai \"fitrah\": memotong kuku, menghilangkan rambut kemaluan dan ketiak (pria juga harus memotong kumis), agar tidak perlu melakukannya saat sudah dalam Ihram.\n\nPria harus mengoleskan wewangian pada tubuh setelah ghusl (bukan pada pakaian Ihram).\n\nMemakai pakaian Ihram (pria - izaar dan rida; wanita - pakaian sederhana biasa, tanpa niqab dan sarung tangan dalam keadaan Ihram).\n\nJika sudah waktunya shalat wajib - lakukanlah, kemudian di Miqat buat niat untuk Umrah/Hajj dan ucapkan Talbiyah - dari saat ini Anda dalam Ihram, dan larangannya mulai berlaku.';
 
   @override
   String get step1EnterIhram =>

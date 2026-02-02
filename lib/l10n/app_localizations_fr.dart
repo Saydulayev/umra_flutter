@@ -293,11 +293,11 @@ class AppLocalizationsFr extends AppLocalizations {
   String get conclusion => 'Conclusion';
 
   @override
-  String get preparation_before_ihram_title => 'Préparation à l\'Ihram';
+  String get preparation_before_ihram_title => 'Préparation avant l\'Ihram';
 
   @override
   String get preparation_before_ihram_text =>
-      'Avant d\'entrer en état d\'Ihram (c\'est-à-dire avant de formuler l\'intention et de commencer la Talbiyah), il est recommandé :\n\nEffectuer le ghusl (ablution complète), c\'est une Sunnah.\n\nSe préparer selon la \"fitrah\" : couper les ongles, enlever les poils pubiens et des aisselles (les hommes doivent également tailler leur moustache), afin de ne pas avoir à le faire une fois en état d\'Ihram.\n\nLes hommes doivent appliquer du parfum sur le corps après le ghusl (pas sur les vêtements d\'Ihram).\n\nRevêtir les vêtements d\'Ihram (hommes — izar et rida ; femmes — vêtements modestes ordinaires, sans niqab et sans gants en état d\'Ihram).\n\nSi c\'est l\'heure d\'une prière obligatoire — l\'accomplir, puis au miqat formuler l\'intention pour l\'Omra/le Haddj et réciter la Talbiyah — à partir de ce moment, vous êtes en état d\'Ihram, et ses restrictions commencent à s\'appliquer.';
+      'Avant d\'entrer dans l\'état d\'Ihram (c\'est-à-dire avant l\'intention et le début de la Talbiyah), il est recommandé :\n\nEffectuer le ghusl (ablution complète), c\'est une sunnah.\n\nSe préparer selon la fitra : couper les ongles, enlever les poils pubiens et sous les aisselles (l\'homme doit aussi couper la moustache), afin de ne pas avoir à le faire déjà en Ihram.\n\nL\'homme doit appliquer du parfum sur le corps après le ghusl (pas sur les vêtements d\'Ihram).\n\nMettre les vêtements d\'Ihram (homme - izaar et rida ; femme - vêtements modestes ordinaires, sans niqab et gants en état d\'Ihram).\n\nS\'il est temps pour la prière obligatoire - effectuez-la, puis au Miqat faites l\'intention pour Umrah/Hajj et récitez la Talbiyah - à partir de ce moment vous êtes en Ihram, et ses interdictions commencent à s\'appliquer.';
 
   @override
   String get step1EnterIhram =>

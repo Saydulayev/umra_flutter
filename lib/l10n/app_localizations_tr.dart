@@ -292,11 +292,11 @@ class AppLocalizationsTr extends AppLocalizations {
   String get conclusion => 'Sonuç';
 
   @override
-  String get preparation_before_ihram_title => 'İhram Hazırlığı';
+  String get preparation_before_ihram_title => 'İhramdan Önce Hazırlık';
 
   @override
   String get preparation_before_ihram_text =>
-      'İhrama girmeden önce (yani niyet etmeden ve telbiyeye başlamadan önce) şunlar tavsiye edilir:\n\nGusül (tam abdest) almak, bu sünnettir.\n\n\"Fıtrat\"a göre kendinizi düzenlemek: tırnakları kesmek, kasık ve koltuk altı kıllarını temizlemek (erkekler ayrıca bıyıklarını da kısaltmalıdır), böylece bunları ihramdayken yapmak zorunda kalmazsınız.\n\nErkekler gusülden sonra vücuda güzel koku sürmelidir (ihram elbiselerine değil).\n\nİhram elbiselerini giymek (erkekler — izar ve rida; kadınlar — normal mütevazı kıyafet, ihram halindeyken niqab ve eldiven olmadan).\n\nEğer farz namaz vakti gelmişse — onu kılın, sonra mikatta umre/hac için niyet edin ve telbiyeyi okuyun — bu andan itibaren ihramdasınız ve yasakları geçerli olmaya başlar.';
+      'İhrama girmeden önce (yani niyet etmeden ve telbiyeye başlamadan önce) şunlar tavsiye edilir:\n\nGusül (tam abdest) almak, bu sünnettir.\n\nFıtrata göre kendini düzenlemek: tırnakları kesmek, kasık ve koltuk altı kıllarını temizlemek (erkekler ayrıca bıyığı da kesmelidir), böylece bunu ihramdayken yapmak zorunda kalmazsınız.\n\nErkekler gusülden sonra vücuda koku sürmelidir (ihram kıyafetine değil).\n\nİhram kıyafetini giymek (erkek - izaar ve rida; kadın - normal mütevazı kıyafet, ihram durumunda nikap ve eldiven olmadan).\n\nFarz namaz vakti geldiyse - onu kılın, sonra Mikat\'ta Umre/Hac için niyet edin ve telbiyeyi söyleyin - bu andan itibaren ihramdasınız ve yasakları geçerli olmaya başlar.';
 
   @override
   String get step1EnterIhram => '\nMikat noktasında ihrama girin.\n';
