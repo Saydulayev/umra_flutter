@@ -63,7 +63,7 @@ class UserPreferencesProvider extends ChangeNotifier {
     await _prefsRepo.remove(PrefsKeys.lastReviewDialogShownTime);
     await _prefsRepo.setInt(PrefsKeys.reviewDialogShownCount, 0);
     if (ReviewConfig.isTestMode) {
-      print('Review state reset for testing');
+      debugPrint('Review state reset for testing');
     }
     notifyListeners();
   }
@@ -80,7 +80,7 @@ class UserPreferencesProvider extends ChangeNotifier {
     // Не показываем, если уже показывали в этой сессии или пользователь уже оценил
     if (_hasShownReviewDialog || _hasRatedApp) {
       if (ReviewConfig.isTestMode) {
-        print(
+        debugPrint(
           'Review check skipped: hasShownReviewDialog=$_hasShownReviewDialog, hasRatedApp=$_hasRatedApp',
         );
       }
@@ -88,8 +88,8 @@ class UserPreferencesProvider extends ChangeNotifier {
     }
 
     if (ReviewConfig.isTestMode) {
-      print('=== REVIEW DIALOG CHECK START ===');
-      print('Mode: ${ReviewConfig.isTestMode ? "TEST" : "PRODUCTION"}');
+      debugPrint('=== REVIEW DIALOG CHECK START ===');
+      debugPrint('Mode: ${ReviewConfig.isTestMode ? "TEST" : "PRODUCTION"}');
     }
 
     // 1. Проверяем, не превысили ли максимальное количество показов
@@ -97,7 +97,7 @@ class UserPreferencesProvider extends ChangeNotifier {
         await _prefsRepo.getInt(PrefsKeys.reviewDialogShownCount) ?? 0;
     if (shownCount >= ReviewConfig.maxTotalPrompts) {
       if (ReviewConfig.isTestMode) {
-        print(
+        debugPrint(
           'Review dialog: Max prompts reached ($shownCount/${ReviewConfig.maxTotalPrompts})',
         );
       }
@@ -113,7 +113,7 @@ class UserPreferencesProvider extends ChangeNotifier {
       final daysSinceLastShown = DateTime.now().difference(lastShown).inDays;
       if (daysSinceLastShown < ReviewConfig.daysBetweenPrompts) {
         if (ReviewConfig.isTestMode) {
-          print(
+          debugPrint(
             'Review dialog: Shown $daysSinceLastShown days ago, need to wait ${ReviewConfig.daysBetweenPrompts} days',
           );
         }
@@ -128,7 +128,7 @@ class UserPreferencesProvider extends ChangeNotifier {
     );
     if (!hasUsedMinTime) {
       if (ReviewConfig.isTestMode) {
-        print(
+        debugPrint(
           'Review dialog: Usage time insufficient ($totalTime/${ReviewConfig.minUsageTimeSeconds} seconds)',
         );
       }
@@ -139,7 +139,7 @@ class UserPreferencesProvider extends ChangeNotifier {
     final launchCount = await _usageTracker.getAppLaunchCount();
     if (launchCount < ReviewConfig.minAppLaunches) {
       if (ReviewConfig.isTestMode) {
-        print(
+        debugPrint(
           'Review dialog: Launch count insufficient ($launchCount/${ReviewConfig.minAppLaunches})',
         );
       }
@@ -150,7 +150,7 @@ class UserPreferencesProvider extends ChangeNotifier {
     final daysSinceFirstLaunch = await _usageTracker.getDaysSinceFirstLaunch();
     if (daysSinceFirstLaunch < ReviewConfig.minDaysSinceFirstLaunch) {
       if (ReviewConfig.isTestMode) {
-        print(
+        debugPrint(
           'Review dialog: Days since first launch insufficient ($daysSinceFirstLaunch/${ReviewConfig.minDaysSinceFirstLaunch} days)',
         );
       }
@@ -161,25 +161,25 @@ class UserPreferencesProvider extends ChangeNotifier {
     final shouldShow = await _reviewService.shouldShowReviewDialog();
     if (!shouldShow) {
       if (ReviewConfig.isTestMode) {
-        print('Review dialog: User already rated the app');
+        debugPrint('Review dialog: User already rated the app');
       }
       return;
     }
 
     // Все условия выполнены - показываем диалог
     if (ReviewConfig.isTestMode) {
-      print('=== REVIEW DIALOG: ALL CONDITIONS MET! ===');
-      print(
+      debugPrint('=== REVIEW DIALOG: ALL CONDITIONS MET! ===');
+      debugPrint(
         'Usage: $totalTime sec (required: ${ReviewConfig.minUsageTimeSeconds})',
       );
-      print(
+      debugPrint(
         'Launches: $launchCount (required: ${ReviewConfig.minAppLaunches})',
       );
-      print(
+      debugPrint(
         'Days since first launch: $daysSinceFirstLaunch (required: ${ReviewConfig.minDaysSinceFirstLaunch})',
       );
-      print('Shown count: $shownCount (max: ${ReviewConfig.maxTotalPrompts})');
-      print('=== WILL SHOW DIALOG ===');
+      debugPrint('Shown count: $shownCount (max: ${ReviewConfig.maxTotalPrompts})');
+      debugPrint('=== WILL SHOW DIALOG ===');
     }
 
     _hasShownReviewDialog = true;
@@ -201,11 +201,14 @@ class UserPreferencesProvider extends ChangeNotifier {
     final shouldShow = await _reviewService.shouldShowReviewDialog();
     if (!shouldShow) return;
 
-    // Устанавливаем флаг, что диалог показывается
     _isShowingDialog = true;
     notifyListeners();
 
-    // Показываем кастомный диалог перед запросом нативной оценки
+    if (!context.mounted) {
+      _isShowingDialog = false;
+      return;
+    }
+
     final locale = Localizations.localeOf(context);
 
     // Определяем язык для диалога
@@ -287,7 +290,7 @@ class UserPreferencesProvider extends ChangeNotifier {
         },
       );
     } catch (e) {
-      print('Error showing review dialog: $e');
+      debugPrint('Error showing review dialog: $e');
     } finally {
       // Всегда сбрасываем флаг после закрытия диалога
       _isShowingDialog = false;
@@ -303,7 +306,7 @@ class UserPreferencesProvider extends ChangeNotifier {
       // Время показа уже сохранено в checkAndShowReviewIfNeeded
       _hasShownReviewDialog = true;
       if (ReviewConfig.isTestMode) {
-        print(
+        debugPrint(
           'User clicked "Later" - will show again after ${ReviewConfig.daysBetweenPrompts} days',
         );
       }

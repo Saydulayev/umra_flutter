@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:in_app_review/in_app_review.dart';
 import '../repositories/preferences_repository.dart';
 import '../constants/app_constants.dart';
@@ -24,7 +25,7 @@ class AppReviewService {
       }
     } catch (e) {
       // Игнорируем ошибки, чтобы не нарушать работу приложения
-      print('Error requesting review: $e');
+      debugPrint('Error requesting review: $e');
     }
   }
 
@@ -33,7 +34,7 @@ class AppReviewService {
     try {
       await _inAppReview.openStoreListing();
     } catch (e) {
-      print('Error opening store listing: $e');
+      debugPrint('Error opening store listing: $e');
     }
   }
 

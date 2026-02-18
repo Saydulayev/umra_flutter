@@ -116,7 +116,4 @@ flutter {
 
 dependencies {
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
-    implementation("androidx.activity:activity-ktx:1.9.2")
-    // Обновлено до версии 1.17.0+ для полной поддержки edge-to-edge в Android 15+
-    implementation("androidx.core:core-ktx:1.17.0")
 }

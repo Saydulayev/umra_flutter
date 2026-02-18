@@ -16,14 +16,7 @@ import 'services/app_usage_tracker.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Edge-to-edge: начиная с Android 15 (targetSdk=35) включено по умолчанию.
-  // Для обратной совместимости оставляем явное включение.
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-
-  // ВАЖНО для Android 15+: не задаём цвета системных панелей (status/navigation)
-  // через SystemUiOverlayStyle, т.к. Flutter Android embedding внутри использует
-  // setStatusBarColor/setNavigationBarColor/setNavigationBarDividerColor.
-  // Задаём только яркость иконок и политику контраста.
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarIconBrightness: Brightness.dark,
@@ -68,16 +61,13 @@ class MyApp extends StatelessWidget {
                 ) {
                   final theme = themeProvider.selectedTheme;
 
-                  // Для Android 15+ не задаём цвета системных панелей (status/navigation),
-                  // только яркость иконок. Это предотвращает вызовы setStatusBarColor/
-                  // setNavigationBarColor/setNavigationBarDividerColor из Android embedding.
                   final overlayStyle = SystemUiOverlayStyle(
                     statusBarBrightness:
-                        theme.isDark ? Brightness.dark : Brightness.light, // iOS
+                        theme.isDark ? Brightness.dark : Brightness.light,
                     statusBarIconBrightness:
-                        theme.isDark ? Brightness.light : Brightness.dark, // Android
+                        theme.isDark ? Brightness.light : Brightness.dark,
                     systemNavigationBarIconBrightness:
-                        theme.isDark ? Brightness.light : Brightness.dark, // Android
+                        theme.isDark ? Brightness.light : Brightness.dark,
                     systemStatusBarContrastEnforced: false,
                     systemNavigationBarContrastEnforced: false,
                   );
