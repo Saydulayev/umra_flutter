@@ -104,7 +104,7 @@ class HajjStepDetailScreen extends StatelessWidget {
         // Арабский текст ихрама
         StepArabicSection(
           arabicText: l10n.hajj_step1_ihram_arabic,
-          audioFileName: '14', // TODO: заменить на правильный файл аудио
+          audioFileName: '14', 
         ),
         const SizedBox(height: AppDimensions.paddingSmall),
 
@@ -129,7 +129,7 @@ class HajjStepDetailScreen extends StatelessWidget {
         // Арабский текст дуа ихрама
         StepArabicSection(
           arabicText: l10n.hajj_step1_ihram_dua_arabic,
-          audioFileName: '15', // TODO: заменить на правильный файл аудио
+          audioFileName: '15', 
         ),
         const SizedBox(height: AppDimensions.paddingSmall),
 
@@ -160,7 +160,7 @@ class HajjStepDetailScreen extends StatelessWidget {
         // Арабский текст тальбии
         StepArabicSection(
           arabicText: l10n.hajj_step1_talbiyah_arabic,
-          audioFileName: '3', // TODO: заменить на правильный файл аудио
+          audioFileName: '3', 
         ),
         const SizedBox(height: AppDimensions.paddingSmall),
 
@@ -213,7 +213,7 @@ class HajjStepDetailScreen extends StatelessWidget {
         // Арабский текст дуа
         StepArabicSection(
           arabicText: l10n.hajj_step2_dua_arabic,
-          audioFileName: '16', // TODO: заменить на правильный файл аудио
+          audioFileName: '16', 
         ),
         const SizedBox(height: AppDimensions.paddingSmall),
 
