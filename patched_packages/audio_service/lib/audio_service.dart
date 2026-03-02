@@ -1255,7 +1255,8 @@ class AudioService {
         }
       }
     } catch (e, st) {
-      // TODO: handle this somehow?
+      // Artwork load failure is non-critical: log for debugging and return null
+      // so playback continues without cover art.
       // ignore: avoid_print
       print('Error loading artUri: $e\n$st');
     }
@@ -3415,7 +3416,11 @@ enum AudioServiceRepeatMode {
 class AudioServiceConfig {
   /// Whether on Android a media button click wakes up the media session and
   /// resumes playback.
-  // TODO: either fix, or remove this https://github.com/ryanheise/audio_service/issues/638
+  ///
+  /// When false, [MediaSession.setMediaButtonReceiver] is set to null to avoid
+  /// routing media button events. Note: on Android 9 and above this may not
+  /// fully prevent resume in all cases (see
+  /// [issue #638](https://github.com/ryanheise/audio_service/issues/638)).
   final bool androidResumeOnClick;
 
   /// The ID of the media notification channel. This will default to
