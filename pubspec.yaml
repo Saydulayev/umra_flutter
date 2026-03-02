@@ -56,6 +56,11 @@ dependencies:
   
   cupertino_icons: ^1.0.8
 
+# Исправление NPE в audio_service (onConnectionFailed/onConnected при null clientInterface)
+dependency_overrides:
+  audio_service:
+    path: patched_packages/audio_service
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
