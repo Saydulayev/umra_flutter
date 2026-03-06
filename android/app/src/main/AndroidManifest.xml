@@ -41,6 +41,11 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <!-- Отключаем Vulkan для Impeller: избегаем SIGSEGV в VmaAllocator на устройствах
+             с нестабильными Vulkan-драйверами (например Samsung Android 16 Beta). -->
+        <meta-data
+            android:name="io.flutter.embedding.android.EnableVulkan"
+            android:value="false" />
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
