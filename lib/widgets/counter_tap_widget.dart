@@ -4,7 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vibration/vibration.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
-import '../models/app_theme.dart';
 
 class CounterTapWidget extends StatefulWidget {
   final String prefsKey;
@@ -339,7 +338,6 @@ class _StatusCapsule extends StatelessWidget {
   final Color background;
 
   const _StatusCapsule({
-    super.key,
     required this.icon,
     required this.label,
     required this.color,
