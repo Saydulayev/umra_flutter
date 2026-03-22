@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 
+const Color _accentGreen = Color(0xFF10B981);
+
 class JanazaPrayerScreen extends StatefulWidget {
   const JanazaPrayerScreen({super.key});
 
@@ -56,7 +58,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                   title: l10n.firstTakbirTitle,
                   content: l10n.firstTakbirText,
                   textColor: theme.textColor,
-                  accentColor: theme.primaryColor,
+                  accentColor: _accentGreen,
                 ),
                 Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
                 _buildTakbirSection(
@@ -72,7 +74,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                     });
                   },
                   textColor: theme.textColor,
-                  accentColor: theme.primaryColor,
+                  accentColor: _accentGreen,
                 ),
                 Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
                 _buildTakbirSection(
@@ -88,7 +90,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                     });
                   },
                   textColor: theme.textColor,
-                  accentColor: theme.primaryColor,
+                  accentColor: _accentGreen,
                 ),
                 Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
                 _buildTakbirSection(
@@ -96,7 +98,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                   title: l10n.fourthTakbirTitle,
                   content: l10n.fourthTakbirText,
                   textColor: theme.textColor,
-                  accentColor: theme.primaryColor,
+                  accentColor: _accentGreen,
                 ),
                 Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
                 if (l10n.fourthTakbirAdditionalInfo.isNotEmpty) ...[
@@ -180,27 +182,42 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ExpansionTile(
-          title: Text(
-            title,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: color,
+        GestureDetector(
+          onTap: () => onExpandedChanged?.call(!isExpanded),
+          behavior: HitTestBehavior.opaque,
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: color,
+                  ),
+                ),
+              ),
+              AnimatedRotation(
+                turns: isExpanded ? 0.5 : 0,
+                duration: const Duration(milliseconds: 200),
+                child: Icon(Icons.expand_more, color: color, size: 24),
+              ),
+            ],
+          ),
+        ),
+        AnimatedCrossFade(
+          firstChild: const SizedBox.shrink(),
+          secondChild: Padding(
+            padding: const EdgeInsets.only(top: 8, bottom: 16),
+            child: Text(
+              content,
+              style: TextStyle(fontSize: 16, color: color, height: 1.5),
             ),
           ),
-          initiallyExpanded: isExpanded,
-          onExpansionChanged: onExpandedChanged,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                content,
-                style: TextStyle(fontSize: 16, color: color, height: 1.5),
-                textDirection: TextDirection.ltr,
-              ),
-            ),
-          ],
+          crossFadeState: isExpanded
+              ? CrossFadeState.showSecond
+              : CrossFadeState.showFirst,
+          duration: const Duration(milliseconds: 200),
         ),
       ],
     );
@@ -238,26 +255,44 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
         ),
         if (isExpandable && expandedContent != null) ...[
           const SizedBox(height: 8),
-          ExpansionTile(
-            title: Text(
-              l10n.translateText,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: accent,
+          GestureDetector(
+            onTap: () => onExpandedChanged?.call(!isExpanded),
+            behavior: HitTestBehavior.opaque,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Row(
+                children: [
+                  Text(
+                    l10n.translateText,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: accent,
+                    ),
+                  ),
+                  const Spacer(),
+                  AnimatedRotation(
+                    turns: isExpanded ? 0.5 : 0,
+                    duration: const Duration(milliseconds: 200),
+                    child: Icon(Icons.expand_more, color: accent, size: 20),
+                  ),
+                ],
               ),
             ),
-            initiallyExpanded: isExpanded,
-            onExpansionChanged: onExpandedChanged,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  expandedContent,
-                  style: TextStyle(fontSize: 16, color: color, height: 1.5),
-                ),
+          ),
+          AnimatedCrossFade(
+            firstChild: const SizedBox.shrink(),
+            secondChild: Padding(
+              padding: const EdgeInsets.only(top: 8, bottom: 16),
+              child: Text(
+                expandedContent,
+                style: TextStyle(fontSize: 16, color: color, height: 1.5),
               ),
-            ],
+            ),
+            crossFadeState: isExpanded
+                ? CrossFadeState.showSecond
+                : CrossFadeState.showFirst,
+            duration: const Duration(milliseconds: 200),
           ),
         ],
       ],

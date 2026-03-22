@@ -4,7 +4,8 @@ import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 import '../models/app_theme.dart';
 import '../models/useful_info_model.dart';
-import '../screens/useful_info_detail_screen.dart';
+import '../screens/useful_info_detail_screen.dart'
+    show UsefulInfoDetailScreen, SubChapterDetailScreen;
 import '../screens/janaza_prayer_screen.dart';
 
 class UsefulInfoScreen extends StatelessWidget {
@@ -24,12 +25,31 @@ class UsefulInfoScreen extends StatelessWidget {
     final items = <_InfoItem>[
       ...chapters.map((chapter) => _InfoItem(
             title: _getChapterTitle(chapter.titleKey, l10n),
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => UsefulInfoDetailScreen(chapter: chapter),
-              ),
-            ),
+            onTap: () {
+              if (chapter.directContentKey != null) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SubChapterDetailScreen(
+                      subChapter: SubChapter(
+                        id: chapter.id,
+                        titleKey: chapter.titleKey,
+                        contentKey: chapter.directContentKey!,
+                      ),
+                      chapterTitle: _getChapterTitle(chapter.titleKey, l10n),
+                    ),
+                  ),
+                );
+              } else {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        UsefulInfoDetailScreen(chapter: chapter),
+                  ),
+                );
+              }
+            },
           )),
       _InfoItem(
         title: l10n.janazaPrayerGuide,
@@ -146,6 +166,8 @@ class UsefulInfoScreen extends StatelessWidget {
         return l10n.hajjUmrahVirtues;
       case 'hajjUmrahObligation':
         return l10n.hajjUmrahObligation;
+      case 'safarSunnahsTitle':
+        return l10n.safarSunnahsTitle;
       default:
         return key;
     }

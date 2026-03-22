@@ -5,6 +5,53 @@ import '../providers/theme_provider.dart';
 import '../models/app_theme.dart';
 import '../models/useful_info_model.dart';
 
+const Color _accentGreen = Color(0xFF10B981);
+
+// Парсинг контента: блоки, разделённые \n\n; строки вида "1) ..." — заголовок
+List<({bool isHeading, String text})> _parseFormattedContent(String content) {
+  final blocks = content.split('\n\n');
+  final result = <({bool isHeading, String text})>[];
+  final headingRe = RegExp(r'^\d+\)');
+
+  for (final block in blocks) {
+    final trimmed = block.trim();
+    if (trimmed.isEmpty) continue;
+    final lines = trimmed.split('\n');
+    final firstLine = lines.first;
+    if (headingRe.hasMatch(firstLine)) {
+      result.add((isHeading: true, text: firstLine));
+      final rest = lines.skip(1).join('\n').trim();
+      if (rest.isNotEmpty) result.add((isHeading: false, text: rest));
+    } else {
+      result.add((isHeading: false, text: trimmed));
+    }
+  }
+  return result;
+}
+
+Widget _buildFormattedContent(String content, Color textColor) {
+  final blocks = _parseFormattedContent(content);
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      for (final block in blocks)
+        Padding(
+          padding: EdgeInsets.only(bottom: block.isHeading ? 4 : 14),
+          child: Text(
+            block.text,
+            style: block.isHeading
+                ? const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                    color: _accentGreen,
+                  )
+                : TextStyle(fontSize: 18, color: textColor, height: 1.5),
+          ),
+        ),
+    ],
+  );
+}
+
 class UsefulInfoDetailScreen extends StatelessWidget {
   final Chapter chapter;
 
@@ -131,6 +178,8 @@ class UsefulInfoDetailScreen extends StatelessWidget {
 
   String _getSubChapterTitle(String key, AppLocalizations l10n) {
     switch (key) {
+      case 'safarSunnahsTitle':
+        return l10n.safarSunnahsTitle;
       case 'sincerity':
         return l10n.sincerity;
       case 'laws':
@@ -177,6 +226,8 @@ class SubChapterDetailScreen extends StatelessWidget {
 
   String _getSubChapterTitle(String key, AppLocalizations l10n) {
     switch (key) {
+      case 'safarSunnahsTitle':
+        return l10n.safarSunnahsTitle;
       case 'sincerity':
         return l10n.sincerity;
       case 'laws':
@@ -240,6 +291,8 @@ class SubChapterDetailScreen extends StatelessWidget {
         return l10n.hajjUmrahObligationEvidenceUmrahObligation;
       case 'hajjUmrahObligationConcludingEvidence':
         return l10n.hajjUmrahObligationConcludingEvidence;
+      case 'safarSunnahsContent':
+        return l10n.safarSunnahsContent;
       default:
         return key;
     }
@@ -274,16 +327,25 @@ class SubChapterDetailScreen extends StatelessWidget {
               left: 16,
               right: 16,
             ),
-            child: Text(
-              _getSubChapterContent(
-                subChapter.contentKey,
-                AppLocalizations.of(context)!,
-              ),
-              style: TextStyle(
-                fontSize: 18,
-                color: theme.textColor,
-                height: 1.5,
-              ),
+            child: Builder(
+              builder: (context) {
+                final content = _getSubChapterContent(
+                  subChapter.contentKey,
+                  AppLocalizations.of(context)!,
+                );
+                final useFormatted = content.contains('1) ') || content.startsWith('1)');
+                if (useFormatted) {
+                  return _buildFormattedContent(content, theme.textColor);
+                }
+                return Text(
+                  content,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: theme.textColor,
+                    height: 1.5,
+                  ),
+                );
+              },
             ),
           );
         },

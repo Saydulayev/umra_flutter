@@ -2,11 +2,14 @@ class Chapter {
   final String id;
   final String titleKey;
   final List<SubChapter> subChapters;
+  // If set, tapping this chapter opens content directly (no subchapter list)
+  final String? directContentKey;
 
   const Chapter({
     required this.id,
     required this.titleKey,
     required this.subChapters,
+    this.directContentKey,
   });
 }
 
@@ -92,6 +95,12 @@ class UsefulInfoChapters {
             contentKey: 'hajjUmrahVirtuesText4',
           ),
         ],
+      ),
+      const Chapter(
+        id: 'safar',
+        titleKey: 'safarSunnahsTitle',
+        subChapters: [],
+        directContentKey: 'safarSunnahsContent',
       ),
       const Chapter(
         id: 'obligation',
