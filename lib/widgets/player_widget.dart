@@ -216,7 +216,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
     }
 
     return Container(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.fromLTRB(16, 20, 16, 16),
       child: Column(
         children: [
           Row(
@@ -300,25 +300,25 @@ class _PlayerWidgetState extends State<PlayerWidget> {
         height: 70,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [theme.gradientTopColor, theme.lightBackgroundColor],
+          color: theme.lightBackgroundColor,
+          border: Border.all(
+            color: isActive
+                ? theme.primaryColor.withValues(alpha: 0.45)
+                : theme.borderColor,
+            width: isActive ? 1.5 : 1.0,
           ),
           boxShadow: [
             BoxShadow(
-              color: theme.isDark
-                  ? Colors.black.withValues(alpha: 0.4)
-                  : Colors.black.withValues(alpha: 0.2),
-              blurRadius: 20,
-              offset: const Offset(20, 20),
+              color: theme.cardShadowColor,
+              blurRadius: 16,
+              offset: const Offset(0, 8),
             ),
           ],
         ),
         child: Icon(
           icon,
-          color: isActive ? theme.activeButtonColor : theme.secondaryTextColor,
-          size: 24,
+          color: isActive ? theme.primaryColor : theme.textColor,
+          size: 26,
         ),
       ),
     );
@@ -330,6 +330,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
     required VoidCallback onTap,
     required theme,
   }) {
+    final isActive = rate > 1.0;
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -337,18 +338,18 @@ class _PlayerWidgetState extends State<PlayerWidget> {
         height: 70,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [theme.gradientTopColor, theme.lightBackgroundColor],
+          color: theme.lightBackgroundColor,
+          border: Border.all(
+            color: isActive
+                ? theme.primaryColor.withValues(alpha: 0.45)
+                : theme.borderColor,
+            width: isActive ? 1.5 : 1.0,
           ),
           boxShadow: [
             BoxShadow(
-              color: theme.isDark
-                  ? Colors.black.withValues(alpha: 0.4)
-                  : Colors.black.withValues(alpha: 0.2),
-              blurRadius: 20,
-              offset: const Offset(20, 20),
+              color: theme.cardShadowColor,
+              blurRadius: 16,
+              offset: const Offset(0, 8),
             ),
           ],
         ),
@@ -356,9 +357,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           child: Text(
             '${rate}x',
             style: TextStyle(
-              color: rate > 1.0
-                  ? theme.activeButtonColor
-                  : theme.secondaryTextColor,
+              color: isActive ? theme.primaryColor : theme.textColor,
               fontSize: 16,
               fontWeight: FontWeight.bold,
             ),

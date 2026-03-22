@@ -1,7 +1,5 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../providers/theme_provider.dart';
 
 class ArabicTextWidget extends StatelessWidget {
@@ -11,93 +9,42 @@ class ArabicTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
-    final theme = themeProvider.selectedTheme;
+    final theme = Provider.of<ThemeProvider>(context).selectedTheme;
     final isTablet = MediaQuery.of(context).size.shortestSide >= 600;
 
-    // Динамический размер шрифта: 58 для планшета, 38 для телефона
+    // iOS: 58pt iPad, 38pt iPhone
     final fontSize = isTablet ? 58.0 : 38.0;
-
-    // Динамический padding: 32 для планшета, 16 для телефона
-    final customPadding = isTablet ? 32.0 : 16.0;
+    // iOS: 28pt iPad (tinted), 16pt iPhone
+    final contentPadding = isTablet ? 28.0 : 18.0;
+    // iOS: cornerRadius 24pt iPad, 20pt iPhone
+    final cornerRadius = isTablet ? 24.0 : 20.0;
 
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(contentPadding),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
+          color: theme.lightBackgroundColor,
+          borderRadius: BorderRadius.circular(cornerRadius),
+          border: Border.all(color: theme.borderColor, width: 1),
           boxShadow: [
             BoxShadow(
-              color: theme.isDark
-                  ? Colors.black.withValues(alpha: 0.3)
-                  : Colors.black.withValues(alpha: 0.1),
-              blurRadius: 20,
-              offset: const Offset(20, 20),
-              spreadRadius: 0,
+              color: theme.cardShadowColor,
+              blurRadius: 18,
+              offset: const Offset(0, 8),
             ),
           ],
         ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Stack(
-            children: [
-              // Фоновый цвет
-              Container(
-                width: double.infinity,
-                decoration: BoxDecoration(color: theme.textBackgroundColor),
-              ),
-              // Белый прямоугольник с blur эффектом (смещенный)
-              Positioned(
-                left: -8,
-                top: -8,
-                right: 8,
-                bottom: 8,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: theme.lightBackgroundColor.withValues(alpha: 0.9),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              // Градиентный слой с padding
-              Container(
-                width: double.infinity,
-                padding: EdgeInsets.all(2),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [theme.gradientTopColor, theme.lightBackgroundColor],
-                  ),
-                ),
-                child: Container(
-                  padding: EdgeInsets.all(customPadding),
-                  child: DefaultTextStyle(
-                    style: TextStyle(
-                      color: theme.textColor,
-                      fontSize: fontSize,
-                      height: 1.4,
-                      fontFamily: GoogleFonts.notoNaskhArabic().fontFamily,
-                    ),
-                    child: Text(
-                      text,
-                      textAlign: TextAlign.center,
-                      textDirection: TextDirection.rtl,
-                      style: TextStyle(
-                        foreground: Paint()
-                          ..color = theme.textColor
-                          ..style = PaintingStyle.fill,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+          textDirection: TextDirection.rtl,
+          style: TextStyle(
+            fontFamily: 'KFGQPCUthmanTahaNaskh',
+            fontSize: fontSize,
+            color: theme.textColor,
+            height: 1.5,
           ),
         ),
       ),

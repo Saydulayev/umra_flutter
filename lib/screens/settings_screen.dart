@@ -15,8 +15,8 @@ import 'donation_screen.dart';
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
-  static const double _cardRadius = 12;
-  static const double _spacingBetweenBlocks = 12;
+  static const double _cardRadius = 18;
+  static const double _spacingBetweenBlocks = 16;
 
   Future<void> _launchEmail(BuildContext context) async {
     final l10n = AppLocalizations.of(context)!;
@@ -288,12 +288,9 @@ class SettingsScreen extends StatelessWidget {
   }
 
   Widget _buildDivider(AppTheme theme) {
-    return Divider(
-      height: 1,
-      thickness: 1,
-      indent: 56,
-      endIndent: 16,
-      color: theme.borderColor,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Divider(height: 1, thickness: 0.5, color: theme.borderColor),
     );
   }
 
@@ -305,29 +302,43 @@ class SettingsScreen extends StatelessWidget {
     required AppTheme theme,
     Widget? trailing,
   }) {
+    final isTablet = MediaQuery.of(context).size.shortestSide >= 600;
+    final iconContainerSize = isTablet ? 46.0 : 38.0;
+    final iconSize = isTablet ? 22.0 : 18.0;
+
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Row(
           children: [
-            Icon(icon, color: theme.primaryColor, size: 24),
-            const SizedBox(width: 16),
+            Container(
+              width: iconContainerSize,
+              height: iconContainerSize,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: theme.primaryColor.withValues(
+                  alpha: theme.isDark ? 0.25 : 0.15,
+                ),
+              ),
+              child: Icon(icon, color: theme.primaryColor, size: iconSize),
+            ),
+            const SizedBox(width: 12),
             Expanded(
               child: Text(
                 title,
                 style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
                   color: theme.textColor,
                 ),
               ),
             ),
-            if (trailing != null) ...[trailing, const SizedBox(width: 4)],
+            if (trailing != null) ...[trailing, const SizedBox(width: 6)],
             Icon(
               Icons.chevron_right,
-              color: theme.secondaryTextColor,
-              size: 24,
+              color: theme.textColor.withValues(alpha: 0.45),
+              size: 20,
             ),
           ],
         ),
@@ -394,16 +405,12 @@ class SettingsScreen extends StatelessWidget {
 
   String _getThemeName(AppTheme theme, AppLocalizations l10n) {
     switch (theme) {
-      case AppTheme.blue:
-        return l10n.themeHeavenly;
-      case AppTheme.green:
-        return l10n.themeOasis;
-      case AppTheme.gold:
-        return l10n.themeGold;
-      case AppTheme.turquoise:
-        return l10n.themeTurquoise;
-      case AppTheme.dark:
-        return l10n.themeDark;
+      case AppTheme.nur:
+        return l10n.themeHeavenly; // "Nur"
+      case AppTheme.layl:
+        return l10n.themeOasis; // "Layl"
+      case AppTheme.emerald:
+        return l10n.themeGold; // "Emerald"
     }
   }
 

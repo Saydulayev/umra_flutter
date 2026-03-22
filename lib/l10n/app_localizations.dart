@@ -133,19 +133,19 @@ abstract class AppLocalizations {
   /// No description provided for @titlePlaceIbrohimStandScreen.
   ///
   /// In en, this message translates to:
-  /// **'The place where Ibrahim stood'**
+  /// **'Maqam Ibrahim'**
   String get titlePlaceIbrohimStandScreen;
 
   /// No description provided for @titleWaterZamzamScreen.
   ///
   /// In en, this message translates to:
-  /// **'Drinking Zamzam water'**
+  /// **'Zamzam'**
   String get titleWaterZamzamScreen;
 
   /// No description provided for @titleBlackStoneScreen.
   ///
   /// In en, this message translates to:
-  /// **'Return to the Black Stone'**
+  /// **'Black Stone'**
   String get titleBlackStoneScreen;
 
   /// No description provided for @titleSafaAndMarvaScreen.
@@ -157,7 +157,7 @@ abstract class AppLocalizations {
   /// No description provided for @titleShaveHeadScreen.
   ///
   /// In en, this message translates to:
-  /// **'Shave head or cut hair'**
+  /// **'Shave Head'**
   String get titleShaveHeadScreen;
 
   /// No description provided for @titleSettingsScreen.
@@ -177,6 +177,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Helpful'**
   String get usefulTitle;
+
+  /// No description provided for @stepPrefix.
+  ///
+  /// In en, this message translates to:
+  /// **'Step'**
+  String get stepPrefix;
 
   /// No description provided for @circleString.
   ///
@@ -229,7 +235,7 @@ abstract class AppLocalizations {
   /// No description provided for @selectLanguageSettingsString.
   ///
   /// In en, this message translates to:
-  /// **'Select language'**
+  /// **'Language'**
   String get selectLanguageSettingsString;
 
   /// No description provided for @feedbackString.
@@ -265,7 +271,7 @@ abstract class AppLocalizations {
   /// No description provided for @supportTheDeveloperString.
   ///
   /// In en, this message translates to:
-  /// **'Support the developer'**
+  /// **'Support the App'**
   String get supportTheDeveloperString;
 
   /// No description provided for @textButtonSupportString.
@@ -277,7 +283,7 @@ abstract class AppLocalizations {
   /// No description provided for @appThemeString.
   ///
   /// In en, this message translates to:
-  /// **'App Theme'**
+  /// **'Appearance'**
   String get appThemeString;
 
   /// No description provided for @notificationSettingsString.
@@ -295,19 +301,19 @@ abstract class AppLocalizations {
   /// No description provided for @themeHeavenly.
   ///
   /// In en, this message translates to:
-  /// **'Sky'**
+  /// **'Nur'**
   String get themeHeavenly;
 
   /// No description provided for @themeOasis.
   ///
   /// In en, this message translates to:
-  /// **'Oasis'**
+  /// **'Layl'**
   String get themeOasis;
 
   /// No description provided for @themeGold.
   ///
   /// In en, this message translates to:
-  /// **'Gold'**
+  /// **'Emerald'**
   String get themeGold;
 
   /// No description provided for @themeTurquoise.

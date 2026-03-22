@@ -301,8 +301,10 @@ class StepDetailScreen extends StatelessWidget {
         // 5a. Счётчик тавафа (7 кругов) — под плеером и ползунком
         CounterTapWidget(
           prefsKey: 'tawaf_counter',
+          titleString: l10n.titleRoundKaabaScreen,
           labelString: l10n.tawafCircleString,
           finishedString: l10n.tawafFinishedString,
+          icon: Icons.rotate_right,
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
         // 6. "Kaaba text4"
@@ -502,7 +504,10 @@ class StepDetailScreen extends StatelessWidget {
         const SizedBox(height: AppDimensions.paddingLarge),
         CounterTapWidget(
           prefsKey: 'say_counter',
+          titleString: l10n.titleSafaAndMarvaScreen,
           labelString: l10n.sayPassageString,
+          finishedString: l10n.sayFinishedString,
+          icon: Icons.directions_walk,
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
         // 8. "Remembrance of Allah during the Sa'i of Safa and Marwa." + полный текст

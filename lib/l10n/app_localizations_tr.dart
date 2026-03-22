@@ -21,13 +21,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get titleRoundKaabaScreen => 'Kâbe\'yi Tavaf';
 
   @override
-  String get titlePlaceIbrohimStandScreen => 'Makâm-ı İbrahim';
+  String get titlePlaceIbrohimStandScreen => 'Makam İbrahim';
 
   @override
-  String get titleWaterZamzamScreen => 'Zemzem İçme';
+  String get titleWaterZamzamScreen => 'Zemzem';
 
   @override
-  String get titleBlackStoneScreen => 'Hacerü\'l-Esved\'e Dönüş';
+  String get titleBlackStoneScreen => 'Hacerü\'l-Esved';
 
   @override
   String get titleSafaAndMarvaScreen => 'Safa ve Merve';
@@ -43,6 +43,9 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get usefulTitle => 'Faydalı';
+
+  @override
+  String get stepPrefix => 'Adım';
 
   @override
   String get circleString => 'Geçiş:';
@@ -87,13 +90,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get rateTheAppString => 'Uygulamayı Değerlendir';
 
   @override
-  String get supportTheDeveloperString => 'Geliştiriciyi destekle';
+  String get supportTheDeveloperString => 'Uygulamayı Destekle';
 
   @override
   String get textButtonSupportString => 'Geliştiriciyi Destekle';
 
   @override
-  String get appThemeString => 'Uygulama Teması';
+  String get appThemeString => 'Görünüm';
 
   @override
   String get notificationSettingsString => 'Bildirim Ayarları';
@@ -102,13 +105,13 @@ class AppLocalizationsTr extends AppLocalizations {
   String get selectLanguageString => 'Dil Seçin';
 
   @override
-  String get themeHeavenly => 'Gök';
+  String get themeHeavenly => 'Nur';
 
   @override
-  String get themeOasis => 'Vaha';
+  String get themeOasis => 'Leyl';
 
   @override
-  String get themeGold => 'Altın';
+  String get themeGold => 'Zümrüt';
 
   @override
   String get themeTurquoise => 'Deniz';

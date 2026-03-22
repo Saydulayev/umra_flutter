@@ -36,14 +36,6 @@ class IOSSegmentedControl<T> extends StatelessWidget {
     final baseColor = theme!.gradientTopColor;
     final lightColor = theme!.lightBackgroundColor;
 
-    // Для золотой темы делаем еще менее насыщенной
-    if (theme == AppTheme.gold) {
-      return [
-        Color.lerp(baseColor, Colors.white, 0.6) ?? baseColor,
-        Color.lerp(lightColor, Colors.white, 0.5) ?? lightColor,
-      ];
-    }
-
     // Делаем цвета менее насыщенными, смешивая с белым
     return [
       Color.lerp(baseColor, Colors.white, 0.4) ?? baseColor,

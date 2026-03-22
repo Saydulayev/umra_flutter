@@ -26,7 +26,6 @@ void main() async {
     ),
   );
 
-  // Инициализируем трекер использования приложения
   await AppUsageTracker().initialize();
 
   runApp(const MyApp());
@@ -45,107 +44,214 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => FontProvider()),
         ChangeNotifierProvider(create: (_) => PurchaseProvider()),
       ],
-      child:
-          Consumer3<
-            ThemeProvider,
-            LocalizationProvider,
-            UserPreferencesProvider
-          >(
-            builder:
-                (
-                  context,
-                  themeProvider,
-                  localizationProvider,
-                  prefsProvider,
-                  child,
-                ) {
-                  final theme = themeProvider.selectedTheme;
+      child: Consumer3<ThemeProvider, LocalizationProvider,
+          UserPreferencesProvider>(
+        builder: (
+          context,
+          themeProvider,
+          localizationProvider,
+          prefsProvider,
+          child,
+        ) {
+          final theme = themeProvider.selectedTheme;
 
-                  final overlayStyle = SystemUiOverlayStyle(
-                    statusBarBrightness:
-                        theme.isDark ? Brightness.dark : Brightness.light,
-                    statusBarIconBrightness:
-                        theme.isDark ? Brightness.light : Brightness.dark,
-                    systemNavigationBarIconBrightness:
-                        theme.isDark ? Brightness.light : Brightness.dark,
-                    systemStatusBarContrastEnforced: false,
-                    systemNavigationBarContrastEnforced: false,
-                  );
+          final overlayStyle = SystemUiOverlayStyle(
+            statusBarBrightness:
+                theme.isDark ? Brightness.dark : Brightness.light,
+            statusBarIconBrightness:
+                theme.isDark ? Brightness.light : Brightness.dark,
+            systemNavigationBarIconBrightness:
+                theme.isDark ? Brightness.light : Brightness.dark,
+            systemStatusBarContrastEnforced: false,
+            systemNavigationBarContrastEnforced: false,
+          );
 
-                  return MaterialApp(
-                    title: 'Umra Guide',
-                    debugShowCheckedModeBanner: false,
+          return MaterialApp(
+            title: 'Umra Guide',
+            debugShowCheckedModeBanner: false,
 
-                    // Тема
-                    theme: ThemeData(
-                      primarySwatch: _getColorSwatch(theme),
-                      primaryColor: theme.primaryColor,
-                      scaffoldBackgroundColor: theme.backgroundColor,
-                      fontFamily: 'Lato',
-                      useMaterial3: true,
-                      appBarTheme: AppBarTheme(systemOverlayStyle: overlayStyle),
-                    ),
+            theme: _buildThemeData(theme, overlayStyle),
 
-                    // Локализация
-                    locale: localizationProvider.currentLocale,
-                    supportedLocales: AppLocalizations.supportedLocales,
-                    localizationsDelegates: const [
-                      AppLocalizations.delegate,
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      GlobalCupertinoLocalizations.delegate,
-                    ],
-                    localeResolutionCallback: (locale, supportedLocales) {
-                      if (locale == null) {
-                        return supportedLocales.first;
-                      }
-                      // Проверяем точное совпадение
-                      for (var supportedLocale in supportedLocales) {
-                        if (supportedLocale.languageCode ==
-                            locale.languageCode) {
-                          return supportedLocale;
-                        }
-                      }
-                      // Если не найдено, возвращаем первый поддерживаемый
-                      return supportedLocales.first;
-                    },
+            locale: localizationProvider.currentLocale,
+            supportedLocales: AppLocalizations.supportedLocales,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            localeResolutionCallback: (locale, supportedLocales) {
+              if (locale == null) return supportedLocales.first;
+              for (var supportedLocale in supportedLocales) {
+                if (supportedLocale.languageCode == locale.languageCode) {
+                  return supportedLocale;
+                }
+              }
+              return supportedLocales.first;
+            },
 
-                    // Начальный экран
-                    home: localizationProvider.hasSelectedLanguage
-                        ? const HomeScreen()
-                        : const LanguageSelectionScreen(),
-                    // Важно: отключаем кэширование роутов для правильной работы локализации
-                    builder: (context, child) {
-                      return AnnotatedRegion<SystemUiOverlayStyle>(
-                        value: overlayStyle,
-                        child: MediaQuery(
-                          data: MediaQuery.of(
-                            context,
-                          ).copyWith(textScaler: const TextScaler.linear(1.0)),
-                          child: child!,
-                        ),
-                      );
-                    },
-                  );
-                },
-          ),
+            home: localizationProvider.hasSelectedLanguage
+                ? const HomeScreen()
+                : const LanguageSelectionScreen(),
+
+            builder: (context, child) {
+              return AnnotatedRegion<SystemUiOverlayStyle>(
+                value: overlayStyle,
+                child: MediaQuery(
+                  data: MediaQuery.of(context)
+                      .copyWith(textScaler: const TextScaler.linear(1.0)),
+                  child: child!,
+                ),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 
-  MaterialColor _getColorSwatch(AppTheme theme) {
-    // Создаем MaterialColor на основе темы
-    final color = theme.primaryColor;
-    return MaterialColor(color.toARGB32(), <int, Color>{
-      50: color.withValues(alpha: 0.1),
-      100: color.withValues(alpha: 0.2),
-      200: color.withValues(alpha: 0.3),
-      300: color.withValues(alpha: 0.4),
-      400: color.withValues(alpha: 0.5),
-      500: color,
-      600: color.withValues(alpha: 0.7),
-      700: color.withValues(alpha: 0.8),
-      800: color.withValues(alpha: 0.9),
-      900: color,
-    });
+  ThemeData _buildThemeData(AppTheme theme, SystemUiOverlayStyle overlayStyle) {
+    final colorScheme = ColorScheme(
+      brightness: theme.isDark ? Brightness.dark : Brightness.light,
+      primary: theme.primaryColor,
+      onPrimary: Colors.white,
+      secondary: theme.secondaryColor,
+      onSecondary: Colors.white,
+      error: theme.errorColor,
+      onError: Colors.white,
+      surface: theme.lightBackgroundColor,
+      onSurface: theme.textColor,
+    );
+
+    return ThemeData(
+      useMaterial3: true,
+      colorScheme: colorScheme,
+      primaryColor: theme.primaryColor,
+      scaffoldBackgroundColor: theme.backgroundColor,
+      fontFamily: 'Lato',
+
+      // AppBar
+      appBarTheme: AppBarTheme(
+        systemOverlayStyle: overlayStyle,
+        backgroundColor: theme.backgroundColor,
+        foregroundColor: theme.textColor,
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        iconTheme: IconThemeData(color: theme.primaryColor),
+        titleTextStyle: TextStyle(
+          fontFamily: 'Lato',
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+          color: theme.textColor,
+        ),
+      ),
+
+      // Cards
+      cardTheme: CardThemeData(
+        color: theme.lightBackgroundColor,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: BorderSide(color: theme.borderColor, width: 1),
+        ),
+        margin: EdgeInsets.zero,
+      ),
+
+      // Divider
+      dividerTheme: DividerThemeData(
+        color: theme.borderColor,
+        thickness: 1,
+        space: 1,
+      ),
+
+      // ListTile
+      listTileTheme: ListTileThemeData(
+        tileColor: theme.lightBackgroundColor,
+        textColor: theme.textColor,
+        iconColor: theme.primaryColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+
+      // BottomSheet
+      bottomSheetTheme: BottomSheetThemeData(
+        backgroundColor: theme.lightBackgroundColor,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        ),
+      ),
+
+      // Dialog
+      dialogTheme: DialogThemeData(
+        backgroundColor: theme.lightBackgroundColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        titleTextStyle: TextStyle(
+          fontFamily: 'Lato',
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: theme.textColor,
+        ),
+        contentTextStyle: TextStyle(
+          fontFamily: 'Lato',
+          fontSize: 15,
+          color: theme.secondaryTextColor,
+        ),
+      ),
+
+      // ElevatedButton
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: theme.primaryColor,
+          foregroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+          textStyle: const TextStyle(
+            fontFamily: 'Lato',
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ),
+
+      // TextButton
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: theme.primaryColor,
+          textStyle: const TextStyle(
+            fontFamily: 'Lato',
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+
+      // IconButton
+      iconButtonTheme: IconButtonThemeData(
+        style: IconButton.styleFrom(foregroundColor: theme.primaryColor),
+      ),
+
+      // Checkbox / Switch tint
+      checkboxTheme: CheckboxThemeData(
+        fillColor: WidgetStateProperty.resolveWith(
+          (states) => states.contains(WidgetState.selected)
+              ? theme.primaryColor
+              : theme.borderColor,
+        ),
+      ),
+
+      // SnackBar
+      snackBarTheme: SnackBarThemeData(
+        backgroundColor: theme.isDark
+            ? theme.lightBackgroundColor
+            : const Color(0xFF1C1C1E),
+        contentTextStyle: TextStyle(
+          fontFamily: 'Lato',
+          color: theme.isDark ? theme.textColor : Colors.white,
+        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
   }
 }

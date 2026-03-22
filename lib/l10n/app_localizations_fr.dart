@@ -21,13 +21,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get titleRoundKaabaScreen => 'Tawaf';
 
   @override
-  String get titlePlaceIbrohimStandScreen => 'Station d\'Ibrahim';
+  String get titlePlaceIbrohimStandScreen => 'Maqam Ibrahim';
 
   @override
-  String get titleWaterZamzamScreen => 'Boire de l\'eau de Zamzam';
+  String get titleWaterZamzamScreen => 'Zamzam';
 
   @override
-  String get titleBlackStoneScreen => 'Retour à la Pierre Noire';
+  String get titleBlackStoneScreen => 'Pierre Noire';
 
   @override
   String get titleSafaAndMarvaScreen => 'Safa et Marwa';
@@ -43,6 +43,9 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get usefulTitle => 'Utile';
+
+  @override
+  String get stepPrefix => 'Étape';
 
   @override
   String get circleString => 'Passage:';
@@ -69,7 +72,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get settingsString => 'Paramètres';
 
   @override
-  String get selectLanguageSettingsString => 'Sélectionner la langue';
+  String get selectLanguageSettingsString => 'Langue';
 
   @override
   String get feedbackString => 'Commentaires';
@@ -87,13 +90,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get rateTheAppString => 'Noter l\'application';
 
   @override
-  String get supportTheDeveloperString => 'Soutenir le développeur';
+  String get supportTheDeveloperString => 'Soutenir l\'application';
 
   @override
   String get textButtonSupportString => 'Soutenir le développeur';
 
   @override
-  String get appThemeString => 'Thème de l\'application';
+  String get appThemeString => 'Apparence';
 
   @override
   String get notificationSettingsString => 'Paramètres de notification';
@@ -102,13 +105,13 @@ class AppLocalizationsFr extends AppLocalizations {
   String get selectLanguageString => 'Sélectionner la langue';
 
   @override
-  String get themeHeavenly => 'Ciel';
+  String get themeHeavenly => 'Nur';
 
   @override
-  String get themeOasis => 'Oasis';
+  String get themeOasis => 'Layl';
 
   @override
-  String get themeGold => 'Or';
+  String get themeGold => 'Émeraude';
 
   @override
   String get themeTurquoise => 'Mer';

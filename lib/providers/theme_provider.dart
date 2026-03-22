@@ -4,7 +4,7 @@ import '../repositories/preferences_repository.dart';
 import '../constants/app_constants.dart';
 
 class ThemeProvider extends ChangeNotifier {
-  AppTheme _selectedTheme = AppTheme.blue;
+  AppTheme _selectedTheme = AppTheme.nur;
 
   AppTheme get selectedTheme => _selectedTheme;
 
@@ -16,10 +16,10 @@ class ThemeProvider extends ChangeNotifier {
 
   Future<void> _loadTheme() async {
     final themeString =
-        await _prefsRepo.getString(PrefsKeys.selectedTheme) ?? 'blue';
+        await _prefsRepo.getString(PrefsKeys.selectedTheme) ?? 'nur';
     _selectedTheme = AppTheme.values.firstWhere(
       (theme) => theme.name == themeString,
-      orElse: () => AppTheme.blue,
+      orElse: () => AppTheme.nur,
     );
     notifyListeners();
   }
@@ -30,5 +30,3 @@ class ThemeProvider extends ChangeNotifier {
     notifyListeners();
   }
 }
-
-

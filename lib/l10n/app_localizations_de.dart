@@ -21,19 +21,19 @@ class AppLocalizationsDe extends AppLocalizations {
   String get titleRoundKaabaScreen => 'Tawaf';
 
   @override
-  String get titlePlaceIbrohimStandScreen => 'Ort des Propheten Ibrahims Stand';
+  String get titlePlaceIbrohimStandScreen => 'Maqam Ibrahim';
 
   @override
-  String get titleWaterZamzamScreen => 'Trinken des Zamzam-Wassers';
+  String get titleWaterZamzamScreen => 'Zamzam';
 
   @override
-  String get titleBlackStoneScreen => 'Zurück zum schwarzen Stein';
+  String get titleBlackStoneScreen => 'Schwarzer Stein';
 
   @override
   String get titleSafaAndMarvaScreen => 'Safa und Marwa';
 
   @override
-  String get titleShaveHeadScreen => 'Kopf rasieren oder Haare kürzen';
+  String get titleShaveHeadScreen => 'Kopf rasieren';
 
   @override
   String get titleSettingsScreen => 'Einstellungen';
@@ -43,6 +43,9 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get usefulTitle => 'Hilfreich';
+
+  @override
+  String get stepPrefix => 'Schritt';
 
   @override
   String get circleString => 'Komplettlösung:';
@@ -69,7 +72,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get settingsString => 'Einstellungen';
 
   @override
-  String get selectLanguageSettingsString => 'Sprache auswählen';
+  String get selectLanguageSettingsString => 'Sprache';
 
   @override
   String get feedbackString => 'Feedback';
@@ -87,13 +90,13 @@ class AppLocalizationsDe extends AppLocalizations {
   String get rateTheAppString => 'App bewerten';
 
   @override
-  String get supportTheDeveloperString => 'Entwickler unterstützen';
+  String get supportTheDeveloperString => 'App unterstützen';
 
   @override
   String get textButtonSupportString => 'Entwickler unterstützen';
 
   @override
-  String get appThemeString => 'App-Design';
+  String get appThemeString => 'Darstellung';
 
   @override
   String get notificationSettingsString => 'Benachrichtigungseinstellungen';
@@ -102,13 +105,13 @@ class AppLocalizationsDe extends AppLocalizations {
   String get selectLanguageString => 'Sprache auswählen';
 
   @override
-  String get themeHeavenly => 'Himmel';
+  String get themeHeavenly => 'Nur';
 
   @override
-  String get themeOasis => 'Oase';
+  String get themeOasis => 'Layl';
 
   @override
-  String get themeGold => 'Gold';
+  String get themeGold => 'Smaragd';
 
   @override
   String get themeTurquoise => 'Meer';

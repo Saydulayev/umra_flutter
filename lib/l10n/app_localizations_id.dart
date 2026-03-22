@@ -24,10 +24,10 @@ class AppLocalizationsId extends AppLocalizations {
   String get titlePlaceIbrohimStandScreen => 'Maqam Ibrahim';
 
   @override
-  String get titleWaterZamzamScreen => 'Meminum Air Zamzam';
+  String get titleWaterZamzamScreen => 'Zamzam';
 
   @override
-  String get titleBlackStoneScreen => 'Kembali ke Hajar Aswad';
+  String get titleBlackStoneScreen => 'Hajar Aswad';
 
   @override
   String get titleSafaAndMarvaScreen => 'Safa dan Marwah';
@@ -43,6 +43,9 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get usefulTitle => 'Berguna';
+
+  @override
+  String get stepPrefix => 'Langkah';
 
   @override
   String get circleString => 'Putaran:';
@@ -69,7 +72,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get settingsString => 'Pengaturan';
 
   @override
-  String get selectLanguageSettingsString => 'Pilih bahasa';
+  String get selectLanguageSettingsString => 'Bahasa';
 
   @override
   String get feedbackString => 'Umpan Balik';
@@ -87,13 +90,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get rateTheAppString => 'Nilai Aplikasi';
 
   @override
-  String get supportTheDeveloperString => 'Dukung pengembang';
+  String get supportTheDeveloperString => 'Dukung Aplikasi';
 
   @override
   String get textButtonSupportString => 'Dukung Pengembang';
 
   @override
-  String get appThemeString => 'Tema Aplikasi';
+  String get appThemeString => 'Tampilan';
 
   @override
   String get notificationSettingsString => 'Pengaturan Notifikasi';
@@ -102,13 +105,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get selectLanguageString => 'Pilih Bahasa';
 
   @override
-  String get themeHeavenly => 'Langit';
+  String get themeHeavenly => 'Nur';
 
   @override
-  String get themeOasis => 'Oasis';
+  String get themeOasis => 'Layl';
 
   @override
-  String get themeGold => 'Emas';
+  String get themeGold => 'Zamrud';
 
   @override
   String get themeTurquoise => 'Laut';

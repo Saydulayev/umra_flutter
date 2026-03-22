@@ -21,13 +21,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get titleRoundKaabaScreen => 'Обход Каабы';
 
   @override
-  String get titlePlaceIbrohimStandScreen => 'Место стояния Ибрахима';
+  String get titlePlaceIbrohimStandScreen => 'Макам Ибрахима';
 
   @override
-  String get titleWaterZamzamScreen => 'Питье воды Замзам';
+  String get titleWaterZamzamScreen => 'Замзам';
 
   @override
-  String get titleBlackStoneScreen => 'Возврат к Черному камню';
+  String get titleBlackStoneScreen => 'Черный камень';
 
   @override
   String get titleSafaAndMarvaScreen => 'Сафа и Марва';
@@ -43,6 +43,9 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get usefulTitle => 'Полезное';
+
+  @override
+  String get stepPrefix => 'Шаг';
 
   @override
   String get circleString => 'Прохождение:';
@@ -69,7 +72,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get settingsString => 'Настройки';
 
   @override
-  String get selectLanguageSettingsString => 'Выбрать язык';
+  String get selectLanguageSettingsString => 'Язык';
 
   @override
   String get feedbackString => 'Обратная связь';
@@ -87,13 +90,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get rateTheAppString => 'Оценить приложение';
 
   @override
-  String get supportTheDeveloperString => 'Поддержать разработчика';
+  String get supportTheDeveloperString => 'Поддержать приложение';
 
   @override
   String get textButtonSupportString => 'Поддержать разработчика';
 
   @override
-  String get appThemeString => 'Тема приложения';
+  String get appThemeString => 'Тема';
 
   @override
   String get notificationSettingsString => 'Настройки уведомлений';
@@ -102,13 +105,13 @@ class AppLocalizationsRu extends AppLocalizations {
   String get selectLanguageString => 'Выбрать язык';
 
   @override
-  String get themeHeavenly => 'Небо';
+  String get themeHeavenly => 'Нур';
 
   @override
-  String get themeOasis => 'Оазис';
+  String get themeOasis => 'Лейль';
 
   @override
-  String get themeGold => 'Золото';
+  String get themeGold => 'Изумруд';
 
   @override
   String get themeTurquoise => 'Море';

@@ -21,19 +21,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get titleRoundKaabaScreen => 'Tawaf';
 
   @override
-  String get titlePlaceIbrohimStandScreen => 'The place where Ibrahim stood';
+  String get titlePlaceIbrohimStandScreen => 'Maqam Ibrahim';
 
   @override
-  String get titleWaterZamzamScreen => 'Drinking Zamzam water';
+  String get titleWaterZamzamScreen => 'Zamzam';
 
   @override
-  String get titleBlackStoneScreen => 'Return to the Black Stone';
+  String get titleBlackStoneScreen => 'Black Stone';
 
   @override
   String get titleSafaAndMarvaScreen => 'Safa and Marwa';
 
   @override
-  String get titleShaveHeadScreen => 'Shave head or cut hair';
+  String get titleShaveHeadScreen => 'Shave Head';
 
   @override
   String get titleSettingsScreen => 'Settings';
@@ -43,6 +43,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get usefulTitle => 'Helpful';
+
+  @override
+  String get stepPrefix => 'Step';
 
   @override
   String get circleString => 'Walkthrough:';
@@ -69,7 +72,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsString => 'Settings';
 
   @override
-  String get selectLanguageSettingsString => 'Select language';
+  String get selectLanguageSettingsString => 'Language';
 
   @override
   String get feedbackString => 'Feedback';
@@ -87,13 +90,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get rateTheAppString => 'Rate the App';
 
   @override
-  String get supportTheDeveloperString => 'Support the developer';
+  String get supportTheDeveloperString => 'Support the App';
 
   @override
   String get textButtonSupportString => 'Support Developer';
 
   @override
-  String get appThemeString => 'App Theme';
+  String get appThemeString => 'Appearance';
 
   @override
   String get notificationSettingsString => 'Notification Settings';
@@ -102,13 +105,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectLanguageString => 'Select Language';
 
   @override
-  String get themeHeavenly => 'Sky';
+  String get themeHeavenly => 'Nur';
 
   @override
-  String get themeOasis => 'Oasis';
+  String get themeOasis => 'Layl';
 
   @override
-  String get themeGold => 'Gold';
+  String get themeGold => 'Emerald';
 
   @override
   String get themeTurquoise => 'Sea';

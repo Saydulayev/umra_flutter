@@ -24,8 +24,18 @@ class ThemeSelectionSheet extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
+          // Handle bar
+          Container(
+            margin: const EdgeInsets.only(top: 12),
+            width: 36,
+            height: 4,
+            decoration: BoxDecoration(
+              color: theme.borderColor,
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(24, 24, 24, 16),
+            padding: const EdgeInsets.fromLTRB(24, 16, 24, 16),
             child: Text(
               l10n.themeSelectTitle,
               style: TextStyle(
@@ -37,7 +47,7 @@ class ThemeSelectionSheet extends StatelessWidget {
           ),
           Flexible(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+              padding: const EdgeInsets.fromLTRB(24, 0, 24, 32),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: AppTheme.values.map((appTheme) {
@@ -46,77 +56,14 @@ class ThemeSelectionSheet extends StatelessWidget {
 
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 12),
-                    child: Card(
-                      elevation: isSelected ? 4 : 2,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(24),
-                        side: BorderSide(
-                          color: isSelected
-                              ? appTheme.primaryColor
-                              : Colors.transparent,
-                          width: 2,
-                        ),
-                      ),
-                      child: InkWell(
-                        onTap: () {
-                          themeProvider.setTheme(appTheme);
-                          Navigator.pop(context);
-                        },
-                        borderRadius: BorderRadius.circular(24),
-                        child: Container(
-                          padding: const EdgeInsets.all(16),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(24),
-                            gradient: appTheme.isDark
-                                ? LinearGradient(
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                    colors: [
-                                      const Color(
-                                        0xFFE5E7EB,
-                                      ), // Светло-серый верх
-                                      const Color(
-                                        0xFFF3F4F6,
-                                      ), // Ещё светлее низ
-                                    ],
-                                  )
-                                : LinearGradient(
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                    colors: [
-                                      appTheme.gradientTopColor,
-                                      appTheme.lightBackgroundColor,
-                                    ],
-                                  ),
-                          ),
-                          child: Row(
-                            children: [
-                              Circle(color: appTheme.previewColor, size: 50),
-                              const SizedBox(width: 16),
-                              Expanded(
-                                child: Text(
-                                  themeName,
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w600,
-                                    color: appTheme.isDark
-                                        ? const Color(
-                                            0xFF111827,
-                                          ) // Тёмный текст для светлого фона
-                                        : appTheme.textColor,
-                                  ),
-                                ),
-                              ),
-                              if (isSelected)
-                                Icon(
-                                  Icons.check_circle,
-                                  color: appTheme.primaryColor,
-                                  size: 28,
-                                ),
-                            ],
-                          ),
-                        ),
-                      ),
+                    child: _ThemeCard(
+                      appTheme: appTheme,
+                      themeName: themeName,
+                      isSelected: isSelected,
+                      onTap: () {
+                        themeProvider.setTheme(appTheme);
+                        Navigator.pop(context);
+                      },
                     ),
                   );
                 }).toList(),
@@ -130,33 +77,133 @@ class ThemeSelectionSheet extends StatelessWidget {
 
   String _getThemeName(AppTheme theme, AppLocalizations l10n) {
     switch (theme) {
-      case AppTheme.blue:
-        return l10n.themeHeavenly;
-      case AppTheme.green:
-        return l10n.themeOasis;
-      case AppTheme.gold:
-        return l10n.themeGold;
-      case AppTheme.turquoise:
-        return l10n.themeTurquoise;
-      case AppTheme.dark:
-        return l10n.themeDark;
+      case AppTheme.nur:
+        return l10n.themeHeavenly; // "Nur"
+      case AppTheme.layl:
+        return l10n.themeOasis; // "Layl"
+      case AppTheme.emerald:
+        return l10n.themeGold; // "Emerald"
     }
   }
 }
 
-// Простой виджет круга для превью темы
-class Circle extends StatelessWidget {
-  final Color color;
-  final double size;
+class _ThemeCard extends StatelessWidget {
+  final AppTheme appTheme;
+  final String themeName;
+  final bool isSelected;
+  final VoidCallback onTap;
 
-  const Circle({super.key, required this.color, this.size = 50});
+  const _ThemeCard({
+    required this.appTheme,
+    required this.themeName,
+    required this.isSelected,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: isSelected
+                ? appTheme.primaryColor
+                : appTheme.borderColor,
+            width: isSelected ? 2 : 1,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: appTheme.cardShadowColor,
+              blurRadius: isSelected ? 12 : 6,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  appTheme.gradientTopColor,
+                  appTheme.lightBackgroundColor,
+                ],
+              ),
+            ),
+            child: Row(
+              children: [
+                // Preview circle with gradient
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        appTheme.primaryColor,
+                        appTheme.secondaryColor,
+                      ],
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: appTheme.primaryColor.withValues(alpha: 0.4),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        themeName,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: appTheme.textColor,
+                        ),
+                      ),
+                      const SizedBox(height: 2),
+                      Text(
+                        appTheme.isDark ? 'Dark' : 'Light',
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: appTheme.secondaryTextColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                if (isSelected)
+                  Container(
+                    width: 28,
+                    height: 28,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: appTheme.primaryColor,
+                    ),
+                    child: const Icon(
+                      Icons.check,
+                      color: Colors.white,
+                      size: 16,
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
