@@ -109,7 +109,7 @@ class UsefulInfoDetailScreen extends StatelessWidget {
           thickness: 0.5,
           indent: hPad,
           endIndent: hPad,
-          color: theme.textColor.withValues(alpha: 0.10),
+          color: theme.borderColor,
         ));
       }
     }
