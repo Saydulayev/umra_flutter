@@ -27,18 +27,17 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
   bool _isDuaVariationsExpanded = false;
 
   Widget _buildArabicAwareText(String text, Color color, AppTheme theme) {
-    final lines = text.split('\n');
+    final lines = text.split('\n').where((l) => l.trim().isNotEmpty).toList();
     final hasArabic = lines.any(_isLongArabicLine);
     if (!hasArabic) {
-      return Text(text, style: TextStyle(fontSize: 16, color: color, height: 1.5));
+      return Text(text, style: TextStyle(fontSize: 17, color: color, height: 1.6));
     }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        for (final line in lines)
-          if (line.trim().isNotEmpty)
-            _isLongArabicLine(line)
-                ? Container(
+        for (int i = 0; i < lines.length; i++) ...[
+          if (_isLongArabicLine(lines[i]))
+            Container(
                     width: double.infinity,
                     margin: const EdgeInsets.symmetric(vertical: 16),
                     padding: const EdgeInsets.symmetric(
@@ -57,7 +56,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                       ],
                     ),
                     child: Text(
-                      line,
+                      lines[i],
                       textAlign: TextAlign.center,
                       textDirection: TextDirection.rtl,
                       locale: const Locale('ar'),
@@ -74,10 +73,14 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                       ),
                     ),
                   )
-                : Text(
-                    line,
-                    style: TextStyle(fontSize: 16, color: color, height: 1.5),
-                  ),
+          else
+            Text(
+              lines[i],
+              style: TextStyle(fontSize: 17, color: color, height: 1.6),
+            ),
+          if (i < lines.length - 1 && !_isLongArabicLine(lines[i]))
+            const SizedBox(height: 6),
+        ],
       ],
     );
   }

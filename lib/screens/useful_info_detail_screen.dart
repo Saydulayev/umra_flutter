@@ -72,18 +72,21 @@ Widget _buildArabicCard(String line, AppTheme theme) {
 }
 
 Widget _buildBodyBlock(String text, Color textColor, AppTheme theme) {
-  final lines = text.split('\n');
+  final lines = text.split('\n').where((l) => l.trim().isNotEmpty).toList();
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      for (final line in lines)
-        if (line.trim().isNotEmpty)
-          _isLongArabicLine(line)
-              ? _buildArabicCard(line, theme)
-              : Text(
-                  line,
-                  style: TextStyle(fontSize: 18, color: textColor, height: 1.5),
-                ),
+      for (int i = 0; i < lines.length; i++) ...[
+        if (_isLongArabicLine(lines[i]))
+          _buildArabicCard(lines[i], theme)
+        else
+          Text(
+            lines[i],
+            style: TextStyle(fontSize: 18, color: textColor, height: 1.6),
+          ),
+        if (i < lines.length - 1 && !_isLongArabicLine(lines[i]))
+          const SizedBox(height: 6),
+      ],
     ],
   );
 }
@@ -95,7 +98,7 @@ Widget _buildFormattedContent(String content, Color textColor, AppTheme theme) {
     children: [
       for (final block in blocks)
         Padding(
-          padding: EdgeInsets.only(bottom: block.isHeading ? 4 : 14),
+          padding: EdgeInsets.only(bottom: block.isHeading ? 8 : 16),
           child: block.isHeading
               ? Text(
                   block.text,
