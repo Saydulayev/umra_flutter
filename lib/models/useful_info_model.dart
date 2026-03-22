@@ -97,12 +97,6 @@ class UsefulInfoChapters {
         ],
       ),
       const Chapter(
-        id: 'safar',
-        titleKey: 'safarSunnahsTitle',
-        subChapters: [],
-        directContentKey: 'safarSunnahsContent',
-      ),
-      const Chapter(
         id: 'obligation',
         titleKey: 'hajjUmrahObligation',
         subChapters: [
@@ -122,6 +116,12 @@ class UsefulInfoChapters {
             contentKey: 'hajjUmrahObligationConcludingEvidence',
           ),
         ],
+      ),
+      const Chapter(
+        id: 'safar',
+        titleKey: 'safarSunnahsTitle',
+        subChapters: [],
+        directContentKey: 'safarSunnahsContent',
       ),
     ];
   }

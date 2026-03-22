@@ -2,8 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
+import '../models/app_theme.dart';
 
 const Color _accentGreen = Color(0xFF10B981);
+
+bool _isLongArabicLine(String s) {
+  final trimmed = s.trim();
+  if (trimmed.length < 40) return false;
+  final first = trimmed.runes.firstOrNull;
+  if (first == null) return false;
+  return (first >= 0x0600 && first <= 0x06FF) || (first >= 0x0750 && first <= 0x077F);
+}
 
 class JanazaPrayerScreen extends StatefulWidget {
   const JanazaPrayerScreen({super.key});
@@ -16,6 +25,62 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
   bool _isSecondTakbirExpanded = false;
   bool _isThirdTakbirExpanded = false;
   bool _isDuaVariationsExpanded = false;
+
+  Widget _buildArabicAwareText(String text, Color color, AppTheme theme) {
+    final lines = text.split('\n');
+    final hasArabic = lines.any(_isLongArabicLine);
+    if (!hasArabic) {
+      return Text(text, style: TextStyle(fontSize: 16, color: color, height: 1.5));
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        for (final line in lines)
+          if (line.trim().isNotEmpty)
+            _isLongArabicLine(line)
+                ? Container(
+                    width: double.infinity,
+                    margin: const EdgeInsets.symmetric(vertical: 16),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 14),
+                    decoration: BoxDecoration(
+                      color: theme.isEmerald ? null : theme.lightBackgroundColor,
+                      gradient: theme.cardGradient,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: theme.borderColor, width: 1),
+                      boxShadow: [
+                        BoxShadow(
+                          color: theme.cardShadowColor,
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Text(
+                      line,
+                      textAlign: TextAlign.center,
+                      textDirection: TextDirection.rtl,
+                      locale: const Locale('ar'),
+                      style: TextStyle(
+                        fontFamily: 'KFGQPCUthmanTahaNaskh',
+                        fontFamilyFallback: const [
+                          'Scheherazade New',
+                          'Amiri',
+                          'Arial'
+                        ],
+                        fontSize: 26,
+                        color: theme.textColor,
+                        height: 1.7,
+                      ),
+                    ),
+                  )
+                : Text(
+                    line,
+                    style: TextStyle(fontSize: 16, color: color, height: 1.5),
+                  ),
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +116,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                   title: l10n.basicRules,
                   content: l10n.janazaBasicRules,
                   textColor: theme.textColor,
+                  theme: theme,
                 ),
                 Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
                 _buildTakbirSection(
@@ -59,6 +125,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                   content: l10n.firstTakbirText,
                   textColor: theme.textColor,
                   accentColor: _accentGreen,
+                  theme: theme,
                 ),
                 Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
                 _buildTakbirSection(
@@ -75,6 +142,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                   },
                   textColor: theme.textColor,
                   accentColor: _accentGreen,
+                  theme: theme,
                 ),
                 Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
                 _buildTakbirSection(
@@ -91,6 +159,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                   },
                   textColor: theme.textColor,
                   accentColor: _accentGreen,
+                  theme: theme,
                 ),
                 Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
                 _buildTakbirSection(
@@ -99,6 +168,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                   content: l10n.fourthTakbirText,
                   textColor: theme.textColor,
                   accentColor: _accentGreen,
+                  theme: theme,
                 ),
                 Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
                 if (l10n.fourthTakbirAdditionalInfo.isNotEmpty) ...[
@@ -122,6 +192,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                   title: l10n.taslimTitle,
                   content: l10n.taslimText,
                   textColor: theme.textColor,
+                  theme: theme,
                 ),
                 Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
                 _buildCollapsibleSection(
@@ -135,6 +206,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                     });
                   },
                   textColor: theme.textColor,
+                  theme: theme,
                 ),
               ],
             ),
@@ -148,6 +220,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
     required String title,
     required String content,
     Color? textColor,
+    required AppTheme theme,
   }) {
     final color = textColor ?? Colors.black87;
     return Column(
@@ -162,10 +235,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
           ),
         ),
         const SizedBox(height: 8),
-        Text(
-          content,
-          style: TextStyle(fontSize: 16, color: color, height: 1.5),
-        ),
+        _buildArabicAwareText(content, color, theme),
       ],
     );
   }
@@ -177,6 +247,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
     bool isExpanded = false,
     ValueChanged<bool>? onExpandedChanged,
     Color? textColor,
+    required AppTheme theme,
   }) {
     final color = textColor ?? Colors.black87;
     return Column(
@@ -209,10 +280,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
           firstChild: const SizedBox.shrink(),
           secondChild: Padding(
             padding: const EdgeInsets.only(top: 8, bottom: 16),
-            child: Text(
-              content,
-              style: TextStyle(fontSize: 16, color: color, height: 1.5),
-            ),
+            child: _buildArabicAwareText(content, color, theme),
           ),
           crossFadeState: isExpanded
               ? CrossFadeState.showSecond
@@ -233,6 +301,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
     ValueChanged<bool>? onExpandedChanged,
     Color? textColor,
     Color? accentColor,
+    required AppTheme theme,
   }) {
     final color = textColor ?? Colors.black87;
     final accent = accentColor ?? Colors.blue;
@@ -248,11 +317,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
           ),
         ),
         const SizedBox(height: 8),
-        Text(
-          content,
-          style: TextStyle(fontSize: 16, color: color, height: 1.5),
-          textDirection: TextDirection.ltr,
-        ),
+        _buildArabicAwareText(content, color, theme),
         if (isExpandable && expandedContent != null) ...[
           const SizedBox(height: 8),
           GestureDetector(
@@ -284,10 +349,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
             firstChild: const SizedBox.shrink(),
             secondChild: Padding(
               padding: const EdgeInsets.only(top: 8, bottom: 16),
-              child: Text(
-                expandedContent,
-                style: TextStyle(fontSize: 16, color: color, height: 1.5),
-              ),
+              child: _buildArabicAwareText(expandedContent, color, theme),
             ),
             crossFadeState: isExpanded
                 ? CrossFadeState.showSecond

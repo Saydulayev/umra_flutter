@@ -7,6 +7,14 @@ import '../models/useful_info_model.dart';
 
 const Color _accentGreen = Color(0xFF10B981);
 
+bool _isLongArabicLine(String s) {
+  final trimmed = s.trim();
+  if (trimmed.length < 40) return false;
+  final first = trimmed.runes.firstOrNull;
+  if (first == null) return false;
+  return (first >= 0x0600 && first <= 0x06FF) || (first >= 0x0750 && first <= 0x077F);
+}
+
 // Парсинг контента: блоки, разделённые \n\n; строки вида "1) ..." — заголовок
 List<({bool isHeading, String text})> _parseFormattedContent(String content) {
   final blocks = content.split('\n\n');
@@ -29,7 +37,58 @@ List<({bool isHeading, String text})> _parseFormattedContent(String content) {
   return result;
 }
 
-Widget _buildFormattedContent(String content, Color textColor) {
+Widget _buildArabicCard(String line, AppTheme theme) {
+  return Container(
+    width: double.infinity,
+    margin: const EdgeInsets.symmetric(vertical: 16),
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+    decoration: BoxDecoration(
+      color: theme.isEmerald ? null : theme.lightBackgroundColor,
+      gradient: theme.cardGradient,
+      borderRadius: BorderRadius.circular(16),
+      border: Border.all(color: theme.borderColor, width: 1),
+      boxShadow: [
+        BoxShadow(
+          color: theme.cardShadowColor,
+          blurRadius: 10,
+          offset: const Offset(0, 4),
+        ),
+      ],
+    ),
+    child: Text(
+      line,
+      textAlign: TextAlign.center,
+      textDirection: TextDirection.rtl,
+      locale: const Locale('ar'),
+      style: TextStyle(
+        fontFamily: 'KFGQPCUthmanTahaNaskh',
+        fontFamilyFallback: const ['Scheherazade New', 'Amiri', 'Arial'],
+        fontSize: 26,
+        color: theme.textColor,
+        height: 1.7,
+      ),
+    ),
+  );
+}
+
+Widget _buildBodyBlock(String text, Color textColor, AppTheme theme) {
+  final lines = text.split('\n');
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      for (final line in lines)
+        if (line.trim().isNotEmpty)
+          _isLongArabicLine(line)
+              ? _buildArabicCard(line, theme)
+              : Text(
+                  line,
+                  style: TextStyle(fontSize: 18, color: textColor, height: 1.5),
+                ),
+    ],
+  );
+}
+
+Widget _buildFormattedContent(String content, Color textColor, AppTheme theme) {
   final blocks = _parseFormattedContent(content);
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,16 +96,16 @@ Widget _buildFormattedContent(String content, Color textColor) {
       for (final block in blocks)
         Padding(
           padding: EdgeInsets.only(bottom: block.isHeading ? 4 : 14),
-          child: Text(
-            block.text,
-            style: block.isHeading
-                ? const TextStyle(
+          child: block.isHeading
+              ? Text(
+                  block.text,
+                  style: const TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
                     color: _accentGreen,
-                  )
-                : TextStyle(fontSize: 18, color: textColor, height: 1.5),
-          ),
+                  ),
+                )
+              : _buildBodyBlock(block.text, textColor, theme),
         ),
     ],
   );
@@ -335,7 +394,7 @@ class SubChapterDetailScreen extends StatelessWidget {
                 );
                 final useFormatted = content.contains('1) ') || content.startsWith('1)');
                 if (useFormatted) {
-                  return _buildFormattedContent(content, theme.textColor);
+                  return _buildFormattedContent(content, theme.textColor, theme);
                 }
                 return Text(
                   content,
