@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
+import '../models/app_theme.dart';
 import '../models/useful_info_model.dart';
 
 class UsefulInfoDetailScreen extends StatelessWidget {
@@ -14,6 +15,9 @@ class UsefulInfoDetailScreen extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final theme = themeProvider.selectedTheme;
     final l10n = AppLocalizations.of(context)!;
+    final isTablet = MediaQuery.of(context).size.shortestSide >= 600;
+    final hPad = isTablet ? 20.0 : 16.0;
+    final cardRadius = isTablet ? 28.0 : 24.0;
 
     return Scaffold(
       backgroundColor: theme.backgroundColor,
@@ -29,74 +33,87 @@ class UsefulInfoDetailScreen extends StatelessWidget {
       body: Builder(
         builder: (context) {
           final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
-          return ListView(
-            padding: EdgeInsets.only(
-              top: 16,
-              bottom: bottomPadding + 16,
-              left: 16,
-              right: 16,
+          return SingleChildScrollView(
+            padding: EdgeInsets.fromLTRB(hPad, 8, hPad, bottomPadding + 32),
+            child: Container(
+              decoration: BoxDecoration(
+                color: theme.isEmerald ? null : theme.lightBackgroundColor,
+                gradient: theme.cardGradient,
+                borderRadius: BorderRadius.circular(cardRadius),
+                border: Border.all(color: theme.borderColor, width: 1),
+                boxShadow: [
+                  BoxShadow(
+                    color: theme.cardShadowColor,
+                    blurRadius: 16,
+                    offset: const Offset(0, 6),
+                  ),
+                ],
+              ),
+              clipBehavior: Clip.hardEdge,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: _buildRows(context, chapter.subChapters, theme, l10n, hPad),
+              ),
             ),
-            children: chapter.subChapters.map((subChapter) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 8),
-                child: Card(
-                  elevation: 2,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SubChapterDetailScreen(
-                            subChapter: subChapter,
-                            chapterTitle: _getChapterTitle(
-                              chapter.titleKey,
-                              l10n,
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                    borderRadius: BorderRadius.circular(12),
-                    child: Container(
-                      padding: const EdgeInsets.all(16),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            theme.gradientTopColor,
-                            theme.lightBackgroundColor,
-                          ],
-                        ),
-                      ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              _getSubChapterTitle(subChapter.titleKey, l10n),
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                                color: theme.textColor,
-                              ),
-                            ),
-                          ),
-                          Icon(Icons.chevron_right, color: theme.primaryColor),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              );
-            }).toList(),
           );
         },
       ),
     );
+  }
+
+  List<Widget> _buildRows(
+    BuildContext context,
+    List<SubChapter> subChapters,
+    AppTheme theme,
+    AppLocalizations l10n,
+    double hPad,
+  ) {
+    final rows = <Widget>[];
+    for (int i = 0; i < subChapters.length; i++) {
+      final sub = subChapters[i];
+      rows.add(
+        GestureDetector(
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SubChapterDetailScreen(
+                subChapter: sub,
+                chapterTitle: _getChapterTitle(chapter.titleKey, l10n),
+              ),
+            ),
+          ),
+          behavior: HitTestBehavior.opaque,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: hPad, vertical: 16),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    _getSubChapterTitle(sub.titleKey, l10n),
+                    style: TextStyle(fontSize: 17, color: theme.textColor),
+                  ),
+                ),
+                Icon(
+                  Icons.chevron_right,
+                  size: 18,
+                  color: theme.textColor.withValues(alpha: 0.25),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+      if (i < subChapters.length - 1) {
+        rows.add(Divider(
+          height: 1,
+          thickness: 0.5,
+          indent: hPad,
+          endIndent: hPad,
+          color: theme.textColor.withValues(alpha: 0.10),
+        ));
+      }
+    }
+    return rows;
   }
 
   String _getChapterTitle(String key, AppLocalizations l10n) {

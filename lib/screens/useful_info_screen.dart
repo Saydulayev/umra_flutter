@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
+import '../models/app_theme.dart';
 import '../models/useful_info_model.dart';
 import '../screens/useful_info_detail_screen.dart';
 import '../screens/janaza_prayer_screen.dart';
@@ -14,8 +15,32 @@ class UsefulInfoScreen extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final theme = themeProvider.selectedTheme;
     final l10n = AppLocalizations.of(context)!;
+    final isTablet = MediaQuery.of(context).size.shortestSide >= 600;
+    final hPad = isTablet ? 20.0 : 16.0;
+    final cardRadius = isTablet ? 28.0 : 24.0;
 
     final chapters = UsefulInfoChapters.getChapters();
+
+    final items = <_InfoItem>[
+      ...chapters.map((chapter) => _InfoItem(
+            title: _getChapterTitle(chapter.titleKey, l10n),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => UsefulInfoDetailScreen(chapter: chapter),
+              ),
+            ),
+          )),
+      _InfoItem(
+        title: l10n.janazaPrayerGuide,
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const JanazaPrayerScreen(),
+          ),
+        ),
+      ),
+    ];
 
     return Scaffold(
       backgroundColor: theme.backgroundColor,
@@ -31,52 +56,86 @@ class UsefulInfoScreen extends StatelessWidget {
       body: Builder(
         builder: (context) {
           final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
-          return ListView(
-            padding: EdgeInsets.only(
-              top: 16,
-              bottom: bottomPadding + 16,
-              left: 16,
-              right: 16,
-            ),
-            children: [
-              ...chapters.map((chapter) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: _buildInfoCard(
-                    context,
-                    theme,
-                    title: _getChapterTitle(chapter.titleKey, l10n),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              UsefulInfoDetailScreen(chapter: chapter),
-                        ),
-                      );
-                    },
+          return SingleChildScrollView(
+            padding: EdgeInsets.fromLTRB(hPad, 8, hPad, bottomPadding + 32),
+            child: Container(
+              decoration: BoxDecoration(
+                color: theme.isEmerald ? null : theme.lightBackgroundColor,
+                gradient: theme.cardGradient,
+                borderRadius: BorderRadius.circular(cardRadius),
+                border: Border.all(color: theme.borderColor, width: 1),
+                boxShadow: [
+                  BoxShadow(
+                    color: theme.cardShadowColor,
+                    blurRadius: 16,
+                    offset: const Offset(0, 6),
                   ),
-                );
-              }),
-              const SizedBox(height: 8),
-              _buildInfoCard(
-                context,
-                theme,
-                title: l10n.janazaPrayerGuide,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const JanazaPrayerScreen(),
-                    ),
-                  );
-                },
+                ],
               ),
-            ],
+              clipBehavior: Clip.hardEdge,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: _buildRows(items, theme, isTablet),
+              ),
+            ),
           );
         },
       ),
     );
+  }
+
+  List<Widget> _buildRows(
+    List<_InfoItem> items,
+    AppTheme theme,
+    bool isTablet,
+  ) {
+    final rows = <Widget>[];
+    final hPad = isTablet ? 20.0 : 16.0;
+
+    for (int i = 0; i < items.length; i++) {
+      final item = items[i];
+      rows.add(
+        GestureDetector(
+          onTap: item.onTap,
+          behavior: HitTestBehavior.opaque,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: hPad, vertical: 16),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    item.title,
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: theme.textColor,
+                    ),
+                  ),
+                ),
+                Icon(
+                  Icons.chevron_right,
+                  size: 18,
+                  color: theme.textColor.withValues(alpha: 0.25),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+
+      if (i < items.length - 1) {
+        rows.add(
+          Divider(
+            height: 1,
+            thickness: 0.5,
+            indent: hPad,
+            endIndent: hPad,
+            color: theme.textColor.withValues(alpha: 0.10),
+          ),
+        );
+      }
+    }
+
+    return rows;
   }
 
   String _getChapterTitle(String key, AppLocalizations l10n) {
@@ -91,46 +150,10 @@ class UsefulInfoScreen extends StatelessWidget {
         return key;
     }
   }
+}
 
-  Widget _buildInfoCard(
-    BuildContext context,
-    theme, {
-    required String title,
-    required VoidCallback onTap,
-  }) {
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [theme.gradientTopColor, theme.lightBackgroundColor],
-            ),
-          ),
-          child: Row(
-            children: [
-              Expanded(
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: theme.textColor,
-                  ),
-                ),
-              ),
-              Icon(Icons.chevron_right, color: theme.primaryColor),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+class _InfoItem {
+  final String title;
+  final VoidCallback onTap;
+  const _InfoItem({required this.title, required this.onTap});
 }
