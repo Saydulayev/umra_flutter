@@ -301,13 +301,13 @@ abstract class AppLocalizations {
   /// No description provided for @themeHeavenly.
   ///
   /// In en, this message translates to:
-  /// **'Nur'**
+  /// **'Light'**
   String get themeHeavenly;
 
   /// No description provided for @themeOasis.
   ///
   /// In en, this message translates to:
-  /// **'Layl'**
+  /// **'Dark'**
   String get themeOasis;
 
   /// No description provided for @themeGold.

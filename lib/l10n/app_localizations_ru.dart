@@ -105,10 +105,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get selectLanguageString => 'Выбрать язык';
 
   @override
-  String get themeHeavenly => 'Нур';
+  String get themeHeavenly => 'Светлая';
 
   @override
-  String get themeOasis => 'Лейль';
+  String get themeOasis => 'Тёмная';
 
   @override
   String get themeGold => 'Изумруд';

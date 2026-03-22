@@ -391,7 +391,8 @@ class _GroupedCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: padding),
       decoration: BoxDecoration(
-        color: theme.lightBackgroundColor,
+        color: theme.isEmerald ? null : theme.lightBackgroundColor,
+        gradient: theme.cardGradient,
         borderRadius: BorderRadius.circular(cardRadius),
         border: Border.all(color: theme.borderColor, width: 1),
         boxShadow: [

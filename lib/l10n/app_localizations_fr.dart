@@ -105,10 +105,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get selectLanguageString => 'Sélectionner la langue';
 
   @override
-  String get themeHeavenly => 'Nur';
+  String get themeHeavenly => 'Claire';
 
   @override
-  String get themeOasis => 'Layl';
+  String get themeOasis => 'Sombre';
 
   @override
   String get themeGold => 'Émeraude';

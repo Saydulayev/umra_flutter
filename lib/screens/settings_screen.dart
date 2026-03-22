@@ -267,7 +267,8 @@ class SettingsScreen extends StatelessWidget {
   }) {
     return Container(
       decoration: BoxDecoration(
-        color: theme.lightBackgroundColor,
+        color: theme.isEmerald ? null : theme.lightBackgroundColor,
+        gradient: theme.cardGradient,
         borderRadius: BorderRadius.circular(_cardRadius),
         border: Border.all(color: theme.borderColor, width: 1),
         boxShadow: [

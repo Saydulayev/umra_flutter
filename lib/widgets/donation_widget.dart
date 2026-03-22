@@ -162,12 +162,11 @@ class _DonationWidgetState extends State<DonationWidget> {
                                         ),
                                         child: Container(
                                           decoration: BoxDecoration(
-                                            color: theme.isDark
-                                                ? theme.lightBackgroundColor
-                                                      .withValues(alpha: 0.9)
-                                                : Colors.white.withValues(
-                                                    alpha: 0.9,
-                                                  ),
+                                            color: theme.isEmerald
+                                                ? const Color(0xFF1A2420).withValues(alpha: 0.9)
+                                                : theme.isDark
+                                                    ? theme.lightBackgroundColor.withValues(alpha: 0.9)
+                                                    : Colors.white.withValues(alpha: 0.9),
                                           ),
                                         ),
                                       ),
@@ -178,7 +177,7 @@ class _DonationWidgetState extends State<DonationWidget> {
                                     width: double.infinity,
                                     padding: const EdgeInsets.all(2),
                                     decoration: BoxDecoration(
-                                      gradient: LinearGradient(
+                                      gradient: theme.cardGradient ?? LinearGradient(
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
                                         colors: [
@@ -360,7 +359,7 @@ class _DonationWidgetState extends State<DonationWidget> {
                           width: double.infinity,
                           padding: const EdgeInsets.all(2),
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(
+                            gradient: theme.cardGradient ?? LinearGradient(
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,
                               colors: [
@@ -504,7 +503,7 @@ class _DonationWidgetState extends State<DonationWidget> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
-          color: theme.isDark ? const Color(0xFF2D3748) : Colors.white,
+          color: theme.isDark ? theme.lightBackgroundColor : Colors.white,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: theme.isDark
@@ -559,7 +558,8 @@ class _DonationWidgetState extends State<DonationWidget> {
       backgroundColor: Colors.transparent,
       builder: (context) => Container(
         decoration: BoxDecoration(
-          color: theme.lightBackgroundColor,
+          color: theme.isEmerald ? null : theme.lightBackgroundColor,
+          gradient: theme.cardGradient,
           borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
         ),
         child: Column(

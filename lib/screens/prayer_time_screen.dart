@@ -247,7 +247,8 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     return Container(
       padding: const EdgeInsets.all(25),
       decoration: BoxDecoration(
-        color: theme.lightBackgroundColor,
+        color: theme.isEmerald ? null : theme.lightBackgroundColor,
+        gradient: theme.cardGradient,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: theme.borderColor, width: 1),
         boxShadow: [
@@ -272,7 +273,8 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: theme.lightBackgroundColor,
+        color: theme.isEmerald ? null : theme.lightBackgroundColor,
+        gradient: theme.cardGradient,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: theme.borderColor, width: 1),
         boxShadow: [
@@ -330,7 +332,8 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
       margin: const EdgeInsets.symmetric(vertical: 3),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: theme.lightBackgroundColor,
+        color: theme.isEmerald ? null : theme.lightBackgroundColor,
+        gradient: theme.cardGradient,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: theme.borderColor, width: 1),
         boxShadow: [
@@ -393,7 +396,8 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
       margin: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
-        color: theme.lightBackgroundColor,
+        color: theme.isEmerald ? null : theme.lightBackgroundColor,
+        gradient: theme.cardGradient,
         border: Border.all(color: theme.borderColor, width: 1),
         boxShadow: [
           BoxShadow(

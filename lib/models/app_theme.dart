@@ -18,6 +18,21 @@ enum AppTheme {
 
   bool get isDark => this == AppTheme.layl || this == AppTheme.emerald;
 
+  bool get isEmerald => this == AppTheme.emerald;
+
+  // Gradient for emerald card backgrounds (null for nur/layl)
+  LinearGradient? get cardGradient {
+    if (!isEmerald) return null;
+    return LinearGradient(
+      begin: Alignment.topRight,
+      end: Alignment.bottomLeft,
+      colors: [
+        const Color(0xFF1A2420), // Dark, desaturated green-black — barely visible
+        lightBackgroundColor,    // #161818 neutral dark
+      ],
+    );
+  }
+
   // Primary accent — emerald green
   Color get primaryColor {
     switch (this) {

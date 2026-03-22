@@ -93,7 +93,8 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: hPad, vertical: vPad),
         decoration: BoxDecoration(
-          color: theme.lightBackgroundColor,
+          color: theme.isEmerald ? null : theme.lightBackgroundColor,
+          gradient: theme.cardGradient,
           borderRadius: BorderRadius.circular(cardRadius),
           border: Border.all(color: theme.borderColor, width: 1),
           boxShadow: [
