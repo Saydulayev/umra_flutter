@@ -39,67 +39,54 @@ android {
         versionName = flutter.versionName
     }
 
+    // Release signing only when key.properties exists — avoids breaking debug builds
+    // when switching branches (files are gitignored on main/feature branches).
     signingConfigs {
-        create("release") {
-            // Validate keystore properties for release builds
-            if (!keystorePropertiesFile.exists()) {
-                throw GradleException(
-                    """
-                    ╔══════════════════════════════════════════════════════════════╗
-                    ║  ERROR: key.properties file is missing!                     ║
-                    ║                                                              ║
-                    ║  This file is required for signing release builds.          ║
-                    ║  Expected location: android/key.properties                  ║
-                    ║                                                              ║
-                    ║  Please create the file with the following content:         ║
-                    ║  storePassword=YOUR_STORE_PASSWORD                          ║
-                    ║  keyPassword=YOUR_KEY_PASSWORD                              ║
-                    ║  keyAlias=YOUR_KEY_ALIAS                                    ║
-                    ║  storeFile=YOUR_KEYSTORE_FILE_PATH                          ║
-                    ╚══════════════════════════════════════════════════════════════╝
-                    """.trimIndent()
+        if (keystorePropertiesFile.exists()) {
+            create("release") {
+                keyAlias = keystoreProperties["keyAlias"] as String?
+                keyPassword = keystoreProperties["keyPassword"] as String?
+                val storeFileProp = keystoreProperties["storeFile"] as String?
+                storeFile = storeFileProp?.let { file(it) }
+                storePassword = keystoreProperties["storePassword"] as String?
+
+                val requiredProperties = mapOf(
+                    "keyAlias" to keyAlias,
+                    "keyPassword" to keyPassword,
+                    "storeFile" to storeFile,
+                    "storePassword" to storePassword
                 )
-            }
-            
-            keyAlias = keystoreProperties["keyAlias"] as String?
-            keyPassword = keystoreProperties["keyPassword"] as String?
-            val storeFileProp = keystoreProperties["storeFile"] as String?
-            storeFile = storeFileProp?.let { file(it) }
-            storePassword = keystoreProperties["storePassword"] as String?
-            
-            // Validate that all required properties are present
-            val requiredProperties = mapOf(
-                "keyAlias" to keyAlias,
-                "keyPassword" to keyPassword,
-                "storeFile" to storeFile,
-                "storePassword" to storePassword
-            )
-            val missingProperties = requiredProperties.filter { it.value == null || (it.key == "storeFile" && !file(storeFileProp ?: "").exists()) }
-            
-            if (missingProperties.isNotEmpty()) {
-                throw GradleException(
-                    """
-                    ╔══════════════════════════════════════════════════════════════╗
-                    ║  ERROR: Missing or invalid keystore properties!             ║
-                    ║                                                              ║
-                    ║  Missing properties: ${missingProperties.keys.joinToString(", ")}  ║
-                    ║                                                              ║
-                    ║  Please ensure all required properties are set in           ║
-                    ║  android/key.properties:                                     ║
-                    ║  - storePassword                                            ║
-                    ║  - keyPassword                                              ║
-                    ║  - keyAlias                                                 ║
-                    ║  - storeFile (and that the keystore file exists)            ║
-                    ╚══════════════════════════════════════════════════════════════╝
-                    """.trimIndent()
-                )
+                val missingProperties = requiredProperties.filter {
+                    it.value == null || (it.key == "storeFile" && !file(storeFileProp ?: "").exists())
+                }
+
+                if (missingProperties.isNotEmpty()) {
+                    throw GradleException(
+                        """
+                        ╔══════════════════════════════════════════════════════════════╗
+                        ║  ERROR: Missing or invalid keystore properties!             ║
+                        ║                                                              ║
+                        ║  Missing properties: ${missingProperties.keys.joinToString(", ")}  ║
+                        ║                                                              ║
+                        ║  Please ensure all required properties are set in           ║
+                        ║  android/key.properties:                                     ║
+                        ║  - storePassword                                            ║
+                        ║  - keyPassword                                              ║
+                        ║  - keyAlias                                                 ║
+                        ║  - storeFile (and that the keystore file exists)            ║
+                        ╚══════════════════════════════════════════════════════════════╝
+                        """.trimIndent()
+                    )
+                }
             }
         }
     }
 
     buildTypes {
         release {
-            signingConfig = signingConfigs.getByName("release")
+            if (keystorePropertiesFile.exists()) {
+                signingConfig = signingConfigs.getByName("release")
+            }
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
