@@ -1,7 +1,7 @@
 # 🕌 Umra Flutter
 
 <p align="center">
-  <img src="assets/images/image 1.jpg" alt="Umra Guide App" width="200"/>
+  <img src="assets/images/01-hero-1284x2778.png" alt="Umra Guide App" width="200"/>
 </p>
 
 <p align="center">
@@ -24,16 +24,15 @@
 ## 📸 Скриншоты
 
 <p align="center">
-  <img src="assets/images/image 1.jpg" width="160"/>
-  <img src="assets/images/image 2.jpg" width="160"/>
-  <img src="assets/images/image 3.jpg" width="160"/>
-  <img src="assets/images/image 4.jpg" width="160"/>
+  <img src="assets/images/01-hero-1284x2778.png" width="160"/>
+  <img src="assets/images/02-umra-1284x2778.png" width="160"/>
+  <img src="assets/images/03-hajj-1284x2778.png" width="160"/>
+  <img src="assets/images/04-dua-1284x2778.png" width="160"/>
 </p>
 <p align="center">
-  <img src="assets/images/image 5.jpg" width="160"/>
-  <img src="assets/images/image 6.jpg" width="160"/>
-  <img src="assets/images/image 7.jpg" width="160"/>
-  <img src="assets/images/image 8.jpg" width="160"/>
+  <img src="assets/images/05-prayer-1284x2778.png" width="160"/>
+  <img src="assets/images/06-trust-1284x2778.png" width="160"/>
+  <img src="assets/images/07-more-1284x2778.png" width="160"/>
 </p>
 
 ---
