@@ -1,21 +1,76 @@
 # 🕌 Umra Flutter
 
-> ✅ **Опубликовано в Google Play** - приложение доступно для скачивания
+<p align="center">
+  <img src="assets/images/image 1.jpg" alt="Umra Guide App" width="200"/>
+</p>
 
-Flutter версия приложения Umra Guide для помощи мусульманам в совершении Умры.
+<p align="center">
+  <a href="https://apps.apple.com/ru/app/umra-guide/id1673683355">
+    <img src="https://img.shields.io/badge/App%20Store-Available-blue?logo=apple&logoColor=white" alt="App Store"/>
+  </a>
+  <a href="https://play.google.com/store/apps/details?id=saydulayev.wien_gmail.com.umra">
+    <img src="https://img.shields.io/badge/Google%20Play-Available-green?logo=google-play&logoColor=white" alt="Google Play"/>
+  </a>
+  <img src="https://img.shields.io/badge/Flutter-3.x-blue?logo=flutter&logoColor=white" alt="Flutter"/>
+  <img src="https://img.shields.io/badge/Version-1.5.3-orange" alt="Version"/>
+  <img src="https://img.shields.io/badge/License-MIT-lightgrey" alt="MIT License"/>
+  <img src="https://img.shields.io/badge/Downloads-40%2C000%2B-brightgreen" alt="Downloads"/>
+</p>
+
+> Flutter-версия приложения **Umra Guide** — гид для мусульман, совершающих Умру.
+
+---
+
+## 📸 Скриншоты
+
+<p align="center">
+  <img src="assets/images/image 1.jpg" width="160"/>
+  <img src="assets/images/image 2.jpg" width="160"/>
+  <img src="assets/images/image 3.jpg" width="160"/>
+  <img src="assets/images/image 4.jpg" width="160"/>
+</p>
+<p align="center">
+  <img src="assets/images/image 5.jpg" width="160"/>
+  <img src="assets/images/image 6.jpg" width="160"/>
+  <img src="assets/images/image 7.jpg" width="160"/>
+  <img src="assets/images/image 8.jpg" width="160"/>
+</p>
+
+---
 
 ## 📱 О проекте
 
-Мобильное приложение-гид для совершения Умры с поддержкой нескольких языков (русский, английский, арабский, немецкий, французский, турецкий, индонезийский), аудио-гидом, временем намаза и пошаговыми инструкциями.
+Мобильное приложение-гид для совершения Умры с поддержкой нескольких языков, аудио-гидом, временем намаза и пошаговыми инструкциями.
+
+**Поддерживаемые языки:** Русский, English, العربية, Deutsch, Français, Türkçe, Bahasa Indonesia
+
+---
 
 ## ✨ Основные возможности
 
 - 📖 Пошаговые инструкции для совершения Умры
 - 🔊 Аудио-гид с произношением дуа
-- 🕌 Время намаза и расчет времени молитв
+- 🕌 Время намаза и расчёт времени молитв
+- 📅 Исламский (Хиджри) календарь
+- 📄 PDF-материалы для чтения офлайн
 - 🌍 Многоязычная поддержка (7 языков)
 - 🎨 Несколько тем оформления
+- 🔔 Уведомления о времени намаза
+- 📿 Счётчик тавафов
 - 📱 Поддержка iOS и Android
+
+---
+
+## 📲 Скачать
+
+| Платформа | Ссылка | Рейтинг | Скачивания |
+|-----------|--------|---------|------------|
+| 🍎 iOS | [App Store](https://apps.apple.com/ru/app/umra-guide/id1673683355) | ⭐ 4.9/5 (159+ оценок) | 40,000+ |
+| 🤖 Android | [Google Play](https://play.google.com/store/apps/details?id=saydulayev.wien_gmail.com.umra) | — | Доступно |
+
+**Требования:** iOS 17.0+ / Android 6.0+ (API 23+)
+
+---
 
 ## 🚀 Запуск проекта
 
@@ -24,13 +79,25 @@ flutter pub get
 flutter run
 ```
 
+---
+
 ## 📦 Основные зависимости
 
-- `provider` - управление состоянием
-- `just_audio` - проигрывание аудио
-- `flutter_localizations` - локализация
-- `adhan_dart` - расчет времени намаза
-- `flutter_local_notifications` - уведомления
+| Пакет | Назначение |
+|-------|-----------|
+| `provider` | Управление состоянием |
+| `just_audio` + `audio_service` | Аудио-плеер с фоновым воспроизведением |
+| `adhan_dart` | Расчёт времени намаза |
+| `hijri_date` | Исламский календарь |
+| `flutter_pdfview` | Просмотр PDF |
+| `flutter_local_notifications` | Уведомления о намазе |
+| `in_app_purchase` | Встроенные покупки |
+| `in_app_review` | Запрос отзыва в приложении |
+| `google_fonts` | Шрифты |
+| `shared_preferences` | Локальное хранилище настроек |
+| `flutter_localizations` | Локализация |
+
+---
 
 ## 📁 Структура проекта
 
@@ -42,38 +109,28 @@ lib/
 ├── services/        # Бизнес-логика
 ├── screens/         # Экраны приложения
 ├── widgets/         # Переиспользуемые виджеты
-└── l10n/            # Файлы локализации
+└── l10n/            # Файлы локализации (7 языков)
 ```
+
+---
 
 ## 🔧 Статус разработки
 
-- ✅ Базовая структура проекта
+- ✅ Базовая структура и навигация
 - ✅ Локализация (7 языков)
 - ✅ Система тем оформления
-- ✅ Экран выбора языка
-- ✅ Главный экран со списком шагов
-- ✅ Детальные экраны шагов Умры
-- ✅ Аудио-плеер
-- ✅ Счетчик тавафов
-- ✅ Экран времени намаза
-- ✅ Настройки приложения
-- ✅ Публикация в Google Play
-- ✅ Поддержка Android 15 (Edge-to-Edge)
+- ✅ Пошаговые инструкции Умры
+- ✅ Аудио-плеер (фоновое воспроизведение)
+- ✅ Счётчик тавафов
+- ✅ Время намаза с уведомлениями
+- ✅ Хиджри-календарь
+- ✅ PDF-материалы
+- ✅ Поддержка Android 15 (Edge-to-Edge, API 35)
+- ✅ Публикация в App Store и Google Play
 - 🔄 В разработке: дополнительные функции и оптимизация
 
-## 📱 Платформы
-
-- ✅ **iOS** - [Доступно в App Store](https://apps.apple.com/ru/app/umra-guide/id1673683355)
-  - ⭐ Рейтинг: 4.9/5 (159 оценок)
-  - 📥 Более 30,000 скачиваний
-  - 📱 Требуется iOS 17.0+
-  
-- ✅ **Android** - [Доступно в Google Play](https://play.google.com/store/apps/details?id=saydulayev.wien_gmail.com.umra)
-  - 📱 Версия: 1.1.0+12
-  - 📥 Доступно для скачивания
-  - ✅ Поддержка Android 15 (API 35)
-  - ✅ Edge-to-Edge отображение
+---
 
 ## 📄 Лицензия
 
-MIT License
+[MIT License](LICENSE)
