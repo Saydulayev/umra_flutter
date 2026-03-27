@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 import '../models/app_theme.dart';
+import '../widgets/app_card.dart';
 import '../models/useful_info_model.dart';
 import '../screens/useful_info_detail_screen.dart'
     show UsefulInfoDetailScreen, SubChapterDetailScreen;
@@ -78,21 +79,16 @@ class UsefulInfoScreen extends StatelessWidget {
           final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
           return SingleChildScrollView(
             padding: EdgeInsets.fromLTRB(hPad, 8, hPad, bottomPadding + 32),
-            child: Container(
-              decoration: BoxDecoration(
-                color: theme.isEmerald ? null : theme.lightBackgroundColor,
-                gradient: theme.cardGradient,
-                borderRadius: BorderRadius.circular(cardRadius),
-                border: Border.all(color: theme.borderColor, width: 1),
-                boxShadow: [
-                  BoxShadow(
-                    color: theme.cardShadowColor,
-                    blurRadius: 16,
-                    offset: const Offset(0, 6),
-                  ),
-                ],
-              ),
-              clipBehavior: Clip.hardEdge,
+            child: AppCard(
+              theme: theme,
+              cornerRadius: cardRadius,
+              shadows: [
+                BoxShadow(
+                  color: theme.cardShadowColor,
+                  blurRadius: 16,
+                  offset: const Offset(0, 6),
+                ),
+              ],
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: _buildRows(items, theme, isTablet),

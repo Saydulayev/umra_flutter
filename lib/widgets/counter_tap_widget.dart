@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vibration/vibration.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
+import '../widgets/app_card.dart';
 
 class CounterTapWidget extends StatefulWidget {
   final String prefsKey;
@@ -90,22 +91,19 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: hPad, vertical: vPad),
-        decoration: BoxDecoration(
-          color: theme.isEmerald ? null : theme.lightBackgroundColor,
-          gradient: theme.cardGradient,
-          borderRadius: BorderRadius.circular(cardRadius),
-          border: Border.all(color: theme.borderColor, width: 1),
-          boxShadow: [
-            BoxShadow(
-              color: theme.cardShadowColor,
-              blurRadius: 14,
-              offset: const Offset(0, 6),
-            ),
-          ],
-        ),
-        child: Column(
+      child: AppCard(
+        theme: theme,
+        cornerRadius: cardRadius,
+        shadows: [
+          BoxShadow(
+            color: theme.cardShadowColor,
+            blurRadius: 14,
+            offset: const Offset(0, 6),
+          ),
+        ],
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: hPad, vertical: vPad),
+          child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // ── Заголовок + счётчик X/7 ──
@@ -326,6 +324,7 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
               ],
             ),
           ],
+        ),
         ),
       ),
     );

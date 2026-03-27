@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 import '../models/app_theme.dart';
+import '../widgets/app_card.dart';
 
 const Color _accentGreen = Color(0xFF10B981);
 
@@ -37,42 +38,41 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
       children: [
         for (int i = 0; i < lines.length; i++) ...[
           if (_isLongArabicLine(lines[i]))
-            Container(
-                    width: double.infinity,
-                    margin: const EdgeInsets.symmetric(vertical: 16),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 14),
-                    decoration: BoxDecoration(
-                      color: theme.isEmerald ? null : theme.lightBackgroundColor,
-                      gradient: theme.cardGradient,
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: theme.borderColor, width: 1),
-                      boxShadow: [
-                        BoxShadow(
-                          color: theme.cardShadowColor,
-                          blurRadius: 10,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Text(
-                      lines[i],
-                      textAlign: TextAlign.center,
-                      textDirection: TextDirection.rtl,
-                      locale: const Locale('ar'),
-                      style: TextStyle(
-                        fontFamily: 'KFGQPCUthmanTahaNaskh',
-                        fontFamilyFallback: const [
-                          'Scheherazade New',
-                          'Amiri',
-                          'Arial'
-                        ],
-                        fontSize: 26,
-                        color: theme.textColor,
-                        height: 1.7,
-                      ),
-                    ),
-                  )
+            SizedBox(
+              width: double.infinity,
+              child: AppCard(
+              theme: theme,
+              cornerRadius: 16,
+              margin: const EdgeInsets.symmetric(vertical: 16),
+              shadows: [
+                BoxShadow(
+                  color: theme.cardShadowColor,
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                child: Text(
+                  lines[i],
+                  textAlign: TextAlign.center,
+                  textDirection: TextDirection.rtl,
+                  locale: const Locale('ar'),
+                  style: TextStyle(
+                    fontFamily: 'KFGQPCUthmanTahaNaskh',
+                    fontFamilyFallback: const [
+                      'Scheherazade New',
+                      'Amiri',
+                      'Arial'
+                    ],
+                    fontSize: 26,
+                    color: theme.textColor,
+                    height: 1.7,
+                  ),
+                ),
+              ),
+              ),
+            )
           else
             Text(
               lines[i],

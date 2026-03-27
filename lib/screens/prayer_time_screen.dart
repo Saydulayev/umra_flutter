@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../providers/theme_provider.dart';
 import '../providers/user_preferences_provider.dart';
 import '../models/app_theme.dart';
+import '../widgets/app_card.dart';
 import '../services/prayer_time_service.dart';
 import '../l10n/app_localizations.dart';
 
@@ -244,22 +245,20 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
 
   /// Внешняя карточка — аналог iOS transparentStyled (standardCardFrame cornerRadius 20)
   Widget _buildCard({required AppTheme theme, required Widget child}) {
-    return Container(
-      padding: const EdgeInsets.all(25),
-      decoration: BoxDecoration(
-        color: theme.isEmerald ? null : theme.lightBackgroundColor,
-        gradient: theme.cardGradient,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: theme.borderColor, width: 1),
-        boxShadow: [
-          BoxShadow(
-            color: theme.cardShadowColor,
-            blurRadius: 20,
-            offset: const Offset(0, 8),
-          ),
-        ],
+    return AppCard(
+      theme: theme,
+      cornerRadius: 20,
+      shadows: [
+        BoxShadow(
+          color: theme.cardShadowColor,
+          blurRadius: 20,
+          offset: const Offset(0, 8),
+        ),
+      ],
+      child: Padding(
+        padding: const EdgeInsets.all(25),
+        child: child,
       ),
-      child: child,
     );
   }
 
@@ -268,31 +267,28 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     required AppTheme theme,
     required AppLocalizations l10n,
   }) {
-    return Container(
+    return AppCard(
+      theme: theme,
+      cornerRadius: 20,
       margin: const EdgeInsets.symmetric(vertical: 28),
-      width: double.infinity,
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: theme.isEmerald ? null : theme.lightBackgroundColor,
-        gradient: theme.cardGradient,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: theme.borderColor, width: 1),
-        boxShadow: [
-          BoxShadow(
-            color: theme.cardShadowColor,
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Text(
-        '${_getLocalizedPrayerName(_nextPrayerName, l10n)} ${l10n.prayerTimeIn} ${_formatDuration(_timeUntilNextPrayer)}',
-        style: TextStyle(
-          fontSize: 17,
-          fontWeight: FontWeight.w600,
-          color: theme.textColor,
+      shadows: [
+        BoxShadow(
+          color: theme.cardShadowColor,
+          blurRadius: 10,
+          offset: const Offset(0, 4),
         ),
-        textAlign: TextAlign.center,
+      ],
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Text(
+          '${_getLocalizedPrayerName(_nextPrayerName, l10n)} ${l10n.prayerTimeIn} ${_formatDuration(_timeUntilNextPrayer)}',
+          style: TextStyle(
+            fontSize: 17,
+            fontWeight: FontWeight.w600,
+            color: theme.textColor,
+          ),
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }
@@ -328,22 +324,17 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     required AppTheme theme,
     required Widget child,
   }) {
-    return Container(
+    return AppCard(
+      theme: theme,
+      cornerRadius: 20,
       margin: const EdgeInsets.symmetric(vertical: 3),
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: theme.isEmerald ? null : theme.lightBackgroundColor,
-        gradient: theme.cardGradient,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: theme.borderColor, width: 1),
-        boxShadow: [
-          BoxShadow(
-            color: theme.cardShadowColor,
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
+      shadows: [
+        BoxShadow(
+          color: theme.cardShadowColor,
+          blurRadius: 10,
+          offset: const Offset(0, 4),
+        ),
+      ],
       child: child,
     );
   }
@@ -392,21 +383,17 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     final activeText = Colors.white;
     final inactiveText = theme.textColor.withValues(alpha: 0.6);
 
-    return Container(
+    return AppCard(
+      theme: theme,
+      cornerRadius: 50,
       margin: const EdgeInsets.symmetric(horizontal: 16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(50),
-        color: theme.isEmerald ? null : theme.lightBackgroundColor,
-        gradient: theme.cardGradient,
-        border: Border.all(color: theme.borderColor, width: 1),
-        boxShadow: [
-          BoxShadow(
-            color: theme.cardShadowColor,
-            blurRadius: 6,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
+      shadows: [
+        BoxShadow(
+          color: theme.cardShadowColor,
+          blurRadius: 6,
+          offset: const Offset(0, 2),
+        ),
+      ],
       child: Row(
         children: [
           Expanded(

@@ -12,6 +12,7 @@ import '../screens/hajj_step_detail_screen.dart';
 import '../screens/useful_info_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/prayer_time_screen.dart';
+import '../widgets/app_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -388,27 +389,20 @@ class _GroupedCard extends StatelessWidget {
       }
     }
 
-    return Container(
+    return AppCard(
+      theme: theme,
+      cornerRadius: cardRadius,
       margin: EdgeInsets.symmetric(horizontal: padding),
-      decoration: BoxDecoration(
-        color: theme.isEmerald ? null : theme.lightBackgroundColor,
-        gradient: theme.cardGradient,
-        borderRadius: BorderRadius.circular(cardRadius),
-        border: Border.all(color: theme.borderColor, width: 1),
-        boxShadow: [
-          BoxShadow(
-            color: theme.cardShadowColor,
-            blurRadius: 18,
-            offset: const Offset(0, 8),
-          ),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(cardRadius),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: withDividers,
+      shadows: [
+        BoxShadow(
+          color: theme.cardShadowColor,
+          blurRadius: 18,
+          offset: const Offset(0, 8),
         ),
+      ],
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: withDividers,
       ),
     );
   }

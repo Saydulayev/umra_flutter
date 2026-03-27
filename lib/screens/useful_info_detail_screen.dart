@@ -4,6 +4,7 @@ import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 import '../models/app_theme.dart';
 import '../models/useful_info_model.dart';
+import '../widgets/app_card.dart';
 
 const Color _accentGreen = Color(0xFF10B981);
 
@@ -38,35 +39,35 @@ List<({bool isHeading, String text})> _parseFormattedContent(String content) {
 }
 
 Widget _buildArabicCard(String line, AppTheme theme) {
-  return Container(
+  return SizedBox(
     width: double.infinity,
+    child: AppCard(
+    theme: theme,
+    cornerRadius: 16,
     margin: const EdgeInsets.symmetric(vertical: 16),
-    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-    decoration: BoxDecoration(
-      color: theme.isEmerald ? null : theme.lightBackgroundColor,
-      gradient: theme.cardGradient,
-      borderRadius: BorderRadius.circular(16),
-      border: Border.all(color: theme.borderColor, width: 1),
-      boxShadow: [
-        BoxShadow(
-          color: theme.cardShadowColor,
-          blurRadius: 10,
-          offset: const Offset(0, 4),
-        ),
-      ],
-    ),
-    child: Text(
-      line,
-      textAlign: TextAlign.center,
-      textDirection: TextDirection.rtl,
-      locale: const Locale('ar'),
-      style: TextStyle(
-        fontFamily: 'KFGQPCUthmanTahaNaskh',
-        fontFamilyFallback: const ['Scheherazade New', 'Amiri', 'Arial'],
-        fontSize: 26,
-        color: theme.textColor,
-        height: 1.7,
+    shadows: [
+      BoxShadow(
+        color: theme.cardShadowColor,
+        blurRadius: 10,
+        offset: const Offset(0, 4),
       ),
+    ],
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      child: Text(
+        line,
+        textAlign: TextAlign.center,
+        textDirection: TextDirection.rtl,
+        locale: const Locale('ar'),
+        style: TextStyle(
+          fontFamily: 'KFGQPCUthmanTahaNaskh',
+          fontFamilyFallback: const ['Scheherazade New', 'Amiri', 'Arial'],
+          fontSize: 26,
+          color: theme.textColor,
+          height: 1.7,
+        ),
+      ),
+    ),
     ),
   );
 }
@@ -144,21 +145,16 @@ class UsefulInfoDetailScreen extends StatelessWidget {
           final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
           return SingleChildScrollView(
             padding: EdgeInsets.fromLTRB(hPad, 8, hPad, bottomPadding + 32),
-            child: Container(
-              decoration: BoxDecoration(
-                color: theme.isEmerald ? null : theme.lightBackgroundColor,
-                gradient: theme.cardGradient,
-                borderRadius: BorderRadius.circular(cardRadius),
-                border: Border.all(color: theme.borderColor, width: 1),
-                boxShadow: [
-                  BoxShadow(
-                    color: theme.cardShadowColor,
-                    blurRadius: 16,
-                    offset: const Offset(0, 6),
-                  ),
-                ],
-              ),
-              clipBehavior: Clip.hardEdge,
+            child: AppCard(
+              theme: theme,
+              cornerRadius: cardRadius,
+              shadows: [
+                BoxShadow(
+                  color: theme.cardShadowColor,
+                  blurRadius: 16,
+                  offset: const Offset(0, 6),
+                ),
+              ],
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: _buildRows(context, chapter.subChapters, theme, l10n, hPad),

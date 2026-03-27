@@ -8,6 +8,7 @@ import '../providers/localization_provider.dart';
 import '../providers/user_preferences_provider.dart';
 import '../models/app_theme.dart';
 import '../widgets/theme_selection_sheet.dart';
+import '../widgets/app_card.dart';
 import '../constants/app_constants.dart';
 import '../constants/review_config.dart';
 import 'donation_screen.dart';
@@ -265,26 +266,19 @@ class SettingsScreen extends StatelessWidget {
     required AppTheme theme,
     required List<Widget> children,
   }) {
-    return Container(
-      decoration: BoxDecoration(
-        color: theme.isEmerald ? null : theme.lightBackgroundColor,
-        gradient: theme.cardGradient,
-        borderRadius: BorderRadius.circular(_cardRadius),
-        border: Border.all(color: theme.borderColor, width: 1),
-        boxShadow: [
-          BoxShadow(
-            color: theme.isDark
-                ? Colors.black.withValues(alpha: 0.2)
-                : Colors.black.withValues(alpha: 0.06),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(_cardRadius),
-        child: Column(mainAxisSize: MainAxisSize.min, children: children),
-      ),
+    return AppCard(
+      theme: theme,
+      cornerRadius: _cardRadius,
+      shadows: [
+        BoxShadow(
+          color: theme.isDark
+              ? Colors.black.withValues(alpha: 0.2)
+              : Colors.black.withValues(alpha: 0.06),
+          blurRadius: 8,
+          offset: const Offset(0, 2),
+        ),
+      ],
+      child: Column(mainAxisSize: MainAxisSize.min, children: children),
     );
   }
 

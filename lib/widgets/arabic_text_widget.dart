@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/theme_provider.dart';
+import '../widgets/app_card.dart';
 
 class ArabicTextWidget extends StatelessWidget {
   final String text;
@@ -21,36 +22,36 @@ class ArabicTextWidget extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
-        padding: EdgeInsets.all(contentPadding),
-        decoration: BoxDecoration(
-          color: theme.isEmerald ? null : theme.lightBackgroundColor,
-          gradient: theme.cardGradient,
-          borderRadius: BorderRadius.circular(cornerRadius),
-          border: Border.all(color: theme.borderColor, width: 1),
-          boxShadow: [
-            BoxShadow(
-              color: theme.cardShadowColor,
-              blurRadius: 18,
-              offset: const Offset(0, 8),
+        child: AppCard(
+        theme: theme,
+        cornerRadius: cornerRadius,
+        shadows: [
+          BoxShadow(
+            color: theme.cardShadowColor,
+            blurRadius: 18,
+            offset: const Offset(0, 8),
+          ),
+        ],
+        child: Padding(
+          padding: EdgeInsets.all(contentPadding),
+          child: Text(
+            text,
+            textAlign: TextAlign.center,
+            textDirection: TextDirection.rtl,
+            locale: const Locale('ar'),
+            style: TextStyle(
+              fontFamily: 'KFGQPCUthmanTahaNaskh',
+              fontFamilyFallback: const ['Scheherazade New', 'Amiri', 'Arial'],
+              fontSize: fontSize,
+              color: theme.textColor,
+              height: 1.6,
+              letterSpacing: 0,
             ),
-          ],
-        ),
-        child: Text(
-          text,
-          textAlign: TextAlign.center,
-          textDirection: TextDirection.rtl,
-          locale: const Locale('ar'),
-          style: TextStyle(
-            fontFamily: 'KFGQPCUthmanTahaNaskh',
-            fontFamilyFallback: const ['Scheherazade New', 'Amiri', 'Arial'],
-            fontSize: fontSize,
-            color: theme.textColor,
-            height: 1.6,
-            letterSpacing: 0,
           ),
         ),
+      ),
       ),
     );
   }

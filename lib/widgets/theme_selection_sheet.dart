@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/theme_provider.dart';
 import '../models/app_theme.dart';
+import '../widgets/app_card.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 
 class ThemeSelectionSheet extends StatelessWidget {
@@ -75,14 +76,9 @@ class ThemeSelectionSheet extends StatelessWidget {
               hPad,
               (isTablet ? 32.0 : 24.0) + bottomPadding,
             ),
-            child: Container(
-              decoration: BoxDecoration(
-                color: theme.isEmerald ? null : theme.lightBackgroundColor,
-                gradient: theme.cardGradient,
-                borderRadius: BorderRadius.circular(18),
-                border: Border.all(color: theme.borderColor, width: 1),
-              ),
-              clipBehavior: Clip.hardEdge,
+            child: AppCard(
+              theme: theme,
+              cornerRadius: 18,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: _buildRows(
