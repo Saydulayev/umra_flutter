@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:math';
+import 'dart:ui' show ImageFilter;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
@@ -13,6 +14,8 @@ import '../screens/useful_info_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/prayer_time_screen.dart';
 import '../widgets/app_card.dart';
+
+const double _kBottomTabBarReservedSpace = 88.0;
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -88,7 +91,6 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
 
     return Scaffold(
       backgroundColor: theme.backgroundColor,
-      extendBody: true,
       appBar: AppBar(
         backgroundColor: theme.backgroundColor,
         elevation: 0,
@@ -117,19 +119,28 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           const SizedBox(width: 4),
         ],
       ),
-      body: IndexedStack(
-        index: _selectedTab,
+      body: Stack(
         children: [
-          _UmraTabBody(theme: theme, l10n: l10n),
-          _HajjTabBody(theme: theme, l10n: l10n),
+          IndexedStack(
+            index: _selectedTab,
+            children: [
+              _UmraTabBody(theme: theme, l10n: l10n),
+              _HajjTabBody(theme: theme, l10n: l10n),
+            ],
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: _BottomTabBar(
+              selectedIndex: _selectedTab,
+              theme: theme,
+              umraLabel: l10n.umra,
+              hajjLabel: l10n.hajj,
+              onTap: (i) => setState(() => _selectedTab = i),
+            ),
+          ),
         ],
-      ),
-      bottomNavigationBar: _BottomTabBar(
-        selectedIndex: _selectedTab,
-        theme: theme,
-        umraLabel: l10n.umra,
-        hajjLabel: l10n.hajj,
-        onTap: (i) => setState(() => _selectedTab = i),
       ),
     );
   }
@@ -157,7 +168,9 @@ class _UmraTabBody extends StatelessWidget {
     final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
 
     return SingleChildScrollView(
-      padding: EdgeInsets.only(bottom: bottomPadding + 80),
+      padding: EdgeInsets.only(
+        bottom: bottomPadding + _kBottomTabBarReservedSpace,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -182,8 +195,8 @@ class _UmraTabBody extends StatelessWidget {
             padding: _padding,
             children: List.generate(_numberedSteps.length, (i) {
               final step = _numberedSteps[i];
-              final stepLabel =
-                  '${l10n.stepPrefix} ${step.stepNumber}'.toUpperCase();
+              final stepLabel = '${l10n.stepPrefix} ${step.stepNumber}'
+                  .toUpperCase();
               return _StepRowItem(
                 key: ValueKey(step.id),
                 badge: _StepBadge(iconText: step.iconText, theme: theme),
@@ -271,7 +284,9 @@ class _HajjTabBody extends StatelessWidget {
     final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
 
     return SingleChildScrollView(
-      padding: EdgeInsets.only(bottom: bottomPadding + 80),
+      padding: EdgeInsets.only(
+        bottom: bottomPadding + _kBottomTabBarReservedSpace,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -296,8 +311,8 @@ class _HajjTabBody extends StatelessWidget {
             padding: _padding,
             children: List.generate(steps.length, (i) {
               final step = steps[i];
-              final stepLabel =
-                  '${l10n.stepPrefix} ${step.stepNumber}'.toUpperCase();
+              final stepLabel = '${l10n.stepPrefix} ${step.stepNumber}'
+                  .toUpperCase();
               return _StepRowItem(
                 key: ValueKey(step.id),
                 badge: _StepBadge(iconText: step.iconText, theme: theme),
@@ -400,10 +415,7 @@ class _GroupedCard extends StatelessWidget {
           offset: const Offset(0, 8),
         ),
       ],
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: withDividers,
-      ),
+      child: Column(mainAxisSize: MainAxisSize.min, children: withDividers),
     );
   }
 }
@@ -498,10 +510,7 @@ class _StepBadge extends StatelessWidget {
   final String iconText;
   final AppTheme theme;
 
-  const _StepBadge({
-    required this.iconText,
-    required this.theme,
-  });
+  const _StepBadge({required this.iconText, required this.theme});
 
   double get _fontSize {
     final longest = iconText.split('\n').map((l) => l.length).reduce(max);
@@ -575,7 +584,7 @@ class _InfoBadge extends StatelessWidget {
   }
 }
 
-// ─── Bottom tab bar ───────────────────────────────────────────────────────────
+// ─── Bottom tab bar — Liquid Glass (iOS 26 style) ────────────────────────────
 
 class _BottomTabBar extends StatelessWidget {
   final int selectedIndex;
@@ -594,87 +603,176 @@ class _BottomTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        border: Border(
-          top: BorderSide(
-            color: theme.borderColor,
-            width: 0.5,
-          ),
-        ),
-      ),
-      child: BottomNavigationBar(
-        currentIndex: selectedIndex,
-        onTap: onTap,
-        backgroundColor: theme.lightBackgroundColor,
-        selectedItemColor: theme.primaryColor,
-        unselectedItemColor: theme.secondaryTextColor,
-        type: BottomNavigationBarType.fixed,
-        elevation: 0,
-        selectedFontSize: 11,
-        unselectedFontSize: 11,
-        selectedLabelStyle: const TextStyle(
-          fontFamily: 'Lato',
-          fontWeight: FontWeight.w600,
-        ),
-        unselectedLabelStyle: const TextStyle(
-          fontFamily: 'Lato',
-          fontWeight: FontWeight.w400,
-        ),
-        items: [
-          BottomNavigationBarItem(
-            icon: _TabLetterIcon(letter: 'U', isSelected: false, theme: theme),
-            activeIcon: _TabLetterIcon(
-              letter: 'U',
-              isSelected: true,
-              theme: theme,
+    final screenWidth = MediaQuery.of(context).size.width;
+    final barWidth = min(screenWidth - 40, 182.0);
+
+    return SafeArea(
+      top: false,
+      minimum: const EdgeInsets.fromLTRB(16, 6, 16, 10),
+      child: Center(
+        child: SizedBox(
+          width: barWidth,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(999),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
+              child: Container(
+                constraints: const BoxConstraints(minHeight: 65),
+                decoration: BoxDecoration(
+                  color: theme.isDark
+                      ? Colors.white.withValues(alpha: 0.10)
+                      : Colors.white.withValues(alpha: 0.74),
+                  borderRadius: BorderRadius.circular(999),
+                  border: Border.all(
+                    color: Colors.white.withValues(
+                      alpha: theme.isDark ? 0.14 : 0.85,
+                    ),
+                    width: 0.8,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(
+                        alpha: theme.isDark ? 0.26 : 0.10,
+                      ),
+                      blurRadius: 22,
+                      offset: const Offset(0, 8),
+                    ),
+                  ],
+                ),
+                padding: const EdgeInsets.all(5),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: _TabItem(
+                        letter: 'U',
+                        label: umraLabel,
+                        isSelected: selectedIndex == 0,
+                        theme: theme,
+                        onTap: () => onTap(0),
+                      ),
+                    ),
+                    Expanded(
+                      child: _TabItem(
+                        letter: 'H',
+                        label: hajjLabel,
+                        isSelected: selectedIndex == 1,
+                        theme: theme,
+                        onTap: () => onTap(1),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
-            label: umraLabel,
           ),
-          BottomNavigationBarItem(
-            icon: _TabLetterIcon(letter: 'H', isSelected: false, theme: theme),
-            activeIcon: _TabLetterIcon(
-              letter: 'H',
-              isSelected: true,
-              theme: theme,
-            ),
-            label: hajjLabel,
-          ),
-        ],
+        ),
       ),
     );
   }
 }
 
-class _TabLetterIcon extends StatelessWidget {
+class _TabItem extends StatelessWidget {
   final String letter;
+  final String label;
   final bool isSelected;
   final AppTheme theme;
+  final VoidCallback onTap;
 
-  const _TabLetterIcon({
+  const _TabItem({
     required this.letter,
+    required this.label,
     required this.isSelected,
     required this.theme,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 28,
-      height: 28,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: isSelected
-            ? theme.primaryColor
-            : theme.primaryColor.withValues(alpha: 0.12),
-      ),
-      child: Center(
-        child: Text(
-          letter,
-          style: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.bold,
-            color: isSelected ? Colors.white : theme.primaryColor,
+    final Color labelColor = isSelected
+        ? theme.primaryColor
+        : theme.isDark
+        ? Colors.white.withValues(alpha: 0.66)
+        : Colors.black.withValues(alpha: 0.88);
+
+    return Semantics(
+      button: true,
+      selected: isSelected,
+      label: label,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(999),
+          onTap: onTap,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 250),
+            curve: Curves.easeInOut,
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(999),
+              color: isSelected
+                  ? (theme.isDark
+                        ? Colors.white.withValues(alpha: 0.12)
+                        : Colors.black.withValues(alpha: 0.07))
+                  : Colors.transparent,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                AnimatedContainer(
+                  duration: const Duration(milliseconds: 250),
+                  width: 27,
+                  height: 27,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: isSelected
+                        ? theme.primaryColor
+                        : theme.isDark
+                        ? Colors.white.withValues(alpha: 0.88)
+                        : Colors.black.withValues(alpha: 0.90),
+                    boxShadow: isSelected
+                        ? [
+                            BoxShadow(
+                              color: theme.primaryColor.withValues(alpha: 0.22),
+                              blurRadius: 8,
+                              offset: const Offset(0, 2),
+                            ),
+                          ]
+                        : null,
+                  ),
+                  child: Center(
+                    child: Text(
+                      letter,
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        color: isSelected
+                            ? Colors.white
+                            : theme.isDark
+                            ? Colors.black.withValues(alpha: 0.80)
+                            : Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 3),
+                AnimatedDefaultTextStyle(
+                  duration: const Duration(milliseconds: 250),
+                  style: TextStyle(
+                    fontFamily: 'Lato',
+                    fontSize: 10,
+                    fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
+                    color: labelColor,
+                    height: 1,
+                  ),
+                  child: Text(
+                    label,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
