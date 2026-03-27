@@ -33,6 +33,7 @@
   "appThemeString": "Appearance",
   "notificationSettingsString": "Notification Settings",
   "selectLanguageString": "Select Language",
+  "themeAuto": "Auto",
   "themeHeavenly": "Light",
   "themeOasis": "Dark",
   "themeGold": "Emerald",

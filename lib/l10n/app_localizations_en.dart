@@ -105,6 +105,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectLanguageString => 'Select Language';
 
   @override
+  String get themeAuto => 'Auto';
+
+  @override
   String get themeHeavenly => 'Light';
 
   @override

@@ -105,6 +105,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get selectLanguageString => 'Dil Seçin';
 
   @override
+  String get themeAuto => 'Otomatik';
+
+  @override
   String get themeHeavenly => 'Açık';
 
   @override

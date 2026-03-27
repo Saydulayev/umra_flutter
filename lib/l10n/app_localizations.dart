@@ -298,6 +298,12 @@ abstract class AppLocalizations {
   /// **'Select Language'**
   String get selectLanguageString;
 
+  /// No description provided for @themeAuto.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto'**
+  String get themeAuto;
+
   /// No description provided for @themeHeavenly.
   ///
   /// In en, this message translates to:

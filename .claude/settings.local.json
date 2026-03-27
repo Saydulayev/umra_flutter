@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(flutter build:*)",
-      "Bash(flutter analyze:*)"
+      "Bash(flutter analyze:*)",
+      "Bash(find '/Users/saydulayev/Desktop/for GitHub/umra_flutter' -name l10n.yaml -o -name *.arb)",
+      "Bash(flutter gen-l10n:*)"
     ]
   }
 }

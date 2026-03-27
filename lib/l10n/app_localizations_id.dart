@@ -105,6 +105,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get selectLanguageString => 'Pilih Bahasa';
 
   @override
+  String get themeAuto => 'Otomatis';
+
+  @override
   String get themeHeavenly => 'Terang';
 
   @override

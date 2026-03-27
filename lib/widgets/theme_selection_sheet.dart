@@ -67,7 +67,7 @@ class ThemeSelectionSheet extends StatelessWidget {
             ),
           ),
 
-          // Theme list — single card with dividers between rows
+          // Theme list — single card with dividers
           Padding(
             padding: EdgeInsets.fromLTRB(
               hPad,
@@ -107,28 +107,28 @@ class ThemeSelectionSheet extends StatelessWidget {
     required AppLocalizations l10n,
     required bool isTablet,
   }) {
-    final themes = AppTheme.values;
+    final preferences = ThemePreference.values;
     final widgets = <Widget>[];
 
-    for (int i = 0; i < themes.length; i++) {
-      final appTheme = themes[i];
-      final isSelected = themeProvider.selectedTheme == appTheme;
+    for (int i = 0; i < preferences.length; i++) {
+      final pref = preferences[i];
+      final isSelected = themeProvider.themePreference == pref;
 
       widgets.add(
         _ThemeRow(
-          appTheme: appTheme,
-          themeName: _getThemeName(appTheme, l10n),
+          preference: pref,
+          themeName: _getThemeName(pref, l10n),
           isSelected: isSelected,
           currentTheme: theme,
           isTablet: isTablet,
           onTap: () {
-            themeProvider.setTheme(appTheme);
+            themeProvider.setTheme(pref);
             Navigator.pop(context);
           },
         ),
       );
 
-      if (i < themes.length - 1) {
+      if (i < preferences.length - 1) {
         widgets.add(
           Divider(
             height: 1,
@@ -144,20 +144,22 @@ class ThemeSelectionSheet extends StatelessWidget {
     return widgets;
   }
 
-  String _getThemeName(AppTheme theme, AppLocalizations l10n) {
-    switch (theme) {
-      case AppTheme.nur:
+  String _getThemeName(ThemePreference pref, AppLocalizations l10n) {
+    switch (pref) {
+      case ThemePreference.auto:
+        return l10n.themeAuto;
+      case ThemePreference.nur:
         return l10n.themeHeavenly;
-      case AppTheme.layl:
+      case ThemePreference.layl:
         return l10n.themeOasis;
-      case AppTheme.emerald:
+      case ThemePreference.emerald:
         return l10n.themeGold;
     }
   }
 }
 
 class _ThemeRow extends StatelessWidget {
-  final AppTheme appTheme;
+  final ThemePreference preference;
   final String themeName;
   final bool isSelected;
   final AppTheme currentTheme;
@@ -165,7 +167,7 @@ class _ThemeRow extends StatelessWidget {
   final VoidCallback onTap;
 
   const _ThemeRow({
-    required this.appTheme,
+    required this.preference,
     required this.themeName,
     required this.isSelected,
     required this.currentTheme,
@@ -185,7 +187,7 @@ class _ThemeRow extends StatelessWidget {
         ),
         child: Row(
           children: [
-            _ThemeCircle(appTheme: appTheme, size: isTablet ? 22 : 18),
+            _ThemeCircle(preference: preference, size: isTablet ? 22 : 18),
             SizedBox(width: isTablet ? 14 : 12),
             Text(
               themeName,
@@ -213,10 +215,10 @@ class _ThemeRow extends StatelessWidget {
 }
 
 class _ThemeCircle extends StatelessWidget {
-  final AppTheme appTheme;
+  final ThemePreference preference;
   final double size;
 
-  const _ThemeCircle({required this.appTheme, required this.size});
+  const _ThemeCircle({required this.preference, required this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -225,14 +227,10 @@ class _ThemeCircle extends StatelessWidget {
       height: size,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: _gradientColors(),
-        ),
-        border: _needsBorder()
+        gradient: _gradient(),
+        border: _hasBorder()
             ? Border.all(
-                color: Colors.black.withValues(alpha: 0.12),
+                color: Colors.black.withValues(alpha: 0.14),
                 width: 0.5,
               )
             : null,
@@ -240,19 +238,39 @@ class _ThemeCircle extends StatelessWidget {
     );
   }
 
-  List<Color> _gradientColors() {
-    switch (appTheme) {
-      case AppTheme.nur:
-        // Light: white → light gray
-        return [Colors.white, const Color(0xFFE0E0E2)];
-      case AppTheme.layl:
-        // Dark: near-black → dark charcoal
-        return [const Color(0xFF101010), const Color(0xFF2D2D30)];
-      case AppTheme.emerald:
-        // Emerald: dark emerald bg → green accent
-        return [const Color(0xFF0C0F0E), appTheme.primaryColor];
+  LinearGradient _gradient() {
+    switch (preference) {
+      case ThemePreference.auto:
+        // Nur backgroundColor → Layl backgroundColor, left → right (как в SwiftUI)
+        return const LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [Color(0xFFF7F7F7), Color(0xFF101010)],
+        );
+      case ThemePreference.nur:
+        // white → light gray, top-left → bottom-right
+        return const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Colors.white, Color(0xFFE0E0E5)],
+        );
+      case ThemePreference.layl:
+        // dark → charcoal, top-left → bottom-right
+        return const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFF101010), Color(0xFF2E2E33)],
+        );
+      case ThemePreference.emerald:
+        // emerald bg → primaryColor, top-left → bottom-right
+        return const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFF0C0F0E), Color(0xFF32C698)],
+        );
     }
   }
 
-  bool _needsBorder() => appTheme == AppTheme.nur;
+  bool _hasBorder() =>
+      preference == ThemePreference.nur || preference == ThemePreference.auto;
 }
