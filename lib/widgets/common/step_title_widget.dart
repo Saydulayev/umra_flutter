@@ -8,10 +8,7 @@ import '../../constants/app_constants.dart';
 class StepTitleWidget extends StatelessWidget {
   final String text;
 
-  const StepTitleWidget({
-    super.key,
-    required this.text,
-  });
+  const StepTitleWidget({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +17,7 @@ class StepTitleWidget extends StatelessWidget {
     final theme = themeProvider.selectedTheme;
 
     return SelectableText(
-      text,
+      text.trim(),
       style: fontProvider.getTextStyle(
         fontSize: AppDimensions.fontSizeLarge,
         fontWeight: FontWeight.bold,
@@ -29,4 +26,3 @@ class StepTitleWidget extends StatelessWidget {
     );
   }
 }
-
