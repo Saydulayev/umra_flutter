@@ -523,11 +523,10 @@ class _StepBadge extends StatelessWidget {
       height: 56,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        // iOS: Circle().fill(cardColor).shadow(cardShadowColor, radius: 4, y: 2)
-        color: theme.lightBackgroundColor,
+        color: theme.primaryColor,
         boxShadow: [
           BoxShadow(
-            color: theme.cardShadowColor,
+            color: theme.primaryColor.withValues(alpha: 0.20),
             blurRadius: 4,
             offset: const Offset(0, 2),
           ),
@@ -539,7 +538,7 @@ class _StepBadge extends StatelessWidget {
           style: TextStyle(
             fontSize: _fontSize,
             fontWeight: FontWeight.bold,
-            color: theme.primaryColor,
+            color: Colors.black,
             height: 1.2,
             letterSpacing: -0.3,
           ),
@@ -564,18 +563,18 @@ class _InfoBadge extends StatelessWidget {
       height: 56,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: theme.lightBackgroundColor,
+        color: theme.primaryColor,
         boxShadow: [
           BoxShadow(
-            color: theme.cardShadowColor,
+            color: theme.primaryColor.withValues(alpha: 0.20),
             blurRadius: 4,
             offset: const Offset(0, 2),
           ),
         ],
       ),
-      child: Icon(
+      child: const Icon(
         Icons.info_outline_rounded,
-        color: theme.primaryColor,
+        color: Colors.black,
         size: 24,
       ),
     );
