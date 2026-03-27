@@ -72,8 +72,9 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
                 itemCount: _pages.length,
                 onPageChanged: (i) => setState(() => _currentPage = i),
                 itemBuilder: (context, i) {
-                  final bottomPadding =
-                      MediaQuery.of(context).viewPadding.bottom;
+                  final bottomPadding = MediaQuery.of(
+                    context,
+                  ).viewPadding.bottom;
                   return SingleChildScrollView(
                     padding: EdgeInsets.only(
                       top: 10,
@@ -82,7 +83,11 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
                       right: 10,
                     ),
                     child: _buildContent(
-                        _pages[i].id, theme, l10n, fontProvider),
+                      _pages[i].id,
+                      theme,
+                      l10n,
+                      fontProvider,
+                    ),
                   );
                 },
               ),
@@ -145,12 +150,18 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
         const SizedBox(height: AppDimensions.paddingSmall),
         SelectableText(
           l10n.hajj_step1_ihram_transliteration,
-          style: fontProvider.getTextStyle(fontSize: 18, color: theme.textColor),
+          style: fontProvider.getTextStyle(
+            fontSize: 18,
+            color: theme.textColor,
+          ),
         ),
         const SizedBox(height: AppDimensions.paddingSmall),
         SelectableText(
           l10n.hajj_step1_ihram_translation,
-          style: fontProvider.getTextStyle(fontSize: 18, color: theme.textColor),
+          style: fontProvider.getTextStyle(
+            fontSize: 18,
+            color: theme.textColor,
+          ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
         StepArabicSection(
@@ -160,12 +171,18 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
         const SizedBox(height: AppDimensions.paddingSmall),
         SelectableText(
           l10n.hajj_step1_ihram_dua_transliteration,
-          style: fontProvider.getTextStyle(fontSize: 18, color: theme.textColor),
+          style: fontProvider.getTextStyle(
+            fontSize: 18,
+            color: theme.textColor,
+          ),
         ),
         const SizedBox(height: AppDimensions.paddingSmall),
         SelectableText(
           l10n.hajj_step1_ihram_dua_translation,
-          style: fontProvider.getTextStyle(fontSize: 18, color: theme.textColor),
+          style: fontProvider.getTextStyle(
+            fontSize: 18,
+            color: theme.textColor,
+          ),
         ),
         const SizedBox(height: AppDimensions.paddingExtraLarge),
         StepTitleWidget(text: l10n.hajj_step1_talbiyah_title),
@@ -179,12 +196,18 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
         const SizedBox(height: AppDimensions.paddingSmall),
         SelectableText(
           l10n.hajj_step1_talbiyah_transliteration,
-          style: fontProvider.getTextStyle(fontSize: 18, color: theme.textColor),
+          style: fontProvider.getTextStyle(
+            fontSize: 18,
+            color: theme.textColor,
+          ),
         ),
         const SizedBox(height: AppDimensions.paddingSmall),
         SelectableText(
           l10n.hajj_step1_talbiyah_translation,
-          style: fontProvider.getTextStyle(fontSize: 18, color: theme.textColor),
+          style: fontProvider.getTextStyle(
+            fontSize: 18,
+            color: theme.textColor,
+          ),
         ),
         const SizedBox(height: AppDimensions.paddingExtraLarge),
         StepTitleWidget(text: l10n.hajj_step1_mina_title),
@@ -217,12 +240,18 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
         const SizedBox(height: AppDimensions.paddingSmall),
         SelectableText(
           l10n.hajj_step2_dua_transliteration,
-          style: fontProvider.getTextStyle(fontSize: 18, color: theme.textColor),
+          style: fontProvider.getTextStyle(
+            fontSize: 18,
+            color: theme.textColor,
+          ),
         ),
         const SizedBox(height: AppDimensions.paddingSmall),
         SelectableText(
           l10n.hajj_step2_dua_translation,
-          style: fontProvider.getTextStyle(fontSize: 18, color: theme.textColor),
+          style: fontProvider.getTextStyle(
+            fontSize: 18,
+            color: theme.textColor,
+          ),
         ),
         const SizedBox(height: AppDimensions.paddingExtraLarge),
         StepTitleWidget(text: l10n.hajj_step2_muzdalifah_title),
@@ -318,6 +347,8 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        StepTitleWidget(text: l10n.hajj_step5_title),
+        const SizedBox(height: AppDimensions.paddingLarge),
         StepTextWidget(text: l10n.hajj_step5_farewell_text),
       ],
     );
