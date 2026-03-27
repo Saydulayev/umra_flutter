@@ -9,6 +9,7 @@ import '../providers/user_preferences_provider.dart';
 import '../models/app_theme.dart';
 import '../widgets/theme_selection_sheet.dart';
 import '../widgets/app_card.dart';
+import '../widgets/notification_settings_sheet.dart';
 import '../constants/app_constants.dart';
 import '../constants/review_config.dart';
 import 'donation_screen.dart';
@@ -173,11 +174,24 @@ class SettingsScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: _spacingBetweenBlocks),
-              // Блок 2: Выбрать язык, Тема приложения
+              // Блок 2: Уведомления, Выбрать язык, Тема приложения
               _buildSettingsBlock(
                 context,
                 theme: theme,
                 children: [
+                  _buildSettingsRow(
+                    context,
+                    icon: Icons.notifications_outlined,
+                    title: l10n.notificationsString,
+                    onTap: () => showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      builder: (_) => const NotificationSettingsSheet(),
+                    ),
+                    theme: theme,
+                  ),
+                  _buildDivider(theme),
                   _buildSettingsRow(
                     context,
                     icon: Icons.language,

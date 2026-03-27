@@ -4,8 +4,11 @@ import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../providers/theme_provider.dart';
 import '../providers/user_preferences_provider.dart';
+import '../providers/notification_preferences_provider.dart';
 import '../models/app_theme.dart';
 import '../widgets/app_card.dart';
+import '../widgets/notification_settings_sheet.dart';
+import '../services/notification_service.dart';
 import '../services/prayer_time_service.dart';
 import '../l10n/app_localizations.dart';
 
@@ -28,6 +31,13 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   void initState() {
     super.initState();
     _startTimer();
+    _requestNotificationPermission();
+  }
+
+  void _requestNotificationPermission() async {
+    if (!await NotificationService.hasPermission()) {
+      await NotificationService.requestPermission();
+    }
   }
 
   @override
@@ -96,6 +106,10 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     await prefs.setPrayerCity(cityKey);
     _currentCityKey = cityKey;
     _recomputePrayerTimes(prayerCityFromString(cityKey));
+    if (!mounted) return;
+    final notifPrefs = Provider.of<NotificationPreferencesProvider>(
+      context, listen: false);
+    await notifPrefs.rescheduleForCity(prayerCityFromString(cityKey));
   }
 
   String _formatDuration(Duration duration) {
@@ -174,6 +188,17 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
         backgroundColor: theme.backgroundColor,
         elevation: 0,
         iconTheme: IconThemeData(color: theme.primaryColor),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.notifications_outlined, color: theme.primaryColor),
+            onPressed: () => showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              builder: (_) => const NotificationSettingsSheet(),
+            ),
+          ),
+        ],
       ),
       body: Builder(
         builder: (context) {

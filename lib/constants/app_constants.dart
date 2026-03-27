@@ -29,6 +29,11 @@ class PrefsKeys {
 
   // Город для расчёта времени намаза (mecca / medina)
   static const String prayerCity = 'prayerCity';
+
+  // Настройки уведомлений намаза
+  static const String notifAtTime = 'notifAtTime';
+  static const String notifBefore = 'notifBefore';
+  static const String notifSunrise = 'notifSunrise';
 }
 
 /// Размеры и отступы приложения

@@ -53,6 +53,9 @@ dependencies:
   
   # In-App Review
   in_app_review: ^2.0.9
+
+  # Open system settings
+  app_settings: ^5.1.1
   
   cupertino_icons: ^1.0.8
 

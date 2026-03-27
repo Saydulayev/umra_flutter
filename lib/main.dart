@@ -8,6 +8,8 @@ import 'providers/localization_provider.dart';
 import 'providers/user_preferences_provider.dart';
 import 'providers/font_provider.dart';
 import 'providers/purchase_provider.dart';
+import 'providers/notification_preferences_provider.dart';
+import 'services/notification_service.dart';
 import 'screens/home_screen.dart';
 import 'screens/language_selection_screen.dart';
 import 'models/app_theme.dart';
@@ -27,6 +29,7 @@ void main() async {
   );
 
   await AppUsageTracker().initialize();
+  await NotificationService.init();
 
   runApp(const MyApp());
 }
@@ -43,6 +46,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => UserPreferencesProvider()),
         ChangeNotifierProvider(create: (_) => FontProvider()),
         ChangeNotifierProvider(create: (_) => PurchaseProvider()),
+        ChangeNotifierProvider(create: (_) => NotificationPreferencesProvider()),
       ],
       child: Consumer3<ThemeProvider, LocalizationProvider,
           UserPreferencesProvider>(
