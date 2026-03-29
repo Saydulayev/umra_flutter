@@ -6,7 +6,6 @@ import '../providers/font_provider.dart';
 import '../utils/platform_icons.dart';
 import '../models/step_model.dart';
 import '../models/app_theme.dart';
-import '../widgets/player_widget.dart';
 import '../widgets/counter_tap_widget.dart';
 import '../widgets/custom_toolbar.dart';
 import '../widgets/arabic_text_widget.dart';
@@ -294,8 +293,10 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        ArabicTextWidget(text: l10n.step2TakbirArabic),
-        const PlayerWidget(fileName: '6'),
+        StepArabicSection(
+          arabicText: l10n.step2TakbirArabic,
+          audioFileName: '6',
+        ),
         const SizedBox(height: AppDimensions.paddingLarge),
         SelectableText(
           l10n.step2KaabaText3,
@@ -305,8 +306,10 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        ArabicTextWidget(text: l10n.step2DuaArabic),
-        const PlayerWidget(fileName: '7'),
+        StepArabicSection(
+          arabicText: l10n.step2DuaArabic,
+          audioFileName: '7',
+        ),
         const SizedBox(height: AppDimensions.paddingLarge),
         CounterTapWidget(
           prefsKey: 'tawaf_counter',
@@ -345,8 +348,10 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        ArabicTextWidget(text: l10n.step3ArabicText),
-        const PlayerWidget(fileName: '13'),
+        StepArabicSection(
+          arabicText: l10n.step3ArabicText,
+          audioFileName: '13',
+        ),
         const SizedBox(height: AppDimensions.paddingLarge),
         SelectableText(
           l10n.step3PlaceOfStanding,
@@ -406,8 +411,10 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        ArabicTextWidget(text: l10n.step5TakbirArabic),
-        const PlayerWidget(fileName: '6'),
+        StepArabicSection(
+          arabicText: l10n.step5TakbirArabic,
+          audioFileName: '6',
+        ),
       ],
     );
   }
@@ -430,8 +437,10 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        ArabicTextWidget(text: l10n.step6SurahBaqarahArabic),
-        const PlayerWidget(fileName: '8'),
+        StepArabicSection(
+          arabicText: l10n.step6SurahBaqarahArabic,
+          audioFileName: '8',
+        ),
         const SizedBox(height: AppDimensions.paddingLarge),
         SelectableText(
           l10n.step6SurahBaqarahVerse,
@@ -441,8 +450,10 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        ArabicTextWidget(text: l10n.step6WeBeginArabic),
-        const PlayerWidget(fileName: '9'),
+        StepArabicSection(
+          arabicText: l10n.step6WeBeginArabic,
+          audioFileName: '9',
+        ),
         const SizedBox(height: AppDimensions.paddingLarge),
         SelectableText(
           l10n.step6WeBegin,
@@ -460,8 +471,10 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        ArabicTextWidget(text: l10n.step6RemembranceArabic),
-        const PlayerWidget(fileName: '10'),
+        StepArabicSection(
+          arabicText: l10n.step6RemembranceArabic,
+          audioFileName: '10',
+        ),
         const SizedBox(height: AppDimensions.paddingLarge),
         CounterTapWidget(
           prefsKey: 'say_counter',
@@ -479,8 +492,10 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        ArabicTextWidget(text: l10n.step6DuasDuringSaiArabic),
-        const PlayerWidget(fileName: '11'),
+        StepArabicSection(
+          arabicText: l10n.step6DuasDuringSaiArabic,
+          audioFileName: '11',
+        ),
         const SizedBox(height: AppDimensions.paddingLarge),
         SelectableText(
           l10n.step6DuasDuringSaiText,
@@ -490,8 +505,10 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        ArabicTextWidget(text: l10n.step6ExitingSacredMosqueArabic),
-        const PlayerWidget(fileName: '12'),
+        StepArabicSection(
+          arabicText: l10n.step6ExitingSacredMosqueArabic,
+          audioFileName: '12',
+        ),
         const SizedBox(height: AppDimensions.paddingLarge),
         SelectableText(
           l10n.step6ExitingSacredMosqueText,

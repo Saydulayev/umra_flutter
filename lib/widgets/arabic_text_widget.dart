@@ -5,8 +5,13 @@ import '../widgets/app_card.dart';
 
 class ArabicTextWidget extends StatelessWidget {
   final String text;
+  final bool addHorizontalPadding;
 
-  const ArabicTextWidget({super.key, required this.text});
+  const ArabicTextWidget({
+    super.key,
+    required this.text,
+    this.addHorizontalPadding = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,7 @@ class ArabicTextWidget extends StatelessWidget {
     final cornerRadius = isTablet ? 24.0 : 20.0;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: addHorizontalPadding ? 16 : 0),
       child: SizedBox(
         width: double.infinity,
         child: AppCard(

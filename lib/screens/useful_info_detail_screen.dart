@@ -6,6 +6,7 @@ import '../models/app_theme.dart';
 import '../utils/platform_icons.dart';
 import '../models/useful_info_model.dart';
 import '../widgets/app_card.dart';
+import '../widgets/arabic_text_widget.dart';
 
 const Color _accentGreen = Color(0xFF10B981);
 
@@ -39,48 +40,21 @@ List<({bool isHeading, String text})> _parseFormattedContent(String content) {
   return result;
 }
 
-Widget _buildArabicCard(String line, AppTheme theme) {
-  return SizedBox(
-    width: double.infinity,
-    child: AppCard(
-    theme: theme,
-    cornerRadius: 16,
-    margin: const EdgeInsets.symmetric(vertical: 16),
-    shadows: [
-      BoxShadow(
-        color: theme.cardShadowColor,
-        blurRadius: 10,
-        offset: const Offset(0, 4),
-      ),
-    ],
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-      child: Text(
-        line,
-        textAlign: TextAlign.center,
-        textDirection: TextDirection.rtl,
-        locale: const Locale('ar'),
-        style: TextStyle(
-          fontFamily: 'KFGQPCUthmanTahaNaskh',
-          fontFamilyFallback: const ['Scheherazade New', 'Amiri', 'Arial'],
-          fontSize: 26,
-          color: theme.textColor,
-          height: 1.7,
-        ),
-      ),
-    ),
-    ),
+Widget _buildArabicCard(String line, BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 16),
+    child: ArabicTextWidget(text: line, addHorizontalPadding: false),
   );
 }
 
-Widget _buildBodyBlock(String text, Color textColor, AppTheme theme) {
+Widget _buildBodyBlock(String text, Color textColor, BuildContext context) {
   final lines = text.split('\n').where((l) => l.trim().isNotEmpty).toList();
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       for (int i = 0; i < lines.length; i++) ...[
         if (_isLongArabicLine(lines[i]))
-          _buildArabicCard(lines[i], theme)
+          _buildArabicCard(lines[i], context)
         else
           Text(
             lines[i],
@@ -93,7 +67,7 @@ Widget _buildBodyBlock(String text, Color textColor, AppTheme theme) {
   );
 }
 
-Widget _buildFormattedContent(String content, Color textColor, AppTheme theme) {
+Widget _buildFormattedContent(String content, Color textColor, BuildContext context) {
   final blocks = _parseFormattedContent(content);
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,7 +84,7 @@ Widget _buildFormattedContent(String content, Color textColor, AppTheme theme) {
                     color: _accentGreen,
                   ),
                 )
-              : _buildBodyBlock(block.text, textColor, theme),
+              : _buildBodyBlock(block.text, textColor, context),
         ),
     ],
   );
@@ -394,7 +368,7 @@ class SubChapterDetailScreen extends StatelessWidget {
                 );
                 final useFormatted = content.contains('1) ') || content.startsWith('1)');
                 if (useFormatted) {
-                  return _buildFormattedContent(content, theme.textColor, theme);
+                  return _buildFormattedContent(content, theme.textColor, context);
                 }
                 return Text(
                   content,

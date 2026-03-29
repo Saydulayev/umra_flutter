@@ -20,6 +20,7 @@ class StepArabicSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ArabicTextWidget(text: arabicText),
+        const SizedBox(height: AppDimensions.paddingLarge),
         PlayerWidget(fileName: audioFileName),
         const SizedBox(height: AppDimensions.paddingSmall),
       ],

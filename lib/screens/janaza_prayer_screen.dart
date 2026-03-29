@@ -4,7 +4,7 @@ import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 import '../models/app_theme.dart';
 import '../utils/platform_icons.dart';
-import '../widgets/app_card.dart';
+import '../widgets/arabic_text_widget.dart';
 
 const Color _accentGreen = Color(0xFF10B981);
 
@@ -28,7 +28,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
   bool _isThirdTakbirExpanded = false;
   bool _isDuaVariationsExpanded = false;
 
-  Widget _buildArabicAwareText(String text, Color color, AppTheme theme) {
+  Widget _buildArabicAwareText(String text, Color color) {
     final lines = text.split('\n').where((l) => l.trim().isNotEmpty).toList();
     final hasArabic = lines.any(_isLongArabicLine);
     if (!hasArabic) {
@@ -39,40 +39,9 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
       children: [
         for (int i = 0; i < lines.length; i++) ...[
           if (_isLongArabicLine(lines[i]))
-            SizedBox(
-              width: double.infinity,
-              child: AppCard(
-              theme: theme,
-              cornerRadius: 16,
-              margin: const EdgeInsets.symmetric(vertical: 16),
-              shadows: [
-                BoxShadow(
-                  color: theme.cardShadowColor,
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-                child: Text(
-                  lines[i],
-                  textAlign: TextAlign.center,
-                  textDirection: TextDirection.rtl,
-                  locale: const Locale('ar'),
-                  style: TextStyle(
-                    fontFamily: 'KFGQPCUthmanTahaNaskh',
-                    fontFamilyFallback: const [
-                      'Scheherazade New',
-                      'Amiri',
-                      'Arial'
-                    ],
-                    fontSize: 26,
-                    color: theme.textColor,
-                    height: 1.7,
-                  ),
-                ),
-              ),
-              ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: ArabicTextWidget(text: lines[i], addHorizontalPadding: false),
             )
           else
             Text(
@@ -239,7 +208,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
           ),
         ),
         const SizedBox(height: 8),
-        _buildArabicAwareText(content, color, theme),
+        _buildArabicAwareText(content, color),
       ],
     );
   }
@@ -284,7 +253,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
           firstChild: const SizedBox.shrink(),
           secondChild: Padding(
             padding: const EdgeInsets.only(top: 8, bottom: 16),
-            child: _buildArabicAwareText(content, color, theme),
+            child: _buildArabicAwareText(content, color),
           ),
           crossFadeState: isExpanded
               ? CrossFadeState.showSecond
@@ -321,7 +290,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
           ),
         ),
         const SizedBox(height: 8),
-        _buildArabicAwareText(content, color, theme),
+        _buildArabicAwareText(content, color),
         if (isExpandable && expandedContent != null) ...[
           const SizedBox(height: 8),
           GestureDetector(
@@ -353,7 +322,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
             firstChild: const SizedBox.shrink(),
             secondChild: Padding(
               padding: const EdgeInsets.only(top: 8, bottom: 16),
-              child: _buildArabicAwareText(expandedContent, color, theme),
+              child: _buildArabicAwareText(expandedContent, color),
             ),
             crossFadeState: isExpanded
                 ? CrossFadeState.showSecond
