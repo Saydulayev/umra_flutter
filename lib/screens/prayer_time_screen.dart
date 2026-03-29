@@ -246,6 +246,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                             selectedCity: prefs.prayerCity,
                             onCityChanged: _onCityChanged,
                           ),
+                          const SizedBox(height: 12),
                           // Блок обратного отсчёта (cardStyled: vertical 40pt outside)
                           SizedBox(
                             width: double.infinity,
@@ -285,7 +286,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
         ),
       ],
       child: Padding(
-        padding: const EdgeInsets.all(25),
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
         child: child,
       ),
     );
