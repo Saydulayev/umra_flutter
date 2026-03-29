@@ -3,12 +3,13 @@ import 'package:flutter/foundation.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import '../models/donation_product.dart';
 
-/// Сервис для работы с Google Play Billing
+/// Сервис для работы с покупками (In-App Purchases)
 class PurchaseService {
   final InAppPurchase _inAppPurchase = InAppPurchase.instance;
   StreamSubscription<List<PurchaseDetails>>? _subscription;
   VoidCallback? _onPurchaseSuccess;
   Function(String)? _onPurchaseError; // Передает код ошибки
+  VoidCallback? _onPurchaseCanceled;
   VoidCallback? _onPurchasePending;
 
   bool _isAvailable = false;
@@ -23,6 +24,11 @@ class PurchaseService {
   /// Принимает код ошибки (например, "BillingResponse.billingUnavailable")
   void setOnPurchaseError(Function(String)? callback) {
     _onPurchaseError = callback;
+  }
+
+  /// Установить callback для отмены покупки пользователем (без показа ошибки)
+  void setOnPurchaseCanceled(VoidCallback? callback) {
+    _onPurchaseCanceled = callback;
   }
 
   /// Установить callback для покупки в ожидании
@@ -51,7 +57,6 @@ class PurchaseService {
   /// Загрузка доступных продуктов
   Future<List<ProductDetails>> loadProducts() async {
     if (!_isAvailable) {
-      debugPrint('PurchaseService: Google Play Billing недоступен');
       return [];
     }
 
@@ -59,28 +64,8 @@ class PurchaseService {
         .map((product) => product.id)
         .toSet();
 
-    debugPrint(
-      'PurchaseService: Запрос продуктов с ID: ${productIds.join(", ")}',
-    );
-
     final ProductDetailsResponse response = await _inAppPurchase
         .queryProductDetails(productIds);
-
-    if (response.error != null) {
-      debugPrint(
-        'PurchaseService: Ошибка загрузки продуктов: ${response.error}',
-      );
-    }
-
-    if (response.notFoundIDs.isNotEmpty) {
-      debugPrint(
-        'PurchaseService: Продукты не найдены: ${response.notFoundIDs.join(", ")}',
-      );
-    }
-
-    debugPrint(
-      'PurchaseService: Загружено продуктов: ${response.productDetails.length} из ${productIds.length}',
-    );
 
     return response.productDetails;
   }
@@ -103,27 +88,28 @@ class PurchaseService {
   void _handlePurchaseUpdates(List<PurchaseDetails> purchaseDetailsList) {
     for (final PurchaseDetails purchaseDetails in purchaseDetailsList) {
       if (purchaseDetails.status == PurchaseStatus.pending) {
-        // Покупка ожидает подтверждения (для медленных тестовых карт)
         _onPurchasePending?.call();
       } else if (purchaseDetails.status == PurchaseStatus.purchased) {
-        // Покупка успешна - уведомляем об успешной покупке ПЕРЕД потреблением
-        // (только для новых покупок, не для восстановленных)
+        // Покупка успешна — уведомляем ПЕРЕД потреблением
         _onPurchaseSuccess?.call();
-        // Потребляем продукт для возможности повторной покупки
         _consumePurchase(purchaseDetails);
       } else if (purchaseDetails.status == PurchaseStatus.restored) {
-        // Восстановленная покупка - потребляем, но не показываем уведомление
+        // Для consumable-пожертвований restored = транзакция прошла ранее,
+        // но не была завершена. Считаем успехом и показываем уведомление.
+        _onPurchaseSuccess?.call();
         _consumePurchase(purchaseDetails);
       } else if (purchaseDetails.status == PurchaseStatus.error) {
-        // Ошибка покупки - извлекаем код ошибки для локализации
         final error = purchaseDetails.error;
         final errorCode = error != null ? (error.code.toString()) : 'unknown';
-        // Уведомляем об ошибке ПЕРЕД завершением покупки
-        _onPurchaseError?.call(errorCode);
+        // Если пользователь сам отменил — не показываем ошибку
+        // iOS: SKErrorPaymentCancelled = "2", Android: "1" (USER_CANCELED)
+        if (_isCancellationError(errorCode)) {
+          _onPurchaseCanceled?.call();
+        } else {
+          _onPurchaseError?.call(errorCode);
+        }
       }
 
-      // Завершаем покупку для статусов, которые еще не были завершены
-      // (purchased и restored уже обрабатываются в _consumePurchase)
       if (purchaseDetails.pendingCompletePurchase &&
           purchaseDetails.status != PurchaseStatus.purchased &&
           purchaseDetails.status != PurchaseStatus.restored) {
@@ -134,11 +120,9 @@ class PurchaseService {
 
   /// Потребление покупки (для consumable products)
   Future<void> _consumePurchase(PurchaseDetails purchaseDetails) async {
-    // Для consumable products нужно потреблять покупку после успешной транзакции
-    // чтобы пользователь мог купить продукт снова
-    if (purchaseDetails.status == PurchaseStatus.purchased ||
-        purchaseDetails.status == PurchaseStatus.restored) {
-      // Потребляем покупку
+    if ((purchaseDetails.status == PurchaseStatus.purchased ||
+            purchaseDetails.status == PurchaseStatus.restored) &&
+        purchaseDetails.pendingCompletePurchase) {
       await _inAppPurchase.completePurchase(purchaseDetails);
     }
   }
@@ -149,6 +133,18 @@ class PurchaseService {
       return;
     }
     await _inAppPurchase.restorePurchases();
+  }
+
+  /// Определяет, является ли ошибка отменой пользователя
+  bool _isCancellationError(String errorCode) {
+    final code = errorCode.toLowerCase();
+    // iOS: SKErrorPaymentCancelled = 2
+    // Android: BillingResponseCode.USER_CANCELED = 1
+    return code == '2' ||
+        code == '1' ||
+        code.contains('cancel') ||
+        code.contains('user_canceled') ||
+        code.contains('usercanceled');
   }
 
   /// Очистка ресурсов

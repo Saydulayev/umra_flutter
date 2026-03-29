@@ -38,12 +38,9 @@ class PurchaseProvider with ChangeNotifier {
     try {
       // Устанавливаем callback для успешной покупки
       _purchaseService.setOnPurchaseSuccess(() {
-        // Отменяем таймаут, так как получили событие об успехе
         _purchaseTimeoutTimer?.cancel();
         _purchaseTimeoutTimer = null;
 
-        // Устанавливаем флаг успеха только если он еще не установлен
-        // Это предотвращает двойное показ сообщения
         if (!_purchaseSuccess) {
           setPurchaseSuccess(true);
           _isPurchasePending = false;
@@ -53,23 +50,30 @@ class PurchaseProvider with ChangeNotifier {
       });
 
       // Устанавливаем callback для ошибки покупки
-      // Принимает код ошибки, локализация будет в виджете
       _purchaseService.setOnPurchaseError((errorCode) {
-        // Отменяем таймаут, так как получили событие об ошибке
         _purchaseTimeoutTimer?.cancel();
         _purchaseTimeoutTimer = null;
 
         _errorCode = errorCode;
-        _errorMessage = errorCode; // Временно, будет заменено в виджете
+        _errorMessage = errorCode;
         _isPurchasePending = false;
         _isPurchasing = false;
         notifyListeners();
       });
 
+      // Устанавливаем callback для отмены пользователем (без показа ошибки)
+      _purchaseService.setOnPurchaseCanceled(() {
+        _purchaseTimeoutTimer?.cancel();
+        _purchaseTimeoutTimer = null;
+
+        _isPurchasePending = false;
+        _isPurchasing = false;
+        // Не устанавливаем errorCode — отмена не является ошибкой
+        notifyListeners();
+      });
+
       // Устанавливаем callback для покупки в ожидании
       _purchaseService.setOnPurchasePending(() {
-        // Отменяем текущий таймаут и устанавливаем новый на 60 секунд
-        // так как pending может длиться долго (медленные тестовые карты)
         _purchaseTimeoutTimer?.cancel();
         _purchaseTimeoutTimer = Timer(const Duration(seconds: 60), () {
           if (_isPurchasing || _isPurchasePending) {
@@ -122,7 +126,6 @@ class PurchaseProvider with ChangeNotifier {
       _availableProducts = await _purchaseService.loadProducts();
 
       if (_availableProducts.isEmpty) {
-        // Проверяем, доступен ли Google Play Billing
         if (!_purchaseService.isAvailable) {
           _errorCode = 'INIT_BILLING_UNAVAILABLE';
           _errorMessage = 'INIT_BILLING_UNAVAILABLE';
@@ -149,7 +152,6 @@ class PurchaseProvider with ChangeNotifier {
       }
     }
 
-    // Отменяем предыдущий таймаут, если он есть
     _purchaseTimeoutTimer?.cancel();
     _purchaseTimeoutTimer = null;
 
@@ -171,20 +173,13 @@ class PurchaseProvider with ChangeNotifier {
         // если событие об ошибке/успехе не придет (например, при отмене платежа)
         _purchaseTimeoutTimer = Timer(const Duration(seconds: 15), () {
           if (_isPurchasing || _isPurchasePending) {
-            // Если состояние все еще в процессе, сбрасываем его
-            // Это может произойти, если событие об отмене не пришло
+            // Тихо сбрасываем — скорее всего пользователь закрыл окно оплаты
             _isPurchasing = false;
             _isPurchasePending = false;
-            // Устанавливаем код ошибки отмены, если ошибка еще не установлена
-            if (_errorCode == null) {
-              _errorCode = 'userCanceled';
-              _errorMessage = 'userCanceled';
-            }
             notifyListeners();
           }
         });
       }
-      // Если успешно, статус будет обновлен через callback (pending/purchased/error)
       return success;
     } catch (e) {
       _purchaseTimeoutTimer?.cancel();
