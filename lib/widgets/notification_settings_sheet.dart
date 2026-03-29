@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/theme_provider.dart';
+import '../utils/platform_icons.dart';
 import '../providers/notification_preferences_provider.dart';
 import '../providers/user_preferences_provider.dart';
 import '../services/prayer_time_service.dart';
@@ -142,7 +143,7 @@ class NotificationSettingsSheet extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   Icon(
-                    Icons.settings_outlined,
+                    PlatformIcons.settings,
                     color: theme.primaryColor,
                     size: isTablet ? 22 : 19,
                   ),

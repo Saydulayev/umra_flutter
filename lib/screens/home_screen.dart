@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
+import '../utils/platform_icons.dart';
 import '../providers/user_preferences_provider.dart';
 import '../models/step_model.dart';
 import '../models/app_theme.dart';
@@ -98,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         actions: [
           IconButton(
             icon: Icon(
-              Icons.access_time_rounded,
+              PlatformIcons.clock,
               color: theme.textColor.withValues(alpha: 0.55),
             ),
             onPressed: () => Navigator.push(
@@ -108,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           ),
           IconButton(
             icon: Icon(
-              Icons.settings_outlined,
+              PlatformIcons.settings,
               color: theme.textColor.withValues(alpha: 0.55),
             ),
             onPressed: () => Navigator.push(
@@ -492,7 +493,7 @@ class _StepRowItem extends StatelessWidget {
                 ),
               ),
               Icon(
-                Icons.chevron_right,
+                PlatformIcons.chevronRight,
                 color: theme.textColor.withValues(alpha: 0.25),
                 size: 20,
               ),
@@ -575,8 +576,8 @@ class _InfoBadge extends StatelessWidget {
           ),
         ],
       ),
-      child: const Icon(
-        Icons.info_outline_rounded,
+      child: Icon(
+        PlatformIcons.info,
         color: Colors.black,
         size: 24,
       ),

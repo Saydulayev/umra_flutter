@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 import '../providers/font_provider.dart';
+import '../utils/platform_icons.dart';
 import '../models/step_model.dart';
 import '../models/app_theme.dart';
 import '../widgets/player_widget.dart';
@@ -312,7 +313,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           titleString: l10n.titleRoundKaabaScreen,
           labelString: l10n.tawafCircleString,
           finishedString: l10n.tawafFinishedString,
-          icon: Icons.rotate_right,
+          icon: PlatformIcons.rotateRight,
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
         SelectableText(
@@ -467,7 +468,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           titleString: l10n.titleSafaAndMarvaScreen,
           labelString: l10n.sayPassageString,
           finishedString: l10n.sayFinishedString,
-          icon: Icons.directions_walk,
+          icon: PlatformIcons.walk,
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
         SelectableText(

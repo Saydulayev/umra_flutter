@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../utils/platform_icons.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/purchase_provider.dart';
@@ -248,7 +249,7 @@ class _DonationWidgetState extends State<DonationWidget> {
                               child: Row(
                                 children: [
                                   Icon(
-                                    Icons.error_outline,
+                                    PlatformIcons.errorOutline,
                                     color: Colors.red,
                                     size: 20,
                                   ),
@@ -266,7 +267,7 @@ class _DonationWidgetState extends State<DonationWidget> {
                                     ),
                                   ),
                                   IconButton(
-                                    icon: const Icon(Icons.close, size: 18),
+                                    icon: Icon(PlatformIcons.close, size: 18),
                                     onPressed: () =>
                                         purchaseProvider.clearError(),
                                     color: Colors.red[700],
@@ -524,8 +525,8 @@ class _DonationWidgetState extends State<DonationWidget> {
               ),
             ),
             const SizedBox(width: 8),
-            const Icon(
-              Icons.keyboard_arrow_down,
+            Icon(
+              PlatformIcons.chevronDown,
               color: Color(0xFF4D99E6), // Фиксированный синий цвет
               size: 20,
             ),
@@ -604,7 +605,7 @@ class _DonationWidgetState extends State<DonationWidget> {
                     ),
                   ),
                   trailing: isSelected
-                      ? Icon(Icons.check, color: theme.primaryColor)
+                      ? Icon(PlatformIcons.check, color: theme.primaryColor)
                       : null,
                   onTap: () {
                     setState(() {

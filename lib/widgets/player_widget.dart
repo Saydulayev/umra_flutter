@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import '../utils/platform_icons.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:vibration/vibration.dart';
 import '../services/audio_service.dart';
@@ -224,7 +225,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
             children: [
               _buildControlButton(
                 context,
-                icon: Icons.repeat,
+                icon: PlatformIcons.repeat,
                 isActive: _isRepeating,
                 color: Colors.red,
                 onTap: _toggleRepeat,
@@ -233,7 +234,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
               const SizedBox(width: 16),
               _buildControlButton(
                 context,
-                icon: _isPlaying ? Icons.pause : Icons.play_arrow,
+                icon: _isPlaying ? PlatformIcons.pause : PlatformIcons.playArrow,
                 isActive: _isPlaying,
                 color: Colors.green,
                 onTap: _togglePlayPause,

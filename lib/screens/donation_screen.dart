@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/theme_provider.dart';
+import '../utils/platform_icons.dart';
 import '../providers/purchase_provider.dart';
 import '../widgets/donation_widget.dart';
 
@@ -55,7 +56,7 @@ class _DonationScreenState extends State<DonationScreen> {
         backgroundColor: theme.backgroundColor,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: theme.textColor),
+          icon: Icon(PlatformIcons.arrowBack, color: theme.textColor),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),

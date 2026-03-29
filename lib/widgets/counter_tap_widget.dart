@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../utils/platform_icons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vibration/vibration.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
@@ -11,7 +12,7 @@ class CounterTapWidget extends StatefulWidget {
   final String? titleString;
   final String? labelString;
   final String? finishedString;
-  final IconData icon;
+  final IconData? icon;
 
   const CounterTapWidget({
     super.key,
@@ -19,7 +20,7 @@ class CounterTapWidget extends StatefulWidget {
     this.titleString,
     this.labelString,
     this.finishedString,
-    this.icon = Icons.rotate_right,
+    this.icon,
   });
 
   @override
@@ -127,7 +128,7 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
                       ],
                       // Статусная капсула
                       _StatusCapsule(
-                        icon: isCompleted ? Icons.check_circle : widget.icon,
+                        icon: isCompleted ? PlatformIcons.checkCircle : (widget.icon ?? PlatformIcons.rotateRight),
                         label: isCompleted ? finished : label,
                         color: statusColor,
                         background: statusBg,
@@ -250,8 +251,8 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
                           children: [
                             Icon(
                               isCompleted
-                                  ? Icons.check_circle
-                                  : Icons.add_circle,
+                                  ? PlatformIcons.checkCircle
+                                  : PlatformIcons.addCircle,
                               color: Colors.white,
                               size: 20,
                             ),
@@ -302,7 +303,7 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(
-                              Icons.refresh,
+                              PlatformIcons.refresh,
                               color: theme.textColor,
                               size: 18,
                             ),

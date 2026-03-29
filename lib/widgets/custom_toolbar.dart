@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/font_provider.dart';
 import '../providers/theme_provider.dart';
+import '../utils/platform_icons.dart';
 
 class CustomToolbar extends StatelessWidget {
   const CustomToolbar({super.key});
@@ -13,7 +14,7 @@ class CustomToolbar extends StatelessWidget {
 
     return PopupMenuButton<String>(
       icon: Icon(
-        Icons.text_fields,
+        PlatformIcons.textFormat,
         color: themeProvider.selectedTheme.textColor,
       ),
       onSelected: (String font) {
@@ -27,7 +28,7 @@ class CustomToolbar extends StatelessWidget {
               children: [
                 if (fontProvider.selectedFont == font)
                   Icon(
-                    Icons.check,
+                    PlatformIcons.check,
                     color: themeProvider.selectedTheme.primaryColor,
                     size: 20,
                   )

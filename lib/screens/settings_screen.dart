@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../utils/platform_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
@@ -107,7 +108,7 @@ class SettingsScreen extends StatelessWidget {
                 ),
               );
             },
-            icon: const Icon(Icons.copy),
+            icon: Icon(PlatformIcons.copy),
             label: Text(l10n.feedbackDialogCopy),
           ),
         ],
@@ -158,7 +159,7 @@ class SettingsScreen extends StatelessWidget {
                 children: [
                   _buildSettingsRow(
                     context,
-                    icon: Icons.feedback_outlined,
+                    icon: PlatformIcons.feedback,
                     title: l10n.feedbackString,
                     onTap: () => _launchEmail(context),
                     theme: theme,
@@ -166,7 +167,7 @@ class SettingsScreen extends StatelessWidget {
                   _buildDivider(theme),
                   _buildSettingsRow(
                     context,
-                    icon: Icons.star_outline,
+                    icon: PlatformIcons.starOutline,
                     title: l10n.rateTheAppString,
                     onTap: _launchAppStore,
                     theme: theme,
@@ -181,7 +182,7 @@ class SettingsScreen extends StatelessWidget {
                 children: [
                   _buildSettingsRow(
                     context,
-                    icon: Icons.notifications_outlined,
+                    icon: PlatformIcons.notifications,
                     title: l10n.notificationsString,
                     onTap: () => showModalBottomSheet(
                       context: context,
@@ -194,7 +195,7 @@ class SettingsScreen extends StatelessWidget {
                   _buildDivider(theme),
                   _buildSettingsRow(
                     context,
-                    icon: Icons.language,
+                    icon: PlatformIcons.language,
                     title: l10n.selectLanguageSettingsString,
                     onTap: () {
                       _showLanguageDialog(context, localizationProvider);
@@ -208,7 +209,7 @@ class SettingsScreen extends StatelessWidget {
                   _buildDivider(theme),
                   _buildSettingsRow(
                     context,
-                    icon: Icons.palette_outlined,
+                    icon: PlatformIcons.palette,
                     title: l10n.appThemeString,
                     onTap: () {
                       showModalBottomSheet(
@@ -229,7 +230,7 @@ class SettingsScreen extends StatelessWidget {
                 children: [
                   _buildSettingsRow(
                     context,
-                    icon: Icons.paid_outlined,
+                    icon: PlatformIcons.donation,
                     title: l10n.supportTheDeveloperString,
                     onTap: () => showDonationBottomSheet(context),
                     theme: theme,
@@ -245,7 +246,7 @@ class SettingsScreen extends StatelessWidget {
                   children: [
                     _buildSettingsRow(
                       context,
-                      icon: Icons.refresh,
+                      icon: PlatformIcons.refresh,
                       title: 'Сбросить состояние оценки (тест)',
                       onTap: () async {
                         final prefsProvider =
@@ -345,7 +346,7 @@ class SettingsScreen extends StatelessWidget {
             ),
             if (trailing != null) ...[trailing, const SizedBox(width: 6)],
             Icon(
-              Icons.chevron_right,
+              PlatformIcons.chevronRight,
               color: theme.textColor.withValues(alpha: 0.45),
               size: 20,
             ),
@@ -449,7 +450,7 @@ class SettingsScreen extends StatelessWidget {
               trailing:
                   localizationProvider.currentLocale.languageCode ==
                       lang['code']
-                  ? const Icon(Icons.check, color: Colors.green)
+                  ? Icon(PlatformIcons.check, color: Colors.green)
                   : null,
               onTap: () {
                 localizationProvider.setLanguage(lang['code']!);

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../providers/theme_provider.dart';
+import '../utils/platform_icons.dart';
 import '../providers/user_preferences_provider.dart';
 import '../providers/notification_preferences_provider.dart';
 import '../models/app_theme.dart';
@@ -190,7 +191,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
         iconTheme: IconThemeData(color: theme.primaryColor),
         actions: [
           IconButton(
-            icon: Icon(Icons.notifications_outlined, color: theme.primaryColor),
+            icon: Icon(PlatformIcons.notifications, color: theme.primaryColor),
             onPressed: () => showModalBottomSheet(
               context: context,
               isScrollControlled: true,
@@ -246,7 +247,10 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                             onCityChanged: _onCityChanged,
                           ),
                           // Блок обратного отсчёта (cardStyled: vertical 40pt outside)
-                          _buildCountdownCard(theme: theme, l10n: l10n),
+                          SizedBox(
+                            width: double.infinity,
+                            child: _buildCountdownCard(theme: theme, l10n: l10n),
+                          ),
                           // Список намазов (rowsHorizontalPadding 16pt)
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -294,8 +298,8 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   }) {
     return AppCard(
       theme: theme,
-      cornerRadius: 20,
-      margin: const EdgeInsets.symmetric(vertical: 28),
+      cornerRadius: 999,
+      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
       shadows: [
         BoxShadow(
           color: theme.cardShadowColor,
@@ -304,13 +308,13 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
         ),
       ],
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         child: Text(
           '${_getLocalizedPrayerName(_nextPrayerName, l10n)} ${l10n.prayerTimeIn} ${_formatDuration(_timeUntilNextPrayer)}',
           style: TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.w600,
-            color: theme.textColor,
+            color: theme.isDark ? Colors.white : Colors.black,
           ),
           textAlign: TextAlign.center,
         ),
@@ -352,14 +356,8 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     return AppCard(
       theme: theme,
       cornerRadius: 20,
-      margin: const EdgeInsets.symmetric(vertical: 3),
-      shadows: [
-        BoxShadow(
-          color: theme.cardShadowColor,
-          blurRadius: 10,
-          offset: const Offset(0, 4),
-        ),
-      ],
+      margin: EdgeInsets.zero,
+      shadows: [],
       child: child,
     );
   }
@@ -378,17 +376,17 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
           Text(
             prayerName,
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w600,
-              color: theme.textColor,
+              color: theme.isDark ? Colors.white : Colors.black,
             ),
           ),
           Text(
             prayerTime,
             style: TextStyle(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w400,
-              color: theme.textColor.withValues(alpha: 0.7),
+              color: theme.isDark ? Colors.white : Colors.black,
             ),
           ),
         ],
@@ -411,7 +409,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     return AppCard(
       theme: theme,
       cornerRadius: 50,
-      margin: const EdgeInsets.symmetric(horizontal: 16),
+      margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
       shadows: [
         BoxShadow(
           color: theme.cardShadowColor,
@@ -426,7 +424,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
               onTap: () => onCityChanged('mecca'),
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                padding: const EdgeInsets.symmetric(vertical: 5),
+                padding: const EdgeInsets.symmetric(vertical: 4),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   color: selectedCity == 'mecca' ? activeBg : null,
@@ -448,7 +446,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
               onTap: () => onCityChanged('medina'),
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                padding: const EdgeInsets.symmetric(vertical: 5),
+                padding: const EdgeInsets.symmetric(vertical: 4),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   color: selectedCity == 'medina' ? activeBg : null,

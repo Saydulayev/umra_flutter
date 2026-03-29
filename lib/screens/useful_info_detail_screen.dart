@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 import '../models/app_theme.dart';
+import '../utils/platform_icons.dart';
 import '../models/useful_info_model.dart';
 import '../widgets/app_card.dart';
 
@@ -199,7 +200,7 @@ class UsefulInfoDetailScreen extends StatelessWidget {
                   ),
                 ),
                 Icon(
-                  Icons.chevron_right,
+                  PlatformIcons.chevronRight,
                   size: 18,
                   color: theme.textColor.withValues(alpha: 0.25),
                 ),

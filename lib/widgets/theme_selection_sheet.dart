@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/theme_provider.dart';
 import '../models/app_theme.dart';
+import '../utils/platform_icons.dart';
 import '../widgets/app_card.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 
@@ -59,7 +60,7 @@ class ThemeSelectionSheet extends StatelessWidget {
                 GestureDetector(
                   onTap: () => Navigator.pop(context),
                   child: Icon(
-                    Icons.cancel,
+                    PlatformIcons.cancel,
                     size: 26,
                     color: theme.textColor.withValues(alpha: 0.25),
                   ),
@@ -198,7 +199,7 @@ class _ThemeRow extends StatelessWidget {
               opacity: isSelected ? 1.0 : 0.0,
               duration: const Duration(milliseconds: 200),
               child: Icon(
-                Icons.check,
+                PlatformIcons.check,
                 color: currentTheme.primaryColor,
                 size: isTablet ? 20 : 17,
               ),

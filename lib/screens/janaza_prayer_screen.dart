@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 import '../models/app_theme.dart';
+import '../utils/platform_icons.dart';
 import '../widgets/app_card.dart';
 
 const Color _accentGreen = Color(0xFF10B981);
@@ -274,7 +275,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
               AnimatedRotation(
                 turns: isExpanded ? 0.5 : 0,
                 duration: const Duration(milliseconds: 200),
-                child: Icon(Icons.expand_more, color: color, size: 24),
+                child: Icon(PlatformIcons.expandMore, color: color, size: 24),
               ),
             ],
           ),
@@ -342,7 +343,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                   AnimatedRotation(
                     turns: isExpanded ? 0.5 : 0,
                     duration: const Duration(milliseconds: 200),
-                    child: Icon(Icons.expand_more, color: accent, size: 20),
+                    child: Icon(PlatformIcons.expandMore, color: accent, size: 20),
                   ),
                 ],
               ),
