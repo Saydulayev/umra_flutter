@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../utils/platform_icons.dart';
@@ -9,6 +8,7 @@ import '../providers/theme_provider.dart';
 import '../models/app_theme.dart';
 import '../models/donation_product.dart';
 import '../utils/donation_error_helper.dart';
+import 'app_card.dart';
 
 /// Виджет для отображения вариантов пожертвований
 class DonationWidget extends StatefulWidget {
@@ -21,13 +21,23 @@ class DonationWidget extends StatefulWidget {
 class _DonationWidgetState extends State<DonationWidget> {
   ProductDetails? _selectedProduct;
   PurchaseProvider? _purchaseProvider;
-  bool _hasShownSuccessMessage =
-      false; // Флаг для предотвращения двойного показа
+  bool _hasShownSuccessMessage = false;
+
+  static const double _cardRadius = 18;
+
+  List<BoxShadow> _shadows(AppTheme theme) => [
+        BoxShadow(
+          color: theme.isDark
+              ? Colors.black.withValues(alpha: 0.2)
+              : Colors.black.withValues(alpha: 0.06),
+          blurRadius: 8,
+          offset: const Offset(0, 2),
+        ),
+      ];
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // Слушаем изменения в провайдере для показа уведомления
     final purchaseProvider = Provider.of<PurchaseProvider>(
       context,
       listen: false,
@@ -36,7 +46,6 @@ class _DonationWidgetState extends State<DonationWidget> {
       _purchaseProvider?.removeListener(_onPurchaseProviderChanged);
       _purchaseProvider = purchaseProvider;
       _purchaseProvider?.addListener(_onPurchaseProviderChanged);
-      // Сбрасываем флаг при смене провайдера
       _hasShownSuccessMessage = false;
     }
   }
@@ -54,7 +63,6 @@ class _DonationWidgetState extends State<DonationWidget> {
     if (purchaseProvider != null &&
         purchaseProvider.purchaseSuccess &&
         !_hasShownSuccessMessage) {
-      // Показываем уведомление только один раз
       _hasShownSuccessMessage = true;
       final l10n = AppLocalizations.of(context)!;
       final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
@@ -66,9 +74,7 @@ class _DonationWidgetState extends State<DonationWidget> {
           duration: const Duration(seconds: 3),
         ),
       );
-      // Сбрасываем флаг в провайдере
       purchaseProvider.clearPurchaseSuccess();
-      // Сбрасываем локальный флаг после задержки, чтобы можно было показать сообщение снова при новой покупке
       Future.delayed(const Duration(seconds: 4), () {
         if (mounted) {
           _hasShownSuccessMessage = false;
@@ -120,87 +126,24 @@ class _DonationWidgetState extends State<DonationWidget> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         const SizedBox(height: 40),
-                        // Текст о пожертвовании в рамке (стиль как у арабского текста)
+
+                        // Текст о пожертвовании — стиль как в настройках
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: theme.isDark
-                                      ? Colors.black.withValues(alpha: 0.3)
-                                      : Colors.black.withValues(alpha: 0.1),
-                                  blurRadius: 20,
-                                  offset: const Offset(20, 20),
-                                  spreadRadius: 0,
+                          child: AppCard(
+                            theme: theme,
+                            cornerRadius: _cardRadius,
+                            shadows: _shadows(theme),
+                            child: Padding(
+                              padding: const EdgeInsets.all(16),
+                              child: Text(
+                                l10n.contributionToApplicationDevelopment,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  color: theme.textColor,
+                                  height: 1.5,
                                 ),
-                              ],
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Stack(
-                                children: [
-                                  // Фоновый цвет
-                                  Container(
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: theme.textBackgroundColor,
-                                    ),
-                                  ),
-                                  // Белый прямоугольник с blur эффектом (смещенный)
-                                  Positioned(
-                                    left: -8,
-                                    top: -8,
-                                    right: 8,
-                                    bottom: 8,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: BackdropFilter(
-                                        filter: ImageFilter.blur(
-                                          sigmaX: 4,
-                                          sigmaY: 4,
-                                        ),
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: theme.isEmerald
-                                                ? const Color(0xFF1A2420).withValues(alpha: 0.9)
-                                                : theme.isDark
-                                                    ? theme.lightBackgroundColor.withValues(alpha: 0.9)
-                                                    : Colors.white.withValues(alpha: 0.9),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  // Градиентный слой с padding
-                                  Container(
-                                    width: double.infinity,
-                                    padding: const EdgeInsets.all(2),
-                                    decoration: BoxDecoration(
-                                      gradient: theme.cardGradient ?? LinearGradient(
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
-                                        colors: [
-                                          theme.gradientTopColor,
-                                          theme.lightBackgroundColor,
-                                        ],
-                                      ),
-                                    ),
-                                    child: Container(
-                                      padding: const EdgeInsets.all(16),
-                                      child: Text(
-                                        l10n.contributionToApplicationDevelopment,
-                                        style: TextStyle(
-                                          fontSize: 14,
-                                          color: theme.textColor,
-                                          height: 1.5,
-                                        ),
-                                        textAlign: TextAlign.left,
-                                      ),
-                                    ),
-                                  ),
-                                ],
                               ),
                             ),
                           ),
@@ -217,9 +160,9 @@ class _DonationWidgetState extends State<DonationWidget> {
                               Text(
                                 l10n.selectTheAmount,
                                 style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 15,
                                   color: theme.textColor,
-                                  fontWeight: FontWeight.w500,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                               _buildAmountSelector(
@@ -233,7 +176,7 @@ class _DonationWidgetState extends State<DonationWidget> {
                         ),
                         const SizedBox(height: 24),
 
-                        // Сообщение об ошибке (локализованное)
+                        // Сообщение об ошибке
                         if (purchaseProvider.errorCode != null)
                           Padding(
                             padding: const EdgeInsets.only(bottom: 16.0),
@@ -304,130 +247,58 @@ class _DonationWidgetState extends State<DonationWidget> {
           else
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Opacity(
-                opacity: _selectedProduct == null ? 0.5 : 1.0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: _selectedProduct == null
-                        ? []
-                        : [
-                            BoxShadow(
-                              color: theme.isDark
-                                  ? Colors.black.withValues(alpha: 0.3)
-                                  : Colors.black.withValues(alpha: 0.1),
-                              blurRadius: 20,
-                              offset: const Offset(20, 20),
-                              spreadRadius: 0,
-                            ),
-                          ],
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Stack(
-                      children: [
-                        // Фоновый цвет
-                        Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            color: theme.textBackgroundColor,
-                          ),
-                        ),
-                        // Белый прямоугольник с blur эффектом (смещенный)
-                        Positioned(
-                          left: -8,
-                          top: -8,
-                          right: 8,
-                          bottom: 8,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: BackdropFilter(
-                              filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: theme.isDark
-                                      ? theme.lightBackgroundColor.withValues(
-                                          alpha: 0.9,
-                                        )
-                                      : Colors.white.withValues(alpha: 0.9),
+              child: AppCard(
+                theme: theme,
+                cornerRadius: _cardRadius,
+                shadows: _shadows(theme),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: purchaseProvider.isPurchasing ||
+                            purchaseProvider.isPurchasePending
+                        ? null
+                        : () {
+                            if (_selectedProduct != null) {
+                              purchaseProvider.purchaseProduct(_selectedProduct!);
+                            }
+                          },
+                    borderRadius: BorderRadius.circular(_cardRadius),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      alignment: Alignment.center,
+                      child: purchaseProvider.isPurchasing ||
+                              purchaseProvider.isPurchasePending
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: CircularProgressIndicator(
+                                    strokeWidth: 2,
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        // Градиентный слой с padding
-                        Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.all(2),
-                          decoration: BoxDecoration(
-                            gradient: theme.cardGradient ?? LinearGradient(
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
-                              colors: [
-                                theme.gradientTopColor,
-                                theme.lightBackgroundColor,
-                              ],
-                            ),
-                          ),
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap:
-                                  purchaseProvider.isPurchasing ||
-                                      purchaseProvider.isPurchasePending ||
-                                      _selectedProduct == null
-                                  ? null
-                                  : () => purchaseProvider.purchaseProduct(
-                                      _selectedProduct!,
+                                if (purchaseProvider.isPurchasePending) ...[
+                                  const SizedBox(width: 12),
+                                  Text(
+                                    l10n.donationProcessing,
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600,
+                                      color: theme.textColor,
                                     ),
-                              borderRadius: BorderRadius.circular(20),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 16,
-                                ),
-                                alignment: Alignment.center,
-                                child:
-                                    purchaseProvider.isPurchasing ||
-                                        purchaseProvider.isPurchasePending
-                                    ? Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          const SizedBox(
-                                            width: 20,
-                                            height: 20,
-                                            child: CircularProgressIndicator(
-                                              strokeWidth: 2,
-                                            ),
-                                          ),
-                                          if (purchaseProvider
-                                              .isPurchasePending) ...[
-                                            const SizedBox(width: 12),
-                                            Text(
-                                              l10n.donationProcessing,
-                                              style: TextStyle(
-                                                fontSize: 14,
-                                                color: theme.textColor,
-                                              ),
-                                            ),
-                                          ],
-                                        ],
-                                      )
-                                    : Text(
-                                        l10n.donateButton,
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w600,
-                                          color: _selectedProduct == null
-                                              ? theme.secondaryTextColor
-                                              : theme.textColor,
-                                        ),
-                                      ),
+                                  ),
+                                ],
+                              ],
+                            )
+                          : Text(
+                              l10n.donateButton,
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                                color: theme.textColor,
                               ),
                             ),
-                          ),
-                        ),
-                      ],
                     ),
                   ),
                 ),
@@ -521,13 +392,13 @@ class _DonationWidgetState extends State<DonationWidget> {
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: Color(0xFF4D99E6), // Фиксированный синий цвет
+                color: Color(0xFF4D99E6),
               ),
             ),
             const SizedBox(width: 8),
-            Icon(
-              PlatformIcons.chevronDown,
-              color: Color(0xFF4D99E6), // Фиксированный синий цвет
+            const Icon(
+              Icons.expand_more_rounded,
+              color: Color(0xFF4D99E6),
               size: 20,
             ),
           ],
@@ -542,7 +413,6 @@ class _DonationWidgetState extends State<DonationWidget> {
     AppTheme theme,
     AppLocalizations l10n,
   ) {
-    // Сортируем продукты по возрастанию цены
     final sortedProducts = List<ProductDetails>.from(availableProducts);
     sortedProducts.sort((a, b) {
       final aProduct = DonationProduct.allProducts.firstWhere(
@@ -598,9 +468,8 @@ class _DonationWidgetState extends State<DonationWidget> {
                     product.price,
                     style: TextStyle(
                       fontSize: 16,
-                      fontWeight: isSelected
-                          ? FontWeight.bold
-                          : FontWeight.normal,
+                      fontWeight:
+                          isSelected ? FontWeight.bold : FontWeight.normal,
                       color: theme.textColor,
                     ),
                   ),

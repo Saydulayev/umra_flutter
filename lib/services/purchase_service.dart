@@ -94,9 +94,9 @@ class PurchaseService {
         _onPurchaseSuccess?.call();
         _consumePurchase(purchaseDetails);
       } else if (purchaseDetails.status == PurchaseStatus.restored) {
-        // Для consumable-пожертвований restored = транзакция прошла ранее,
-        // но не была завершена. Считаем успехом и показываем уведомление.
-        _onPurchaseSuccess?.call();
+        // Для consumable-пожертвований restored = незавершённая транзакция
+        // из прошлой сессии. Просто завершаем её без уведомления об успехе,
+        // чтобы не имитировать новую оплату при следующем нажатии "Пожертвовать".
         _consumePurchase(purchaseDetails);
       } else if (purchaseDetails.status == PurchaseStatus.error) {
         final error = purchaseDetails.error;
@@ -120,9 +120,8 @@ class PurchaseService {
 
   /// Потребление покупки (для consumable products)
   Future<void> _consumePurchase(PurchaseDetails purchaseDetails) async {
-    if ((purchaseDetails.status == PurchaseStatus.purchased ||
-            purchaseDetails.status == PurchaseStatus.restored) &&
-        purchaseDetails.pendingCompletePurchase) {
+    if (purchaseDetails.status == PurchaseStatus.purchased ||
+        purchaseDetails.status == PurchaseStatus.restored) {
       await _inAppPurchase.completePurchase(purchaseDetails);
     }
   }
