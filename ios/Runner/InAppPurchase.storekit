@@ -1,0 +1,264 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "BDB0E09C",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "6473829076",
+      "localizations" : [
+        {
+          "description" : "Contribution volontaire à l'application.",
+          "displayName" : "Soutenir le développeur",
+          "locale" : "fr"
+        },
+        {
+          "description" : "Voluntary contribution to the application.",
+          "displayName" : "Support the Developer.",
+          "locale" : "en_AU"
+        },
+        {
+          "description" : "Добровольный вклад в приложение.",
+          "displayName" : "Поддержать разработчика.",
+          "locale" : "ru"
+        },
+        {
+          "description" : "Freiwilliger Beitrag zur Anwendung.",
+          "displayName" : "Entwickler unterstützen.",
+          "locale" : "de"
+        }
+      ],
+      "productID" : "UmrahSunnah1",
+      "referenceName" : "0,99$ ",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "19.99",
+      "familyShareable" : false,
+      "internalID" : "6473839477",
+      "localizations" : [
+        {
+          "description" : "Contribution volontaire à l'application.",
+          "displayName" : "Soutenir le développeur",
+          "locale" : "fr"
+        },
+        {
+          "description" : "Freiwilliger Beitrag zur Anwendung.",
+          "displayName" : "Entwickler unterstützen.",
+          "locale" : "de"
+        },
+        {
+          "description" : "Voluntary contribution to the application.",
+          "displayName" : "Support the Developer.",
+          "locale" : "en_AU"
+        },
+        {
+          "description" : "Добровольный вклад в приложение.",
+          "displayName" : "Поддержать разработчика.",
+          "locale" : "ru"
+        }
+      ],
+      "productID" : "UmrahSunnah4",
+      "referenceName" : "19,99",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "4.99",
+      "familyShareable" : false,
+      "internalID" : "6473836442",
+      "localizations" : [
+        {
+          "description" : "Contribution volontaire à l'application.",
+          "displayName" : "Soutenir le développeur",
+          "locale" : "fr"
+        },
+        {
+          "description" : "Voluntary contribution to the application.",
+          "displayName" : "Support the Developer.",
+          "locale" : "en_AU"
+        },
+        {
+          "description" : "Freiwilliger Beitrag zur Anwendung.",
+          "displayName" : "Entwickler unterstützen.",
+          "locale" : "de"
+        },
+        {
+          "description" : "Добровольный вклад в приложение.",
+          "displayName" : "Поддержать разработчика.",
+          "locale" : "ru"
+        }
+      ],
+      "productID" : "UmrahSunnah2",
+      "referenceName" : "4,99$",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "49.99",
+      "familyShareable" : false,
+      "internalID" : "6473839654",
+      "localizations" : [
+        {
+          "description" : "Contribution volontaire à l'application.",
+          "displayName" : "Soutenir le développeur",
+          "locale" : "fi"
+        },
+        {
+          "description" : "Voluntary contribution to the application.",
+          "displayName" : "Support the Developer.",
+          "locale" : "en_AU"
+        },
+        {
+          "description" : "Добровольный вклад в приложение.",
+          "displayName" : "Поддержать разработчика.",
+          "locale" : "ru"
+        },
+        {
+          "description" : "Freiwilliger Beitrag zur Anwendung.",
+          "displayName" : "Entwickler unterstützen.",
+          "locale" : "de"
+        }
+      ],
+      "productID" : "UmrahSunnah5",
+      "referenceName" : "49,99",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "9.99",
+      "familyShareable" : false,
+      "internalID" : "6473838143",
+      "localizations" : [
+        {
+          "description" : "Contribution volontaire à l'application.",
+          "displayName" : "Soutenir le développeur",
+          "locale" : "fr"
+        },
+        {
+          "description" : "Добровольный вклад в приложение.",
+          "displayName" : "Поддержать разработчика.",
+          "locale" : "ru"
+        },
+        {
+          "description" : "Voluntary contribution to the application.",
+          "displayName" : "Support the Developer.",
+          "locale" : "en_AU"
+        },
+        {
+          "description" : "Freiwilliger Beitrag zur Anwendung.",
+          "displayName" : "Entwickler unterstützen.",
+          "locale" : "de"
+        }
+      ],
+      "productID" : "UmrahSunnah3",
+      "referenceName" : "9,99$",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "99.99",
+      "familyShareable" : false,
+      "internalID" : "6473839900",
+      "localizations" : [
+        {
+          "description" : "Voluntary contribution to the application.",
+          "displayName" : "Support the Developer.",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Freiwilliger Beitrag zur Anwendung.",
+          "displayName" : "Entwickler unterstützen.",
+          "locale" : "de"
+        },
+        {
+          "description" : "Contribution volontaire à l'application.",
+          "displayName" : "Soutenir le développeur",
+          "locale" : "fr"
+        },
+        {
+          "description" : "Добровольный вклад в приложение.",
+          "displayName" : "Поддержать разработчика.",
+          "locale" : "ru"
+        }
+      ],
+      "productID" : "UmrahSunnah6",
+      "referenceName" : "99,99",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "1673683355",
+    "_askToBuyEnabled" : false,
+    "_developerTeamID" : "93NA5FP2X8",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 757589526.54153299,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : {
+          "index" : 1,
+          "type" : "purchase"
+        },
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}
