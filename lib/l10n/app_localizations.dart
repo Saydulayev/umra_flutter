@@ -379,7 +379,7 @@ abstract class AppLocalizations {
   /// No description provided for @donateButton.
   ///
   /// In en, this message translates to:
-  /// **'Donate'**
+  /// **'Support'**
   String get donateButton;
 
   /// No description provided for @selectTheAmount.

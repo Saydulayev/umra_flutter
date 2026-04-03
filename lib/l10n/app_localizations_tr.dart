@@ -144,7 +144,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get font => 'Yazı tipi';
 
   @override
-  String get donateButton => 'Bağış Yap';
+  String get donateButton => 'Destek Ol';
 
   @override
   String get selectTheAmount => 'Miktarı seçin:';

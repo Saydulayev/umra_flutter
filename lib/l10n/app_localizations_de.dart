@@ -144,7 +144,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get font => 'Schriftart';
 
   @override
-  String get donateButton => 'Spenden';
+  String get donateButton => 'Unterstützen';
 
   @override
   String get selectTheAmount => 'Wählen Sie den Betrag:';

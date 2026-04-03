@@ -144,7 +144,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get font => 'Font';
 
   @override
-  String get donateButton => 'Donate';
+  String get donateButton => 'Support';
 
   @override
   String get selectTheAmount => 'Select the amount:';

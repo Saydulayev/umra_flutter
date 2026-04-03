@@ -144,7 +144,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get font => 'Шрифт';
 
   @override
-  String get donateButton => 'Пожертвовать';
+  String get donateButton => 'Поддержать';
 
   @override
   String get selectTheAmount => 'Выберите сумму:';

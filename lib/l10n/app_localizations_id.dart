@@ -144,7 +144,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get font => 'Jenis huruf';
 
   @override
-  String get donateButton => 'Donasi';
+  String get donateButton => 'Dukung';
 
   @override
   String get selectTheAmount => 'Pilih jumlah:';
