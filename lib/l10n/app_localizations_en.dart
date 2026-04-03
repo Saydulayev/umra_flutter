@@ -1026,4 +1026,160 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notificationSettingsLink => 'Notification Settings';
+
+  @override
+  String get duaBookNavTitle => 'Du\'a Book';
+
+  @override
+  String get duaCategoryUmrah => 'Umrah';
+
+  @override
+  String get duaCategoryHajj => 'Hajj';
+
+  @override
+  String get duaDetailTranslitLabel => 'Transliteration';
+
+  @override
+  String get duaDetailTransLabel => 'Translation';
+
+  @override
+  String get duaNiyyahUmrahTitle => 'Intention for Umrah';
+
+  @override
+  String get duaNiyyahUmrahTranslit => 'Labbayka Allahumma bi-´umrah.';
+
+  @override
+  String get duaNiyyahUmrahTrans =>
+      'Here I am before You, O Allah, [performing] Umrah.';
+
+  @override
+  String get duaIhramUmrahTitle => 'Du\'a of Ihram (Umrah)';
+
+  @override
+  String get duaIhramUmrahTranslit =>
+      'Allahumma hazihi \'umrah, la riya\'a fiha wa la sum\'ah.';
+
+  @override
+  String get duaIhramUmrahTrans =>
+      'O Allah, this Umrah — there is no showing off or seeking fame in it!';
+
+  @override
+  String get duaTalbiyahTitle => 'Talbiyah';
+
+  @override
+  String get duaTalbiyahTranslit =>
+      'Labbayka Allahumma labbayk! Labbayka laa shariika laka labbayka! Innal hamda wanni\'mata laka wal mulk, laa shariika lak';
+
+  @override
+  String get duaTalbiyahTrans =>
+      'Here I am, O Allah, here I am! Here I am, there is no partner for You, here I am! Verily, all praise, grace, and sovereignty belong to You. You have no partner.';
+
+  @override
+  String get duaMasjidEnterTitle => 'Du\'a upon Entering the Mosque';
+
+  @override
+  String get duaMasjidEnterTranslit =>
+      'Allahumma, solli ´ala Muhammadin wa sallim! Allahumma - ftah li abwaba rohmati-ka!';
+
+  @override
+  String get duaMasjidEnterTrans =>
+      'O Allah, bless Muhammad and grant him peace! O Allah, open for me the gates of Your mercy!';
+
+  @override
+  String get duaConditionTitle => 'Du\'a of Stipulation';
+
+  @override
+  String get duaConditionTranslit => 'Allahumma mahilli haysu habastani';
+
+  @override
+  String get duaConditionTrans =>
+      'O Allah, my place of entering into Ihram is wherever You have detained me.';
+
+  @override
+  String get duaRabbanaTitle => 'Du\'a between the Corners';
+
+  @override
+  String get duaRabbanaTranslit =>
+      'Rabbana, atina fid-dunya hasanatan wa fil-akhiroti hasanatan wa qina azaba-n-nar';
+
+  @override
+  String get duaRabbanaTrans =>
+      'Our Lord, grant us the good of this world and the good of the Hereafter, and protect us from the torment of the Fire!';
+
+  @override
+  String get duaMaqamIbrahimTitle => 'Verse of Maqam Ibrahim';
+
+  @override
+  String get duaMaqamIbrahimTranslit =>
+      'Wa-ttahizu mim-maqomi Ibrohima musollya.';
+
+  @override
+  String get duaMaqamIbrahimTrans =>
+      'And take, [O believers], from the standing place of Ibrahim a place of prayer. (Surah Al-Baqarah, verse 125).';
+
+  @override
+  String get duaSafaAyahTitle => 'Verse of Safa and Marwa';
+
+  @override
+  String get duaSafaAyahTranslit =>
+      'Inna Ssofaa wal-Marwata min sha\'aaa\'iril laah, faman hajjal Baita awi\'tamaro falaa junaaha \'alaihi ayyatt´owwafa bihimaa, wa man tat´owwa\'a hoyron fa-inna-LLAha Shakirun ´alim.';
+
+  @override
+  String get duaSafaAyahTrans =>
+      'Indeed, as-Safa and al-Marwah are among the symbols of Allah. So whoever makes Hajj to the House or performs \'umrah — there is no blame upon him for walking between them. And whoever volunteers good — then indeed, Allah is appreciative and Knowing. (Surah Al-Baqarah, verse 158).';
+
+  @override
+  String get duaNabdauTitle => 'We Begin with What Allah Began';
+
+  @override
+  String get duaNabdauTranslit => 'Nabdau bima badaa-Llahu bihi';
+
+  @override
+  String get duaNabdauTrans => 'We begin with that with which Allah began.';
+
+  @override
+  String get duaZikrSafaTitle => 'Dhikr on Safa and Marwa';
+
+  @override
+  String get duaZikrSafaTranslit =>
+      'Allahu Akbar! Allahu Akbar! Allahu Akbar! La ilaha illa-Llahu wahdahu la sharika lahu. Lahul mulku wa lahul hamdu yuhyi wa yumitu wa huwa \'ala kulli shay\'in qodir. La ilaha illa-Llahu wahdahu la sharika lah, anjaza wa\'dahu, wa nasaro \'abdahu, wa hazamal ahzaba wahdahu';
+
+  @override
+  String get duaZikrSafaTrans =>
+      'Allah is the Greatest, Allah is the Greatest, Allah is the Greatest! There is no deity except Allah, the One without any partners! To Him belongs the power and to Him belongs all praise. He gives life and causes death, and He has power over all things. There is no deity except Allah, the One without any partners! He fulfilled His promise, aided His servant, and alone defeated the hostile tribes.';
+
+  @override
+  String get duaRabbiIghfirTitle => 'Du\'a during Sa\'i';
+
+  @override
+  String get duaRabbiIghfirTranslit =>
+      'Rabbi-ghfir wa rham, innaka anta a´azzul-akram';
+
+  @override
+  String get duaRabbiIghfirTrans =>
+      'O Lord, forgive and have mercy, for You are the Most Great and Generous!';
+
+  @override
+  String get duaMasjidExitTitle => 'Du\'a upon Exiting the Mosque';
+
+  @override
+  String get duaMasjidExitTranslit =>
+      'Allahumma solli \'ala Muhammadin wa sallim! Allahumma, inni as\'aluka min fadlika!';
+
+  @override
+  String get duaMasjidExitTrans =>
+      'O Allah, bless Muhammad and grant him peace! O Allah, indeed, I ask You for Your Mercy!';
+
+  @override
+  String get duaNiyyahHajjTitle => 'Intention for Hajj';
+
+  @override
+  String get duaNiyyahHajjTrans =>
+      'Here I am before You, O Allah, [performing] Hajj.';
+
+  @override
+  String get duaIhramHajjTitle => 'Du\'a of Ihram (Hajj)';
+
+  @override
+  String get duaArafatTitle => 'Du\'a on Arafat';
 }

@@ -1030,4 +1030,160 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get notificationSettingsLink => 'Paramètres de notification';
+
+  @override
+  String get duaBookNavTitle => 'Livre des Douas';
+
+  @override
+  String get duaCategoryUmrah => 'Oumra';
+
+  @override
+  String get duaCategoryHajj => 'Hajj';
+
+  @override
+  String get duaDetailTranslitLabel => 'Translittération';
+
+  @override
+  String get duaDetailTransLabel => 'Traduction';
+
+  @override
+  String get duaNiyyahUmrahTitle => 'Intention pour la Oumra';
+
+  @override
+  String get duaNiyyahUmrahTranslit => 'Labbayka Allahumma bi-\'Umrah.';
+
+  @override
+  String get duaNiyyahUmrahTrans =>
+      'Me voici devant Toi, ô Allah, [pour accomplir] la \'Umrah.';
+
+  @override
+  String get duaIhramUmrahTitle => 'Doua de l\'Ihram (Oumra)';
+
+  @override
+  String get duaIhramUmrahTranslit =>
+      'Allahumma hadhihi \'umrah la riya\'a fiha wa la soum\'a';
+
+  @override
+  String get duaIhramUmrahTrans =>
+      'Ô Allah, cette \'Umrah – il n\'y a ni ostentation ni recherche de renommée en elle!';
+
+  @override
+  String get duaTalbiyahTitle => 'Talbiyah';
+
+  @override
+  String get duaTalbiyahTranslit =>
+      'Labbayka Allahumma labbayk! Labbayka la sharika laka labbayk! Innal hamda wan ni\'mata laka wal mulk, la sharika laka.';
+
+  @override
+  String get duaTalbiyahTrans =>
+      'Me voici répondant à Ton appel, ô Allah! Tu n\'as aucun associé, me voici! La louange et le bienfait T\'appartiennent, ainsi que la Royauté. Tu n\'as aucun associé!';
+
+  @override
+  String get duaMasjidEnterTitle => 'Doua à l\'entrée de la mosquée';
+
+  @override
+  String get duaMasjidEnterTranslit =>
+      'Allahumma solli \'ala Muhammad wa sallim! Allahumma-ftah li abwaba rohmatika!';
+
+  @override
+  String get duaMasjidEnterTrans =>
+      'Ô Allah, bénis Muhammad et accorde-lui la paix! Ô Allah, ouvre pour moi les portes de Ta miséricorde!';
+
+  @override
+  String get duaConditionTitle => 'Doua de stipulation';
+
+  @override
+  String get duaConditionTranslit => 'Allahumma mahilli haythu habastani';
+
+  @override
+  String get duaConditionTrans =>
+      'Ô Allah, mon lieu de sortie de l\'Ihram est là où Tu m\'as retenu.';
+
+  @override
+  String get duaRabbanaTitle => 'Doua entre les coins';
+
+  @override
+  String get duaRabbanaTranslit =>
+      'Rabbana, atina fi-d-dunya khyasanatan va fil-ahiroti khyasanatanan va k\'ina ´azaba-n-n-nar';
+
+  @override
+  String get duaRabbanaTrans =>
+      'Ô notre Seigneur! Accorde-nous une belle part dans l\'ici-bas, une belle part dans l\'au-delà et protège-nous du châtiment du feu!';
+
+  @override
+  String get duaMaqamIbrahimTitle => 'Verset du Maqam Ibrahim';
+
+  @override
+  String get duaMaqamIbrahimTranslit =>
+      'Wattakhidhu mim maqomi Ibrohima musolla';
+
+  @override
+  String get duaMaqamIbrahimTrans =>
+      'Et prenez le lieu de la station d\'Ibrahim comme lieu de prière (Sourate 2 Al-Baqara = La Vache, verset 125).';
+
+  @override
+  String get duaSafaAyahTitle => 'Verset de Safa et Marwa';
+
+  @override
+  String get duaSafaAyahTranslit =>
+      'Inna-s-Sofa wal-Marwata min sha\'airi-Llah, fa man hajjal-bayta awi\'tamaro fala junaha \'alayhi ay yatt`owwafa bihima, wa man tatowwa\'a khoyron fa inna-Llaha Shakurun \'Alim.';
+
+  @override
+  String get duaSafaAyahTrans =>
+      'En vérité, As-Safa et Al-Marwa font partie des rites prescrits par Allah. Celui qui fait le pèlerinage à la Kaaba ou la \'Umra ne commet aucun péché en passant entre eux. (Sourate La Vache, verset 158)';
+
+  @override
+  String get duaNabdauTitle => 'Nous commençons par ce qu\'Allah a commencé';
+
+  @override
+  String get duaNabdauTranslit => 'Nabdau bima bada Allohu bihi';
+
+  @override
+  String get duaNabdauTrans => 'Nous commençons par ce qu\'Allah a commencé.';
+
+  @override
+  String get duaZikrSafaTitle => 'Dhikr sur Safa et Marwa';
+
+  @override
+  String get duaZikrSafaTranslit =>
+      'Allahu Akbar! Allahu Akbar! Allahu Akbar! La ilaha illa-Llohu wahdahu la sharika lah! Lahul mulku wa lahul hamdu yuhyi wa yumitu wa huwa \'ala kulli shay\'in qodir! La ilaha illa Llahu wahdahu la sharika lah anjaza wa\'dah wa nasara \'abdah wa hazama al-ahzaba wahdah.';
+
+  @override
+  String get duaZikrSafaTrans =>
+      'Allah est Grand, Allah est Grand, Allah est Grand! Il n\'y a pas de divinité à part Allah, l\'Unique, qui n\'a pas d\'associé! Il a accompli Sa promesse, aidé Son serviteur et seul Il a vaincu les clans ennemis.';
+
+  @override
+  String get duaRabbiIghfirTitle => 'Doua pendant le Sa\'i';
+
+  @override
+  String get duaRabbiIghfirTranslit =>
+      'Robbi-ghfir wa-rham, innaka antal a\'azzul akram';
+
+  @override
+  String get duaRabbiIghfirTrans =>
+      'Seigneur, pardonne et fais miséricorde, car Tu es le Plus Grand et le Plus Noble!';
+
+  @override
+  String get duaMasjidExitTitle => 'Doua à la sortie de la mosquée';
+
+  @override
+  String get duaMasjidExitTranslit =>
+      'Allahumma solli \'ala Muhammadin wa sallim! Allahumma inni as aluka min fadzlik!';
+
+  @override
+  String get duaMasjidExitTrans =>
+      'Ô Allah, bénis Muhammad et accorde-lui la paix! Ô Allah, en vérité, je Te demande Ta Grâce!';
+
+  @override
+  String get duaNiyyahHajjTitle => 'Intention pour le Hajj';
+
+  @override
+  String get duaNiyyahHajjTrans =>
+      'Me voici devant Toi, ô Allah, [pour accomplir] le Haddj.';
+
+  @override
+  String get duaIhramHajjTitle => 'Doua de l\'Ihram (Hajj)';
+
+  @override
+  String get duaArafatTitle => 'Doua à Arafat';
 }

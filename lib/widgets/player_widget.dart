@@ -302,12 +302,6 @@ class _PlayerWidgetState extends State<PlayerWidget> {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: theme.lightBackgroundColor,
-          border: Border.all(
-            color: isActive
-                ? theme.primaryColor.withValues(alpha: 0.45)
-                : theme.borderColor,
-            width: isActive ? 1.5 : 1.0,
-          ),
           boxShadow: [
             BoxShadow(
               color: theme.cardShadowColor,
@@ -340,12 +334,6 @@ class _PlayerWidgetState extends State<PlayerWidget> {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: theme.lightBackgroundColor,
-          border: Border.all(
-            color: isActive
-                ? theme.primaryColor.withValues(alpha: 0.45)
-                : theme.borderColor,
-            width: isActive ? 1.5 : 1.0,
-          ),
           boxShadow: [
             BoxShadow(
               color: theme.cardShadowColor,

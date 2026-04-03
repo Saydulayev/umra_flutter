@@ -1020,4 +1020,160 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get notificationSettingsLink => 'Настройки уведомлений';
+
+  @override
+  String get duaBookNavTitle => 'Книга Дуа';
+
+  @override
+  String get duaCategoryUmrah => 'Умра';
+
+  @override
+  String get duaCategoryHajj => 'Хадж';
+
+  @override
+  String get duaDetailTranslitLabel => 'Транслитерация';
+
+  @override
+  String get duaDetailTransLabel => 'Перевод';
+
+  @override
+  String get duaNiyyahUmrahTitle => 'Намерение на Умру';
+
+  @override
+  String get duaNiyyahUmrahTranslit => 'Ляббайка Аллоhумма би-\'умраh.';
+
+  @override
+  String get duaNiyyahUmrahTrans =>
+      'Вот я перед Тобой, о, Аллаh, (совершая) \'умру.';
+
+  @override
+  String get duaIhramUmrahTitle => 'Дуа ихрама (Умра)';
+
+  @override
+  String get duaIhramUmrahTranslit =>
+      'Аллоhумма hазиhи \'умра ля рийа\' фи-hа ва ля сум\'аh';
+
+  @override
+  String get duaIhramUmrahTrans =>
+      'О Аллах, эта Умра — нет в ней показухи и стремления к славе!';
+
+  @override
+  String get duaTalbiyahTitle => 'Тальбия';
+
+  @override
+  String get duaTalbiyahTranslit =>
+      'Ляббайка Ллоhумма ляббайка! Ляббайка ляя шариика ляка ляббайка! Инналь хьамда ван ни\'мата ляка валь мульк, ляя шариика ляк.';
+
+  @override
+  String get duaTalbiyahTrans =>
+      'Вот я перед Тобой, о, Аллаh! Вот я перед Тобой! Вот я перед Тобой, и нет у Тебя сотоварища! Вот я перед Тобой! Поистине, Тебе надлежит хвала, и Тебе принадлежит милость и владычество! Нет у Тебя сотоварища!';
+
+  @override
+  String get duaMasjidEnterTitle => 'Дуа при входе в мечеть';
+
+  @override
+  String get duaMasjidEnterTranslit =>
+      'Аллоhумма, солли \'аля Мухьаммадин ва саллим! Аллоhумма - фтахь ли абваба рохьмати-ка!';
+
+  @override
+  String get duaMasjidEnterTrans =>
+      'О Аллах, благослови Мухаммада и ниспошли ему мир! О Аллах, открой для меня врата Своего милосердия!';
+
+  @override
+  String get duaConditionTitle => 'Дуа обусловливания';
+
+  @override
+  String get duaConditionTranslit => 'Аллоhумма махьилли хьайсу хьабастани';
+
+  @override
+  String get duaConditionTrans =>
+      'О Аллах, мое место вхождения в ихрам там, где Ты меня задержал.';
+
+  @override
+  String get duaRabbanaTitle => 'Дуа между углами Каабы';
+
+  @override
+  String get duaRabbanaTranslit =>
+      'Роббана, атина фи-д-дунья хьасанатан ва филь-ахироти хьасанатан ва къына \'азаба-н-нар';
+
+  @override
+  String get duaRabbanaTrans =>
+      'Господь наш! Одари нас добром в этом мире и добром в Последней жизни и защити нас от мучений в Огне!';
+
+  @override
+  String get duaMaqamIbrahimTitle => 'Аят о Макаме Ибрахима';
+
+  @override
+  String get duaMaqamIbrahimTranslit =>
+      'Ва-ттахизу мим-макъоми Иброhима мусолля';
+
+  @override
+  String get duaMaqamIbrahimTrans =>
+      'Изберите же место [стояния] Ибрахима местом моления (сура 2 Аль-Бакара = Корова, аят 125).';
+
+  @override
+  String get duaSafaAyahTitle => 'Аят о Сафа и Марва';
+
+  @override
+  String get duaSafaAyahTranslit =>
+      'Инна-с-Софа валь-Марвата мин ша\'аири-ЛлЯh, фаман хьаджжа-ль-байта ави\'-тамаро фаля джунахьа \'аляйhи айй-йат\'т\'оввафа биhима, ва ман тат\'ова\'а хойран фа-инна-ЛЛоhа Шакирун \'алим.';
+
+  @override
+  String get duaSafaAyahTrans =>
+      'Воистину, ас-Сафа и аль-Марва – одни из обрядовых знамений Аллаhа. Кто совершает хадж к Ка\'бе или \'умру, тот не совершит греха, если пройдет между ними. А если кто добровольно совершает доброе дело, то ведь Аллаh – Признательный, Знающий. (сура Корова, аят 158)';
+
+  @override
+  String get duaNabdauTitle => 'Мы начинаем с того, с чего начал Аллах';
+
+  @override
+  String get duaNabdauTranslit => 'Набдау бима бадаа-Ллоhу биhи';
+
+  @override
+  String get duaNabdauTrans => 'Мы начинаем с того, с чего начал Аллах.';
+
+  @override
+  String get duaZikrSafaTitle => 'Зикр на Сафа и Марва';
+
+  @override
+  String get duaZikrSafaTranslit =>
+      'Аллаhу акбар! Аллаhу акбар! Аллаhу акбар! Ля иляhа илля-ЛлАhу вахьдаhу ля шарика ляhу! Ляhуль мульку ва ляhуль хьамду йухьйи ва йумиту ва hува \'аля кулли шайъин къодиир! Ля иляhа илля Ллohу вахьдаhу ля шарика ляhу анджаза ва\'даh, ва насо-ро \'абдаh, ва hазамаль ахьзаба вахьдаh.';
+
+  @override
+  String get duaZikrSafaTrans =>
+      'Аллах Превелик, Аллах Превелик, Аллах Превелик! Нет божества, кроме Аллаhа, Одного, у Которого нет сотоварища! Ему принадлежит власть и надлежит хвала, Он оживляет и умерщвляет, и Он властен над всем сущим! Нет божества, кроме одного Аллаhа, у Которого нет сотоварища! Он выполнил Свое обещание, помог Своему рабу и в одиночку разбил враждебные племена.';
+
+  @override
+  String get duaRabbiIghfirTitle => 'Дуа во время Са\'и';
+
+  @override
+  String get duaRabbiIghfirTranslit =>
+      'Рабби-г1фир ва-рхьам, иннакя анталь а\'аззу-ль-акрам';
+
+  @override
+  String get duaRabbiIghfirTrans =>
+      'Господи, прости и помилуй, ибо Ты – Самый Великий и Великодушный!';
+
+  @override
+  String get duaMasjidExitTitle => 'Дуа при выходе из мечети';
+
+  @override
+  String get duaMasjidExitTranslit =>
+      'Аллаhумма, солли \'аля Мухьаммадин ва саллим! Аллаhумма, инни ас\'алю-ка мин фадли-ка!';
+
+  @override
+  String get duaMasjidExitTrans =>
+      'О Аллах, благослови Мухаммада и ниспошли ему мир! О Аллах, воистину, я прошу Тебя о Милости Твоей!';
+
+  @override
+  String get duaNiyyahHajjTitle => 'Намерение на Хадж';
+
+  @override
+  String get duaNiyyahHajjTrans =>
+      'Вот я пред Тобой, о Аллах, [совершая] хадж.';
+
+  @override
+  String get duaIhramHajjTitle => 'Дуа ихрама (Хадж)';
+
+  @override
+  String get duaArafatTitle => 'Дуа на Арафате';
 }

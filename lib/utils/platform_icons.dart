@@ -60,4 +60,6 @@ class PlatformIcons {
       _isIOS ? CupertinoIcons.arrow_right_circle : Icons.directions_walk;
   static IconData get expandMore =>
       _isIOS ? CupertinoIcons.chevron_down : Icons.expand_more;
+  static IconData get book =>
+      _isIOS ? CupertinoIcons.book : Icons.menu_book_outlined;
 }

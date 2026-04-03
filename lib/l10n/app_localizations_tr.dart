@@ -1015,4 +1015,160 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get notificationSettingsLink => 'Bildirim Ayarları';
+
+  @override
+  String get duaBookNavTitle => 'Dua Kitabı';
+
+  @override
+  String get duaCategoryUmrah => 'Umre';
+
+  @override
+  String get duaCategoryHajj => 'Hac';
+
+  @override
+  String get duaDetailTranslitLabel => 'Okunuş';
+
+  @override
+  String get duaDetailTransLabel => 'Anlam';
+
+  @override
+  String get duaNiyyahUmrahTitle => 'Umre Niyeti';
+
+  @override
+  String get duaNiyyahUmrahTranslit => 'Labbayka Allahumma bi-´umrah.';
+
+  @override
+  String get duaNiyyahUmrahTrans =>
+      'Buyur, ey Allah\'ım, huzurundayım, [umre yapmak üzere].';
+
+  @override
+  String get duaIhramUmrahTitle => 'İhram Duası (Umre)';
+
+  @override
+  String get duaIhramUmrahTranslit =>
+      'Allahumma hazihi \'umrah, la riya\'a fiha wa la sum\'ah.';
+
+  @override
+  String get duaIhramUmrahTrans =>
+      'Ey Allah\'ım! Bu umre, gösteriş ve şöhret için değildir!';
+
+  @override
+  String get duaTalbiyahTitle => 'Telbiye';
+
+  @override
+  String get duaTalbiyahTranslit =>
+      'Labbayka Allahumma labbayk! Labbayka laa shariika laka labbayka! Innal hamda wanni\'mata laka wal mulk, laa shariika lak';
+
+  @override
+  String get duaTalbiyahTrans =>
+      'Buyur Allah\'ım, buyur! Buyur, Senin hiçbir ortağın yoktur! Buyur! Şüphesiz hamd, nimet ve mülk yalnızca Sana aittir! Senin hiçbir ortağın yoktur!';
+
+  @override
+  String get duaMasjidEnterTitle => 'Mescide Giriş Duası';
+
+  @override
+  String get duaMasjidEnterTranslit =>
+      'Allahumma, solli ´ala Muhammadin wa sallim! Allahumma - ftah li abwaba rohmati-ka!';
+
+  @override
+  String get duaMasjidEnterTrans =>
+      'Ey Allah\'ım! Muhammed\'e salât ve selam eyle! Ey Allah\'ım! Bana rahmet kapılarını aç!';
+
+  @override
+  String get duaConditionTitle => 'Şartlandırma Duası';
+
+  @override
+  String get duaConditionTranslit => 'Allahumma mahilli haysu habastani';
+
+  @override
+  String get duaConditionTrans =>
+      'Ey Allah\'ım! Eğer beni bir şey engellerse, ihramdan çıkışım burada olsun.';
+
+  @override
+  String get duaRabbanaTitle => 'Köşeler Arası Dua';
+
+  @override
+  String get duaRabbanaTranslit =>
+      'Rabbana, atina fid-dunya hasanatan wa fil-akhiroti hasanatan wa qina azaba-n-nar';
+
+  @override
+  String get duaRabbanaTrans =>
+      'Rabbimiz! Bize dünyada iyilik ver, ahirette de iyilik ver ve bizi ateşin azabından koru!';
+
+  @override
+  String get duaMaqamIbrahimTitle => 'Makam-ı İbrahim Ayeti';
+
+  @override
+  String get duaMaqamIbrahimTranslit =>
+      'Wa-ttahizu mim-maqomi Ibrohima musollya.';
+
+  @override
+  String get duaMaqamIbrahimTrans =>
+      'Ve İbrahim\'in makamını namaz yeri edinin (Bakara Suresi, 125. ayet).';
+
+  @override
+  String get duaSafaAyahTitle => 'Safa ve Merve Ayeti';
+
+  @override
+  String get duaSafaAyahTranslit =>
+      'Inna Ssofaa wal-Marwata min sha\'aaa\'iril laah, faman hajjal Baita awi\'tamaro falaa junaaha \'alaihi ayyatt´owwafa bihimaa, wa man tat´owwa\'a hoyron fa-inna-LLAha Shakirun ´alim.';
+
+  @override
+  String get duaSafaAyahTrans =>
+      'Şüphesiz ki Safa ve Merve, Allah\'ın sembollerindendir. Kim Beytullah\'a hac veya umre için gelirse, onların arasında yürüyerek geçmesinde kendisine bir günah yoktur. (Bakara Suresi, 158. Ayet).';
+
+  @override
+  String get duaNabdauTitle => 'Biz Allah\'ın Başladığı ile Başlıyoruz';
+
+  @override
+  String get duaNabdauTranslit => 'Nabdau bima badaa-Llahu bihi';
+
+  @override
+  String get duaNabdauTrans => 'Biz, Allah\'ın başladığı ile başlıyoruz.';
+
+  @override
+  String get duaZikrSafaTitle => 'Safa ve Merve Zikri';
+
+  @override
+  String get duaZikrSafaTranslit =>
+      'Allahu Akbar! Allahu Akbar! Allahu Akbar! La ilaha illa-Llahu wahdahu la sharika lahu. Lahul mulku wa lahul hamdu yuhyi wa yumitu wa huwa \'ala kulli shay\'in qodir. La ilaha illa-Llahu wahdahu la sharika lah, anjaza wa\'dahu, wa nasaro \'abdahu, wa hazamal ahzaba wahdahu.';
+
+  @override
+  String get duaZikrSafaTrans =>
+      'Allah en büyüktür! Allah en büyüktür! Allah en büyüktür! Allah\'tan başka ilah yoktur, O tektir ve O\'nun ortağı yoktur! O, vaadini yerine getirdi, kuluna yardım etti ve düşman birliklerini tek başına mağlup etti.';
+
+  @override
+  String get duaRabbiIghfirTitle => 'Sa\'y Sırasında Dua';
+
+  @override
+  String get duaRabbiIghfirTranslit =>
+      'Rabbi-ghfir wa rham, innaka anta a´azzul-akram';
+
+  @override
+  String get duaRabbiIghfirTrans =>
+      'Ey Rabbim! Beni bağışla ve merhamet et! Şüphesiz Sen, en yüce ve en cömert olansın!';
+
+  @override
+  String get duaMasjidExitTitle => 'Mescidden Çıkış Duası';
+
+  @override
+  String get duaMasjidExitTranslit =>
+      'Allahumma solli \'ala Muhammadin wa sallim! Allahumma, inni as\'aluka min fadlika!';
+
+  @override
+  String get duaMasjidExitTrans =>
+      'Ey Allah\'ım! Muhammed\'e salât ve selam eyle! Ey Allah\'ım! Şüphesiz, Senin lütfunu diliyorum!';
+
+  @override
+  String get duaNiyyahHajjTitle => 'Hac Niyeti';
+
+  @override
+  String get duaNiyyahHajjTrans =>
+      'Buyur, ey Allah\'ım, huzurundayım, [hac yapmak üzere].';
+
+  @override
+  String get duaIhramHajjTitle => 'İhram Duası (Hac)';
+
+  @override
+  String get duaArafatTitle => 'Arafat Duası';
 }

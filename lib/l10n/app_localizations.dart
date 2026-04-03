@@ -1869,6 +1869,276 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Notification Settings'**
   String get notificationSettingsLink;
+
+  /// No description provided for @duaBookNavTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Du\'a Book'**
+  String get duaBookNavTitle;
+
+  /// No description provided for @duaCategoryUmrah.
+  ///
+  /// In en, this message translates to:
+  /// **'Umrah'**
+  String get duaCategoryUmrah;
+
+  /// No description provided for @duaCategoryHajj.
+  ///
+  /// In en, this message translates to:
+  /// **'Hajj'**
+  String get duaCategoryHajj;
+
+  /// No description provided for @duaDetailTranslitLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Transliteration'**
+  String get duaDetailTranslitLabel;
+
+  /// No description provided for @duaDetailTransLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Translation'**
+  String get duaDetailTransLabel;
+
+  /// No description provided for @duaNiyyahUmrahTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Intention for Umrah'**
+  String get duaNiyyahUmrahTitle;
+
+  /// No description provided for @duaNiyyahUmrahTranslit.
+  ///
+  /// In en, this message translates to:
+  /// **'Labbayka Allahumma bi-´umrah.'**
+  String get duaNiyyahUmrahTranslit;
+
+  /// No description provided for @duaNiyyahUmrahTrans.
+  ///
+  /// In en, this message translates to:
+  /// **'Here I am before You, O Allah, [performing] Umrah.'**
+  String get duaNiyyahUmrahTrans;
+
+  /// No description provided for @duaIhramUmrahTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Du\'a of Ihram (Umrah)'**
+  String get duaIhramUmrahTitle;
+
+  /// No description provided for @duaIhramUmrahTranslit.
+  ///
+  /// In en, this message translates to:
+  /// **'Allahumma hazihi \'umrah, la riya\'a fiha wa la sum\'ah.'**
+  String get duaIhramUmrahTranslit;
+
+  /// No description provided for @duaIhramUmrahTrans.
+  ///
+  /// In en, this message translates to:
+  /// **'O Allah, this Umrah — there is no showing off or seeking fame in it!'**
+  String get duaIhramUmrahTrans;
+
+  /// No description provided for @duaTalbiyahTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Talbiyah'**
+  String get duaTalbiyahTitle;
+
+  /// No description provided for @duaTalbiyahTranslit.
+  ///
+  /// In en, this message translates to:
+  /// **'Labbayka Allahumma labbayk! Labbayka laa shariika laka labbayka! Innal hamda wanni\'mata laka wal mulk, laa shariika lak'**
+  String get duaTalbiyahTranslit;
+
+  /// No description provided for @duaTalbiyahTrans.
+  ///
+  /// In en, this message translates to:
+  /// **'Here I am, O Allah, here I am! Here I am, there is no partner for You, here I am! Verily, all praise, grace, and sovereignty belong to You. You have no partner.'**
+  String get duaTalbiyahTrans;
+
+  /// No description provided for @duaMasjidEnterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Du\'a upon Entering the Mosque'**
+  String get duaMasjidEnterTitle;
+
+  /// No description provided for @duaMasjidEnterTranslit.
+  ///
+  /// In en, this message translates to:
+  /// **'Allahumma, solli ´ala Muhammadin wa sallim! Allahumma - ftah li abwaba rohmati-ka!'**
+  String get duaMasjidEnterTranslit;
+
+  /// No description provided for @duaMasjidEnterTrans.
+  ///
+  /// In en, this message translates to:
+  /// **'O Allah, bless Muhammad and grant him peace! O Allah, open for me the gates of Your mercy!'**
+  String get duaMasjidEnterTrans;
+
+  /// No description provided for @duaConditionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Du\'a of Stipulation'**
+  String get duaConditionTitle;
+
+  /// No description provided for @duaConditionTranslit.
+  ///
+  /// In en, this message translates to:
+  /// **'Allahumma mahilli haysu habastani'**
+  String get duaConditionTranslit;
+
+  /// No description provided for @duaConditionTrans.
+  ///
+  /// In en, this message translates to:
+  /// **'O Allah, my place of entering into Ihram is wherever You have detained me.'**
+  String get duaConditionTrans;
+
+  /// No description provided for @duaRabbanaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Du\'a between the Corners'**
+  String get duaRabbanaTitle;
+
+  /// No description provided for @duaRabbanaTranslit.
+  ///
+  /// In en, this message translates to:
+  /// **'Rabbana, atina fid-dunya hasanatan wa fil-akhiroti hasanatan wa qina azaba-n-nar'**
+  String get duaRabbanaTranslit;
+
+  /// No description provided for @duaRabbanaTrans.
+  ///
+  /// In en, this message translates to:
+  /// **'Our Lord, grant us the good of this world and the good of the Hereafter, and protect us from the torment of the Fire!'**
+  String get duaRabbanaTrans;
+
+  /// No description provided for @duaMaqamIbrahimTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verse of Maqam Ibrahim'**
+  String get duaMaqamIbrahimTitle;
+
+  /// No description provided for @duaMaqamIbrahimTranslit.
+  ///
+  /// In en, this message translates to:
+  /// **'Wa-ttahizu mim-maqomi Ibrohima musollya.'**
+  String get duaMaqamIbrahimTranslit;
+
+  /// No description provided for @duaMaqamIbrahimTrans.
+  ///
+  /// In en, this message translates to:
+  /// **'And take, [O believers], from the standing place of Ibrahim a place of prayer. (Surah Al-Baqarah, verse 125).'**
+  String get duaMaqamIbrahimTrans;
+
+  /// No description provided for @duaSafaAyahTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verse of Safa and Marwa'**
+  String get duaSafaAyahTitle;
+
+  /// No description provided for @duaSafaAyahTranslit.
+  ///
+  /// In en, this message translates to:
+  /// **'Inna Ssofaa wal-Marwata min sha\'aaa\'iril laah, faman hajjal Baita awi\'tamaro falaa junaaha \'alaihi ayyatt´owwafa bihimaa, wa man tat´owwa\'a hoyron fa-inna-LLAha Shakirun ´alim.'**
+  String get duaSafaAyahTranslit;
+
+  /// No description provided for @duaSafaAyahTrans.
+  ///
+  /// In en, this message translates to:
+  /// **'Indeed, as-Safa and al-Marwah are among the symbols of Allah. So whoever makes Hajj to the House or performs \'umrah — there is no blame upon him for walking between them. And whoever volunteers good — then indeed, Allah is appreciative and Knowing. (Surah Al-Baqarah, verse 158).'**
+  String get duaSafaAyahTrans;
+
+  /// No description provided for @duaNabdauTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'We Begin with What Allah Began'**
+  String get duaNabdauTitle;
+
+  /// No description provided for @duaNabdauTranslit.
+  ///
+  /// In en, this message translates to:
+  /// **'Nabdau bima badaa-Llahu bihi'**
+  String get duaNabdauTranslit;
+
+  /// No description provided for @duaNabdauTrans.
+  ///
+  /// In en, this message translates to:
+  /// **'We begin with that with which Allah began.'**
+  String get duaNabdauTrans;
+
+  /// No description provided for @duaZikrSafaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Dhikr on Safa and Marwa'**
+  String get duaZikrSafaTitle;
+
+  /// No description provided for @duaZikrSafaTranslit.
+  ///
+  /// In en, this message translates to:
+  /// **'Allahu Akbar! Allahu Akbar! Allahu Akbar! La ilaha illa-Llahu wahdahu la sharika lahu. Lahul mulku wa lahul hamdu yuhyi wa yumitu wa huwa \'ala kulli shay\'in qodir. La ilaha illa-Llahu wahdahu la sharika lah, anjaza wa\'dahu, wa nasaro \'abdahu, wa hazamal ahzaba wahdahu'**
+  String get duaZikrSafaTranslit;
+
+  /// No description provided for @duaZikrSafaTrans.
+  ///
+  /// In en, this message translates to:
+  /// **'Allah is the Greatest, Allah is the Greatest, Allah is the Greatest! There is no deity except Allah, the One without any partners! To Him belongs the power and to Him belongs all praise. He gives life and causes death, and He has power over all things. There is no deity except Allah, the One without any partners! He fulfilled His promise, aided His servant, and alone defeated the hostile tribes.'**
+  String get duaZikrSafaTrans;
+
+  /// No description provided for @duaRabbiIghfirTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Du\'a during Sa\'i'**
+  String get duaRabbiIghfirTitle;
+
+  /// No description provided for @duaRabbiIghfirTranslit.
+  ///
+  /// In en, this message translates to:
+  /// **'Rabbi-ghfir wa rham, innaka anta a´azzul-akram'**
+  String get duaRabbiIghfirTranslit;
+
+  /// No description provided for @duaRabbiIghfirTrans.
+  ///
+  /// In en, this message translates to:
+  /// **'O Lord, forgive and have mercy, for You are the Most Great and Generous!'**
+  String get duaRabbiIghfirTrans;
+
+  /// No description provided for @duaMasjidExitTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Du\'a upon Exiting the Mosque'**
+  String get duaMasjidExitTitle;
+
+  /// No description provided for @duaMasjidExitTranslit.
+  ///
+  /// In en, this message translates to:
+  /// **'Allahumma solli \'ala Muhammadin wa sallim! Allahumma, inni as\'aluka min fadlika!'**
+  String get duaMasjidExitTranslit;
+
+  /// No description provided for @duaMasjidExitTrans.
+  ///
+  /// In en, this message translates to:
+  /// **'O Allah, bless Muhammad and grant him peace! O Allah, indeed, I ask You for Your Mercy!'**
+  String get duaMasjidExitTrans;
+
+  /// No description provided for @duaNiyyahHajjTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Intention for Hajj'**
+  String get duaNiyyahHajjTitle;
+
+  /// No description provided for @duaNiyyahHajjTrans.
+  ///
+  /// In en, this message translates to:
+  /// **'Here I am before You, O Allah, [performing] Hajj.'**
+  String get duaNiyyahHajjTrans;
+
+  /// No description provided for @duaIhramHajjTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Du\'a of Ihram (Hajj)'**
+  String get duaIhramHajjTitle;
+
+  /// No description provided for @duaArafatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Du\'a on Arafat'**
+  String get duaArafatTitle;
 }
 
 class _AppLocalizationsDelegate

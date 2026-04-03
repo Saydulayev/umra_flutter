@@ -14,6 +14,7 @@ import '../screens/hajj_step_detail_screen.dart';
 import '../screens/useful_info_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/prayer_time_screen.dart';
+import '../screens/dua_book_screen.dart';
 import '../widgets/app_card.dart';
 
 const double _kBottomTabBarReservedSpace = 88.0;
@@ -96,6 +97,16 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         backgroundColor: theme.backgroundColor,
         elevation: 0,
         scrolledUnderElevation: 0,
+        leading: IconButton(
+          icon: Icon(
+            PlatformIcons.book,
+            color: theme.textColor.withValues(alpha: 0.55),
+          ),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const DuaBookScreen()),
+          ),
+        ),
         actions: [
           IconButton(
             icon: Icon(

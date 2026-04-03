@@ -1023,4 +1023,161 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get notificationSettingsLink => 'Pengaturan Notifikasi';
+
+  @override
+  String get duaBookNavTitle => 'Buku Doa';
+
+  @override
+  String get duaCategoryUmrah => 'Umrah';
+
+  @override
+  String get duaCategoryHajj => 'Haji';
+
+  @override
+  String get duaDetailTranslitLabel => 'Transliterasi';
+
+  @override
+  String get duaDetailTransLabel => 'Terjemahan';
+
+  @override
+  String get duaNiyyahUmrahTitle => 'Niat Umrah';
+
+  @override
+  String get duaNiyyahUmrahTranslit => 'Labbayk Allahumma bi \'Umrah.';
+
+  @override
+  String get duaNiyyahUmrahTrans =>
+      'Aku memenuhi panggilan-Mu, ya Allah, [untuk menunaikan] umrah.';
+
+  @override
+  String get duaIhramUmrahTitle => 'Doa Ihram (Umrah)';
+
+  @override
+  String get duaIhramUmrahTranslit =>
+      'Allahumma hadzihil \'Umrata la riyaa-a fiiha wa laa sum\'ah.';
+
+  @override
+  String get duaIhramUmrahTrans =>
+      'Ya Allah, Umrah ini tidak ada unsur riya (pamer) di dalamnya dan tidak pula untuk mencari ketenaran!';
+
+  @override
+  String get duaTalbiyahTitle => 'Talbiyah';
+
+  @override
+  String get duaTalbiyahTranslit =>
+      'Labbayk Allahumma labbayk! Labbayka laa syariika laka labbayk! Innal hamda wan-ni\'mata laka wal-mulk, laa syariika lak.';
+
+  @override
+  String get duaTalbiyahTrans =>
+      'Aku memenuhi panggilan-Mu, ya Allah! Aku memenuhi panggilan-Mu! Tiada sekutu bagi-Mu! Aku memenuhi panggilan-Mu! Sesungguhnya segala puji, nikmat, dan kekuasaan hanya milik-Mu. Tiada sekutu bagi-Mu!';
+
+  @override
+  String get duaMasjidEnterTitle => 'Doa Masuk Masjid';
+
+  @override
+  String get duaMasjidEnterTranslit =>
+      'Allahumma shalli \'alaa Muhammadin wa sallim! Allahummaftah lii abwaaba rahmatik!';
+
+  @override
+  String get duaMasjidEnterTrans =>
+      'Ya Allah, limpahkanlah salawat dan salam kepada Nabi Muhammad! Ya Allah, bukakanlah untukku pintu-pintu rahmat-Mu!';
+
+  @override
+  String get duaConditionTitle => 'Doa Persyaratan';
+
+  @override
+  String get duaConditionTranslit => 'Allahumma mahilli haitsu habastani';
+
+  @override
+  String get duaConditionTrans =>
+      'Ya Allah, tempat bertahallul-ku adalah di mana saja Engkau menahanku.';
+
+  @override
+  String get duaRabbanaTitle => 'Doa Antara Dua Sudut';
+
+  @override
+  String get duaRabbanaTranslit =>
+      'Rabbanaa aatina fid-dunyaa hasanah wa fil-aakhirati hasanah wa qinaa \'adzaaban-naar';
+
+  @override
+  String get duaRabbanaTrans =>
+      'Ya Tuhan kami, berilah kami kebaikan di dunia dan kebaikan di akhirat, serta lindungilah kami dari siksa api neraka!';
+
+  @override
+  String get duaMaqamIbrahimTitle => 'Ayat Maqam Ibrahim';
+
+  @override
+  String get duaMaqamIbrahimTranslit =>
+      'Wat-takhidzu mim-maqaami Ibraahiima mushallaa.';
+
+  @override
+  String get duaMaqamIbrahimTrans =>
+      'Jadikanlah Maqam Ibrahim sebagai tempat shalat. (QS. Al-Baqarah [2]: 125).';
+
+  @override
+  String get duaSafaAyahTitle => 'Ayat Safa dan Marwah';
+
+  @override
+  String get duaSafaAyahTranslit =>
+      'Innaṣ-ṣafā wal-marwata min sya\'ā`irillāh, faman ḥajja l-baita awi\'-tamara falā junāḥa \'alaihi ay-yaṭṭawwafa bihimā, wa man taṭawwa\'a khairan fa innallāha syākirun \'alīm.';
+
+  @override
+  String get duaSafaAyahTrans =>
+      'Sesungguhnya Safa dan Marwah adalah sebagian dari syi\'ar-syi\'ar Allah. (QS. Al-Baqarah [2]: 158)';
+
+  @override
+  String get duaNabdauTitle => 'Kami Memulai dengan Apa yang Dimulai Allah';
+
+  @override
+  String get duaNabdauTranslit => 'Nabda`u bimā bada`allāhu bihi.';
+
+  @override
+  String get duaNabdauTrans =>
+      'Kami memulai dengan apa yang telah dimulai oleh Allah.';
+
+  @override
+  String get duaZikrSafaTitle => 'Dzikir di Safa dan Marwah';
+
+  @override
+  String get duaZikrSafaTranslit =>
+      'Allāhu akbar! Allāhu akbar! Allāhu akbar! Lā ilāha illallāhu waḥdahu lā syarīka lah. Lahul-mulku wa lahul-ḥamdu yuḥyī wa yumītu wa huwa \'alā kulli syai\'in qadīr. Lā ilāha illallāhu waḥdahu lā syarīka lah, anjaza wa\'dah, wa naṣara \'abdah, wa hazamal-aḥzāba waḥdah.';
+
+  @override
+  String get duaZikrSafaTrans =>
+      'Allah Maha Besar, Allah Maha Besar, Allah Maha Besar! Tiada Tuhan selain Allah semata, tiada sekutu bagi-Nya! Dialah yang menepati janji-Nya, menolong hamba-Nya, dan menghancurkan golongan musuh sendirian.';
+
+  @override
+  String get duaRabbiIghfirTitle => 'Doa Saat Sa\'i';
+
+  @override
+  String get duaRabbiIghfirTranslit =>
+      'Rabbighfir warḥam, innaka antal-a\'azzul-akram.';
+
+  @override
+  String get duaRabbiIghfirTrans =>
+      'Ya Rabb, ampunilah dan rahmatilah aku, sesungguhnya Engkaulah Yang Maha Perkasa lagi Maha Mulia.';
+
+  @override
+  String get duaMasjidExitTitle => 'Doa Keluar Masjid';
+
+  @override
+  String get duaMasjidExitTranslit =>
+      'Allāhumma ṣalli \'alā Muḥammadin wa sallim! Allāhumma innī as\'aluka min faḍlik!';
+
+  @override
+  String get duaMasjidExitTrans =>
+      'Ya Allah, limpahkanlah salawat dan salam kepada Nabi Muhammad! Ya Allah, sesungguhnya aku memohon kepada-Mu dari karunia-Mu!';
+
+  @override
+  String get duaNiyyahHajjTitle => 'Niat Haji';
+
+  @override
+  String get duaNiyyahHajjTrans =>
+      'Aku memenuhi panggilan-Mu, ya Allah, [untuk menunaikan] haji.';
+
+  @override
+  String get duaIhramHajjTitle => 'Doa Ihram (Haji)';
+
+  @override
+  String get duaArafatTitle => 'Doa di Arafah';
 }
