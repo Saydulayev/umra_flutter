@@ -213,6 +213,31 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
         StepTitleWidget(text: l10n.hajj_step1_mina_title),
         const SizedBox(height: AppDimensions.paddingLarge),
         StepTextWidget(text: l10n.hajj_step1_mina_text),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
+        const Divider(),
+        const SizedBox(height: AppDimensions.paddingExtraLarge),
+        StepTitleWidget(text: l10n.step1ConditioningHajj),
+        const SizedBox(height: AppDimensions.paddingLarge),
+        SelectableText(
+          l10n.step1ConditioningHajjText,
+          style: fontProvider.getTextStyle(
+            fontSize: 18,
+            color: theme.textColor,
+          ),
+        ),
+        const SizedBox(height: 8),
+        StepArabicSection(
+          arabicText: l10n.step1ConditioningHajjArabic,
+          audioFileName: '5',
+        ),
+        const SizedBox(height: AppDimensions.paddingSmall),
+        SelectableText(
+          l10n.step1IhramText1,
+          style: fontProvider.getTextStyle(
+            fontSize: 18,
+            color: theme.textColor,
+          ),
+        ),
       ],
     );
   }
