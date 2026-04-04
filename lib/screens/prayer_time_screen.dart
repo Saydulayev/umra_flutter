@@ -160,10 +160,6 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     }
   }
 
-  String _cityTitle(AppLocalizations l10n) {
-    return _currentCityKey == 'medina' ? l10n.medina : l10n.mecca;
-  }
-
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -222,7 +218,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                             fit: BoxFit.scaleDown,
                             alignment: Alignment.center,
                             child: Text(
-                              '${_cityTitle(l10n)}  ${_getIslamicDate()} ${_getIslamicYear()}',
+                              '${_getIslamicDate()} ${_getIslamicYear()}',
                               style: GoogleFonts.greatVibes(
                                 fontSize: 36,
                                 color: theme.textColor,
