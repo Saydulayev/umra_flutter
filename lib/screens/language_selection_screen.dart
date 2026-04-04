@@ -1,13 +1,30 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/localization_provider.dart';
 import '../providers/theme_provider.dart';
 import 'home_screen.dart';
 
-class LanguageSelectionScreen extends StatelessWidget {
+// ---------------------------------------------------------------------------
+// LanguageSelectionScreen — welcome / language-picker screen.
+// Mirrors the SwiftUI LanguageSelectionView from the native iOS app:
+//   1. Shimmering "UMRA GUIDE" title (fade-in + slide from top)
+//   2. WelcomeImage in a white card (scale + fade-in)
+//   3. Scrollable language buttons (fade-in + slide from bottom)
+//   4. Optional "↓" chevron when list overflows
+// ---------------------------------------------------------------------------
+
+class LanguageSelectionScreen extends StatefulWidget {
   const LanguageSelectionScreen({super.key});
 
-  final List<Map<String, String>> languages = const [
+  @override
+  State<LanguageSelectionScreen> createState() =>
+      _LanguageSelectionScreenState();
+}
+
+class _LanguageSelectionScreenState extends State<LanguageSelectionScreen>
+    with TickerProviderStateMixin {
+  static const _languages = [
     {'code': 'ru', 'name': 'Русский'},
     {'code': 'en', 'name': 'English'},
     {'code': 'de', 'name': 'Deutsch'},
@@ -16,100 +33,364 @@ class LanguageSelectionScreen extends StatelessWidget {
     {'code': 'id', 'name': 'Bahasa Indonesia'},
   ];
 
+  late final AnimationController _titleCtrl;
+  late final AnimationController _logoCtrl;
+  late final AnimationController _listCtrl;
+
+  late final Animation<double> _titleOpacity;
+  late final Animation<Offset> _titleSlide;
+  late final Animation<double> _logoOpacity;
+  late final Animation<double> _logoScale;
+  late final Animation<double> _listOpacity;
+  late final Animation<Offset> _listSlide;
+
+  @override
+  void initState() {
+    super.initState();
+
+    const spring = Duration(milliseconds: 600);
+
+    _titleCtrl = AnimationController(vsync: this, duration: spring);
+    _logoCtrl  = AnimationController(vsync: this, duration: spring);
+    _listCtrl  = AnimationController(vsync: this, duration: spring);
+
+    final curve = CurvedAnimation(parent: _titleCtrl, curve: Curves.easeOut);
+    _titleOpacity = Tween<double>(begin: 0, end: 1).animate(curve);
+    _titleSlide   = Tween<Offset>(begin: const Offset(0, -0.4), end: Offset.zero)
+        .animate(curve);
+
+    final logoCurve = CurvedAnimation(parent: _logoCtrl, curve: Curves.easeOut);
+    _logoOpacity = Tween<double>(begin: 0, end: 1).animate(logoCurve);
+    _logoScale   = Tween<double>(begin: 0.88, end: 1.0).animate(logoCurve);
+
+    final listCurve = CurvedAnimation(parent: _listCtrl, curve: Curves.easeOut);
+    _listOpacity = Tween<double>(begin: 0, end: 1).animate(listCurve);
+    _listSlide   = Tween<Offset>(begin: const Offset(0, 0.15), end: Offset.zero)
+        .animate(listCurve);
+
+    // Sequential: title → logo → list
+    _titleCtrl.forward().whenComplete(() {
+      _logoCtrl.forward().whenComplete(() {
+        _listCtrl.forward();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _titleCtrl.dispose();
+    _logoCtrl.dispose();
+    _listCtrl.dispose();
+    super.dispose();
+  }
+
+  Future<void> _selectLanguage(String code) async {
+    final lp = Provider.of<LocalizationProvider>(context, listen: false);
+    await lp.setLanguage(code);
+    if (!mounted) return;
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (_) => const HomeScreen()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
-    final localizationProvider = Provider.of<LocalizationProvider>(context);
-    final theme = themeProvider.selectedTheme;
+    final theme = Provider.of<ThemeProvider>(context).selectedTheme;
+    final mq    = MediaQuery.of(context);
+    final screenH = mq.size.height;
+    final screenW = mq.size.width;
+
+    final hPad      = screenW > 500 ? 64.0 : 24.0;
+    final topPad    = (screenH > 800 ? 48.0 : 16.0) + mq.viewPadding.top;
+    final bottomPad = (screenH > 800 ? 32.0 : 12.0) + mq.viewPadding.bottom;
+    final maxLogoW  = (screenW * 0.7).clamp(0.0, 400.0);
+    final maxLogoH  = (screenH * 0.25).clamp(0.0, 400.0);
+    final maxListH  = screenH * 0.36;
 
     return Scaffold(
       backgroundColor: theme.backgroundColor,
-      body: Builder(
-        builder: (context) {
-          final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
-          final topPadding = MediaQuery.of(context).viewPadding.top;
-          return Center(
-            child: SingleChildScrollView(
-              padding: EdgeInsets.only(
-                top: topPadding + 24,
-                bottom: bottomPadding + 24,
-                left: 24,
-                right: 24,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // Логотип или заголовок
-                  Text(
-                    'UMRA',
-                    style: TextStyle(
-                      fontSize: 48,
-                      fontWeight: FontWeight.bold,
-                      color: theme.primaryColor,
-                      fontFamily: 'Lato',
-                    ),
-                  ),
-                  const SizedBox(height: 48),
-                  Text(
-                    'Выберите язык / Select Language',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      color: theme.textColor,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 32),
-                  // Список языков
-                  ...languages.map((lang) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: ElevatedButton(
-                        onPressed: () async {
-                          await localizationProvider.setLanguage(lang['code']!);
-                          if (context.mounted) {
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                builder: (context) => const HomeScreen(),
-                              ),
-                            );
-                          }
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: theme.lightBackgroundColor,
-                          foregroundColor: theme.textColor,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 32,
-                            vertical: 16,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            side: BorderSide(
-                              color: theme.primaryColor.withValues(alpha: 0.3),
-                              width: 2,
-                            ),
-                          ),
-                          elevation: 4,
-                        ),
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: Text(
-                            lang['name']!,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                    );
-                  }),
-                ],
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(hPad, topPad, hPad, bottomPad),
+        child: Column(
+          children: [
+            // 1. Shimmering title
+            FadeTransition(
+              opacity: _titleOpacity,
+              child: SlideTransition(
+                position: _titleSlide,
+                child: _ShimmeringTitle(
+                  textColor: theme.textColor.withValues(alpha: 0.6),
+                ),
               ),
             ),
-          );
-        },
+
+            SizedBox(height: screenH * 0.03),
+
+            // 2. Welcome image
+            FadeTransition(
+              opacity: _logoOpacity,
+              child: ScaleTransition(
+                scale: _logoScale,
+                child: Container(
+                  constraints: BoxConstraints(
+                    maxWidth: maxLogoW,
+                    maxHeight: maxLogoH,
+                  ),
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(24),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.12),
+                        blurRadius: 12,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Image.asset(
+                    'assets/images/welcome_image.png',
+                    fit: BoxFit.contain,
+                    semanticLabel: '',
+                  ),
+                ),
+              ),
+            ),
+
+            SizedBox(height: screenH * 0.02),
+
+            // 3. Scrollable language list
+            Flexible(
+              child: FadeTransition(
+                opacity: _listOpacity,
+                child: SlideTransition(
+                  position: _listSlide,
+                  child: _LanguageList(
+                    languages: _languages,
+                    maxHeight: maxListH,
+                    theme: theme,
+                    onSelect: _selectLanguage,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Shimmering "UMRA GUIDE" title — replicates ShimmeringText.swift
+// ---------------------------------------------------------------------------
+
+class _ShimmeringTitle extends StatefulWidget {
+  final Color textColor;
+  const _ShimmeringTitle({required this.textColor});
+
+  @override
+  State<_ShimmeringTitle> createState() => _ShimmeringTitleState();
+}
+
+class _ShimmeringTitleState extends State<_ShimmeringTitle>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _ctrl;
+  late final Animation<double> _shimmer;
+
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1800),
+    )..repeat();
+    _shimmer = Tween<double>(begin: -1, end: 2).animate(
+      CurvedAnimation(parent: _ctrl, curve: Curves.linear),
+    );
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    const text = 'UMRA GUIDE';
+    final baseStyle = TextStyle(
+      fontSize: 28,
+      fontWeight: FontWeight.bold,
+      fontFamily: 'Lato',
+      color: widget.textColor,
+    );
+
+    return AnimatedBuilder(
+      animation: _shimmer,
+      builder: (context, shimmerValue) {
+        return ShaderMask(
+          blendMode: BlendMode.srcATop,
+          shaderCallback: (bounds) {
+            final t = _shimmer.value;
+            return LinearGradient(
+              begin: Alignment(t - 0.4, -0.5),
+              end: Alignment(t + 0.4, 0.5),
+              colors: const [
+                Colors.transparent,
+                Colors.white,
+                Colors.transparent,
+              ],
+              stops: const [0.0, 0.5, 1.0],
+            ).createShader(bounds);
+          },
+          child: Text(text, style: baseStyle, textAlign: TextAlign.center),
+        );
+      },
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Scrollable language buttons list with optional "↓" chevron
+// ---------------------------------------------------------------------------
+
+class _LanguageList extends StatefulWidget {
+  final List<Map<String, String>> languages;
+  final double maxHeight;
+  final dynamic theme;
+  final void Function(String) onSelect;
+
+  const _LanguageList({
+    required this.languages,
+    required this.maxHeight,
+    required this.theme,
+    required this.onSelect,
+  });
+
+  @override
+  State<_LanguageList> createState() => _LanguageListState();
+}
+
+class _LanguageListState extends State<_LanguageList> {
+  final _scrollCtrl = ScrollController();
+  bool _showChevron = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _checkChevron());
+    _scrollCtrl.addListener(_checkChevron);
+  }
+
+  void _checkChevron() {
+    if (!_scrollCtrl.hasClients) return;
+    final canScroll = _scrollCtrl.position.maxScrollExtent > 0;
+    final atBottom  = _scrollCtrl.position.pixels >=
+        _scrollCtrl.position.maxScrollExtent - 4;
+    final show = canScroll && !atBottom;
+    if (show != _showChevron) setState(() => _showChevron = show);
+  }
+
+  @override
+  void dispose() {
+    _scrollCtrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = widget.theme;
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: widget.maxHeight),
+          child: Scrollbar(
+            thumbVisibility: false,
+            child: ListView.separated(
+              controller: _scrollCtrl,
+              shrinkWrap: true,
+              padding: EdgeInsets.zero,
+              itemCount: widget.languages.length,
+              separatorBuilder: (context, index) => const SizedBox(height: 10),
+              itemBuilder: (_, i) {
+                final lang = widget.languages[i];
+                return _LanguageButton(
+                  name: lang['name']!,
+                  theme: theme,
+                  onTap: () => widget.onSelect(lang['code']!),
+                );
+              },
+            ),
+          ),
+        ),
+
+        // Chevron scroll hint
+        AnimatedOpacity(
+          opacity: _showChevron ? 1.0 : 0.0,
+          duration: const Duration(milliseconds: 300),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: Icon(
+              Icons.keyboard_arrow_down,
+              size: 18,
+              color: theme.textColor.withValues(alpha: 0.4),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Single language button — mirrors LanguageButton.swift
+// ---------------------------------------------------------------------------
+
+class _LanguageButton extends StatelessWidget {
+  final String name;
+  final dynamic theme;
+  final VoidCallback onTap;
+
+  const _LanguageButton({
+    required this.name,
+    required this.theme,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: theme.lightBackgroundColor,
+      borderRadius: BorderRadius.circular(20),
+      elevation: 4,
+      shadowColor: Colors.black.withValues(alpha: 0.15),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(20),
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: theme.borderColor,
+              width: 1.5,
+            ),
+          ),
+          child: Text(
+            name,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.w500,
+              color: theme.textColor,
+              fontFamily: 'Lato',
+            ),
+          ),
+        ),
       ),
     );
   }
