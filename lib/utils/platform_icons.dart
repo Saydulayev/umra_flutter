@@ -20,20 +20,16 @@ class PlatformIcons {
       _isIOS ? CupertinoIcons.arrow_clockwise : Icons.refresh;
   static IconData get rotateRight =>
       _isIOS ? CupertinoIcons.arrow_clockwise : Icons.rotate_right;
-  static IconData get check =>
-      _isIOS ? CupertinoIcons.checkmark : Icons.check;
+  static IconData get check => _isIOS ? CupertinoIcons.checkmark : Icons.check;
   static IconData get checkCircle =>
       _isIOS ? CupertinoIcons.checkmark_circle_fill : Icons.check_circle;
   static IconData get addCircle =>
       _isIOS ? CupertinoIcons.plus_circle_fill : Icons.add_circle;
   static IconData get cancel =>
       _isIOS ? CupertinoIcons.xmark_circle_fill : Icons.cancel;
-  static IconData get close =>
-      _isIOS ? CupertinoIcons.xmark : Icons.close;
-  static IconData get repeat =>
-      _isIOS ? CupertinoIcons.repeat : Icons.repeat;
-  static IconData get pause =>
-      _isIOS ? CupertinoIcons.pause_fill : Icons.pause;
+  static IconData get close => _isIOS ? CupertinoIcons.xmark : Icons.close;
+  static IconData get repeat => _isIOS ? CupertinoIcons.repeat : Icons.repeat;
+  static IconData get pause => _isIOS ? CupertinoIcons.pause_fill : Icons.pause;
   static IconData get playArrow =>
       _isIOS ? CupertinoIcons.play_fill : Icons.play_arrow;
   static IconData get errorOutline =>
@@ -54,12 +50,11 @@ class PlatformIcons {
       _isIOS ? CupertinoIcons.paintbrush : Icons.palette_outlined;
   static IconData get donation =>
       _isIOS ? CupertinoIcons.heart : Icons.paid_outlined;
-  static IconData get copy =>
-      _isIOS ? CupertinoIcons.doc_on_doc : Icons.copy;
+  static IconData get copy => _isIOS ? CupertinoIcons.doc_on_doc : Icons.copy;
   static IconData get walk =>
       _isIOS ? CupertinoIcons.arrow_right_circle : Icons.directions_walk;
   static IconData get expandMore =>
       _isIOS ? CupertinoIcons.chevron_down : Icons.expand_more;
   static IconData get book =>
-      _isIOS ? CupertinoIcons.book : Icons.menu_book_outlined;
+      _isIOS ? CupertinoIcons.book : Icons.auto_stories_outlined;
 }

@@ -19,14 +19,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-  SystemChrome.setSystemUIOverlayStyle(
-    const SystemUiOverlayStyle(
-      statusBarIconBrightness: Brightness.dark,
-      systemNavigationBarIconBrightness: Brightness.dark,
-      systemStatusBarContrastEnforced: false,
-      systemNavigationBarContrastEnforced: false,
-    ),
-  );
 
   await AppUsageTracker().initialize();
   await NotificationService.init();
@@ -66,8 +58,6 @@ class MyApp extends StatelessWidget {
                 theme.isDark ? Brightness.light : Brightness.dark,
             systemNavigationBarIconBrightness:
                 theme.isDark ? Brightness.light : Brightness.dark,
-            systemStatusBarContrastEnforced: false,
-            systemNavigationBarContrastEnforced: false,
           );
 
           return MaterialApp(
