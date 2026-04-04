@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         leading: IconButton(
           icon: Icon(
             PlatformIcons.book,
-            color: theme.textColor.withValues(alpha: 0.55),
+            color: theme.textColor,
           ),
           onPressed: () => Navigator.push(
             context,
@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           IconButton(
             icon: Icon(
               PlatformIcons.clock,
-              color: theme.textColor.withValues(alpha: 0.55),
+              color: theme.textColor,
             ),
             onPressed: () => Navigator.push(
               context,
@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           IconButton(
             icon: Icon(
               PlatformIcons.settings,
-              color: theme.textColor.withValues(alpha: 0.55),
+              color: theme.textColor,
             ),
             onPressed: () => Navigator.push(
               context,
