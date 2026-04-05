@@ -10,10 +10,18 @@ const Color _accentGreen = Color(0xFF10B981);
 
 bool _isLongArabicLine(String s) {
   final trimmed = s.trim();
-  if (trimmed.length < 40) return false;
+  if (trimmed.length < 28) return false;
   final first = trimmed.runes.firstOrNull;
   if (first == null) return false;
-  return (first >= 0x0600 && first <= 0x06FF) || (first >= 0x0750 && first <= 0x077F);
+  if (!((first >= 0x0600 && first <= 0x06FF) || (first >= 0x0750 && first <= 0x077F))) return false;
+  // Reject lines that contain Latin or Cyrillic — those are mixed transliteration lines
+  for (final rune in trimmed.runes) {
+    if ((rune >= 0x0041 && rune <= 0x007A) || // Latin A-z
+        (rune >= 0x0400 && rune <= 0x04FF)) {  // Cyrillic
+      return false;
+    }
+  }
+  return true;
 }
 
 class JanazaPrayerScreen extends StatefulWidget {
@@ -28,11 +36,21 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
   bool _isThirdTakbirExpanded = false;
   bool _isDuaVariationsExpanded = false;
 
+  Widget _buildSectionDivider(AppTheme theme) {
+    return Column(
+      children: [
+        const SizedBox(height: 18),
+        Divider(color: theme.secondaryTextColor.withValues(alpha: 0.25)),
+        const SizedBox(height: 18),
+      ],
+    );
+  }
+
   Widget _buildArabicAwareText(String text, Color color) {
     final lines = text.split('\n').where((l) => l.trim().isNotEmpty).toList();
     final hasArabic = lines.any(_isLongArabicLine);
     if (!hasArabic) {
-      return Text(text, style: TextStyle(fontSize: 17, color: color, height: 1.6));
+      return Text(text, style: TextStyle(fontSize: 17, color: color, height: 1.7));
     }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,16 +58,16 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
         for (int i = 0; i < lines.length; i++) ...[
           if (_isLongArabicLine(lines[i]))
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
+              padding: const EdgeInsets.symmetric(vertical: 18),
               child: ArabicTextWidget(text: lines[i], addHorizontalPadding: false),
             )
           else
             Text(
               lines[i],
-              style: TextStyle(fontSize: 17, color: color, height: 1.6),
+              style: TextStyle(fontSize: 17, color: color, height: 1.7),
             ),
           if (i < lines.length - 1 && !_isLongArabicLine(lines[i]))
-            const SizedBox(height: 6),
+            const SizedBox(height: 8),
         ],
       ],
     );
@@ -77,8 +95,8 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
           final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
           return SingleChildScrollView(
             padding: EdgeInsets.only(
-              top: 16,
-              bottom: bottomPadding + 16,
+              top: 20,
+              bottom: bottomPadding + 24,
               left: 16,
               right: 16,
             ),
@@ -91,7 +109,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                   textColor: theme.textColor,
                   theme: theme,
                 ),
-                Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
+                _buildSectionDivider(theme),
                 _buildTakbirSection(
                   l10n: l10n,
                   title: l10n.firstTakbirTitle,
@@ -100,7 +118,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                   accentColor: _accentGreen,
                   theme: theme,
                 ),
-                Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
+                _buildSectionDivider(theme),
                 _buildTakbirSection(
                   l10n: l10n,
                   title: l10n.secondTakbirTitle,
@@ -117,7 +135,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                   accentColor: _accentGreen,
                   theme: theme,
                 ),
-                Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
+                _buildSectionDivider(theme),
                 _buildTakbirSection(
                   l10n: l10n,
                   title: l10n.thirdTakbirTitle,
@@ -134,7 +152,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                   accentColor: _accentGreen,
                   theme: theme,
                 ),
-                Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
+                _buildSectionDivider(theme),
                 _buildTakbirSection(
                   l10n: l10n,
                   title: l10n.fourthTakbirTitle,
@@ -143,31 +161,26 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                   accentColor: _accentGreen,
                   theme: theme,
                 ),
-                Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
                 if (l10n.fourthTakbirAdditionalInfo.isNotEmpty) ...[
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8, bottom: 8),
-                    child: Text(
-                      l10n.fourthTakbirAdditionalInfo,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: theme.textColor,
-                        height: 1.5,
-                        fontStyle: FontStyle.italic,
-                      ),
+                  _buildSectionDivider(theme),
+                  Text(
+                    l10n.fourthTakbirAdditionalInfo,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: theme.textColor,
+                      height: 1.6,
+                      fontStyle: FontStyle.italic,
                     ),
                   ),
-                  Divider(
-                    color: theme.secondaryTextColor.withValues(alpha: 0.3),
-                  ),
                 ],
+                _buildSectionDivider(theme),
                 _buildSection(
                   title: l10n.taslimTitle,
                   content: l10n.taslimText,
                   textColor: theme.textColor,
                   theme: theme,
                 ),
-                Divider(color: theme.secondaryTextColor.withValues(alpha: 0.3)),
+                _buildSectionDivider(theme),
                 _buildCollapsibleSection(
                   l10n: l10n,
                   title: l10n.duaVariationsTitle,
@@ -207,7 +220,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
             color: color,
           ),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 12),
         _buildArabicAwareText(content, color),
       ],
     );
@@ -289,10 +302,10 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
             color: color,
           ),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 12),
         _buildArabicAwareText(content, color),
         if (isExpandable && expandedContent != null) ...[
-          const SizedBox(height: 8),
+          const SizedBox(height: 12),
           GestureDetector(
             onTap: () => onExpandedChanged?.call(!isExpanded),
             behavior: HitTestBehavior.opaque,
