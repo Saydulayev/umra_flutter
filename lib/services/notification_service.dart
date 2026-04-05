@@ -41,7 +41,11 @@ class NotificationService {
     final android = _plugin.resolvePlatformSpecificImplementation<
         AndroidFlutterLocalNotificationsPlugin>();
     if (android != null) {
-      return await android.requestNotificationsPermission() ?? false;
+      final notifGranted =
+          await android.requestNotificationsPermission() ?? false;
+      // SCHEDULE_EXACT_ALARM requires a separate user grant on Android 12+
+      await android.requestExactAlarmsPermission();
+      return notifGranted;
     }
     final ios = _plugin.resolvePlatformSpecificImplementation<
         IOSFlutterLocalNotificationsPlugin>();
