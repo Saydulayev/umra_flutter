@@ -100,18 +100,19 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen>
     final screenH = mq.size.height;
     final screenW = mq.size.width;
 
-    final hPad      = screenW > 500 ? 64.0 : 24.0;
-    final topPad    = (screenH > 800 ? 48.0 : 16.0) + mq.viewPadding.top;
-    final bottomPad = (screenH > 800 ? 32.0 : 12.0) + mq.viewPadding.bottom;
-    final maxLogoW  = (screenW * 0.7).clamp(0.0, 400.0);
-    final maxLogoH  = (screenH * 0.25).clamp(0.0, 400.0);
-    final maxListH  = screenH * 0.36;
+    final hPad      = screenW > 500 ? 48.0 : 20.0;
+    final topPad    = (screenH > 800 ? 48.0 : 24.0) + mq.viewPadding.top;
+    final bottomPad = (screenH > 800 ? 32.0 : 16.0) + mq.viewPadding.bottom;
+    final cardW     = screenW * 0.72;
+    final cardH     = (screenH * 0.26).clamp(150.0, 260.0);
+    final maxListH  = screenH * 0.30;
 
     return Scaffold(
       backgroundColor: theme.backgroundColor,
       body: Padding(
         padding: EdgeInsets.fromLTRB(hPad, topPad, hPad, bottomPad),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // 1. Shimmering title
             FadeTransition(
@@ -124,52 +125,53 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen>
               ),
             ),
 
-            SizedBox(height: screenH * 0.03),
+            SizedBox(height: screenH * 0.05),
 
-            // 2. Welcome image
+            // 2. Welcome image — centered card
             FadeTransition(
               opacity: _logoOpacity,
               child: ScaleTransition(
                 scale: _logoScale,
                 child: Container(
-                  constraints: BoxConstraints(
-                    maxWidth: maxLogoW,
-                    maxHeight: maxLogoH,
-                  ),
-                  padding: const EdgeInsets.all(16),
+                  width: cardW,
+                  height: cardH,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(24),
+                    borderRadius: BorderRadius.circular(28),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.12),
-                        blurRadius: 12,
-                        offset: const Offset(0, 4),
+                        color: Colors.black.withValues(alpha: 0.10),
+                        blurRadius: 20,
+                        offset: const Offset(0, 6),
                       ),
                     ],
                   ),
-                  child: Image.asset(
-                    'assets/images/welcome_image.png',
-                    fit: BoxFit.contain,
-                    semanticLabel: '',
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Image.asset(
+                      'assets/images/welcome_image.png',
+                      fit: BoxFit.contain,
+                      semanticLabel: '',
+                    ),
                   ),
                 ),
               ),
             ),
 
-            SizedBox(height: screenH * 0.02),
-
-            // 3. Scrollable language list
-            Flexible(
-              child: FadeTransition(
-                opacity: _listOpacity,
-                child: SlideTransition(
-                  position: _listSlide,
-                  child: _LanguageList(
-                    languages: _languages,
-                    maxHeight: maxListH,
-                    theme: theme,
-                    onSelect: _selectLanguage,
+            // 3. Scrollable language list — pinned to bottom
+            Expanded(
+              child: Align(
+                alignment: const Alignment(0, 0.5),
+                child: FadeTransition(
+                  opacity: _listOpacity,
+                  child: SlideTransition(
+                    position: _listSlide,
+                    child: _LanguageList(
+                      languages: _languages,
+                      maxHeight: maxListH,
+                      theme: theme,
+                      onSelect: _selectLanguage,
+                    ),
                   ),
                 ),
               ),
@@ -220,9 +222,10 @@ class _ShimmeringTitleState extends State<_ShimmeringTitle>
   Widget build(BuildContext context) {
     const text = 'UMRA GUIDE';
     final baseStyle = TextStyle(
-      fontSize: 28,
-      fontWeight: FontWeight.bold,
+      fontSize: 38,
+      fontWeight: FontWeight.w900,
       fontFamily: 'Lato',
+      letterSpacing: 2.0,
       color: widget.textColor,
     );
 
@@ -312,9 +315,9 @@ class _LanguageListState extends State<_LanguageList> {
             child: ListView.separated(
               controller: _scrollCtrl,
               shrinkWrap: true,
-              padding: EdgeInsets.zero,
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               itemCount: widget.languages.length,
-              separatorBuilder: (context, index) => const SizedBox(height: 10),
+              separatorBuilder: (context, index) => const SizedBox(height: 12),
               itemBuilder: (_, i) {
                 final lang = widget.languages[i];
                 return _LanguageButton(
@@ -364,20 +367,20 @@ class _LanguageButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: theme.lightBackgroundColor,
-      borderRadius: BorderRadius.circular(20),
-      elevation: 4,
-      shadowColor: Colors.black.withValues(alpha: 0.15),
+      borderRadius: BorderRadius.circular(22),
+      elevation: 3,
+      shadowColor: theme.cardShadowColor,
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(22),
         child: Container(
           width: double.infinity,
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+          padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 8),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(22),
             border: Border.all(
               color: theme.borderColor,
-              width: 1.5,
+              width: 1.2,
             ),
           ),
           child: Text(
