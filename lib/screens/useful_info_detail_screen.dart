@@ -78,10 +78,10 @@ Widget _buildFormattedContent(String content, Color textColor, BuildContext cont
           child: block.isHeading
               ? Text(
                   block.text,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
-                    color: _accentGreen,
+                    color: textColor,
                   ),
                 )
               : _buildBodyBlock(block.text, textColor, context),
