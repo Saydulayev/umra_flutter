@@ -274,22 +274,6 @@ class _PlayerWidgetState extends State<PlayerWidget> {
             activeColor: theme.primaryColor,
             inactiveColor: theme.primaryColor.withValues(alpha: 0.3),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  _formatDuration(_position),
-                  style: TextStyle(color: theme.textColor),
-                ),
-                Text(
-                  _formatDuration(_duration),
-                  style: TextStyle(color: theme.textColor),
-                ),
-              ],
-            ),
-          ),
         ],
       ),
     );
