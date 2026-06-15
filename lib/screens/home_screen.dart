@@ -15,6 +15,7 @@ import '../screens/useful_info_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/prayer_time_screen.dart';
 import '../screens/dua_book_screen.dart';
+import '../utils/responsive_metrics.dart';
 import '../widgets/app_card.dart';
 
 const double _kBottomTabBarReservedSpace = 88.0;
@@ -98,10 +99,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         elevation: 0,
         scrolledUnderElevation: 0,
         leading: IconButton(
-          icon: Icon(
-            PlatformIcons.book,
-            color: theme.textColor,
-          ),
+          icon: Icon(PlatformIcons.book, color: theme.textColor),
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(builder: (_) => const DuaBookScreen()),
@@ -109,20 +107,14 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         ),
         actions: [
           IconButton(
-            icon: Icon(
-              PlatformIcons.clock,
-              color: theme.textColor,
-            ),
+            icon: Icon(PlatformIcons.clock, color: theme.textColor),
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const PrayerTimeScreen()),
             ),
           ),
           IconButton(
-            icon: Icon(
-              PlatformIcons.settings,
-              color: theme.textColor,
-            ),
+            icon: Icon(PlatformIcons.settings, color: theme.textColor),
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const SettingsScreen()),
@@ -454,16 +446,21 @@ class _StepRowItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final metrics = ResponsiveMetrics.of(context);
+
     return Material(
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+          padding: EdgeInsets.symmetric(
+            horizontal: metrics.homeRowHorizontalPadding,
+            vertical: metrics.homeRowVerticalPadding,
+          ),
           child: Row(
             children: [
               badge,
-              const SizedBox(width: 16),
+              SizedBox(width: metrics.homeRowGap),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -473,6 +470,8 @@ class _StepRowItem extends StatelessWidget {
                     if (stepLabel != null) ...[
                       Text(
                         stepLabel!,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w500,
@@ -484,6 +483,8 @@ class _StepRowItem extends StatelessWidget {
                     ],
                     Text(
                       title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -494,6 +495,8 @@ class _StepRowItem extends StatelessWidget {
                       const SizedBox(height: 2),
                       Text(
                         subtitle!,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 13,
                           color: theme.textColor.withValues(alpha: 0.45),
@@ -524,18 +527,24 @@ class _StepBadge extends StatelessWidget {
 
   const _StepBadge({required this.iconText, required this.theme});
 
-  double get _fontSize {
+  double _fontSize(double badgeSize) {
     final longest = iconText.split('\n').map((l) => l.length).reduce(max);
-    if (longest > 6) return 8.0;
-    if (longest > 4) return 9.0;
-    return 10.0;
+    if (longest > 6) {
+      return (badgeSize * 0.14).clamp(7.5, 9.0).toDouble();
+    }
+    if (longest > 4) {
+      return (badgeSize * 0.16).clamp(8.0, 10.0).toDouble();
+    }
+    return (badgeSize * 0.18).clamp(9.0, 11.0).toDouble();
   }
 
   @override
   Widget build(BuildContext context) {
+    final badgeSize = ResponsiveMetrics.of(context).homeBadgeSize;
+
     return Container(
-      width: 56,
-      height: 56,
+      width: badgeSize,
+      height: badgeSize,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: theme.primaryColor,
@@ -551,7 +560,7 @@ class _StepBadge extends StatelessWidget {
         child: Text(
           iconText,
           style: TextStyle(
-            fontSize: _fontSize,
+            fontSize: _fontSize(badgeSize),
             fontWeight: FontWeight.bold,
             color: Colors.black,
             height: 1.2,
@@ -573,9 +582,11 @@ class _InfoBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final badgeSize = ResponsiveMetrics.of(context).homeBadgeSize;
+
     return Container(
-      width: 56,
-      height: 56,
+      width: badgeSize,
+      height: badgeSize,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: theme.primaryColor,
@@ -590,7 +601,7 @@ class _InfoBadge extends StatelessWidget {
       child: Icon(
         PlatformIcons.info,
         color: Colors.black,
-        size: 24,
+        size: badgeSize * 0.43,
       ),
     );
   }
@@ -615,8 +626,7 @@ class _BottomTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final barWidth = min(screenWidth - 40, 182.0);
+    final barWidth = ResponsiveMetrics.of(context).bottomTabBarWidth;
 
     return SafeArea(
       top: false,

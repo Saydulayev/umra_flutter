@@ -13,6 +13,7 @@ import '../widgets/app_card.dart';
 import '../widgets/notification_settings_sheet.dart';
 import '../constants/app_constants.dart';
 import '../constants/review_config.dart';
+import '../utils/responsive_metrics.dart';
 import 'donation_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -312,9 +313,9 @@ class SettingsScreen extends StatelessWidget {
     required AppTheme theme,
     Widget? trailing,
   }) {
-    final isTablet = MediaQuery.of(context).size.shortestSide >= 600;
-    final iconContainerSize = isTablet ? 46.0 : 38.0;
-    final iconSize = isTablet ? 22.0 : 18.0;
+    final metrics = ResponsiveMetrics.of(context);
+    final iconContainerSize = metrics.isTablet ? 46.0 : 38.0;
+    final iconSize = metrics.isTablet ? 22.0 : 18.0;
 
     return InkWell(
       onTap: onTap,
@@ -344,7 +345,15 @@ class SettingsScreen extends StatelessWidget {
                 ),
               ),
             ),
-            if (trailing != null) ...[trailing, const SizedBox(width: 6)],
+            if (trailing != null) ...[
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: metrics.settingsTrailingMaxWidth,
+                ),
+                child: trailing,
+              ),
+              const SizedBox(width: 6),
+            ],
             Icon(
               PlatformIcons.chevronRight,
               color: theme.textColor.withValues(alpha: 0.45),
@@ -368,6 +377,8 @@ class SettingsScreen extends StatelessWidget {
     final languageName = _getLanguageName(locale.languageCode);
     return Text(
       languageName,
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
       style: TextStyle(fontSize: 16, color: theme.secondaryTextColor),
     );
   }
@@ -405,9 +416,13 @@ class SettingsScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 8),
-        Text(
-          themeName,
-          style: TextStyle(fontSize: 16, color: theme.secondaryTextColor),
+        Flexible(
+          child: Text(
+            themeName,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(fontSize: 16, color: theme.secondaryTextColor),
+          ),
         ),
       ],
     );
