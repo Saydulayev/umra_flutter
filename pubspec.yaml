@@ -17,7 +17,7 @@ dependencies:
   provider: ^6.1.1
   
   # Audio Playback
-  just_audio: ^0.10.4
+  just_audio: ^0.9.42
   audio_service: ^0.18.18
   
   # Prayer Times

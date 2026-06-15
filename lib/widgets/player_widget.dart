@@ -92,28 +92,27 @@ class _PlayerWidgetState extends State<PlayerWidget> {
         }
       });
     } catch (e) {
-      if (mounted) {
-        setState(() {
-          _isLoading = false;
-        });
-        // Показываем ошибку пользователю
-        final l10n = AppLocalizations.of(context);
-        if (l10n != null && mounted) {
-          final themeProvider = Provider.of<ThemeProvider>(
-            context,
-            listen: false,
-          );
-          final theme = themeProvider.selectedTheme;
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('${l10n.audioLoadError}: ${e.toString()}'),
-              duration: const Duration(seconds: 3),
-              backgroundColor: theme.errorColor,
-            ),
-          );
-        }
-      }
       debugPrint('Error initializing audio: $e');
+      if (!mounted) return;
+
+      // Захватываем всё из context синхронно, пока виджет ещё активен
+      final messenger = ScaffoldMessenger.of(context);
+      final l10n = AppLocalizations.of(context);
+      final theme = Provider.of<ThemeProvider>(context, listen: false).selectedTheme;
+
+      setState(() {
+        _isLoading = false;
+      });
+
+      if (l10n != null) {
+        messenger.showSnackBar(
+          SnackBar(
+            content: Text('${l10n.audioLoadError}: ${e.toString()}'),
+            duration: const Duration(seconds: 3),
+            backgroundColor: theme.errorColor,
+          ),
+        );
+      }
     }
   }
 
