@@ -16,7 +16,7 @@ class StepTitleWidget extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final theme = themeProvider.selectedTheme;
 
-    return SelectableText(
+    return Text(
       text.trim(),
       style: fontProvider.getTextStyle(
         fontSize: AppDimensions.fontSizeLarge,

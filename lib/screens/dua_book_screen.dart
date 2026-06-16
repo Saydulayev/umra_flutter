@@ -601,7 +601,7 @@ class _InfoCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 6),
-                SelectableText(
+                Text(
                   body,
                   style: TextStyle(
                     fontSize: 15,

@@ -160,7 +160,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           audioFileName: '1',
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step1TurnToQiblah,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -180,7 +180,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           audioFileName: '3',
         ),
         const SizedBox(height: AppDimensions.paddingSmall),
-        SelectableText(
+        Text(
           l10n.step1Labbayka,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -188,7 +188,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step1EnteringSacredMosque,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -201,7 +201,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           audioFileName: '4',
         ),
         const SizedBox(height: AppDimensions.paddingSmall),
-        SelectableText(
+        Text(
           l10n.step1EnteringSacredMosqueDua,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -211,7 +211,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         const SizedBox(height: AppDimensions.paddingExtraLarge),
         StepTitleWidget(text: l10n.step1ConditioningHajj),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step1ConditioningHajjText,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -224,7 +224,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           audioFileName: '5',
         ),
         const SizedBox(height: AppDimensions.paddingSmall),
-        SelectableText(
+        Text(
           l10n.step1IhramText1,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -234,7 +234,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         const SizedBox(height: AppDimensions.paddingExtraLarge),
         StepTitleWidget(text: l10n.step1UmrahForParents),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step1UmrahForParentsExplanation,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -245,7 +245,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         ArabicTextWidget(text: l10n.step1UmrahForFatherArabic),
         if (l10n.step1UmrahForFather.isNotEmpty) ...[
           const SizedBox(height: 8),
-          SelectableText(
+          Text(
             l10n.step1UmrahForFather,
             style: fontProvider.getTextStyle(
               fontSize: 18,
@@ -257,7 +257,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         ArabicTextWidget(text: l10n.step1UmrahForMotherArabic),
         if (l10n.step1UmrahForMother.isNotEmpty) ...[
           const SizedBox(height: 8),
-          SelectableText(
+          Text(
             l10n.step1UmrahForMother,
             style: fontProvider.getTextStyle(
               fontSize: 18,
@@ -269,7 +269,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         ArabicTextWidget(text: l10n.step1UmrahForOtherArabic),
         if (l10n.step1UmrahForOther.isNotEmpty) ...[
           const SizedBox(height: 8),
-          SelectableText(
+          Text(
             l10n.step1UmrahForOther,
             style: fontProvider.getTextStyle(
               fontSize: 18,
@@ -291,7 +291,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
       children: [
         StepTitleWidget(text: l10n.step2KaabaText1),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step2KaabaText2,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -304,7 +304,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           audioFileName: '6',
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step2KaabaText3,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -325,7 +325,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           icon: PlatformIcons.rotateRight,
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step2KaabaText4,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -346,7 +346,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
       children: [
         StepTitleWidget(text: l10n.step3PrayerAfterTawaf),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step3CompletedSevenCircuits,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -359,7 +359,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           audioFileName: '13',
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step3PlaceOfStanding,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -380,7 +380,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
       children: [
         StepTitleWidget(text: l10n.step4DrinkingZamzam),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step4ZamzamText,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -401,7 +401,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
       children: [
         StepTitleWidget(text: l10n.step5ReturnToBlackStone),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step5ReturnReciteTakbir,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -409,7 +409,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           ),
         ),
         const SizedBox(height: 32),
-        SelectableText(
+        Text(
           l10n.step5AllahIsGreat,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -435,7 +435,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
       children: [
         StepTitleWidget(text: l10n.step6SafaAndMarwa),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step6HeadTowardsSafa,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -448,7 +448,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           audioFileName: '8',
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step6SurahBaqarahVerse,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -461,7 +461,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           audioFileName: '9',
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step6WeBegin,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -469,7 +469,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           ),
         ),
         const SizedBox(height: 8),
-        SelectableText(
+        Text(
           l10n.step6WeBeginText,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -490,7 +490,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           icon: PlatformIcons.walk,
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step6RemembranceText,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -503,7 +503,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           audioFileName: '11',
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step6DuasDuringSaiText,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -516,7 +516,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           audioFileName: '12',
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step6ExitingSacredMosqueText,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -537,7 +537,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
       children: [
         StepTitleWidget(text: l10n.step7ShavingHead),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step7MenShortenHair,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -545,7 +545,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        SelectableText(
+        Text(
           l10n.step7DuaAtEnd,
           style: fontProvider.getTextStyle(
             fontSize: 18,
@@ -557,7 +557,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
   }
 
   Widget _buildDefaultContent(AppTheme theme, FontProvider fontProvider) {
-    return SelectableText(
+    return Text(
       'Content for ${widget.step.titleKey}',
       style: fontProvider.getTextStyle(fontSize: 18, color: theme.textColor),
     );
