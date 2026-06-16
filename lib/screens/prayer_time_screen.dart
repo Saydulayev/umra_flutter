@@ -430,7 +430,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     required Future<void> Function(String) onCityChanged,
   }) {
     final activeBg = theme.primaryColor;
-    final activeText = Colors.white;
+    final activeText = theme.isDark ? Colors.black : Colors.white;
     final inactiveText = theme.textColor.withValues(alpha: 0.6);
 
     return AppCard(
