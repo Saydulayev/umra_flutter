@@ -269,8 +269,11 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                               alignment: Alignment.center,
                               child: Text(
                                 '${_getIslamicDate()} ${_getIslamicYear()}',
-                                style: GoogleFonts.greatVibes(
-                                  fontSize: 36,
+                                textDirection: TextDirection.ltr,
+                                style: GoogleFonts.cinzel(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 1.2,
                                   color: theme.textColor,
                                 ),
                                 textAlign: TextAlign.center,
