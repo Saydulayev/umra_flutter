@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math';
 import 'dart:ui' show ImageFilter;
 import 'package:flutter/material.dart';
@@ -28,7 +27,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
-  Timer? _reviewCheckTimer;
   bool _isCheckingReview = false;
   int _selectedTab = 0;
 
@@ -36,24 +34,23 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    // Одноразовая проверка при открытии экрана с небольшой задержкой,
+    // чтобы не блокировать первый рендер.
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _checkAndShowReviewDialog();
-      _reviewCheckTimer = Timer.periodic(const Duration(seconds: 5), (_) {
-        _checkAndShowReviewDialog();
-      });
+      Future.delayed(const Duration(seconds: 2), _checkAndShowReviewDialog);
     });
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
-    _reviewCheckTimer?.cancel();
     super.dispose();
   }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
+    // Проверяем при возвращении из фона — подходящий нейтральный момент.
     if (state == AppLifecycleState.resumed) _checkAndShowReviewDialog();
   }
 
@@ -63,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       context,
       listen: false,
     );
-    if (prefsProvider.isShowingDialog) return;
+    if (prefsProvider.isShowingDialog || prefsProvider.hasRatedApp) return;
 
     _isCheckingReview = true;
     try {
@@ -71,15 +68,9 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       if (prefsProvider.hasShownReviewDialog &&
           !prefsProvider.hasRatedApp &&
           !prefsProvider.isShowingDialog) {
-        _reviewCheckTimer?.cancel();
         await Future.delayed(const Duration(milliseconds: 500));
         if (mounted && !prefsProvider.isShowingDialog) {
           await prefsProvider.showReviewDialog(context);
-        }
-        if (mounted && !prefsProvider.hasRatedApp) {
-          _reviewCheckTimer = Timer.periodic(const Duration(seconds: 5), (_) {
-            _checkAndShowReviewDialog();
-          });
         }
       }
     } finally {
