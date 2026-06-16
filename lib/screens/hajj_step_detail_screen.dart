@@ -147,14 +147,16 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
           arabicText: l10n.hajj_step1_ihram_arabic,
           audioFileName: '14',
         ),
-        const SizedBox(height: AppDimensions.paddingSmall),
-        SelectableText(
-          l10n.hajj_step1_ihram_transliteration,
-          style: fontProvider.getTextStyle(
-            fontSize: 18,
-            color: theme.textColor,
+        if (l10n.hajj_step1_ihram_transliteration.isNotEmpty) ...[
+          const SizedBox(height: AppDimensions.paddingSmall),
+          SelectableText(
+            l10n.hajj_step1_ihram_transliteration,
+            style: fontProvider.getTextStyle(
+              fontSize: 18,
+              color: theme.textColor,
+            ),
           ),
-        ),
+        ],
         const SizedBox(height: AppDimensions.paddingSmall),
         SelectableText(
           l10n.hajj_step1_ihram_translation,
@@ -168,14 +170,16 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
           arabicText: l10n.hajj_step1_ihram_dua_arabic,
           audioFileName: '15',
         ),
-        const SizedBox(height: AppDimensions.paddingSmall),
-        SelectableText(
-          l10n.hajj_step1_ihram_dua_transliteration,
-          style: fontProvider.getTextStyle(
-            fontSize: 18,
-            color: theme.textColor,
+        if (l10n.hajj_step1_ihram_dua_transliteration.isNotEmpty) ...[
+          const SizedBox(height: AppDimensions.paddingSmall),
+          SelectableText(
+            l10n.hajj_step1_ihram_dua_transliteration,
+            style: fontProvider.getTextStyle(
+              fontSize: 18,
+              color: theme.textColor,
+            ),
           ),
-        ),
+        ],
         const SizedBox(height: AppDimensions.paddingSmall),
         SelectableText(
           l10n.hajj_step1_ihram_dua_translation,
@@ -193,14 +197,16 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
           arabicText: l10n.hajj_step1_talbiyah_arabic,
           audioFileName: '3',
         ),
-        const SizedBox(height: AppDimensions.paddingSmall),
-        SelectableText(
-          l10n.hajj_step1_talbiyah_transliteration,
-          style: fontProvider.getTextStyle(
-            fontSize: 18,
-            color: theme.textColor,
+        if (l10n.hajj_step1_talbiyah_transliteration.isNotEmpty) ...[
+          const SizedBox(height: AppDimensions.paddingSmall),
+          SelectableText(
+            l10n.hajj_step1_talbiyah_transliteration,
+            style: fontProvider.getTextStyle(
+              fontSize: 18,
+              color: theme.textColor,
+            ),
           ),
-        ),
+        ],
         const SizedBox(height: AppDimensions.paddingSmall),
         SelectableText(
           l10n.hajj_step1_talbiyah_translation,
@@ -262,14 +268,16 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
           arabicText: l10n.hajj_step2_dua_arabic,
           audioFileName: '16',
         ),
-        const SizedBox(height: AppDimensions.paddingSmall),
-        SelectableText(
-          l10n.hajj_step2_dua_transliteration,
-          style: fontProvider.getTextStyle(
-            fontSize: 18,
-            color: theme.textColor,
+        if (l10n.hajj_step2_dua_transliteration.isNotEmpty) ...[
+          const SizedBox(height: AppDimensions.paddingSmall),
+          SelectableText(
+            l10n.hajj_step2_dua_transliteration,
+            style: fontProvider.getTextStyle(
+              fontSize: 18,
+              color: theme.textColor,
+            ),
           ),
-        ),
+        ],
         const SizedBox(height: AppDimensions.paddingSmall),
         SelectableText(
           l10n.hajj_step2_dua_translation,

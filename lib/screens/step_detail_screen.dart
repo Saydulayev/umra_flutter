@@ -243,34 +243,40 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
         ArabicTextWidget(text: l10n.step1UmrahForFatherArabic),
-        const SizedBox(height: 8),
-        SelectableText(
-          l10n.step1UmrahForFather,
-          style: fontProvider.getTextStyle(
-            fontSize: 18,
-            color: theme.textColor,
+        if (l10n.step1UmrahForFather.isNotEmpty) ...[
+          const SizedBox(height: 8),
+          SelectableText(
+            l10n.step1UmrahForFather,
+            style: fontProvider.getTextStyle(
+              fontSize: 18,
+              color: theme.textColor,
+            ),
           ),
-        ),
+        ],
         const SizedBox(height: AppDimensions.paddingLarge),
         ArabicTextWidget(text: l10n.step1UmrahForMotherArabic),
-        const SizedBox(height: 8),
-        SelectableText(
-          l10n.step1UmrahForMother,
-          style: fontProvider.getTextStyle(
-            fontSize: 18,
-            color: theme.textColor,
+        if (l10n.step1UmrahForMother.isNotEmpty) ...[
+          const SizedBox(height: 8),
+          SelectableText(
+            l10n.step1UmrahForMother,
+            style: fontProvider.getTextStyle(
+              fontSize: 18,
+              color: theme.textColor,
+            ),
           ),
-        ),
+        ],
         const SizedBox(height: AppDimensions.paddingLarge),
         ArabicTextWidget(text: l10n.step1UmrahForOtherArabic),
-        const SizedBox(height: 8),
-        SelectableText(
-          l10n.step1UmrahForOther,
-          style: fontProvider.getTextStyle(
-            fontSize: 18,
-            color: theme.textColor,
+        if (l10n.step1UmrahForOther.isNotEmpty) ...[
+          const SizedBox(height: 8),
+          SelectableText(
+            l10n.step1UmrahForOther,
+            style: fontProvider.getTextStyle(
+              fontSize: 18,
+              color: theme.textColor,
+            ),
           ),
-        ),
+        ],
       ],
     );
   }
