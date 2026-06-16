@@ -199,14 +199,12 @@ class _UmraTabBody extends StatelessWidget {
             padding: _padding,
             children: List.generate(_numberedSteps.length, (i) {
               final step = _numberedSteps[i];
-              final stepLabel = '${l10n.stepPrefix} ${step.stepNumber}'
-                  .toUpperCase();
               return _StepRowItem(
                 key: ValueKey(step.id),
-                badge: _StepBadge(iconText: step.iconText, theme: theme),
+                badge: _StepBadge(stepNumber: step.stepNumber, theme: theme),
                 title: _localizedTitle(step.titleKey),
                 subtitle: null,
-                stepLabel: stepLabel,
+                stepLabel: step.iconText.replaceAll('\n', ' '),
                 theme: theme,
                 onTap: () => Navigator.push(
                   context,
@@ -315,16 +313,14 @@ class _HajjTabBody extends StatelessWidget {
             padding: _padding,
             children: List.generate(steps.length, (i) {
               final step = steps[i];
-              final stepLabel = '${l10n.stepPrefix} ${step.stepNumber}'
-                  .toUpperCase();
               return _StepRowItem(
                 key: ValueKey(step.id),
-                badge: _StepBadge(iconText: step.iconText, theme: theme),
+                badge: _StepBadge(stepNumber: step.stepNumber, theme: theme),
                 title: _localizedTitle(step.titleKey),
                 subtitle: step.subtitleKey != null
                     ? _localizedSubtitle(step.subtitleKey!)
                     : null,
-                stepLabel: stepLabel,
+                stepLabel: step.iconText.replaceAll('\n', ' '),
                 theme: theme,
                 onTap: () => Navigator.push(
                   context,
@@ -522,21 +518,10 @@ class _StepRowItem extends StatelessWidget {
 // ─── Step badge circle ────────────────────────────────────────────────────────
 
 class _StepBadge extends StatelessWidget {
-  final String iconText;
+  final int stepNumber;
   final AppTheme theme;
 
-  const _StepBadge({required this.iconText, required this.theme});
-
-  double _fontSize(double badgeSize) {
-    final longest = iconText.split('\n').map((l) => l.length).reduce(max);
-    if (longest > 6) {
-      return (badgeSize * 0.14).clamp(7.5, 9.0).toDouble();
-    }
-    if (longest > 4) {
-      return (badgeSize * 0.16).clamp(8.0, 10.0).toDouble();
-    }
-    return (badgeSize * 0.18).clamp(9.0, 11.0).toDouble();
-  }
+  const _StepBadge({required this.stepNumber, required this.theme});
 
   @override
   Widget build(BuildContext context) {
@@ -558,16 +543,14 @@ class _StepBadge extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          iconText,
+          '$stepNumber',
           style: TextStyle(
-            fontSize: _fontSize(badgeSize),
+            fontSize: (badgeSize * 0.40).clamp(20.0, 26.0),
             fontWeight: FontWeight.bold,
-            color: Colors.black,
-            height: 1.2,
-            letterSpacing: -0.3,
+            color: theme.isDark ? Colors.black : Colors.white,
+            height: 1.0,
           ),
           textAlign: TextAlign.center,
-          maxLines: 2,
         ),
       ),
     );
@@ -600,7 +583,7 @@ class _InfoBadge extends StatelessWidget {
       ),
       child: Icon(
         PlatformIcons.info,
-        color: Colors.black,
+        color: theme.isDark ? Colors.black : Colors.white,
         size: badgeSize * 0.43,
       ),
     );

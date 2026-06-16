@@ -188,10 +188,10 @@ class _CategoryRow extends StatelessWidget {
                 child: Center(
                   child: Text(
                     category.id == 'umrah' ? 'U' : 'H',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: theme.isDark ? Colors.black : Colors.white,
                       height: 1.2,
                       letterSpacing: -0.3,
                     ),
