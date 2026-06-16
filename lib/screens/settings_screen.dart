@@ -397,6 +397,8 @@ class SettingsScreen extends StatelessWidget {
         return 'Türkçe';
       case 'id':
         return 'Bahasa Indonesia';
+      case 'ar':
+        return 'العربية';
       default:
         return code;
     }
@@ -451,6 +453,7 @@ class SettingsScreen extends StatelessWidget {
       {'code': 'fr', 'name': 'Français'},
       {'code': 'tr', 'name': 'Türkçe'},
       {'code': 'id', 'name': 'Bahasa Indonesia'},
+      {'code': 'ar', 'name': 'العربية'},
     ];
 
     showDialog(

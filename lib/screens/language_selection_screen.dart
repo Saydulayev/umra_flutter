@@ -32,6 +32,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen>
     {'code': 'fr', 'name': 'Français'},
     {'code': 'tr', 'name': 'Türkçe'},
     {'code': 'id', 'name': 'Bahasa Indonesia'},
+    {'code': 'ar', 'name': 'العربية'},
   ];
 
   late final AnimationController _titleCtrl;
