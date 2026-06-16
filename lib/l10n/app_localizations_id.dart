@@ -759,6 +759,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get prayerTimeIn => 'dalam';
 
   @override
+  String get prayerTimesTitle => 'Waktu Shalat';
+
+  @override
+  String get retry => 'Coba lagi';
+
+  @override
   String get prayerTimeLoadError =>
       'Gagal memuat waktu shalat. Silakan coba lagi nanti.';
 

@@ -218,6 +218,8 @@
   "isha": "العشاء",
   "qiyam": "القيام",
   "prayerTimeIn": "بعد",
+  "prayerTimesTitle": "أوقات الصلاة",
+  "retry": "إعادة المحاولة",
   "prayerTimeLoadError": "فشل تحميل أوقات الصلاة. يرجى المحاولة لاحقًا.",
   "hajjTarwiyahTitle": "يوم التروية",
   "hajjTarwiyahSubtitle": "8 ذو الحجة",

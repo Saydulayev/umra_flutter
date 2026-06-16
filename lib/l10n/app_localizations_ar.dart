@@ -726,6 +726,12 @@ class AppLocalizationsAr extends AppLocalizations {
   String get prayerTimeIn => 'بعد';
 
   @override
+  String get prayerTimesTitle => 'أوقات الصلاة';
+
+  @override
+  String get retry => 'إعادة المحاولة';
+
+  @override
   String get prayerTimeLoadError =>
       'فشل تحميل أوقات الصلاة. يرجى المحاولة لاحقًا.';
 

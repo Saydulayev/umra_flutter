@@ -764,6 +764,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get prayerTimeIn => 'in';
 
   @override
+  String get prayerTimesTitle => 'Gebetszeiten';
+
+  @override
+  String get retry => 'Erneut versuchen';
+
+  @override
   String get prayerTimeLoadError =>
       'Gebetszeiten konnten nicht geladen werden. Bitte versuchen Sie es später erneut.';
 

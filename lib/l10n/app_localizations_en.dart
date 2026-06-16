@@ -760,6 +760,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get prayerTimeIn => 'in';
 
   @override
+  String get prayerTimesTitle => 'Prayer Times';
+
+  @override
+  String get retry => 'Try again';
+
+  @override
   String get prayerTimeLoadError =>
       'Failed to load prayer times. Please try again later.';
 

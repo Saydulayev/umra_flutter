@@ -755,6 +755,12 @@ class AppLocalizationsTr extends AppLocalizations {
   String get prayerTimeIn => 'içinde';
 
   @override
+  String get prayerTimesTitle => 'Namaz Vakitleri';
+
+  @override
+  String get retry => 'Tekrar dene';
+
+  @override
   String get prayerTimeLoadError =>
       'Namaz vakitleri yüklenemedi. Lütfen daha sonra tekrar deneyin.';
 

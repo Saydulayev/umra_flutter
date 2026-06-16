@@ -218,6 +218,8 @@
   "isha": "Isya",
   "qiyam": "Qiyam",
   "prayerTimeIn": "dalam",
+  "prayerTimesTitle": "Waktu Shalat",
+  "retry": "Coba lagi",
   "prayerTimeLoadError": "Gagal memuat waktu shalat. Silakan coba lagi nanti.",
   "hajjTarwiyahTitle": "Hari Tarwiyah",
   "hajjTarwiyahSubtitle": "8 Dzulhijjah",

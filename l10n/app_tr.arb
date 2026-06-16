@@ -218,6 +218,8 @@
   "isha": "Yatsı",
   "qiyam": "Kıyam",
   "prayerTimeIn": "içinde",
+  "prayerTimesTitle": "Namaz Vakitleri",
+  "retry": "Tekrar dene",
   "prayerTimeLoadError": "Namaz vakitleri yüklenemedi. Lütfen daha sonra tekrar deneyin.",
   "hajjTarwiyahTitle": "Terviye Günü",
   "hajjTarwiyahSubtitle": "Zilhicce'nin 8'i",

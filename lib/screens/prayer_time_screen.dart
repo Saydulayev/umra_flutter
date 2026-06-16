@@ -23,6 +23,7 @@ class PrayerTimeScreen extends StatefulWidget {
 
 class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   PrayerTimeData? _prayerTimes;
+  bool _hasError = false;
   String _nextPrayerName = '';
   Duration _timeUntilNextPrayer = Duration.zero;
   String _currentCityKey = 'mecca';
@@ -67,28 +68,13 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   void _recomputePrayerTimes(PrayerCity city) {
     setState(() {
       _prayerTimes = PrayerTimeService.getTodayPrayerTimes(city);
+      _hasError = _prayerTimes == null;
       if (_prayerTimes != null) {
         _nextPrayerName = PrayerTimeService.getNextPrayerName(_prayerTimes!);
         _timeUntilNextPrayer = PrayerTimeService.getTimeUntilNextPrayer(
           _prayerTimes!,
           city,
         );
-      } else {
-        if (mounted) {
-          final l10n = AppLocalizations.of(context)!;
-          final themeProvider = Provider.of<ThemeProvider>(
-            context,
-            listen: false,
-          );
-          final theme = themeProvider.selectedTheme;
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(l10n.prayerTimeLoadError),
-              duration: const Duration(seconds: 3),
-              backgroundColor: theme.errorColor,
-            ),
-          );
-        }
       }
     });
   }
@@ -180,8 +166,55 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
           backgroundColor: theme.backgroundColor,
           elevation: 0,
           iconTheme: IconThemeData(color: theme.primaryColor),
+          title: Text(
+            l10n.prayerTimesTitle,
+            style: TextStyle(
+              color: theme.textColor,
+              fontWeight: FontWeight.w600,
+              fontSize: 17,
+            ),
+          ),
         ),
-        body: const Center(child: CircularProgressIndicator()),
+        body: _hasError
+            ? Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.error_outline,
+                        size: 48,
+                        color: theme.errorColor,
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        l10n.prayerTimeLoadError,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: theme.textColor,
+                          fontSize: 15,
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      TextButton(
+                        onPressed: () => _recomputePrayerTimes(
+                          prayerCityFromString(_currentCityKey),
+                        ),
+                        child: Text(
+                          l10n.retry,
+                          style: TextStyle(color: theme.primaryColor),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            : Center(
+                child: CircularProgressIndicator(
+                  color: theme.primaryColor,
+                ),
+              ),
       );
     }
 

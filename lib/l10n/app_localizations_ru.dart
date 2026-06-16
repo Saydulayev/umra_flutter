@@ -758,6 +758,12 @@ class AppLocalizationsRu extends AppLocalizations {
   String get prayerTimeIn => 'через';
 
   @override
+  String get prayerTimesTitle => 'Время молитв';
+
+  @override
+  String get retry => 'Повторить';
+
+  @override
   String get prayerTimeLoadError =>
       'Не удалось загрузить время молитв. Пожалуйста, попробуйте позже.';
 

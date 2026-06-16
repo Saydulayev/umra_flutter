@@ -221,6 +221,8 @@
   "isha": "Isha",
   "qiyam": "Qiyam",
   "prayerTimeIn": "in",
+  "prayerTimesTitle": "Prayer Times",
+  "retry": "Try again",
   "prayerTimeLoadError": "Failed to load prayer times. Please try again later.",
   "hajjTarwiyahTitle": "Day of Tarwiyah",
   "hajjTarwiyahSubtitle": "8th of Dhu al-Hijjah",

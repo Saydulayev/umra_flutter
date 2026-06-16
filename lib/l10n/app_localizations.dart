@@ -1416,6 +1416,18 @@ abstract class AppLocalizations {
   /// **'in'**
   String get prayerTimeIn;
 
+  /// No description provided for @prayerTimesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer Times'**
+  String get prayerTimesTitle;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get retry;
+
   /// No description provided for @prayerTimeLoadError.
   ///
   /// In en, this message translates to:

@@ -761,6 +761,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String get prayerTimeIn => 'dans';
 
   @override
+  String get prayerTimesTitle => 'Horaires de prière';
+
+  @override
+  String get retry => 'Réessayer';
+
+  @override
   String get prayerTimeLoadError =>
       'Impossible de charger les heures de prière. Veuillez réessayer plus tard.';
 
