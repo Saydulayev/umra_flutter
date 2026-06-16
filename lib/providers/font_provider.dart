@@ -5,33 +5,13 @@ import '../constants/app_constants.dart';
 
 class FontProvider extends ChangeNotifier {
   List<String> fonts = [
-    "Lato",
-    "Roboto",
-    "Open Sans",
-    "Montserrat",
-    "Poppins",
-    "Raleway",
-    "Ubuntu",
-    "Oswald",
-    "Playfair Display",
-    "Merriweather",
-    "Source Sans Pro",
-    "Lora",
-    "Nunito",
-    "Crimson Text",
-    "Dancing Script",
-    "Pacifico",
-    "Indie Flower",
-    "Shadows Into Light",
-    "Amatic SC",
-    "Bebas Neue",
-    "Comfortaa",
-    "Fira Sans",
-    "Inter",
-    "Noto Sans",
-    "PT Sans",
-    "Quicksand",
-    "Work Sans",
+    "Lato",        // Default — geometric sans-serif, high legibility
+    "Roboto",      // Material standard, excellent readability
+    "Open Sans",   // Neutral, wide character spacing
+    "Merriweather", // Serif, comfortable for long-form reading
+    "Lora",        // Elegant serif, good for body text
+    "Noto Sans",   // Broad Unicode coverage including Arabic-adjacent scripts
+    "Inter",       // Modern sans-serif, optimised for screens
   ];
 
   // Маппинг имен шрифтов на Google Fonts
@@ -40,30 +20,10 @@ class FontProvider extends ChangeNotifier {
       'Lato': 'Lato',
       'Roboto': 'Roboto',
       'Open Sans': 'OpenSans',
-      'Montserrat': 'Montserrat',
-      'Poppins': 'Poppins',
-      'Raleway': 'Raleway',
-      'Ubuntu': 'Ubuntu',
-      'Oswald': 'Oswald',
-      'Playfair Display': 'PlayfairDisplay',
       'Merriweather': 'Merriweather',
-      'Source Sans Pro': 'SourceSansPro',
       'Lora': 'Lora',
-      'Nunito': 'Nunito',
-      'Crimson Text': 'CrimsonText',
-      'Dancing Script': 'DancingScript',
-      'Pacifico': 'Pacifico',
-      'Indie Flower': 'IndieFlower',
-      'Shadows Into Light': 'ShadowsIntoLight',
-      'Amatic SC': 'AmaticSC',
-      'Bebas Neue': 'BebasNeue',
-      'Comfortaa': 'Comfortaa',
-      'Fira Sans': 'FiraSans',
-      'Inter': 'Inter',
       'Noto Sans': 'NotoSans',
-      'PT Sans': 'PTSans',
-      'Quicksand': 'Quicksand',
-      'Work Sans': 'WorkSans',
+      'Inter': 'Inter',
     };
     return fontMap[fontName];
   }
@@ -125,8 +85,9 @@ class FontProvider extends ChangeNotifier {
   }
 
   Future<void> _loadFontPreferences() async {
-    _selectedFont =
-        await _prefsRepo.getString(PrefsKeys.selectedFont) ?? 'Lato';
+    final saved = await _prefsRepo.getString(PrefsKeys.selectedFont) ?? 'Lato';
+    // Guard: if a previously saved font is no longer in the allowed list, reset to Lato
+    _selectedFont = fonts.contains(saved) ? saved : 'Lato';
     _selectedFontSize =
         await _prefsRepo.getDouble(PrefsKeys.selectedFontSize) ?? 20.0;
     notifyListeners();
