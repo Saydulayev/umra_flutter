@@ -34,10 +34,11 @@ enum AppTheme {
   }
 
   // Primary accent — emerald green
+  // #098055 chosen for Nur: contrast 4.63:1 on #F7F7F7 (WCAG AA for text + UI components)
   Color get primaryColor {
     switch (this) {
       case AppTheme.nur:
-        return const Color(0xFF10B981);
+        return const Color(0xFF098055);
       case AppTheme.layl:
         return const Color(0xFF34D399);
       case AppTheme.emerald:
@@ -121,7 +122,7 @@ enum AppTheme {
   Color get previewColor {
     switch (this) {
       case AppTheme.nur:
-        return const Color(0xFF10B981);
+        return const Color(0xFF098055);
       case AppTheme.layl:
         return const Color(0xFF34D399);
       case AppTheme.emerald:

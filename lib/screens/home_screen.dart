@@ -476,7 +476,7 @@ class _StepRowItem extends StatelessWidget {
                           fontSize: 11,
                           fontWeight: FontWeight.w500,
                           letterSpacing: 0.5,
-                          color: theme.textColor.withValues(alpha: 0.40),
+                          color: theme.secondaryTextColor,
                         ),
                       ),
                       const SizedBox(height: 2),
@@ -499,7 +499,7 @@ class _StepRowItem extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 13,
-                          color: theme.textColor.withValues(alpha: 0.45),
+                          color: theme.secondaryTextColor,
                         ),
                       ),
                     ],
