@@ -1449,7 +1449,7 @@ abstract class AppLocalizations {
   /// No description provided for @hajjArafatTitle.
   ///
   /// In en, this message translates to:
-  /// **'Day of Standing at Arafat'**
+  /// **'Day of Arafah'**
   String get hajjArafatTitle;
 
   /// No description provided for @hajjArafatSubtitle.

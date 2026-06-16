@@ -771,7 +771,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get hajjTarwiyahSubtitle => 'Zilhicce\'nin 8\'i';
 
   @override
-  String get hajjArafatTitle => 'Arafat\'ta Durma Günü';
+  String get hajjArafatTitle => 'Arefe Günü';
 
   @override
   String get hajjArafatSubtitle => 'Zilhicce\'nin 9\'u';

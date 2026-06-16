@@ -780,7 +780,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get hajjTarwiyahSubtitle => '8. Dhu al-Hijjah';
 
   @override
-  String get hajjArafatTitle => 'Tag des Stehens auf Arafat';
+  String get hajjArafatTitle => 'Tag von Arafah';
 
   @override
   String get hajjArafatSubtitle => '9. Dhu al-Hijjah';

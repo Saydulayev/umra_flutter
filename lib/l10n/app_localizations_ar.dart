@@ -742,7 +742,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get hajjTarwiyahSubtitle => '8 ذو الحجة';
 
   @override
-  String get hajjArafatTitle => 'يوم الوقوف بعرفة';
+  String get hajjArafatTitle => 'يوم عرفة';
 
   @override
   String get hajjArafatSubtitle => '9 ذو الحجة';

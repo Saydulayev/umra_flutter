@@ -775,7 +775,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get hajjTarwiyahSubtitle => '8 Dzulhijjah';
 
   @override
-  String get hajjArafatTitle => 'Hari Wukuf di Arafat';
+  String get hajjArafatTitle => 'Hari Arafah';
 
   @override
   String get hajjArafatSubtitle => '9 Dzulhijjah';

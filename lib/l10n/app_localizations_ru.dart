@@ -774,7 +774,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get hajjTarwiyahSubtitle => '8-е зу-ль-хиджжа';
 
   @override
-  String get hajjArafatTitle => 'День стояния на Арафате';
+  String get hajjArafatTitle => 'День Арафа';
 
   @override
   String get hajjArafatSubtitle => '9-е зу-ль-хиджжа';
