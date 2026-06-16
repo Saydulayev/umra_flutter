@@ -23,7 +23,7 @@ class PrayerTimeScreen extends StatefulWidget {
 
 class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   PrayerTimeData? _prayerTimes;
-  String _nextPrayerName = 'Fajr';
+  String _nextPrayerName = '';
   Duration _timeUntilNextPrayer = Duration.zero;
   String _currentCityKey = 'mecca';
 
@@ -331,7 +331,9 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         child: Text(
-          '${_getLocalizedPrayerName(_nextPrayerName, l10n)} ${l10n.prayerTimeIn} ${_formatDuration(_timeUntilNextPrayer)}',
+          _nextPrayerName.isEmpty
+              ? '—'
+              : '${_getLocalizedPrayerName(_nextPrayerName, l10n)} ${l10n.prayerTimeIn} ${_formatDuration(_timeUntilNextPrayer)}',
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
