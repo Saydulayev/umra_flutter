@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
+import 'app_localizations_ar.dart';
 import 'app_localizations_de.dart';
 import 'app_localizations_en.dart';
 import 'app_localizations_fr.dart';
@@ -98,6 +99,7 @@ abstract class AppLocalizations {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
+    Locale('ar'),
     Locale('de'),
     Locale('en'),
     Locale('fr'),
@@ -841,7 +843,7 @@ abstract class AppLocalizations {
   /// No description provided for @step2KaabaText3.
   ///
   /// In en, this message translates to:
-  /// **'Begin the sevenfold circumambulation (tawaf) of the Kaaba from the Black Stone. Completing a circuit from the Black Stone to the Black Stone is counted as one circuit. At the start of each new circuit, point with your right hand to the Black Stone and say the takbir. For the first three circuits from the Black Stone to the Black Stone, men should walk quickly, and for the remaining four, they should walk at a normal pace. If possible, touch the Yemeni corner during each circuit. Every time you pass between the Yemeni corner and the Black Stone, say:\n'**
+  /// **'Begin the sevenfold circumambulation (tawaf) of the Kaaba from the Black Stone. Completing a circuit from the Black Stone to the Black Stone is counted as one circuit. At the start of each new circuit, point with your right hand to the Black Stone and say the takbir. For the first three circuits, men should walk at a quick pace (ramal) — from the Black Stone to the Yemeni Corner. Between the Yemeni Corner and the Black Stone, walk at a normal, calm pace. The remaining four circuits are performed at a normal pace throughout. If possible, touch the Yemeni corner during each circuit. Every time you pass between the Yemeni corner and the Black Stone, say:\n'**
   String get step2KaabaText3;
 
   /// No description provided for @step2KaabaText4.
@@ -1414,6 +1416,18 @@ abstract class AppLocalizations {
   /// **'in'**
   String get prayerTimeIn;
 
+  /// No description provided for @prayerTimesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Prayer Times'**
+  String get prayerTimesTitle;
+
+  /// No description provided for @retry.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again'**
+  String get retry;
+
   /// No description provided for @prayerTimeLoadError.
   ///
   /// In en, this message translates to:
@@ -1435,7 +1449,7 @@ abstract class AppLocalizations {
   /// No description provided for @hajjArafatTitle.
   ///
   /// In en, this message translates to:
-  /// **'Day of Standing at Arafat'**
+  /// **'Day of Arafah'**
   String get hajjArafatTitle;
 
   /// No description provided for @hajjArafatSubtitle.
@@ -2152,6 +2166,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) => <String>[
+    'ar',
     'de',
     'en',
     'fr',
@@ -2167,6 +2182,8 @@ class _AppLocalizationsDelegate
 AppLocalizations lookupAppLocalizations(Locale locale) {
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
+    case 'ar':
+      return AppLocalizationsAr();
     case 'de':
       return AppLocalizationsDe();
     case 'en':

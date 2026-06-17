@@ -8,14 +8,13 @@ import '../models/useful_info_model.dart';
 import '../widgets/app_card.dart';
 import '../widgets/arabic_text_widget.dart';
 
-const Color _accentGreen = Color(0xFF10B981);
-
 bool _isLongArabicLine(String s) {
   final trimmed = s.trim();
   if (trimmed.length < 40) return false;
   final first = trimmed.runes.firstOrNull;
   if (first == null) return false;
-  return (first >= 0x0600 && first <= 0x06FF) || (first >= 0x0750 && first <= 0x077F);
+  return (first >= 0x0600 && first <= 0x06FF) ||
+      (first >= 0x0750 && first <= 0x077F);
 }
 
 // Парсинг контента: блоки, разделённые \n\n; строки вида "1) ..." — заголовок
@@ -67,7 +66,11 @@ Widget _buildBodyBlock(String text, Color textColor, BuildContext context) {
   );
 }
 
-Widget _buildFormattedContent(String content, Color textColor, BuildContext context) {
+Widget _buildFormattedContent(
+  String content,
+  Color textColor,
+  BuildContext context,
+) {
   final blocks = _parseFormattedContent(content);
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,7 +135,13 @@ class UsefulInfoDetailScreen extends StatelessWidget {
               ],
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                children: _buildRows(context, chapter.subChapters, theme, l10n, hPad),
+                children: _buildRows(
+                  context,
+                  chapter.subChapters,
+                  theme,
+                  l10n,
+                  hPad,
+                ),
               ),
             ),
           );
@@ -184,13 +193,15 @@ class UsefulInfoDetailScreen extends StatelessWidget {
         ),
       );
       if (i < subChapters.length - 1) {
-        rows.add(Divider(
-          height: 1,
-          thickness: 0.5,
-          indent: hPad,
-          endIndent: hPad,
-          color: theme.borderColor,
-        ));
+        rows.add(
+          Divider(
+            height: 1,
+            thickness: 0.5,
+            indent: hPad,
+            endIndent: hPad,
+            color: theme.borderColor,
+          ),
+        );
       }
     }
     return rows;
@@ -366,9 +377,14 @@ class SubChapterDetailScreen extends StatelessWidget {
                   subChapter.contentKey,
                   AppLocalizations.of(context)!,
                 );
-                final useFormatted = content.contains('1) ') || content.startsWith('1)');
+                final useFormatted =
+                    content.contains('1) ') || content.startsWith('1)');
                 if (useFormatted) {
-                  return _buildFormattedContent(content, theme.textColor, context);
+                  return _buildFormattedContent(
+                    content,
+                    theme.textColor,
+                    context,
+                  );
                 }
                 return Text(
                   content,

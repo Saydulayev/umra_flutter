@@ -5,6 +5,7 @@ import 'package:just_audio/just_audio.dart';
 import 'package:vibration/vibration.dart';
 import '../services/audio_service.dart';
 import '../providers/theme_provider.dart';
+import '../utils/responsive_metrics.dart';
 import 'package:provider/provider.dart';
 import '../l10n/app_localizations.dart';
 
@@ -91,25 +92,27 @@ class _PlayerWidgetState extends State<PlayerWidget> {
         }
       });
     } catch (e) {
-      if (mounted) {
-        setState(() {
-          _isLoading = false;
-        });
-        // Показываем ошибку пользователю
-        final l10n = AppLocalizations.of(context);
-        if (l10n != null && mounted) {
-          final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
-          final theme = themeProvider.selectedTheme;
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('${l10n.audioLoadError}: ${e.toString()}'),
-              duration: const Duration(seconds: 3),
-              backgroundColor: theme.errorColor,
-            ),
-          );
-        }
-      }
       debugPrint('Error initializing audio: $e');
+      if (!mounted) return;
+
+      // Захватываем всё из context синхронно, пока виджет ещё активен
+      final messenger = ScaffoldMessenger.of(context);
+      final l10n = AppLocalizations.of(context);
+      final theme = Provider.of<ThemeProvider>(context, listen: false).selectedTheme;
+
+      setState(() {
+        _isLoading = false;
+      });
+
+      if (l10n != null) {
+        messenger.showSnackBar(
+          SnackBar(
+            content: Text('${l10n.audioLoadError}: ${e.toString()}'),
+            duration: const Duration(seconds: 3),
+            backgroundColor: theme.errorColor,
+          ),
+        );
+      }
     }
   }
 
@@ -208,6 +211,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final theme = themeProvider.selectedTheme;
+    final metrics = ResponsiveMetrics.of(context);
 
     if (_isLoading) {
       return const Padding(
@@ -230,22 +234,27 @@ class _PlayerWidgetState extends State<PlayerWidget> {
                 color: Colors.red,
                 onTap: _toggleRepeat,
                 theme: theme,
+                size: metrics.playerControlSize,
               ),
-              const SizedBox(width: 16),
+              SizedBox(width: metrics.playerControlGap),
               _buildControlButton(
                 context,
-                icon: _isPlaying ? PlatformIcons.pause : PlatformIcons.playArrow,
+                icon: _isPlaying
+                    ? PlatformIcons.pause
+                    : PlatformIcons.playArrow,
                 isActive: _isPlaying,
                 color: Colors.green,
                 onTap: _togglePlayPause,
                 theme: theme,
+                size: metrics.playerControlSize,
               ),
-              const SizedBox(width: 16),
+              SizedBox(width: metrics.playerControlGap),
               _buildRateButton(
                 context,
                 rate: _playbackRate,
                 onTap: _cyclePlaybackRate,
                 theme: theme,
+                size: metrics.playerControlSize,
               ),
             ],
           ),
@@ -265,22 +274,6 @@ class _PlayerWidgetState extends State<PlayerWidget> {
             activeColor: theme.primaryColor,
             inactiveColor: theme.primaryColor.withValues(alpha: 0.3),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  _formatDuration(_position),
-                  style: TextStyle(color: theme.textColor),
-                ),
-                Text(
-                  _formatDuration(_duration),
-                  style: TextStyle(color: theme.textColor),
-                ),
-              ],
-            ),
-          ),
         ],
       ),
     );
@@ -293,12 +286,13 @@ class _PlayerWidgetState extends State<PlayerWidget> {
     required Color color,
     required VoidCallback onTap,
     required theme,
+    required double size,
   }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 70,
-        height: 70,
+        width: size,
+        height: size,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: theme.lightBackgroundColor,
@@ -313,7 +307,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
         child: Icon(
           icon,
           color: isActive ? theme.primaryColor : theme.textColor,
-          size: 26,
+          size: size * 0.38,
         ),
       ),
     );
@@ -324,13 +318,14 @@ class _PlayerWidgetState extends State<PlayerWidget> {
     required double rate,
     required VoidCallback onTap,
     required theme,
+    required double size,
   }) {
     final isActive = rate > 1.0;
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 70,
-        height: 70,
+        width: size,
+        height: size,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: theme.lightBackgroundColor,
@@ -347,7 +342,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
             '${rate}x',
             style: TextStyle(
               color: isActive ? theme.primaryColor : theme.textColor,
-              fontSize: 16,
+              fontSize: size * 0.23,
               fontWeight: FontWeight.bold,
             ),
           ),

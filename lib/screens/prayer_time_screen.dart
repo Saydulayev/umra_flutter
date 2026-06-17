@@ -11,6 +11,7 @@ import '../widgets/app_card.dart';
 import '../widgets/notification_settings_sheet.dart';
 import '../services/notification_service.dart';
 import '../services/prayer_time_service.dart';
+import '../utils/responsive_metrics.dart';
 import '../l10n/app_localizations.dart';
 
 class PrayerTimeScreen extends StatefulWidget {
@@ -22,7 +23,8 @@ class PrayerTimeScreen extends StatefulWidget {
 
 class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   PrayerTimeData? _prayerTimes;
-  String _nextPrayerName = 'Fajr';
+  bool _hasError = false;
+  String _nextPrayerName = '';
   Duration _timeUntilNextPrayer = Duration.zero;
   String _currentCityKey = 'mecca';
 
@@ -66,25 +68,13 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   void _recomputePrayerTimes(PrayerCity city) {
     setState(() {
       _prayerTimes = PrayerTimeService.getTodayPrayerTimes(city);
+      _hasError = _prayerTimes == null;
       if (_prayerTimes != null) {
         _nextPrayerName = PrayerTimeService.getNextPrayerName(_prayerTimes!);
         _timeUntilNextPrayer = PrayerTimeService.getTimeUntilNextPrayer(
           _prayerTimes!,
           city,
         );
-      } else {
-        if (mounted) {
-          final l10n = AppLocalizations.of(context)!;
-          final themeProvider = Provider.of<ThemeProvider>(context, listen: false);
-          final theme = themeProvider.selectedTheme;
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(l10n.prayerTimeLoadError),
-              duration: const Duration(seconds: 3),
-              backgroundColor: theme.errorColor,
-            ),
-          );
-        }
       }
     });
   }
@@ -109,7 +99,9 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     _recomputePrayerTimes(prayerCityFromString(cityKey));
     if (!mounted) return;
     final notifPrefs = Provider.of<NotificationPreferencesProvider>(
-      context, listen: false);
+      context,
+      listen: false,
+    );
     await notifPrefs.rescheduleForCity(prayerCityFromString(cityKey));
   }
 
@@ -174,8 +166,55 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
           backgroundColor: theme.backgroundColor,
           elevation: 0,
           iconTheme: IconThemeData(color: theme.primaryColor),
+          title: Text(
+            l10n.prayerTimesTitle,
+            style: TextStyle(
+              color: theme.textColor,
+              fontWeight: FontWeight.w600,
+              fontSize: 17,
+            ),
+          ),
         ),
-        body: const Center(child: CircularProgressIndicator()),
+        body: _hasError
+            ? Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.error_outline,
+                        size: 48,
+                        color: theme.errorColor,
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        l10n.prayerTimeLoadError,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: theme.textColor,
+                          fontSize: 15,
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      TextButton(
+                        onPressed: () => _recomputePrayerTimes(
+                          prayerCityFromString(_currentCityKey),
+                        ),
+                        child: Text(
+                          l10n.retry,
+                          style: TextStyle(color: theme.primaryColor),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            : Center(
+                child: CircularProgressIndicator(
+                  color: theme.primaryColor,
+                ),
+              ),
       );
     }
 
@@ -200,63 +239,83 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
       body: Builder(
         builder: (context) {
           final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+          final metrics = ResponsiveMetrics.of(context);
           return LayoutBuilder(
             builder: (context, constraints) {
               return SingleChildScrollView(
-                padding: EdgeInsets.fromLTRB(16, 16, 16, bottomPadding + 16),
+                padding: EdgeInsets.fromLTRB(
+                  metrics.prayerHorizontalInset,
+                  16,
+                  metrics.prayerHorizontalInset,
+                  bottomPadding + 16,
+                ),
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
                     minHeight: constraints.maxHeight - 32 - bottomPadding,
                   ),
                   child: Center(
-                    child: _buildCard(
-                      theme: theme,
-                      child: Column(
-                        children: [
-                          // Заголовок: город + дата (Savoye LET 36pt → GreatVibes 36pt)
-                          FittedBox(
-                            fit: BoxFit.scaleDown,
-                            alignment: Alignment.center,
-                            child: Text(
-                              '${_getIslamicDate()} ${_getIslamicYear()}',
-                              style: GoogleFonts.greatVibes(
-                                fontSize: 36,
-                                color: theme.textColor,
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxWidth: metrics.prayerCardMaxWidth,
+                      ),
+                      child: _buildCard(
+                        theme: theme,
+                        metrics: metrics,
+                        child: Column(
+                          children: [
+                            // Заголовок: город + дата (Savoye LET 36pt → GreatVibes 36pt)
+                            FittedBox(
+                              fit: BoxFit.scaleDown,
+                              alignment: Alignment.center,
+                              child: Text(
+                                '${_getIslamicDate()} ${_getIslamicYear()}',
+                                textDirection: TextDirection.ltr,
+                                style: GoogleFonts.cinzel(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 1.2,
+                                  color: theme.textColor,
+                                ),
+                                textAlign: TextAlign.center,
                               ),
-                              textAlign: TextAlign.center,
                             ),
-                          ),
-                          // VStack spacing 12pt + divider
-                          const SizedBox(height: 12),
-                          Divider(
-                            height: 1,
-                            thickness: 0.5,
-                            color: theme.textColor.withValues(alpha: 0.12),
-                          ),
-                          const SizedBox(height: 12),
-                          // Переключатель города
-                          _buildCitySegmentedControl(
-                            context: context,
-                            theme: theme,
-                            l10n: l10n,
-                            selectedCity: prefs.prayerCity,
-                            onCityChanged: _onCityChanged,
-                          ),
-                          const SizedBox(height: 12),
-                          // Блок обратного отсчёта (cardStyled: vertical 40pt outside)
-                          SizedBox(
-                            width: double.infinity,
-                            child: _buildCountdownCard(theme: theme, l10n: l10n),
-                          ),
-                          // Список намазов (rowsHorizontalPadding 16pt)
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 16),
-                            child: Column(
-                              children: _buildPrayerRows(theme, l10n),
+                            // VStack spacing 12pt + divider
+                            const SizedBox(height: 12),
+                            Divider(
+                              height: 1,
+                              thickness: 0.5,
+                              color: theme.textColor.withValues(alpha: 0.12),
                             ),
-                          ),
-                          const SizedBox(height: 12),
-                        ],
+                            const SizedBox(height: 12),
+                            // Переключатель города
+                            _buildCitySegmentedControl(
+                              context: context,
+                              theme: theme,
+                              l10n: l10n,
+                              selectedCity: prefs.prayerCity,
+                              onCityChanged: _onCityChanged,
+                            ),
+                            const SizedBox(height: 12),
+                            // Блок обратного отсчёта (cardStyled: vertical 40pt outside)
+                            SizedBox(
+                              width: double.infinity,
+                              child: _buildCountdownCard(
+                                theme: theme,
+                                l10n: l10n,
+                              ),
+                            ),
+                            // Список намазов (rowsHorizontalPadding 16pt)
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: metrics.isCompactPhone ? 8 : 16,
+                              ),
+                              child: Column(
+                                children: _buildPrayerRows(theme, l10n),
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -270,7 +329,11 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   }
 
   /// Внешняя карточка — аналог iOS transparentStyled (standardCardFrame cornerRadius 20)
-  Widget _buildCard({required AppTheme theme, required Widget child}) {
+  Widget _buildCard({
+    required AppTheme theme,
+    required ResponsiveMetrics metrics,
+    required Widget child,
+  }) {
     return AppCard(
       theme: theme,
       cornerRadius: 20,
@@ -281,10 +344,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
           offset: const Offset(0, 8),
         ),
       ],
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 40),
-        child: child,
-      ),
+      child: Padding(padding: metrics.prayerCardPadding, child: child),
     );
   }
 
@@ -307,7 +367,11 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         child: Text(
-          '${_getLocalizedPrayerName(_nextPrayerName, l10n)} ${l10n.prayerTimeIn} ${_formatDuration(_timeUntilNextPrayer)}',
+          _nextPrayerName.isEmpty
+              ? '—'
+              : '${_getLocalizedPrayerName(_nextPrayerName, l10n)} ${l10n.prayerTimeIn} ${_formatDuration(_timeUntilNextPrayer)}',
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.w600,
@@ -329,9 +393,9 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
         _buildPrayerTimeRow(name, time, theme: theme);
 
     Widget carded(String name, String time) => _buildCapsuleCard(
-          theme: theme,
-          child: _buildPrayerTimeRow(name, time, theme: theme),
-        );
+      theme: theme,
+      child: _buildPrayerTimeRow(name, time, theme: theme),
+    );
 
     return [
       plain(l10n.fajr, _formatTime(_prayerTimes!.fajr)),
@@ -340,16 +404,12 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
       plain(l10n.asr, _formatTime(_prayerTimes!.asr)),
       plain(l10n.maghrib, _formatTime(_prayerTimes!.maghrib)),
       plain(l10n.isha, _formatTime(_prayerTimes!.isha)),
-      if (qiyamTime != null)
-        carded(l10n.qiyam, _formatTime(qiyamTime)),
+      if (qiyamTime != null) carded(l10n.qiyam, _formatTime(qiyamTime)),
     ];
   }
 
   /// capsuleStyled — standardCardFrame cornerRadius 20
-  Widget _buildCapsuleCard({
-    required AppTheme theme,
-    required Widget child,
-  }) {
+  Widget _buildCapsuleCard({required AppTheme theme, required Widget child}) {
     return AppCard(
       theme: theme,
       cornerRadius: 20,
@@ -370,16 +430,22 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            prayerName,
-            style: TextStyle(
-              fontSize: 17,
-              fontWeight: FontWeight.w600,
-              color: theme.isDark ? Colors.white : Colors.black,
+          Expanded(
+            child: Text(
+              prayerName,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.w600,
+                color: theme.isDark ? Colors.white : Colors.black,
+              ),
             ),
           ),
+          const SizedBox(width: 12),
           Text(
             prayerTime,
+            maxLines: 1,
             style: TextStyle(
               fontSize: 17,
               fontWeight: FontWeight.w400,
@@ -400,7 +466,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     required Future<void> Function(String) onCityChanged,
   }) {
     final activeBg = theme.primaryColor;
-    final activeText = Colors.white;
+    final activeText = theme.isDark ? Colors.black : Colors.white;
     final inactiveText = theme.textColor.withValues(alpha: 0.6);
 
     return AppCard(
@@ -429,6 +495,8 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                 alignment: Alignment.center,
                 child: Text(
                   l10n.mecca,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
@@ -451,6 +519,8 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                 alignment: Alignment.center,
                 child: Text(
                   l10n.medina,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,

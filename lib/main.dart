@@ -14,6 +14,7 @@ import 'screens/home_screen.dart';
 import 'screens/language_selection_screen.dart';
 import 'models/app_theme.dart';
 import 'services/app_usage_tracker.dart';
+import 'utils/responsive_metrics.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,69 +39,87 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => UserPreferencesProvider()),
         ChangeNotifierProvider(create: (_) => FontProvider()),
         ChangeNotifierProvider(create: (_) => PurchaseProvider()),
-        ChangeNotifierProvider(create: (_) => NotificationPreferencesProvider()),
+        ChangeNotifierProvider(
+          create: (_) => NotificationPreferencesProvider(),
+        ),
       ],
-      child: Consumer3<ThemeProvider, LocalizationProvider,
-          UserPreferencesProvider>(
-        builder: (
-          context,
-          themeProvider,
-          localizationProvider,
-          prefsProvider,
-          child,
-        ) {
-          final theme = themeProvider.selectedTheme;
+      child:
+          Consumer3<
+            ThemeProvider,
+            LocalizationProvider,
+            UserPreferencesProvider
+          >(
+            builder:
+                (
+                  context,
+                  themeProvider,
+                  localizationProvider,
+                  prefsProvider,
+                  child,
+                ) {
+                  final theme = themeProvider.selectedTheme;
 
-          final overlayStyle = SystemUiOverlayStyle(
-            statusBarBrightness:
-                theme.isDark ? Brightness.dark : Brightness.light,
-            statusBarIconBrightness:
-                theme.isDark ? Brightness.light : Brightness.dark,
-            systemNavigationBarIconBrightness:
-                theme.isDark ? Brightness.light : Brightness.dark,
-          );
+                  final overlayStyle = SystemUiOverlayStyle(
+                    statusBarBrightness: theme.isDark
+                        ? Brightness.dark
+                        : Brightness.light,
+                    statusBarIconBrightness: theme.isDark
+                        ? Brightness.light
+                        : Brightness.dark,
+                    systemNavigationBarIconBrightness: theme.isDark
+                        ? Brightness.light
+                        : Brightness.dark,
+                  );
 
-          return MaterialApp(
-            title: 'Umra Guide',
-            debugShowCheckedModeBanner: false,
+                  return MaterialApp(
+                    title: 'Umra Guide',
+                    debugShowCheckedModeBanner: false,
 
-            theme: _buildThemeData(theme, overlayStyle),
+                    theme: _buildThemeData(theme, overlayStyle),
 
-            locale: localizationProvider.currentLocale,
-            supportedLocales: AppLocalizations.supportedLocales,
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            localeResolutionCallback: (locale, supportedLocales) {
-              if (locale == null) return supportedLocales.first;
-              for (var supportedLocale in supportedLocales) {
-                if (supportedLocale.languageCode == locale.languageCode) {
-                  return supportedLocale;
-                }
-              }
-              return supportedLocales.first;
-            },
+                    locale: localizationProvider.currentLocale,
+                    supportedLocales: AppLocalizations.supportedLocales,
+                    localizationsDelegates: const [
+                      AppLocalizations.delegate,
+                      GlobalMaterialLocalizations.delegate,
+                      GlobalWidgetsLocalizations.delegate,
+                      GlobalCupertinoLocalizations.delegate,
+                    ],
+                    localeResolutionCallback: (locale, supportedLocales) {
+                      if (locale == null) return supportedLocales.first;
+                      for (var supportedLocale in supportedLocales) {
+                        if (supportedLocale.languageCode ==
+                            locale.languageCode) {
+                          return supportedLocale;
+                        }
+                      }
+                      return supportedLocales.first;
+                    },
 
-            home: localizationProvider.hasSelectedLanguage
-                ? const HomeScreen()
-                : const LanguageSelectionScreen(),
+                    home: localizationProvider.hasSelectedLanguage
+                        ? const HomeScreen()
+                        : const LanguageSelectionScreen(),
 
-            builder: (context, child) {
-              return AnnotatedRegion<SystemUiOverlayStyle>(
-                value: overlayStyle,
-                child: MediaQuery(
-                  data: MediaQuery.of(context)
-                      .copyWith(textScaler: const TextScaler.linear(1.0)),
-                  child: child!,
-                ),
-              );
-            },
-          );
-        },
-      ),
+                    builder: (context, child) {
+                      final mediaQuery = MediaQuery.of(context);
+                      final cappedTextScale = mediaQuery.textScaler
+                          .scale(1.0)
+                          .clamp(1.0, ResponsiveMetrics.maxTextScale)
+                          .toDouble();
+
+                      return AnnotatedRegion<SystemUiOverlayStyle>(
+                        value: overlayStyle,
+                        child: MediaQuery(
+                          data: mediaQuery.copyWith(
+                            textScaler: TextScaler.linear(cappedTextScale),
+                          ),
+                          child: child!,
+                        ),
+                      );
+                    },
+                  );
+                },
+          ),
     );
   }
 

@@ -304,7 +304,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
         ),
         const SizedBox(height: 12),
         _buildArabicAwareText(content, color),
-        if (isExpandable && expandedContent != null) ...[
+        if (isExpandable && expandedContent != null && expandedContent.isNotEmpty) ...[
           const SizedBox(height: 12),
           GestureDetector(
             onTap: () => onExpandedChanged?.call(!isExpanded),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/localization_provider.dart';
 import '../providers/theme_provider.dart';
+import '../utils/responsive_metrics.dart';
 import 'home_screen.dart';
 
 // ---------------------------------------------------------------------------
@@ -31,6 +32,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen>
     {'code': 'fr', 'name': 'Français'},
     {'code': 'tr', 'name': 'Türkçe'},
     {'code': 'id', 'name': 'Bahasa Indonesia'},
+    {'code': 'ar', 'name': 'العربية'},
   ];
 
   late final AnimationController _titleCtrl;
@@ -51,22 +53,26 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen>
     const spring = Duration(milliseconds: 600);
 
     _titleCtrl = AnimationController(vsync: this, duration: spring);
-    _logoCtrl  = AnimationController(vsync: this, duration: spring);
-    _listCtrl  = AnimationController(vsync: this, duration: spring);
+    _logoCtrl = AnimationController(vsync: this, duration: spring);
+    _listCtrl = AnimationController(vsync: this, duration: spring);
 
     final curve = CurvedAnimation(parent: _titleCtrl, curve: Curves.easeOut);
     _titleOpacity = Tween<double>(begin: 0, end: 1).animate(curve);
-    _titleSlide   = Tween<Offset>(begin: const Offset(0, -0.4), end: Offset.zero)
-        .animate(curve);
+    _titleSlide = Tween<Offset>(
+      begin: const Offset(0, -0.4),
+      end: Offset.zero,
+    ).animate(curve);
 
     final logoCurve = CurvedAnimation(parent: _logoCtrl, curve: Curves.easeOut);
     _logoOpacity = Tween<double>(begin: 0, end: 1).animate(logoCurve);
-    _logoScale   = Tween<double>(begin: 0.88, end: 1.0).animate(logoCurve);
+    _logoScale = Tween<double>(begin: 0.88, end: 1.0).animate(logoCurve);
 
     final listCurve = CurvedAnimation(parent: _listCtrl, curve: Curves.easeOut);
     _listOpacity = Tween<double>(begin: 0, end: 1).animate(listCurve);
-    _listSlide   = Tween<Offset>(begin: const Offset(0, 0.15), end: Offset.zero)
-        .animate(listCurve);
+    _listSlide = Tween<Offset>(
+      begin: const Offset(0, 0.15),
+      end: Offset.zero,
+    ).animate(listCurve);
 
     // Sequential: title → logo → list
     _titleCtrl.forward().whenComplete(() {
@@ -88,24 +94,23 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen>
     final lp = Provider.of<LocalizationProvider>(context, listen: false);
     await lp.setLanguage(code);
     if (!mounted) return;
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const HomeScreen()),
-    );
+    Navigator.of(
+      context,
+    ).pushReplacement(MaterialPageRoute(builder: (_) => const HomeScreen()));
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeProvider>(context).selectedTheme;
-    final mq    = MediaQuery.of(context);
-    final screenH = mq.size.height;
-    final screenW = mq.size.width;
+    final mq = MediaQuery.of(context);
+    final metrics = ResponsiveMetrics.of(context);
 
-    final hPad      = screenW > 500 ? 48.0 : 20.0;
-    final topPad    = (screenH > 800 ? 48.0 : 24.0) + mq.viewPadding.top;
-    final bottomPad = (screenH > 800 ? 32.0 : 16.0) + mq.viewPadding.bottom;
-    final cardW     = screenW * 0.72;
-    final cardH     = (screenH * 0.26).clamp(150.0, 260.0);
-    final maxListH  = screenH * 0.30;
+    final hPad = metrics.languageHorizontalPadding;
+    final topPad = metrics.languageTopPadding + mq.viewPadding.top;
+    final bottomPad = metrics.languageBottomPadding + mq.viewPadding.bottom;
+    final cardW = metrics.languageCardWidth;
+    final cardH = metrics.languageCardHeight;
+    final maxListH = metrics.languageListMaxHeight;
 
     return Scaffold(
       backgroundColor: theme.backgroundColor,
@@ -124,8 +129,9 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen>
                 ),
               ),
             ),
-
-            SizedBox(height: screenH * 0.05),
+            SizedBox(
+              height: metrics.isCompactPhone ? 18 : metrics.height * 0.05,
+            ),
 
             // 2. Welcome image — centered card
             FadeTransition(
@@ -207,9 +213,10 @@ class _ShimmeringTitleState extends State<_ShimmeringTitle>
       vsync: this,
       duration: const Duration(milliseconds: 1800),
     )..repeat();
-    _shimmer = Tween<double>(begin: -1, end: 2).animate(
-      CurvedAnimation(parent: _ctrl, curve: Curves.linear),
-    );
+    _shimmer = Tween<double>(
+      begin: -1,
+      end: 2,
+    ).animate(CurvedAnimation(parent: _ctrl, curve: Curves.linear));
   }
 
   @override
@@ -289,8 +296,8 @@ class _LanguageListState extends State<_LanguageList> {
   void _checkChevron() {
     if (!_scrollCtrl.hasClients) return;
     final canScroll = _scrollCtrl.position.maxScrollExtent > 0;
-    final atBottom  = _scrollCtrl.position.pixels >=
-        _scrollCtrl.position.maxScrollExtent - 4;
+    final atBottom =
+        _scrollCtrl.position.pixels >= _scrollCtrl.position.maxScrollExtent - 4;
     final show = canScroll && !atBottom;
     if (show != _showChevron) setState(() => _showChevron = show);
   }
@@ -378,10 +385,7 @@ class _LanguageButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(22),
-            border: Border.all(
-              color: theme.borderColor,
-              width: 1.2,
-            ),
+            border: Border.all(color: theme.borderColor, width: 1.2),
           ),
           child: Text(
             name,

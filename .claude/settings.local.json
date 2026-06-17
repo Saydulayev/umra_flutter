@@ -9,7 +9,8 @@
       "Bash(grep -v \"^$\")",
       "Bash(flutter pub:*)",
       "Bash(./gradlew --stop)",
-      "Bash(flutter --version)"
+      "Bash(flutter --version)",
+      "Bash(git remote *)"
     ]
   }
 }

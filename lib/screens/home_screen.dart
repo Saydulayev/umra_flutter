@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math';
 import 'dart:ui' show ImageFilter;
 import 'package:flutter/material.dart';
@@ -15,6 +14,7 @@ import '../screens/useful_info_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/prayer_time_screen.dart';
 import '../screens/dua_book_screen.dart';
+import '../utils/responsive_metrics.dart';
 import '../widgets/app_card.dart';
 
 const double _kBottomTabBarReservedSpace = 88.0;
@@ -27,7 +27,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
-  Timer? _reviewCheckTimer;
   bool _isCheckingReview = false;
   int _selectedTab = 0;
 
@@ -35,24 +34,23 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    // Одноразовая проверка при открытии экрана с небольшой задержкой,
+    // чтобы не блокировать первый рендер.
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _checkAndShowReviewDialog();
-      _reviewCheckTimer = Timer.periodic(const Duration(seconds: 5), (_) {
-        _checkAndShowReviewDialog();
-      });
+      Future.delayed(const Duration(seconds: 2), _checkAndShowReviewDialog);
     });
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
-    _reviewCheckTimer?.cancel();
     super.dispose();
   }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
+    // Проверяем при возвращении из фона — подходящий нейтральный момент.
     if (state == AppLifecycleState.resumed) _checkAndShowReviewDialog();
   }
 
@@ -62,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       context,
       listen: false,
     );
-    if (prefsProvider.isShowingDialog) return;
+    if (prefsProvider.isShowingDialog || prefsProvider.hasRatedApp) return;
 
     _isCheckingReview = true;
     try {
@@ -70,15 +68,9 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       if (prefsProvider.hasShownReviewDialog &&
           !prefsProvider.hasRatedApp &&
           !prefsProvider.isShowingDialog) {
-        _reviewCheckTimer?.cancel();
         await Future.delayed(const Duration(milliseconds: 500));
         if (mounted && !prefsProvider.isShowingDialog) {
           await prefsProvider.showReviewDialog(context);
-        }
-        if (mounted && !prefsProvider.hasRatedApp) {
-          _reviewCheckTimer = Timer.periodic(const Duration(seconds: 5), (_) {
-            _checkAndShowReviewDialog();
-          });
         }
       }
     } finally {
@@ -98,10 +90,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         elevation: 0,
         scrolledUnderElevation: 0,
         leading: IconButton(
-          icon: Icon(
-            PlatformIcons.book,
-            color: theme.textColor,
-          ),
+          icon: Icon(PlatformIcons.book, color: theme.textColor),
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(builder: (_) => const DuaBookScreen()),
@@ -109,20 +98,14 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         ),
         actions: [
           IconButton(
-            icon: Icon(
-              PlatformIcons.clock,
-              color: theme.textColor,
-            ),
+            icon: Icon(PlatformIcons.clock, color: theme.textColor),
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const PrayerTimeScreen()),
             ),
           ),
           IconButton(
-            icon: Icon(
-              PlatformIcons.settings,
-              color: theme.textColor,
-            ),
+            icon: Icon(PlatformIcons.settings, color: theme.textColor),
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const SettingsScreen()),
@@ -207,14 +190,12 @@ class _UmraTabBody extends StatelessWidget {
             padding: _padding,
             children: List.generate(_numberedSteps.length, (i) {
               final step = _numberedSteps[i];
-              final stepLabel = '${l10n.stepPrefix} ${step.stepNumber}'
-                  .toUpperCase();
               return _StepRowItem(
                 key: ValueKey(step.id),
-                badge: _StepBadge(iconText: step.iconText, theme: theme),
+                badge: _StepBadge(stepNumber: step.stepNumber, theme: theme),
                 title: _localizedTitle(step.titleKey),
                 subtitle: null,
-                stepLabel: stepLabel,
+                stepLabel: step.iconText.replaceAll('\n', ' '),
                 theme: theme,
                 onTap: () => Navigator.push(
                   context,
@@ -323,16 +304,14 @@ class _HajjTabBody extends StatelessWidget {
             padding: _padding,
             children: List.generate(steps.length, (i) {
               final step = steps[i];
-              final stepLabel = '${l10n.stepPrefix} ${step.stepNumber}'
-                  .toUpperCase();
               return _StepRowItem(
                 key: ValueKey(step.id),
-                badge: _StepBadge(iconText: step.iconText, theme: theme),
+                badge: _StepBadge(stepNumber: step.stepNumber, theme: theme),
                 title: _localizedTitle(step.titleKey),
                 subtitle: step.subtitleKey != null
                     ? _localizedSubtitle(step.subtitleKey!)
                     : null,
-                stepLabel: stepLabel,
+                stepLabel: step.iconText.replaceAll('\n', ' '),
                 theme: theme,
                 onTap: () => Navigator.push(
                   context,
@@ -454,16 +433,21 @@ class _StepRowItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final metrics = ResponsiveMetrics.of(context);
+
     return Material(
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+          padding: EdgeInsets.symmetric(
+            horizontal: metrics.homeRowHorizontalPadding,
+            vertical: metrics.homeRowVerticalPadding,
+          ),
           child: Row(
             children: [
               badge,
-              const SizedBox(width: 16),
+              SizedBox(width: metrics.homeRowGap),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -473,17 +457,21 @@ class _StepRowItem extends StatelessWidget {
                     if (stepLabel != null) ...[
                       Text(
                         stepLabel!,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w500,
                           letterSpacing: 0.5,
-                          color: theme.textColor.withValues(alpha: 0.40),
+                          color: theme.secondaryTextColor,
                         ),
                       ),
                       const SizedBox(height: 2),
                     ],
                     Text(
                       title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
@@ -494,9 +482,11 @@ class _StepRowItem extends StatelessWidget {
                       const SizedBox(height: 2),
                       Text(
                         subtitle!,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 13,
-                          color: theme.textColor.withValues(alpha: 0.45),
+                          color: theme.secondaryTextColor,
                         ),
                       ),
                     ],
@@ -519,23 +509,18 @@ class _StepRowItem extends StatelessWidget {
 // ─── Step badge circle ────────────────────────────────────────────────────────
 
 class _StepBadge extends StatelessWidget {
-  final String iconText;
+  final int stepNumber;
   final AppTheme theme;
 
-  const _StepBadge({required this.iconText, required this.theme});
-
-  double get _fontSize {
-    final longest = iconText.split('\n').map((l) => l.length).reduce(max);
-    if (longest > 6) return 8.0;
-    if (longest > 4) return 9.0;
-    return 10.0;
-  }
+  const _StepBadge({required this.stepNumber, required this.theme});
 
   @override
   Widget build(BuildContext context) {
+    final badgeSize = ResponsiveMetrics.of(context).homeBadgeSize;
+
     return Container(
-      width: 56,
-      height: 56,
+      width: badgeSize,
+      height: badgeSize,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: theme.primaryColor,
@@ -549,16 +534,14 @@ class _StepBadge extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          iconText,
+          '$stepNumber',
           style: TextStyle(
-            fontSize: _fontSize,
+            fontSize: (badgeSize * 0.40).clamp(20.0, 26.0),
             fontWeight: FontWeight.bold,
-            color: Colors.black,
-            height: 1.2,
-            letterSpacing: -0.3,
+            color: theme.isDark ? Colors.black : Colors.white,
+            height: 1.0,
           ),
           textAlign: TextAlign.center,
-          maxLines: 2,
         ),
       ),
     );
@@ -573,9 +556,11 @@ class _InfoBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final badgeSize = ResponsiveMetrics.of(context).homeBadgeSize;
+
     return Container(
-      width: 56,
-      height: 56,
+      width: badgeSize,
+      height: badgeSize,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: theme.primaryColor,
@@ -589,8 +574,8 @@ class _InfoBadge extends StatelessWidget {
       ),
       child: Icon(
         PlatformIcons.info,
-        color: Colors.black,
-        size: 24,
+        color: theme.isDark ? Colors.black : Colors.white,
+        size: badgeSize * 0.43,
       ),
     );
   }
@@ -615,8 +600,7 @@ class _BottomTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final barWidth = min(screenWidth - 40, 182.0);
+    final barWidth = ResponsiveMetrics.of(context).bottomTabBarWidth;
 
     return SafeArea(
       top: false,
@@ -715,21 +699,23 @@ class _TabItem extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(999),
           onTap: onTap,
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 250),
-            curve: Curves.easeInOut,
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(999),
-              color: isSelected
-                  ? (theme.isDark
-                        ? Colors.white.withValues(alpha: 0.12)
-                        : Colors.black.withValues(alpha: 0.07))
-                  : Colors.transparent,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(minHeight: 44, minWidth: 44),
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 250),
+              curve: Curves.easeInOut,
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(999),
+                color: isSelected
+                    ? (theme.isDark
+                          ? Colors.white.withValues(alpha: 0.12)
+                          : Colors.black.withValues(alpha: 0.07))
+                    : Colors.transparent,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
                 AnimatedContainer(
                   duration: const Duration(milliseconds: 250),
                   width: 27,
@@ -787,9 +773,10 @@ class _TabItem extends StatelessWidget {
                     ),
                   ),
                 ),
-              ],
+                ],
+              ),
             ),
-          ),
+          ), // ConstrainedBox
         ),
       ),
     );

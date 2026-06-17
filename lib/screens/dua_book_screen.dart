@@ -176,15 +176,24 @@ class _CategoryRow extends StatelessWidget {
                 height: 40,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: theme.primaryColor.withValues(alpha: 0.15),
+                  color: theme.primaryColor,
+                  boxShadow: [
+                    BoxShadow(
+                      color: theme.primaryColor.withValues(alpha: 0.20),
+                      blurRadius: 4,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
                 ),
                 child: Center(
                   child: Text(
                     category.id == 'umrah' ? 'U' : 'H',
                     style: TextStyle(
                       fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: theme.primaryColor,
+                      fontWeight: FontWeight.bold,
+                      color: theme.isDark ? Colors.black : Colors.white,
+                      height: 1.2,
+                      letterSpacing: -0.3,
                     ),
                   ),
                 ),
@@ -592,7 +601,7 @@ class _InfoCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 6),
-                SelectableText(
+                Text(
                   body,
                   style: TextStyle(
                     fontSize: 15,

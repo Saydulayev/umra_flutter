@@ -412,7 +412,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get step2KaabaText3 =>
-      'Commencez sept tours autour de la Kaaba (tawaf) à partir de la Pierre Noire.\nLe trajet de la Pierre Noire à la Pierre Noire compte pour un tour. En débutant un nouveau tour, pointez la Pierre Noire de la main droite et récitez le takbir. Les trois premiers tours, de la Pierre Noire à la Pierre Noire, les hommes doivent marcher d\'un pas rapide, et les quatre autres tours à un pas normal. Si possible, touchez l\'angle yéménite pendant chaque tour. Chaque fois que vous passez entre l\'angle yéménite et la Pierre Noire, dites :';
+      'Commencez sept tours autour de la Kaaba (tawaf) à partir de la Pierre Noire.\nLe trajet de la Pierre Noire à la Pierre Noire compte pour un tour. En débutant un nouveau tour, pointez la Pierre Noire de la main droite et récitez le takbir. Durant les trois premiers tours, les hommes doivent marcher d\'un pas rapide (ramal) — de la Pierre Noire à l\'angle yéménite. Entre l\'angle yéménite et la Pierre Noire, marchez à un pas normal et calme. Les quatre tours restants se font entièrement à un pas normal. Si possible, touchez l\'angle yéménite pendant chaque tour. Chaque fois que vous passez entre l\'angle yéménite et la Pierre Noire, dites :';
 
   @override
   String get step2KaabaText4 =>
@@ -761,6 +761,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String get prayerTimeIn => 'dans';
 
   @override
+  String get prayerTimesTitle => 'Horaires de prière';
+
+  @override
+  String get retry => 'Réessayer';
+
+  @override
   String get prayerTimeLoadError =>
       'Impossible de charger les heures de prière. Veuillez réessayer plus tard.';
 
@@ -771,7 +777,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get hajjTarwiyahSubtitle => '8 Dhul-Hijjah';
 
   @override
-  String get hajjArafatTitle => 'Jour de la station à Arafat';
+  String get hajjArafatTitle => 'Jour d\'Arafah';
 
   @override
   String get hajjArafatSubtitle => '9 Dhul-Hijjah';

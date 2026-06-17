@@ -412,7 +412,7 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get step2KaabaText3 =>
-      'Beginnen Sie den siebenfachen Umrundung des Kaaba (Tawaf) vom Schwarzen Stein aus. Das Passieren vom Schwarzen Stein zum Schwarzen Stein gilt als eine Runde. Wenn Sie eine neue Runde beginnen, zeigen Sie mit Ihrer rechten Hand auf den Schwarzen Stein und sagen Sie Takbir. Die ersten drei Runden, vom Schwarzen Stein zum Schwarzen Stein, sollten Männer mit schnellem Schritt gehen, während die verbleibenden vier Runden im normalen Tempo durchgeführt werden. Wenn möglich, berühren Sie während jeder Runde die Jemen-Ecke. Jedes Mal, wenn Sie zwischen der Jemen-Ecke und dem Schwarzen Stein vorbeigehen, sagen Sie:';
+      'Beginnen Sie den siebenfachen Umrundung des Kaaba (Tawaf) vom Schwarzen Stein aus. Das Passieren vom Schwarzen Stein zum Schwarzen Stein gilt als eine Runde. Wenn Sie eine neue Runde beginnen, zeigen Sie mit Ihrer rechten Hand auf den Schwarzen Stein und sagen Sie Takbir. In den ersten drei Runden sollten Männer im schnellen Schritt (Ramal) vom Schwarzen Stein bis zur Jemen-Ecke gehen. Zwischen der Jemen-Ecke und dem Schwarzen Stein wird in einem normalen, ruhigen Schritt gegangen. Die verbleibenden vier Runden werden vollständig im normalen Schritt durchgeführt. Wenn möglich, berühren Sie während jeder Runde die Jemen-Ecke. Jedes Mal, wenn Sie zwischen der Jemen-Ecke und dem Schwarzen Stein vorbeigehen, sagen Sie:';
 
   @override
   String get step2KaabaText4 =>
@@ -764,6 +764,12 @@ class AppLocalizationsDe extends AppLocalizations {
   String get prayerTimeIn => 'in';
 
   @override
+  String get prayerTimesTitle => 'Gebetszeiten';
+
+  @override
+  String get retry => 'Erneut versuchen';
+
+  @override
   String get prayerTimeLoadError =>
       'Gebetszeiten konnten nicht geladen werden. Bitte versuchen Sie es später erneut.';
 
@@ -774,7 +780,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get hajjTarwiyahSubtitle => '8. Dhu al-Hijjah';
 
   @override
-  String get hajjArafatTitle => 'Tag des Stehens auf Arafat';
+  String get hajjArafatTitle => 'Tag von Arafah';
 
   @override
   String get hajjArafatSubtitle => '9. Dhu al-Hijjah';
