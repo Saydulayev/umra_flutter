@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../providers/localization_provider.dart';
 import '../providers/theme_provider.dart';
@@ -390,11 +391,10 @@ class _LanguageButton extends StatelessWidget {
           child: Text(
             name,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: GoogleFonts.notoSans(
               fontSize: 17,
               fontWeight: FontWeight.w500,
               color: theme.textColor,
-              fontFamily: 'Lato',
             ),
           ),
         ),
