@@ -410,7 +410,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get step2KaabaText3 =>
-      'Mulailah tawaf sebanyak tujuh putaran dimulai dari Hajar Aswad.\nSatu putaran dihitung mulai dari Hajar Aswad sampai kembali ke Hajar Aswad. Setiap kali memulai putaran baru, tunjuklah Hajar Aswad dengan tangan kanan sambil mengucapkan takbir. Tiga putaran pertama dari Hajar Aswad hingga Hajar Aswad, laki-laki disunnahkan berjalan cepat (raml), dan empat putaran sisanya berjalan biasa. Usahakan menyentuh Rukun Yamani setiap putaran bila memungkinkan. Setiap kali melewati antara Rukun Yamani dan Hajar Aswad, bacalah doa berikut:';
+      'Mulailah tawaf sebanyak tujuh putaran dimulai dari Hajar Aswad.\nSatu putaran dihitung mulai dari Hajar Aswad sampai kembali ke Hajar Aswad. Setiap kali memulai putaran baru, tunjuklah Hajar Aswad dengan tangan kanan sambil mengucapkan takbir. Tiga putaran pertama, laki-laki disunnahkan berjalan cepat (ramal) dari Hajar Aswad hingga Rukun Yamani. Antara Rukun Yamani dan Hajar Aswad, berjalanlah dengan langkah biasa dan tenang. Empat putaran sisanya dilakukan sepenuhnya dengan langkah biasa. Usahakan menyentuh Rukun Yamani setiap putaran bila memungkinkan. Setiap kali melewati antara Rukun Yamani dan Hajar Aswad, bacalah doa berikut:';
 
   @override
   String get step2KaabaText4 =>

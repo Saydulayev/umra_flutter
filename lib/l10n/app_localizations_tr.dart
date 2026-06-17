@@ -407,7 +407,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get step2KaabaText3 =>
-      'Kâbe\'nin tavafına Kara Taş\'tan başlayın. Kara Taş\'tan Kara Taş\'a bir tur tamamlanmış sayılır. Her yeni tura başlarken sağ elinizle Kara Taş\'a işaret edin ve tekbir getirin. İlk üç turda, Kara Taş\'tan Kara Taş\'a hızlı adımlarla yürümeleri, geri kalan dört turda ise normal tempoda yürümeleri gerekir. Mümkünse, her turda Yemen Köşesi\'ne dokunun. Yemen Köşesi ile Kara Taş arasından her geçişinizde şu duayı okuyun:';
+      'Kâbe\'nin tavafına Kara Taş\'tan başlayın. Kara Taş\'tan Kara Taş\'a bir tur tamamlanmış sayılır. Her yeni tura başlarken sağ elinizle Kara Taş\'a işaret edin ve tekbir getirin. İlk üç turda erkekler, Kara Taş\'tan Yemen Köşesi\'ne kadar hızlı adımlarla (remel) yürümelidir. Yemen Köşesi ile Kara Taş arasında ise normal, sakin adımlarla yürünür. Geri kalan dört tur tamamen normal adımlarla gerçekleştirilir. Mümkünse, her turda Yemen Köşesi\'ne dokunun. Yemen Köşesi ile Kara Taş arasından her geçişinizde şu duayı okuyun:';
 
   @override
   String get step2KaabaText4 =>

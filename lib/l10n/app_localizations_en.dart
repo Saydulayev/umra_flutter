@@ -409,7 +409,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get step2KaabaText3 =>
-      'Begin the sevenfold circumambulation (tawaf) of the Kaaba from the Black Stone. Completing a circuit from the Black Stone to the Black Stone is counted as one circuit. At the start of each new circuit, point with your right hand to the Black Stone and say the takbir. For the first three circuits from the Black Stone to the Black Stone, men should walk quickly, and for the remaining four, they should walk at a normal pace. If possible, touch the Yemeni corner during each circuit. Every time you pass between the Yemeni corner and the Black Stone, say:\n';
+      'Begin the sevenfold circumambulation (tawaf) of the Kaaba from the Black Stone. Completing a circuit from the Black Stone to the Black Stone is counted as one circuit. At the start of each new circuit, point with your right hand to the Black Stone and say the takbir. For the first three circuits, men should walk at a quick pace (ramal) — from the Black Stone to the Yemeni Corner. Between the Yemeni Corner and the Black Stone, walk at a normal, calm pace. The remaining four circuits are performed at a normal pace throughout. If possible, touch the Yemeni corner during each circuit. Every time you pass between the Yemeni corner and the Black Stone, say:\n';
 
   @override
   String get step2KaabaText4 =>
