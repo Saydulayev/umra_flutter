@@ -10,7 +10,9 @@
       "Bash(flutter pub:*)",
       "Bash(./gradlew --stop)",
       "Bash(flutter --version)",
-      "Bash(git remote *)"
+      "Bash(git remote *)",
+      "Bash(find \"/Users/saydulayev/Desktop/for GitHub/umra\" -iname \"*.xcodeproj\" -maxdepth 3 2>&1)",
+      "Read(//Users/saydulayev/Desktop/for GitHub/umra/**)"
     ]
   }
 }
