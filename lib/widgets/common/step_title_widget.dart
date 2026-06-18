@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/font_provider.dart';
 import '../../providers/theme_provider.dart';
-import '../../constants/app_constants.dart';
+import '../../utils/responsive_metrics.dart';
 
 /// Виджет для заголовков шагов
 class StepTitleWidget extends StatelessWidget {
@@ -15,11 +15,12 @@ class StepTitleWidget extends StatelessWidget {
     final fontProvider = Provider.of<FontProvider>(context);
     final themeProvider = Provider.of<ThemeProvider>(context);
     final theme = themeProvider.selectedTheme;
+    final metrics = ResponsiveMetrics.of(context);
 
     return Text(
       text.trim(),
       style: fontProvider.getTextStyle(
-        fontSize: AppDimensions.fontSizeLarge,
+        fontSize: metrics.stepTitleFontSize,
         fontWeight: FontWeight.bold,
         color: theme.textColor,
       ),

@@ -145,14 +145,19 @@ class SettingsScreen extends StatelessWidget {
       body: Builder(
         builder: (context) {
           final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
-          return ListView(
+          final metrics = ResponsiveMetrics.of(context);
+          return SingleChildScrollView(
             padding: EdgeInsets.only(
               top: 16,
               bottom: bottomPadding + 16,
-              left: 16,
-              right: 16,
             ),
-            children: [
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: metrics.contentMaxWidth),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: metrics.listScreenHPad),
+                  child: Column(
+                    children: [
               // Блок 1: Обратная связь, Оценить приложение
               _buildSettingsBlock(
                 context,
@@ -219,7 +224,7 @@ class SettingsScreen extends StatelessWidget {
                       );
                     },
                     theme: theme,
-                    trailing: _buildThemeValue(theme, l10n),
+                    trailing: _buildThemeValue(theme, l10n, context),
                   ),
                 ],
               ),
@@ -270,7 +275,11 @@ class SettingsScreen extends StatelessWidget {
                   ],
                 ),
               ],
-            ],
+                    ],
+                  ),
+                ),
+              ),
+            ),
           );
         },
       ),
@@ -339,7 +348,7 @@ class SettingsScreen extends StatelessWidget {
               child: Text(
                 title,
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: metrics.captionFontSize,
                   fontWeight: FontWeight.w600,
                   color: theme.textColor,
                 ),
@@ -373,13 +382,14 @@ class SettingsScreen extends StatelessWidget {
       context,
       listen: false,
     ).selectedTheme;
+    final metrics = ResponsiveMetrics.of(context);
     final locale = localizationProvider.currentLocale;
     final languageName = _getLanguageName(locale.languageCode);
     return Text(
       languageName,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
-      style: TextStyle(fontSize: 16, color: theme.secondaryTextColor),
+      style: TextStyle(fontSize: metrics.captionFontSize, color: theme.secondaryTextColor),
     );
   }
 
@@ -404,8 +414,9 @@ class SettingsScreen extends StatelessWidget {
     }
   }
 
-  Widget _buildThemeValue(AppTheme theme, AppLocalizations l10n) {
+  Widget _buildThemeValue(AppTheme theme, AppLocalizations l10n, BuildContext context) {
     final themeName = _getThemeName(theme, l10n);
+    final metrics = ResponsiveMetrics.of(context);
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -423,7 +434,7 @@ class SettingsScreen extends StatelessWidget {
             themeName,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: 16, color: theme.secondaryTextColor),
+            style: TextStyle(fontSize: metrics.captionFontSize, color: theme.secondaryTextColor),
           ),
         ),
       ],

@@ -7,6 +7,7 @@ import '../utils/platform_icons.dart';
 import '../models/useful_info_model.dart';
 import '../widgets/app_card.dart';
 import '../widgets/arabic_text_widget.dart';
+import '../utils/responsive_metrics.dart';
 
 bool _isLongArabicLine(String s) {
   final trimmed = s.trim();
@@ -47,6 +48,7 @@ Widget _buildArabicCard(String line, BuildContext context) {
 }
 
 Widget _buildBodyBlock(String text, Color textColor, BuildContext context) {
+  final metrics = ResponsiveMetrics.of(context);
   final lines = text.split('\n').where((l) => l.trim().isNotEmpty).toList();
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,7 +59,7 @@ Widget _buildBodyBlock(String text, Color textColor, BuildContext context) {
         else
           Text(
             lines[i],
-            style: TextStyle(fontSize: 18, color: textColor, height: 1.6),
+            style: TextStyle(fontSize: metrics.bodyFontSize, color: textColor, height: 1.6),
           ),
         if (i < lines.length - 1 && !_isLongArabicLine(lines[i]))
           const SizedBox(height: 6),
@@ -71,6 +73,7 @@ Widget _buildFormattedContent(
   Color textColor,
   BuildContext context,
 ) {
+  final metrics = ResponsiveMetrics.of(context);
   final blocks = _parseFormattedContent(content);
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,7 +85,7 @@ Widget _buildFormattedContent(
               ? Text(
                   block.text,
                   style: TextStyle(
-                    fontSize: 17,
+                    fontSize: metrics.listFontSize,
                     fontWeight: FontWeight.bold,
                     color: textColor,
                   ),
@@ -364,37 +367,46 @@ class SubChapterDetailScreen extends StatelessWidget {
       body: Builder(
         builder: (context) {
           final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+          final metrics = ResponsiveMetrics.of(context);
           return SingleChildScrollView(
             padding: EdgeInsets.only(
               top: 16,
               bottom: bottomPadding + 16,
-              left: 16,
-              right: 16,
             ),
-            child: Builder(
-              builder: (context) {
-                final content = _getSubChapterContent(
-                  subChapter.contentKey,
-                  AppLocalizations.of(context)!,
-                );
-                final useFormatted =
-                    content.contains('1) ') || content.startsWith('1)');
-                if (useFormatted) {
-                  return _buildFormattedContent(
-                    content,
-                    theme.textColor,
-                    context,
-                  );
-                }
-                return Text(
-                  content,
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: theme.textColor,
-                    height: 1.5,
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: metrics.contentMaxWidth),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: metrics.listScreenHPad,
                   ),
-                );
-              },
+                  child: Builder(
+                    builder: (context) {
+                      final content = _getSubChapterContent(
+                        subChapter.contentKey,
+                        AppLocalizations.of(context)!,
+                      );
+                      final useFormatted =
+                          content.contains('1) ') || content.startsWith('1)');
+                      if (useFormatted) {
+                        return _buildFormattedContent(
+                          content,
+                          theme.textColor,
+                          context,
+                        );
+                      }
+                      return Text(
+                        content,
+                        style: TextStyle(
+                          fontSize: metrics.bodyFontSize,
+                          color: theme.textColor,
+                          height: 1.5,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
             ),
           );
         },

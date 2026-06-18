@@ -181,13 +181,6 @@ class _PlayerWidgetState extends State<PlayerWidget> {
     }
   }
 
-  String _formatDuration(Duration duration) {
-    String twoDigits(int n) => n.toString().padLeft(2, '0');
-    final minutes = duration.inMinutes.remainder(60);
-    final seconds = duration.inSeconds.remainder(60);
-    return '${twoDigits(minutes)}:${twoDigits(seconds)}';
-  }
-
   double _clampPosition(double position, double maxDuration) {
     if (maxDuration <= 0) return 0.0;
     // Ограничиваем позицию, чтобы она не превышала длительность

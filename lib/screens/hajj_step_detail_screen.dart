@@ -10,6 +10,7 @@ import '../widgets/common/step_title_widget.dart';
 import '../widgets/common/step_text_widget.dart';
 import '../widgets/common/step_arabic_section.dart';
 import '../constants/app_constants.dart';
+import '../utils/responsive_metrics.dart';
 
 class HajjStepDetailScreen extends StatefulWidget {
   final HajjStep step;
@@ -25,6 +26,8 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
 
   late final PageController _pageController;
   late int _currentPage;
+
+  ResponsiveMetrics get _metrics => ResponsiveMetrics.of(context);
 
   @override
   void initState() {
@@ -75,18 +78,29 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
                   final bottomPadding = MediaQuery.of(
                     context,
                   ).viewPadding.bottom;
+                  final metrics = ResponsiveMetrics.of(context);
                   return SingleChildScrollView(
                     padding: EdgeInsets.only(
                       top: 10,
                       bottom: bottomPadding + 48,
-                      left: 10,
-                      right: 10,
                     ),
-                    child: _buildContent(
-                      _pages[i].id,
-                      theme,
-                      l10n,
-                      fontProvider,
+                    child: Center(
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          maxWidth: metrics.contentMaxWidth,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: metrics.stepDetailHPad,
+                          ),
+                          child: _buildContent(
+                            _pages[i].id,
+                            theme,
+                            l10n,
+                            fontProvider,
+                          ),
+                        ),
+                      ),
                     ),
                   );
                 },
@@ -152,7 +166,7 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
           Text(
             l10n.hajj_step1_ihram_transliteration,
             style: fontProvider.getTextStyle(
-              fontSize: 18,
+              fontSize: _metrics.bodyFontSize,
               color: theme.textColor,
             ),
           ),
@@ -161,7 +175,7 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
         Text(
           l10n.hajj_step1_ihram_translation,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -175,7 +189,7 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
           Text(
             l10n.hajj_step1_ihram_dua_transliteration,
             style: fontProvider.getTextStyle(
-              fontSize: 18,
+              fontSize: _metrics.bodyFontSize,
               color: theme.textColor,
             ),
           ),
@@ -184,7 +198,7 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
         Text(
           l10n.hajj_step1_ihram_dua_translation,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -202,7 +216,7 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
           Text(
             l10n.hajj_step1_talbiyah_transliteration,
             style: fontProvider.getTextStyle(
-              fontSize: 18,
+              fontSize: _metrics.bodyFontSize,
               color: theme.textColor,
             ),
           ),
@@ -211,7 +225,7 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
         Text(
           l10n.hajj_step1_talbiyah_translation,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -227,7 +241,7 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
         Text(
           l10n.step1ConditioningHajjText,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -240,7 +254,7 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
         Text(
           l10n.step1IhramText1,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -273,7 +287,7 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
           Text(
             l10n.hajj_step2_dua_transliteration,
             style: fontProvider.getTextStyle(
-              fontSize: 18,
+              fontSize: _metrics.bodyFontSize,
               color: theme.textColor,
             ),
           ),
@@ -282,7 +296,7 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
         Text(
           l10n.hajj_step2_dua_translation,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -390,7 +404,7 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
   Widget _buildDefaultContent(AppTheme theme, FontProvider fontProvider) {
     return Text(
       'Контент для ${widget.step.titleKey}',
-      style: fontProvider.getTextStyle(fontSize: 18, color: theme.textColor),
+      style: fontProvider.getTextStyle(fontSize: _metrics.bodyFontSize, color: theme.textColor),
     );
   }
 

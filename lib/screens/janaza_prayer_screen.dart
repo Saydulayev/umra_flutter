@@ -5,6 +5,7 @@ import '../providers/theme_provider.dart';
 import '../models/app_theme.dart';
 import '../utils/platform_icons.dart';
 import '../widgets/arabic_text_widget.dart';
+import '../utils/responsive_metrics.dart';
 
 const Color _accentGreen = Color(0xFF10B981);
 
@@ -36,6 +37,8 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
   bool _isThirdTakbirExpanded = false;
   bool _isDuaVariationsExpanded = false;
 
+  ResponsiveMetrics get _metrics => ResponsiveMetrics.of(context);
+
   Widget _buildSectionDivider(AppTheme theme) {
     return Column(
       children: [
@@ -50,7 +53,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
     final lines = text.split('\n').where((l) => l.trim().isNotEmpty).toList();
     final hasArabic = lines.any(_isLongArabicLine);
     if (!hasArabic) {
-      return Text(text, style: TextStyle(fontSize: 17, color: color, height: 1.7));
+      return Text(text, style: TextStyle(fontSize: _metrics.listFontSize, color: color, height: 1.7));
     }
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +67,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
           else
             Text(
               lines[i],
-              style: TextStyle(fontSize: 17, color: color, height: 1.7),
+              style: TextStyle(fontSize: _metrics.listFontSize, color: color, height: 1.7),
             ),
           if (i < lines.length - 1 && !_isLongArabicLine(lines[i]))
             const SizedBox(height: 8),
@@ -93,14 +96,20 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
       body: Builder(
         builder: (context) {
           final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+          final metrics = ResponsiveMetrics.of(context);
           return SingleChildScrollView(
             padding: EdgeInsets.only(
               top: 20,
               bottom: bottomPadding + 24,
-              left: 16,
-              right: 16,
             ),
-            child: Column(
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: metrics.contentMaxWidth),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: metrics.listScreenHPad,
+                  ),
+                  child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildSection(
@@ -166,7 +175,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                   Text(
                     l10n.fourthTakbirAdditionalInfo,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: _metrics.captionFontSize,
                       color: theme.textColor,
                       height: 1.6,
                       fontStyle: FontStyle.italic,
@@ -195,6 +204,9 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                   theme: theme,
                 ),
               ],
+                  ),
+                ),
+              ),
             ),
           );
         },
@@ -215,7 +227,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
         Text(
           title,
           style: TextStyle(
-            fontSize: 20,
+            fontSize: _metrics.sectionTitleFontSize,
             fontWeight: FontWeight.bold,
             color: color,
           ),
@@ -297,7 +309,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
         Text(
           title,
           style: TextStyle(
-            fontSize: 20,
+            fontSize: _metrics.sectionTitleFontSize,
             fontWeight: FontWeight.bold,
             color: color,
           ),
@@ -316,7 +328,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                   Text(
                     l10n.translateText,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: _metrics.captionFontSize,
                       fontWeight: FontWeight.w600,
                       color: accent,
                     ),

@@ -8,6 +8,7 @@ import '../utils/platform_icons.dart';
 import '../widgets/app_card.dart';
 import '../widgets/arabic_text_widget.dart';
 import '../widgets/player_widget.dart';
+import '../utils/responsive_metrics.dart';
 
 // ─── Key → localized string helper ──────────────────────────────────────────
 
@@ -129,20 +130,36 @@ class DuaBookScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
-        child: AppCard(
-          theme: theme,
-          cornerRadius: _cardRadius,
-          shadows: [
-            BoxShadow(
-              color: theme.cardShadowColor,
-              blurRadius: 18,
-              offset: const Offset(0, 8),
+      body: Builder(
+        builder: (context) {
+          final metrics = ResponsiveMetrics.of(context);
+          final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+          return SingleChildScrollView(
+            padding: EdgeInsets.fromLTRB(
+              metrics.listScreenHPad,
+              8,
+              metrics.listScreenHPad,
+              bottomPadding + 32,
             ),
-          ],
-          child: Column(mainAxisSize: MainAxisSize.min, children: rows),
-        ),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: metrics.contentMaxWidth),
+                child: AppCard(
+                  theme: theme,
+                  cornerRadius: _cardRadius,
+                  shadows: [
+                    BoxShadow(
+                      color: theme.cardShadowColor,
+                      blurRadius: 18,
+                      offset: const Offset(0, 8),
+                    ),
+                  ],
+                  child: Column(mainAxisSize: MainAxisSize.min, children: rows),
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -163,6 +180,8 @@ class _CategoryRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final metrics = ResponsiveMetrics.of(context);
+    final badgeSize = metrics.duaBadgeSize;
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -172,8 +191,8 @@ class _CategoryRow extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                width: 40,
-                height: 40,
+                width: badgeSize,
+                height: badgeSize,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: theme.primaryColor,
@@ -189,7 +208,7 @@ class _CategoryRow extends StatelessWidget {
                   child: Text(
                     category.id == 'umrah' ? 'U' : 'H',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: badgeSize * 0.40,
                       fontWeight: FontWeight.bold,
                       color: theme.isDark ? Colors.black : Colors.white,
                       height: 1.2,
@@ -203,7 +222,7 @@ class _CategoryRow extends StatelessWidget {
                 child: Text(
                   _localized(l10n, category.titleKey),
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: metrics.stepItemFontSize,
                     fontWeight: FontWeight.w600,
                     color: theme.textColor,
                   ),
@@ -291,20 +310,36 @@ class DuaCategoryScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
         ),
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
-        child: AppCard(
-          theme: theme,
-          cornerRadius: _cardRadius,
-          shadows: [
-            BoxShadow(
-              color: theme.cardShadowColor,
-              blurRadius: 18,
-              offset: const Offset(0, 8),
+      body: Builder(
+        builder: (context) {
+          final metrics = ResponsiveMetrics.of(context);
+          final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+          return SingleChildScrollView(
+            padding: EdgeInsets.fromLTRB(
+              metrics.listScreenHPad,
+              8,
+              metrics.listScreenHPad,
+              bottomPadding + 32,
             ),
-          ],
-          child: Column(mainAxisSize: MainAxisSize.min, children: rows),
-        ),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: metrics.contentMaxWidth),
+                child: AppCard(
+                  theme: theme,
+                  cornerRadius: _cardRadius,
+                  shadows: [
+                    BoxShadow(
+                      color: theme.cardShadowColor,
+                      blurRadius: 18,
+                      offset: const Offset(0, 8),
+                    ),
+                  ],
+                  child: Column(mainAxisSize: MainAxisSize.min, children: rows),
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
@@ -509,46 +544,52 @@ class _DuaSinglePage extends StatelessWidget {
     final locale = Localizations.localeOf(context).languageCode;
     final showSupportingText = locale != 'ar';
 
+    final metrics = ResponsiveMetrics.of(context);
     return SingleChildScrollView(
       padding: EdgeInsets.only(
         bottom: MediaQuery.of(context).viewPadding.bottom + 64,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Arabic text (reuses existing ArabicTextWidget)
-          Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: ArabicTextWidget(text: dua.arabic),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: metrics.contentMaxWidth),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Arabic text (reuses existing ArabicTextWidget)
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: ArabicTextWidget(text: dua.arabic),
+              ),
+
+              // Audio player
+              if (dua.audioFile != null) ...[
+                PlayerWidget(fileName: dua.audioFile!),
+              ],
+
+              if (showSupportingText) ...[
+                // Transliteration
+                const SizedBox(height: 16),
+                _InfoCard(
+                  label: _localized(l10n, 'duaDetailTranslitLabel').toUpperCase(),
+                  body: _localized(l10n, dua.translitKey),
+                  theme: theme,
+                  italic: true,
+                ),
+
+                // Translation
+                const SizedBox(height: 12),
+                _InfoCard(
+                  label: _localized(l10n, 'duaDetailTransLabel').toUpperCase(),
+                  body: _localized(l10n, dua.transKey),
+                  theme: theme,
+                  italic: false,
+                ),
+              ],
+
+              const SizedBox(height: 48),
+            ],
           ),
-
-          // Audio player
-          if (dua.audioFile != null) ...[
-            PlayerWidget(fileName: dua.audioFile!),
-          ],
-
-          if (showSupportingText) ...[
-            // Transliteration
-            const SizedBox(height: 16),
-            _InfoCard(
-              label: _localized(l10n, 'duaDetailTranslitLabel').toUpperCase(),
-              body: _localized(l10n, dua.translitKey),
-              theme: theme,
-              italic: true,
-            ),
-
-            // Translation
-            const SizedBox(height: 12),
-            _InfoCard(
-              label: _localized(l10n, 'duaDetailTransLabel').toUpperCase(),
-              body: _localized(l10n, dua.transKey),
-              theme: theme,
-              italic: false,
-            ),
-          ],
-
-          const SizedBox(height: 48),
-        ],
+        ),
       ),
     );
   }

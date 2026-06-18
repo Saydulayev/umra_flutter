@@ -14,6 +14,7 @@ import '../widgets/common/step_text_widget.dart';
 import '../widgets/common/step_arabic_section.dart';
 import '../screens/useful_info_screen.dart';
 import '../constants/app_constants.dart';
+import '../utils/responsive_metrics.dart';
 
 class StepDetailScreen extends StatefulWidget {
   final UmraStep step;
@@ -31,6 +32,8 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
 
   late final PageController _pageController;
   late int _currentPage;
+
+  ResponsiveMetrics get _metrics => ResponsiveMetrics.of(context);
 
   @override
   void initState() {
@@ -83,18 +86,29 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
                   final bottomPadding = MediaQuery.of(
                     context,
                   ).viewPadding.bottom;
+                  final metrics = ResponsiveMetrics.of(context);
                   return SingleChildScrollView(
                     padding: EdgeInsets.only(
                       top: 10,
                       bottom: bottomPadding + 48,
-                      left: 10,
-                      right: 10,
                     ),
-                    child: _buildContent(
-                      _pages[i].id,
-                      theme,
-                      l10n,
-                      fontProvider,
+                    child: Center(
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          maxWidth: metrics.contentMaxWidth,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: metrics.stepDetailHPad,
+                          ),
+                          child: _buildContent(
+                            _pages[i].id,
+                            theme,
+                            l10n,
+                            fontProvider,
+                          ),
+                        ),
+                      ),
                     ),
                   );
                 },
@@ -163,7 +177,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step1TurnToQiblah,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -183,7 +197,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step1Labbayka,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -191,7 +205,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step1EnteringSacredMosque,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -204,7 +218,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step1EnteringSacredMosqueDua,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -214,7 +228,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step1ConditioningHajjText,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -227,7 +241,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step1IhramText1,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -237,7 +251,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step1UmrahForParentsExplanation,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -248,7 +262,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           Text(
             l10n.step1UmrahForFather,
             style: fontProvider.getTextStyle(
-              fontSize: 18,
+              fontSize: _metrics.bodyFontSize,
               color: theme.textColor,
             ),
           ),
@@ -260,7 +274,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           Text(
             l10n.step1UmrahForMother,
             style: fontProvider.getTextStyle(
-              fontSize: 18,
+              fontSize: _metrics.bodyFontSize,
               color: theme.textColor,
             ),
           ),
@@ -272,7 +286,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           Text(
             l10n.step1UmrahForOther,
             style: fontProvider.getTextStyle(
-              fontSize: 18,
+              fontSize: _metrics.bodyFontSize,
               color: theme.textColor,
             ),
           ),
@@ -294,7 +308,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step2KaabaText2,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -307,7 +321,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step2KaabaText3,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -328,7 +342,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step2KaabaText4,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -349,7 +363,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step3CompletedSevenCircuits,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -362,7 +376,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step3PlaceOfStanding,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -383,7 +397,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step4ZamzamText,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -404,7 +418,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step5ReturnReciteTakbir,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -412,7 +426,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step5AllahIsGreat,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -438,7 +452,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step6HeadTowardsSafa,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -451,7 +465,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step6SurahBaqarahVerse,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -464,7 +478,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step6WeBegin,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -472,7 +486,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step6WeBeginText,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -493,7 +507,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step6RemembranceText,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -506,7 +520,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step6DuasDuringSaiText,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -519,7 +533,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step6ExitingSacredMosqueText,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -540,7 +554,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step7MenShortenHair,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -548,7 +562,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
         Text(
           l10n.step7DuaAtEnd,
           style: fontProvider.getTextStyle(
-            fontSize: 18,
+            fontSize: _metrics.bodyFontSize,
             color: theme.textColor,
           ),
         ),
@@ -559,7 +573,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
   Widget _buildDefaultContent(AppTheme theme, FontProvider fontProvider) {
     return Text(
       'Content for ${widget.step.titleKey}',
-      style: fontProvider.getTextStyle(fontSize: 18, color: theme.textColor),
+      style: fontProvider.getTextStyle(fontSize: _metrics.bodyFontSize, color: theme.textColor),
     );
   }
 

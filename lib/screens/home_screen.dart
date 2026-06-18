@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'dart:ui' show ImageFilter;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -149,7 +148,6 @@ class _UmraTabBody extends StatelessWidget {
 
   const _UmraTabBody({required this.theme, required this.l10n});
 
-  static const _padding = 16.0;
   static const _cardRadius = 24.0;
 
   List<UmraStep> get _numberedSteps =>
@@ -161,79 +159,85 @@ class _UmraTabBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+    final metrics = ResponsiveMetrics.of(context);
 
     return SingleChildScrollView(
       padding: EdgeInsets.only(
         bottom: bottomPadding + _kBottomTabBarReservedSpace,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Large title
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 4, 20, 24),
-            child: Text(
-              l10n.umra.toUpperCase(),
-              style: TextStyle(
-                fontSize: 34,
-                fontWeight: FontWeight.bold,
-                letterSpacing: -0.5,
-                color: theme.textColor,
-              ),
-            ),
-          ),
-
-          // Steps grouped card
-          _GroupedCard(
-            theme: theme,
-            cardRadius: _cardRadius,
-            padding: _padding,
-            children: List.generate(_numberedSteps.length, (i) {
-              final step = _numberedSteps[i];
-              return _StepRowItem(
-                key: ValueKey(step.id),
-                badge: _StepBadge(stepNumber: step.stepNumber, theme: theme),
-                title: _localizedTitle(step.titleKey),
-                subtitle: null,
-                stepLabel: step.iconText.replaceAll('\n', ' '),
-                theme: theme,
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => StepDetailScreen(step: step),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: metrics.contentMaxWidth),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Large title
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 4, 20, 24),
+                child: Text(
+                  l10n.umra.toUpperCase(),
+                  style: TextStyle(
+                    fontSize: metrics.largeTitleFontSize,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: -0.5,
+                    color: theme.textColor,
                   ),
                 ),
-              );
-            }),
-          ),
+              ),
 
-          // Useful info — separate card
-          if (_usefulStep != null)
-            Padding(
-              padding: const EdgeInsets.only(top: 16),
-              child: _GroupedCard(
+              // Steps grouped card
+              _GroupedCard(
                 theme: theme,
                 cardRadius: _cardRadius,
-                padding: _padding,
-                children: [
-                  _StepRowItem(
-                    badge: _InfoBadge(theme: theme),
-                    title: l10n.usefulTitle,
+                padding: metrics.listScreenHPad,
+                children: List.generate(_numberedSteps.length, (i) {
+                  final step = _numberedSteps[i];
+                  return _StepRowItem(
+                    key: ValueKey(step.id),
+                    badge: _StepBadge(stepNumber: step.stepNumber, theme: theme),
+                    title: _localizedTitle(step.titleKey),
                     subtitle: null,
+                    stepLabel: step.iconText.replaceAll('\n', ' '),
                     theme: theme,
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => const UsefulInfoScreen(),
+                        builder: (_) => StepDetailScreen(step: step),
                       ),
                     ),
-                  ),
-                ],
+                  );
+                }),
               ),
-            ),
 
-          const SizedBox(height: 32),
-        ],
+              // Useful info — separate card
+              if (_usefulStep != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: _GroupedCard(
+                    theme: theme,
+                    cardRadius: _cardRadius,
+                    padding: metrics.listScreenHPad,
+                    children: [
+                      _StepRowItem(
+                        badge: _InfoBadge(theme: theme),
+                        title: l10n.usefulTitle,
+                        subtitle: null,
+                        theme: theme,
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const UsefulInfoScreen(),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+              const SizedBox(height: 32),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -268,63 +272,68 @@ class _HajjTabBody extends StatelessWidget {
 
   const _HajjTabBody({required this.theme, required this.l10n});
 
-  static const _padding = 16.0;
   static const _cardRadius = 24.0;
 
   @override
   Widget build(BuildContext context) {
     final steps = HajjSteps.allSteps;
     final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+    final metrics = ResponsiveMetrics.of(context);
 
     return SingleChildScrollView(
       padding: EdgeInsets.only(
         bottom: bottomPadding + _kBottomTabBarReservedSpace,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Large title
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 4, 20, 24),
-            child: Text(
-              l10n.hajj.toUpperCase(),
-              style: TextStyle(
-                fontSize: 34,
-                fontWeight: FontWeight.bold,
-                letterSpacing: -0.5,
-                color: theme.textColor,
-              ),
-            ),
-          ),
-
-          // Steps grouped card
-          _GroupedCard(
-            theme: theme,
-            cardRadius: _cardRadius,
-            padding: _padding,
-            children: List.generate(steps.length, (i) {
-              final step = steps[i];
-              return _StepRowItem(
-                key: ValueKey(step.id),
-                badge: _StepBadge(stepNumber: step.stepNumber, theme: theme),
-                title: _localizedTitle(step.titleKey),
-                subtitle: step.subtitleKey != null
-                    ? _localizedSubtitle(step.subtitleKey!)
-                    : null,
-                stepLabel: step.iconText.replaceAll('\n', ' '),
-                theme: theme,
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => HajjStepDetailScreen(step: step),
+      child: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: metrics.contentMaxWidth),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Large title
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 4, 20, 24),
+                child: Text(
+                  l10n.hajj.toUpperCase(),
+                  style: TextStyle(
+                    fontSize: metrics.largeTitleFontSize,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: -0.5,
+                    color: theme.textColor,
                   ),
                 ),
-              );
-            }),
-          ),
+              ),
 
-          const SizedBox(height: 32),
-        ],
+              // Steps grouped card
+              _GroupedCard(
+                theme: theme,
+                cardRadius: _cardRadius,
+                padding: metrics.listScreenHPad,
+                children: List.generate(steps.length, (i) {
+                  final step = steps[i];
+                  return _StepRowItem(
+                    key: ValueKey(step.id),
+                    badge: _StepBadge(stepNumber: step.stepNumber, theme: theme),
+                    title: _localizedTitle(step.titleKey),
+                    subtitle: step.subtitleKey != null
+                        ? _localizedSubtitle(step.subtitleKey!)
+                        : null,
+                    stepLabel: step.iconText.replaceAll('\n', ' '),
+                    theme: theme,
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => HajjStepDetailScreen(step: step),
+                      ),
+                    ),
+                  );
+                }),
+              ),
+
+              const SizedBox(height: 32),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -473,7 +482,7 @@ class _StepRowItem extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: metrics.stepItemFontSize,
                         fontWeight: FontWeight.w600,
                         color: theme.textColor,
                       ),

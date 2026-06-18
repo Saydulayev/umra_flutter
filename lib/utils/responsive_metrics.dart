@@ -90,4 +90,41 @@ class ResponsiveMetrics {
   double get languageCardHeight =>
       (height * (isCompactPhone ? 0.22 : 0.26)).clamp(130.0, 260.0).toDouble();
   double get languageListMaxHeight => height * (isCompactPhone ? 0.36 : 0.30);
+
+  // ── Tablet content layout ──────────────────────────────────────────────────
+
+  /// Максимальная ширина текстового контента (для читаемости на iPad)
+  double get contentMaxWidth => isTablet ? 680.0 : double.infinity;
+
+  /// Крупный заголовок экрана (Umra / Hajj)
+  double get largeTitleFontSize => isTablet ? 40.0 : 34.0;
+
+  /// Горизонтальный отступ для списочных экранов (карточки-списки)
+  double get listScreenHPad => isTablet ? 24.0 : 16.0;
+
+  /// Горизонтальный отступ внутри экранов с деталями (шаги, дуа, текст)
+  double get stepDetailHPad => isTablet ? 24.0 : 10.0;
+
+  /// Размер иконки-бейджа в списке дуа
+  double get duaBadgeSize => isTablet ? 48.0 : 40.0;
+
+  /// Размер шрифта для строк шагов/элементов в карточках-списках
+  double get stepItemFontSize => isTablet ? 18.0 : 16.0;
+
+  /// Заголовок шага (крупный, жирный)
+  double get stepTitleFontSize => isTablet ? 28.0 : 26.0;
+
+  // ── Adaptive text sizes ────────────────────────────────────────────────────
+
+  /// Основной текст (параграфы, детали шагов, дуа)
+  double get bodyFontSize => isTablet ? 20.0 : 18.0;
+
+  /// Строки списков, элементы меню
+  double get listFontSize => isTablet ? 19.0 : 17.0;
+
+  /// Подписи, строки настроек
+  double get captionFontSize => isTablet ? 17.0 : 15.0;
+
+  /// Заголовки секций внутри экрана
+  double get sectionTitleFontSize => isTablet ? 22.0 : 20.0;
 }
