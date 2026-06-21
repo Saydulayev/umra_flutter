@@ -16,6 +16,7 @@ import '../widgets/notification_settings_sheet.dart';
 import '../constants/app_constants.dart';
 import '../constants/review_config.dart';
 import '../utils/responsive_metrics.dart';
+import '../theme/app_type.dart';
 import 'donation_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -88,8 +89,8 @@ class SettingsScreen extends StatelessWidget {
               ),
               child: SelectableText(
                 email,
-                style: const TextStyle(
-                  fontSize: 16,
+                style: TextStyle(
+                  fontSize: AppType.of(context).callout,
                   fontWeight: FontWeight.bold,
                 ),
               ),

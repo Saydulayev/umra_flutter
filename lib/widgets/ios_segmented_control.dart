@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/app_theme.dart';
+import '../utils/responsive_metrics.dart';
+import '../theme/app_type.dart';
 
 /// Сегментированный контрол в неоморфном стиле
 class IOSSegmentedControl<T> extends StatelessWidget {
@@ -197,9 +199,11 @@ class IOSSegmentedControl<T> extends StatelessWidget {
                       child: Center(
                         child: Text(
                           segment.icon,
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.white,
-                            fontSize: 18,
+                            // Глиф в фиксированном круге 36pt — масштабируем
+                            // общим fontScale.
+                            fontSize: ResponsiveMetrics.of(context).scaled(18),
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -211,7 +215,7 @@ class IOSSegmentedControl<T> extends StatelessWidget {
                       child: Text(
                         segment.label,
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: AppType.of(context).caption,
                           fontWeight: FontWeight.w700,
                           fontFamily: 'Lato',
                           color: theme?.isDark == true

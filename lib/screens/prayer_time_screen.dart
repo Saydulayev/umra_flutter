@@ -12,6 +12,7 @@ import '../widgets/notification_settings_sheet.dart';
 import '../services/notification_service.dart';
 import '../services/prayer_time_service.dart';
 import '../utils/responsive_metrics.dart';
+import '../theme/app_type.dart';
 import '../l10n/app_localizations.dart';
 
 class PrayerTimeScreen extends StatefulWidget {
@@ -171,7 +172,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
             style: TextStyle(
               color: theme.textColor,
               fontWeight: FontWeight.w600,
-              fontSize: 17,
+              fontSize: AppType.of(context).callout,
             ),
           ),
         ),
@@ -193,7 +194,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: theme.textColor,
-                          fontSize: 15,
+                          fontSize: AppType.of(context).caption,
                         ),
                       ),
                       const SizedBox(height: 24),
@@ -271,7 +272,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                                 '${_getIslamicDate()} ${_getIslamicYear()}',
                                 textDirection: TextDirection.ltr,
                                 style: GoogleFonts.cinzel(
-                                  fontSize: 22,
+                                  fontSize: metrics.scaled(22),
                                   fontWeight: FontWeight.w500,
                                   letterSpacing: 1.2,
                                   color: theme.textColor,
@@ -302,6 +303,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                               child: _buildCountdownCard(
                                 theme: theme,
                                 l10n: l10n,
+                                type: AppType(metrics),
                               ),
                             ),
                             // Список намазов (rowsHorizontalPadding 16pt)
@@ -310,7 +312,11 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                                 horizontal: metrics.isCompactPhone ? 8 : 16,
                               ),
                               child: Column(
-                                children: _buildPrayerRows(theme, l10n),
+                                children: _buildPrayerRows(
+                                  theme,
+                                  l10n,
+                                  AppType(metrics),
+                                ),
                               ),
                             ),
                             const SizedBox(height: 12),
@@ -352,6 +358,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   Widget _buildCountdownCard({
     required AppTheme theme,
     required AppLocalizations l10n,
+    required AppType type,
   }) {
     return AppCard(
       theme: theme,
@@ -373,7 +380,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
           style: TextStyle(
-            fontSize: 17,
+            fontSize: type.callout,
             fontWeight: FontWeight.w600,
             color: theme.isDark ? Colors.white : Colors.black,
           ),
@@ -384,17 +391,21 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   }
 
   /// Список намазов. Порядок как в iOS: Fajr → Sunrise (капсула) → Dhuhr → Asr → Maghrib → Isha → Qiyam (капсула).
-  List<Widget> _buildPrayerRows(AppTheme theme, AppLocalizations l10n) {
+  List<Widget> _buildPrayerRows(
+    AppTheme theme,
+    AppLocalizations l10n,
+    AppType type,
+  ) {
     final qiyamTime = PrayerTimeService.getQiyamTime(
       prayerCityFromString(_currentCityKey),
     );
 
     Widget plain(String name, String time) =>
-        _buildPrayerTimeRow(name, time, theme: theme);
+        _buildPrayerTimeRow(name, time, theme: theme, type: type);
 
     Widget carded(String name, String time) => _buildCapsuleCard(
       theme: theme,
-      child: _buildPrayerTimeRow(name, time, theme: theme),
+      child: _buildPrayerTimeRow(name, time, theme: theme, type: type),
     );
 
     return [
@@ -424,6 +435,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     String prayerName,
     String prayerTime, {
     required AppTheme theme,
+    required AppType type,
   }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -436,7 +448,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                fontSize: 17,
+                fontSize: type.callout,
                 fontWeight: FontWeight.w600,
                 color: theme.isDark ? Colors.white : Colors.black,
               ),
@@ -447,7 +459,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
             prayerTime,
             maxLines: 1,
             style: TextStyle(
-              fontSize: 17,
+              fontSize: type.callout,
               fontWeight: FontWeight.w400,
               color: theme.isDark ? Colors.white : Colors.black,
             ),
@@ -498,7 +510,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    fontSize: 15,
+                    fontSize: AppType.of(context).caption,
                     fontWeight: FontWeight.w600,
                     color: selectedCity == 'mecca' ? activeText : inactiveText,
                   ),
@@ -522,7 +534,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                    fontSize: 15,
+                    fontSize: AppType.of(context).caption,
                     fontWeight: FontWeight.w600,
                     color: selectedCity == 'medina' ? activeText : inactiveText,
                   ),

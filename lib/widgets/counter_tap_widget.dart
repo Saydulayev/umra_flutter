@@ -6,6 +6,7 @@ import 'package:vibration/vibration.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 import '../widgets/app_card.dart';
+import '../theme/app_type.dart';
 
 class CounterTapWidget extends StatefulWidget {
   final String prefsKey;
@@ -74,6 +75,7 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
     final theme = Provider.of<ThemeProvider>(context).selectedTheme;
     final l10n = AppLocalizations.of(context)!;
     final isTablet = MediaQuery.of(context).size.shortestSide >= 600;
+    final type = AppType.of(context);
 
     final isCompleted = _counter >= _target;
     final statusColor = isCompleted ? theme.secondaryColor : theme.primaryColor;
@@ -119,7 +121,7 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
                         Text(
                           title,
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: type.callout,
                             fontWeight: FontWeight.w600,
                             color: theme.textColor,
                           ),
@@ -150,7 +152,7 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
                   child: Text(
                     '$_counter/$_target',
                     style: TextStyle(
-                      fontSize: isTablet ? 22 : 19,
+                      fontSize: type.section,
                       fontWeight: FontWeight.w700,
                       color: statusColor,
                       fontFeatures: const [FontFeature.tabularFigures()],
@@ -198,7 +200,7 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
                       child: Text(
                         '${i + 1}',
                         style: TextStyle(
-                          fontSize: isTablet ? 13 : 11,
+                          fontSize: type.overline,
                           fontWeight: FontWeight.w700,
                           color: done
                               ? Colors.white
@@ -259,8 +261,8 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
                             const SizedBox(width: 8),
                             Text(
                               l10n.addString,
-                              style: const TextStyle(
-                                fontSize: 15,
+                              style: TextStyle(
+                                fontSize: type.caption,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white,
                               ),
@@ -311,7 +313,7 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
                             Text(
                               l10n.resetString,
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: type.caption,
                                 fontWeight: FontWeight.w600,
                                 color: theme.textColor,
                               ),
@@ -362,7 +364,7 @@ class _StatusCapsule extends StatelessWidget {
             child: Text(
               label,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: AppType.of(context).caption,
                 fontWeight: FontWeight.w600,
                 color: color,
               ),

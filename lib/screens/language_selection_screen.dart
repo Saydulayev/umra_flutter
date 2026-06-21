@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../providers/localization_provider.dart';
 import '../providers/theme_provider.dart';
 import '../utils/responsive_metrics.dart';
+import '../theme/app_type.dart';
 import 'home_screen.dart';
 
 // ---------------------------------------------------------------------------
@@ -237,7 +238,8 @@ class _ShimmeringTitleState extends State<_ShimmeringTitle>
   Widget build(BuildContext context) {
     const text = 'UMRA GUIDE';
     final baseStyle = TextStyle(
-      fontSize: 38,
+      // Брендовый hero: один размер 38 (база), масштабируется общим fontScale.
+      fontSize: ResponsiveMetrics.of(context).scaled(38),
       fontWeight: FontWeight.w900,
       fontFamily: 'Lato',
       letterSpacing: 2.0,
@@ -396,7 +398,7 @@ class _LanguageButton extends StatelessWidget {
             name,
             textAlign: TextAlign.center,
             style: GoogleFonts.notoSans(
-              fontSize: 17,
+              fontSize: AppType.of(context).callout,
               fontWeight: FontWeight.w500,
               color: theme.textColor,
             ),

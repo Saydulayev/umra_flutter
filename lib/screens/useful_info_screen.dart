@@ -5,6 +5,7 @@ import '../providers/theme_provider.dart';
 import '../models/app_theme.dart';
 import '../utils/platform_icons.dart';
 import '../widgets/app_card.dart';
+import '../theme/app_type.dart';
 import '../models/useful_info_model.dart';
 import '../screens/useful_info_detail_screen.dart'
     show UsefulInfoDetailScreen, SubChapterDetailScreen;
@@ -92,7 +93,7 @@ class UsefulInfoScreen extends StatelessWidget {
               ],
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                children: _buildRows(items, theme, isTablet),
+                children: _buildRows(items, theme, isTablet, AppType.of(context)),
               ),
             ),
           );
@@ -105,6 +106,7 @@ class UsefulInfoScreen extends StatelessWidget {
     List<_InfoItem> items,
     AppTheme theme,
     bool isTablet,
+    AppType type,
   ) {
     final rows = <Widget>[];
     final hPad = isTablet ? 20.0 : 16.0;
@@ -123,7 +125,7 @@ class UsefulInfoScreen extends StatelessWidget {
                   child: Text(
                     item.title,
                     style: TextStyle(
-                      fontSize: 17,
+                      fontSize: type.callout,
                       color: theme.textColor,
                     ),
                   ),

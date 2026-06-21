@@ -15,6 +15,7 @@ import 'screens/language_selection_screen.dart';
 import 'models/app_theme.dart';
 import 'services/app_usage_tracker.dart';
 import 'utils/responsive_metrics.dart';
+import 'theme/app_type.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -107,13 +108,20 @@ class MyApp extends StatelessWidget {
                           .clamp(1.0, ResponsiveMetrics.maxTextScale)
                           .toDouble();
 
+                      // Применяем единый адаптивный масштаб типографики к теме,
+                      // чтобы системные компоненты (AppBar, Dialog, кнопки,
+                      // TextTheme) масштабировались по размеру экрана.
+                      final scaledTheme = AppType.of(
+                        context,
+                      ).applyToTheme(Theme.of(context));
+
                       return AnnotatedRegion<SystemUiOverlayStyle>(
                         value: overlayStyle,
                         child: MediaQuery(
                           data: mediaQuery.copyWith(
                             textScaler: TextScaler.linear(cappedTextScale),
                           ),
-                          child: child!,
+                          child: Theme(data: scaledTheme, child: child!),
                         ),
                       );
                     },
@@ -153,7 +161,7 @@ class MyApp extends StatelessWidget {
         iconTheme: IconThemeData(color: theme.primaryColor),
         titleTextStyle: TextStyle(
           fontFamily: 'Lato',
-          fontSize: 18,
+          // fontSize задаётся адаптивно в AppType.applyToTheme (роль body).
           fontWeight: FontWeight.w600,
           color: theme.textColor,
         ),
@@ -199,13 +207,13 @@ class MyApp extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         titleTextStyle: TextStyle(
           fontFamily: 'Lato',
-          fontSize: 18,
+          // fontSize задаётся адаптивно в AppType.applyToTheme (роль body).
           fontWeight: FontWeight.bold,
           color: theme.textColor,
         ),
         contentTextStyle: TextStyle(
           fontFamily: 'Lato',
-          fontSize: 15,
+          // fontSize задаётся адаптивно в AppType.applyToTheme (роль caption).
           color: theme.secondaryTextColor,
         ),
       ),
@@ -221,7 +229,7 @@ class MyApp extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
           textStyle: const TextStyle(
             fontFamily: 'Lato',
-            fontSize: 16,
+            // fontSize задаётся адаптивно в AppType.applyToTheme (роль callout).
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -233,7 +241,7 @@ class MyApp extends StatelessWidget {
           foregroundColor: theme.primaryColor,
           textStyle: const TextStyle(
             fontFamily: 'Lato',
-            fontSize: 15,
+            // fontSize задаётся адаптивно в AppType.applyToTheme (роль caption).
             fontWeight: FontWeight.w500,
           ),
         ),

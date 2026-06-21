@@ -8,6 +8,7 @@ import '../models/useful_info_model.dart';
 import '../widgets/app_card.dart';
 import '../widgets/arabic_text_widget.dart';
 import '../utils/responsive_metrics.dart';
+import '../theme/app_type.dart';
 
 bool _isLongArabicLine(String s) {
   final trimmed = s.trim();
@@ -182,7 +183,10 @@ class UsefulInfoDetailScreen extends StatelessWidget {
                 Expanded(
                   child: Text(
                     _getSubChapterTitle(sub.titleKey, l10n),
-                    style: TextStyle(fontSize: 17, color: theme.textColor),
+                    style: TextStyle(
+                      fontSize: AppType.of(context).callout,
+                      color: theme.textColor,
+                    ),
                   ),
                 ),
                 Icon(

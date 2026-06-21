@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/app_theme.dart';
+import '../utils/responsive_metrics.dart';
 
 /// Виджет для изображения с индексом и темой (для grid view)
 class StyledImageWithIndex extends StatelessWidget {
@@ -84,9 +85,9 @@ class StyledImageWithIndex extends StatelessWidget {
                 child: Center(
                   child: Text(
                     '${index + 1}',
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: ResponsiveMetrics.of(context).scaled(18),
                       fontWeight: FontWeight.bold,
                     ),
                   ),

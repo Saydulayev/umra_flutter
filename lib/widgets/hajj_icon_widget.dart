@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/app_theme.dart';
+import '../utils/responsive_metrics.dart';
 
 /// Виджет для отображения иконки шага Хаджа (неоморфный дизайн с рамками)
 class HajjIconWidget extends StatelessWidget {
@@ -131,7 +132,7 @@ class HajjIconWidget extends StatelessWidget {
               iconText,
               style: TextStyle(
                 fontFamily: 'serif',
-                fontSize: 9.5,
+                fontSize: ResponsiveMetrics.of(context).scaled(9.5),
                 fontWeight: FontWeight.bold,
                 letterSpacing: 1.3,
                 color: textColor,

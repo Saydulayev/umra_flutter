@@ -24,6 +24,53 @@ class ResponsiveMetrics {
   bool get isTablet => shortestSide >= 600;
   bool get isCompactPhone => shortestSide < 380 || height < 700;
 
+  // ── Единый непрерывный масштаб типографики ─────────────────────────────────
+  //
+  // Один множитель, выводимый из РАЗМЕРА ЭКРАНА (shortestSide), применяемый ко
+  // всем размерам текста через [scaled]. Заменяет дискретную модель
+  // «телефон/планшет»: размер растёт плавно, без скачка на границе 600 dp,
+  // и крупнее на больших планшетах.
+  //
+  // Важно: [fontScale] зависит только от размера экрана и НЕ связан с
+  // [textScale] (системной настройкой пользователя). Flutter применяет
+  // textScaler к итоговому fontSize самостоятельно, поэтому здесь его
+  // умножать нельзя — иначе масштаб задвоится.
+
+  /// Референсная ширина макета (стандартный смартфон ~390 dp → множитель 1.0).
+  static const double _refWidth = 390.0;
+
+  /// Базовые размеры ролей (при [fontScale] == 1.0, т.е. на 390 dp).
+  /// Единственный источник правды для всех размеров текста в приложении.
+  static const double displayBase = 34.0; // hero / крупный заголовок экрана
+  static const double titleBase = 26.0; // заголовок шага
+  static const double sectionBase = 20.0; // заголовок секции
+  static const double bodyBase = 18.0; // основной текст для чтения
+  static const double calloutBase = 17.0; // строки списков, кнопки, callout
+  static const double captionBase = 15.0; // подписи, настройки, вторичный текст
+  static const double overlineBase = 11.0; // метки «ШАГ 1», лейблы
+  static const double tabLabelBase = 10.0; // подпись нижней навигации
+
+  /// Непрерывный множитель размера шрифта от размера экрана.
+  /// Диапазон: телефоны ≈ 0.88–1.14, планшеты ≈ 1.14–1.34 (плавно, без разрыва).
+  double get fontScale {
+    final s = shortestSide;
+    if (s <= _refWidth) {
+      // Маленькие/стандартные телефоны: 320→0.92 (пол), 390→1.0.
+      // Пол 0.92 не даёт тексту для чтения становиться слишком мелким на SE.
+      return (s / _refWidth).clamp(0.92, 1.0).toDouble();
+    }
+    if (s < 600) {
+      // Большие телефоны: 390..600 → 1.0..1.14 (непрерывно к планшетам)
+      return 1.0 + (s - _refWidth) / (600 - _refWidth) * 0.14;
+    }
+    // Планшеты: 600..1024 → 1.14..1.32, далее мягкий потолок 1.34
+    return (1.14 + (s - 600) / (1024 - 600) * 0.18).clamp(1.14, 1.34).toDouble();
+  }
+
+  /// Адаптивный размер: задаёшь «дизайнерский» базовый размер (под 390 dp) —
+  /// получаешь размер, пропорциональный текущему экрану.
+  double scaled(double base) => base * fontScale;
+
   /// Альбомная ориентация (ширина больше высоты)
   bool get isLandscape => width > height;
 
@@ -112,7 +159,7 @@ class ResponsiveMetrics {
   double get contentMaxWidth => isTablet ? 680.0 : double.infinity;
 
   /// Крупный заголовок экрана (Umra / Hajj)
-  double get largeTitleFontSize => isTablet ? 40.0 : 34.0;
+  double get largeTitleFontSize => scaled(displayBase);
 
   /// Горизонтальный отступ для списочных экранов (карточки-списки)
   double get listScreenHPad => isTablet ? 24.0 : 16.0;
@@ -130,23 +177,26 @@ class ResponsiveMetrics {
   /// Размер шрифта арабского превью в строке списка дуа
   double get duaArabicPreviewFontSize => isTablet ? 20.0 : 16.0;
 
+  // ── Legacy-обёртки над единым масштабом ────────────────────────────────────
+  // Сохранены для обратной совместимости и делегируют в [scaled]. Новый код
+  // должен использовать AppType (lib/theme/app_type.dart). Единый источник
+  // правды — *Base-константы выше, поэтому второй системы типографики нет.
+
   /// Размер шрифта для строк шагов/элементов в карточках-списках
-  double get stepItemFontSize => isTablet ? 18.0 : 16.0;
+  double get stepItemFontSize => scaled(calloutBase);
 
   /// Заголовок шага (крупный, жирный)
-  double get stepTitleFontSize => isTablet ? 28.0 : 26.0;
-
-  // ── Adaptive text sizes ────────────────────────────────────────────────────
+  double get stepTitleFontSize => scaled(titleBase);
 
   /// Основной текст (параграфы, детали шагов, дуа)
-  double get bodyFontSize => isTablet ? 20.0 : 18.0;
+  double get bodyFontSize => scaled(bodyBase);
 
   /// Строки списков, элементы меню
-  double get listFontSize => isTablet ? 19.0 : 17.0;
+  double get listFontSize => scaled(calloutBase);
 
   /// Подписи, строки настроек
-  double get captionFontSize => isTablet ? 17.0 : 15.0;
+  double get captionFontSize => scaled(captionBase);
 
   /// Заголовки секций внутри экрана
-  double get sectionTitleFontSize => isTablet ? 22.0 : 20.0;
+  double get sectionTitleFontSize => scaled(sectionBase);
 }

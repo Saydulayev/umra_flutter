@@ -14,6 +14,7 @@ import '../screens/settings_screen.dart';
 import '../screens/prayer_time_screen.dart';
 import '../screens/dua_book_screen.dart';
 import '../utils/responsive_metrics.dart';
+import '../theme/app_type.dart';
 import '../widgets/app_card.dart';
 
 const double _kBottomTabBarReservedSpace = 88.0;
@@ -469,7 +470,7 @@ class _StepRowItem extends StatelessWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 11,
+                          fontSize: AppType(metrics).overline,
                           fontWeight: FontWeight.w500,
                           letterSpacing: 0.5,
                           color: theme.secondaryTextColor,
@@ -494,7 +495,7 @@ class _StepRowItem extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 13,
+                          fontSize: AppType(metrics).caption,
                           color: theme.secondaryTextColor,
                         ),
                       ),
@@ -750,7 +751,9 @@ class _TabItem extends StatelessWidget {
                     child: Text(
                       letter,
                       style: TextStyle(
-                        fontSize: 14,
+                        // Глиф в фиксированном круге 27pt: масштабируем через
+                        // общий fontScale, размер круга — вне scope типографики.
+                        fontSize: ResponsiveMetrics.of(context).scaled(14),
                         fontWeight: FontWeight.w700,
                         color: isSelected
                             ? Colors.white
@@ -766,7 +769,7 @@ class _TabItem extends StatelessWidget {
                   duration: const Duration(milliseconds: 250),
                   style: TextStyle(
                     fontFamily: 'Lato',
-                    fontSize: 10,
+                    fontSize: AppType.of(context).tabLabel,
                     fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
                     color: labelColor,
                     height: 1,

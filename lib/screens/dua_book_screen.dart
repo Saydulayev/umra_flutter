@@ -9,6 +9,7 @@ import '../widgets/app_card.dart';
 import '../widgets/arabic_text_widget.dart';
 import '../widgets/player_widget.dart';
 import '../utils/responsive_metrics.dart';
+import '../theme/app_type.dart';
 
 // ─── Key → localized string helper ──────────────────────────────────────────
 
@@ -122,7 +123,7 @@ class DuaBookScreen extends StatelessWidget {
           style: TextStyle(
             color: theme.textColor,
             fontWeight: FontWeight.w600,
-            fontSize: 17,
+            fontSize: AppType.of(context).callout,
           ),
         ),
         leading: IconButton(
@@ -231,7 +232,7 @@ class _CategoryRow extends StatelessWidget {
               Text(
                 '${category.duas.length}',
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: AppType.of(context).caption,
                   fontWeight: FontWeight.w600,
                   color: theme.textColor.withValues(alpha: 0.40),
                 ),
@@ -302,7 +303,7 @@ class DuaCategoryScreen extends StatelessWidget {
           style: TextStyle(
             color: theme.textColor,
             fontWeight: FontWeight.w600,
-            fontSize: 17,
+            fontSize: AppType.of(context).callout,
           ),
         ),
         leading: IconButton(
@@ -393,7 +394,7 @@ class _DuaRow extends StatelessWidget {
                 child: Text(
                   _localized(l10n, dua.titleKey),
                   style: TextStyle(
-                    fontSize: 15,
+                    fontSize: AppType.of(context).callout,
                     fontWeight: FontWeight.w500,
                     color: theme.textColor,
                   ),
@@ -463,7 +464,7 @@ class _DuaPageScreenState extends State<DuaPageScreen> {
           style: TextStyle(
             color: theme.textColor,
             fontWeight: FontWeight.w600,
-            fontSize: 17,
+            fontSize: AppType.of(context).callout,
           ),
         ),
         leading: IconButton(
@@ -636,7 +637,7 @@ class _InfoCard extends StatelessWidget {
                 Text(
                   label,
                   style: TextStyle(
-                    fontSize: 11,
+                    fontSize: AppType.of(context).overline,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 0.5,
                     color: theme.primaryColor,
@@ -646,7 +647,7 @@ class _InfoCard extends StatelessWidget {
                 Text(
                   body,
                   style: TextStyle(
-                    fontSize: 15,
+                    fontSize: AppType.of(context).body,
                     fontStyle: italic ? FontStyle.italic : FontStyle.normal,
                     color: theme.textColor.withValues(alpha: 0.85),
                     height: 1.55,

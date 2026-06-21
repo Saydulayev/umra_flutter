@@ -260,7 +260,7 @@ class _JanazaPrayerScreenState extends State<JanazaPrayerScreen> {
                 child: Text(
                   title,
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: _metrics.sectionTitleFontSize,
                     fontWeight: FontWeight.bold,
                     color: color,
                   ),

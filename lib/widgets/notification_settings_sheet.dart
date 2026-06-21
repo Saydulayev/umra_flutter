@@ -9,6 +9,7 @@ import '../providers/user_preferences_provider.dart';
 import '../services/prayer_time_service.dart';
 import '../services/notification_service.dart';
 import '../widgets/app_card.dart';
+import '../theme/app_type.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 
 class NotificationSettingsSheet extends StatelessWidget {
@@ -22,6 +23,7 @@ class NotificationSettingsSheet extends StatelessWidget {
     final city = prayerCityFromString(prefs.prayerCity);
     final l10n = AppLocalizations.of(context)!;
     final isTablet = MediaQuery.of(context).size.shortestSide >= 600;
+    final type = AppType.of(context);
     final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
     final hPad = isTablet ? 28.0 : 20.0;
 
@@ -53,7 +55,7 @@ class NotificationSettingsSheet extends StatelessWidget {
             child: Text(
               l10n.notificationSheetTitle,
               style: TextStyle(
-                fontSize: isTablet ? 28 : 24,
+                fontSize: type.title,
                 fontWeight: FontWeight.bold,
                 color: theme.textColor,
               ),
@@ -139,7 +141,7 @@ class NotificationSettingsSheet extends StatelessWidget {
                   Text(
                     l10n.notificationSettingsLink,
                     style: TextStyle(
-                      fontSize: isTablet ? 18 : 16,
+                      fontSize: type.callout,
                       fontWeight: FontWeight.w500,
                       color: theme.primaryColor,
                     ),
@@ -168,7 +170,7 @@ class NotificationSettingsSheet extends StatelessWidget {
               child: Text(
                 l10n.close,
                 style: TextStyle(
-                  fontSize: isTablet ? 19 : 17,
+                  fontSize: type.callout,
                   fontWeight: FontWeight.w500,
                   color: theme.primaryColor,
                 ),
@@ -220,7 +222,7 @@ class _SwitchRow extends StatelessWidget {
             child: Text(
               label,
               style: TextStyle(
-                fontSize: isTablet ? 17 : 16,
+                fontSize: AppType.of(context).callout,
                 fontWeight: FontWeight.w400,
                 color: theme.textColor,
               ),

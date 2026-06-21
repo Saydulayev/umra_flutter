@@ -4,6 +4,7 @@ import '../providers/theme_provider.dart';
 import '../models/app_theme.dart';
 import '../utils/platform_icons.dart';
 import '../widgets/app_card.dart';
+import '../theme/app_type.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 
 class ThemeSelectionSheet extends StatelessWidget {
@@ -54,7 +55,7 @@ class ThemeSelectionSheet extends StatelessWidget {
                 Text(
                   l10n.themeSelectTitle,
                   style: TextStyle(
-                    fontSize: 17,
+                    fontSize: AppType.of(context).callout,
                     fontWeight: FontWeight.w600,
                     color: theme.textColor,
                   ),
@@ -193,7 +194,7 @@ class _ThemeRow extends StatelessWidget {
             Text(
               themeName,
               style: TextStyle(
-                fontSize: 17,
+                fontSize: AppType.of(context).callout,
                 fontWeight: FontWeight.w400,
                 color: currentTheme.textColor,
               ),

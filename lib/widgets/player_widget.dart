@@ -20,6 +20,10 @@ class PlayerWidget extends StatefulWidget {
 
 class _PlayerWidgetState extends State<PlayerWidget> {
   late AudioPlayer _audioPlayer;
+  // true только после успешной инициализации плеера. Если загрузка аудио
+  // упала (например, из-за нативной ошибки objective_c на симуляторе),
+  // поле _audioPlayer не инициализируется — флаг защищает от обращения к нему.
+  bool _audioReady = false;
   bool _isPlaying = false;
   bool _isRepeating = false;
   double _playbackRate = 1.0;
@@ -42,6 +46,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
   Future<void> _initAudio() async {
     try {
       _audioPlayer = await AudioService().loadAudio(widget.fileName);
+      _audioReady = true;
 
       // КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Сохраняем подписки для отмены в dispose
       _durationSubscription = _audioPlayer.durationStream.listen((duration) {
@@ -105,13 +110,22 @@ class _PlayerWidgetState extends State<PlayerWidget> {
       });
 
       if (l10n != null) {
-        messenger.showSnackBar(
-          SnackBar(
-            content: Text('${l10n.audioLoadError}: ${e.toString()}'),
-            duration: const Duration(seconds: 3),
-            backgroundColor: theme.errorColor,
-          ),
-        );
+        // Показываем только короткое локализованное сообщение — без полного
+        // дампа исключения (он раздувал SnackBar на весь экран). Подробности
+        // остаются в debugPrint выше. Показ обёрнут в try/catch: при ошибке
+        // инициализации дерево может демонтироваться, и showSnackBar способен
+        // бросить «deactivated widget's ancestor».
+        try {
+          messenger.showSnackBar(
+            SnackBar(
+              content: Text(l10n.audioLoadError),
+              duration: const Duration(seconds: 3),
+              backgroundColor: theme.errorColor,
+            ),
+          );
+        } catch (_) {
+          // Виджет/Scaffold уже демонтируется — безопасно игнорируем.
+        }
       }
     }
   }
@@ -144,6 +158,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
   }
 
   Future<void> _togglePlayPause() async {
+    if (!_audioReady) return;
     if (_isPlaying) {
       await _audioPlayer.pause();
     } else {
@@ -154,6 +169,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
   }
 
   Future<void> _toggleRepeat() async {
+    if (!_audioReady) return;
     setState(() {
       _isRepeating = !_isRepeating;
     });
@@ -161,6 +177,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
   }
 
   Future<void> _cyclePlaybackRate() async {
+    if (!_audioReady) return;
     setState(() {
       if (_playbackRate == 1.0) {
         _playbackRate = 1.5;
@@ -194,9 +211,13 @@ class _PlayerWidgetState extends State<PlayerWidget> {
     _positionSubscription?.cancel();
     _playerStateSubscription?.cancel();
 
-    // Удаляем плеер из списка активных перед удалением
-    AudioService().unregisterPlayer(_audioPlayer);
-    _audioPlayer.dispose();
+    // Удаляем плеер из списка активных перед удалением.
+    // Только если инициализация прошла успешно — иначе _audioPlayer (late)
+    // не присвоен, и обращение к нему бросило бы LateInitializationError.
+    if (_audioReady) {
+      AudioService().unregisterPlayer(_audioPlayer);
+      _audioPlayer.dispose();
+    }
     super.dispose();
   }
 

@@ -46,10 +46,9 @@ class AppDimensions {
   static const double paddingLarge = 16.0;
   static const double paddingExtraLarge = 24.0;
 
-  // Размеры шрифтов
-  static const double fontSizeSmall = 14.0;
-  static const double fontSizeMedium = 18.0;
-  static const double fontSizeLarge = 26.0;
+  // Размеры шрифтов вынесены в единую систему типографики:
+  // ResponsiveMetrics (*Base-константы + fontScale) и AppType (роли).
+  // См. lib/utils/responsive_metrics.dart и lib/theme/app_type.dart.
 
   // Размеры виджетов
   static const double iconSizeSmall = 14.0;

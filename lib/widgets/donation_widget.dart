@@ -8,6 +8,7 @@ import '../providers/theme_provider.dart';
 import '../models/app_theme.dart';
 import '../models/donation_product.dart';
 import '../utils/donation_error_helper.dart';
+import '../theme/app_type.dart';
 import 'app_card.dart';
 
 /// Виджет для отображения вариантов пожертвований
@@ -139,7 +140,7 @@ class _DonationWidgetState extends State<DonationWidget> {
                               child: Text(
                                 l10n.contributionToApplicationDevelopment,
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: AppType.of(context).caption,
                                   fontWeight: FontWeight.w500,
                                   color: theme.textColor,
                                   height: 1.5,
@@ -160,7 +161,7 @@ class _DonationWidgetState extends State<DonationWidget> {
                               Text(
                                 l10n.selectTheAmount,
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: AppType.of(context).caption,
                                   color: theme.textColor,
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -204,7 +205,7 @@ class _DonationWidgetState extends State<DonationWidget> {
                                         l10n,
                                       ),
                                       style: TextStyle(
-                                        fontSize: 12,
+                                        fontSize: AppType.of(context).caption,
                                         color: Colors.red[700],
                                       ),
                                     ),
@@ -240,7 +241,10 @@ class _DonationWidgetState extends State<DonationWidget> {
               padding: const EdgeInsets.symmetric(vertical: 16.0),
               child: Text(
                 l10n.donationProductsNotAvailable,
-                style: TextStyle(fontSize: 14, color: theme.secondaryTextColor),
+                style: TextStyle(
+                  fontSize: AppType.of(context).caption,
+                  color: theme.secondaryTextColor,
+                ),
                 textAlign: TextAlign.center,
               ),
             )
@@ -283,7 +287,7 @@ class _DonationWidgetState extends State<DonationWidget> {
                                   Text(
                                     l10n.donationProcessing,
                                     style: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: AppType.of(context).caption,
                                       fontWeight: FontWeight.w600,
                                       color: theme.textColor,
                                     ),
@@ -294,7 +298,7 @@ class _DonationWidgetState extends State<DonationWidget> {
                           : Text(
                               l10n.donateButton,
                               style: TextStyle(
-                                fontSize: 15,
+                                fontSize: AppType.of(context).callout,
                                 fontWeight: FontWeight.w600,
                                 color: theme.textColor,
                               ),
@@ -327,7 +331,7 @@ class _DonationWidgetState extends State<DonationWidget> {
       return Text(
         '-',
         style: TextStyle(
-          fontSize: 16,
+          fontSize: AppType.of(context).callout,
           fontWeight: FontWeight.w600,
           color: theme.textColor,
         ),
@@ -345,7 +349,7 @@ class _DonationWidgetState extends State<DonationWidget> {
       return Text(
         '-',
         style: TextStyle(
-          fontSize: 16,
+          fontSize: AppType.of(context).callout,
           fontWeight: FontWeight.w600,
           color: theme.textColor,
         ),
@@ -389,10 +393,10 @@ class _DonationWidgetState extends State<DonationWidget> {
           children: [
             Text(
               _selectedProduct?.price ?? '-',
-              style: const TextStyle(
-                fontSize: 16,
+              style: TextStyle(
+                fontSize: AppType.of(context).callout,
                 fontWeight: FontWeight.w600,
-                color: Color(0xFF4D99E6),
+                color: const Color(0xFF4D99E6),
               ),
             ),
             const SizedBox(width: 8),
@@ -450,7 +454,7 @@ class _DonationWidgetState extends State<DonationWidget> {
               child: Text(
                 l10n.selectTheAmount,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: AppType.of(context).body,
                   fontWeight: FontWeight.bold,
                   color: theme.textColor,
                 ),
@@ -467,7 +471,7 @@ class _DonationWidgetState extends State<DonationWidget> {
                   title: Text(
                     product.price,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: AppType.of(context).callout,
                       fontWeight:
                           isSelected ? FontWeight.bold : FontWeight.normal,
                       color: theme.textColor,
