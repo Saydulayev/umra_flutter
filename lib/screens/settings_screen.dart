@@ -121,22 +121,25 @@ class SettingsScreen extends StatelessWidget {
   }
 
   Future<void> _launchAppStore() async {
-    // Сначала пытаемся открыть нативную страницу магазина через in_app_review
-    // (на iOS — App Store, на Android — Google Play). Это самый надёжный путь.
+    // Кнопка «Оценить приложение» ведёт пользователя сразу к оценке:
+    // - iOS: deep link с ?action=write-review открывает форму отзыва в App Store;
+    // - Android: страница приложения в Google Play (Play Store не поддерживает
+    //   прямой deep link на форму отзыва, оценка ставится прямо на странице).
+    final Uri primaryUri = Platform.isIOS
+        ? Uri.parse(AppStrings.appStoreReviewUrl)
+        : Uri.parse(AppStrings.playStoreUrl);
+
     try {
-      await AppReviewService().openStoreListing();
-      return;
+      if (await canLaunchUrl(primaryUri)) {
+        await launchUrl(primaryUri, mode: LaunchMode.externalApplication);
+        return;
+      }
     } catch (_) {
-      // ниже — запасной вариант через прямую ссылку
+      // ниже — запасной вариант
     }
 
-    // Запасной вариант: прямая ссылка на магазин для текущей платформы.
-    final String storeUrl =
-        Platform.isIOS ? AppStrings.appStoreUrl : AppStrings.playStoreUrl;
-    final Uri storeUri = Uri.parse(storeUrl);
-    if (await canLaunchUrl(storeUri)) {
-      await launchUrl(storeUri, mode: LaunchMode.externalApplication);
-    }
+    // Запасной вариант: нативное открытие страницы магазина через in_app_review.
+    await AppReviewService().openStoreListing();
   }
 
   @override
