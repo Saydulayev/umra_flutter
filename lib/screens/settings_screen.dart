@@ -1,7 +1,9 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../utils/platform_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../services/app_review_service.dart';
 import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
@@ -71,6 +73,7 @@ class SettingsScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
+        scrollable: true,
         title: Text(l10n.feedbackDialogTitle),
         content: Column(
           mainAxisSize: MainAxisSize.min,
@@ -118,9 +121,21 @@ class SettingsScreen extends StatelessWidget {
   }
 
   Future<void> _launchAppStore() async {
-    final Uri playStoreUri = Uri.parse(AppStrings.playStoreUrl);
-    if (await canLaunchUrl(playStoreUri)) {
-      await launchUrl(playStoreUri, mode: LaunchMode.externalApplication);
+    // Сначала пытаемся открыть нативную страницу магазина через in_app_review
+    // (на iOS — App Store, на Android — Google Play). Это самый надёжный путь.
+    try {
+      await AppReviewService().openStoreListing();
+      return;
+    } catch (_) {
+      // ниже — запасной вариант через прямую ссылку
+    }
+
+    // Запасной вариант: прямая ссылка на магазин для текущей платформы.
+    final String storeUrl =
+        Platform.isIOS ? AppStrings.appStoreUrl : AppStrings.playStoreUrl;
+    final Uri storeUri = Uri.parse(storeUrl);
+    if (await canLaunchUrl(storeUri)) {
+      await launchUrl(storeUri, mode: LaunchMode.externalApplication);
     }
   }
 
@@ -470,6 +485,9 @@ class SettingsScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
+        // scrollable делает заголовок+контент прокручиваемыми, чтобы список
+        // языков не переполнялся по высоте (например, в landscape).
+        scrollable: true,
         title: Text(l10n.selectLanguageString),
         content: Column(
           mainAxisSize: MainAxisSize.min,

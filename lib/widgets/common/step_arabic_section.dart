@@ -19,7 +19,10 @@ class StepArabicSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ArabicTextWidget(text: arabicText),
+        // Родительский экран уже задаёт горизонтальный отступ (stepDetailHPad),
+        // поэтому карточка не добавляет свой — иначе арабский блок оказывался
+        // уже текста абзацев.
+        ArabicTextWidget(text: arabicText, addHorizontalPadding: false),
         const SizedBox(height: AppDimensions.paddingLarge),
         PlayerWidget(fileName: audioFileName),
         const SizedBox(height: AppDimensions.paddingSmall),

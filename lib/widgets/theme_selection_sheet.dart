@@ -24,7 +24,10 @@ class ThemeSelectionSheet extends StatelessWidget {
         color: theme.backgroundColor,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
       ),
-      child: Column(
+      // Прокрутка нужна, чтобы лист не переполнялся по высоте, когда
+      // места мало (например, в landscape, где высота bottom sheet ограничена).
+      child: SingleChildScrollView(
+        child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           // Drag indicator
@@ -93,6 +96,7 @@ class ThemeSelectionSheet extends StatelessWidget {
             ),
           ),
         ],
+        ),
       ),
     );
   }

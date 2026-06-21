@@ -360,6 +360,7 @@ class _DuaRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final metrics = ResponsiveMetrics.of(context);
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -370,7 +371,7 @@ class _DuaRow extends StatelessWidget {
             children: [
               // Arabic preview (right-aligned, limited width)
               SizedBox(
-                width: 80,
+                width: metrics.duaArabicPreviewWidth,
                 child: Text(
                   dua.arabic.split('\n').first,
                   maxLines: 1,
@@ -381,7 +382,7 @@ class _DuaRow extends StatelessWidget {
                   locale: const Locale('ar'),
                   style: TextStyle(
                     fontFamily: 'KFGQPCUthmanTahaNaskh',
-                    fontSize: 16,
+                    fontSize: metrics.duaArabicPreviewFontSize,
                     color: theme.primaryColor,
                     height: 1.4,
                   ),

@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:in_app_review/in_app_review.dart';
 import '../repositories/preferences_repository.dart';
@@ -29,13 +30,13 @@ class AppReviewService {
     }
   }
 
-  /// Открыть страницу приложения в магазине
+  /// Открыть страницу приложения в магазине.
+  /// На iOS обязательно передаётся числовой App Store ID, иначе страница
+  /// не откроется.
   Future<void> openStoreListing() async {
-    try {
-      await _inAppReview.openStoreListing();
-    } catch (e) {
-      debugPrint('Error opening store listing: $e');
-    }
+    await _inAppReview.openStoreListing(
+      appStoreId: Platform.isIOS ? AppStrings.appStoreId : null,
+    );
   }
 
   /// Проверить, нужно ли показать диалог оценки

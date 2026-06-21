@@ -269,6 +269,7 @@ class UserPreferencesProvider extends ChangeNotifier {
           return PopScope(
             canPop: false, // Предотвращаем закрытие по кнопке назад
             child: AlertDialog(
+              scrollable: true,
               title: Text(title),
               content: Text(message),
               actions: [

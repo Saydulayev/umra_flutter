@@ -30,7 +30,10 @@ class NotificationSettingsSheet extends StatelessWidget {
         color: theme.backgroundColor,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(28)),
       ),
-      child: Column(
+      // Прокрутка нужна, чтобы лист не переполнялся по высоте, когда
+      // места мало (например, в landscape).
+      child: SingleChildScrollView(
+        child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           // Drag indicator
@@ -174,6 +177,7 @@ class NotificationSettingsSheet extends StatelessWidget {
             ),
           ),
         ],
+        ),
       ),
     );
   }

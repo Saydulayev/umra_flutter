@@ -6,16 +6,29 @@ import 'package:flutter/material.dart';
 class PlatformIcons {
   static bool get _isIOS => Platform.isIOS;
 
+  /// Возвращает копию иконки с включённым зеркалированием для RTL-локалей
+  /// (например, арабский). `Icon` автоматически отражает глиф, когда
+  /// `matchTextDirection == true` и направление текста — RTL.
+  static IconData _mirrored(IconData icon) => IconData(
+        icon.codePoint,
+        fontFamily: icon.fontFamily,
+        fontPackage: icon.fontPackage,
+        matchTextDirection: true,
+        fontFamilyFallback: icon.fontFamilyFallback,
+      );
+
   static IconData get settings =>
       _isIOS ? CupertinoIcons.settings : Icons.settings_outlined;
   static IconData get clock =>
       _isIOS ? CupertinoIcons.clock : Icons.access_time_rounded;
-  static IconData get chevronRight =>
-      _isIOS ? CupertinoIcons.chevron_right : Icons.chevron_right;
+  static IconData get chevronRight => _mirrored(
+        _isIOS ? CupertinoIcons.chevron_right : Icons.chevron_right,
+      );
   static IconData get info =>
       _isIOS ? CupertinoIcons.info : Icons.info_outline_rounded;
-  static IconData get arrowBack =>
-      _isIOS ? CupertinoIcons.back : Icons.arrow_back;
+  static IconData get arrowBack => _mirrored(
+        _isIOS ? CupertinoIcons.back : Icons.arrow_back,
+      );
   static IconData get refresh =>
       _isIOS ? CupertinoIcons.arrow_clockwise : Icons.refresh;
   static IconData get rotateRight =>

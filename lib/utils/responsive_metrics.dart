@@ -24,6 +24,9 @@ class ResponsiveMetrics {
   bool get isTablet => shortestSide >= 600;
   bool get isCompactPhone => shortestSide < 380 || height < 700;
 
+  /// Альбомная ориентация (ширина больше высоты)
+  bool get isLandscape => width > height;
+
   double get homeBadgeSize {
     if (isTablet) return 60;
     if (isCompactPhone) return 50;
@@ -74,7 +77,12 @@ class ResponsiveMetrics {
   }
 
   double get prayerHorizontalInset => isCompactPhone ? 12 : 16;
-  double get settingsTrailingMaxWidth => math.min(width * 0.36, 170);
+
+  /// Максимальная ширина значения справа в строках настроек
+  /// (название языка/темы). Увеличено, чтобы длинные значения, например
+  /// «Bahasa Indonesia», реже усекались на узких телефонах.
+  double get settingsTrailingMaxWidth =>
+      math.min(width * 0.42, 190).toDouble();
 
   double get languageHorizontalPadding {
     if (isTablet) return 72;
@@ -87,9 +95,16 @@ class ResponsiveMetrics {
   double get languageCardWidth => (width * (isTablet ? 0.46 : 0.72))
       .clamp(220.0, isTablet ? 380.0 : 320.0)
       .toDouble();
-  double get languageCardHeight =>
-      (height * (isCompactPhone ? 0.22 : 0.26)).clamp(130.0, 260.0).toDouble();
-  double get languageListMaxHeight => height * (isCompactPhone ? 0.36 : 0.30);
+
+  /// Высота карточки приветственного изображения. В альбомной ориентации
+  /// уменьшается, чтобы освободить место для прокручиваемого списка языков
+  /// и исключить переполнение по вертикали.
+  double get languageCardHeight {
+    final fraction = isCompactPhone ? 0.22 : 0.26;
+    final minH = isLandscape ? 100.0 : 130.0;
+    final maxH = isLandscape ? 170.0 : 260.0;
+    return (height * fraction).clamp(minH, maxH).toDouble();
+  }
 
   // ── Tablet content layout ──────────────────────────────────────────────────
 
@@ -102,11 +117,18 @@ class ResponsiveMetrics {
   /// Горизонтальный отступ для списочных экранов (карточки-списки)
   double get listScreenHPad => isTablet ? 24.0 : 16.0;
 
-  /// Горизонтальный отступ внутри экранов с деталями (шаги, дуа, текст)
-  double get stepDetailHPad => isTablet ? 24.0 : 10.0;
+  /// Горизонтальный отступ внутри экранов с деталями (шаги, дуа, текст).
+  /// На телефонах увеличено с 10 до 16, чтобы текст не прижимался к краю.
+  double get stepDetailHPad => isTablet ? 24.0 : 16.0;
 
   /// Размер иконки-бейджа в списке дуа
   double get duaBadgeSize => isTablet ? 48.0 : 40.0;
+
+  /// Ширина арабского превью в строке списка дуа
+  double get duaArabicPreviewWidth => isTablet ? 120.0 : 80.0;
+
+  /// Размер шрифта арабского превью в строке списка дуа
+  double get duaArabicPreviewFontSize => isTablet ? 20.0 : 16.0;
 
   /// Размер шрифта для строк шагов/элементов в карточках-списках
   double get stepItemFontSize => isTablet ? 18.0 : 16.0;

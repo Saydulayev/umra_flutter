@@ -64,9 +64,16 @@ class AppStrings {
   // Контакты
   static const String contactEmail = 'saydulayev.wien@gmail.com';
 
-  // URL
+  // Google Play (Android)
   static const String playStoreUrl =
       'https://play.google.com/store/apps/details?id=saydulayev.wien_gmail.com.umra';
+
+  // App Store (iOS)
+  /// Числовой идентификатор приложения в App Store
+  /// (из ссылки apps.apple.com/app/id<этот идентификатор>).
+  static const String appStoreId = '1673683355';
+  static const String appStoreUrl =
+      'https://apps.apple.com/app/id$appStoreId';
 }
 
 /// Ключи локализации для шагов

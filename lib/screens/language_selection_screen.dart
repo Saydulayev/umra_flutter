@@ -111,7 +111,6 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen>
     final bottomPad = metrics.languageBottomPadding + mq.viewPadding.bottom;
     final cardW = metrics.languageCardWidth;
     final cardH = metrics.languageCardHeight;
-    final maxListH = metrics.languageListMaxHeight;
 
     return Scaffold(
       backgroundColor: theme.backgroundColor,
@@ -165,7 +164,16 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen>
               ),
             ),
 
-            // 3. Scrollable language list — pinned to bottom
+            // Отступ между логотипом и списком языков, чтобы список
+            // не подходил вплотную к карточке изображения.
+            SizedBox(
+              height: metrics.isCompactPhone ? 20 : 32,
+            ),
+
+            // 3. Scrollable language list — занимает оставшееся место.
+            // Список сам подстраивается под доступную высоту (Flexible внутри),
+            // поэтому помещает все языки, когда есть место, и прокручивается
+            // без переполнения, когда места мало (например, в landscape).
             Expanded(
               child: Align(
                 alignment: const Alignment(0, 0.5),
@@ -175,7 +183,6 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen>
                     position: _listSlide,
                     child: _LanguageList(
                       languages: _languages,
-                      maxHeight: maxListH,
                       theme: theme,
                       onSelect: _selectLanguage,
                     ),
@@ -268,13 +275,11 @@ class _ShimmeringTitleState extends State<_ShimmeringTitle>
 
 class _LanguageList extends StatefulWidget {
   final List<Map<String, String>> languages;
-  final double maxHeight;
   final dynamic theme;
   final void Function(String) onSelect;
 
   const _LanguageList({
     required this.languages,
-    required this.maxHeight,
     required this.theme,
     required this.onSelect,
   });
@@ -316,8 +321,7 @@ class _LanguageListState extends State<_LanguageList> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        ConstrainedBox(
-          constraints: BoxConstraints(maxHeight: widget.maxHeight),
+        Flexible(
           child: Scrollbar(
             thumbVisibility: false,
             child: ListView.separated(

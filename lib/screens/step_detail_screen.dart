@@ -256,7 +256,10 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        ArabicTextWidget(text: l10n.step1UmrahForFatherArabic),
+        ArabicTextWidget(
+          text: l10n.step1UmrahForFatherArabic,
+          addHorizontalPadding: false,
+        ),
         if (l10n.step1UmrahForFather.isNotEmpty) ...[
           const SizedBox(height: 8),
           Text(
@@ -268,7 +271,10 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           ),
         ],
         const SizedBox(height: AppDimensions.paddingLarge),
-        ArabicTextWidget(text: l10n.step1UmrahForMotherArabic),
+        ArabicTextWidget(
+          text: l10n.step1UmrahForMotherArabic,
+          addHorizontalPadding: false,
+        ),
         if (l10n.step1UmrahForMother.isNotEmpty) ...[
           const SizedBox(height: 8),
           Text(
@@ -280,7 +286,10 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           ),
         ],
         const SizedBox(height: AppDimensions.paddingLarge),
-        ArabicTextWidget(text: l10n.step1UmrahForOtherArabic),
+        ArabicTextWidget(
+          text: l10n.step1UmrahForOtherArabic,
+          addHorizontalPadding: false,
+        ),
         if (l10n.step1UmrahForOther.isNotEmpty) ...[
           const SizedBox(height: 8),
           Text(
