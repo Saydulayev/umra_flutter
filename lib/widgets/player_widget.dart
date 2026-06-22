@@ -8,6 +8,7 @@ import '../providers/theme_provider.dart';
 import '../utils/responsive_metrics.dart';
 import 'package:provider/provider.dart';
 import '../l10n/app_localizations.dart';
+import '../utils/app_logger.dart';
 
 class PlayerWidget extends StatefulWidget {
   final String fileName;
@@ -97,7 +98,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
         }
       });
     } catch (e) {
-      debugPrint('Error initializing audio: $e');
+      AppLogger.e('Error initializing audio', e);
       if (!mounted) return;
 
       // Захватываем всё из context синхронно, пока виджет ещё активен
@@ -112,7 +113,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
       if (l10n != null) {
         // Показываем только короткое локализованное сообщение — без полного
         // дампа исключения (он раздувал SnackBar на весь экран). Подробности
-        // остаются в debugPrint выше. Показ обёрнут в try/catch: при ошибке
+        // остаются в логах выше. Показ обёрнут в try/catch: при ошибке
         // инициализации дерево может демонтироваться, и showSnackBar способен
         // бросить «deactivated widget's ancestor».
         try {

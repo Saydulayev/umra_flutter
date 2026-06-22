@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import '../utils/app_logger.dart';
 import 'package:just_audio/just_audio.dart';
 
 class AudioService {
@@ -20,9 +20,9 @@ class AudioService {
       try {
         await player.dispose();
       } catch (disposeError) {
-        debugPrint('Error disposing player after load failure: $disposeError');
+        AppLogger.e('Error disposing player after load failure', disposeError);
       }
-      debugPrint('Error loading audio: $e');
+      AppLogger.e('Error loading audio', e);
       rethrow;
     }
   }
@@ -49,7 +49,7 @@ class AudioService {
         try {
           await player.pause();
         } catch (e) {
-          debugPrint('Error stopping player: $e');
+          AppLogger.e('Error stopping player', e);
           // Удаляем неработающий плеер из списка
           _activePlayers.remove(player);
         }
@@ -66,7 +66,7 @@ class AudioService {
       try {
         await player.pause();
       } catch (e) {
-        debugPrint('Error stopping player: $e');
+        AppLogger.e('Error stopping player', e);
         // Удаляем неработающий плеер из списка
         _activePlayers.remove(player);
       }
@@ -82,7 +82,7 @@ class AudioService {
       try {
         await player.dispose();
       } catch (e) {
-        debugPrint('Error disposing player: $e');
+        AppLogger.e('Error disposing player', e);
       } finally {
         // Убеждаемся, что плеер удален из списка
         _activePlayers.remove(player);

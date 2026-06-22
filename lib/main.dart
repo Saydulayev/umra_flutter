@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -14,19 +16,35 @@ import 'screens/home_screen.dart';
 import 'screens/language_selection_screen.dart';
 import 'models/app_theme.dart';
 import 'services/app_usage_tracker.dart';
+import 'services/error_reporter.dart';
 import 'utils/responsive_metrics.dart';
 import 'theme/app_type.dart';
 import 'theme/app_fonts.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
+  // Run the whole app inside a guarded zone so that any uncaught asynchronous
+  // error is funnelled into a single place. Framework and platform errors are
+  // wired separately via ErrorReporter.install().
+  runZonedGuarded<Future<void>>(
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
 
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+      // Install global error handlers as early as possible. To enable crash
+      // reporting in production, pass a backend here, e.g.:
+      //   ErrorReporter.install(backend: CrashlyticsBackend());
+      ErrorReporter.install();
 
-  await AppUsageTracker().initialize();
-  await NotificationService.init();
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
-  runApp(const MyApp());
+      await AppUsageTracker().initialize();
+      await NotificationService.init();
+
+      runApp(const MyApp());
+    },
+    (error, stack) {
+      ErrorReporter.recordError(error, stack, fatal: true);
+    },
+  );
 }
 
 class MyApp extends StatelessWidget {

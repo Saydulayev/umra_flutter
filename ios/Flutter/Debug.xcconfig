@@ -1,5 +1,5 @@
 #include? "Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"
 #include "Generated.xcconfig"
 
-FLUTTER_BUILD_NAME=4.3.5
-FLUTTER_BUILD_NUMBER=9
+// Version is the single source of truth in pubspec.yaml (drives both iOS and
+// Android). FLUTTER_BUILD_NAME / FLUTTER_BUILD_NUMBER come from Generated.xcconfig.

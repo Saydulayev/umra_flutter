@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:flutter/foundation.dart';
+import '../utils/app_logger.dart';
 import 'package:in_app_review/in_app_review.dart';
 import '../repositories/preferences_repository.dart';
 import '../constants/app_constants.dart';
@@ -26,7 +26,7 @@ class AppReviewService {
       }
     } catch (e) {
       // Игнорируем ошибки, чтобы не нарушать работу приложения
-      debugPrint('Error requesting review: $e');
+      AppLogger.e('Error requesting review', e);
     }
   }
 

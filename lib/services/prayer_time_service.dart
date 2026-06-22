@@ -1,7 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:adhan_dart/adhan_dart.dart';
 import 'package:intl/intl.dart';
 import 'package:hijri_date/hijri_date.dart';
+
+import '../utils/app_logger.dart';
 
 class PrayerTimeData {
   final DateTime fajr;
@@ -84,9 +85,7 @@ class PrayerTimeService {
         isha: prayerTimes.isha.add(offset),
       );
     } catch (e) {
-      debugPrint(
-        'Error calculating today prayer times for $city: $e.',
-      );
+      AppLogger.e('Error calculating today prayer times for $city', e);
       return null;
     }
   }
@@ -118,9 +117,7 @@ class PrayerTimeService {
         isha: prayerTimes.isha.add(offset),
       );
     } catch (e) {
-      debugPrint(
-        'Error calculating tomorrow prayer times for $city: $e.',
-      );
+      AppLogger.e('Error calculating tomorrow prayer times for $city', e);
       return null;
     }
   }

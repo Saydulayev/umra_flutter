@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import '../utils/app_logger.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -185,7 +185,7 @@ class NotificationService {
             UILocalNotificationDateInterpretation.wallClockTime,
       );
     } catch (e) {
-      debugPrint('NotificationService: failed to schedule id=$id: $e');
+      AppLogger.e('NotificationService: failed to schedule id=$id', e);
     }
   }
 }
