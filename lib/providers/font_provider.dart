@@ -28,6 +28,18 @@ class FontProvider extends ChangeNotifier {
     return fontMap[fontName];
   }
 
+  // Текущий язык интерфейса (ISO 639-1), обновляется через setLanguageCode.
+  // Ни один из пользовательских шрифтов (_fontMap) не содержит арабских
+  // глифов, поэтому для 'ar' принудительно используется бандлованный Cairo,
+  // а не выбор пользователя.
+  String _languageCode = 'ru';
+
+  void setLanguageCode(String languageCode) {
+    if (_languageCode == languageCode) return;
+    _languageCode = languageCode;
+    notifyListeners();
+  }
+
   // Получить TextStyle с выбранным шрифтом
   // Всегда возвращает валидный TextStyle с fallback на системный шрифт
   TextStyle getTextStyle({
@@ -36,6 +48,16 @@ class FontProvider extends ChangeNotifier {
     Color? color,
     FontStyle? fontStyle,
   }) {
+    if (_languageCode == 'ar') {
+      return TextStyle(
+        fontFamily: 'Cairo',
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        color: color,
+        fontStyle: fontStyle,
+      );
+    }
+
     final googleFontName = _getGoogleFontName(_selectedFont);
     if (googleFontName != null) {
       try {

@@ -82,22 +82,18 @@ class AppType {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: (base.elevatedButtonTheme.style ?? const ButtonStyle()).copyWith(
           textStyle: WidgetStatePropertyAll(
-            TextStyle(
-              fontFamily: 'Lato',
-              fontSize: callout,
-              fontWeight: FontWeight.w600,
-            ),
+            (base.elevatedButtonTheme.style?.textStyle?.resolve(const {}) ??
+                    const TextStyle())
+                .copyWith(fontSize: callout),
           ),
         ),
       ),
       textButtonTheme: TextButtonThemeData(
         style: (base.textButtonTheme.style ?? const ButtonStyle()).copyWith(
           textStyle: WidgetStatePropertyAll(
-            TextStyle(
-              fontFamily: 'Lato',
-              fontSize: caption,
-              fontWeight: FontWeight.w500,
-            ),
+            (base.textButtonTheme.style?.textStyle?.resolve(const {}) ??
+                    const TextStyle())
+                .copyWith(fontSize: caption),
           ),
         ),
       ),

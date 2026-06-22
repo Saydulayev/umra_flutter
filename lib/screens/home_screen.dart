@@ -15,6 +15,7 @@ import '../screens/prayer_time_screen.dart';
 import '../screens/dua_book_screen.dart';
 import '../utils/responsive_metrics.dart';
 import '../theme/app_type.dart';
+import '../theme/app_fonts.dart';
 import '../widgets/app_card.dart';
 
 const double _kBottomTabBarReservedSpace = 88.0;
@@ -768,7 +769,7 @@ class _TabItem extends StatelessWidget {
                 AnimatedDefaultTextStyle(
                   duration: const Duration(milliseconds: 250),
                   style: TextStyle(
-                    fontFamily: 'Lato',
+                    fontFamily: AppFonts.of(context),
                     fontSize: AppType.of(context).tabLabel,
                     fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
                     color: labelColor,

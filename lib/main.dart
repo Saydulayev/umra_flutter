@@ -16,6 +16,7 @@ import 'models/app_theme.dart';
 import 'services/app_usage_tracker.dart';
 import 'utils/responsive_metrics.dart';
 import 'theme/app_type.dart';
+import 'theme/app_fonts.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,7 +39,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider(create: (_) => LocalizationProvider()),
         ChangeNotifierProvider(create: (_) => UserPreferencesProvider()),
-        ChangeNotifierProvider(create: (_) => FontProvider()),
+        ChangeNotifierProxyProvider<LocalizationProvider, FontProvider>(
+          create: (_) => FontProvider(),
+          update: (_, localizationProvider, fontProvider) =>
+              fontProvider!
+                ..setLanguageCode(
+                  localizationProvider.currentLocale.languageCode,
+                ),
+        ),
         ChangeNotifierProvider(create: (_) => PurchaseProvider()),
         ChangeNotifierProvider(
           create: (_) => NotificationPreferencesProvider(),
@@ -59,6 +67,9 @@ class MyApp extends StatelessWidget {
                   child,
                 ) {
                   final theme = themeProvider.selectedTheme;
+                  final fontFamily = AppFonts.forLanguageCode(
+                    localizationProvider.currentLocale.languageCode,
+                  );
 
                   final overlayStyle = SystemUiOverlayStyle(
                     statusBarBrightness: theme.isDark
@@ -76,7 +87,7 @@ class MyApp extends StatelessWidget {
                     title: 'Umra Guide',
                     debugShowCheckedModeBanner: false,
 
-                    theme: _buildThemeData(theme, overlayStyle),
+                    theme: _buildThemeData(theme, overlayStyle, fontFamily),
 
                     locale: localizationProvider.currentLocale,
                     supportedLocales: AppLocalizations.supportedLocales,
@@ -131,7 +142,11 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  ThemeData _buildThemeData(AppTheme theme, SystemUiOverlayStyle overlayStyle) {
+  ThemeData _buildThemeData(
+    AppTheme theme,
+    SystemUiOverlayStyle overlayStyle,
+    String fontFamily,
+  ) {
     final colorScheme = ColorScheme(
       brightness: theme.isDark ? Brightness.dark : Brightness.light,
       primary: theme.primaryColor,
@@ -149,7 +164,7 @@ class MyApp extends StatelessWidget {
       colorScheme: colorScheme,
       primaryColor: theme.primaryColor,
       scaffoldBackgroundColor: theme.backgroundColor,
-      fontFamily: 'Lato',
+      fontFamily: fontFamily,
 
       // AppBar
       appBarTheme: AppBarTheme(
@@ -160,7 +175,7 @@ class MyApp extends StatelessWidget {
         scrolledUnderElevation: 0,
         iconTheme: IconThemeData(color: theme.primaryColor),
         titleTextStyle: TextStyle(
-          fontFamily: 'Lato',
+          fontFamily: fontFamily,
           // fontSize задаётся адаптивно в AppType.applyToTheme (роль body).
           fontWeight: FontWeight.w600,
           color: theme.textColor,
@@ -206,13 +221,13 @@ class MyApp extends StatelessWidget {
         backgroundColor: theme.lightBackgroundColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         titleTextStyle: TextStyle(
-          fontFamily: 'Lato',
+          fontFamily: fontFamily,
           // fontSize задаётся адаптивно в AppType.applyToTheme (роль body).
           fontWeight: FontWeight.bold,
           color: theme.textColor,
         ),
         contentTextStyle: TextStyle(
-          fontFamily: 'Lato',
+          fontFamily: fontFamily,
           // fontSize задаётся адаптивно в AppType.applyToTheme (роль caption).
           color: theme.secondaryTextColor,
         ),
@@ -227,8 +242,8 @@ class MyApp extends StatelessWidget {
             borderRadius: BorderRadius.circular(20),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-          textStyle: const TextStyle(
-            fontFamily: 'Lato',
+          textStyle: TextStyle(
+            fontFamily: fontFamily,
             // fontSize задаётся адаптивно в AppType.applyToTheme (роль callout).
             fontWeight: FontWeight.w600,
           ),
@@ -239,8 +254,8 @@ class MyApp extends StatelessWidget {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: theme.primaryColor,
-          textStyle: const TextStyle(
-            fontFamily: 'Lato',
+          textStyle: TextStyle(
+            fontFamily: fontFamily,
             // fontSize задаётся адаптивно в AppType.applyToTheme (роль caption).
             fontWeight: FontWeight.w500,
           ),
@@ -267,7 +282,7 @@ class MyApp extends StatelessWidget {
             ? theme.lightBackgroundColor
             : const Color(0xFF1C1C1E),
         contentTextStyle: TextStyle(
-          fontFamily: 'Lato',
+          fontFamily: fontFamily,
           color: theme.isDark ? theme.textColor : Colors.white,
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

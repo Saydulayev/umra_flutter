@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/app_theme.dart';
 import '../utils/responsive_metrics.dart';
 import '../theme/app_type.dart';
+import '../theme/app_fonts.dart';
 
 /// Сегментированный контрол в неоморфном стиле
 class IOSSegmentedControl<T> extends StatelessWidget {
@@ -217,7 +218,7 @@ class IOSSegmentedControl<T> extends StatelessWidget {
                         style: TextStyle(
                           fontSize: AppType.of(context).caption,
                           fontWeight: FontWeight.w700,
-                          fontFamily: 'Lato',
+                          fontFamily: AppFonts.of(context),
                           color: theme?.isDark == true
                               ? const Color(0xFFE5E7EB)
                               : const Color(0xFF000000),
