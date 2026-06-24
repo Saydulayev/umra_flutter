@@ -666,31 +666,31 @@ class _BottomTabBar extends StatelessWidget {
     return Center(
       child: SizedBox(
         width: _pillTotalWidth,
-        child: GlassBottomBar(
+        child: GlassTabBar.bottom(
           selectedIndex: selectedIndex,
           onTabSelected: onTap,
           selectedIconColor: selectedIconColor,
           unselectedIconColor: unselectedIconColor,
           indicatorColor: indicatorColor,
-          glassSettings: glassSettings,
+          settings: glassSettings,
           // «Magic-lens» маскирование иконок сквозь стекло.
           maskingQuality: MaskingQuality.high,
           // Тише «желейный» подскок индикатора по высоте при переходе
           // (дефолт 14 — раздувается сильнее).
-          indicatorExpansion: 6,
+          indicatorExpansion: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
           // Компактные пилюли под 4 иконки (iOS 26), а не на всю ширину.
           tabWidth: _tabWidth,
           horizontalPadding: _horizontalPadding,
           // label: null → только иконки, без подписей (Instagram-стиль).
           tabs: [
-            GlassBottomBarTab(
+            GlassTab(
               label: null,
               icon: Icon(PlatformIcons.home),
               activeIcon: Icon(PlatformIcons.homeFill),
             ),
             // SVG пакет не красит сам — задаём цвет явно через colorFilter
             // под оба состояния (неактивное / активное).
-            GlassBottomBarTab(
+            GlassTab(
               label: null,
               icon: SvgPicture.asset(
                 'assets/icons/kaaba.svg',
@@ -711,12 +711,12 @@ class _BottomTabBar extends StatelessWidget {
                 ),
               ),
             ),
-            GlassBottomBarTab(
+            GlassTab(
               label: null,
               icon: Icon(PlatformIcons.book),
               activeIcon: Icon(PlatformIcons.bookFill),
             ),
-            GlassBottomBarTab(
+            GlassTab(
               label: null,
               icon: Icon(PlatformIcons.clock),
               activeIcon: Icon(PlatformIcons.clockFill),
