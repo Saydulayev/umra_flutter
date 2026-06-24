@@ -10,6 +10,7 @@ import '../widgets/arabic_text_widget.dart';
 import '../widgets/player_widget.dart';
 import '../utils/responsive_metrics.dart';
 import '../theme/app_type.dart';
+import '../constants/app_constants.dart';
 
 // ─── Key → localized string helper ──────────────────────────────────────────
 
@@ -79,7 +80,12 @@ String _localized(AppLocalizations l10n, String key) {
 // ─── DuaBookScreen (category list) ──────────────────────────────────────────
 
 class DuaBookScreen extends StatelessWidget {
-  const DuaBookScreen({super.key});
+  /// Когда экран используется как вкладка нижнего таб-бара (а не открыт через
+  /// Navigator.push), скрываем кнопку «назад» и резервируем место под
+  /// плавающий бар.
+  final bool embedded;
+
+  const DuaBookScreen({super.key, this.embedded = false});
 
   static const _cardRadius = 24.0;
 
@@ -126,10 +132,13 @@ class DuaBookScreen extends StatelessWidget {
             fontSize: AppType.of(context).callout,
           ),
         ),
-        leading: IconButton(
-          icon: Icon(PlatformIcons.arrowBack, color: theme.primaryColor),
-          onPressed: () => Navigator.pop(context),
-        ),
+        automaticallyImplyLeading: !embedded,
+        leading: embedded
+            ? null
+            : IconButton(
+                icon: Icon(PlatformIcons.arrowBack, color: theme.primaryColor),
+                onPressed: () => Navigator.pop(context),
+              ),
       ),
       body: Builder(
         builder: (context) {
@@ -140,7 +149,7 @@ class DuaBookScreen extends StatelessWidget {
               metrics.listScreenHPad,
               8,
               metrics.listScreenHPad,
-              bottomPadding + 32,
+              bottomPadding + (embedded ? kBottomTabBarReservedSpace : 32),
             ),
             child: Center(
               child: ConstrainedBox(

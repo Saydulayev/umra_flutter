@@ -14,9 +14,14 @@ import '../services/prayer_time_service.dart';
 import '../utils/responsive_metrics.dart';
 import '../theme/app_type.dart';
 import '../l10n/app_localizations.dart';
+import '../constants/app_constants.dart';
 
 class PrayerTimeScreen extends StatefulWidget {
-  const PrayerTimeScreen({super.key});
+  /// Когда экран используется как вкладка нижнего таб-бара, скрываем кнопку
+  /// «назад» и резервируем место под плавающий бар.
+  final bool embedded;
+
+  const PrayerTimeScreen({super.key, this.embedded = false});
 
   @override
   State<PrayerTimeScreen> createState() => _PrayerTimeScreenState();
@@ -166,6 +171,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
         appBar: AppBar(
           backgroundColor: theme.backgroundColor,
           elevation: 0,
+          automaticallyImplyLeading: !widget.embedded,
           iconTheme: IconThemeData(color: theme.primaryColor),
           title: Text(
             l10n.prayerTimesTitle,
@@ -224,6 +230,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
       appBar: AppBar(
         backgroundColor: theme.backgroundColor,
         elevation: 0,
+        automaticallyImplyLeading: !widget.embedded,
         iconTheme: IconThemeData(color: theme.primaryColor),
         actions: [
           IconButton(
@@ -248,7 +255,8 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                   metrics.prayerHorizontalInset,
                   16,
                   metrics.prayerHorizontalInset,
-                  bottomPadding + 16,
+                  bottomPadding +
+                      (widget.embedded ? kBottomTabBarReservedSpace : 16),
                 ),
                 child: ConstrainedBox(
                   constraints: BoxConstraints(

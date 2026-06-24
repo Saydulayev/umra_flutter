@@ -70,4 +70,18 @@ class PlatformIcons {
       _isIOS ? CupertinoIcons.chevron_down : Icons.expand_more;
   static IconData get book =>
       _isIOS ? CupertinoIcons.book : Icons.auto_stories_outlined;
+
+  // ─── Bottom tab bar: outline (inactive) / filled (active) pairs ─────────────
+  static IconData get home =>
+      _isIOS ? CupertinoIcons.house : Icons.home_outlined;
+  static IconData get homeFill =>
+      _isIOS ? CupertinoIcons.house_fill : Icons.home;
+  static IconData get location =>
+      _isIOS ? CupertinoIcons.location : Icons.place_outlined;
+  static IconData get locationFill =>
+      _isIOS ? CupertinoIcons.location_solid : Icons.place;
+  static IconData get bookFill =>
+      _isIOS ? CupertinoIcons.book_fill : Icons.auto_stories;
+  static IconData get clockFill =>
+      _isIOS ? CupertinoIcons.clock_fill : Icons.access_time_filled;
 }

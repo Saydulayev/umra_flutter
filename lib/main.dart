@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'providers/theme_provider.dart';
@@ -39,7 +40,17 @@ void main() {
       await AppUsageTracker().initialize();
       await NotificationService.init();
 
-      runApp(const MyApp());
+      // Прогрев шейдеров liquid glass (убирает белую вспышку при первом кадре).
+      await LiquidGlassWidgets.initialize();
+
+      // wrap() ставит корневой backdrop-шеринг, доступность и адаптивное
+      // качество (бенчмаркает устройство и сам опускает качество на слабых).
+      runApp(
+        LiquidGlassWidgets.wrap(
+          adaptiveQuality: true,
+          child: const MyApp(),
+        ),
+      );
     },
     (error, stack) {
       ErrorReporter.recordError(error, stack, fatal: true);

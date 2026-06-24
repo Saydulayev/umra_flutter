@@ -59,6 +59,12 @@ dependencies:
   
   cupertino_icons: ^1.0.8
 
+  # SVG icons
+  flutter_svg: ^2.2.1
+
+  # Liquid Glass (iOS 26) UI — taб-бар со стеклянным эффектом
+  liquid_glass_widgets: ^0.13.0
+
 # Исправление NPE в audio_service (onConnectionFailed/onConnected при null clientInterface)
 dependency_overrides:
   audio_service:
@@ -91,6 +97,7 @@ flutter:
     - assets/images/
     - assets/audio/
     - assets/fonts/
+    - assets/icons/
   
   fonts:
     - family: Lato

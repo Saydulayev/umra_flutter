@@ -1,5 +1,6 @@
-import 'dart:ui' show ImageFilter;
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:liquid_glass_widgets/liquid_glass_widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
@@ -15,7 +16,6 @@ import '../screens/prayer_time_screen.dart';
 import '../screens/dua_book_screen.dart';
 import '../utils/responsive_metrics.dart';
 import '../theme/app_type.dart';
-import '../theme/app_fonts.dart';
 import '../widgets/app_card.dart';
 
 const double _kBottomTabBarReservedSpace = 88.0;
@@ -86,25 +86,59 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
 
     return Scaffold(
       backgroundColor: theme.backgroundColor,
+      body: Stack(
+        children: [
+          // Каждая вкладка — самостоятельный экран со своим Scaffold/AppBar
+          // (как в Instagram: состояние каждой вкладки сохраняется).
+          IndexedStack(
+            index: _selectedTab,
+            children: [
+              _StepsScaffold(
+                theme: theme,
+                body: _UmraTabBody(theme: theme, l10n: l10n),
+              ),
+              _StepsScaffold(
+                theme: theme,
+                body: _HajjTabBody(theme: theme, l10n: l10n),
+              ),
+              const DuaBookScreen(embedded: true),
+              const PrayerTimeScreen(embedded: true),
+            ],
+          ),
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: _BottomTabBar(
+              selectedIndex: _selectedTab,
+              l10n: l10n,
+              onTap: (i) => setState(() => _selectedTab = i),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ─── Steps tab shell (Umra / Hajj) — AppBar with settings only ───────────────
+
+class _StepsScaffold extends StatelessWidget {
+  final AppTheme theme;
+  final Widget body;
+
+  const _StepsScaffold({required this.theme, required this.body});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: theme.backgroundColor,
       appBar: AppBar(
         backgroundColor: theme.backgroundColor,
         elevation: 0,
         scrolledUnderElevation: 0,
-        leading: IconButton(
-          icon: Icon(PlatformIcons.book, color: theme.textColor),
-          onPressed: () => Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const DuaBookScreen()),
-          ),
-        ),
+        automaticallyImplyLeading: false,
         actions: [
-          IconButton(
-            icon: Icon(PlatformIcons.clock, color: theme.textColor),
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const PrayerTimeScreen()),
-            ),
-          ),
           IconButton(
             icon: Icon(PlatformIcons.settings, color: theme.textColor),
             onPressed: () => Navigator.push(
@@ -115,29 +149,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           const SizedBox(width: 4),
         ],
       ),
-      body: Stack(
-        children: [
-          IndexedStack(
-            index: _selectedTab,
-            children: [
-              _UmraTabBody(theme: theme, l10n: l10n),
-              _HajjTabBody(theme: theme, l10n: l10n),
-            ],
-          ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: _BottomTabBar(
-              selectedIndex: _selectedTab,
-              theme: theme,
-              umraLabel: l10n.umra,
-              hajjLabel: l10n.hajj,
-              onTap: (i) => setState(() => _selectedTab = i),
-            ),
-          ),
-        ],
-      ),
+      body: body,
     );
   }
 }
@@ -592,204 +604,124 @@ class _InfoBadge extends StatelessWidget {
   }
 }
 
-// ─── Bottom tab bar — Liquid Glass (iOS 26 style) ────────────────────────────
+// ─── Bottom tab bar — iOS 26 Liquid Glass (liquid_glass_widgets) ─────────────
 
 class _BottomTabBar extends StatelessWidget {
   final int selectedIndex;
-  final AppTheme theme;
-  final String umraLabel;
-  final String hajjLabel;
+  final AppLocalizations l10n;
   final ValueChanged<int> onTap;
 
   const _BottomTabBar({
     required this.selectedIndex,
-    required this.theme,
-    required this.umraLabel,
-    required this.hajjLabel,
+    required this.l10n,
     required this.onTap,
   });
 
-  @override
-  Widget build(BuildContext context) {
-    final barWidth = ResponsiveMetrics.of(context).bottomTabBarWidth;
-
-    return SafeArea(
-      top: false,
-      minimum: const EdgeInsets.fromLTRB(16, 6, 16, 10),
-      child: Center(
-        child: SizedBox(
-          width: barWidth,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(999),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
-              child: Container(
-                constraints: const BoxConstraints(minHeight: 65),
-                decoration: BoxDecoration(
-                  color: theme.isDark
-                      ? Colors.white.withValues(alpha: 0.10)
-                      : Colors.white.withValues(alpha: 0.74),
-                  borderRadius: BorderRadius.circular(999),
-                  border: Border.all(
-                    color: Colors.white.withValues(
-                      alpha: theme.isDark ? 0.14 : 0.85,
-                    ),
-                    width: 0.8,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(
-                        alpha: theme.isDark ? 0.26 : 0.10,
-                      ),
-                      blurRadius: 22,
-                      offset: const Offset(0, 8),
-                    ),
-                  ],
-                ),
-                padding: const EdgeInsets.all(5),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: _TabItem(
-                        letter: 'U',
-                        label: umraLabel,
-                        isSelected: selectedIndex == 0,
-                        theme: theme,
-                        onTap: () => onTap(0),
-                      ),
-                    ),
-                    Expanded(
-                      child: _TabItem(
-                        letter: 'H',
-                        label: hajjLabel,
-                        isSelected: selectedIndex == 1,
-                        theme: theme,
-                        onTap: () => onTap(1),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _TabItem extends StatelessWidget {
-  final String letter;
-  final String label;
-  final bool isSelected;
-  final AppTheme theme;
-  final VoidCallback onTap;
-
-  const _TabItem({
-    required this.letter,
-    required this.label,
-    required this.isSelected,
-    required this.theme,
-    required this.onTap,
-  });
+  // Без extraButton GlassBottomBar выравнивает компактную пилюлю по левому
+  // краю своего (полноширинного) Row, а не по центру. Поэтому задаём ей
+  // точную ширину = ширина пилюли + внутренние отступы и центрируем сами.
+  static const double _tabWidth = 72;
+  static const int _tabCount = 4;
+  static const double _horizontalPadding = 20;
+  static const double _pillTotalWidth =
+      _tabWidth * _tabCount + _horizontalPadding * 2;
 
   @override
   Widget build(BuildContext context) {
-    final Color labelColor = isSelected
-        ? theme.primaryColor
-        : theme.isDark
-        ? Colors.white.withValues(alpha: 0.66)
-        : Colors.black.withValues(alpha: 0.88);
+    // Цвета адаптируем под тему — ничего не хардкодим под одну схему.
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    return Semantics(
-      button: true,
-      selected: isSelected,
-      label: label,
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(999),
-          onTap: onTap,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(minHeight: 44, minWidth: 44),
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 250),
-              curve: Curves.easeInOut,
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(999),
-                color: isSelected
-                    ? (theme.isDark
-                          ? Colors.white.withValues(alpha: 0.12)
-                          : Colors.black.withValues(alpha: 0.07))
-                    : Colors.transparent,
+    final Color selectedIconColor = isDark ? Colors.white : Colors.black;
+    final Color unselectedIconColor = isDark
+        ? Colors.white.withValues(alpha: 0.55)
+        : Colors.black.withValues(alpha: 0.45);
+    // «Линза» под активной иконкой — полупрозрачная подсветка в цвет темы.
+    final Color indicatorColor = isDark
+        ? Colors.white.withValues(alpha: 0.20)
+        : Colors.black.withValues(alpha: 0.10);
+
+    // Тинт самого стекла. Дефолт пакета — Colors.white24 (отсюда серебристый
+    // фрост в тёмной теме), поэтому задаём явно: тёмный тинт в тёмной теме,
+    // светлый — в светлой.
+    final LiquidGlassSettings glassSettings = isDark
+        ? const LiquidGlassSettings(
+            glassColor: Color.fromRGBO(12, 12, 14, 0.55),
+            thickness: 26,
+            blur: 5,
+            lightIntensity: 0.5,
+            ambientStrength: 0.3,
+            refractiveIndex: 1.4,
+            saturation: 1.1,
+          )
+        : const LiquidGlassSettings(
+            glassColor: Color.fromRGBO(255, 255, 255, 0.6),
+            thickness: 26,
+            blur: 5,
+            lightIntensity: 0.6,
+            ambientStrength: 0.5,
+            refractiveIndex: 1.4,
+            saturation: 1.1,
+          );
+
+    return Center(
+      child: SizedBox(
+        width: _pillTotalWidth,
+        child: GlassBottomBar(
+          selectedIndex: selectedIndex,
+          onTabSelected: onTap,
+          selectedIconColor: selectedIconColor,
+          unselectedIconColor: unselectedIconColor,
+          indicatorColor: indicatorColor,
+          glassSettings: glassSettings,
+          // «Magic-lens» маскирование иконок сквозь стекло.
+          maskingQuality: MaskingQuality.high,
+          // Тише «желейный» подскок индикатора по высоте при переходе
+          // (дефолт 14 — раздувается сильнее).
+          indicatorExpansion: 6,
+          // Компактные пилюли под 4 иконки (iOS 26), а не на всю ширину.
+          tabWidth: _tabWidth,
+          horizontalPadding: _horizontalPadding,
+          // label: null → только иконки, без подписей (Instagram-стиль).
+          tabs: [
+            GlassBottomBarTab(
+              label: null,
+              icon: Icon(PlatformIcons.home),
+              activeIcon: Icon(PlatformIcons.homeFill),
+            ),
+            // SVG пакет не красит сам — задаём цвет явно через colorFilter
+            // под оба состояния (неактивное / активное).
+            GlassBottomBarTab(
+              label: null,
+              icon: SvgPicture.asset(
+                'assets/icons/kaaba.svg',
+                width: 26,
+                height: 26,
+                colorFilter: ColorFilter.mode(
+                  unselectedIconColor,
+                  BlendMode.srcIn,
+                ),
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                AnimatedContainer(
-                  duration: const Duration(milliseconds: 250),
-                  width: 27,
-                  height: 27,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: isSelected
-                        ? theme.primaryColor
-                        : theme.isDark
-                        ? Colors.white.withValues(alpha: 0.88)
-                        : Colors.black.withValues(alpha: 0.90),
-                    boxShadow: isSelected
-                        ? [
-                            BoxShadow(
-                              color: theme.primaryColor.withValues(alpha: 0.22),
-                              blurRadius: 8,
-                              offset: const Offset(0, 2),
-                            ),
-                          ]
-                        : null,
-                  ),
-                  child: Center(
-                    child: Text(
-                      letter,
-                      style: TextStyle(
-                        // Глиф в фиксированном круге 27pt: масштабируем через
-                        // общий fontScale, размер круга — вне scope типографики.
-                        fontSize: ResponsiveMetrics.of(context).scaled(14),
-                        fontWeight: FontWeight.w700,
-                        color: isSelected
-                            ? Colors.white
-                            : theme.isDark
-                            ? Colors.black.withValues(alpha: 0.80)
-                            : Colors.white,
-                      ),
-                    ),
-                  ),
+              activeIcon: SvgPicture.asset(
+                'assets/icons/kaaba.svg',
+                width: 26,
+                height: 26,
+                colorFilter: ColorFilter.mode(
+                  selectedIconColor,
+                  BlendMode.srcIn,
                 ),
-                const SizedBox(height: 3),
-                AnimatedDefaultTextStyle(
-                  duration: const Duration(milliseconds: 250),
-                  style: TextStyle(
-                    fontFamily: AppFonts.of(context),
-                    fontSize: AppType.of(context).tabLabel,
-                    fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
-                    color: labelColor,
-                    height: 1,
-                  ),
-                  child: Text(
-                    label,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                    textHeightBehavior: const TextHeightBehavior(
-                      applyHeightToFirstAscent: false,
-                      applyHeightToLastDescent: false,
-                    ),
-                  ),
-                ),
-                ],
               ),
             ),
-          ), // ConstrainedBox
+            GlassBottomBarTab(
+              label: null,
+              icon: Icon(PlatformIcons.book),
+              activeIcon: Icon(PlatformIcons.bookFill),
+            ),
+            GlassBottomBarTab(
+              label: null,
+              icon: Icon(PlatformIcons.clock),
+              activeIcon: Icon(PlatformIcons.clockFill),
+            ),
+          ],
         ),
       ),
     );
