@@ -626,6 +626,28 @@ class _BottomTabBar extends StatelessWidget {
   static const double _pillTotalWidth =
       _tabWidth * _tabCount + _horizontalPadding * 2;
 
+  // Кааба-иконка, унифицированная с остальными (шрифтовыми) вкладками:
+  // размер и цвет берутся из IconTheme, который GlassTabBar выставляет под
+  // текущее состояние. [fallbackColor] используется, если IconTheme.color
+  // не задан (чтобы active/inactive всё равно различались).
+  Widget _kaabaIcon(Color fallbackColor) {
+    return Builder(
+      builder: (context) {
+        final iconTheme = IconTheme.of(context);
+        final double size = iconTheme.size ?? 24;
+        return SvgPicture.asset(
+          'assets/icons/kaaba.svg',
+          width: size,
+          height: size,
+          colorFilter: ColorFilter.mode(
+            iconTheme.color ?? fallbackColor,
+            BlendMode.srcIn,
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // Цвета адаптируем под тему — ничего не хардкодим под одну схему.
@@ -688,28 +710,16 @@ class _BottomTabBar extends StatelessWidget {
               icon: Icon(PlatformIcons.home),
               activeIcon: Icon(PlatformIcons.homeFill),
             ),
-            // SVG пакет не красит сам — задаём цвет явно через colorFilter
-            // под оба состояния (неактивное / активное).
+            // SVG сам не красится и не масштабируется по IconTheme, поэтому
+            // приводим его к поведению остальных (шрифтовых) иконок: цвет и
+            // размер наследуем из окружающего IconTheme, который GlassTabBar
+            // задаёт под каждое состояние. Fallback на явные цвета — на случай,
+            // если IconTheme не проставлен, чтобы переключение active/inactive
+            // работало в любом случае.
             GlassTab(
               label: null,
-              icon: SvgPicture.asset(
-                'assets/icons/kaaba.svg',
-                width: 26,
-                height: 26,
-                colorFilter: ColorFilter.mode(
-                  unselectedIconColor,
-                  BlendMode.srcIn,
-                ),
-              ),
-              activeIcon: SvgPicture.asset(
-                'assets/icons/kaaba.svg',
-                width: 26,
-                height: 26,
-                colorFilter: ColorFilter.mode(
-                  selectedIconColor,
-                  BlendMode.srcIn,
-                ),
-              ),
+              icon: _kaabaIcon(unselectedIconColor),
+              activeIcon: _kaabaIcon(selectedIconColor),
             ),
             GlassTab(
               label: null,
