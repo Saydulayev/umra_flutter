@@ -13,6 +13,7 @@ import 'providers/font_provider.dart';
 import 'providers/purchase_provider.dart';
 import 'providers/notification_preferences_provider.dart';
 import 'services/notification_service.dart';
+import 'repositories/preferences_repository.dart';
 import 'screens/home_screen.dart';
 import 'screens/language_selection_screen.dart';
 import 'models/app_theme.dart';
@@ -43,11 +44,40 @@ void main() {
       // Прогрев шейдеров liquid glass (убирает белую вспышку при первом кадре).
       await LiquidGlassWidgets.initialize();
 
+      // Восстанавливаем ранее подобранное адаптивом качество стекла, чтобы НЕ
+      // прогонять ~3-секундный бенчмарк при каждом холодном старте. Без этого
+      // на слабых устройствах пользователь каждый запуск видит окно деградации
+      // качества, пока идёт замер. Первый запуск: ключа нет → null → бенчмарк
+      // отрабатывает один раз и сохраняет результат через onQualityChanged.
+      // Последующие запуски: стартуем сразу с сохранённого качества.
+      const glassQualityKey = 'glass_quality';
+      final savedGlassQuality =
+          await PreferencesRepository().getString(glassQualityKey);
+      GlassQuality? initialGlassQuality;
+      if (savedGlassQuality != null) {
+        for (final q in GlassQuality.values) {
+          if (q.name == savedGlassQuality) {
+            initialGlassQuality = q;
+            break;
+          }
+        }
+      }
+
       // wrap() ставит корневой backdrop-шеринг, доступность и адаптивное
       // качество (бенчмаркает устройство и сам опускает качество на слабых).
       runApp(
         LiquidGlassWidgets.wrap(
           adaptiveQuality: true,
+          adaptiveConfig: GlassAdaptiveScopeConfig(
+            // null на первом запуске → разовый бенчмарк; далее — сохранённое.
+            initialQuality: initialGlassQuality,
+            // Разрешаем поднять качество обратно после остывания троттлинга.
+            allowStepUp: true,
+            // Сохраняем подобранное качество, как только оно устаканилось.
+            onQualityChanged: (_, to) {
+              PreferencesRepository().setString(glassQualityKey, to.name);
+            },
+          ),
           child: const MyApp(),
         ),
       );
