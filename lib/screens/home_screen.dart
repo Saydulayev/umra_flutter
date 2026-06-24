@@ -671,19 +671,34 @@ class _BottomTabBar extends StatelessWidget {
             glassColor: Color.fromRGBO(12, 12, 14, 0.55),
             thickness: 26,
             blur: 5,
-            lightIntensity: 0.5,
-            ambientStrength: 0.3,
+            // Настоящего бордера у капсулы нет — то, что выглядит «обводкой»,
+            // это краевая подсветка стекла. Здесь убираем её почти полностью,
+            // чтобы контур капсулы был максимально мягким.
+            lightIntensity: 0.15,
+            ambientStrength: 0.1,
+            // Fresnel-кромка на Standard-пути (дефолт 0.75 → почти выключена).
+            glowIntensity: 0.1,
             refractiveIndex: 1.4,
             saturation: 1.1,
           )
         : const LiquidGlassSettings(
-            glassColor: Color.fromRGBO(255, 255, 255, 0.6),
+            // Чуть плотнее белое стекло, чтобы поверхность пилюли читалась
+            // на светлом фоне (было 0.6 → почти «белое на белом»).
+            glassColor: Color.fromRGBO(255, 255, 255, 0.72),
             thickness: 26,
             blur: 5,
             lightIntensity: 0.6,
             ambientStrength: 0.5,
             refractiveIndex: 1.4,
             saturation: 1.1,
+            // Главный фактор видимости на светлой теме: «парящая» тень под
+            // пилюлей (работает только в светлой теме). 1.0 = дефолт iOS 26
+            // (~6% / 8px), 2.2 ≈ ~13% / 18px — отрывает бар от светлого фона
+            // и даёт чёткий контур.
+            shadowElevation: 2.2,
+            // Чуть ярче люминесцентная кромка стекла (Standard-путь) —
+            // добавляет чёткости краю. Дефолт 0.75.
+            glowIntensity: 1.0,
           );
 
     return Center(
