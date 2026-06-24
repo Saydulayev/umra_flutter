@@ -653,10 +653,11 @@ class _BottomTabBar extends StatelessWidget {
     // Цвета адаптируем под тему — ничего не хардкодим под одну схему.
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
+    // Сплошной цвет иконок в обеих темах: чёрный на светлой, белый на тёмной.
+    // Активная и неактивная одного цвета — различие читается по filled-иконке
+    // и подсветке-линзе под активной, без «серого» приглушения.
     final Color selectedIconColor = isDark ? Colors.white : Colors.black;
-    final Color unselectedIconColor = isDark
-        ? Colors.white.withValues(alpha: 0.55)
-        : Colors.black.withValues(alpha: 0.45);
+    final Color unselectedIconColor = isDark ? Colors.white : Colors.black;
     // «Линза» под активной иконкой — полупрозрачная подсветка в цвет темы.
     final Color indicatorColor = isDark
         ? Colors.white.withValues(alpha: 0.20)
