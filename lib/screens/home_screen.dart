@@ -84,38 +84,45 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     final theme = Provider.of<ThemeProvider>(context).selectedTheme;
     final l10n = AppLocalizations.of(context)!;
 
-    return Scaffold(
+    // GlassScaffold (iOS 26): сам выставляет z-order бара над контентом,
+    // изоляцию бэкдропа (GlassIsolationScope → premium-качество для бара),
+    // edge-fade у краёв и content-aware brightness (иконки бара адаптируют
+    // цвет под контент, который скроллится под ним). Раньше это собиралось
+    // вручную через Scaffold + Stack + Positioned.
+    return GlassScaffold(
       backgroundColor: theme.backgroundColor,
-      body: Stack(
+      extendBody: true,
+      // Нижний edge-fade выключен: его fallback-градиент берёт цвет из
+      // CupertinoTheme.scaffoldBackgroundColor (системный светло-серый), а не
+      // из theme.backgroundColor, из-за чего внизу появлялась светлая полоса.
+      // GlassScaffold не даёт задать цвет фейда, поэтому просто отключаем его —
+      // фон остаётся однородным. (Верхний и так off: appBar не задан.)
+      bottomEdgeFade: false,
+      // content-aware brightness НЕ используем: фон плоский (theme.backgroundColor,
+      // без обоев), пользы ноль, а scope пересэмплит яркость только после
+      // layout-события — из-за чего при смене темы цвет иконок бара «залипал»
+      // до первого касания/скролла. Цвет иконок ведём явно по теме (см. ниже).
+      // Каждая вкладка — самостоятельный экран со своим Scaffold/AppBar
+      // (как в Instagram: состояние каждой вкладки сохраняется).
+      body: IndexedStack(
+        index: _selectedTab,
         children: [
-          // Каждая вкладка — самостоятельный экран со своим Scaffold/AppBar
-          // (как в Instagram: состояние каждой вкладки сохраняется).
-          IndexedStack(
-            index: _selectedTab,
-            children: [
-              _StepsScaffold(
-                theme: theme,
-                body: _UmraTabBody(theme: theme, l10n: l10n),
-              ),
-              _StepsScaffold(
-                theme: theme,
-                body: _HajjTabBody(theme: theme, l10n: l10n),
-              ),
-              const DuaBookScreen(embedded: true),
-              const PrayerTimeScreen(embedded: true),
-            ],
+          _StepsScaffold(
+            theme: theme,
+            body: _UmraTabBody(theme: theme, l10n: l10n),
           ),
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: _BottomTabBar(
-              selectedIndex: _selectedTab,
-              l10n: l10n,
-              onTap: (i) => setState(() => _selectedTab = i),
-            ),
+          _StepsScaffold(
+            theme: theme,
+            body: _HajjTabBody(theme: theme, l10n: l10n),
           ),
+          const DuaBookScreen(embedded: true),
+          const PrayerTimeScreen(embedded: true),
         ],
+      ),
+      bottomBar: _BottomTabBar(
+        selectedIndex: _selectedTab,
+        l10n: l10n,
+        onTap: (i) => setState(() => _selectedTab = i),
       ),
     );
   }
@@ -653,9 +660,11 @@ class _BottomTabBar extends StatelessWidget {
     // Цвета адаптируем под тему — ничего не хардкодим под одну схему.
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    // Сплошной цвет иконок в обеих темах: чёрный на светлой, белый на тёмной.
-    // Активная и неактивная одного цвета — различие читается по filled-иконке
-    // и подсветке-линзе под активной, без «серого» приглушения.
+    // Цвет иконок задаём явно по теме: чёрные на светлой, белые на тёмной.
+    // Это обновляется мгновенно при смене темы (виджет ребилдится с новым
+    // Theme.of(context)), в отличие от content-aware brightness, который
+    // «залипал» до первого касания. Активная/неактивная одного цвета —
+    // различие читается по filled-иконке и линзе-подсветке под активной.
     final Color selectedIconColor = isDark ? Colors.white : Colors.black;
     final Color unselectedIconColor = isDark ? Colors.white : Colors.black;
     // «Линза» под активной иконкой — полупрозрачная подсветка в цвет темы.
@@ -720,6 +729,7 @@ class _BottomTabBar extends StatelessWidget {
         child: GlassTabBar.bottom(
           selectedIndex: selectedIndex,
           onTabSelected: onTap,
+          // Явные цвета по теме — мгновенная и стабильная реакция на смену темы.
           selectedIconColor: selectedIconColor,
           unselectedIconColor: unselectedIconColor,
           indicatorColor: indicatorColor,
