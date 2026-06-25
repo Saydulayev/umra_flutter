@@ -41,11 +41,22 @@ class NotificationService {
     final android = _plugin.resolvePlatformSpecificImplementation<
         AndroidFlutterLocalNotificationsPlugin>();
     if (android != null) {
-      final notifGranted =
-          await android.requestNotificationsPermission() ?? false;
-      // SCHEDULE_EXACT_ALARM requires a separate user grant on Android 12+
-      await android.requestExactAlarmsPermission();
-      return notifGranted;
+      try {
+        final notifGranted =
+            await android.requestNotificationsPermission() ?? false;
+        // Системный экран «Сигналы и напоминания» показываем только если
+        // уведомления реально разрешены — иначе нет смысла открывать его.
+        // SCHEDULE_EXACT_ALARM требует отдельного разрешения на Android 12+.
+        if (notifGranted) {
+          await android.requestExactAlarmsPermission();
+        }
+        return notifGranted;
+      } catch (e) {
+        // Плагин кидает NPE (null Context), если вызвать запрос до того, как
+        // Activity прикреплена. Не роняем приложение — просто возвращаем false.
+        AppLogger.e('NotificationService: requestPermission failed', e);
+        return false;
+      }
     }
     final ios = _plugin.resolvePlatformSpecificImplementation<
         IOSFlutterLocalNotificationsPlugin>();

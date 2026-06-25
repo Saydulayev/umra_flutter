@@ -9,7 +9,6 @@ import '../providers/notification_preferences_provider.dart';
 import '../models/app_theme.dart';
 import '../widgets/app_card.dart';
 import '../widgets/notification_settings_sheet.dart';
-import '../services/notification_service.dart';
 import '../services/prayer_time_service.dart';
 import '../utils/responsive_metrics.dart';
 import '../theme/app_type.dart';
@@ -40,13 +39,12 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   void initState() {
     super.initState();
     _startTimer();
-    _requestNotificationPermission();
-  }
-
-  void _requestNotificationPermission() async {
-    if (!await NotificationService.hasPermission()) {
-      await NotificationService.requestPermission();
-    }
+    // Разрешение на уведомления здесь НЕ запрашиваем. Этот экран встроен в
+    // IndexedStack и создаётся при каждом запуске приложения (даже когда
+    // открыта вкладка «Дом»), поэтому запрос — включая системный экран
+    // «Сигналы и напоминания» от requestExactAlarmsPermission — выскакивал
+    // при каждом старте. Разрешение запрашивается только когда пользователь
+    // сам включает уведомление в NotificationSettingsSheet (_ensurePermission).
   }
 
   @override
@@ -260,7 +258,12 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                 ),
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
-                    minHeight: constraints.maxHeight - 32 - bottomPadding,
+                    // clamp защищает от отрицательной высоты: на переходных
+                    // layout-кадрах (warm-up, мелкие констрейнты) разность
+                    // уходила в минус и роняла LayoutBuilder с ассертом
+                    // «BoxConstraints has a negative minimum height».
+                    minHeight: (constraints.maxHeight - 32 - bottomPadding)
+                        .clamp(0.0, double.infinity),
                   ),
                   child: Center(
                     child: ConstrainedBox(
