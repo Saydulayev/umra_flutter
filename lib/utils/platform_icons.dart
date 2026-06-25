@@ -6,29 +6,28 @@ import 'package:flutter/material.dart';
 class PlatformIcons {
   static bool get _isIOS => Platform.isIOS;
 
-  /// Возвращает копию иконки с включённым зеркалированием для RTL-локалей
-  /// (например, арабский). `Icon` автоматически отражает глиф, когда
-  /// `matchTextDirection == true` и направление текста — RTL.
-  static IconData _mirrored(IconData icon) => IconData(
-        icon.codePoint,
-        fontFamily: icon.fontFamily,
-        fontPackage: icon.fontPackage,
-        matchTextDirection: true,
-        fontFamilyFallback: icon.fontFamilyFallback,
-      );
-
   static IconData get settings =>
       _isIOS ? CupertinoIcons.settings : Icons.settings_outlined;
   static IconData get clock =>
       _isIOS ? CupertinoIcons.clock : Icons.access_time_rounded;
-  static IconData get chevronRight => _mirrored(
-        _isIOS ? CupertinoIcons.chevron_right : Icons.chevron_right,
-      );
+  // RTL-мирроринг (для арабской локали):
+  // • Icons.chevron_right (Material) и CupertinoIcons.back — уже имеют
+  //   matchTextDirection: true в исходниках Flutter, зеркалятся сами.
+  // • CupertinoIcons.chevron_right его НЕ имеет, поэтому для iOS используем
+  //   const-копию с matchTextDirection: true. Именно const — иначе runtime
+  //   IconData ломает tree-shaker в release-сборке (--tree-shake-icons).
+  static const IconData _chevronRightCupertinoRtl = IconData(
+    0xf3d3, // = CupertinoIcons.chevron_right
+    fontFamily: CupertinoIcons.iconFont,
+    fontPackage: CupertinoIcons.iconFontPackage,
+    matchTextDirection: true,
+  );
+  static IconData get chevronRight =>
+      _isIOS ? _chevronRightCupertinoRtl : Icons.chevron_right;
   static IconData get info =>
       _isIOS ? CupertinoIcons.info : Icons.info_outline_rounded;
-  static IconData get arrowBack => _mirrored(
-        _isIOS ? CupertinoIcons.back : Icons.arrow_back,
-      );
+  static IconData get arrowBack =>
+      _isIOS ? CupertinoIcons.back : Icons.arrow_back;
   static IconData get refresh =>
       _isIOS ? CupertinoIcons.arrow_clockwise : Icons.refresh;
   static IconData get rotateRight =>

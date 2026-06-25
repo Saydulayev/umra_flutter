@@ -726,7 +726,14 @@ class _BottomTabBar extends StatelessWidget {
     return Center(
       child: SizedBox(
         width: _pillTotalWidth,
-        child: GlassTabBar.bottom(
+        // GlassTabBar 0.18.4 не поддерживает RTL: индикатор и оверлей выбранной
+        // иконки позиционируются сырым Alignment (LTR), а ряд иконок в арабском
+        // зеркалится — из-за чего пилюля выбранной вкладки оставалась пустой, а
+        // иконка не отображалась (особенно крайние). Иконочному бару порядок
+        // менять не нужно, поэтому жёстко фиксируем направление LTR.
+        child: Directionality(
+          textDirection: TextDirection.ltr,
+          child: GlassTabBar.bottom(
           selectedIndex: selectedIndex,
           onTabSelected: onTap,
           // Явные цвета по теме — мгновенная и стабильная реакция на смену темы.
@@ -771,6 +778,7 @@ class _BottomTabBar extends StatelessWidget {
               activeIcon: Icon(PlatformIcons.clockFill),
             ),
           ],
+          ),
         ),
       ),
     );
