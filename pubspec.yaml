@@ -80,6 +80,33 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
+  # Генератор нативной заставки (splash) для iOS/Android.
+  flutter_native_splash: ^2.4.0
+
+# ─── Splash / launch screen ──────────────────────────────────────────────────
+# Генерация: dart run flutter_native_splash:create
+# (перезапускать после любой смены картинок/цветов ниже).
+flutter_native_splash:
+  # Фон заставки: светлая тема (nur) и тёмная (layl/emerald).
+  color: "#F7F7F7"
+  color_dark: "#101010"
+  # Логотип по центру: чёрно-золотой на светлом, кремово-золотой на тёмном.
+  image: assets/images/splash/logo_light.png
+  image_dark: assets/images/splash/logo_dark.png
+  # Надпись «Umra Guide» внизу.
+  branding: assets/images/splash/branding_light.png
+  branding_dark: assets/images/splash/branding_dark.png
+  branding_mode: bottom
+  # Android 12+ рисует только круглую иконку по центру (брендинг ОС не
+  # показывает) — поэтому фон + лого дублируем здесь.
+  android_12:
+    image: assets/images/splash/logo_light.png
+    image_dark: assets/images/splash/logo_dark.png
+    color: "#F7F7F7"
+    color_dark: "#101010"
+  android: true
+  ios: true
+  web: false
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

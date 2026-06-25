@@ -11,6 +11,8 @@ PODS:
   - Flutter (1.0.0)
   - flutter_local_notifications (0.0.1):
     - Flutter
+  - flutter_native_splash (2.4.3):
+    - Flutter
   - flutter_pdfview (1.0.2):
     - Flutter
   - in_app_purchase_storekit (0.0.1):
@@ -39,6 +41,7 @@ DEPENDENCIES:
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - Flutter (from `Flutter`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
+  - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
   - flutter_pdfview (from `.symlinks/plugins/flutter_pdfview/ios`)
   - in_app_purchase_storekit (from `.symlinks/plugins/in_app_purchase_storekit/darwin`)
   - in_app_review (from `.symlinks/plugins/in_app_review/ios`)
@@ -61,6 +64,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_local_notifications:
     :path: ".symlinks/plugins/flutter_local_notifications/ios"
+  flutter_native_splash:
+    :path: ".symlinks/plugins/flutter_native_splash/ios"
   flutter_pdfview:
     :path: ".symlinks/plugins/flutter_pdfview/ios"
   in_app_purchase_storekit:
@@ -85,6 +90,7 @@ SPEC CHECKSUMS:
   device_info_plus: 21fcca2080fbcd348be798aa36c3e5ed849eefbe
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   flutter_local_notifications: ad39620c743ea4c15127860f4b5641649a988100
+  flutter_native_splash: c32d145d68aeda5502d5f543ee38c192065986cf
   flutter_pdfview: 32bf27bda6fd85b9dd2c09628a824df5081246cf
   in_app_purchase_storekit: 22cca7d08eebca9babdf4d07d0baccb73325d3c8
   in_app_review: 7dd1ea365263f834b8464673f9df72c80c17c937
