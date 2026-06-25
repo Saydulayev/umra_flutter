@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,6 +10,7 @@ import '../providers/notification_preferences_provider.dart';
 import '../models/app_theme.dart';
 import '../widgets/app_card.dart';
 import '../widgets/notification_settings_sheet.dart';
+import '../services/notification_service.dart';
 import '../services/prayer_time_service.dart';
 import '../utils/responsive_metrics.dart';
 import '../theme/app_type.dart';
@@ -106,7 +108,9 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
       context,
       listen: false,
     );
-    await notifPrefs.rescheduleForCity(prayerCityFromString(cityKey));
+    final texts = PrayerNotificationTexts.of(AppLocalizations.of(context)!);
+    await notifPrefs.rescheduleForCity(
+        prayerCityFromString(cityKey), texts);
   }
 
   String _formatDuration(Duration duration) {
@@ -231,6 +235,23 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
         automaticallyImplyLeading: !widget.embedded,
         iconTheme: IconThemeData(color: theme.primaryColor),
         actions: [
+          // DEBUG-кнопка теста уведомлений: kDebugMode → в release-сборке её нет.
+          // Тапни → через 30 сек придёт тестовое уведомление (проверка доставки
+          // без ожидания намаза). Запускай в debug-сборке: flutter run -d <id>.
+          if (kDebugMode)
+            IconButton(
+              icon: Icon(Icons.bug_report, color: theme.primaryColor),
+              onPressed: () async {
+                await NotificationService.debugScheduleTest(seconds: 30);
+                if (!context.mounted) return;
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Тест запланирован на +30 сек. '
+                        'Сверни приложение и подожди.'),
+                  ),
+                );
+              },
+            ),
           IconButton(
             icon: Icon(PlatformIcons.notifications, color: theme.primaryColor),
             onPressed: () => showModalBottomSheet(

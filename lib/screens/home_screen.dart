@@ -6,6 +6,9 @@ import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 import '../utils/platform_icons.dart';
 import '../providers/user_preferences_provider.dart';
+import '../providers/notification_preferences_provider.dart';
+import '../services/notification_service.dart';
+import '../services/prayer_time_service.dart';
 import '../models/step_model.dart';
 import '../models/app_theme.dart';
 import '../screens/step_detail_screen.dart';
@@ -38,8 +41,29 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     // Одноразовая проверка при открытии экрана с небольшой задержкой,
     // чтобы не блокировать первый рендер.
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Перепланируем уведомления при запуске: гарантирует актуальный язык
+      // и пересчёт под сегодняшние времена намаза (на случай суточного сдвига).
+      _refreshPrayerNotifications();
       Future.delayed(const Duration(seconds: 2), _checkAndShowReviewDialog);
     });
+  }
+
+  /// Перепланирует уведомления о намазе с актуальными языком, городом и
+  /// настройками. Если уведомления выключены — scheduleAll просто ничего не
+  /// ставит. Вызывается при запуске и возврате приложения из фона.
+  void _refreshPrayerNotifications() {
+    if (!mounted) return;
+    final l10n = AppLocalizations.of(context);
+    if (l10n == null) return;
+    final notifPrefs = context.read<NotificationPreferencesProvider>();
+    // Если флаги ещё не загружены — НЕ трогаем: иначе scheduleAll увидит
+    // false/false и сотрёт уже запланированные уведомления. Перепланируем
+    // позже (при следующем возврате приложения).
+    if (!notifPrefs.isLoaded) return;
+    notifPrefs.rescheduleForCity(
+      prayerCityFromString(context.read<UserPreferencesProvider>().prayerCity),
+      PrayerNotificationTexts.of(l10n),
+    );
   }
 
   @override
@@ -52,7 +76,10 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
     // Проверяем при возвращении из фона — подходящий нейтральный момент.
-    if (state == AppLifecycleState.resumed) _checkAndShowReviewDialog();
+    if (state == AppLifecycleState.resumed) {
+      _refreshPrayerNotifications();
+      _checkAndShowReviewDialog();
+    }
   }
 
   Future<void> _checkAndShowReviewDialog() async {

@@ -5,7 +5,15 @@
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <!-- Точные будильники для напоминаний о времени намаза.
+         USE_EXACT_ALARM (Android 13+, API 33+): «нормальное» разрешение для
+         будильников/напоминаний, выдаётся автоматически, Google Play допускает
+         его для этой категории. SCHEDULE_EXACT_ALARM нужен только на Android 12
+         (API ≤32), поэтому ограничен maxSdkVersion="32" — так он не попадает под
+         ужесточённую политику Play для API 33+. -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"
+        android:maxSdkVersion="32"/>
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
     <!-- Google Play Billing -->
     <uses-permission android:name="com.android.vending.BILLING"/>
     <!-- Указываем, что BILLING не является обязательным требованием устройства -->

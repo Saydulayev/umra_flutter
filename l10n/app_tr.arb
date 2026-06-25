@@ -296,7 +296,6 @@
   "notificationsString": "Bildirimler",
   "notificationSheetTitle": "Namaz Bildirimleri",
   "notificationSettingsLink": "Bildirim Ayarları",
-
   "duaBookNavTitle": "Dua Kitabı",
   "duaCategoryUmrah": "Umre",
   "duaCategoryHajj": "Hac",
@@ -341,5 +340,8 @@
   "duaNiyyahHajjTitle": "Hac Niyeti",
   "duaNiyyahHajjTrans": "Buyur, ey Allah'ım, huzurundayım, [hac yapmak üzere].",
   "duaIhramHajjTitle": "İhram Duası (Hac)",
-  "duaArafatTitle": "Arafat Duası"
+  "duaArafatTitle": "Arafat Duası",
+  "notificationPrayerNow": "{prayer} vakti",
+  "notificationPrayerSoonTitle": "Bir sonraki namaza hazırlan",
+  "notificationPrayerSoon": "{prayer} 30 dakika sonra"
 }

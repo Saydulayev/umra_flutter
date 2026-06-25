@@ -296,7 +296,6 @@
   "notificationsString": "Notifications",
   "notificationSheetTitle": "Notifications de prière",
   "notificationSettingsLink": "Paramètres de notification",
-
   "duaBookNavTitle": "Livre des Douas",
   "duaCategoryUmrah": "Oumra",
   "duaCategoryHajj": "Hajj",
@@ -341,5 +340,8 @@
   "duaNiyyahHajjTitle": "Intention pour le Hajj",
   "duaNiyyahHajjTrans": "Me voici devant Toi, ô Allah, [pour accomplir] le Haddj.",
   "duaIhramHajjTitle": "Doua de l'Ihram (Hajj)",
-  "duaArafatTitle": "Doua à Arafat"
+  "duaArafatTitle": "Doua à Arafat",
+  "notificationPrayerNow": "C'est l'heure de {prayer}",
+  "notificationPrayerSoonTitle": "Préparez-vous pour la prochaine prière",
+  "notificationPrayerSoon": "{prayer} dans 30 minutes"
 }

@@ -340,5 +340,8 @@
   "duaNiyyahHajjTitle": "نية الحج",
   "duaNiyyahHajjTrans": "لَبَّيْكَ اللَّهُمَّ بِحَجٍّ",
   "duaIhramHajjTitle": "دعاء الإحرام (حج)",
-  "duaArafatTitle": "دعاء عرفة"
+  "duaArafatTitle": "دعاء عرفة",
+  "notificationPrayerNow": "حان وقت {prayer}",
+  "notificationPrayerSoonTitle": "استعد للصلاة القادمة",
+  "notificationPrayerSoon": "{prayer} بعد 30 دقيقة"
 }

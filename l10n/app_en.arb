@@ -299,7 +299,6 @@
   "notificationsString": "Notifications",
   "notificationSheetTitle": "Prayer Notifications",
   "notificationSettingsLink": "Notification Settings",
-
   "duaBookNavTitle": "Du'a Book",
   "duaCategoryUmrah": "Umrah",
   "duaCategoryHajj": "Hajj",
@@ -344,5 +343,22 @@
   "duaNiyyahHajjTitle": "Intention for Hajj",
   "duaNiyyahHajjTrans": "Here I am before You, O Allah, [performing] Hajj.",
   "duaIhramHajjTitle": "Du'a of Ihram (Hajj)",
-  "duaArafatTitle": "Du'a on Arafat"
+  "duaArafatTitle": "Du'a on Arafat",
+  "notificationPrayerNow": "Time for {prayer}",
+  "@notificationPrayerNow": {
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationPrayerSoonTitle": "Prepare for next prayer",
+  "notificationPrayerSoon": "{prayer} in 30 minutes",
+  "@notificationPrayerSoon": {
+    "placeholders": {
+      "prayer": {
+        "type": "String"
+      }
+    }
+  }
 }

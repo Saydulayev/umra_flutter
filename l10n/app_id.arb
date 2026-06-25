@@ -296,7 +296,6 @@
   "notificationsString": "Notifikasi",
   "notificationSheetTitle": "Notifikasi Sholat",
   "notificationSettingsLink": "Pengaturan Notifikasi",
-
   "duaBookNavTitle": "Buku Doa",
   "duaCategoryUmrah": "Umrah",
   "duaCategoryHajj": "Haji",
@@ -341,5 +340,8 @@
   "duaNiyyahHajjTitle": "Niat Haji",
   "duaNiyyahHajjTrans": "Aku memenuhi panggilan-Mu, ya Allah, [untuk menunaikan] haji.",
   "duaIhramHajjTitle": "Doa Ihram (Haji)",
-  "duaArafatTitle": "Doa di Arafah"
+  "duaArafatTitle": "Doa di Arafah",
+  "notificationPrayerNow": "Waktu {prayer}",
+  "notificationPrayerSoonTitle": "Bersiap untuk salat berikutnya",
+  "notificationPrayerSoon": "{prayer} dalam 30 menit"
 }

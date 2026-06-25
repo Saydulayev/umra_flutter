@@ -296,7 +296,6 @@
   "notificationsString": "Уведомления",
   "notificationSheetTitle": "Уведомления о намазе",
   "notificationSettingsLink": "Настройки уведомлений",
-
   "duaBookNavTitle": "Книга Дуа",
   "duaCategoryUmrah": "Умра",
   "duaCategoryHajj": "Хадж",
@@ -341,5 +340,8 @@
   "duaNiyyahHajjTitle": "Намерение на Хадж",
   "duaNiyyahHajjTrans": "Вот я пред Тобой, о Аллах, [совершая] хадж.",
   "duaIhramHajjTitle": "Дуа ихрама (Хадж)",
-  "duaArafatTitle": "Дуа на Арафате"
+  "duaArafatTitle": "Дуа на Арафате",
+  "notificationPrayerNow": "Наступило время намаза {prayer}",
+  "notificationPrayerSoonTitle": "Скоро намаз",
+  "notificationPrayerSoon": "{prayer} через 30 минут"
 }

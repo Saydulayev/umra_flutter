@@ -9,6 +9,9 @@ import 'package:umra_flutter/l10n/app_localizations.dart';
 import '../providers/theme_provider.dart';
 import '../providers/localization_provider.dart';
 import '../providers/user_preferences_provider.dart';
+import '../providers/notification_preferences_provider.dart';
+import '../services/notification_service.dart';
+import '../services/prayer_time_service.dart';
 import '../models/app_theme.dart';
 import '../widgets/theme_selection_sheet.dart';
 import '../widgets/app_card.dart';
@@ -476,6 +479,10 @@ class SettingsScreen extends StatelessWidget {
     LocalizationProvider localizationProvider,
   ) {
     final l10n = AppLocalizations.of(context)!;
+    // Захватываем провайдеры из стабильного контекста экрана (внутри showDialog
+    // context перекрывается), чтобы перепланировать уведомления при смене языка.
+    final notifPrefs = context.read<NotificationPreferencesProvider>();
+    final userPrefs = context.read<UserPreferencesProvider>();
     final languages = [
       {'code': 'ru', 'name': 'Русский'},
       {'code': 'en', 'name': 'English'},
@@ -504,7 +511,15 @@ class SettingsScreen extends StatelessWidget {
                   ? Icon(PlatformIcons.check, color: Colors.green)
                   : null,
               onTap: () {
-                localizationProvider.setLanguage(lang['code']!);
+                final code = lang['code']!;
+                localizationProvider.setLanguage(code);
+                // Мгновенно перепланируем уведомления на выбранном языке
+                // (lookupAppLocalizations даёт строки нужной локали без контекста).
+                notifPrefs.rescheduleForCity(
+                  prayerCityFromString(userPrefs.prayerCity),
+                  PrayerNotificationTexts.of(
+                      lookupAppLocalizations(Locale(code))),
+                );
                 Navigator.pop(context);
               },
             );

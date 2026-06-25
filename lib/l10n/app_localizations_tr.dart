@@ -1177,4 +1177,17 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get duaArafatTitle => 'Arafat Duası';
+
+  @override
+  String notificationPrayerNow(String prayer) {
+    return '$prayer vakti';
+  }
+
+  @override
+  String get notificationPrayerSoonTitle => 'Bir sonraki namaza hazırlan';
+
+  @override
+  String notificationPrayerSoon(String prayer) {
+    return '$prayer 30 dakika sonra';
+  }
 }

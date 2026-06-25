@@ -1188,4 +1188,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get duaArafatTitle => 'Du\'a on Arafat';
+
+  @override
+  String notificationPrayerNow(String prayer) {
+    return 'Time for $prayer';
+  }
+
+  @override
+  String get notificationPrayerSoonTitle => 'Prepare for next prayer';
+
+  @override
+  String notificationPrayerSoon(String prayer) {
+    return '$prayer in 30 minutes';
+  }
 }

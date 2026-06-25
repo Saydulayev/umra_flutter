@@ -89,7 +89,8 @@ class NotificationSettingsSheet extends StatelessWidget {
                     onChanged: (v) async {
                       final granted = await _ensurePermission(context);
                       if (!granted) return;
-                      await notifs.setBefore(v, city);
+                      await notifs.setBefore(
+                          v, city, PrayerNotificationTexts.of(l10n));
                     },
                   ),
                   Divider(
@@ -107,7 +108,8 @@ class NotificationSettingsSheet extends StatelessWidget {
                     onChanged: (v) async {
                       final granted = await _ensurePermission(context);
                       if (!granted) return;
-                      await notifs.setAtTime(v, city);
+                      await notifs.setAtTime(
+                          v, city, PrayerNotificationTexts.of(l10n));
                     },
                   ),
                   Divider(
@@ -122,7 +124,8 @@ class NotificationSettingsSheet extends StatelessWidget {
                     value: notifs.sunriseEnabled,
                     theme: theme,
                     isTablet: isTablet,
-                    onChanged: (v) => notifs.setSunrise(v, city),
+                    onChanged: (v) =>
+                        notifs.setSunrise(v, city, PrayerNotificationTexts.of(l10n)),
                   ),
                 ],
               ),

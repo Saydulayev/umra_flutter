@@ -296,7 +296,6 @@
   "notificationsString": "Benachrichtigungen",
   "notificationSheetTitle": "Gebetsbenachrichtigungen",
   "notificationSettingsLink": "Benachrichtigungseinstellungen",
-
   "duaBookNavTitle": "Dua-Buch",
   "duaCategoryUmrah": "Umrah",
   "duaCategoryHajj": "Hajj",
@@ -341,5 +340,8 @@
   "duaNiyyahHajjTitle": "Absicht für Hajj",
   "duaNiyyahHajjTrans": "Hier bin ich vor Dir, o Allah, [um] den Haddsch [zu vollziehen].",
   "duaIhramHajjTitle": "Dua des Ihrams (Hajj)",
-  "duaArafatTitle": "Dua auf Arafat"
+  "duaArafatTitle": "Dua auf Arafat",
+  "notificationPrayerNow": "Zeit für {prayer}",
+  "notificationPrayerSoonTitle": "Bereite dich auf das nächste Gebet vor",
+  "notificationPrayerSoon": "{prayer} in 30 Minuten"
 }

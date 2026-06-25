@@ -1182,4 +1182,17 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get duaArafatTitle => 'Дуа на Арафате';
+
+  @override
+  String notificationPrayerNow(String prayer) {
+    return 'Наступило время намаза $prayer';
+  }
+
+  @override
+  String get notificationPrayerSoonTitle => 'Скоро намаз';
+
+  @override
+  String notificationPrayerSoon(String prayer) {
+    return '$prayer через 30 минут';
+  }
 }

@@ -2153,6 +2153,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Du\'a on Arafat'**
   String get duaArafatTitle;
+
+  /// No description provided for @notificationPrayerNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Time for {prayer}'**
+  String notificationPrayerNow(String prayer);
+
+  /// No description provided for @notificationPrayerSoonTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Prepare for next prayer'**
+  String get notificationPrayerSoonTitle;
+
+  /// No description provided for @notificationPrayerSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'{prayer} in 30 minutes'**
+  String notificationPrayerSoon(String prayer);
 }
 
 class _AppLocalizationsDelegate

@@ -3,6 +3,44 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 import 'prayer_time_service.dart';
+import '../l10n/app_localizations.dart';
+
+/// Локализованные тексты уведомлений. Резолвятся из [AppLocalizations] на
+/// стороне UI (где есть BuildContext) и передаются в [NotificationService.
+/// scheduleAll], потому что сам сервис работает без контекста, а уведомления
+/// планируются заранее — текст «запекается» в момент планирования.
+///
+/// Все списки длиной 6 в порядке: Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha.
+class PrayerNotificationTexts {
+  final List<String> titles; // локализованные названия намазов
+  final List<String> atTimeBody; // «в момент намаза»
+  final String beforeTitle; // заголовок «за 30 минут»
+  final List<String> beforeBody; // тело «за 30 минут»
+
+  const PrayerNotificationTexts({
+    required this.titles,
+    required this.atTimeBody,
+    required this.beforeTitle,
+    required this.beforeBody,
+  });
+
+  factory PrayerNotificationTexts.of(AppLocalizations l10n) {
+    final names = [
+      l10n.fajr,
+      l10n.sunrise,
+      l10n.dhuhr,
+      l10n.asr,
+      l10n.maghrib,
+      l10n.isha,
+    ];
+    return PrayerNotificationTexts(
+      titles: names,
+      atTimeBody: [for (final n in names) l10n.notificationPrayerNow(n)],
+      beforeTitle: l10n.notificationPrayerSoonTitle,
+      beforeBody: [for (final n in names) l10n.notificationPrayerSoon(n)],
+    );
+  }
+}
 
 /// Notification ID allocation:
 ///   at-time  → IDs 100..105  (index 0=Fajr 1=Sunrise 2=Dhuhr 3=Asr 4=Maghrib 5=Isha)
@@ -44,12 +82,11 @@ class NotificationService {
       try {
         final notifGranted =
             await android.requestNotificationsPermission() ?? false;
-        // Системный экран «Сигналы и напоминания» показываем только если
-        // уведомления реально разрешены — иначе нет смысла открывать его.
-        // SCHEDULE_EXACT_ALARM требует отдельного разрешения на Android 12+.
-        if (notifGranted) {
-          await android.requestExactAlarmsPermission();
-        }
+        // Точные будильники выдаются через USE_EXACT_ALARM (см. AndroidManifest)
+        // автоматически на Android 13+, а на Android 12 SCHEDULE_EXACT_ALARM
+        // предоставлен по умолчанию. Поэтому отдельный запрос/системный экран
+        // «Сигналы и напоминания» больше не нужен — requestExactAlarmsPermission
+        // не вызываем (он и был причиной всплывающего окна).
         return notifGranted;
       } catch (e) {
         // Плагин кидает NPE (null Context), если вызвать запрос до того, как
@@ -89,6 +126,39 @@ class NotificationService {
     await android?.requestNotificationsPermission();
   }
 
+  /// DEBUG-ТЕСТ. Планирует одноразовое уведомление через [seconds] секунд тем
+  /// же путём, что и реальные напоминания о намазе (exact, allow-while-idle,
+  /// тот же канал) — чтобы проверить доставку, не дожидаясь времени намаза.
+  /// Вызывается только из debug-кнопки (см. prayer_time_screen, if kDebugMode).
+  static Future<void> debugScheduleTest({int seconds = 30}) async {
+    await init();
+    final location = tz.getLocation('Asia/Riyadh');
+    final when = tz.TZDateTime.now(location).add(Duration(seconds: seconds));
+    await _plugin.zonedSchedule(
+      9999,
+      'Тест уведомления',
+      'Если ты это видишь — уведомления работают ✅',
+      when,
+      NotificationDetails(
+        android: AndroidNotificationDetails(
+          _atTimeChannelId,
+          _atTimeChannelName,
+          importance: Importance.high,
+          priority: Priority.high,
+          playSound: true,
+        ),
+        iOS: const DarwinNotificationDetails(
+          presentAlert: true,
+          presentBadge: false,
+          presentSound: true,
+        ),
+      ),
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.wallClockTime,
+    );
+  }
+
   /// Cancel all scheduled prayer notifications.
   static Future<void> cancelAll() async {
     for (int i = 0; i <= 5; i++) {
@@ -103,6 +173,7 @@ class NotificationService {
     required bool atTimeEnabled,
     required bool beforeEnabled,
     required bool sunriseEnabled,
+    required PrayerNotificationTexts texts,
   }) async {
     await cancelAll();
     if (!atTimeEnabled && !beforeEnabled) return;
@@ -110,13 +181,15 @@ class NotificationService {
     final data = PrayerTimeService.getTodayPrayerTimes(city);
     if (data == null) return;
 
+    // Порядок строго соответствует индексам в [PrayerNotificationTexts]:
+    // 0=Fajr 1=Sunrise 2=Dhuhr 3=Asr 4=Maghrib 5=Isha.
     final prayers = [
-      (name: 'Fajr',    time: data.fajr,    isSunrise: false),
-      (name: 'Sunrise',  time: data.sunrise,  isSunrise: true),
-      (name: 'Dhuhr',   time: data.dhuhr,   isSunrise: false),
-      (name: 'Asr',     time: data.asr,     isSunrise: false),
-      (name: 'Maghrib', time: data.maghrib, isSunrise: false),
-      (name: 'Isha',    time: data.isha,    isSunrise: false),
+      (time: data.fajr,    isSunrise: false),
+      (time: data.sunrise, isSunrise: true),
+      (time: data.dhuhr,   isSunrise: false),
+      (time: data.asr,     isSunrise: false),
+      (time: data.maghrib, isSunrise: false),
+      (time: data.isha,    isSunrise: false),
     ];
 
     for (int i = 0; i < prayers.length; i++) {
@@ -126,8 +199,8 @@ class NotificationService {
       if (atTimeEnabled) {
         await _scheduleRepeating(
           id: 100 + i,
-          title: p.name,
-          body: 'Time for ${p.name}',
+          title: texts.titles[i],
+          body: texts.atTimeBody[i],
           scheduledTime: p.time,
           channelId: _atTimeChannelId,
           channelName: _atTimeChannelName,
@@ -137,8 +210,8 @@ class NotificationService {
       if (beforeEnabled && !p.isSunrise) {
         await _scheduleRepeating(
           id: 200 + i,
-          title: 'Prepare for next prayer',
-          body: 'Time for ${p.name} in 30 minutes',
+          title: texts.beforeTitle,
+          body: texts.beforeBody[i],
           scheduledTime: p.time.subtract(const Duration(minutes: 30)),
           channelId: _beforeChannelId,
           channelName: _beforeChannelName,
