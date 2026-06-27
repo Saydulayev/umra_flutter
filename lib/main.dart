@@ -112,17 +112,15 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child:
-          Consumer3<
+          Consumer2<
             ThemeProvider,
-            LocalizationProvider,
-            UserPreferencesProvider
+            LocalizationProvider
           >(
             builder:
                 (
                   context,
                   themeProvider,
                   localizationProvider,
-                  prefsProvider,
                   child,
                 ) {
                   final theme = themeProvider.selectedTheme;

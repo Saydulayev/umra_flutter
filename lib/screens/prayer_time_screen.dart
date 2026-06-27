@@ -31,23 +31,23 @@ class PrayerTimeScreen extends StatefulWidget {
 class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   PrayerTimeData? _prayerTimes;
   bool _hasError = false;
-  String _nextPrayerName = '';
-  Duration _timeUntilNextPrayer = Duration.zero;
   String _currentCityKey = 'mecca';
 
-  Timer? _timer;
+  // Кешируем дорогие в пересчёте значения: исламская дата/год (Hijri-конвертация)
+  // и время Qiyam (= два полных расчёта adhan). Раньше всё это вызывалось из
+  // build() на каждом тике секундного таймера. Теперь — только при смене города
+  // (см. _recomputePrayerTimes). Обратный отсчёт изолирован в _PrayerCountdown,
+  // поэтому 1-сек обновление перестраивает лишь маленькую капсулу, а не экран.
+  DateTime? _qiyamTime;
+  String _islamicDate = '';
+  String _islamicYear = '';
 
-  @override
-  void initState() {
-    super.initState();
-    _startTimer();
-    // Разрешение на уведомления здесь НЕ запрашиваем. Этот экран встроен в
-    // IndexedStack и создаётся при каждом запуске приложения (даже когда
-    // открыта вкладка «Дом»), поэтому запрос — включая системный экран
-    // «Сигналы и напоминания» от requestExactAlarmsPermission — выскакивал
-    // при каждом старте. Разрешение запрашивается только когда пользователь
-    // сам включает уведомление в NotificationSettingsSheet (_ensurePermission).
-  }
+  // Примечание: разрешение на уведомления здесь НЕ запрашивается. Этот экран
+  // встроен в IndexedStack и создаётся при каждом запуске приложения (даже на
+  // вкладке «Дом»), поэтому запрос — включая системный экран «Сигналы и
+  // напоминания» от requestExactAlarmsPermission — выскакивал при каждом старте.
+  // Разрешение запрашивается только когда пользователь сам включает уведомление
+  // в NotificationSettingsSheet (_ensurePermission).
 
   @override
   void didChangeDependencies() {
@@ -60,42 +60,16 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     }
   }
 
-  void _startTimer() {
-    _timer?.cancel();
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (mounted) {
-        _updateCountdown();
-      } else {
-        timer.cancel();
-      }
-    });
-  }
-
   void _recomputePrayerTimes(PrayerCity city) {
     setState(() {
       _prayerTimes = PrayerTimeService.getTodayPrayerTimes(city);
       _hasError = _prayerTimes == null;
       if (_prayerTimes != null) {
-        _nextPrayerName = PrayerTimeService.getNextPrayerName(_prayerTimes!);
-        _timeUntilNextPrayer = PrayerTimeService.getTimeUntilNextPrayer(
-          _prayerTimes!,
-          city,
-        );
+        _qiyamTime = PrayerTimeService.getQiyamTime(city);
+        _islamicDate = PrayerTimeService.getIslamicDate();
+        _islamicYear = PrayerTimeService.getIslamicYear();
       }
     });
-  }
-
-  void _updateCountdown() {
-    final city = prayerCityFromString(_currentCityKey);
-    if (_prayerTimes != null) {
-      setState(() {
-        _nextPrayerName = PrayerTimeService.getNextPrayerName(_prayerTimes!);
-        _timeUntilNextPrayer = PrayerTimeService.getTimeUntilNextPrayer(
-          _prayerTimes!,
-          city,
-        );
-      });
-    }
   }
 
   Future<void> _onCityChanged(String cityKey) async {
@@ -113,51 +87,8 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
         prayerCityFromString(cityKey), texts);
   }
 
-  String _formatDuration(Duration duration) {
-    String twoDigits(int n) => n.toString().padLeft(2, '0');
-    final hours = duration.inHours;
-    final minutes = duration.inMinutes.remainder(60);
-    final seconds = duration.inSeconds.remainder(60);
-    return '${twoDigits(hours)}:${twoDigits(minutes)}:${twoDigits(seconds)}';
-  }
-
   String _formatTime(DateTime dateTime) {
     return PrayerTimeService.formatPrayerTime(dateTime);
-  }
-
-  String _getIslamicDate() {
-    return PrayerTimeService.getIslamicDate();
-  }
-
-  String _getIslamicYear() {
-    return PrayerTimeService.getIslamicYear();
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
-
-  String _getLocalizedPrayerName(String englishName, AppLocalizations l10n) {
-    switch (englishName) {
-      case 'Fajr':
-        return l10n.fajr;
-      case 'Sunrise':
-        return l10n.sunrise;
-      case 'Dhuhr':
-        return l10n.dhuhr;
-      case 'Asr':
-        return l10n.asr;
-      case 'Maghrib':
-        return l10n.maghrib;
-      case 'Isha':
-        return l10n.isha;
-      case 'Qiyam':
-        return l10n.qiyam;
-      default:
-        return englishName;
-    }
   }
 
   @override
@@ -301,7 +232,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                               fit: BoxFit.scaleDown,
                               alignment: Alignment.center,
                               child: Text(
-                                '${_getIslamicDate()} ${_getIslamicYear()}',
+                                '$_islamicDate $_islamicYear',
                                 textDirection: TextDirection.ltr,
                                 style: GoogleFonts.cinzel(
                                   fontSize: metrics.scaled(22),
@@ -329,10 +260,14 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                               onCityChanged: _onCityChanged,
                             ),
                             const SizedBox(height: 12),
-                            // Блок обратного отсчёта (cardStyled: vertical 40pt outside)
+                            // Блок обратного отсчёта (cardStyled: vertical 40pt outside).
+                            // Изолирован в отдельный виджет: его секундный таймер
+                            // перестраивает только эту капсулу, а не весь экран.
                             SizedBox(
                               width: double.infinity,
-                              child: _buildCountdownCard(
+                              child: _PrayerCountdown(
+                                prayerTimes: _prayerTimes!,
+                                city: prayerCityFromString(_currentCityKey),
                                 theme: theme,
                                 l10n: l10n,
                                 type: AppType(metrics),
@@ -386,51 +321,13 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     );
   }
 
-  /// Блок обратного отсчёта — cardStyled iOS (standardCardFrame cornerRadius 20)
-  Widget _buildCountdownCard({
-    required AppTheme theme,
-    required AppLocalizations l10n,
-    required AppType type,
-  }) {
-    return AppCard(
-      theme: theme,
-      cornerRadius: 999,
-      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-      shadows: [
-        BoxShadow(
-          color: theme.cardShadowColor,
-          blurRadius: 10,
-          offset: const Offset(0, 4),
-        ),
-      ],
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        child: Text(
-          _nextPrayerName.isEmpty
-              ? '—'
-              : '${_getLocalizedPrayerName(_nextPrayerName, l10n)} ${l10n.prayerTimeIn} ${_formatDuration(_timeUntilNextPrayer)}',
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            fontSize: type.callout,
-            fontWeight: FontWeight.w600,
-            color: theme.isDark ? Colors.white : Colors.black,
-          ),
-          textAlign: TextAlign.center,
-        ),
-      ),
-    );
-  }
-
   /// Список намазов. Порядок как в iOS: Fajr → Sunrise (капсула) → Dhuhr → Asr → Maghrib → Isha → Qiyam (капсула).
   List<Widget> _buildPrayerRows(
     AppTheme theme,
     AppLocalizations l10n,
     AppType type,
   ) {
-    final qiyamTime = PrayerTimeService.getQiyamTime(
-      prayerCityFromString(_currentCityKey),
-    );
+    final qiyamTime = _qiyamTime;
 
     Widget plain(String name, String time) =>
         _buildPrayerTimeRow(name, time, theme: theme, type: type);
@@ -577,5 +474,135 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
         ],
       ),
     );
+  }
+}
+
+/// Изолированный блок обратного отсчёта до следующего намаза.
+///
+/// Владеет собственным секундным таймером. Поскольку это отдельный
+/// `StatefulWidget`, `setState` каждую секунду перестраивает ТОЛЬКО эту
+/// капсулу, а не весь экран намазов (список, заголовок, переключатель города).
+/// Расчёт следующего намаза дешёвый (сравнение 6 готовых времён); тяжёлые
+/// `getQiyamTime`/Hijri в parent кешируются и сюда не попадают.
+class _PrayerCountdown extends StatefulWidget {
+  final PrayerTimeData prayerTimes;
+  final PrayerCity city;
+  final AppTheme theme;
+  final AppLocalizations l10n;
+  final AppType type;
+
+  const _PrayerCountdown({
+    required this.prayerTimes,
+    required this.city,
+    required this.theme,
+    required this.l10n,
+    required this.type,
+  });
+
+  @override
+  State<_PrayerCountdown> createState() => _PrayerCountdownState();
+}
+
+class _PrayerCountdownState extends State<_PrayerCountdown> {
+  Timer? _timer;
+  String _nextPrayerName = '';
+  Duration _timeUntilNextPrayer = Duration.zero;
+
+  @override
+  void initState() {
+    super.initState();
+    _update();
+    _timer = Timer.periodic(const Duration(seconds: 1), (_) => _update());
+  }
+
+  @override
+  void didUpdateWidget(covariant _PrayerCountdown oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // Город/времена сменились (переключатель Мекка/Медина) — пересчитываем сразу.
+    if (oldWidget.prayerTimes != widget.prayerTimes ||
+        oldWidget.city != widget.city) {
+      _update();
+    }
+  }
+
+  void _update() {
+    if (!mounted) return;
+    setState(() {
+      _nextPrayerName =
+          PrayerTimeService.getNextPrayerName(widget.prayerTimes);
+      _timeUntilNextPrayer = PrayerTimeService.getTimeUntilNextPrayer(
+        widget.prayerTimes,
+        widget.city,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = widget.theme;
+    final l10n = widget.l10n;
+    return AppCard(
+      theme: theme,
+      cornerRadius: 999,
+      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+      shadows: [
+        BoxShadow(
+          color: theme.cardShadowColor,
+          blurRadius: 10,
+          offset: const Offset(0, 4),
+        ),
+      ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        child: Text(
+          _nextPrayerName.isEmpty
+              ? '—'
+              : '${_localizedPrayerName(_nextPrayerName, l10n)} ${l10n.prayerTimeIn} ${_formatDuration(_timeUntilNextPrayer)}',
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            fontSize: widget.type.callout,
+            fontWeight: FontWeight.w600,
+            color: theme.isDark ? Colors.white : Colors.black,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+  }
+}
+
+String _formatDuration(Duration duration) {
+  String twoDigits(int n) => n.toString().padLeft(2, '0');
+  final hours = duration.inHours;
+  final minutes = duration.inMinutes.remainder(60);
+  final seconds = duration.inSeconds.remainder(60);
+  return '${twoDigits(hours)}:${twoDigits(minutes)}:${twoDigits(seconds)}';
+}
+
+String _localizedPrayerName(String englishName, AppLocalizations l10n) {
+  switch (englishName) {
+    case 'Fajr':
+      return l10n.fajr;
+    case 'Sunrise':
+      return l10n.sunrise;
+    case 'Dhuhr':
+      return l10n.dhuhr;
+    case 'Asr':
+      return l10n.asr;
+    case 'Maghrib':
+      return l10n.maghrib;
+    case 'Isha':
+      return l10n.isha;
+    case 'Qiyam':
+      return l10n.qiyam;
+    default:
+      return englishName;
   }
 }

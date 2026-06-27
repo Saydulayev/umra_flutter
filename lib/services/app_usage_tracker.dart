@@ -36,31 +36,46 @@ class AppUsageTracker {
     await _prefsRepo.setInt(PrefsKeys.appLaunchCount, currentCount + 1);
   }
 
+  /// Возобновить отслеживание после возврата из фона.
+  /// Вызывается из lifecycle-обработчика (AppLifecycleState.resumed).
+  void resumeTracking() => _startTracking();
+
   /// Начать отслеживание сессии
   void _startTracking() {
     if (_isTracking) return;
     _isTracking = true;
     _sessionStartTime = DateTime.now();
 
-    // Обновляем общее время использования каждые 5 секунд для более точного отслеживания
-    _usageTimer = Timer.periodic(const Duration(seconds: 5), (timer) async {
-      if (_sessionStartTime != null) {
-        final sessionDuration = DateTime.now().difference(_sessionStartTime!);
-        final currentTotal =
-            await _prefsRepo.getInt(PrefsKeys.totalAppUsageTime) ?? 0;
-        final newTotal = currentTotal + sessionDuration.inSeconds;
-        await _prefsRepo.setInt(PrefsKeys.totalAppUsageTime, newTotal);
-        _sessionStartTime =
-            DateTime.now(); // Сбрасываем для следующего интервала
-      }
+    // Периодически сбрасываем накопленное время сессии на диск. 30с — баланс
+    // между точностью (порог «минимальное время использования» измеряется
+    // минутами) и количеством операций записи в SharedPreferences.
+    _usageTimer = Timer.periodic(const Duration(seconds: 30), (timer) {
+      _flushSession();
     });
   }
 
-  /// Остановить отслеживание сессии
-  void stopTracking() {
-    _isTracking = false;
+  /// Сбросить накопленное время текущей сессии в хранилище и перезапустить
+  /// отсчёт интервала. Безопасно вызывать вне таймера (например, при уходе в фон).
+  Future<void> _flushSession() async {
+    if (_sessionStartTime == null) return;
+    final sessionDuration = DateTime.now().difference(_sessionStartTime!);
+    final currentTotal =
+        await _prefsRepo.getInt(PrefsKeys.totalAppUsageTime) ?? 0;
+    await _prefsRepo.setInt(
+      PrefsKeys.totalAppUsageTime,
+      currentTotal + sessionDuration.inSeconds,
+    );
+    _sessionStartTime = DateTime.now(); // отсчёт для следующего интервала
+  }
+
+  /// Остановить отслеживание сессии. Перед остановкой фиксируем накопленное
+  /// время, чтобы не потерять текущую сессию при уходе приложения в фон.
+  Future<void> stopTracking() async {
+    if (!_isTracking) return;
     _usageTimer?.cancel();
     _usageTimer = null;
+    await _flushSession();
+    _isTracking = false;
     _sessionStartTime = null;
   }
 

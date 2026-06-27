@@ -9,6 +9,7 @@ import '../providers/user_preferences_provider.dart';
 import '../providers/notification_preferences_provider.dart';
 import '../services/notification_service.dart';
 import '../services/prayer_time_service.dart';
+import '../services/app_usage_tracker.dart';
 import '../models/step_model.dart';
 import '../models/app_theme.dart';
 import '../screens/step_detail_screen.dart';
@@ -77,8 +78,13 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     super.didChangeAppLifecycleState(state);
     // Проверяем при возвращении из фона — подходящий нейтральный момент.
     if (state == AppLifecycleState.resumed) {
+      AppUsageTracker().resumeTracking();
       _refreshPrayerNotifications();
       _checkAndShowReviewDialog();
+    } else if (state == AppLifecycleState.paused) {
+      // Уходим в фон — фиксируем время сессии и глушим 30-сек таймер,
+      // чтобы не писать в SharedPreferences и не накручивать время в фоне.
+      AppUsageTracker().stopTracking();
     }
   }
 
