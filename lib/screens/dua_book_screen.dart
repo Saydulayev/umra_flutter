@@ -164,14 +164,15 @@ class DuaBookScreen extends StatelessWidget {
           final metrics = ResponsiveMetrics.of(context);
           final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
           return SingleChildScrollView(
-            padding: EdgeInsets.fromLTRB(
-              metrics.listScreenHPad,
-              // Во вкладке убираем верхний отступ, чтобы крупный заголовок
-              // встал на тот же уровень, что «УМРА»/«ХАДЖ» (там scroll-view без
-              // верхнего паддинга, а отступ сверху задаёт само поле заголовка).
-              embedded ? 0 : 8,
-              metrics.listScreenHPad,
-              bottomPadding + (embedded ? kBottomTabBarReservedSpace : 32),
+            // Горизонтальный отступ задаёт margin самой карточки (как в
+            // _GroupedCard у «Умра»/«Хадж»), а НЕ padding скролл-вью. Иначе на
+            // планшете карточка тянулась во всю ширину блока 680 без полей и
+            // выбивалась из ряда. Сверху во вкладке отступа нет — его задаёт
+            // поле заголовка.
+            padding: EdgeInsets.only(
+              top: embedded ? 0 : 8,
+              bottom:
+                  bottomPadding + (embedded ? kBottomTabBarReservedSpace : 32),
             ),
             child: Center(
               child: ConstrainedBox(
@@ -179,17 +180,12 @@ class DuaBookScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Крупный заголовок слева — как на вкладках «Умра»/«Хадж».
-                    // Только во встроенном режиме (вкладке), где у AppBar нет
-                    // заголовка. left:4 + горизонтальный отступ скролл-вью
-                    // (listScreenHPad) = 20 — выравнивание совпадает с Умра/Хадж.
+                    // Крупный заголовок слева — тот же padding (20,4,20,24),
+                    // что у «Умра»/«Хадж». Только во встроенном режиме (вкладке),
+                    // где у AppBar нет заголовка.
                     if (embedded)
                       Padding(
-                        padding: const EdgeInsets.only(
-                          left: 4,
-                          top: 4,
-                          bottom: 24,
-                        ),
+                        padding: const EdgeInsets.fromLTRB(20, 4, 20, 24),
                         child: Text(
                           l10n.duaBookNavTitle.toUpperCase(),
                           style: TextStyle(
@@ -203,6 +199,11 @@ class DuaBookScreen extends StatelessWidget {
                     AppCard(
                       theme: theme,
                       cornerRadius: _cardRadius,
+                      // Горизонтальные поля карточки — как у _GroupedCard
+                      // в «Умра»/«Хадж».
+                      margin: EdgeInsets.symmetric(
+                        horizontal: metrics.listScreenHPad,
+                      ),
                       shadows: [
                         BoxShadow(
                           color: theme.cardShadowColor,

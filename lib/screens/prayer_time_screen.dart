@@ -198,29 +198,40 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
         builder: (context) {
           final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
           final metrics = ResponsiveMetrics.of(context);
-          return LayoutBuilder(
-            builder: (context, constraints) {
-              return SingleChildScrollView(
-                padding: EdgeInsets.fromLTRB(
-                  metrics.prayerHorizontalInset,
-                  16,
-                  metrics.prayerHorizontalInset,
-                  bottomPadding +
-                      (widget.embedded ? kBottomTabBarReservedSpace : 16),
-                ),
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    // clamp защищает от отрицательной высоты: на переходных
-                    // layout-кадрах (warm-up, мелкие констрейнты) разность
-                    // уходила в минус и роняла LayoutBuilder с ассертом
-                    // «BoxConstraints has a negative minimum height».
-                    minHeight: (constraints.maxHeight - 32 - bottomPadding)
-                        .clamp(0.0, double.infinity),
-                  ),
-                  child: Center(
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                        maxWidth: metrics.prayerCardMaxWidth,
+          return SingleChildScrollView(
+            // Горизонтальный отступ задаёт padding карточки (как margin у
+            // «Умра»/«Хадж»), а не scroll-view. Внешний блок = contentMaxWidth
+            // (на планшете 680), поэтому заголовок и карточка встают ровно как
+            // на других вкладках, а не уезжают к центру по узкому блоку 520.
+            padding: EdgeInsets.only(
+              top: widget.embedded ? 0 : 16,
+              bottom: bottomPadding +
+                  (widget.embedded ? kBottomTabBarReservedSpace : 16),
+            ),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: metrics.contentMaxWidth),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Крупный заголовок слева — тот же padding (20,4,20,24), что
+                    // у «Умра»/«Хадж». Только во встроенном режиме (вкладке).
+                    if (widget.embedded)
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 4, 20, 24),
+                        child: Text(
+                          l10n.prayerTimesTitle.toUpperCase(),
+                          style: TextStyle(
+                            fontSize: metrics.largeTitleFontSize,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: -0.5,
+                            color: theme.textColor,
+                          ),
+                        ),
+                      ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: metrics.listScreenHPad,
                       ),
                       child: _buildCard(
                         theme: theme,
@@ -291,13 +302,13 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                         ),
                       ),
                     ),
+                    ],
                   ),
                 ),
-              );
-            },
-          );
-        },
-      ),
+              ),
+            );
+          },
+        ),
     );
   }
 
