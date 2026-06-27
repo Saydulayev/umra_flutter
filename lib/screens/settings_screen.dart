@@ -406,34 +406,13 @@ class SettingsScreen extends StatelessWidget {
     ).selectedTheme;
     final metrics = ResponsiveMetrics.of(context);
     final locale = localizationProvider.currentLocale;
-    final languageName = _getLanguageName(locale.languageCode);
+    final languageName = AppLanguages.nameFor(locale.languageCode);
     return Text(
       languageName,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
       style: TextStyle(fontSize: metrics.captionFontSize, color: theme.secondaryTextColor),
     );
-  }
-
-  String _getLanguageName(String code) {
-    switch (code) {
-      case 'ru':
-        return 'Русский';
-      case 'en':
-        return 'English';
-      case 'de':
-        return 'Deutsch';
-      case 'fr':
-        return 'Français';
-      case 'tr':
-        return 'Türkçe';
-      case 'id':
-        return 'Bahasa Indonesia';
-      case 'ar':
-        return 'العربية';
-      default:
-        return code;
-    }
   }
 
   Widget _buildThemeValue(AppTheme theme, AppLocalizations l10n, BuildContext context) {
@@ -483,15 +462,6 @@ class SettingsScreen extends StatelessWidget {
     // context перекрывается), чтобы перепланировать уведомления при смене языка.
     final notifPrefs = context.read<NotificationPreferencesProvider>();
     final userPrefs = context.read<UserPreferencesProvider>();
-    final languages = [
-      {'code': 'ru', 'name': 'Русский'},
-      {'code': 'en', 'name': 'English'},
-      {'code': 'de', 'name': 'Deutsch'},
-      {'code': 'fr', 'name': 'Français'},
-      {'code': 'tr', 'name': 'Türkçe'},
-      {'code': 'id', 'name': 'Bahasa Indonesia'},
-      {'code': 'ar', 'name': 'العربية'},
-    ];
 
     showDialog(
       context: context,
@@ -502,16 +472,15 @@ class SettingsScreen extends StatelessWidget {
         title: Text(l10n.selectLanguageString),
         content: Column(
           mainAxisSize: MainAxisSize.min,
-          children: languages.map((lang) {
+          children: AppLanguages.all.map((lang) {
             return ListTile(
-              title: Text(lang['name']!),
+              title: Text(lang.name),
               trailing:
-                  localizationProvider.currentLocale.languageCode ==
-                      lang['code']
+                  localizationProvider.currentLocale.languageCode == lang.code
                   ? Icon(PlatformIcons.check, color: Colors.green)
                   : null,
               onTap: () {
-                final code = lang['code']!;
+                final code = lang.code;
                 localizationProvider.setLanguage(code);
                 // Мгновенно перепланируем уведомления на выбранном языке
                 // (lookupAppLocalizations даёт строки нужной локали без контекста).

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/theme_provider.dart';
+import '../models/app_theme.dart';
 import '../utils/platform_icons.dart';
 import '../providers/notification_preferences_provider.dart';
 import '../providers/user_preferences_provider.dart';
@@ -87,7 +88,7 @@ class NotificationSettingsSheet extends StatelessWidget {
                     theme: theme,
                     isTablet: isTablet,
                     onChanged: (v) async {
-                      final granted = await _ensurePermission(context);
+                      final granted = await _ensurePermission();
                       if (!granted) return;
                       await notifs.setBefore(
                           v, city, PrayerNotificationTexts.of(l10n));
@@ -106,7 +107,7 @@ class NotificationSettingsSheet extends StatelessWidget {
                     theme: theme,
                     isTablet: isTablet,
                     onChanged: (v) async {
-                      final granted = await _ensurePermission(context);
+                      final granted = await _ensurePermission();
                       if (!granted) return;
                       await notifs.setAtTime(
                           v, city, PrayerNotificationTexts.of(l10n));
@@ -187,7 +188,7 @@ class NotificationSettingsSheet extends StatelessWidget {
     );
   }
 
-  Future<bool> _ensurePermission(BuildContext context) async {
+  Future<bool> _ensurePermission() async {
     if (await NotificationService.hasPermission()) return true;
     return await NotificationService.requestPermission();
   }
@@ -200,7 +201,7 @@ class NotificationSettingsSheet extends StatelessWidget {
 class _SwitchRow extends StatelessWidget {
   final String label;
   final bool value;
-  final dynamic theme;
+  final AppTheme theme;
   final bool isTablet;
   final ValueChanged<bool> onChanged;
 

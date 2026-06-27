@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../providers/localization_provider.dart';
 import '../providers/theme_provider.dart';
+import '../models/app_theme.dart';
+import '../constants/app_constants.dart';
 import '../utils/responsive_metrics.dart';
 import '../theme/app_type.dart';
 import 'home_screen.dart';
@@ -27,16 +29,6 @@ class LanguageSelectionScreen extends StatefulWidget {
 
 class _LanguageSelectionScreenState extends State<LanguageSelectionScreen>
     with TickerProviderStateMixin {
-  static const _languages = [
-    {'code': 'ru', 'name': 'Русский'},
-    {'code': 'en', 'name': 'English'},
-    {'code': 'de', 'name': 'Deutsch'},
-    {'code': 'fr', 'name': 'Français'},
-    {'code': 'tr', 'name': 'Türkçe'},
-    {'code': 'id', 'name': 'Bahasa Indonesia'},
-    {'code': 'ar', 'name': 'العربية'},
-  ];
-
   late final AnimationController _titleCtrl;
   late final AnimationController _logoCtrl;
   late final AnimationController _listCtrl;
@@ -183,7 +175,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen>
                   child: SlideTransition(
                     position: _listSlide,
                     child: _LanguageList(
-                      languages: _languages,
+                      languages: AppLanguages.all,
                       theme: theme,
                       onSelect: _selectLanguage,
                     ),
@@ -276,8 +268,8 @@ class _ShimmeringTitleState extends State<_ShimmeringTitle>
 // ---------------------------------------------------------------------------
 
 class _LanguageList extends StatefulWidget {
-  final List<Map<String, String>> languages;
-  final dynamic theme;
+  final List<({String code, String name})> languages;
+  final AppTheme theme;
   final void Function(String) onSelect;
 
   const _LanguageList({
@@ -335,9 +327,9 @@ class _LanguageListState extends State<_LanguageList> {
               itemBuilder: (_, i) {
                 final lang = widget.languages[i];
                 return _LanguageButton(
-                  name: lang['name']!,
+                  name: lang.name,
                   theme: theme,
-                  onTap: () => widget.onSelect(lang['code']!),
+                  onTap: () => widget.onSelect(lang.code),
                 );
               },
             ),
@@ -368,7 +360,7 @@ class _LanguageListState extends State<_LanguageList> {
 
 class _LanguageButton extends StatelessWidget {
   final String name;
-  final dynamic theme;
+  final AppTheme theme;
   final VoidCallback onTap;
 
   const _LanguageButton({

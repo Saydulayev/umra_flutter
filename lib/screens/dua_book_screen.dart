@@ -8,6 +8,7 @@ import '../utils/platform_icons.dart';
 import '../widgets/app_card.dart';
 import '../widgets/arabic_text_widget.dart';
 import '../widgets/player_widget.dart';
+import '../screens/settings_screen.dart';
 import '../utils/responsive_metrics.dart';
 import '../theme/app_type.dart';
 import '../constants/app_constants.dart';
@@ -124,14 +125,19 @@ class DuaBookScreen extends StatelessWidget {
         backgroundColor: theme.backgroundColor,
         elevation: 0,
         scrolledUnderElevation: 0,
-        title: Text(
-          l10n.duaBookNavTitle,
-          style: TextStyle(
-            color: theme.textColor,
-            fontWeight: FontWeight.w600,
-            fontSize: AppType.of(context).callout,
-          ),
-        ),
+        // В режиме вкладки (embedded) заголовок не в AppBar по центру, а крупным
+        // текстом слева в теле — как на вкладках «Умра» и «Хадж». В режиме push
+        // (открытие через Navigator) остаётся обычный заголовок AppBar.
+        title: embedded
+            ? null
+            : Text(
+                l10n.duaBookNavTitle,
+                style: TextStyle(
+                  color: theme.textColor,
+                  fontWeight: FontWeight.w600,
+                  fontSize: AppType.of(context).callout,
+                ),
+              ),
         automaticallyImplyLeading: !embedded,
         leading: embedded
             ? null
@@ -139,6 +145,19 @@ class DuaBookScreen extends StatelessWidget {
                 icon: Icon(PlatformIcons.arrowBack, color: theme.primaryColor),
                 onPressed: () => Navigator.pop(context),
               ),
+        // Во вкладке — шестерёнка настроек справа вверху, как у «Умра»/«Хадж».
+        actions: embedded
+            ? [
+                IconButton(
+                  icon: Icon(PlatformIcons.settings, color: theme.textColor),
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const SettingsScreen()),
+                  ),
+                ),
+                const SizedBox(width: 4),
+              ]
+            : null,
       ),
       body: Builder(
         builder: (context) {
@@ -147,24 +166,56 @@ class DuaBookScreen extends StatelessWidget {
           return SingleChildScrollView(
             padding: EdgeInsets.fromLTRB(
               metrics.listScreenHPad,
-              8,
+              // Во вкладке убираем верхний отступ, чтобы крупный заголовок
+              // встал на тот же уровень, что «УМРА»/«ХАДЖ» (там scroll-view без
+              // верхнего паддинга, а отступ сверху задаёт само поле заголовка).
+              embedded ? 0 : 8,
               metrics.listScreenHPad,
               bottomPadding + (embedded ? kBottomTabBarReservedSpace : 32),
             ),
             child: Center(
               child: ConstrainedBox(
                 constraints: BoxConstraints(maxWidth: metrics.contentMaxWidth),
-                child: AppCard(
-                  theme: theme,
-                  cornerRadius: _cardRadius,
-                  shadows: [
-                    BoxShadow(
-                      color: theme.cardShadowColor,
-                      blurRadius: 18,
-                      offset: const Offset(0, 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Крупный заголовок слева — как на вкладках «Умра»/«Хадж».
+                    // Только во встроенном режиме (вкладке), где у AppBar нет
+                    // заголовка. left:4 + горизонтальный отступ скролл-вью
+                    // (listScreenHPad) = 20 — выравнивание совпадает с Умра/Хадж.
+                    if (embedded)
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 4,
+                          top: 4,
+                          bottom: 24,
+                        ),
+                        child: Text(
+                          l10n.duaBookNavTitle.toUpperCase(),
+                          style: TextStyle(
+                            fontSize: metrics.largeTitleFontSize,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: -0.5,
+                            color: theme.textColor,
+                          ),
+                        ),
+                      ),
+                    AppCard(
+                      theme: theme,
+                      cornerRadius: _cardRadius,
+                      shadows: [
+                        BoxShadow(
+                          color: theme.cardShadowColor,
+                          blurRadius: 18,
+                          offset: const Offset(0, 8),
+                        ),
+                      ],
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: rows,
+                      ),
                     ),
                   ],
-                  child: Column(mainAxisSize: MainAxisSize.min, children: rows),
                 ),
               ),
             ),

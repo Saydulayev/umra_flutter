@@ -85,6 +85,36 @@ class AppStrings {
       '$appStoreUrl?action=write-review';
 }
 
+/// Поддерживаемые языки интерфейса — единый источник правды.
+///
+/// Раньше пара (код языка, отображаемое имя) дублировалась в
+/// language_selection_screen, settings_screen (список + _getLanguageName).
+/// Добавление языка теперь — одна строка здесь. Названия намеренно заданы
+/// на самом языке (endonym), а не локализованы, чтобы пользователь узнавал
+/// свой язык независимо от текущей локали приложения.
+class AppLanguages {
+  AppLanguages._();
+
+  /// Порядок отражает порядок в UI выбора языка.
+  static const List<({String code, String name})> all = [
+    (code: 'ru', name: 'Русский'),
+    (code: 'en', name: 'English'),
+    (code: 'de', name: 'Deutsch'),
+    (code: 'fr', name: 'Français'),
+    (code: 'tr', name: 'Türkçe'),
+    (code: 'id', name: 'Bahasa Indonesia'),
+    (code: 'ar', name: 'العربية'),
+  ];
+
+  /// Отображаемое имя языка по коду. Если код неизвестен — возвращает сам код.
+  static String nameFor(String code) {
+    for (final lang in all) {
+      if (lang.code == code) return lang.name;
+    }
+    return code;
+  }
+}
+
 /// Ключи локализации для шагов
 class LocalizationKeys {
   LocalizationKeys._(); // Предотвращает создание экземпляра
