@@ -70,8 +70,7 @@ class ThemeProvider extends ChangeNotifier with WidgetsBindingObserver {
   }
 
   Future<void> _loadTheme() async {
-    final saved =
-        await _prefsRepo.getString(PrefsKeys.selectedTheme) ?? 'auto';
+    final saved = await _prefsRepo.getString(PrefsKeys.selectedTheme) ?? 'auto';
     _themePreference = ThemePreference.values.firstWhere(
       (p) => p.prefName == saved,
       orElse: () => ThemePreference.auto,

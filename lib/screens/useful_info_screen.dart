@@ -26,41 +26,41 @@ class UsefulInfoScreen extends StatelessWidget {
     final chapters = UsefulInfoChapters.getChapters();
 
     final items = <_InfoItem>[
-      ...chapters.map((chapter) => _InfoItem(
-            title: _getChapterTitle(chapter.titleKey, l10n),
-            onTap: () {
-              if (chapter.directContentKey != null) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SubChapterDetailScreen(
-                      subChapter: SubChapter(
-                        id: chapter.id,
-                        titleKey: chapter.titleKey,
-                        contentKey: chapter.directContentKey!,
-                      ),
-                      chapterTitle: _getChapterTitle(chapter.titleKey, l10n),
+      ...chapters.map(
+        (chapter) => _InfoItem(
+          title: _getChapterTitle(chapter.titleKey, l10n),
+          onTap: () {
+            if (chapter.directContentKey != null) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SubChapterDetailScreen(
+                    subChapter: SubChapter(
+                      id: chapter.id,
+                      titleKey: chapter.titleKey,
+                      contentKey: chapter.directContentKey!,
                     ),
+                    chapterTitle: _getChapterTitle(chapter.titleKey, l10n),
                   ),
-                );
-              } else {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        UsefulInfoDetailScreen(chapter: chapter),
-                  ),
-                );
-              }
-            },
-          )),
+                ),
+              );
+            } else {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      UsefulInfoDetailScreen(chapter: chapter),
+                ),
+              );
+            }
+          },
+        ),
+      ),
       _InfoItem(
         title: l10n.janazaPrayerGuide,
         onTap: () => Navigator.push(
           context,
-          MaterialPageRoute(
-            builder: (context) => const JanazaPrayerScreen(),
-          ),
+          MaterialPageRoute(builder: (context) => const JanazaPrayerScreen()),
         ),
       ),
     ];
@@ -93,7 +93,12 @@ class UsefulInfoScreen extends StatelessWidget {
               ],
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                children: _buildRows(items, theme, isTablet, AppType.of(context)),
+                children: _buildRows(
+                  items,
+                  theme,
+                  isTablet,
+                  AppType.of(context),
+                ),
               ),
             ),
           );

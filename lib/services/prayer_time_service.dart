@@ -23,10 +23,7 @@ class PrayerTimeData {
 }
 
 /// Город для расчёта времени намаза
-enum PrayerCity {
-  mecca,
-  medina,
-}
+enum PrayerCity { mecca, medina }
 
 extension PrayerCityExtension on PrayerCity {
   String get value => name;
@@ -59,7 +56,9 @@ class PrayerTimeService {
   }
 
   // Получить время молитв на сегодня для выбранного города
-  static PrayerTimeData? getTodayPrayerTimes([PrayerCity city = PrayerCity.mecca]) {
+  static PrayerTimeData? getTodayPrayerTimes([
+    PrayerCity city = PrayerCity.mecca,
+  ]) {
     try {
       final now = DateTime.now();
       final date = DateTime(now.year, now.month, now.day);
@@ -91,7 +90,9 @@ class PrayerTimeService {
   }
 
   // Получить время молитв на завтра для выбранного города
-  static PrayerTimeData? getTomorrowPrayerTimes([PrayerCity city = PrayerCity.mecca]) {
+  static PrayerTimeData? getTomorrowPrayerTimes([
+    PrayerCity city = PrayerCity.mecca,
+  ]) {
     try {
       final tomorrow = DateTime.now().add(const Duration(days: 1));
       final date = DateTime(tomorrow.year, tomorrow.month, tomorrow.day);
@@ -126,23 +127,25 @@ class PrayerTimeService {
   static DateTime? getQiyamTime([PrayerCity city = PrayerCity.mecca]) {
     final today = getTodayPrayerTimes(city);
     final tomorrow = getTomorrowPrayerTimes(city);
-    
+
     if (today == null || tomorrow == null) return null;
-    
+
     final maghribToFajrInterval = tomorrow.fajr.difference(today.maghrib);
     final lastThirdStart = today.maghrib.add(
-      Duration(milliseconds: (maghribToFajrInterval.inMilliseconds * 2 / 3).round()),
+      Duration(
+        milliseconds: (maghribToFajrInterval.inMilliseconds * 2 / 3).round(),
+      ),
     );
-    
+
     return lastThirdStart;
   }
-  
+
   // Получить текущее время в часовом поясе Мекки (UTC+3)
   static DateTime _getCurrentMeccaTime() {
     final now = DateTime.now().toUtc();
     return now.add(Duration(hours: meccaTimeZoneOffset));
   }
-  
+
   // Получить название следующей молитвы
   static String getNextPrayerName(PrayerTimeData prayerTimes) {
     final now = _getCurrentMeccaTime();
@@ -154,19 +157,22 @@ class PrayerTimeService {
       ('Maghrib', prayerTimes.maghrib),
       ('Isha', prayerTimes.isha),
     ];
-    
+
     for (var prayer in prayers) {
       if (prayer.$2.isAfter(now)) {
         return prayer.$1;
       }
     }
-    
+
     // Если все молитвы прошли, следующая - Fajr завтра
     return 'Fajr';
   }
-  
+
   // Получить время до следующей молитвы (city нужен для Fajr завтра)
-  static Duration getTimeUntilNextPrayer(PrayerTimeData prayerTimes, [PrayerCity city = PrayerCity.mecca]) {
+  static Duration getTimeUntilNextPrayer(
+    PrayerTimeData prayerTimes, [
+    PrayerCity city = PrayerCity.mecca,
+  ]) {
     final now = _getCurrentMeccaTime();
     final nextPrayerName = getNextPrayerName(prayerTimes);
 
@@ -175,7 +181,8 @@ class PrayerTimeService {
       case 'Fajr':
         if (prayerTimes.fajr.isBefore(now)) {
           final tomorrow = getTomorrowPrayerTimes(city);
-          nextPrayerTime = tomorrow?.fajr ?? prayerTimes.fajr.add(const Duration(days: 1));
+          nextPrayerTime =
+              tomorrow?.fajr ?? prayerTimes.fajr.add(const Duration(days: 1));
         } else {
           nextPrayerTime = prayerTimes.fajr;
         }
@@ -197,25 +204,26 @@ class PrayerTimeService {
         break;
       default:
         final tomorrow = getTomorrowPrayerTimes(city);
-        nextPrayerTime = tomorrow?.fajr ?? prayerTimes.fajr.add(const Duration(days: 1));
+        nextPrayerTime =
+            tomorrow?.fajr ?? prayerTimes.fajr.add(const Duration(days: 1));
     }
 
     return nextPrayerTime.difference(now);
   }
-  
+
   // Форматировать время в формате HH:mm
   static String formatPrayerTime(DateTime dateTime) {
     return DateFormat('HH:mm').format(dateTime);
   }
-  
+
   // Получить исламскую дату по календарю UmmAlQura
   static String getIslamicDate() {
     try {
       final now = DateTime.now();
-      
+
       // Используем библиотеку hijri_date для конвертации в исламский календарь
       final hijriDate = HijriDate.fromDate(now);
-      
+
       // Форматируем дату в формате "d MMMM" (день и месяц)
       // Используем longMonthName из библиотеки для правильного названия месяца
       return '${hijriDate.hDay} ${hijriDate.longMonthName}';
@@ -224,7 +232,7 @@ class PrayerTimeService {
       return DateFormat('d MMMM', 'en').format(DateTime.now());
     }
   }
-  
+
   // Получить исламский год
   static String getIslamicYear() {
     try {

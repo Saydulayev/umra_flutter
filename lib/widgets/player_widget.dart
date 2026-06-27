@@ -104,7 +104,10 @@ class _PlayerWidgetState extends State<PlayerWidget> {
       // Захватываем всё из context синхронно, пока виджет ещё активен
       final messenger = ScaffoldMessenger.of(context);
       final l10n = AppLocalizations.of(context);
-      final theme = Provider.of<ThemeProvider>(context, listen: false).selectedTheme;
+      final theme = Provider.of<ThemeProvider>(
+        context,
+        listen: false,
+      ).selectedTheme;
 
       setState(() {
         _isLoading = false;

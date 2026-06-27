@@ -51,8 +51,9 @@ void main() {
       // отрабатывает один раз и сохраняет результат через onQualityChanged.
       // Последующие запуски: стартуем сразу с сохранённого качества.
       const glassQualityKey = 'glass_quality';
-      final savedGlassQuality =
-          await PreferencesRepository().getString(glassQualityKey);
+      final savedGlassQuality = await PreferencesRepository().getString(
+        glassQualityKey,
+      );
       GlassQuality? initialGlassQuality;
       if (savedGlassQuality != null) {
         for (final q in GlassQuality.values) {
@@ -68,6 +69,7 @@ void main() {
       runApp(
         LiquidGlassWidgets.wrap(
           adaptiveQuality: true,
+          // ignore: experimental_member_use
           adaptiveConfig: GlassAdaptiveScopeConfig(
             // null на первом запуске → разовый бенчмарк; далее — сохранённое.
             initialQuality: initialGlassQuality,
@@ -100,102 +102,88 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => UserPreferencesProvider()),
         ChangeNotifierProxyProvider<LocalizationProvider, FontProvider>(
           create: (_) => FontProvider(),
-          update: (_, localizationProvider, fontProvider) =>
-              fontProvider!
-                ..setLanguageCode(
-                  localizationProvider.currentLocale.languageCode,
-                ),
+          update: (_, localizationProvider, fontProvider) => fontProvider!
+            ..setLanguageCode(localizationProvider.currentLocale.languageCode),
         ),
         ChangeNotifierProvider(create: (_) => PurchaseProvider()),
         ChangeNotifierProvider(
           create: (_) => NotificationPreferencesProvider(),
         ),
       ],
-      child:
-          Consumer2<
-            ThemeProvider,
-            LocalizationProvider
-          >(
-            builder:
-                (
-                  context,
-                  themeProvider,
-                  localizationProvider,
-                  child,
-                ) {
-                  final theme = themeProvider.selectedTheme;
-                  final fontFamily = AppFonts.forLanguageCode(
-                    localizationProvider.currentLocale.languageCode,
-                  );
+      child: Consumer2<ThemeProvider, LocalizationProvider>(
+        builder: (context, themeProvider, localizationProvider, child) {
+          final theme = themeProvider.selectedTheme;
+          final fontFamily = AppFonts.forLanguageCode(
+            localizationProvider.currentLocale.languageCode,
+          );
 
-                  final overlayStyle = SystemUiOverlayStyle(
-                    statusBarBrightness: theme.isDark
-                        ? Brightness.dark
-                        : Brightness.light,
-                    statusBarIconBrightness: theme.isDark
-                        ? Brightness.light
-                        : Brightness.dark,
-                    systemNavigationBarIconBrightness: theme.isDark
-                        ? Brightness.light
-                        : Brightness.dark,
-                  );
+          final overlayStyle = SystemUiOverlayStyle(
+            statusBarBrightness: theme.isDark
+                ? Brightness.dark
+                : Brightness.light,
+            statusBarIconBrightness: theme.isDark
+                ? Brightness.light
+                : Brightness.dark,
+            systemNavigationBarIconBrightness: theme.isDark
+                ? Brightness.light
+                : Brightness.dark,
+          );
 
-                  return MaterialApp(
-                    title: 'Umra Guide',
-                    debugShowCheckedModeBanner: false,
+          return MaterialApp(
+            title: 'Umra Guide',
+            debugShowCheckedModeBanner: false,
 
-                    theme: _buildThemeData(theme, overlayStyle, fontFamily),
+            theme: _buildThemeData(theme, overlayStyle, fontFamily),
 
-                    locale: localizationProvider.currentLocale,
-                    supportedLocales: AppLocalizations.supportedLocales,
-                    localizationsDelegates: const [
-                      AppLocalizations.delegate,
-                      GlobalMaterialLocalizations.delegate,
-                      GlobalWidgetsLocalizations.delegate,
-                      GlobalCupertinoLocalizations.delegate,
-                    ],
-                    localeResolutionCallback: (locale, supportedLocales) {
-                      if (locale == null) return supportedLocales.first;
-                      for (var supportedLocale in supportedLocales) {
-                        if (supportedLocale.languageCode ==
-                            locale.languageCode) {
-                          return supportedLocale;
-                        }
-                      }
-                      return supportedLocales.first;
-                    },
+            locale: localizationProvider.currentLocale,
+            supportedLocales: AppLocalizations.supportedLocales,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            localeResolutionCallback: (locale, supportedLocales) {
+              if (locale == null) return supportedLocales.first;
+              for (var supportedLocale in supportedLocales) {
+                if (supportedLocale.languageCode == locale.languageCode) {
+                  return supportedLocale;
+                }
+              }
+              return supportedLocales.first;
+            },
 
-                    home: localizationProvider.hasSelectedLanguage
-                        ? const HomeScreen()
-                        : const LanguageSelectionScreen(),
+            home: localizationProvider.hasSelectedLanguage
+                ? const HomeScreen()
+                : const LanguageSelectionScreen(),
 
-                    builder: (context, child) {
-                      final mediaQuery = MediaQuery.of(context);
-                      final cappedTextScale = mediaQuery.textScaler
-                          .scale(1.0)
-                          .clamp(1.0, ResponsiveMetrics.maxTextScale)
-                          .toDouble();
+            builder: (context, child) {
+              final mediaQuery = MediaQuery.of(context);
+              final cappedTextScale = mediaQuery.textScaler
+                  .scale(1.0)
+                  .clamp(1.0, ResponsiveMetrics.maxTextScale)
+                  .toDouble();
 
-                      // Применяем единый адаптивный масштаб типографики к теме,
-                      // чтобы системные компоненты (AppBar, Dialog, кнопки,
-                      // TextTheme) масштабировались по размеру экрана.
-                      final scaledTheme = AppType.of(
-                        context,
-                      ).applyToTheme(Theme.of(context));
+              // Применяем единый адаптивный масштаб типографики к теме,
+              // чтобы системные компоненты (AppBar, Dialog, кнопки,
+              // TextTheme) масштабировались по размеру экрана.
+              final scaledTheme = AppType.of(
+                context,
+              ).applyToTheme(Theme.of(context));
 
-                      return AnnotatedRegion<SystemUiOverlayStyle>(
-                        value: overlayStyle,
-                        child: MediaQuery(
-                          data: mediaQuery.copyWith(
-                            textScaler: TextScaler.linear(cappedTextScale),
-                          ),
-                          child: Theme(data: scaledTheme, child: child!),
-                        ),
-                      );
-                    },
-                  );
-                },
-          ),
+              return AnnotatedRegion<SystemUiOverlayStyle>(
+                value: overlayStyle,
+                child: MediaQuery(
+                  data: mediaQuery.copyWith(
+                    textScaler: TextScaler.linear(cappedTextScale),
+                  ),
+                  child: Theme(data: scaledTheme, child: child!),
+                ),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 

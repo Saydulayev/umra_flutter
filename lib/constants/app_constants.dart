@@ -76,13 +76,11 @@ class AppStrings {
   /// Числовой идентификатор приложения в App Store
   /// (из ссылки apps.apple.com/app/id<этот идентификатор>).
   static const String appStoreId = '1673683355';
-  static const String appStoreUrl =
-      'https://apps.apple.com/app/id$appStoreId';
+  static const String appStoreUrl = 'https://apps.apple.com/app/id$appStoreId';
 
   /// Прямая ссылка на форму написания отзыва в App Store
   /// (открывает экран оценки сразу, а не просто страницу приложения).
-  static const String appStoreReviewUrl =
-      '$appStoreUrl?action=write-review';
+  static const String appStoreReviewUrl = '$appStoreUrl?action=write-review';
 }
 
 /// Поддерживаемые языки интерфейса — единый источник правды.

@@ -3,7 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// Репозиторий для работы с SharedPreferences
 /// Централизует доступ к настройкам приложения
 class PreferencesRepository {
-  static final PreferencesRepository _instance = PreferencesRepository._internal();
+  static final PreferencesRepository _instance =
+      PreferencesRepository._internal();
   factory PreferencesRepository() => _instance;
   PreferencesRepository._internal();
 
@@ -76,4 +77,3 @@ class PreferencesRepository {
     return await preferences.clear();
   }
 }
-

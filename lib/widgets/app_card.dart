@@ -87,10 +87,7 @@ class _EmeraldCard extends StatelessWidget {
 
     // Outer container carries shadow only
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: radius,
-        boxShadow: shadows,
-      ),
+      decoration: BoxDecoration(borderRadius: radius, boxShadow: shadows),
       child: ClipRRect(
         borderRadius: radius,
         child: CustomPaint(
@@ -98,8 +95,7 @@ class _EmeraldCard extends StatelessWidget {
           child: Container(
             foregroundDecoration: BoxDecoration(
               borderRadius: radius,
-              border:
-                  Border.all(color: theme.borderColor, width: borderWidth),
+              border: Border.all(color: theme.borderColor, width: borderWidth),
             ),
             child: child,
           ),
@@ -123,8 +119,7 @@ class _EmeraldPainter extends CustomPainter {
     // 1. Base fill: cardColor @ 94%  (isDarkAppearance = true для Emerald)
     canvas.drawRect(
       rect,
-      Paint()
-        ..color = theme.lightBackgroundColor.withValues(alpha: 0.94),
+      Paint()..color = theme.lightBackgroundColor.withValues(alpha: 0.94),
     );
 
     // 2. Linear gradient: cardTintColor @ 18% → primaryColor @ 7%
@@ -149,10 +144,7 @@ class _EmeraldPainter extends CustomPainter {
         ..shader = ui.Gradient.radial(
           Offset(size.width, 0), // topTrailing
           180.0,
-          [
-            theme.primaryColor.withValues(alpha: 0.16),
-            Colors.transparent,
-          ],
+          [theme.primaryColor.withValues(alpha: 0.16), Colors.transparent],
           [0.066, 1.0], // startRadius=12/180 ≈ 0.066
         ),
     );
@@ -164,10 +156,7 @@ class _EmeraldPainter extends CustomPainter {
         ..shader = ui.Gradient.radial(
           Offset(0, size.height), // bottomLeading
           150.0,
-          [
-            theme.secondaryColor.withValues(alpha: 0.10),
-            Colors.transparent,
-          ],
+          [theme.secondaryColor.withValues(alpha: 0.10), Colors.transparent],
           [0.08, 1.0], // startRadius=12/150 ≈ 0.08
         ),
     );
@@ -179,10 +168,7 @@ class _EmeraldPainter extends CustomPainter {
         ..shader = LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.center,
-          colors: [
-            Colors.white.withValues(alpha: 0.05),
-            Colors.transparent,
-          ],
+          colors: [Colors.white.withValues(alpha: 0.05), Colors.transparent],
         ).createShader(rect),
     );
   }

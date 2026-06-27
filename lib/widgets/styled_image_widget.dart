@@ -45,7 +45,10 @@ class StyledImageWithIndex extends StatelessWidget {
                     gradient: LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
-                      colors: [theme.gradientTopColor, theme.lightBackgroundColor],
+                      colors: [
+                        theme.gradientTopColor,
+                        theme.lightBackgroundColor,
+                      ],
                     ),
                   ),
                 );
@@ -142,7 +145,10 @@ class StyledImageWithTheme extends StatelessWidget {
                     gradient: LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
-                      colors: [theme.gradientTopColor, theme.lightBackgroundColor],
+                      colors: [
+                        theme.gradientTopColor,
+                        theme.lightBackgroundColor,
+                      ],
                     ),
                   ),
                 );

@@ -179,7 +179,9 @@ class UserPreferencesProvider extends ChangeNotifier {
       AppLogger.d(
         'Days since first launch: $daysSinceFirstLaunch (required: ${ReviewConfig.minDaysSinceFirstLaunch})',
       );
-      AppLogger.d('Shown count: $shownCount (max: ${ReviewConfig.maxTotalPrompts})');
+      AppLogger.d(
+        'Shown count: $shownCount (max: ${ReviewConfig.maxTotalPrompts})',
+      );
       AppLogger.d('=== WILL SHOW DIALOG ===');
     }
 

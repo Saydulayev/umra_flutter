@@ -3,7 +3,7 @@ import 'dart:io';
 /// Модель продукта пожертвования
 class DonationProduct {
   final String androidId; // Идентификатор товара в Google Play Console
-  final String iosId;     // Идентификатор товара в App Store Connect
+  final String iosId; // Идентификатор товара в App Store Connect
   final String nameKey; // Ключ локализации для названия
   final String descriptionKey; // Ключ локализации для описания
   final double amount; // Сумма пожертвования (для отображения)

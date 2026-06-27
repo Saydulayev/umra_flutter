@@ -169,134 +169,139 @@ class SettingsScreen extends StatelessWidget {
           final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
           final metrics = ResponsiveMetrics.of(context);
           return SingleChildScrollView(
-            padding: EdgeInsets.only(
-              top: 16,
-              bottom: bottomPadding + 16,
-            ),
+            padding: EdgeInsets.only(top: 16, bottom: bottomPadding + 16),
             child: Center(
               child: ConstrainedBox(
                 constraints: BoxConstraints(maxWidth: metrics.contentMaxWidth),
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: metrics.listScreenHPad),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: metrics.listScreenHPad,
+                  ),
                   child: Column(
                     children: [
-              // Блок 1: Обратная связь, Оценить приложение
-              _buildSettingsBlock(
-                context,
-                theme: theme,
-                children: [
-                  _buildSettingsRow(
-                    context,
-                    icon: PlatformIcons.feedback,
-                    title: l10n.feedbackString,
-                    onTap: () => _launchEmail(context),
-                    theme: theme,
-                  ),
-                  _buildDivider(theme),
-                  _buildSettingsRow(
-                    context,
-                    icon: PlatformIcons.starOutline,
-                    title: l10n.rateTheAppString,
-                    onTap: _launchAppStore,
-                    theme: theme,
-                  ),
-                ],
-              ),
-              const SizedBox(height: _spacingBetweenBlocks),
-              // Блок 2: Уведомления, Выбрать язык, Тема приложения
-              _buildSettingsBlock(
-                context,
-                theme: theme,
-                children: [
-                  _buildSettingsRow(
-                    context,
-                    icon: PlatformIcons.notifications,
-                    title: l10n.notificationsString,
-                    onTap: () => showModalBottomSheet(
-                      context: context,
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      builder: (_) => const NotificationSettingsSheet(),
-                    ),
-                    theme: theme,
-                  ),
-                  _buildDivider(theme),
-                  _buildSettingsRow(
-                    context,
-                    icon: PlatformIcons.language,
-                    title: l10n.selectLanguageSettingsString,
-                    onTap: () {
-                      _showLanguageDialog(context, localizationProvider);
-                    },
-                    theme: theme,
-                    trailing: _buildLanguageValue(
-                      context,
-                      localizationProvider,
-                    ),
-                  ),
-                  _buildDivider(theme),
-                  _buildSettingsRow(
-                    context,
-                    icon: PlatformIcons.palette,
-                    title: l10n.appThemeString,
-                    onTap: () {
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (context) => const ThemeSelectionSheet(),
-                      );
-                    },
-                    theme: theme,
-                    trailing: _buildThemeValue(theme, l10n, context),
-                  ),
-                ],
-              ),
-              const SizedBox(height: _spacingBetweenBlocks),
-              // Блок 3: Поддержать разработчика
-              _buildSettingsBlock(
-                context,
-                theme: theme,
-                children: [
-                  _buildSettingsRow(
-                    context,
-                    icon: PlatformIcons.donation,
-                    title: l10n.supportTheDeveloperString,
-                    onTap: () => showDonationBottomSheet(context),
-                    theme: theme,
-                  ),
-                ],
-              ),
-              // Reset Review State (только в тестовом режиме)
-              if (ReviewConfig.isTestMode) ...[
-                const SizedBox(height: _spacingBetweenBlocks),
-                _buildSettingsBlock(
-                  context,
-                  theme: theme,
-                  children: [
-                    _buildSettingsRow(
-                      context,
-                      icon: PlatformIcons.refresh,
-                      title: 'Сбросить состояние оценки (тест)',
-                      onTap: () async {
-                        final prefsProvider =
-                            Provider.of<UserPreferencesProvider>(
-                              context,
-                              listen: false,
-                            );
-                        await prefsProvider.resetReviewState();
-                        if (context.mounted) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Состояние оценки сброшено'),
-                              duration: Duration(seconds: 2),
+                      // Блок 1: Обратная связь, Оценить приложение
+                      _buildSettingsBlock(
+                        context,
+                        theme: theme,
+                        children: [
+                          _buildSettingsRow(
+                            context,
+                            icon: PlatformIcons.feedback,
+                            title: l10n.feedbackString,
+                            onTap: () => _launchEmail(context),
+                            theme: theme,
+                          ),
+                          _buildDivider(theme),
+                          _buildSettingsRow(
+                            context,
+                            icon: PlatformIcons.starOutline,
+                            title: l10n.rateTheAppString,
+                            onTap: _launchAppStore,
+                            theme: theme,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: _spacingBetweenBlocks),
+                      // Блок 2: Уведомления, Выбрать язык, Тема приложения
+                      _buildSettingsBlock(
+                        context,
+                        theme: theme,
+                        children: [
+                          _buildSettingsRow(
+                            context,
+                            icon: PlatformIcons.notifications,
+                            title: l10n.notificationsString,
+                            onTap: () => showModalBottomSheet(
+                              context: context,
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              builder: (_) => const NotificationSettingsSheet(),
                             ),
-                          );
-                        }
-                      },
-                      theme: theme,
-                    ),
-                  ],
-                ),
-              ],
+                            theme: theme,
+                          ),
+                          _buildDivider(theme),
+                          _buildSettingsRow(
+                            context,
+                            icon: PlatformIcons.language,
+                            title: l10n.selectLanguageSettingsString,
+                            onTap: () {
+                              _showLanguageDialog(
+                                context,
+                                localizationProvider,
+                              );
+                            },
+                            theme: theme,
+                            trailing: _buildLanguageValue(
+                              context,
+                              localizationProvider,
+                            ),
+                          ),
+                          _buildDivider(theme),
+                          _buildSettingsRow(
+                            context,
+                            icon: PlatformIcons.palette,
+                            title: l10n.appThemeString,
+                            onTap: () {
+                              showModalBottomSheet(
+                                context: context,
+                                builder: (context) =>
+                                    const ThemeSelectionSheet(),
+                              );
+                            },
+                            theme: theme,
+                            trailing: _buildThemeValue(theme, l10n, context),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: _spacingBetweenBlocks),
+                      // Блок 3: Поддержать разработчика
+                      _buildSettingsBlock(
+                        context,
+                        theme: theme,
+                        children: [
+                          _buildSettingsRow(
+                            context,
+                            icon: PlatformIcons.donation,
+                            title: l10n.supportTheDeveloperString,
+                            onTap: () => showDonationBottomSheet(context),
+                            theme: theme,
+                          ),
+                        ],
+                      ),
+                      // Reset Review State (только в тестовом режиме)
+                      if (ReviewConfig.isTestMode) ...[
+                        const SizedBox(height: _spacingBetweenBlocks),
+                        _buildSettingsBlock(
+                          context,
+                          theme: theme,
+                          children: [
+                            _buildSettingsRow(
+                              context,
+                              icon: PlatformIcons.refresh,
+                              title: 'Сбросить состояние оценки (тест)',
+                              onTap: () async {
+                                final prefsProvider =
+                                    Provider.of<UserPreferencesProvider>(
+                                      context,
+                                      listen: false,
+                                    );
+                                await prefsProvider.resetReviewState();
+                                if (context.mounted) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text(
+                                        'Состояние оценки сброшено',
+                                      ),
+                                      duration: Duration(seconds: 2),
+                                    ),
+                                  );
+                                }
+                              },
+                              theme: theme,
+                            ),
+                          ],
+                        ),
+                      ],
                     ],
                   ),
                 ),
@@ -411,11 +416,18 @@ class SettingsScreen extends StatelessWidget {
       languageName,
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
-      style: TextStyle(fontSize: metrics.captionFontSize, color: theme.secondaryTextColor),
+      style: TextStyle(
+        fontSize: metrics.captionFontSize,
+        color: theme.secondaryTextColor,
+      ),
     );
   }
 
-  Widget _buildThemeValue(AppTheme theme, AppLocalizations l10n, BuildContext context) {
+  Widget _buildThemeValue(
+    AppTheme theme,
+    AppLocalizations l10n,
+    BuildContext context,
+  ) {
     final themeName = _getThemeName(theme, l10n);
     final metrics = ResponsiveMetrics.of(context);
     return Row(
@@ -435,7 +447,10 @@ class SettingsScreen extends StatelessWidget {
             themeName,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontSize: metrics.captionFontSize, color: theme.secondaryTextColor),
+            style: TextStyle(
+              fontSize: metrics.captionFontSize,
+              color: theme.secondaryTextColor,
+            ),
           ),
         ),
       ],
@@ -487,7 +502,8 @@ class SettingsScreen extends StatelessWidget {
                 notifPrefs.rescheduleForCity(
                   prayerCityFromString(userPrefs.prayerCity),
                   PrayerNotificationTexts.of(
-                      lookupAppLocalizations(Locale(code))),
+                    lookupAppLocalizations(Locale(code)),
+                  ),
                 );
                 Navigator.pop(context);
               },

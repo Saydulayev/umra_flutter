@@ -33,7 +33,10 @@ class NotificationPreferencesProvider extends ChangeNotifier {
   }
 
   Future<void> setAtTime(
-      bool v, PrayerCity city, PrayerNotificationTexts texts) async {
+    bool v,
+    PrayerCity city,
+    PrayerNotificationTexts texts,
+  ) async {
     _atTimeEnabled = v;
     await _repo.setBool(PrefsKeys.notifAtTime, v);
     notifyListeners();
@@ -41,7 +44,10 @@ class NotificationPreferencesProvider extends ChangeNotifier {
   }
 
   Future<void> setBefore(
-      bool v, PrayerCity city, PrayerNotificationTexts texts) async {
+    bool v,
+    PrayerCity city,
+    PrayerNotificationTexts texts,
+  ) async {
     _beforeEnabled = v;
     await _repo.setBool(PrefsKeys.notifBefore, v);
     notifyListeners();
@@ -49,7 +55,10 @@ class NotificationPreferencesProvider extends ChangeNotifier {
   }
 
   Future<void> setSunrise(
-      bool v, PrayerCity city, PrayerNotificationTexts texts) async {
+    bool v,
+    PrayerCity city,
+    PrayerNotificationTexts texts,
+  ) async {
     _sunriseEnabled = v;
     await _repo.setBool(PrefsKeys.notifSunrise, v);
     notifyListeners();
@@ -57,8 +66,9 @@ class NotificationPreferencesProvider extends ChangeNotifier {
   }
 
   Future<void> rescheduleForCity(
-          PrayerCity city, PrayerNotificationTexts texts) =>
-      _reschedule(city, texts);
+    PrayerCity city,
+    PrayerNotificationTexts texts,
+  ) => _reschedule(city, texts);
 
   Future<void> _reschedule(PrayerCity city, PrayerNotificationTexts texts) =>
       NotificationService.scheduleAll(

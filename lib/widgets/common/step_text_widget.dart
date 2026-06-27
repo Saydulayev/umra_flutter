@@ -8,10 +8,7 @@ import '../../utils/responsive_metrics.dart';
 class StepTextWidget extends StatelessWidget {
   final String text;
 
-  const StepTextWidget({
-    super.key,
-    required this.text,
-  });
+  const StepTextWidget({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -29,4 +26,3 @@ class StepTextWidget extends StatelessWidget {
     );
   }
 }
-

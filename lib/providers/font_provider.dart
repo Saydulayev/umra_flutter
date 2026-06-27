@@ -5,13 +5,13 @@ import '../constants/app_constants.dart';
 
 class FontProvider extends ChangeNotifier {
   List<String> fonts = [
-    "Lato",        // Default — geometric sans-serif, high legibility
-    "Roboto",      // Material standard, excellent readability
-    "Open Sans",   // Neutral, wide character spacing
+    "Lato", // Default — geometric sans-serif, high legibility
+    "Roboto", // Material standard, excellent readability
+    "Open Sans", // Neutral, wide character spacing
     "Merriweather", // Serif, comfortable for long-form reading
-    "Lora",        // Elegant serif, good for body text
-    "Noto Sans",   // Broad Unicode coverage including Arabic-adjacent scripts
-    "Inter",       // Modern sans-serif, optimised for screens
+    "Lora", // Elegant serif, good for body text
+    "Noto Sans", // Broad Unicode coverage including Arabic-adjacent scripts
+    "Inter", // Modern sans-serif, optimised for screens
   ];
 
   // Маппинг имен шрифтов на Google Fonts

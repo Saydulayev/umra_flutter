@@ -37,152 +37,163 @@ class NotificationSettingsSheet extends StatelessWidget {
       // места мало (например, в landscape).
       child: SingleChildScrollView(
         child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // Drag indicator
-          Container(
-            margin: const EdgeInsets.only(top: 10),
-            width: 36,
-            height: 4,
-            decoration: BoxDecoration(
-              color: theme.textColor.withValues(alpha: 0.2),
-              borderRadius: BorderRadius.circular(2),
-            ),
-          ),
-
-          // Title
-          Padding(
-            padding: EdgeInsets.fromLTRB(hPad, isTablet ? 28 : 22, hPad, isTablet ? 28 : 24),
-            child: Text(
-              l10n.notificationSheetTitle,
-              style: TextStyle(
-                fontSize: type.title,
-                fontWeight: FontWeight.bold,
-                color: theme.textColor,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-
-          // Toggle block
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: hPad),
-            child: AppCard(
-              theme: theme,
-              cornerRadius: 18,
-              shadows: [
-                BoxShadow(
-                  color: theme.isDark
-                      ? Colors.black.withValues(alpha: 0.2)
-                      : Colors.black.withValues(alpha: 0.06),
-                  blurRadius: 8,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  _SwitchRow(
-                    label: l10n.thirtyMinuteNotifications,
-                    value: notifs.beforeEnabled,
-                    theme: theme,
-                    isTablet: isTablet,
-                    onChanged: (v) async {
-                      final granted = await _ensurePermission();
-                      if (!granted) return;
-                      await notifs.setBefore(
-                          v, city, PrayerNotificationTexts.of(l10n));
-                    },
-                  ),
-                  Divider(
-                    height: 1,
-                    thickness: 0.5,
-                    indent: 16,
-                    endIndent: 16,
-                    color: theme.borderColor,
-                  ),
-                  _SwitchRow(
-                    label: l10n.prayerTimeNotifications,
-                    value: notifs.atTimeEnabled,
-                    theme: theme,
-                    isTablet: isTablet,
-                    onChanged: (v) async {
-                      final granted = await _ensurePermission();
-                      if (!granted) return;
-                      await notifs.setAtTime(
-                          v, city, PrayerNotificationTexts.of(l10n));
-                    },
-                  ),
-                  Divider(
-                    height: 1,
-                    thickness: 0.5,
-                    indent: 16,
-                    endIndent: 16,
-                    color: theme.borderColor,
-                  ),
-                  _SwitchRow(
-                    label: l10n.sunriseNotifications,
-                    value: notifs.sunriseEnabled,
-                    theme: theme,
-                    isTablet: isTablet,
-                    onChanged: (v) =>
-                        notifs.setSunrise(v, city, PrayerNotificationTexts.of(l10n)),
-                  ),
-                ],
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Drag indicator
+            Container(
+              margin: const EdgeInsets.only(top: 10),
+              width: 36,
+              height: 4,
+              decoration: BoxDecoration(
+                color: theme.textColor.withValues(alpha: 0.2),
+                borderRadius: BorderRadius.circular(2),
               ),
             ),
-          ),
 
-          // Settings link
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: isTablet ? 28 : 22),
-            child: GestureDetector(
-              onTap: () => _openSystemSettings(context),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    l10n.notificationSettingsLink,
-                    style: TextStyle(
-                      fontSize: type.callout,
-                      fontWeight: FontWeight.w500,
-                      color: theme.primaryColor,
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Icon(
-                    PlatformIcons.settings,
-                    color: theme.primaryColor,
-                    size: isTablet ? 22 : 19,
-                  ),
-                ],
-              ),
-            ),
-          ),
-
-          // Divider + Close button
-          Divider(height: 1, thickness: 0.5, color: theme.borderColor),
-          GestureDetector(
-            onTap: () => Navigator.pop(context),
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.only(
-                top: 18,
-                bottom: 18 + bottomPadding,
+            // Title
+            Padding(
+              padding: EdgeInsets.fromLTRB(
+                hPad,
+                isTablet ? 28 : 22,
+                hPad,
+                isTablet ? 28 : 24,
               ),
               child: Text(
-                l10n.close,
+                l10n.notificationSheetTitle,
                 style: TextStyle(
-                  fontSize: type.callout,
-                  fontWeight: FontWeight.w500,
-                  color: theme.primaryColor,
+                  fontSize: type.title,
+                  fontWeight: FontWeight.bold,
+                  color: theme.textColor,
                 ),
                 textAlign: TextAlign.center,
               ),
             ),
-          ),
-        ],
+
+            // Toggle block
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: hPad),
+              child: AppCard(
+                theme: theme,
+                cornerRadius: 18,
+                shadows: [
+                  BoxShadow(
+                    color: theme.isDark
+                        ? Colors.black.withValues(alpha: 0.2)
+                        : Colors.black.withValues(alpha: 0.06),
+                    blurRadius: 8,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    _SwitchRow(
+                      label: l10n.thirtyMinuteNotifications,
+                      value: notifs.beforeEnabled,
+                      theme: theme,
+                      isTablet: isTablet,
+                      onChanged: (v) async {
+                        final granted = await _ensurePermission();
+                        if (!granted) return;
+                        await notifs.setBefore(
+                          v,
+                          city,
+                          PrayerNotificationTexts.of(l10n),
+                        );
+                      },
+                    ),
+                    Divider(
+                      height: 1,
+                      thickness: 0.5,
+                      indent: 16,
+                      endIndent: 16,
+                      color: theme.borderColor,
+                    ),
+                    _SwitchRow(
+                      label: l10n.prayerTimeNotifications,
+                      value: notifs.atTimeEnabled,
+                      theme: theme,
+                      isTablet: isTablet,
+                      onChanged: (v) async {
+                        final granted = await _ensurePermission();
+                        if (!granted) return;
+                        await notifs.setAtTime(
+                          v,
+                          city,
+                          PrayerNotificationTexts.of(l10n),
+                        );
+                      },
+                    ),
+                    Divider(
+                      height: 1,
+                      thickness: 0.5,
+                      indent: 16,
+                      endIndent: 16,
+                      color: theme.borderColor,
+                    ),
+                    _SwitchRow(
+                      label: l10n.sunriseNotifications,
+                      value: notifs.sunriseEnabled,
+                      theme: theme,
+                      isTablet: isTablet,
+                      onChanged: (v) => notifs.setSunrise(
+                        v,
+                        city,
+                        PrayerNotificationTexts.of(l10n),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            // Settings link
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: isTablet ? 28 : 22),
+              child: GestureDetector(
+                onTap: () => _openSystemSettings(context),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      l10n.notificationSettingsLink,
+                      style: TextStyle(
+                        fontSize: type.callout,
+                        fontWeight: FontWeight.w500,
+                        color: theme.primaryColor,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Icon(
+                      PlatformIcons.settings,
+                      color: theme.primaryColor,
+                      size: isTablet ? 22 : 19,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            // Divider + Close button
+            Divider(height: 1, thickness: 0.5, color: theme.borderColor),
+            GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: Container(
+                width: double.infinity,
+                padding: EdgeInsets.only(top: 18, bottom: 18 + bottomPadding),
+                child: Text(
+                  l10n.close,
+                  style: TextStyle(
+                    fontSize: type.callout,
+                    fontWeight: FontWeight.w500,
+                    color: theme.primaryColor,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

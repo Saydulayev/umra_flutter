@@ -335,10 +335,7 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
           ),
         ),
         const SizedBox(height: AppDimensions.paddingLarge),
-        StepArabicSection(
-          arabicText: l10n.step2DuaArabic,
-          audioFileName: '7',
-        ),
+        StepArabicSection(arabicText: l10n.step2DuaArabic, audioFileName: '7'),
         const SizedBox(height: AppDimensions.paddingLarge),
         CounterTapWidget(
           prefsKey: 'tawaf_counter',
@@ -582,7 +579,10 @@ class _StepDetailScreenState extends State<StepDetailScreen> {
   Widget _buildDefaultContent(AppTheme theme, FontProvider fontProvider) {
     return Text(
       'Content for ${widget.step.titleKey}',
-      style: fontProvider.getTextStyle(fontSize: _metrics.bodyFontSize, color: theme.textColor),
+      style: fontProvider.getTextStyle(
+        fontSize: _metrics.bodyFontSize,
+        color: theme.textColor,
+      ),
     );
   }
 

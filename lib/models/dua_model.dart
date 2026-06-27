@@ -128,7 +128,8 @@ abstract class DuaBookData {
       ),
       Dua(
         id: 'rabbi_ighfir',
-        arabic: 'رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الْأَعَزُّ الْأَكْرَمُ',
+        arabic:
+            'رَبِّ اغْفِرْ وَارْحَمْ، إِنَّكَ أَنْتَ الْأَعَزُّ الْأَكْرَمُ',
         titleKey: 'duaRabbiIghfirTitle',
         translitKey: 'duaRabbiIghfirTranslit',
         transKey: 'duaRabbiIghfirTrans',

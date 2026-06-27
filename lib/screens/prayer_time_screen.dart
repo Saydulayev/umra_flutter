@@ -83,8 +83,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
       listen: false,
     );
     final texts = PrayerNotificationTexts.of(AppLocalizations.of(context)!);
-    await notifPrefs.rescheduleForCity(
-        prayerCityFromString(cityKey), texts);
+    await notifPrefs.rescheduleForCity(prayerCityFromString(cityKey), texts);
   }
 
   String _formatTime(DateTime dateTime) {
@@ -151,9 +150,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                 ),
               )
             : Center(
-                child: CircularProgressIndicator(
-                  color: theme.primaryColor,
-                ),
+                child: CircularProgressIndicator(color: theme.primaryColor),
               ),
       );
     }
@@ -177,8 +174,10 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                 if (!context.mounted) return;
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text('Тест запланирован на +30 сек. '
-                        'Сверни приложение и подожди.'),
+                    content: Text(
+                      'Тест запланирован на +30 сек. '
+                      'Сверни приложение и подожди.',
+                    ),
                   ),
                 );
               },
@@ -205,7 +204,8 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
             // на других вкладках, а не уезжают к центру по узкому блоку 520.
             padding: EdgeInsets.only(
               top: widget.embedded ? 0 : 16,
-              bottom: bottomPadding +
+              bottom:
+                  bottomPadding +
                   (widget.embedded ? kBottomTabBarReservedSpace : 16),
             ),
             child: Center(
@@ -302,13 +302,13 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                         ),
                       ),
                     ),
-                    ],
-                  ),
+                  ],
                 ),
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
+      ),
     );
   }
 
@@ -539,8 +539,7 @@ class _PrayerCountdownState extends State<_PrayerCountdown> {
   void _update() {
     if (!mounted) return;
     setState(() {
-      _nextPrayerName =
-          PrayerTimeService.getNextPrayerName(widget.prayerTimes);
+      _nextPrayerName = PrayerTimeService.getNextPrayerName(widget.prayerTimes);
       _timeUntilNextPrayer = PrayerTimeService.getTimeUntilNextPrayer(
         widget.prayerTimes,
         widget.city,

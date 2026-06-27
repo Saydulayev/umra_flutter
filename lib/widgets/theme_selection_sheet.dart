@@ -29,74 +29,74 @@ class ThemeSelectionSheet extends StatelessWidget {
       // места мало (например, в landscape, где высота bottom sheet ограничена).
       child: SingleChildScrollView(
         child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // Drag indicator
-          Container(
-            margin: const EdgeInsets.only(top: 8),
-            width: 36,
-            height: 4,
-            decoration: BoxDecoration(
-              color: theme.textColor.withValues(alpha: 0.2),
-              borderRadius: BorderRadius.circular(2),
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Drag indicator
+            Container(
+              margin: const EdgeInsets.only(top: 8),
+              width: 36,
+              height: 4,
+              decoration: BoxDecoration(
+                color: theme.textColor.withValues(alpha: 0.2),
+                borderRadius: BorderRadius.circular(2),
+              ),
             ),
-          ),
 
-          // Header: title + close button
-          Padding(
-            padding: EdgeInsets.fromLTRB(
-              isTablet ? 28 : 20,
-              isTablet ? 22 : 18,
-              isTablet ? 28 : 20,
-              isTablet ? 20 : 16,
-            ),
-            child: Row(
-              children: [
-                Text(
-                  l10n.themeSelectTitle,
-                  style: TextStyle(
-                    fontSize: AppType.of(context).callout,
-                    fontWeight: FontWeight.w600,
-                    color: theme.textColor,
+            // Header: title + close button
+            Padding(
+              padding: EdgeInsets.fromLTRB(
+                isTablet ? 28 : 20,
+                isTablet ? 22 : 18,
+                isTablet ? 28 : 20,
+                isTablet ? 20 : 16,
+              ),
+              child: Row(
+                children: [
+                  Text(
+                    l10n.themeSelectTitle,
+                    style: TextStyle(
+                      fontSize: AppType.of(context).callout,
+                      fontWeight: FontWeight.w600,
+                      color: theme.textColor,
+                    ),
                   ),
-                ),
-                const Spacer(),
-                GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: Icon(
-                    PlatformIcons.cancel,
-                    size: 26,
-                    color: theme.textColor.withValues(alpha: 0.25),
+                  const Spacer(),
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Icon(
+                      PlatformIcons.cancel,
+                      size: 26,
+                      color: theme.textColor.withValues(alpha: 0.25),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
 
-          // Theme list — single card with dividers
-          Padding(
-            padding: EdgeInsets.fromLTRB(
-              hPad,
-              0,
-              hPad,
-              (isTablet ? 32.0 : 24.0) + bottomPadding,
-            ),
-            child: AppCard(
-              theme: theme,
-              cornerRadius: 18,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: _buildRows(
-                  context: context,
-                  themeProvider: themeProvider,
-                  theme: theme,
-                  l10n: l10n,
-                  isTablet: isTablet,
+            // Theme list — single card with dividers
+            Padding(
+              padding: EdgeInsets.fromLTRB(
+                hPad,
+                0,
+                hPad,
+                (isTablet ? 32.0 : 24.0) + bottomPadding,
+              ),
+              child: AppCard(
+                theme: theme,
+                cornerRadius: 18,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: _buildRows(
+                    context: context,
+                    themeProvider: themeProvider,
+                    theme: theme,
+                    l10n: l10n,
+                    isTablet: isTablet,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
         ),
       ),
     );

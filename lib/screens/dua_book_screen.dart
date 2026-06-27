@@ -18,63 +18,115 @@ import '../constants/app_constants.dart';
 String _localized(AppLocalizations l10n, String key) {
   switch (key) {
     // Category labels
-    case 'duaCategoryUmrah': return l10n.duaCategoryUmrah;
-    case 'duaCategoryHajj': return l10n.duaCategoryHajj;
+    case 'duaCategoryUmrah':
+      return l10n.duaCategoryUmrah;
+    case 'duaCategoryHajj':
+      return l10n.duaCategoryHajj;
     // UI labels
-    case 'duaDetailTranslitLabel': return l10n.duaDetailTranslitLabel;
-    case 'duaDetailTransLabel': return l10n.duaDetailTransLabel;
+    case 'duaDetailTranslitLabel':
+      return l10n.duaDetailTranslitLabel;
+    case 'duaDetailTransLabel':
+      return l10n.duaDetailTransLabel;
     // Titles
-    case 'duaNiyyahUmrahTitle': return l10n.duaNiyyahUmrahTitle;
-    case 'duaIhramUmrahTitle': return l10n.duaIhramUmrahTitle;
-    case 'duaTalbiyahTitle': return l10n.duaTalbiyahTitle;
-    case 'duaMasjidEnterTitle': return l10n.duaMasjidEnterTitle;
-    case 'duaConditionTitle': return l10n.duaConditionTitle;
-    case 'duaRabbanaTitle': return l10n.duaRabbanaTitle;
-    case 'duaMaqamIbrahimTitle': return l10n.duaMaqamIbrahimTitle;
-    case 'duaSafaAyahTitle': return l10n.duaSafaAyahTitle;
-    case 'duaNabdauTitle': return l10n.duaNabdauTitle;
-    case 'duaZikrSafaTitle': return l10n.duaZikrSafaTitle;
-    case 'duaRabbiIghfirTitle': return l10n.duaRabbiIghfirTitle;
-    case 'duaMasjidExitTitle': return l10n.duaMasjidExitTitle;
-    case 'duaNiyyahHajjTitle': return l10n.duaNiyyahHajjTitle;
-    case 'duaIhramHajjTitle': return l10n.duaIhramHajjTitle;
-    case 'duaArafatTitle': return l10n.duaArafatTitle;
+    case 'duaNiyyahUmrahTitle':
+      return l10n.duaNiyyahUmrahTitle;
+    case 'duaIhramUmrahTitle':
+      return l10n.duaIhramUmrahTitle;
+    case 'duaTalbiyahTitle':
+      return l10n.duaTalbiyahTitle;
+    case 'duaMasjidEnterTitle':
+      return l10n.duaMasjidEnterTitle;
+    case 'duaConditionTitle':
+      return l10n.duaConditionTitle;
+    case 'duaRabbanaTitle':
+      return l10n.duaRabbanaTitle;
+    case 'duaMaqamIbrahimTitle':
+      return l10n.duaMaqamIbrahimTitle;
+    case 'duaSafaAyahTitle':
+      return l10n.duaSafaAyahTitle;
+    case 'duaNabdauTitle':
+      return l10n.duaNabdauTitle;
+    case 'duaZikrSafaTitle':
+      return l10n.duaZikrSafaTitle;
+    case 'duaRabbiIghfirTitle':
+      return l10n.duaRabbiIghfirTitle;
+    case 'duaMasjidExitTitle':
+      return l10n.duaMasjidExitTitle;
+    case 'duaNiyyahHajjTitle':
+      return l10n.duaNiyyahHajjTitle;
+    case 'duaIhramHajjTitle':
+      return l10n.duaIhramHajjTitle;
+    case 'duaArafatTitle':
+      return l10n.duaArafatTitle;
     // Transliterations (new keys)
-    case 'duaNiyyahUmrahTranslit': return l10n.duaNiyyahUmrahTranslit;
-    case 'duaIhramUmrahTranslit': return l10n.duaIhramUmrahTranslit;
-    case 'duaTalbiyahTranslit': return l10n.duaTalbiyahTranslit;
-    case 'duaMasjidEnterTranslit': return l10n.duaMasjidEnterTranslit;
-    case 'duaConditionTranslit': return l10n.duaConditionTranslit;
-    case 'duaRabbanaTranslit': return l10n.duaRabbanaTranslit;
-    case 'duaMaqamIbrahimTranslit': return l10n.duaMaqamIbrahimTranslit;
-    case 'duaSafaAyahTranslit': return l10n.duaSafaAyahTranslit;
-    case 'duaNabdauTranslit': return l10n.duaNabdauTranslit;
-    case 'duaZikrSafaTranslit': return l10n.duaZikrSafaTranslit;
-    case 'duaRabbiIghfirTranslit': return l10n.duaRabbiIghfirTranslit;
-    case 'duaMasjidExitTranslit': return l10n.duaMasjidExitTranslit;
+    case 'duaNiyyahUmrahTranslit':
+      return l10n.duaNiyyahUmrahTranslit;
+    case 'duaIhramUmrahTranslit':
+      return l10n.duaIhramUmrahTranslit;
+    case 'duaTalbiyahTranslit':
+      return l10n.duaTalbiyahTranslit;
+    case 'duaMasjidEnterTranslit':
+      return l10n.duaMasjidEnterTranslit;
+    case 'duaConditionTranslit':
+      return l10n.duaConditionTranslit;
+    case 'duaRabbanaTranslit':
+      return l10n.duaRabbanaTranslit;
+    case 'duaMaqamIbrahimTranslit':
+      return l10n.duaMaqamIbrahimTranslit;
+    case 'duaSafaAyahTranslit':
+      return l10n.duaSafaAyahTranslit;
+    case 'duaNabdauTranslit':
+      return l10n.duaNabdauTranslit;
+    case 'duaZikrSafaTranslit':
+      return l10n.duaZikrSafaTranslit;
+    case 'duaRabbiIghfirTranslit':
+      return l10n.duaRabbiIghfirTranslit;
+    case 'duaMasjidExitTranslit':
+      return l10n.duaMasjidExitTranslit;
     // Translations (new keys)
-    case 'duaNiyyahUmrahTrans': return l10n.duaNiyyahUmrahTrans;
-    case 'duaIhramUmrahTrans': return l10n.duaIhramUmrahTrans;
-    case 'duaTalbiyahTrans': return l10n.duaTalbiyahTrans;
-    case 'duaMasjidEnterTrans': return l10n.duaMasjidEnterTrans;
-    case 'duaConditionTrans': return l10n.duaConditionTrans;
-    case 'duaRabbanaTrans': return l10n.duaRabbanaTrans;
-    case 'duaMaqamIbrahimTrans': return l10n.duaMaqamIbrahimTrans;
-    case 'duaSafaAyahTrans': return l10n.duaSafaAyahTrans;
-    case 'duaNabdauTrans': return l10n.duaNabdauTrans;
-    case 'duaZikrSafaTrans': return l10n.duaZikrSafaTrans;
-    case 'duaRabbiIghfirTrans': return l10n.duaRabbiIghfirTrans;
-    case 'duaMasjidExitTrans': return l10n.duaMasjidExitTrans;
-    case 'duaNiyyahHajjTrans': return l10n.duaNiyyahHajjTrans;
+    case 'duaNiyyahUmrahTrans':
+      return l10n.duaNiyyahUmrahTrans;
+    case 'duaIhramUmrahTrans':
+      return l10n.duaIhramUmrahTrans;
+    case 'duaTalbiyahTrans':
+      return l10n.duaTalbiyahTrans;
+    case 'duaMasjidEnterTrans':
+      return l10n.duaMasjidEnterTrans;
+    case 'duaConditionTrans':
+      return l10n.duaConditionTrans;
+    case 'duaRabbanaTrans':
+      return l10n.duaRabbanaTrans;
+    case 'duaMaqamIbrahimTrans':
+      return l10n.duaMaqamIbrahimTrans;
+    case 'duaSafaAyahTrans':
+      return l10n.duaSafaAyahTrans;
+    case 'duaNabdauTrans':
+      return l10n.duaNabdauTrans;
+    case 'duaZikrSafaTrans':
+      return l10n.duaZikrSafaTrans;
+    case 'duaRabbiIghfirTrans':
+      return l10n.duaRabbiIghfirTrans;
+    case 'duaMasjidExitTrans':
+      return l10n.duaMasjidExitTrans;
+    case 'duaNiyyahHajjTrans':
+      return l10n.duaNiyyahHajjTrans;
     // Reused Hajj keys
-    case 'hajj_step1_ihram_transliteration': return l10n.hajj_step1_ihram_transliteration;
-    case 'hajj_step1_ihram_dua_transliteration': return l10n.hajj_step1_ihram_dua_transliteration;
-    case 'hajj_step1_ihram_dua_translation': return l10n.hajj_step1_ihram_dua_translation;
-    case 'hajj_step1_talbiyah_transliteration': return l10n.hajj_step1_talbiyah_transliteration;
-    case 'hajj_step1_talbiyah_translation': return l10n.hajj_step1_talbiyah_translation;
-    case 'hajj_step2_dua_transliteration': return l10n.hajj_step2_dua_transliteration;
-    case 'hajj_step2_dua_translation': return l10n.hajj_step2_dua_translation;
-    default: return key;
+    case 'hajj_step1_ihram_transliteration':
+      return l10n.hajj_step1_ihram_transliteration;
+    case 'hajj_step1_ihram_dua_transliteration':
+      return l10n.hajj_step1_ihram_dua_transliteration;
+    case 'hajj_step1_ihram_dua_translation':
+      return l10n.hajj_step1_ihram_dua_translation;
+    case 'hajj_step1_talbiyah_transliteration':
+      return l10n.hajj_step1_talbiyah_transliteration;
+    case 'hajj_step1_talbiyah_translation':
+      return l10n.hajj_step1_talbiyah_translation;
+    case 'hajj_step2_dua_transliteration':
+      return l10n.hajj_step2_dua_transliteration;
+    case 'hajj_step2_dua_translation':
+      return l10n.hajj_step2_dua_translation;
+    default:
+      return key;
   }
 }
 
@@ -100,22 +152,24 @@ class DuaBookScreen extends StatelessWidget {
     final categories = DuaBookData.categories;
     for (int i = 0; i < categories.length; i++) {
       final cat = categories[i];
-      rows.add(_CategoryRow(
-        category: cat,
-        theme: theme,
-        l10n: l10n,
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => DuaCategoryScreen(category: cat),
+      rows.add(
+        _CategoryRow(
+          category: cat,
+          theme: theme,
+          l10n: l10n,
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => DuaCategoryScreen(category: cat)),
           ),
         ),
-      ));
+      );
       if (i < categories.length - 1) {
-        rows.add(Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Divider(height: 1, thickness: 0.5, color: dividerColor),
-        ));
+        rows.add(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Divider(height: 1, thickness: 0.5, color: dividerColor),
+          ),
+        );
       }
     }
 
@@ -331,25 +385,27 @@ class DuaCategoryScreen extends StatelessWidget {
     final duas = category.duas;
     for (int i = 0; i < duas.length; i++) {
       final dua = duas[i];
-      rows.add(_DuaRow(
-        dua: dua,
-        theme: theme,
-        l10n: l10n,
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (_) => DuaPageScreen(
-              category: category,
-              initialIndex: i,
+      rows.add(
+        _DuaRow(
+          dua: dua,
+          theme: theme,
+          l10n: l10n,
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) =>
+                  DuaPageScreen(category: category, initialIndex: i),
             ),
           ),
         ),
-      ));
+      );
       if (i < duas.length - 1) {
-        rows.add(Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Divider(height: 1, thickness: 0.5, color: dividerColor),
-        ));
+        rows.add(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Divider(height: 1, thickness: 0.5, color: dividerColor),
+          ),
+        );
       }
     }
 
@@ -633,7 +689,10 @@ class _DuaSinglePage extends StatelessWidget {
                 // Transliteration
                 const SizedBox(height: 16),
                 _InfoCard(
-                  label: _localized(l10n, 'duaDetailTranslitLabel').toUpperCase(),
+                  label: _localized(
+                    l10n,
+                    'duaDetailTranslitLabel',
+                  ).toUpperCase(),
                   body: _localized(l10n, dua.translitKey),
                   theme: theme,
                   italic: true,

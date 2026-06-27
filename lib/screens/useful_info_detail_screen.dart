@@ -60,7 +60,11 @@ Widget _buildBodyBlock(String text, Color textColor, BuildContext context) {
         else
           Text(
             lines[i],
-            style: TextStyle(fontSize: metrics.bodyFontSize, color: textColor, height: 1.6),
+            style: TextStyle(
+              fontSize: metrics.bodyFontSize,
+              color: textColor,
+              height: 1.6,
+            ),
           ),
         if (i < lines.length - 1 && !_isLongArabicLine(lines[i]))
           const SizedBox(height: 6),
@@ -373,10 +377,7 @@ class SubChapterDetailScreen extends StatelessWidget {
           final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
           final metrics = ResponsiveMetrics.of(context);
           return SingleChildScrollView(
-            padding: EdgeInsets.only(
-              top: 16,
-              bottom: bottomPadding + 16,
-            ),
+            padding: EdgeInsets.only(top: 16, bottom: bottomPadding + 16),
             child: Center(
               child: ConstrainedBox(
                 constraints: BoxConstraints(maxWidth: metrics.contentMaxWidth),

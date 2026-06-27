@@ -27,8 +27,10 @@ enum AppTheme {
       begin: Alignment.topRight,
       end: Alignment.bottomLeft,
       colors: [
-        const Color(0xFF1A2420), // Dark, desaturated green-black — barely visible
-        lightBackgroundColor,    // #161818 neutral dark
+        const Color(
+          0xFF1A2420,
+        ), // Dark, desaturated green-black — barely visible
+        lightBackgroundColor, // #161818 neutral dark
       ],
     );
   }

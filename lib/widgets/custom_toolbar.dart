@@ -43,5 +43,3 @@ class CustomToolbar extends StatelessWidget {
     );
   }
 }
-
-

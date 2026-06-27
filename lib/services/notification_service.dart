@@ -60,8 +60,9 @@ class NotificationService {
     if (_initialized) return;
     tz.initializeTimeZones();
 
-    const androidSettings =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
+    const androidSettings = AndroidInitializationSettings(
+      '@mipmap/ic_launcher',
+    );
     const iosSettings = DarwinInitializationSettings(
       requestAlertPermission: false,
       requestBadgePermission: false,
@@ -76,8 +77,10 @@ class NotificationService {
 
   /// Request system notification permission. Returns true if granted.
   static Future<bool> requestPermission() async {
-    final android = _plugin.resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin>();
+    final android = _plugin
+        .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin
+        >();
     if (android != null) {
       try {
         final notifGranted =
@@ -95,8 +98,10 @@ class NotificationService {
         return false;
       }
     }
-    final ios = _plugin.resolvePlatformSpecificImplementation<
-        IOSFlutterLocalNotificationsPlugin>();
+    final ios = _plugin
+        .resolvePlatformSpecificImplementation<
+          IOSFlutterLocalNotificationsPlugin
+        >();
     if (ios != null) {
       return await ios.requestPermissions(
             alert: true,
@@ -110,8 +115,10 @@ class NotificationService {
 
   /// Check permission without prompting.
   static Future<bool> hasPermission() async {
-    final android = _plugin.resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin>();
+    final android = _plugin
+        .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin
+        >();
     if (android != null) {
       return await android.areNotificationsEnabled() ?? false;
     }
@@ -121,8 +128,10 @@ class NotificationService {
   /// Open OS notification settings panel for this app (Android only).
   /// On iOS use url_launcher with 'app-settings:' URI from the call site.
   static Future<void> openSystemSettings() async {
-    final android = _plugin.resolvePlatformSpecificImplementation<
-        AndroidFlutterLocalNotificationsPlugin>();
+    final android = _plugin
+        .resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin
+        >();
     await android?.requestNotificationsPermission();
   }
 
@@ -184,12 +193,12 @@ class NotificationService {
     // Порядок строго соответствует индексам в [PrayerNotificationTexts]:
     // 0=Fajr 1=Sunrise 2=Dhuhr 3=Asr 4=Maghrib 5=Isha.
     final prayers = [
-      (time: data.fajr,    isSunrise: false),
+      (time: data.fajr, isSunrise: false),
       (time: data.sunrise, isSunrise: true),
-      (time: data.dhuhr,   isSunrise: false),
-      (time: data.asr,     isSunrise: false),
+      (time: data.dhuhr, isSunrise: false),
+      (time: data.asr, isSunrise: false),
       (time: data.maghrib, isSunrise: false),
-      (time: data.isha,    isSunrise: false),
+      (time: data.isha, isSunrise: false),
     ];
 
     for (int i = 0; i < prayers.length; i++) {

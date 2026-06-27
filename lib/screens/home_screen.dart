@@ -248,7 +248,10 @@ class _UmraTabBody extends StatelessWidget {
                   final step = _numberedSteps[i];
                   return _StepRowItem(
                     key: ValueKey(step.id),
-                    badge: _StepBadge(stepNumber: step.stepNumber, theme: theme),
+                    badge: _StepBadge(
+                      stepNumber: step.stepNumber,
+                      theme: theme,
+                    ),
                     title: _localizedTitle(step.titleKey),
                     subtitle: null,
                     stepLabel: step.iconText.replaceAll('\n', ' '),
@@ -367,7 +370,10 @@ class _HajjTabBody extends StatelessWidget {
                   final step = steps[i];
                   return _StepRowItem(
                     key: ValueKey(step.id),
-                    badge: _StepBadge(stepNumber: step.stepNumber, theme: theme),
+                    badge: _StepBadge(
+                      stepNumber: step.stepNumber,
+                      theme: theme,
+                    ),
                     title: _localizedTitle(step.titleKey),
                     subtitle: step.subtitleKey != null
                         ? _localizedSubtitle(step.subtitleKey!)
@@ -767,50 +773,53 @@ class _BottomTabBar extends StatelessWidget {
         child: Directionality(
           textDirection: TextDirection.ltr,
           child: GlassTabBar.bottom(
-          selectedIndex: selectedIndex,
-          onTabSelected: onTap,
-          // Явные цвета по теме — мгновенная и стабильная реакция на смену темы.
-          selectedIconColor: selectedIconColor,
-          unselectedIconColor: unselectedIconColor,
-          indicatorColor: indicatorColor,
-          settings: glassSettings,
-          // «Magic-lens» маскирование иконок сквозь стекло.
-          maskingQuality: MaskingQuality.high,
-          // Тише «желейный» подскок индикатора по высоте при переходе
-          // (дефолт 14 — раздувается сильнее).
-          indicatorExpansion: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-          // Компактные пилюли под 4 иконки (iOS 26), а не на всю ширину.
-          tabWidth: _tabWidth,
-          horizontalPadding: _horizontalPadding,
-          // label: null → только иконки, без подписей (Instagram-стиль).
-          tabs: [
-            GlassTab(
-              label: null,
-              icon: Icon(PlatformIcons.home),
-              activeIcon: Icon(PlatformIcons.homeFill),
+            selectedIndex: selectedIndex,
+            onTabSelected: onTap,
+            // Явные цвета по теме — мгновенная и стабильная реакция на смену темы.
+            selectedIconColor: selectedIconColor,
+            unselectedIconColor: unselectedIconColor,
+            indicatorColor: indicatorColor,
+            settings: glassSettings,
+            // «Magic-lens» маскирование иконок сквозь стекло.
+            maskingQuality: MaskingQuality.high,
+            // Тише «желейный» подскок индикатора по высоте при переходе
+            // (дефолт 14 — раздувается сильнее).
+            indicatorExpansion: const EdgeInsets.symmetric(
+              horizontal: 12,
+              vertical: 6,
             ),
-            // SVG сам не красится и не масштабируется по IconTheme, поэтому
-            // приводим его к поведению остальных (шрифтовых) иконок: цвет и
-            // размер наследуем из окружающего IconTheme, который GlassTabBar
-            // задаёт под каждое состояние. Fallback на явные цвета — на случай,
-            // если IconTheme не проставлен, чтобы переключение active/inactive
-            // работало в любом случае.
-            GlassTab(
-              label: null,
-              icon: _kaabaIcon(unselectedIconColor),
-              activeIcon: _kaabaIcon(selectedIconColor),
-            ),
-            GlassTab(
-              label: null,
-              icon: Icon(PlatformIcons.book),
-              activeIcon: Icon(PlatformIcons.bookFill),
-            ),
-            GlassTab(
-              label: null,
-              icon: Icon(PlatformIcons.clock),
-              activeIcon: Icon(PlatformIcons.clockFill),
-            ),
-          ],
+            // Компактные пилюли под 4 иконки (iOS 26), а не на всю ширину.
+            tabWidth: _tabWidth,
+            horizontalPadding: _horizontalPadding,
+            // label: null → только иконки, без подписей (Instagram-стиль).
+            tabs: [
+              GlassTab(
+                label: null,
+                icon: Icon(PlatformIcons.home),
+                activeIcon: Icon(PlatformIcons.homeFill),
+              ),
+              // SVG сам не красится и не масштабируется по IconTheme, поэтому
+              // приводим его к поведению остальных (шрифтовых) иконок: цвет и
+              // размер наследуем из окружающего IconTheme, который GlassTabBar
+              // задаёт под каждое состояние. Fallback на явные цвета — на случай,
+              // если IconTheme не проставлен, чтобы переключение active/inactive
+              // работало в любом случае.
+              GlassTab(
+                label: null,
+                icon: _kaabaIcon(unselectedIconColor),
+                activeIcon: _kaabaIcon(selectedIconColor),
+              ),
+              GlassTab(
+                label: null,
+                icon: Icon(PlatformIcons.book),
+                activeIcon: Icon(PlatformIcons.bookFill),
+              ),
+              GlassTab(
+                label: null,
+                icon: Icon(PlatformIcons.clock),
+                activeIcon: Icon(PlatformIcons.clockFill),
+              ),
+            ],
           ),
         ),
       ),

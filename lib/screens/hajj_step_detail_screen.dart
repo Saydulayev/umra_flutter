@@ -404,7 +404,10 @@ class _HajjStepDetailScreenState extends State<HajjStepDetailScreen> {
   Widget _buildDefaultContent(AppTheme theme, FontProvider fontProvider) {
     return Text(
       'Контент для ${widget.step.titleKey}',
-      style: fontProvider.getTextStyle(fontSize: _metrics.bodyFontSize, color: theme.textColor),
+      style: fontProvider.getTextStyle(
+        fontSize: _metrics.bodyFontSize,
+        color: theme.textColor,
+      ),
     );
   }
 

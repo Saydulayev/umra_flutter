@@ -70,10 +70,8 @@ class AppType {
             .copyWith(fontSize: body),
       ),
       dialogTheme: base.dialogTheme.copyWith(
-        titleTextStyle:
-            (base.dialogTheme.titleTextStyle ?? const TextStyle()).copyWith(
-              fontSize: body,
-            ),
+        titleTextStyle: (base.dialogTheme.titleTextStyle ?? const TextStyle())
+            .copyWith(fontSize: body),
         contentTextStyle:
             (base.dialogTheme.contentTextStyle ?? const TextStyle()).copyWith(
               fontSize: caption,

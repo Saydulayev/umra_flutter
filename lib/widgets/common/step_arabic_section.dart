@@ -30,4 +30,3 @@ class StepArabicSection extends StatelessWidget {
     );
   }
 }
-

@@ -159,9 +159,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen>
 
             // Отступ между логотипом и списком языков, чтобы список
             // не подходил вплотную к карточке изображения.
-            SizedBox(
-              height: metrics.isCompactPhone ? 20 : 32,
-            ),
+            SizedBox(height: metrics.isCompactPhone ? 20 : 32),
 
             // 3. Scrollable language list — занимает оставшееся место.
             // Список сам подстраивается под доступную высоту (Flexible внутри),

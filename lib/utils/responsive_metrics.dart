@@ -64,7 +64,9 @@ class ResponsiveMetrics {
       return 1.0 + (s - _refWidth) / (600 - _refWidth) * 0.14;
     }
     // Планшеты: 600..1024 → 1.14..1.32, далее мягкий потолок 1.34
-    return (1.14 + (s - 600) / (1024 - 600) * 0.18).clamp(1.14, 1.34).toDouble();
+    return (1.14 + (s - 600) / (1024 - 600) * 0.18)
+        .clamp(1.14, 1.34)
+        .toDouble();
   }
 
   /// Адаптивный размер: задаёшь «дизайнерский» базовый размер (под 390 dp) —
@@ -128,8 +130,7 @@ class ResponsiveMetrics {
   /// Максимальная ширина значения справа в строках настроек
   /// (название языка/темы). Увеличено, чтобы длинные значения, например
   /// «Bahasa Indonesia», реже усекались на узких телефонах.
-  double get settingsTrailingMaxWidth =>
-      math.min(width * 0.42, 190).toDouble();
+  double get settingsTrailingMaxWidth => math.min(width * 0.42, 190).toDouble();
 
   double get languageHorizontalPadding {
     if (isTablet) return 72;

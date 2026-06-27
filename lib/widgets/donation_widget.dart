@@ -27,14 +27,14 @@ class _DonationWidgetState extends State<DonationWidget> {
   static const double _cardRadius = 18;
 
   List<BoxShadow> _shadows(AppTheme theme) => [
-        BoxShadow(
-          color: theme.isDark
-              ? Colors.black.withValues(alpha: 0.2)
-              : Colors.black.withValues(alpha: 0.06),
-          blurRadius: 8,
-          offset: const Offset(0, 2),
-        ),
-      ];
+    BoxShadow(
+      color: theme.isDark
+          ? Colors.black.withValues(alpha: 0.2)
+          : Colors.black.withValues(alpha: 0.06),
+      blurRadius: 8,
+      offset: const Offset(0, 2),
+    ),
+  ];
 
   @override
   void didChangeDependencies() {
@@ -258,19 +258,23 @@ class _DonationWidgetState extends State<DonationWidget> {
                 child: Material(
                   color: Colors.transparent,
                   child: InkWell(
-                    onTap: purchaseProvider.isPurchasing ||
+                    onTap:
+                        purchaseProvider.isPurchasing ||
                             purchaseProvider.isPurchasePending
                         ? null
                         : () {
                             if (_selectedProduct != null) {
-                              purchaseProvider.purchaseProduct(_selectedProduct!);
+                              purchaseProvider.purchaseProduct(
+                                _selectedProduct!,
+                              );
                             }
                           },
                     borderRadius: BorderRadius.circular(_cardRadius),
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       alignment: Alignment.center,
-                      child: purchaseProvider.isPurchasing ||
+                      child:
+                          purchaseProvider.isPurchasing ||
                               purchaseProvider.isPurchasePending
                           ? Row(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -472,8 +476,9 @@ class _DonationWidgetState extends State<DonationWidget> {
                     product.price,
                     style: TextStyle(
                       fontSize: AppType.of(context).callout,
-                      fontWeight:
-                          isSelected ? FontWeight.bold : FontWeight.normal,
+                      fontWeight: isSelected
+                          ? FontWeight.bold
+                          : FontWeight.normal,
                       color: theme.textColor,
                     ),
                   ),
