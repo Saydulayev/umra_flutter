@@ -91,18 +91,37 @@ class _DonationWidgetState extends State<DonationWidget> {
     final theme = themeProvider.selectedTheme;
     final l10n = AppLocalizations.of(context)!;
 
-    // Если продукты загружены и не выбран продукт, выбираем первый доступный
+    // Если продукты загружены и не выбран продукт, выбираем самый дешёвый.
     if (!purchaseProvider.isLoading &&
         purchaseProvider.availableProducts.isNotEmpty &&
         _selectedProduct == null) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        final firstProduct = purchaseProvider.availableProducts.firstWhere(
-          (product) =>
-              DonationProduct.allProducts.any((dp) => dp.id == product.id),
-          orElse: () => purchaseProvider.availableProducts.first,
-        );
+        if (!mounted) return;
+        // Только наши продукты, отсортированные по возрастанию цены (amount) —
+        // как в _buildAmountSelector / _showProductSelector. Порядок из стора
+        // не отсортирован, поэтому «первый доступный» мог оказаться дорогим
+        // (99 € вместо 99 ¢). Через .where() без orElse-замыкания заодно не
+        // возникает проблема типов StoreKit 2 (List<AppStoreProduct2Details>).
+        final products =
+            purchaseProvider.availableProducts
+                .where(
+                  (product) => DonationProduct.allProducts.any(
+                    (dp) => dp.id == product.id,
+                  ),
+                )
+                .toList()
+              ..sort((a, b) {
+                final aAmount = DonationProduct.allProducts
+                    .firstWhere((dp) => dp.id == a.id)
+                    .amount;
+                final bAmount = DonationProduct.allProducts
+                    .firstWhere((dp) => dp.id == b.id)
+                    .amount;
+                return aAmount.compareTo(bAmount);
+              });
+        if (products.isEmpty) return;
         setState(() {
-          _selectedProduct = firstProduct;
+          _selectedProduct = products.first;
         });
       });
     }
