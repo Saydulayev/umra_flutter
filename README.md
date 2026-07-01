@@ -12,7 +12,7 @@
     <img src="https://img.shields.io/badge/Google%20Play-Available-green?logo=google-play&logoColor=white" alt="Google Play"/>
   </a>
   <img src="https://img.shields.io/badge/Flutter-3.x-blue?logo=flutter&logoColor=white" alt="Flutter"/>
-  <img src="https://img.shields.io/badge/Version-1.5.3-orange" alt="Version"/>
+  <img src="https://img.shields.io/badge/Version-4.4.0-orange" alt="Version"/>
   <img src="https://img.shields.io/badge/License-MIT-lightgrey" alt="MIT License"/>
   <img src="https://img.shields.io/badge/Downloads-40%2C000%2B-brightgreen" alt="Downloads"/>
 </p>
@@ -64,7 +64,7 @@
 
 | Платформа | Ссылка | Рейтинг | Скачивания |
 |-----------|--------|---------|------------|
-| 🍎 iOS | [App Store](https://apps.apple.com/ru/app/umra-guide/id1673683355) | ⭐ 4.9/5 (159+ оценок) | 40,000+ |
+| 🍎 iOS | [App Store](https://apps.apple.com/ru/app/umra-guide/id1673683355) | ⭐ 4.9/5 (246+ оценок) | 40,000+ |
 | 🤖 Android | [Google Play](https://play.google.com/store/apps/details?id=saydulayev.wien_gmail.com.umra) | — | Доступно |
 
 **Требования:** iOS 17.0+ / Android 6.0+ (API 23+)
