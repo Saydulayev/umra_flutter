@@ -1,135 +1,88 @@
-# 🕌 Umra Flutter
+# Umra Guide
+
+Мобильное приложение-путеводитель по Умре: пошаговые инструкции обрядов, аудиогид с произношением дуа, время намаза с уведомлениями и исламский календарь. Опубликовано в App Store и Google Play, более 40 000 загрузок, рейтинг 4.9 в App Store.
+
+[![App Store](https://img.shields.io/badge/App%20Store-Umra%20Guide-0D96F6?logo=apple&logoColor=white)](https://apps.apple.com/ru/app/umra-guide/id1673683355)
+[![Google Play](https://img.shields.io/badge/Google%20Play-Umra%20Guide-3DDC84?logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=saydulayev.wien_gmail.com.umra)
 
 <p align="center">
-  <img src="assets/images/01-hero-1320x2868.png" alt="Umra Guide App" width="200"/>
+  <img src="assets/images/01-hero-1320x2868.png" width="160" alt="Главный экран"/>
+  <img src="assets/images/02-umra-1320x2868.png" width="160" alt="Обряды Умры"/>
+  <img src="assets/images/04-dua-1320x2868.png" width="160" alt="Дуа"/>
+  <img src="assets/images/05-prayer-1320x2868.png" width="160" alt="Время намаза"/>
 </p>
 
-<p align="center">
-  <a href="https://apps.apple.com/ru/app/umra-guide/id1673683355">
-    <img src="https://img.shields.io/badge/App%20Store-Available-blue?logo=apple&logoColor=white" alt="App Store"/>
-  </a>
-  <a href="https://play.google.com/store/apps/details?id=saydulayev.wien_gmail.com.umra">
-    <img src="https://img.shields.io/badge/Google%20Play-Available-green?logo=google-play&logoColor=white" alt="Google Play"/>
-  </a>
-  <img src="https://img.shields.io/badge/Flutter-3.x-blue?logo=flutter&logoColor=white" alt="Flutter"/>
-  <img src="https://img.shields.io/badge/Version-4.4.0-orange" alt="Version"/>
-  <img src="https://img.shields.io/badge/License-MIT-lightgrey" alt="MIT License"/>
-  <img src="https://img.shields.io/badge/Downloads-40%2C000%2B-brightgreen" alt="Downloads"/>
-</p>
+## Возможности
 
-> Flutter-версия приложения **Umra Guide** — гид для мусульман, совершающих Умру.
+- Пошаговые инструкции обрядов Умры и Хаджа с аудиосопровождением
+- Аудиоплеер с фоновым воспроизведением (just_audio + audio_service)
+- Расчёт времени намаза (adhan_dart) и локальные уведомления
+- Исламский (хиджри) календарь
+- Счётчик кругов тавафа
+- PDF-материалы для офлайн-чтения
+- Семь языков интерфейса: русский, английский, арабский, немецкий, французский, турецкий, индонезийский
+- Несколько тем оформления, включая тёмную; поддержка Liquid Glass UI (iOS 26)
+- Встроенные покупки и запрос отзыва
 
----
+## Требования
 
-## 📸 Скриншоты
+- iOS 17.0+ / Android 6.0+ (API 23), таргет Android 15 (API 35, edge-to-edge)
+- Flutter (Dart SDK ^3.11.0)
 
-<p align="center">
-  <img src="assets/images/01-hero-1320x2868.png" width="160"/>
-  <img src="assets/images/02-umra-1320x2868.png" width="160"/>
-  <img src="assets/images/03-hajj-1320x2868.png" width="160"/>
-  <img src="assets/images/04-dua-1320x2868.png" width="160"/>
-</p>
-<p align="center">
-  <img src="assets/images/05-prayer-1320x2868.png" width="160"/>
-  <img src="assets/images/06-trust-1320x2868.png" width="160"/>
-  <img src="assets/images/07-more-1320x2868.png" width="160"/>
-</p>
-
----
-
-## 📱 О проекте
-
-Мобильное приложение-гид для совершения Умры с поддержкой нескольких языков, аудио-гидом, временем намаза и пошаговыми инструкциями.
-
-**Поддерживаемые языки:** Русский, English, العربية, Deutsch, Français, Türkçe, Bahasa Indonesia
-
----
-
-## ✨ Основные возможности
-
-- 📖 Пошаговые инструкции для совершения Умры
-- 🔊 Аудио-гид с произношением дуа
-- 🕌 Время намаза и расчёт времени молитв
-- 📅 Исламский (Хиджри) календарь
-- 📄 PDF-материалы для чтения офлайн
-- 🌍 Многоязычная поддержка (7 языков)
-- 🎨 Несколько тем оформления
-- 🔔 Уведомления о времени намаза
-- 📿 Счётчик тавафов
-- 📱 Поддержка iOS и Android
-
----
-
-## 📲 Скачать
-
-| Платформа | Ссылка | Рейтинг | Скачивания |
-|-----------|--------|---------|------------|
-| 🍎 iOS | [App Store](https://apps.apple.com/ru/app/umra-guide/id1673683355) | ⭐ 4.9/5 (246+ оценок) | 40,000+ |
-| 🤖 Android | [Google Play](https://play.google.com/store/apps/details?id=saydulayev.wien_gmail.com.umra) | — | Доступно |
-
-**Требования:** iOS 17.0+ / Android 6.0+ (API 23+)
-
----
-
-## 🚀 Запуск проекта
+## Сборка и запуск
 
 ```bash
 flutter pub get
 flutter run
 ```
 
----
+Локализации генерируются автоматически (`flutter: generate: true`). Нативный splash-экран пересоздаётся после изменения ассетов:
 
-## 📦 Основные зависимости
+```bash
+dart run flutter_native_splash:create
+```
 
-| Пакет | Назначение |
-|-------|-----------|
-| `provider` | Управление состоянием |
-| `just_audio` + `audio_service` | Аудио-плеер с фоновым воспроизведением |
-| `adhan_dart` | Расчёт времени намаза |
-| `hijri_date` | Исламский календарь |
-| `flutter_pdfview` | Просмотр PDF |
-| `flutter_local_notifications` | Уведомления о намазе |
-| `in_app_purchase` | Встроенные покупки |
-| `in_app_review` | Запрос отзыва в приложении |
-| `google_fonts` | Шрифты |
-| `shared_preferences` | Локальное хранилище настроек |
-| `flutter_localizations` | Локализация |
+Крэш-репортинг построен на Firebase Crashlytics; конфигурация — в `lib/firebase_options.dart`.
 
----
+## Архитектура
 
-## 📁 Структура проекта
+Состояние управляется через `provider`, данные отделены от UI слоями repositories/services.
 
 ```
 lib/
 ├── main.dart
+├── constants/       # Константы приложения
 ├── models/          # Модели данных
 ├── providers/       # Провайдеры состояния
-├── services/        # Бизнес-логика
-├── screens/         # Экраны приложения
+├── repositories/    # Доступ к данным
+├── services/        # Бизнес-логика (аудио, намаз, уведомления, крэш-репортинг)
+├── screens/         # Экраны
 ├── widgets/         # Переиспользуемые виджеты
-└── l10n/            # Файлы локализации (7 языков)
+├── theme/           # Темы оформления
+├── utils/           # Вспомогательные утилиты
+└── l10n/            # Локализация (7 языков)
 ```
 
----
+В `patched_packages/audio_service` лежит локальный форк `audio_service` с исправлением NPE в `onConnectionFailed`/`onConnected`; он подключён через `dependency_overrides`.
 
-## 🔧 Статус разработки
+## Основные зависимости
 
-- ✅ Базовая структура и навигация
-- ✅ Локализация (7 языков)
-- ✅ Система тем оформления
-- ✅ Пошаговые инструкции Умры
-- ✅ Аудио-плеер (фоновое воспроизведение)
-- ✅ Счётчик тавафов
-- ✅ Время намаза с уведомлениями
-- ✅ Хиджри-календарь
-- ✅ PDF-материалы
-- ✅ Поддержка Android 15 (Edge-to-Edge, API 35)
-- ✅ Публикация в App Store и Google Play
-- 🔄 В разработке: дополнительные функции и оптимизация
+| Пакет | Назначение |
+|---|---|
+| `provider` | Управление состоянием |
+| `just_audio`, `audio_service` | Аудио с фоновым воспроизведением |
+| `adhan_dart` | Расчёт времени намаза |
+| `hijri_date` | Хиджри-календарь |
+| `flutter_local_notifications`, `timezone` | Уведомления о намазе |
+| `flutter_pdfview`, `pdf` | Работа с PDF |
+| `firebase_core`, `firebase_crashlytics` | Крэш-репортинг |
+| `in_app_purchase`, `in_app_review` | Покупки и отзывы |
+| `liquid_glass_widgets` | Стеклянный таб-бар (iOS 26) |
 
----
+## Тестирование
 
-## 📄 Лицензия
+```bash
+flutter test
+```
 
-[MIT License](LICENSE)
+Юнит-тесты находятся в `test/unit`, виджет-тесты — в `test/widget_test.dart`.
