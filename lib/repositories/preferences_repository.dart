@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Репозиторий для работы с SharedPreferences
@@ -9,6 +10,14 @@ class PreferencesRepository {
   PreferencesRepository._internal();
 
   SharedPreferences? _prefs;
+
+  /// Сбросить закэшированный экземпляр SharedPreferences (только для тестов).
+  /// Репозиторий — синглтон, поэтому без сброса значения из
+  /// SharedPreferences.setMockInitialValues не видны между тестами.
+  @visibleForTesting
+  void resetCacheForTesting() {
+    _prefs = null;
+  }
 
   /// Инициализация репозитория
   Future<void> init() async {

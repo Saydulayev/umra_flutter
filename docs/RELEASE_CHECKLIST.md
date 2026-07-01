@@ -70,7 +70,10 @@ iOS and Android both derive their version from it.
 - [ ] Products are created and **Approved/Ready** in App Store Connect and Play
       Console with matching product IDs.
 - [ ] Purchase, restore, and cancellation tested with sandbox accounts on both
-      platforms.
+      platforms. State-machine logic (success/error/cancel/pending-timeout and
+      the cancellation-code matrix) is also covered by
+      `test/unit/purchase_provider_test.dart` — sandbox runs verify the native
+      billing integration on top of that.
 - [ ] Receipt/entitlement handling verified after app restart.
 
 ## 6. Localization & UI
@@ -102,6 +105,10 @@ iOS and Android both derive their version from it.
 
 - `dependency_overrides → audio_service` is a local fork. See
   `patched_packages/PATCH_NOTES.md`; remove once the NPE fix lands upstream.
-- Test coverage is still light. The new `test/unit/*` covers the font logic and
-  review config; expand toward providers/services (notifications, prayer times,
-  purchases) over time.
+- `test/unit/*` now covers fonts, review config, the review-dialog decision
+  procedure (all 6 gating conditions), prayer-time calculations, theme and
+  notification-preferences loading, and the purchase state machine;
+  `test/widget/screens_smoke_test.dart` smoke-tests the 4 main screens across
+  3 themes × 2 locales (incl. RTL). Still untested: native platform channels
+  (`flutter_local_notifications`, `in_app_review`, real billing) — covered by
+  the manual items above.

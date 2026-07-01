@@ -55,12 +55,15 @@ class PrayerTimeService {
     }
   }
 
-  // Получить время молитв на сегодня для выбранного города
+  // Получить время молитв на сегодня для выбранного города.
+  // [referenceDate] — только для тестов: позволяет зафиксировать дату расчёта.
+  // В продакшене не передаётся, используется DateTime.now().
   static PrayerTimeData? getTodayPrayerTimes([
     PrayerCity city = PrayerCity.mecca,
+    DateTime? referenceDate,
   ]) {
     try {
-      final now = DateTime.now();
+      final now = referenceDate ?? DateTime.now();
       final date = DateTime(now.year, now.month, now.day);
       final coordinates = _coordinatesFor(city);
 
@@ -89,12 +92,16 @@ class PrayerTimeService {
     }
   }
 
-  // Получить время молитв на завтра для выбранного города
+  // Получить время молитв на завтра для выбранного города.
+  // [referenceDate] — только для тестов (см. getTodayPrayerTimes).
   static PrayerTimeData? getTomorrowPrayerTimes([
     PrayerCity city = PrayerCity.mecca,
+    DateTime? referenceDate,
   ]) {
     try {
-      final tomorrow = DateTime.now().add(const Duration(days: 1));
+      final tomorrow = (referenceDate ?? DateTime.now()).add(
+        const Duration(days: 1),
+      );
       final date = DateTime(tomorrow.year, tomorrow.month, tomorrow.day);
       final coordinates = _coordinatesFor(city);
 
@@ -123,10 +130,14 @@ class PrayerTimeService {
     }
   }
 
-  // Получить время Qiyam (последняя треть ночи) для выбранного города
-  static DateTime? getQiyamTime([PrayerCity city = PrayerCity.mecca]) {
-    final today = getTodayPrayerTimes(city);
-    final tomorrow = getTomorrowPrayerTimes(city);
+  // Получить время Qiyam (последняя треть ночи) для выбранного города.
+  // [referenceDate] — только для тестов (см. getTodayPrayerTimes).
+  static DateTime? getQiyamTime([
+    PrayerCity city = PrayerCity.mecca,
+    DateTime? referenceDate,
+  ]) {
+    final today = getTodayPrayerTimes(city, referenceDate);
+    final tomorrow = getTomorrowPrayerTimes(city, referenceDate);
 
     if (today == null || tomorrow == null) return null;
 
@@ -146,9 +157,13 @@ class PrayerTimeService {
     return now.add(Duration(hours: meccaTimeZoneOffset));
   }
 
-  // Получить название следующей молитвы
-  static String getNextPrayerName(PrayerTimeData prayerTimes) {
-    final now = _getCurrentMeccaTime();
+  // Получить название следующей молитвы.
+  // [currentTime] — только для тестов: фиксированное «текущее время Мекки».
+  static String getNextPrayerName(
+    PrayerTimeData prayerTimes, [
+    DateTime? currentTime,
+  ]) {
+    final now = currentTime ?? _getCurrentMeccaTime();
     final prayers = [
       ('Fajr', prayerTimes.fajr),
       ('Sunrise', prayerTimes.sunrise),
@@ -168,19 +183,21 @@ class PrayerTimeService {
     return 'Fajr';
   }
 
-  // Получить время до следующей молитвы (city нужен для Fajr завтра)
+  // Получить время до следующей молитвы (city нужен для Fajr завтра).
+  // [currentTime] — только для тестов (см. getNextPrayerName).
   static Duration getTimeUntilNextPrayer(
     PrayerTimeData prayerTimes, [
     PrayerCity city = PrayerCity.mecca,
+    DateTime? currentTime,
   ]) {
-    final now = _getCurrentMeccaTime();
-    final nextPrayerName = getNextPrayerName(prayerTimes);
+    final now = currentTime ?? _getCurrentMeccaTime();
+    final nextPrayerName = getNextPrayerName(prayerTimes, currentTime);
 
     DateTime nextPrayerTime;
     switch (nextPrayerName) {
       case 'Fajr':
         if (prayerTimes.fajr.isBefore(now)) {
-          final tomorrow = getTomorrowPrayerTimes(city);
+          final tomorrow = getTomorrowPrayerTimes(city, currentTime);
           nextPrayerTime =
               tomorrow?.fajr ?? prayerTimes.fajr.add(const Duration(days: 1));
         } else {
@@ -203,7 +220,7 @@ class PrayerTimeService {
         nextPrayerTime = prayerTimes.isha;
         break;
       default:
-        final tomorrow = getTomorrowPrayerTimes(city);
+        final tomorrow = getTomorrowPrayerTimes(city, currentTime);
         nextPrayerTime =
             tomorrow?.fajr ?? prayerTimes.fajr.add(const Duration(days: 1));
     }
@@ -216,10 +233,11 @@ class PrayerTimeService {
     return DateFormat('HH:mm').format(dateTime);
   }
 
-  // Получить исламскую дату по календарю UmmAlQura
-  static String getIslamicDate() {
+  // Получить исламскую дату по календарю UmmAlQura.
+  // [referenceDate] — только для тестов.
+  static String getIslamicDate([DateTime? referenceDate]) {
     try {
-      final now = DateTime.now();
+      final now = referenceDate ?? DateTime.now();
 
       // Используем библиотеку hijri_date для конвертации в исламский календарь
       final hijriDate = HijriDate.fromDate(now);
@@ -229,19 +247,22 @@ class PrayerTimeService {
       return '${hijriDate.hDay} ${hijriDate.longMonthName}';
     } catch (e) {
       // В случае ошибки возвращаем григорианскую дату
-      return DateFormat('d MMMM', 'en').format(DateTime.now());
+      return DateFormat(
+        'd MMMM',
+        'en',
+      ).format(referenceDate ?? DateTime.now());
     }
   }
 
-  // Получить исламский год
-  static String getIslamicYear() {
+  // Получить исламский год. [referenceDate] — только для тестов.
+  static String getIslamicYear([DateTime? referenceDate]) {
     try {
-      final now = DateTime.now();
+      final now = referenceDate ?? DateTime.now();
       final hijriDate = HijriDate.fromDate(now);
       return hijriDate.hYear.toString();
     } catch (e) {
       // В случае ошибки возвращаем григорианский год
-      return DateTime.now().year.toString();
+      return (referenceDate ?? DateTime.now()).year.toString();
     }
   }
 }

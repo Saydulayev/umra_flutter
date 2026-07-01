@@ -1,88 +1,90 @@
 # Umra Guide
 
-Мобильное приложение-путеводитель по Умре: пошаговые инструкции обрядов, аудиогид с произношением дуа, время намаза с уведомлениями и исламский календарь. Опубликовано в App Store и Google Play, более 40 000 загрузок, рейтинг 4.9 в App Store.
+**English** | [Русский](README.ru.md)
+
+A mobile companion for performing Umrah: step-by-step ritual instructions, an audio guide with du'a pronunciation, prayer times with notifications, and an Islamic calendar. Published on the App Store and Google Play with over 40,000 downloads and a 4.9 rating on the App Store.
 
 [![App Store](https://img.shields.io/badge/App%20Store-Umra%20Guide-0D96F6?logo=apple&logoColor=white)](https://apps.apple.com/ru/app/umra-guide/id1673683355)
 [![Google Play](https://img.shields.io/badge/Google%20Play-Umra%20Guide-3DDC84?logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=saydulayev.wien_gmail.com.umra)
 
 <p align="center">
-  <img src="assets/images/01-hero-1320x2868.png" width="160" alt="Главный экран"/>
-  <img src="assets/images/02-umra-1320x2868.png" width="160" alt="Обряды Умры"/>
-  <img src="assets/images/04-dua-1320x2868.png" width="160" alt="Дуа"/>
-  <img src="assets/images/05-prayer-1320x2868.png" width="160" alt="Время намаза"/>
+  <img src="assets/images/01-hero-1320x2868.png" width="160" alt="Home screen"/>
+  <img src="assets/images/02-umra-1320x2868.png" width="160" alt="Umrah rituals"/>
+  <img src="assets/images/04-dua-1320x2868.png" width="160" alt="Du'a"/>
+  <img src="assets/images/05-prayer-1320x2868.png" width="160" alt="Prayer times"/>
 </p>
 
-## Возможности
+## Features
 
-- Пошаговые инструкции обрядов Умры и Хаджа с аудиосопровождением
-- Аудиоплеер с фоновым воспроизведением (just_audio + audio_service)
-- Расчёт времени намаза (adhan_dart) и локальные уведомления
-- Исламский (хиджри) календарь
-- Счётчик кругов тавафа
-- PDF-материалы для офлайн-чтения
-- Семь языков интерфейса: русский, английский, арабский, немецкий, французский, турецкий, индонезийский
-- Несколько тем оформления, включая тёмную; поддержка Liquid Glass UI (iOS 26)
-- Встроенные покупки и запрос отзыва
+- Step-by-step Umrah and Hajj ritual instructions with audio narration
+- Audio player with background playback (just_audio + audio_service)
+- Prayer time calculation (adhan_dart) with local notifications
+- Islamic (Hijri) calendar
+- Tawaf lap counter
+- PDF materials for offline reading
+- Seven interface languages: English, Russian, Arabic, German, French, Turkish, Indonesian
+- Multiple themes including dark mode; Liquid Glass UI support (iOS 26)
+- In-app purchases and review prompts
 
-## Требования
+## Requirements
 
-- iOS 17.0+ / Android 6.0+ (API 23), таргет Android 15 (API 35, edge-to-edge)
+- iOS 17.0+ / Android 6.0+ (API 23), targeting Android 15 (API 35, edge-to-edge)
 - Flutter (Dart SDK ^3.11.0)
 
-## Сборка и запуск
+## Build and run
 
 ```bash
 flutter pub get
 flutter run
 ```
 
-Локализации генерируются автоматически (`flutter: generate: true`). Нативный splash-экран пересоздаётся после изменения ассетов:
+Localizations are generated automatically (`flutter: generate: true`). The native splash screen must be regenerated after changing its assets:
 
 ```bash
 dart run flutter_native_splash:create
 ```
 
-Крэш-репортинг построен на Firebase Crashlytics; конфигурация — в `lib/firebase_options.dart`.
+Crash reporting is built on Firebase Crashlytics; configuration lives in `lib/firebase_options.dart`.
 
-## Архитектура
+## Architecture
 
-Состояние управляется через `provider`, данные отделены от UI слоями repositories/services.
+State is managed with `provider`; data access is separated from the UI via repository and service layers.
 
 ```
 lib/
 ├── main.dart
-├── constants/       # Константы приложения
-├── models/          # Модели данных
-├── providers/       # Провайдеры состояния
-├── repositories/    # Доступ к данным
-├── services/        # Бизнес-логика (аудио, намаз, уведомления, крэш-репортинг)
-├── screens/         # Экраны
-├── widgets/         # Переиспользуемые виджеты
-├── theme/           # Темы оформления
-├── utils/           # Вспомогательные утилиты
-└── l10n/            # Локализация (7 языков)
+├── constants/       # App constants
+├── models/          # Data models
+├── providers/       # State providers
+├── repositories/    # Data access
+├── services/        # Business logic (audio, prayer times, notifications, crash reporting)
+├── screens/         # Screens
+├── widgets/         # Reusable widgets
+├── theme/           # Themes
+├── utils/           # Helpers
+└── l10n/            # Localization (7 languages)
 ```
 
-В `patched_packages/audio_service` лежит локальный форк `audio_service` с исправлением NPE в `onConnectionFailed`/`onConnected`; он подключён через `dependency_overrides`.
+`patched_packages/audio_service` contains a local fork of `audio_service` fixing an NPE in `onConnectionFailed`/`onConnected`; it is wired in via `dependency_overrides`.
 
-## Основные зависимости
+## Key dependencies
 
-| Пакет | Назначение |
+| Package | Purpose |
 |---|---|
-| `provider` | Управление состоянием |
-| `just_audio`, `audio_service` | Аудио с фоновым воспроизведением |
-| `adhan_dart` | Расчёт времени намаза |
-| `hijri_date` | Хиджри-календарь |
-| `flutter_local_notifications`, `timezone` | Уведомления о намазе |
-| `flutter_pdfview`, `pdf` | Работа с PDF |
-| `firebase_core`, `firebase_crashlytics` | Крэш-репортинг |
-| `in_app_purchase`, `in_app_review` | Покупки и отзывы |
-| `liquid_glass_widgets` | Стеклянный таб-бар (iOS 26) |
+| `provider` | State management |
+| `just_audio`, `audio_service` | Audio with background playback |
+| `adhan_dart` | Prayer time calculation |
+| `hijri_date` | Hijri calendar |
+| `flutter_local_notifications`, `timezone` | Prayer notifications |
+| `flutter_pdfview`, `pdf` | PDF handling |
+| `firebase_core`, `firebase_crashlytics` | Crash reporting |
+| `in_app_purchase`, `in_app_review` | Purchases and reviews |
+| `liquid_glass_widgets` | Glass tab bar (iOS 26) |
 
-## Тестирование
+## Testing
 
 ```bash
 flutter test
 ```
 
-Юнит-тесты находятся в `test/unit`, виджет-тесты — в `test/widget_test.dart`.
+Unit tests live in `test/unit`, widget tests in `test/widget_test.dart`.

@@ -103,7 +103,7 @@ class PurchaseService {
         final errorCode = error != null ? (error.code.toString()) : 'unknown';
         // Если пользователь сам отменил — не показываем ошибку
         // iOS: SKErrorPaymentCancelled = "2", Android: "1" (USER_CANCELED)
-        if (_isCancellationError(errorCode)) {
+        if (isCancellationError(errorCode)) {
           _onPurchaseCanceled?.call();
         } else {
           _onPurchaseError?.call(errorCode);
@@ -134,8 +134,11 @@ class PurchaseService {
     await _inAppPurchase.restorePurchases();
   }
 
-  /// Определяет, является ли ошибка отменой пользователя
-  bool _isCancellationError(String errorCode) {
+  /// Определяет, является ли ошибка отменой пользователя.
+  /// Статический и видимый для тестов: логика чувствительная (ложная ошибка
+  /// при отмене / проглоченная реальная ошибка) и не зависит от состояния.
+  @visibleForTesting
+  static bool isCancellationError(String errorCode) {
     final code = errorCode.toLowerCase();
     // iOS: SKErrorPaymentCancelled = 2
     // Android: BillingResponseCode.USER_CANCELED = 1

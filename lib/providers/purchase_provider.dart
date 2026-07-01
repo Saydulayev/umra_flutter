@@ -5,7 +5,12 @@ import '../services/purchase_service.dart';
 
 /// Провайдер для управления состоянием покупок
 class PurchaseProvider with ChangeNotifier {
-  final PurchaseService _purchaseService = PurchaseService();
+  /// [purchaseService] — только для тестов: позволяет подставить fake.
+  /// В продакшене не передаётся, создаётся реальный сервис.
+  PurchaseProvider({PurchaseService? purchaseService})
+    : _purchaseService = purchaseService ?? PurchaseService();
+
+  final PurchaseService _purchaseService;
   Timer? _purchaseTimeoutTimer;
 
   bool _isInitialized = false;
