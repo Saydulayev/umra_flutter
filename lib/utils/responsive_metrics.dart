@@ -16,7 +16,12 @@ class ResponsiveMetrics {
     );
   }
 
-  static const double maxTextScale = 1.3;
+  /// Потолок системного масштаба текста (кламп в main.dart).
+  /// Поднят с 1.3 до 2.0: layout всех основных экранов выдерживает 2.0 без
+  /// overflow — проверено матрицей test/widget/text_scale_smoke_test.dart
+  /// (4 экрана × en/de/ar × 1.5/2.0 на viewport 390×844). При изменении
+  /// прогонять этот набор тестов.
+  static const double maxTextScale = 2.0;
 
   double get width => size.width;
   double get height => size.height;

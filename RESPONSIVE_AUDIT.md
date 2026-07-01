@@ -2,6 +2,12 @@
 
 Дата: 2026-06-21 · Только анализ, правки не вносились.
 
+> **Обновление 2026-07:** потолок textScaler поднят с 1.3 до **2.0**
+> (`ResponsiveMetrics.maxTextScale`) — устойчивость layout при 1.5/2.0
+> подтверждена автотестами `test/widget/text_scale_smoke_test.dart`
+> (4 экрана × en/de/ar, viewport 390×844). Оценки textScale ниже по тексту
+> сделаны для старого потолка 1.3 и в этой части устарели.
+
 Базис: `lib/utils/responsive_metrics.dart`. Категории: `isCompactPhone` = `shortestSide < 380 || height < 700`; `isTablet` = `shortestSide >= 600`; всё остальное — Phone.
 
 `textScaler` глобально ограничен в `main.dart:105‑108` (`clamp(1.0, 1.3)`) — это хорошо и снимает большую часть рисков масштабирования шрифта. Поэтому проблемы textScale ниже оцениваются с учётом потолка 1.3.

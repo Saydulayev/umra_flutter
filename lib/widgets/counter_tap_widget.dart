@@ -251,26 +251,19 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
                                     ),
                                   ],
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                isCompleted
-                                    ? PlatformIcons.checkCircle
-                                    : PlatformIcons.addCircle,
-                                color: Colors.white,
-                                size: 20,
-                              ),
-                              const SizedBox(width: 8),
-                              Text(
-                                l10n.addString,
-                                style: TextStyle(
-                                  fontSize: type.caption,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
+                          child: _iconLabelRow(
+                            context: context,
+                            icon: isCompleted
+                                ? PlatformIcons.checkCircle
+                                : PlatformIcons.addCircle,
+                            iconColor: Colors.white,
+                            iconSize: 20,
+                            label: l10n.addString,
+                            labelStyle: TextStyle(
+                              fontSize: type.caption,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
@@ -305,24 +298,17 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
                               ),
                             ],
                           ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                PlatformIcons.refresh,
-                                color: theme.textColor,
-                                size: 18,
-                              ),
-                              const SizedBox(width: 8),
-                              Text(
-                                l10n.resetString,
-                                style: TextStyle(
-                                  fontSize: type.caption,
-                                  fontWeight: FontWeight.w600,
-                                  color: theme.textColor,
-                                ),
-                              ),
-                            ],
+                          child: _iconLabelRow(
+                            context: context,
+                            icon: PlatformIcons.refresh,
+                            iconColor: theme.textColor,
+                            iconSize: 18,
+                            label: l10n.resetString,
+                            labelStyle: TextStyle(
+                              fontSize: type.caption,
+                              fontWeight: FontWeight.w600,
+                              color: theme.textColor,
+                            ),
                           ),
                         ),
                       ),
@@ -334,6 +320,41 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
           ),
         ),
       ),
+    );
+  }
+
+  // Показывает иконку с подписью, если подпись помещается по ширине,
+  // иначе — только иконку (чтобы крупный системный шрифт не ломал раскладку).
+  Widget _iconLabelRow({
+    required BuildContext context,
+    required IconData icon,
+    required Color iconColor,
+    required double iconSize,
+    required String label,
+    required TextStyle labelStyle,
+  }) {
+    const spacing = 8.0;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final textPainter = TextPainter(
+          text: TextSpan(text: label, style: labelStyle),
+          maxLines: 1,
+          textDirection: Directionality.of(context),
+          textScaler: MediaQuery.textScalerOf(context),
+        )..layout();
+        final fits = iconSize + spacing + textPainter.width <= constraints.maxWidth;
+
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, color: iconColor, size: iconSize),
+            if (fits) ...[
+              const SizedBox(width: spacing),
+              Text(label, style: labelStyle, maxLines: 1),
+            ],
+          ],
+        );
+      },
     );
   }
 }

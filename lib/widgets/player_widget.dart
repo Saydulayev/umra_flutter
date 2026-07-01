@@ -358,6 +358,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
         child: Center(
           child: Text(
             '${rate}x',
+            textScaler: TextScaler.noScaling,
             style: TextStyle(
               color: isActive ? theme.primaryColor : theme.textColor,
               fontSize: size * 0.23,
