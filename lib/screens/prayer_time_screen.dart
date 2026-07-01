@@ -320,7 +320,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   }) {
     return AppCard(
       theme: theme,
-      cornerRadius: 20,
+      cornerRadius: metrics.secondaryCardRadius,
       shadows: [
         BoxShadow(
           color: theme.cardShadowColor,
@@ -363,7 +363,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   Widget _buildCapsuleCard({required AppTheme theme, required Widget child}) {
     return AppCard(
       theme: theme,
-      cornerRadius: 20,
+      cornerRadius: ResponsiveMetrics.of(context).secondaryCardRadius,
       margin: EdgeInsets.zero,
       shadows: [],
       child: child,

@@ -202,8 +202,6 @@ class _UmraTabBody extends StatelessWidget {
 
   const _UmraTabBody({required this.theme, required this.l10n});
 
-  static const _cardRadius = 24.0;
-
   List<UmraStep> get _numberedSteps =>
       UmraSteps.allSteps.where((s) => s.id != 'useful').toList();
 
@@ -242,7 +240,7 @@ class _UmraTabBody extends StatelessWidget {
               // Steps grouped card
               _GroupedCard(
                 theme: theme,
-                cardRadius: _cardRadius,
+                cardRadius: metrics.primaryCardRadius,
                 padding: metrics.listScreenHPad,
                 children: List.generate(_numberedSteps.length, (i) {
                   final step = _numberedSteps[i];
@@ -272,7 +270,7 @@ class _UmraTabBody extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 16),
                   child: _GroupedCard(
                     theme: theme,
-                    cardRadius: _cardRadius,
+                    cardRadius: metrics.primaryCardRadius,
                     padding: metrics.listScreenHPad,
                     children: [
                       _StepRowItem(
@@ -329,8 +327,6 @@ class _HajjTabBody extends StatelessWidget {
 
   const _HajjTabBody({required this.theme, required this.l10n});
 
-  static const _cardRadius = 24.0;
-
   @override
   Widget build(BuildContext context) {
     final steps = HajjSteps.allSteps;
@@ -364,7 +360,7 @@ class _HajjTabBody extends StatelessWidget {
               // Steps grouped card
               _GroupedCard(
                 theme: theme,
-                cardRadius: _cardRadius,
+                cardRadius: metrics.primaryCardRadius,
                 padding: metrics.listScreenHPad,
                 children: List.generate(steps.length, (i) {
                   final step = steps[i];

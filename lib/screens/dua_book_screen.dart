@@ -140,8 +140,6 @@ class DuaBookScreen extends StatelessWidget {
 
   const DuaBookScreen({super.key, this.embedded = false});
 
-  static const _cardRadius = 24.0;
-
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeProvider>(context).selectedTheme;
@@ -252,7 +250,7 @@ class DuaBookScreen extends StatelessWidget {
                       ),
                     AppCard(
                       theme: theme,
-                      cornerRadius: _cardRadius,
+                      cornerRadius: metrics.primaryCardRadius,
                       // Горизонтальные поля карточки — как у _GroupedCard
                       // в «Умра»/«Хадж».
                       margin: EdgeInsets.symmetric(
@@ -373,8 +371,6 @@ class DuaCategoryScreen extends StatelessWidget {
 
   const DuaCategoryScreen({super.key, required this.category});
 
-  static const _cardRadius = 24.0;
-
   @override
   Widget build(BuildContext context) {
     final theme = Provider.of<ThemeProvider>(context).selectedTheme;
@@ -444,7 +440,7 @@ class DuaCategoryScreen extends StatelessWidget {
                 constraints: BoxConstraints(maxWidth: metrics.contentMaxWidth),
                 child: AppCard(
                   theme: theme,
-                  cornerRadius: _cardRadius,
+                  cornerRadius: metrics.primaryCardRadius,
                   shadows: [
                     BoxShadow(
                       color: theme.cardShadowColor,
@@ -731,7 +727,6 @@ class _InfoCard extends StatelessWidget {
   });
 
   static const _contentPadding = 16.0;
-  static const _cardRadius = 20.0;
 
   @override
   Widget build(BuildContext context) {
@@ -741,7 +736,7 @@ class _InfoCard extends StatelessWidget {
         width: double.infinity,
         child: AppCard(
           theme: theme,
-          cornerRadius: _cardRadius,
+          cornerRadius: ResponsiveMetrics.of(context).secondaryCardRadius,
           shadows: [
             BoxShadow(
               color: theme.cardShadowColor,

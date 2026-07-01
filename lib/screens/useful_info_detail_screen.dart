@@ -113,7 +113,7 @@ class UsefulInfoDetailScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     final isTablet = MediaQuery.of(context).size.shortestSide >= 600;
     final hPad = isTablet ? 20.0 : 16.0;
-    final cardRadius = isTablet ? 28.0 : 24.0;
+    final cardRadius = ResponsiveMetrics.of(context).primaryCardRadius;
 
     return Scaffold(
       backgroundColor: theme.backgroundColor,
@@ -131,24 +131,31 @@ class UsefulInfoDetailScreen extends StatelessWidget {
           final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
           return SingleChildScrollView(
             padding: EdgeInsets.fromLTRB(hPad, 8, hPad, bottomPadding + 32),
-            child: AppCard(
-              theme: theme,
-              cornerRadius: cardRadius,
-              shadows: [
-                BoxShadow(
-                  color: theme.cardShadowColor,
-                  blurRadius: 16,
-                  offset: const Offset(0, 6),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: ResponsiveMetrics.of(context).contentMaxWidth,
                 ),
-              ],
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: _buildRows(
-                  context,
-                  chapter.subChapters,
-                  theme,
-                  l10n,
-                  hPad,
+                child: AppCard(
+                  theme: theme,
+                  cornerRadius: cardRadius,
+                  shadows: [
+                    BoxShadow(
+                      color: theme.cardShadowColor,
+                      blurRadius: 16,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: _buildRows(
+                      context,
+                      chapter.subChapters,
+                      theme,
+                      l10n,
+                      hPad,
+                    ),
+                  ),
                 ),
               ),
             ),

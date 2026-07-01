@@ -6,6 +6,7 @@ import '../models/app_theme.dart';
 import '../utils/platform_icons.dart';
 import '../widgets/app_card.dart';
 import '../theme/app_type.dart';
+import '../utils/responsive_metrics.dart';
 import '../models/useful_info_model.dart';
 import '../screens/useful_info_detail_screen.dart'
     show UsefulInfoDetailScreen, SubChapterDetailScreen;
@@ -21,7 +22,7 @@ class UsefulInfoScreen extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     final isTablet = MediaQuery.of(context).size.shortestSide >= 600;
     final hPad = isTablet ? 20.0 : 16.0;
-    final cardRadius = isTablet ? 28.0 : 24.0;
+    final cardRadius = ResponsiveMetrics.of(context).primaryCardRadius;
 
     final chapters = UsefulInfoChapters.getChapters();
 
@@ -81,23 +82,30 @@ class UsefulInfoScreen extends StatelessWidget {
           final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
           return SingleChildScrollView(
             padding: EdgeInsets.fromLTRB(hPad, 8, hPad, bottomPadding + 32),
-            child: AppCard(
-              theme: theme,
-              cornerRadius: cardRadius,
-              shadows: [
-                BoxShadow(
-                  color: theme.cardShadowColor,
-                  blurRadius: 16,
-                  offset: const Offset(0, 6),
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: ResponsiveMetrics.of(context).contentMaxWidth,
                 ),
-              ],
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: _buildRows(
-                  items,
-                  theme,
-                  isTablet,
-                  AppType.of(context),
+                child: AppCard(
+                  theme: theme,
+                  cornerRadius: cardRadius,
+                  shadows: [
+                    BoxShadow(
+                      color: theme.cardShadowColor,
+                      blurRadius: 16,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: _buildRows(
+                      items,
+                      theme,
+                      isTablet,
+                      AppType.of(context),
+                    ),
+                  ),
                 ),
               ),
             ),
