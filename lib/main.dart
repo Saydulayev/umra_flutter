@@ -1,5 +1,8 @@
 import 'dart:async';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -18,10 +21,12 @@ import 'screens/home_screen.dart';
 import 'screens/language_selection_screen.dart';
 import 'models/app_theme.dart';
 import 'services/app_usage_tracker.dart';
+import 'services/crashlytics_backend.dart';
 import 'services/error_reporter.dart';
 import 'utils/responsive_metrics.dart';
 import 'theme/app_type.dart';
 import 'theme/app_fonts.dart';
+import 'firebase_options.dart';
 
 void main() {
   // Run the whole app inside a guarded zone so that any uncaught asynchronous
@@ -31,10 +36,20 @@ void main() {
     () async {
       WidgetsFlutterBinding.ensureInitialized();
 
-      // Install global error handlers as early as possible. To enable crash
-      // reporting in production, pass a backend here, e.g.:
-      //   ErrorReporter.install(backend: CrashlyticsBackend());
-      ErrorReporter.install();
+      // Firebase должен быть готов до того, как ErrorReporter начнёт
+      // репортить ошибки через CrashlyticsBackend — иначе первые же ошибки
+      // на старте (до инициализации) будут потеряны.
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+      // В debug-сборках отчёты не шлём: иначе каждый крэш во время разработки
+      // засорял бы дашборд реальных пользовательских данных.
+      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(
+        !kDebugMode,
+      );
+
+      // Install global error handlers as early as possible.
+      ErrorReporter.install(backend: CrashlyticsBackend());
 
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 

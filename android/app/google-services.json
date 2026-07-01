@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "30794948921",
+    "project_id": "umra-guide-8ba28",
+    "storage_bucket": "umra-guide-8ba28.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30794948921:android:22fdf88f3bd87684e388e8",
+        "android_client_info": {
+          "package_name": "saydulayev.wien_gmail.com.umra"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO4lkiEL-yHzhsZpjWzRLbCzJAx7X7yGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
