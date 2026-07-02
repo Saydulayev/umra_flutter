@@ -126,7 +126,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get themeAppTitle => 'المظهر';
 
   @override
-  String get themeSelectTitle => 'اختر سمة التطبيق';
+  String get themeSelectTitle => 'اختر السمة';
 
   @override
   String get doneButton => 'تم';
@@ -983,7 +983,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get notificationsString => 'الإشعارات';
 
   @override
-  String get notificationSheetTitle => 'إشعارات الصلاة';
+  String get notificationSheetTitle => 'الإشعارات';
 
   @override
   String get notificationSettingsLink => 'إعدادات الإشعارات';

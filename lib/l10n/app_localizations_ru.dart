@@ -126,7 +126,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get themeAppTitle => 'Тема приложения';
 
   @override
-  String get themeSelectTitle => 'Выберите тему приложения';
+  String get themeSelectTitle => 'Выберите тему';
 
   @override
   String get doneButton => 'Готово';
@@ -1022,7 +1022,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get notificationsString => 'Уведомления';
 
   @override
-  String get notificationSheetTitle => 'Уведомления о намазе';
+  String get notificationSheetTitle => 'Уведомления';
 
   @override
   String get notificationSettingsLink => 'Настройки уведомлений';

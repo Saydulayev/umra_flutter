@@ -126,7 +126,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get themeAppTitle => 'Tema Aplikasi';
 
   @override
-  String get themeSelectTitle => 'Pilih Tema Aplikasi';
+  String get themeSelectTitle => 'Pilih Tema';
 
   @override
   String get doneButton => 'Selesai';
@@ -1025,7 +1025,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get notificationsString => 'Notifikasi';
 
   @override
-  String get notificationSheetTitle => 'Notifikasi Sholat';
+  String get notificationSheetTitle => 'Notifikasi';
 
   @override
   String get notificationSettingsLink => 'Pengaturan Notifikasi';

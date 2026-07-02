@@ -126,7 +126,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get themeAppTitle => 'App-Design';
 
   @override
-  String get themeSelectTitle => 'App-Design wählen';
+  String get themeSelectTitle => 'Design wählen';
 
   @override
   String get doneButton => 'Fertig';
@@ -1036,7 +1036,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get notificationsString => 'Benachrichtigungen';
 
   @override
-  String get notificationSheetTitle => 'Gebetsbenachrichtigungen';
+  String get notificationSheetTitle => 'Benachrichtigungen';
 
   @override
   String get notificationSettingsLink => 'Benachrichtigungseinstellungen';

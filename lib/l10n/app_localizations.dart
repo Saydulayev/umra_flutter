@@ -345,7 +345,7 @@ abstract class AppLocalizations {
   /// No description provided for @themeSelectTitle.
   ///
   /// In en, this message translates to:
-  /// **'Choose App Theme'**
+  /// **'Choose Theme'**
   String get themeSelectTitle;
 
   /// No description provided for @doneButton.
@@ -1875,7 +1875,7 @@ abstract class AppLocalizations {
   /// No description provided for @notificationSheetTitle.
   ///
   /// In en, this message translates to:
-  /// **'Prayer Notifications'**
+  /// **'Notifications'**
   String get notificationSheetTitle;
 
   /// No description provided for @notificationSettingsLink.

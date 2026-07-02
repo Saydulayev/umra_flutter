@@ -126,7 +126,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get themeAppTitle => 'Thème de l\'application';
 
   @override
-  String get themeSelectTitle => 'Choisir le thème de l\'application';
+  String get themeSelectTitle => 'Choisir le thème';
 
   @override
   String get doneButton => 'Terminé';
@@ -1032,7 +1032,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get notificationsString => 'Notifications';
 
   @override
-  String get notificationSheetTitle => 'Notifications de prière';
+  String get notificationSheetTitle => 'Notifications';
 
   @override
   String get notificationSettingsLink => 'Paramètres de notification';

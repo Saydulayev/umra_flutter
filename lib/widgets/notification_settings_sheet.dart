@@ -149,19 +149,25 @@ class NotificationSettingsSheet extends StatelessWidget {
 
             // Settings link
             Padding(
-              padding: EdgeInsets.symmetric(vertical: isTablet ? 28 : 22),
+              padding: EdgeInsets.symmetric(
+                horizontal: hPad,
+                vertical: isTablet ? 28 : 22,
+              ),
               child: GestureDetector(
                 onTap: () => _openSystemSettings(context),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      l10n.notificationSettingsLink,
-                      style: TextStyle(
-                        fontSize: type.callout,
-                        fontWeight: FontWeight.w500,
-                        color: theme.primaryColor,
+                    Flexible(
+                      child: Text(
+                        l10n.notificationSettingsLink,
+                        style: TextStyle(
+                          fontSize: type.callout,
+                          fontWeight: FontWeight.w500,
+                          color: theme.primaryColor,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                     const SizedBox(width: 8),

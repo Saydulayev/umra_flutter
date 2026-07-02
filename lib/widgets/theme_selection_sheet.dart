@@ -51,16 +51,19 @@ class ThemeSelectionSheet extends StatelessWidget {
                 isTablet ? 20 : 16,
               ),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    l10n.themeSelectTitle,
-                    style: TextStyle(
-                      fontSize: AppType.of(context).callout,
-                      fontWeight: FontWeight.w600,
-                      color: theme.textColor,
+                  Expanded(
+                    child: Text(
+                      l10n.themeSelectTitle,
+                      style: TextStyle(
+                        fontSize: AppType.of(context).callout,
+                        fontWeight: FontWeight.w600,
+                        color: theme.textColor,
+                      ),
                     ),
                   ),
-                  const Spacer(),
+                  const SizedBox(width: 12),
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Icon(

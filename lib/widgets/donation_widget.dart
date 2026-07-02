@@ -177,14 +177,17 @@ class _DonationWidgetState extends State<DonationWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(
-                                l10n.selectTheAmount,
-                                style: TextStyle(
-                                  fontSize: AppType.of(context).caption,
-                                  color: theme.textColor,
-                                  fontWeight: FontWeight.w600,
+                              Flexible(
+                                child: Text(
+                                  l10n.selectTheAmount,
+                                  style: TextStyle(
+                                    fontSize: AppType.of(context).caption,
+                                    color: theme.textColor,
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ),
+                              const SizedBox(width: 12),
                               _buildAmountSelector(
                                 context,
                                 purchaseProvider,
@@ -455,69 +458,80 @@ class _DonationWidgetState extends State<DonationWidget> {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
-      builder: (context) => Container(
-        decoration: BoxDecoration(
-          color: theme.isEmerald ? null : theme.lightBackgroundColor,
-          gradient: theme.cardGradient,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              margin: const EdgeInsets.only(top: 12),
-              width: 40,
-              height: 4,
-              decoration: BoxDecoration(
-                color: Colors.grey[300],
-                borderRadius: BorderRadius.circular(2),
-              ),
+      isScrollControlled: true,
+      builder: (context) {
+        final bottomPadding = MediaQuery.of(context).viewPadding.bottom;
+        final maxHeight = MediaQuery.of(context).size.height * 0.8;
+
+        return Container(
+          constraints: BoxConstraints(maxHeight: maxHeight),
+          decoration: BoxDecoration(
+            color: theme.isEmerald ? null : theme.lightBackgroundColor,
+            gradient: theme.cardGradient,
+            borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(20),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                l10n.selectTheAmount,
-                style: TextStyle(
-                  fontSize: AppType.of(context).body,
-                  fontWeight: FontWeight.bold,
-                  color: theme.textColor,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 12),
+                width: 40,
+                height: 4,
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(2),
                 ),
               ),
-            ),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: sortedProducts.length,
-              itemBuilder: (context, index) {
-                final product = sortedProducts[index];
-                final isSelected = _selectedProduct?.id == product.id;
-
-                return ListTile(
-                  title: Text(
-                    product.price,
-                    style: TextStyle(
-                      fontSize: AppType.of(context).callout,
-                      fontWeight: isSelected
-                          ? FontWeight.bold
-                          : FontWeight.normal,
-                      color: theme.textColor,
-                    ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  l10n.selectTheAmount,
+                  style: TextStyle(
+                    fontSize: AppType.of(context).body,
+                    fontWeight: FontWeight.bold,
+                    color: theme.textColor,
                   ),
-                  trailing: isSelected
-                      ? Icon(PlatformIcons.check, color: theme.primaryColor)
-                      : null,
-                  onTap: () {
-                    setState(() {
-                      _selectedProduct = product;
-                    });
-                    Navigator.pop(context);
+                ),
+              ),
+              Flexible(
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: sortedProducts.length,
+                  itemBuilder: (context, index) {
+                    final product = sortedProducts[index];
+                    final isSelected = _selectedProduct?.id == product.id;
+
+                    return ListTile(
+                      title: Text(
+                        product.price,
+                        style: TextStyle(
+                          fontSize: AppType.of(context).callout,
+                          fontWeight: isSelected
+                              ? FontWeight.bold
+                              : FontWeight.normal,
+                          color: theme.textColor,
+                        ),
+                      ),
+                      trailing: isSelected
+                          ? Icon(PlatformIcons.check, color: theme.primaryColor)
+                          : null,
+                      onTap: () {
+                        setState(() {
+                          _selectedProduct = product;
+                        });
+                        Navigator.pop(context);
+                      },
+                    );
                   },
-                );
-              },
-            ),
-            const SizedBox(height: 16),
-          ],
-        ),
-      ),
+                ),
+              ),
+              SizedBox(height: 16 + bottomPadding),
+            ],
+          ),
+        );
+      },
     );
   }
 }

@@ -126,7 +126,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get themeAppTitle => 'Uygulama Teması';
 
   @override
-  String get themeSelectTitle => 'Uygulama Teması Seçin';
+  String get themeSelectTitle => 'Tema Seçin';
 
   @override
   String get doneButton => 'Tamam';
@@ -1017,7 +1017,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get notificationsString => 'Bildirimler';
 
   @override
-  String get notificationSheetTitle => 'Namaz Bildirimleri';
+  String get notificationSheetTitle => 'Bildirimler';
 
   @override
   String get notificationSettingsLink => 'Bildirim Ayarları';
