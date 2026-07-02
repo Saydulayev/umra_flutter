@@ -252,6 +252,7 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
                           child: Center(
                             child: Text(
                               '${i + 1}',
+                              textScaler: TextScaler.noScaling,
                               style: TextStyle(
                                 fontSize: type.overline,
                                 fontWeight: FontWeight.w700,
@@ -262,7 +263,7 @@ class _CounterTapWidgetState extends State<CounterTapWidget> {
                                     ? (isCompleted
                                           ? theme.onSecondaryColor
                                           : theme.onPrimaryColor)
-                                    : theme.textColor.withValues(alpha: 0.66),
+                                    : theme.textColor.withValues(alpha: 0.85),
                               ),
                             ),
                           ),
