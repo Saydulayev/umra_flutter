@@ -169,6 +169,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
           if (kDebugMode)
             IconButton(
               icon: Icon(Icons.bug_report, color: theme.primaryColor),
+              tooltip: 'Debug: test notification',
               onPressed: () async {
                 await NotificationService.debugScheduleTest(seconds: 30);
                 if (!context.mounted) return;
@@ -184,6 +185,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
             ),
           IconButton(
             icon: Icon(PlatformIcons.notifications, color: theme.primaryColor),
+            tooltip: l10n.notificationsString,
             onPressed: () => showModalBottomSheet(
               context: context,
               isScrollControlled: true,

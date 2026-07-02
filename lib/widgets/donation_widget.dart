@@ -231,6 +231,7 @@ class _DonationWidgetState extends State<DonationWidget> {
                                   ),
                                   IconButton(
                                     icon: Icon(PlatformIcons.close, size: 18),
+                                    tooltip: l10n.close,
                                     onPressed: () =>
                                         purchaseProvider.clearError(),
                                     color: Colors.red[700],

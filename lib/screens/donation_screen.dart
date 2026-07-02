@@ -57,6 +57,7 @@ class _DonationScreenState extends State<DonationScreen> {
         elevation: 0,
         leading: IconButton(
           icon: Icon(PlatformIcons.arrowBack, color: theme.textColor),
+          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),

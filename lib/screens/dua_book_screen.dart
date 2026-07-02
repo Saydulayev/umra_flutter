@@ -195,6 +195,7 @@ class DuaBookScreen extends StatelessWidget {
             ? null
             : IconButton(
                 icon: Icon(PlatformIcons.arrowBack, color: theme.primaryColor),
+                tooltip: MaterialLocalizations.of(context).backButtonTooltip,
                 onPressed: () => Navigator.pop(context),
               ),
         // Во вкладке — шестерёнка настроек справа вверху, как у «Умра»/«Хадж».
@@ -202,6 +203,7 @@ class DuaBookScreen extends StatelessWidget {
             ? [
                 IconButton(
                   icon: Icon(PlatformIcons.settings, color: theme.textColor),
+                  tooltip: l10n.settingsString,
                   onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(builder: (_) => const SettingsScreen()),
@@ -421,6 +423,7 @@ class DuaCategoryScreen extends StatelessWidget {
         ),
         leading: IconButton(
           icon: Icon(PlatformIcons.arrowBack, color: theme.primaryColor),
+          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -582,6 +585,7 @@ class _DuaPageScreenState extends State<DuaPageScreen> {
         ),
         leading: IconButton(
           icon: Icon(PlatformIcons.arrowBack, color: theme.primaryColor),
+          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
           onPressed: () => Navigator.pop(context),
         ),
       ),

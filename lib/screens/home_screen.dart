@@ -171,6 +171,7 @@ class _StepsScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       backgroundColor: theme.backgroundColor,
       appBar: AppBar(
@@ -181,6 +182,7 @@ class _StepsScaffold extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(PlatformIcons.settings, color: theme.textColor),
+            tooltip: l10n.settingsString,
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const SettingsScreen()),
@@ -766,6 +768,9 @@ class _BottomTabBar extends StatelessWidget {
         // зеркалится — из-за чего пилюля выбранной вкладки оставалась пустой, а
         // иконка не отображалась (особенно крайние). Иконочному бару порядок
         // менять не нужно, поэтому жёстко фиксируем направление LTR.
+        // liquid-glass-upgrade-check: при бампе liquid_glass_widgets проверить,
+        // не починили ли RTL, и снять хак. Связанное место №2 — мёртвый
+        // semanticLabel ниже. Чеклист: patched_packages/PATCH_NOTES.md.
         child: Directionality(
           textDirection: TextDirection.ltr,
           child: GlassTabBar.bottom(
@@ -788,9 +793,21 @@ class _BottomTabBar extends StatelessWidget {
             tabWidth: _tabWidth,
             horizontalPadding: _horizontalPadding,
             // label: null → только иконки, без подписей (Instagram-стиль).
+            // semanticLabel: в liquid_glass_widgets 0.18.4 это поле нигде не
+            // читается (Semantics строится из tab.label, см.
+            // tab_bar_bottom_internal.dart:210-213) — VoiceOver/TalkBack всё
+            // равно озвучивают все вкладки как "Tab". Проставляем на будущее
+            // (заработает само, когда апстрим починит), реальный фикс — только
+            // патчем пакета.
+            // liquid-glass-upgrade-check: при бампе пакета проверить, читается
+            // ли semanticLabel, и убрать пропуск таб-бара из
+            // test/widget/tap_target_labels_test.dart. Связанное место №1 —
+            // RTL-хак Directionality.ltr выше. Чеклист:
+            // patched_packages/PATCH_NOTES.md.
             tabs: [
               GlassTab(
                 label: null,
+                semanticLabel: l10n.umra,
                 icon: Icon(PlatformIcons.home),
                 activeIcon: Icon(PlatformIcons.homeFill),
               ),
@@ -802,16 +819,19 @@ class _BottomTabBar extends StatelessWidget {
               // работало в любом случае.
               GlassTab(
                 label: null,
+                semanticLabel: l10n.hajj,
                 icon: _kaabaIcon(unselectedIconColor),
                 activeIcon: _kaabaIcon(selectedIconColor),
               ),
               GlassTab(
                 label: null,
+                semanticLabel: l10n.duaBookNavTitle,
                 icon: Icon(PlatformIcons.book),
                 activeIcon: Icon(PlatformIcons.bookFill),
               ),
               GlassTab(
                 label: null,
+                semanticLabel: l10n.prayerTimesTitle,
                 icon: Icon(PlatformIcons.clock),
                 activeIcon: Icon(PlatformIcons.clockFill),
               ),

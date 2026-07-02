@@ -1,24 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:umra_flutter/constants/app_constants.dart';
-import 'package:umra_flutter/l10n/app_localizations.dart';
-import 'package:umra_flutter/providers/font_provider.dart';
-import 'package:umra_flutter/providers/localization_provider.dart';
-import 'package:umra_flutter/providers/notification_preferences_provider.dart';
-import 'package:umra_flutter/providers/purchase_provider.dart';
-import 'package:umra_flutter/providers/theme_provider.dart';
-import 'package:umra_flutter/providers/user_preferences_provider.dart';
-import 'package:umra_flutter/repositories/preferences_repository.dart';
 import 'package:umra_flutter/screens/dua_book_screen.dart';
 import 'package:umra_flutter/screens/home_screen.dart';
 import 'package:umra_flutter/screens/prayer_time_screen.dart';
 import 'package:umra_flutter/screens/settings_screen.dart';
 
-import '../helpers/fake_purchase_service.dart';
+import '../helpers/screen_harness.dart';
 
 /// Smoke-тесты устойчивости layout к крупному системному шрифту.
 ///
@@ -37,95 +24,6 @@ import '../helpers/fake_purchase_service.dart';
 const _scales = [1.5, 2.0];
 const _locales = [Locale('en'), Locale('de'), Locale('ar')];
 
-void _stubNotificationsChannel(WidgetTester tester) {
-  const channel = MethodChannel('dexterous.com/flutter/local_notifications');
-  tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(channel, (
-    call,
-  ) async {
-    switch (call.method) {
-      case 'initialize':
-      case 'canScheduleExactNotifications':
-      case 'areNotificationsEnabled':
-        return true;
-      case 'pendingNotificationRequests':
-        return <Map<String, Object?>>[];
-      default:
-        return null;
-    }
-  });
-}
-
-void _usePhoneViewport(WidgetTester tester) {
-  tester.view.physicalSize = const Size(1170, 2532); // iPhone 13: 390×844 @3x
-  tester.view.devicePixelRatio = 3.0;
-  addTearDown(tester.view.resetPhysicalSize);
-  addTearDown(tester.view.resetDevicePixelRatio);
-}
-
-Future<void> _pumpScreen(
-  WidgetTester tester,
-  Widget screen, {
-  required Locale locale,
-  required double textScale,
-}) async {
-  SharedPreferences.setMockInitialValues(<String, Object>{
-    PrefsKeys.selectedTheme: 'nur',
-    PrefsKeys.selectedLanguage: locale.languageCode,
-    PrefsKeys.hasSelectedLanguage: true,
-    PrefsKeys.hasRatedApp: true, // review-диалог не должен вклиниваться
-  });
-  PreferencesRepository().resetCacheForTesting();
-
-  await tester.pumpWidget(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => ThemeProvider()),
-        ChangeNotifierProvider(create: (_) => LocalizationProvider()),
-        ChangeNotifierProvider(create: (_) => UserPreferencesProvider()),
-        ChangeNotifierProvider(
-          create: (_) => FontProvider()..setLanguageCode(locale.languageCode),
-        ),
-        ChangeNotifierProvider(
-          create: (_) =>
-              PurchaseProvider(purchaseService: FakePurchaseService()),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => NotificationPreferencesProvider(),
-        ),
-      ],
-      child: MaterialApp(
-        locale: locale,
-        supportedLocales: AppLocalizations.supportedLocales,
-        localizationsDelegates: const [
-          AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        // Подставляем масштаб так же, как это делает builder в main.dart,
-        // только без клампа — мы как раз измеряем, где предел.
-        builder: (context, child) => MediaQuery(
-          data: MediaQuery.of(
-            context,
-          ).copyWith(textScaler: TextScaler.linear(textScale)),
-          child: child!,
-        ),
-        home: screen,
-      ),
-    ),
-  );
-
-  await tester.pump();
-  await tester.pump();
-  // HomeScreen откладывает review-чек на 2 секунды — проматываем таймер.
-  await tester.pump(const Duration(seconds: 3));
-}
-
-Future<void> _unmount(WidgetTester tester) async {
-  await tester.pumpWidget(const SizedBox());
-  await tester.pump();
-}
-
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -143,10 +41,10 @@ void main() {
           testWidgets(
             'выдерживает крупный текст: scale=$scale, локаль=$locale',
             (tester) async {
-              _stubNotificationsChannel(tester);
-              _usePhoneViewport(tester);
+              stubNotificationsChannel(tester);
+              usePhoneViewport(tester);
 
-              await _pumpScreen(
+              await pumpScreen(
                 tester,
                 entry.value(),
                 locale: locale,
@@ -162,7 +60,7 @@ void main() {
                     'поднимать выше этого значения нельзя без правок layout',
               );
 
-              await _unmount(tester);
+              await unmountScreen(tester);
             },
           );
         }
