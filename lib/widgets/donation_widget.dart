@@ -25,6 +25,8 @@ class _DonationWidgetState extends State<DonationWidget> {
   bool _hasShownSuccessMessage = false;
 
   static const double _cardRadius = 18;
+  // Радиус больше половины высоты кнопки — даёт капсулу, как Capsule() в SwiftUI.
+  static const double _pillRadius = 999;
 
   List<BoxShadow> _shadows(AppTheme theme) => [
     BoxShadow(
@@ -276,7 +278,7 @@ class _DonationWidgetState extends State<DonationWidget> {
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: AppCard(
                 theme: theme,
-                cornerRadius: _cardRadius,
+                cornerRadius: _pillRadius,
                 shadows: _shadows(theme),
                 child: Material(
                   color: Colors.transparent,
@@ -292,7 +294,7 @@ class _DonationWidgetState extends State<DonationWidget> {
                               );
                             }
                           },
-                    borderRadius: BorderRadius.circular(_cardRadius),
+                    borderRadius: BorderRadius.circular(_pillRadius),
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       alignment: Alignment.center,
