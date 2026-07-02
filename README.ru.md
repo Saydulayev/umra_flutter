@@ -4,6 +4,7 @@
 
 Мобильное приложение-путеводитель по Умре: пошаговые инструкции обрядов, аудиогид с произношением дуа, время намаза с уведомлениями и исламский календарь. Опубликовано в App Store и Google Play, более 40 000 загрузок, рейтинг 4.9 в App Store.
 
+[![CI](https://github.com/Saydulayev/umra_flutter/actions/workflows/ci.yml/badge.svg)](https://github.com/Saydulayev/umra_flutter/actions/workflows/ci.yml)
 [![App Store](https://img.shields.io/badge/App%20Store-Umra%20Guide-0D96F6?logo=apple&logoColor=white)](https://apps.apple.com/ru/app/umra-guide/id1673683355)
 [![Google Play](https://img.shields.io/badge/Google%20Play-Umra%20Guide-3DDC84?logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=saydulayev.wien_gmail.com.umra)
 
@@ -84,7 +85,20 @@ lib/
 ## Тестирование
 
 ```bash
+flutter analyze
 flutter test
 ```
 
-Юнит-тесты находятся в `test/unit`, виджет-тесты — в `test/widget_test.dart`.
+Около 130 тестов, все хостовые (устройство или эмулятор не нужны):
+
+- `test/unit/` — расчёт времени намаза, state-машина покупок
+  (успех/ошибка/отмена/pending-таймауты), процедура решения о показе
+  review-диалога, темы и настройки уведомлений, ключи локализации;
+- `test/widget/` — smoke-тесты основных экранов во всех 3 темах и RTL-локали,
+  проверка layout при крупном шрифте (textScaler до 2.0), accessibility-гайдлайны
+  (подписи тапабельных элементов);
+- `test/helpers/` — общий harness (провайдеры, застабленные платформенные
+  каналы, телефонный viewport).
+
+CI (GitHub Actions) гоняет `flutter analyze` и `flutter test` на каждый push
+и pull request — см. `.github/workflows/ci.yml`.
