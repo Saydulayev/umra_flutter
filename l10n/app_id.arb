@@ -18,6 +18,7 @@
   "sayPassageString": "Perjalanan:",
   "addString": "Tambah",
   "resetString": "Atur Ulang",
+  "counterResetConfirmTitle": "Atur ulang penghitung?",
   "sayFinishedString": "Sa´y selesai",
   "tawafFinishedString": "Tawaf selesai",
   "settingsString": "Pengaturan",

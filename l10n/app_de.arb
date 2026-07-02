@@ -18,6 +18,7 @@
   "sayPassageString": "Durchgang:",
   "addString": "Hinzufügen",
   "resetString": "Zurücksetzen",
+  "counterResetConfirmTitle": "Zähler zurücksetzen?",
   "sayFinishedString": "Sa´y ist fertig",
   "tawafFinishedString": "Tawaf beendet",
   "settingsString": "Einstellungen",

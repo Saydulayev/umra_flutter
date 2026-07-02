@@ -26,6 +26,7 @@
   "selectTheAmount": "Выберите сумму:",
   "addString": "Добавить",
   "resetString": "Сбросить",
+  "counterResetConfirmTitle": "Сбросить счётчик?",
   "sayFinishedString": "Cа´й закончено",
   "tawafFinishedString": "Таваф завершён",
   "settingsString": "Настройки",

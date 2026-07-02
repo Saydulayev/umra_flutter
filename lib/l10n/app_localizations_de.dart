@@ -63,6 +63,9 @@ class AppLocalizationsDe extends AppLocalizations {
   String get resetString => 'Zurücksetzen';
 
   @override
+  String get counterResetConfirmTitle => 'Zähler zurücksetzen?';
+
+  @override
   String get sayFinishedString => 'Sa´y ist fertig';
 
   @override

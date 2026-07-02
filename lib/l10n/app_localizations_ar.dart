@@ -63,6 +63,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get resetString => 'إعادة التعيين';
 
   @override
+  String get counterResetConfirmTitle => 'إعادة تعيين العداد؟';
+
+  @override
   String get sayFinishedString => 'انتهى السعي';
 
   @override

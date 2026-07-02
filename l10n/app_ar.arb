@@ -18,6 +18,7 @@
   "sayPassageString": "الشوط:",
   "addString": "إضافة",
   "resetString": "إعادة التعيين",
+  "counterResetConfirmTitle": "إعادة تعيين العداد؟",
   "sayFinishedString": "انتهى السعي",
   "tawafFinishedString": "اكتمل الطواف",
   "settingsString": "الإعدادات",

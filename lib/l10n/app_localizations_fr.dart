@@ -63,6 +63,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get resetString => 'Réinitialiser';
 
   @override
+  String get counterResetConfirmTitle => 'Réinitialiser le compteur ?';
+
+  @override
   String get sayFinishedString => 'Sa´y terminé';
 
   @override

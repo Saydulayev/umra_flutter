@@ -63,6 +63,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get resetString => 'Сбросить';
 
   @override
+  String get counterResetConfirmTitle => 'Сбросить счётчик?';
+
+  @override
   String get sayFinishedString => 'Cа´й закончено';
 
   @override

@@ -18,6 +18,7 @@
   "sayPassageString": "Passage:",
   "addString": "Ajouter",
   "resetString": "Réinitialiser",
+  "counterResetConfirmTitle": "Réinitialiser le compteur ?",
   "sayFinishedString": "Sa´y terminé",
   "tawafFinishedString": "Tawaf terminé",
   "settingsString": "Paramètres",

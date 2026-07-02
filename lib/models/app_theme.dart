@@ -132,6 +132,54 @@ enum AppTheme {
     }
   }
 
+  // ── Контрастные пары для акцентных заливок (WCAG AA) ──────────────────────
+  //
+  // В тёмных темах primary — яркий mint (#34D399/#32C698): белый текст на нём
+  // даёт ~2:1 и не читается (особенно на солнце). Как и системный green в
+  // тёмной теме iOS, текст на такой заливке должен быть тёмным.
+
+  /// Цвет текста/иконок ПОВЕРХ primary-заливки (кнопки, закрашенные кружки).
+  Color get onPrimaryColor {
+    switch (this) {
+      case AppTheme.nur:
+        return Colors.white; // на #098055 ≈ 5.0:1
+      case AppTheme.layl:
+        return const Color(0xFF07231A); // на #34D399 ≈ 9:1
+      case AppTheme.emerald:
+        return const Color(0xFF071E17); // на #32C698 ≈ 8:1
+    }
+  }
+
+  /// Цвет текста/иконок ПОВЕРХ золотой (secondary) заливки.
+  /// Золото светлое во всех темах — белый на нём ≈ 1.7–2.1:1, нужен тёмный.
+  Color get onSecondaryColor => const Color(0xFF3A2C0C);
+
+  /// Акцентный текст primary-цветом на светлой/тонированной подложке.
+  /// В nur сам primary (#098055) на тонированной капсуле ≈ 4.2:1 — чуть ниже
+  /// AA, поэтому для текста берём затемнённый вариант.
+  Color get primaryAccentTextColor {
+    switch (this) {
+      case AppTheme.nur:
+        return const Color(0xFF067349); // ≈ 5:1 на тонированной капсуле
+      case AppTheme.layl:
+      case AppTheme.emerald:
+        return primaryColor; // на тёмной подложке mint читается (≈ 6:1)
+    }
+  }
+
+  /// Акцентный текст золотом. В nur яркое золото (#CFAF5A) на светлом фоне
+  /// ≈ 2:1 — для текста используется тёмное золото; заливкам и иконкам
+  /// остаётся яркое (secondaryColor).
+  Color get goldAccentTextColor {
+    switch (this) {
+      case AppTheme.nur:
+        return const Color(0xFF8C6D1F); // ≈ 4.5:1 на светлом
+      case AppTheme.layl:
+      case AppTheme.emerald:
+        return secondaryColor; // на тёмной подложке ≈ 6:1
+    }
+  }
+
   // Text section background (same as page background)
   Color get textBackgroundColor => backgroundColor;
 

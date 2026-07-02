@@ -21,6 +21,7 @@
   "sayPassageString": "Passage:",
   "addString": "Add",
   "resetString": "Reset",
+  "counterResetConfirmTitle": "Reset the counter?",
   "sayFinishedString": "Sa´y finished",
   "tawafFinishedString": "Tawaf finished",
   "settingsString": "Settings",

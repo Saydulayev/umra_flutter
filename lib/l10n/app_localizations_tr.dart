@@ -63,6 +63,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get resetString => 'Sıfırla';
 
   @override
+  String get counterResetConfirmTitle => 'Sayaç sıfırlansın mı?';
+
+  @override
   String get sayFinishedString => 'Sa´y tamamlandı';
 
   @override

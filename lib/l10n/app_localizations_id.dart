@@ -63,6 +63,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get resetString => 'Atur Ulang';
 
   @override
+  String get counterResetConfirmTitle => 'Atur ulang penghitung?';
+
+  @override
   String get sayFinishedString => 'Sa´y selesai';
 
   @override

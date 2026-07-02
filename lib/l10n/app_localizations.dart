@@ -216,6 +216,12 @@ abstract class AppLocalizations {
   /// **'Reset'**
   String get resetString;
 
+  /// No description provided for @counterResetConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset the counter?'**
+  String get counterResetConfirmTitle;
+
   /// No description provided for @sayFinishedString.
   ///
   /// In en, this message translates to:

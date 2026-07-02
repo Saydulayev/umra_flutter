@@ -18,6 +18,7 @@
   "sayPassageString": "Geçiş:",
   "addString": "Ekle",
   "resetString": "Sıfırla",
+  "counterResetConfirmTitle": "Sayaç sıfırlansın mı?",
   "sayFinishedString": "Sa´y tamamlandı",
   "tawafFinishedString": "Tawaf tamamlandı",
   "settingsString": "Ayarlar",
