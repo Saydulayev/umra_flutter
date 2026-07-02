@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  analyze-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          # Та же версия, что локально — чтобы CI и локальный прогон не расходились.
+          # При обновлении Flutter локально не забыть поднять и здесь.
+          flutter-version: '3.41.1'
+          channel: stable
+          cache: true
+
+      - name: Dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      # Все тесты хостовые (юнит + widget), устройства/эмуляторы не нужны.
+      # Платформенные каналы застаблены в test/helpers/screen_harness.dart.
+      - name: Test
+        run: flutter test
