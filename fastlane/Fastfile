@@ -13,7 +13,7 @@ default_platform(:ios)
 
 # Абсолютный путь к корню Flutter-проекта (fastlane/Fastfile -> ..)
 PROJECT_ROOT = File.expand_path("..", __dir__)
-IOS_EXPORT_OPTIONS = File.join(__dir__, "ExportOptions.plist")
+IOS_EXPORT_OPTIONS = File.expand_path("ExportOptions.plist", __dir__)
 
 # ─────────────────────────────────────────────
 # ANDROID — Google Play
@@ -21,9 +21,11 @@ IOS_EXPORT_OPTIONS = File.join(__dir__, "ExportOptions.plist")
 platform :android do
   desc "flutter pub get + flutter build appbundle --release"
   private_lane :flutter_build_aab do
-    Dir.chdir(PROJECT_ROOT) do
-      sh("flutter", "pub", "get")
-      sh("flutter", "build", "appbundle", "--release")
+    Bundler.with_unbundled_env do
+      Dir.chdir(PROJECT_ROOT) do
+        sh("flutter", "pub", "get")
+        sh("flutter", "build", "appbundle", "--release")
+      end
     end
   end
 
@@ -61,13 +63,15 @@ end
 platform :ios do
   desc "flutter pub get + flutter build ipa --release"
   private_lane :flutter_build_ipa do
-    Dir.chdir(PROJECT_ROOT) do
-      sh("flutter", "pub", "get")
-      sh(
-        "flutter", "build", "ipa",
-        "--release",
-        "--export-options-plist=#{IOS_EXPORT_OPTIONS}"
-      )
+    Bundler.with_unbundled_env do
+      Dir.chdir(PROJECT_ROOT) do
+        sh("flutter", "pub", "get")
+        sh(
+          "flutter", "build", "ipa",
+          "--release",
+          "--export-options-plist=#{IOS_EXPORT_OPTIONS}"
+        )
+      end
     end
   end
 
