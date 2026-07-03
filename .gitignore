@@ -53,3 +53,17 @@ app.*.map.json
 # Backup gitignore files (used only for backup-full branch)
 .gitignore.backup
 .gitignore.main
+
+# Fastlane
+fastlane/.env
+fastlane/.env.*
+!fastlane/.env.default
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+fastlane/*.p8
+fastlane/AuthKey*.p8
+fastlane/play-store-credentials.json
+.bundle/
+vendor/bundle/

@@ -1,0 +1,23 @@
+# Общие идентификаторы приложения для обеих платформ.
+# Реальные секреты (ключи, пароли) сюда не кладём — только через ENV / fastlane/.env
+# (см. fastlane/.env.default и docs/fastlane-setup.md).
+
+for_platform :android do
+  # applicationId из android/app/build.gradle.kts
+  package_name("saydulayev.wien_gmail.com.umra")
+
+  # JSON-ключ сервисного аккаунта Google Play.
+  # По умолчанию ищется в fastlane/play-store-credentials.json (в .gitignore).
+  json_key_file(ENV["GOOGLE_PLAY_JSON_KEY_PATH"] || File.join(__dir__, "play-store-credentials.json"))
+end
+
+for_platform :ios do
+  # PRODUCT_BUNDLE_IDENTIFIER из ios/Runner.xcodeproj
+  app_identifier("saydulayev.wien-gmail.com.umra")
+
+  # Apple ID (email аккаунта в App Store Connect) — задаётся через переменную окружения.
+  apple_id(ENV["APPLE_ID"])
+
+  # DEVELOPMENT_TEAM из ios/Runner.xcodeproj
+  team_id("93NA5FP2X8")
+end

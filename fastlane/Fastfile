@@ -1,0 +1,93 @@
+# Fastlane для umra_flutter: сборка через Flutter CLI + заливка в
+# Google Play (internal track) и TestFlight.
+#
+# Запускать из корня проекта:
+#   bundle exec fastlane android internal
+#   bundle exec fastlane ios beta
+#
+# Нужные переменные окружения описаны в fastlane/.env.default.
+# Скопируй его в fastlane/.env и заполни реальными значениями — этот файл
+# в .gitignore и никогда не попадёт в git. Подробности: docs/fastlane-setup.md
+
+default_platform(:ios)
+
+# Абсолютный путь к корню Flutter-проекта (fastlane/Fastfile -> ..)
+PROJECT_ROOT = File.expand_path("..", __dir__)
+IOS_EXPORT_OPTIONS = File.join(__dir__, "ExportOptions.plist")
+
+# ─────────────────────────────────────────────
+# ANDROID — Google Play
+# ─────────────────────────────────────────────
+platform :android do
+  desc "flutter pub get + flutter build appbundle --release"
+  private_lane :flutter_build_aab do
+    Dir.chdir(PROJECT_ROOT) do
+      sh("flutter", "pub", "get")
+      sh("flutter", "build", "appbundle", "--release")
+    end
+  end
+
+  desc "Собрать AAB и залить в Google Play (дорожка internal testing)"
+  lane :internal do
+    flutter_build_aab
+
+    upload_to_play_store(
+      track: "internal",
+      aab: File.join(PROJECT_ROOT, "build/app/outputs/bundle/release/app-release.aab"),
+      # Метаданные/скриншоты не трогаем — этим лаунчем управляем только билды.
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+      skip_upload_changelogs: true,
+    )
+  end
+
+  desc "Промоушен уже загруженной сборки: internal -> production"
+  lane :promote_to_production do
+    upload_to_play_store(
+      track: "internal",
+      track_promote_to: "production",
+      skip_upload_aab: true,
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+    )
+  end
+end
+
+# ─────────────────────────────────────────────
+# iOS — TestFlight
+# ─────────────────────────────────────────────
+platform :ios do
+  desc "flutter pub get + flutter build ipa --release"
+  private_lane :flutter_build_ipa do
+    Dir.chdir(PROJECT_ROOT) do
+      sh("flutter", "pub", "get")
+      sh(
+        "flutter", "build", "ipa",
+        "--release",
+        "--export-options-plist=#{IOS_EXPORT_OPTIONS}"
+      )
+    end
+  end
+
+  desc "Собрать IPA и залить в TestFlight"
+  lane :beta do
+    flutter_build_ipa
+
+    ipa_path = Dir.glob(File.join(PROJECT_ROOT, "build/ios/ipa/*.ipa")).first
+    UI.user_error!("IPA не найдена в build/ios/ipa — сборка провалилась") unless ipa_path
+
+    api_key = app_store_connect_api_key(
+      key_id: ENV.fetch("ASC_KEY_ID"),
+      issuer_id: ENV.fetch("ASC_ISSUER_ID"),
+      key_filepath: File.expand_path(ENV.fetch("ASC_KEY_FILEPATH"), PROJECT_ROOT),
+    )
+
+    upload_to_testflight(
+      api_key: api_key,
+      ipa: ipa_path,
+      skip_waiting_for_build_processing: true,
+    )
+  end
+end
