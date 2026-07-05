@@ -98,22 +98,26 @@ dev_dependencies:
 # Генерация: dart run flutter_native_splash:create
 # (перезапускать после любой смены картинок/цветов ниже).
 flutter_native_splash:
-  # Фон заставки: светлая тема (nur) и тёмная (layl/emerald).
+  # Фон следует системной теме: светлый — фон темы Nur, тёмный — фон темы Layl
+  # (см. AppTheme.backgroundColor), чтобы не было «скачка» цвета при старте.
   color: "#F7F7F7"
   color_dark: "#101010"
-  # Логотип по центру: чёрно-золотой на светлом, кремово-золотой на тёмном.
-  image: assets/images/splash/logo_light.png
-  image_dark: assets/images/splash/logo_dark.png
-  # Надпись «Umra Guide» внизу.
+  # По центру — иконка приложения (liquid-glass, скруглённый квадрат с подложкой):
+  # логотип сохраняет оригинальные чёрно-золотые цвета в обеих темах.
+  # Файлы splash_icon_* сгенерированы из AppIcon_LiquidGlass-* (800px на холсте 1024).
+  image: assets/images/splash/splash_icon_light.png
+  image_dark: assets/images/splash/splash_icon_dark.png
+  # Надпись «Umra Guide» внизу (своя версия для каждой темы).
   branding: assets/images/splash/branding_light.png
   branding_dark: assets/images/splash/branding_dark.png
   branding_mode: bottom
-  # Android 12+ рисует только круглую иконку по центру (брендинг ОС не
-  # показывает) — поэтому фон + лого дублируем здесь.
+  # Android 12+ рисует только иконку по центру, обрезанную по кругу Ø768 px
+  # на холсте 1152×1152 — поэтому используем версии, где скруглённый квадрат
+  # целиком (вместе с углами) вписан в безопасный круг (620px на холсте 1152).
   android_12:
-    image: assets/images/splash/logo_light.png
-    image_dark: assets/images/splash/logo_dark.png
+    image: assets/images/splash/splash_icon_light_android12.png
     color: "#F7F7F7"
+    image_dark: assets/images/splash/splash_icon_dark_android12.png
     color_dark: "#101010"
   android: true
   ios: true
