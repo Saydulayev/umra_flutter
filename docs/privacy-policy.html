@@ -115,43 +115,46 @@
         <!-- Russian Content -->
         <div id="content-ru" class="lang-content active">
             <h1>Политика конфиденциальности</h1>
-            <p class="last-updated">Последнее обновление: 2025</p>
+            <p class="last-updated">Последнее обновление: 5 июля 2026 г.</p>
 
             <h2>1. Введение</h2>
             <p>Мы уважаем вашу конфиденциальность и обязуемся защищать ваши личные данные. Эта Политика конфиденциальности объясняет, как мы собираем, используем и защищаем информацию при использовании нашего приложения Umra Guide.</p>
             <p>Используя это приложение, вы соглашаетесь с условиями данной Политики конфиденциальности.</p>
 
             <h2>2. Сбор данных</h2>
-            <p><strong>Наше приложение НЕ собирает никаких данных.</strong></p>
-            <p>Все данные хранятся только локально на вашем устройстве:</p>
+            <p><strong>Мы не собираем персональные данные и не создаём учётные записи.</strong> Приложение работает без регистрации, и почти все данные остаются только на вашем устройстве.</p>
+            <p>Локально на вашем устройстве хранятся:</p>
             <ul>
-                <li><strong>Локальные настройки:</strong> язык, тема оформления, предпочтения отображения хранятся только на вашем устройстве</li>
+                <li><strong>Настройки:</strong> язык, тема оформления, предпочтения отображения и уведомлений</li>
                 <li><strong>Данные счетчика тавафов:</strong> хранятся локально на вашем устройстве</li>
             </ul>
+            <p><strong>Геолокация (компас киблы):</strong> при открытии компаса киблы приложение запрашивает доступ к местоположению, чтобы вычислить направление на Каабу. Координаты обрабатываются только на вашем устройстве, не сохраняются и никуда не передаются. Вы можете не предоставлять доступ — все остальные функции приложения продолжат работать.</p>
             <p><strong>Мы НЕ собираем и НЕ передаем:</strong></p>
             <ul>
                 <li>Персональные данные (имя, email, телефон)</li>
-                <li>Данные о местоположении</li>
-                <li>Данные аналитики или трекинга</li>
-                <li>Данные о вашем использовании приложения</li>
-                <li>Любые другие данные</li>
+                <li>Данные о местоположении (используются только на устройстве, см. выше)</li>
+                <li>Данные рекламного трекинга или аналитики поведения</li>
+                <li>Контакты, фотографии и другие личные файлы</li>
             </ul>
+            <p><strong>Единственные данные, покидающие устройство, — анонимные отчёты об ошибках</strong> (см. раздел «Сторонние сервисы», Firebase Crashlytics).</p>
 
             <h2>3. Использование данных</h2>
-            <p>Поскольку мы не собираем данные, все данные используются исключительно локально на вашем устройстве для:</p>
+            <p>Данные используются исключительно локально на вашем устройстве для:</p>
             <ul>
-                <li>Обеспечения работы функций приложения (сохранение настроек, счетчик тавафов)</li>
+                <li>Обеспечения работы функций приложения (сохранение настроек, счетчик тавафов, напоминания о времени намаза)</li>
+                <li>Разового расчёта направления киблы (геолокация — только в момент использования компаса)</li>
                 <li>Улучшения работы приложения (локальные настройки для вашего удобства)</li>
             </ul>
-            <p>Все данные хранятся только на вашем устройстве и никогда не передаются третьим лицам или внешним серверам.</p>
+            <p>Перечисленные данные хранятся только на вашем устройстве и не передаются третьим лицам. Исключение составляют только анонимные отчёты об ошибках, описанные в разделе 4.</p>
 
             <h2>4. Сторонние сервисы</h2>
-            <p>Наше приложение может использовать следующие сторонние сервисы:</p>
+            <p>Наше приложение использует следующие сторонние сервисы:</p>
             <ul>
+                <li><strong>Firebase Crashlytics (Google):</strong> при сбое приложения на серверы Google автоматически отправляется анонимный отчёт об ошибке: модель устройства, версия операционной системы, версия приложения и техническая информация о сбое. Отчёты не содержат вашего имени, контактов, местоположения или содержимого ваших данных и используются исключительно для диагностики и исправления ошибок. Подробнее: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Политика конфиденциальности Google</a>.</li>
+                <li><strong>Покупки в приложении (Apple App Store / Google Play):</strong> добровольные пожертвования обрабатываются платёжными системами Apple или Google. Мы не получаем и не храним ваши платёжные данные — ими управляет магазин приложений в соответствии с его политикой конфиденциальности.</li>
                 <li><strong>Google Fonts:</strong> для загрузки шрифтов (если используется). Google может собирать техническую информацию о запросах шрифтов.</li>
             </ul>
             <p>Мы не контролируем и не несем ответственности за политики конфиденциальности сторонних сервисов. Рекомендуем ознакомиться с их политиками конфиденциальности.</p>
-            <p><strong>Важно:</strong> даже при использовании Google Fonts, никакие данные о вас или вашем использовании приложения не передаются нашим серверам или третьим лицам.</p>
 
             <h2>5. Хранение данных</h2>
             <p>Все данные приложения хранятся локально на вашем устройстве с использованием:</p>
@@ -159,7 +162,7 @@
                 <li>SharedPreferences (для настроек)</li>
                 <li>Локальное хранилище устройства</li>
             </ul>
-            <p>Данные не передаются на внешние серверы и не синхронизируются между устройствами. При удалении приложения все данные удаляются вместе с ним.</p>
+            <p>Данные приложения не передаются на внешние серверы и не синхронизируются между устройствами (единственное исключение — анонимные отчёты об ошибках, раздел 4). При удалении приложения все локальные данные удаляются вместе с ним.</p>
 
             <h2>6. Ваши права</h2>
             <p>В соответствии с GDPR и другими законами о защите данных, вы имеете право:</p>
@@ -177,7 +180,7 @@
                 <li>Мы не запрашиваем и не собираем имя, адрес электронной почты, номер телефона или другую личную информацию от детей</li>
                 <li>Мы не используем рекламу, ориентированную на детей</li>
                 <li>Мы не передаем данные детей третьим лицам</li>
-                <li>Все данные хранятся только локально на устройстве и не передаются никуда</li>
+                <li>Все данные хранятся только локально на устройстве; анонимные отчёты об ошибках (раздел 4) не содержат личной информации и не позволяют идентифицировать пользователя</li>
             </ul>
             <p><strong>Родительский контроль:</strong> Родители могут контролировать использование приложения их детьми, так как все данные хранятся только на устройстве. При удалении приложения все данные удаляются вместе с ним.</p>
             <p>Если у вас есть вопросы о том, как мы защищаем конфиденциальность детей, пожалуйста, свяжитесь с нами по адресу: <a href="mailto:saydulayev.wien@gmail.com">saydulayev.wien@gmail.com</a></p>
@@ -197,43 +200,46 @@
         <!-- English Content -->
         <div id="content-en" class="lang-content">
             <h1>Privacy Policy</h1>
-            <p class="last-updated">Last updated: 2025</p>
+            <p class="last-updated">Last updated: July 5, 2026</p>
 
             <h2>1. Introduction</h2>
             <p>We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and protect information when you use our Umra Guide application.</p>
             <p>By using this application, you agree to the terms of this Privacy Policy.</p>
 
             <h2>2. Data Collection</h2>
-            <p><strong>Our application does NOT collect any data.</strong></p>
-            <p>All data is stored only locally on your device:</p>
+            <p><strong>We do not collect personal data and do not create user accounts.</strong> The application works without registration, and almost all data stays only on your device.</p>
+            <p>Stored locally on your device:</p>
             <ul>
-                <li><strong>Local settings:</strong> language, theme, display preferences are stored only on your device</li>
+                <li><strong>Settings:</strong> language, theme, display and notification preferences</li>
                 <li><strong>Tawaf counter data:</strong> stored locally on your device</li>
             </ul>
+            <p><strong>Location (Qibla compass):</strong> when you open the Qibla compass, the application requests access to your location to calculate the direction towards the Kaaba. Your coordinates are processed only on your device, are never stored, and are never transmitted anywhere. You may decline access — all other features of the application will continue to work.</p>
             <p><strong>We do NOT collect and do NOT transmit:</strong></p>
             <ul>
                 <li>Personal data (name, email, phone)</li>
-                <li>Location data</li>
-                <li>Analytics or tracking data</li>
-                <li>Data about your use of the application</li>
-                <li>Any other data</li>
+                <li>Location data (used on-device only, see above)</li>
+                <li>Advertising tracking or behavioral analytics data</li>
+                <li>Contacts, photos, or other personal files</li>
             </ul>
+            <p><strong>The only data that leaves your device is anonymous crash reports</strong> (see the "Third-Party Services" section, Firebase Crashlytics).</p>
 
             <h2>3. Data Usage</h2>
-            <p>Since we do not collect data, all data is used exclusively locally on your device for:</p>
+            <p>Data is used exclusively locally on your device for:</p>
             <ul>
-                <li>Ensuring the functionality of the application (saving settings, tawaf counter)</li>
+                <li>Ensuring the functionality of the application (saving settings, tawaf counter, prayer time reminders)</li>
+                <li>One-time calculation of the Qibla direction (location — only while using the compass)</li>
                 <li>Improving the application's operation (local settings for your convenience)</li>
             </ul>
-            <p>All data is stored only on your device and is never transmitted to third parties or external servers.</p>
+            <p>The data listed above is stored only on your device and is not shared with third parties. The only exception is anonymous crash reports, described in Section 4.</p>
 
             <h2>4. Third-Party Services</h2>
-            <p>Our application may use the following third-party services:</p>
+            <p>Our application uses the following third-party services:</p>
             <ul>
+                <li><strong>Firebase Crashlytics (Google):</strong> if the application crashes, an anonymous crash report is automatically sent to Google servers: device model, operating system version, application version, and technical information about the failure. Reports do not contain your name, contacts, location, or the contents of your data, and are used solely for diagnosing and fixing errors. Learn more: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.</li>
+                <li><strong>In-app purchases (Apple App Store / Google Play):</strong> voluntary donations are processed by Apple's or Google's payment systems. We do not receive or store your payment details — they are handled by the app store in accordance with its privacy policy.</li>
                 <li><strong>Google Fonts:</strong> for loading fonts (if used). Google may collect technical information about font requests.</li>
             </ul>
             <p>We do not control and are not responsible for the privacy policies of third-party services. We recommend that you familiarize yourself with their privacy policies.</p>
-            <p><strong>Important:</strong> even when using Google Fonts, no data about you or your use of the application is transmitted to our servers or third parties.</p>
 
             <h2>5. Data Storage</h2>
             <p>All application data is stored locally on your device using:</p>
@@ -241,7 +247,7 @@
                 <li>SharedPreferences (for settings)</li>
                 <li>Local device storage</li>
             </ul>
-            <p>Data is not transmitted to external servers and is not synchronized between devices. When you delete the application, all data is deleted with it.</p>
+            <p>Application data is not transmitted to external servers and is not synchronized between devices (the only exception is anonymous crash reports, Section 4). When you delete the application, all local data is deleted with it.</p>
 
             <h2>6. Your Rights</h2>
             <p>In accordance with GDPR and other data protection laws, you have the right to:</p>
@@ -259,7 +265,7 @@
                 <li>We do not request or collect name, email address, phone number, or other personal information from children</li>
                 <li>We do not use advertising targeted at children</li>
                 <li>We do not share children's data with third parties</li>
-                <li>All data is stored only locally on the device and is not transmitted anywhere</li>
+                <li>All data is stored only locally on the device; anonymous crash reports (Section 4) contain no personal information and cannot be used to identify the user</li>
             </ul>
             <p><strong>Parental Control:</strong> Parents can control their children's use of the application, as all data is stored only on the device. When the application is deleted, all data is deleted with it.</p>
             <p>If you have any questions about how we protect children's privacy, please contact us at: <a href="mailto:saydulayev.wien@gmail.com">saydulayev.wien@gmail.com</a></p>
