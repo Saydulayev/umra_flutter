@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../providers/localization_provider.dart';
 import '../providers/theme_provider.dart';
@@ -387,7 +386,8 @@ class _LanguageButton extends StatelessWidget {
           child: Text(
             name,
             textAlign: TextAlign.center,
-            style: GoogleFonts.notoSans(
+            style: TextStyle(
+              fontFamily: 'NotoSans',
               fontSize: AppType.of(context).callout,
               fontWeight: FontWeight.w500,
               color: theme.textColor,

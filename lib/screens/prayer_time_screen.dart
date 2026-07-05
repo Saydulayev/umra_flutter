@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../providers/theme_provider.dart';
 import '../utils/platform_icons.dart';
 import '../providers/user_preferences_provider.dart';
@@ -263,7 +262,8 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                               child: Text(
                                 '$_islamicDate $_islamicYear',
                                 textDirection: TextDirection.ltr,
-                                style: GoogleFonts.cinzel(
+                                style: TextStyle(
+                                  fontFamily: 'Cinzel',
                                   fontSize: metrics.scaled(22),
                                   fontWeight: FontWeight.w500,
                                   letterSpacing: 1.2,

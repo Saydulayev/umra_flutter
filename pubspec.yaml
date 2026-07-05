@@ -2,7 +2,7 @@ name: umra_flutter
 description: "Umrah Guide for Muslims - Flutter version"
 publish_to: 'none'
 
-version: 4.4.1+27
+version: 4.4.2+28
 
 environment:
   sdk: ^3.11.0
@@ -47,9 +47,6 @@ dependencies:
   
   # Vibration
   vibration: ^3.1.4
-  
-  # Fonts
-  google_fonts: ^6.1.0
   
   # Utils
   intl: ^0.20.2
@@ -144,15 +141,277 @@ flutter:
   fonts:
     - family: Lato
       fonts:
-        - asset: assets/fonts/Lato-Black.ttf
-          weight: 900
-        - asset: assets/fonts/Lato-Bold.ttf
+        - asset: assets/fonts/Lato/Lato-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Lato/Lato-ThinItalic.ttf
+          weight: 100
+          style: italic
+        - asset: assets/fonts/Lato/Lato-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Lato/Lato-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/Lato/Lato-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Lato/Lato-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Lato/Lato-Bold.ttf
           weight: 700
-        - asset: assets/fonts/Lato-Italic.ttf
+        - asset: assets/fonts/Lato/Lato-BoldItalic.ttf
+          weight: 700
           style: italic
-        - asset: assets/fonts/Lato-BlackItalic.ttf
+        - asset: assets/fonts/Lato/Lato-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Lato/Lato-BlackItalic.ttf
           weight: 900
           style: italic
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto/static/Roboto-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Roboto/static/Roboto-ThinItalic.ttf
+          weight: 100
+          style: italic
+        - asset: assets/fonts/Roboto/static/Roboto-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Roboto/static/Roboto-ExtraLightItalic.ttf
+          weight: 200
+          style: italic
+        - asset: assets/fonts/Roboto/static/Roboto-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Roboto/static/Roboto-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/Roboto/static/Roboto-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Roboto/static/Roboto-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Roboto/static/Roboto-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Roboto/static/Roboto-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Roboto/static/Roboto-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Roboto/static/Roboto-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/Roboto/static/Roboto-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Roboto/static/Roboto-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/Roboto/static/Roboto-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Roboto/static/Roboto-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/Roboto/static/Roboto-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Roboto/static/Roboto-BlackItalic.ttf
+          weight: 900
+          style: italic
+    - family: OpenSans
+      fonts:
+        - asset: assets/fonts/Open_Sans/static/OpenSans-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Open_Sans/static/OpenSans-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/Open_Sans/static/OpenSans-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Open_Sans/static/OpenSans-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Open_Sans/static/OpenSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Open_Sans/static/OpenSans-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Open_Sans/static/OpenSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Open_Sans/static/OpenSans-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/Open_Sans/static/OpenSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Open_Sans/static/OpenSans-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/Open_Sans/static/OpenSans-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Open_Sans/static/OpenSans-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+    - family: Merriweather
+      fonts:
+        - asset: assets/fonts/Merriweather/static/Merriweather_24pt-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Merriweather/static/Merriweather_24pt-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/Merriweather/static/Merriweather_24pt-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Merriweather/static/Merriweather_24pt-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Merriweather/static/Merriweather_24pt-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Merriweather/static/Merriweather_24pt-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Merriweather/static/Merriweather_24pt-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Merriweather/static/Merriweather_24pt-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/Merriweather/static/Merriweather_24pt-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Merriweather/static/Merriweather_24pt-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/Merriweather/static/Merriweather_24pt-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Merriweather/static/Merriweather_24pt-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/Merriweather/static/Merriweather_24pt-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Merriweather/static/Merriweather_24pt-BlackItalic.ttf
+          weight: 900
+          style: italic
+    - family: Lora
+      fonts:
+        - asset: assets/fonts/Lora/static/Lora-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Lora/static/Lora-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Lora/static/Lora-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Lora/static/Lora-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Lora/static/Lora-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Lora/static/Lora-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/Lora/static/Lora-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Lora/static/Lora-BoldItalic.ttf
+          weight: 700
+          style: italic
+    - family: NotoSans
+      fonts:
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-ThinItalic.ttf
+          weight: 100
+          style: italic
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-ExtraLightItalic.ttf
+          weight: 200
+          style: italic
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Noto_Sans/static/NotoSans-BlackItalic.ttf
+          weight: 900
+          style: italic
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter/static/Inter_24pt-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Inter/static/Inter_24pt-ThinItalic.ttf
+          weight: 100
+          style: italic
+        - asset: assets/fonts/Inter/static/Inter_24pt-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Inter/static/Inter_24pt-ExtraLightItalic.ttf
+          weight: 200
+          style: italic
+        - asset: assets/fonts/Inter/static/Inter_24pt-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Inter/static/Inter_24pt-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/Inter/static/Inter_24pt-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter/static/Inter_24pt-Italic.ttf
+          weight: 400
+          style: italic
+        - asset: assets/fonts/Inter/static/Inter_24pt-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter/static/Inter_24pt-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Inter/static/Inter_24pt-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter/static/Inter_24pt-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/Inter/static/Inter_24pt-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Inter/static/Inter_24pt-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/Inter/static/Inter_24pt-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Inter/static/Inter_24pt-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/Inter/static/Inter_24pt-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Inter/static/Inter_24pt-BlackItalic.ttf
+          weight: 900
+          style: italic
+    - family: Cinzel
+      fonts:
+        - asset: assets/fonts/Cinzel/static/Cinzel-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Cinzel/static/Cinzel-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Cinzel/static/Cinzel-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Cinzel/static/Cinzel-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Cinzel/static/Cinzel-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Cinzel/static/Cinzel-Black.ttf
+          weight: 900
     - family: Cairo
       fonts:
         - asset: assets/fonts/Cairo-VariableFont.ttf

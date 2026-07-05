@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../repositories/preferences_repository.dart';
 import '../constants/app_constants.dart';
 
@@ -59,27 +58,10 @@ class FontProvider extends ChangeNotifier {
     }
 
     final googleFontName = _getGoogleFontName(_selectedFont);
-    if (googleFontName != null) {
-      try {
-        return GoogleFonts.getFont(
-          googleFontName,
-          fontSize: fontSize,
-          fontWeight: fontWeight,
-          color: color,
-          fontStyle: fontStyle,
-        );
-      } catch (e) {
-        // Если шрифт не найден, возвращаем системный шрифт
-        return TextStyle(
-          fontSize: fontSize,
-          fontWeight: fontWeight,
-          color: color,
-          fontStyle: fontStyle,
-        );
-      }
-    }
-    // Fallback на системный шрифт
+    // Шрифты забандлены локально в assets/fonts (см. pubspec.yaml),
+    // поэтому сетевая загрузка не требуется и не может упасть с ошибкой.
     return TextStyle(
+      fontFamily: googleFontName,
       fontSize: fontSize,
       fontWeight: fontWeight,
       color: color,
