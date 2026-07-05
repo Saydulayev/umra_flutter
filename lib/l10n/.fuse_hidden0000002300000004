@@ -1214,7 +1214,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String notificationPrayerSoon(String prayer) {
     return '$prayer in 30 Minuten';
   }
-
   @override
   String get qiblaTitle => 'Qibla';
 
@@ -1227,12 +1226,10 @@ class AppLocalizationsDe extends AppLocalizations {
   String get qiblaAligned => 'Sie sind zur Qibla ausgerichtet';
 
   @override
-  String get qiblaCalibrationHint =>
-      'Kompassgenauigkeit gering — bewegen Sie Ihr Telefon in einer Acht';
+  String get qiblaCalibrationHint => 'Kompassgenauigkeit gering — bewegen Sie Ihr Telefon in einer Acht';
 
   @override
-  String get qiblaLocationDenied =>
-      'Für die Berechnung der Qibla-Richtung wird Standortzugriff benötigt';
+  String get qiblaLocationDenied => 'Für die Berechnung der Qibla-Richtung wird Standortzugriff benötigt';
 
   @override
   String get qiblaLocationServicesOff => 'Ortungsdienste sind deaktiviert';
@@ -1242,7 +1239,4 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get qiblaOpenSettings => 'Einstellungen öffnen';
-
-  @override
-  String get qiblaLocationError => 'Ihr Standort konnte nicht ermittelt werden';
 }

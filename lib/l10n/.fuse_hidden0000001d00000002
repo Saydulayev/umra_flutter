@@ -2177,7 +2177,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'{prayer} in 30 minutes'**
   String notificationPrayerSoon(String prayer);
-
   /// No description provided for @qiblaTitle.
   ///
   /// In en, this message translates to:
@@ -2225,13 +2224,8 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Open Settings'**
   String get qiblaOpenSettings;
-
-  /// No description provided for @qiblaLocationError.
-  ///
-  /// In en, this message translates to:
-  /// **'Couldn\'t determine your location'**
-  String get qiblaLocationError;
 }
+
 
 class _AppLocalizationsDelegate
     extends LocalizationsDelegate<AppLocalizations> {

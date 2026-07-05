@@ -26,6 +26,10 @@ dependencies:
   
   # Prayer Times
   adhan_dart: ^1.2.0
+
+  # Qibla compass: геолокация (расчёт направления) + магнитометр (heading)
+  geolocator: ^13.0.2
+  flutter_compass: ^0.8.1
   
   # Islamic Calendar
   hijri_date: ^1.0.0

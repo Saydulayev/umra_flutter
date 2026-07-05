@@ -344,5 +344,14 @@
   "duaArafatTitle": "Arafat Duası",
   "notificationPrayerNow": "{prayer} vakti",
   "notificationPrayerSoonTitle": "Bir sonraki namaza hazırlan",
-  "notificationPrayerSoon": "{prayer} 30 dakika sonra"
+  "notificationPrayerSoon": "{prayer} 30 dakika sonra",
+  "qiblaTitle": "Kıble",
+  "qiblaDegreesFromNorth": "Kuzeyden {degrees}°",
+  "qiblaAligned": "Kıbleye yöneldiniz",
+  "qiblaCalibrationHint": "Pusula doğruluğu düşük — telefonunuzu sekiz çizerek hareket ettirin",
+  "qiblaLocationDenied": "Kıble yönünü hesaplamak için konum erişimi gerekli",
+  "qiblaLocationServicesOff": "Konum servisleri kapalı",
+  "qiblaNoCompass": "Bu cihazda pusula sensörü yok",
+  "qiblaOpenSettings": "Ayarları Aç",
+  "qiblaLocationError": "Konumunuz belirlenemedi"
 }

@@ -1204,7 +1204,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String notificationPrayerSoon(String prayer) {
     return '$prayer in 30 minutes';
   }
-
   @override
   String get qiblaTitle => 'Qibla';
 
@@ -1217,12 +1216,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get qiblaAligned => 'You are facing the Qibla';
 
   @override
-  String get qiblaCalibrationHint =>
-      'Compass accuracy is low — move your phone in a figure-eight motion';
+  String get qiblaCalibrationHint => 'Compass accuracy is low — move your phone in a figure-eight motion';
 
   @override
-  String get qiblaLocationDenied =>
-      'Location access is needed to calculate the Qibla direction';
+  String get qiblaLocationDenied => 'Location access is needed to calculate the Qibla direction';
 
   @override
   String get qiblaLocationServicesOff => 'Location services are turned off';
@@ -1232,7 +1229,4 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get qiblaOpenSettings => 'Open Settings';
-
-  @override
-  String get qiblaLocationError => 'Couldn\'t determine your location';
 }

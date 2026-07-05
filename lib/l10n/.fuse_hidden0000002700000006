@@ -1202,7 +1202,6 @@ class AppLocalizationsId extends AppLocalizations {
   String notificationPrayerSoon(String prayer) {
     return '$prayer dalam 30 menit';
   }
-
   @override
   String get qiblaTitle => 'Kiblat';
 
@@ -1215,12 +1214,10 @@ class AppLocalizationsId extends AppLocalizations {
   String get qiblaAligned => 'Anda menghadap kiblat';
 
   @override
-  String get qiblaCalibrationHint =>
-      'Akurasi kompas rendah — gerakkan ponsel membentuk angka delapan';
+  String get qiblaCalibrationHint => 'Akurasi kompas rendah — gerakkan ponsel membentuk angka delapan';
 
   @override
-  String get qiblaLocationDenied =>
-      'Akses lokasi diperlukan untuk menghitung arah kiblat';
+  String get qiblaLocationDenied => 'Akses lokasi diperlukan untuk menghitung arah kiblat';
 
   @override
   String get qiblaLocationServicesOff => 'Layanan lokasi dinonaktifkan';
@@ -1230,7 +1227,4 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get qiblaOpenSettings => 'Buka Pengaturan';
-
-  @override
-  String get qiblaLocationError => 'Tidak dapat menentukan lokasi Anda';
 }

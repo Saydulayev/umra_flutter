@@ -12,6 +12,7 @@ import '../widgets/app_card.dart';
 import '../widgets/notification_settings_sheet.dart';
 import '../services/notification_service.dart';
 import '../services/prayer_time_service.dart';
+import 'qibla_compass_screen.dart';
 import '../utils/responsive_metrics.dart';
 import '../theme/app_type.dart';
 import '../l10n/app_localizations.dart';
@@ -162,6 +163,21 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
         elevation: 0,
         automaticallyImplyLeading: !widget.embedded,
         iconTheme: IconThemeData(color: theme.primaryColor),
+        // Компас киблы — слева, симметрично колокольчику справа. В embedded-
+        // режиме (вкладка таб-бара) слот leading свободен; в standalone там
+        // кнопка «назад», поэтому leading не переопределяем.
+        leading: widget.embedded
+            ? IconButton(
+                icon: Icon(PlatformIcons.compass, color: theme.primaryColor),
+                tooltip: l10n.qiblaTitle,
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const QiblaCompassScreen(),
+                  ),
+                ),
+              )
+            : null,
         actions: [
           // DEBUG-кнопка теста уведомлений: kDebugMode → в release-сборке её нет.
           // Тапни → через 30 сек придёт тестовое уведомление (проверка доставки

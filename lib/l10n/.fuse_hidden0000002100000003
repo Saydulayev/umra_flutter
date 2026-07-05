@@ -1145,7 +1145,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String notificationPrayerSoon(String prayer) {
     return '$prayer بعد 30 دقيقة';
   }
-
   @override
   String get qiblaTitle => 'القبلة';
 
@@ -1158,8 +1157,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get qiblaAligned => 'أنت متجه نحو القبلة';
 
   @override
-  String get qiblaCalibrationHint =>
-      'دقة البوصلة منخفضة — حرّك هاتفك على شكل الرقم ثمانية';
+  String get qiblaCalibrationHint => 'دقة البوصلة منخفضة — حرّك هاتفك على شكل الرقم ثمانية';
 
   @override
   String get qiblaLocationDenied => 'يلزم الوصول إلى الموقع لحساب اتجاه القبلة';
@@ -1172,7 +1170,4 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get qiblaOpenSettings => 'فتح الإعدادات';
-
-  @override
-  String get qiblaLocationError => 'تعذّر تحديد موقعك';
 }

@@ -14,6 +14,10 @@
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"
         android:maxSdkVersion="32"/>
     <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
+    <!-- Геолокация для компаса киблы: координаты нужны один раз при открытии
+         экрана компаса, чтобы вычислить направление на Каабу. -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <!-- Google Play Billing -->
     <uses-permission android:name="com.android.vending.BILLING"/>
     <!-- Указываем, что BILLING не является обязательным требованием устройства -->

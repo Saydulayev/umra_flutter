@@ -344,5 +344,14 @@
   "duaArafatTitle": "Doa di Arafah",
   "notificationPrayerNow": "Waktu {prayer}",
   "notificationPrayerSoonTitle": "Bersiap untuk salat berikutnya",
-  "notificationPrayerSoon": "{prayer} dalam 30 menit"
+  "notificationPrayerSoon": "{prayer} dalam 30 menit",
+  "qiblaTitle": "Kiblat",
+  "qiblaDegreesFromNorth": "{degrees}° dari utara",
+  "qiblaAligned": "Anda menghadap kiblat",
+  "qiblaCalibrationHint": "Akurasi kompas rendah — gerakkan ponsel membentuk angka delapan",
+  "qiblaLocationDenied": "Akses lokasi diperlukan untuk menghitung arah kiblat",
+  "qiblaLocationServicesOff": "Layanan lokasi dinonaktifkan",
+  "qiblaNoCompass": "Perangkat ini tidak memiliki sensor kompas",
+  "qiblaOpenSettings": "Buka Pengaturan",
+  "qiblaLocationError": "Tidak dapat menentukan lokasi Anda"
 }

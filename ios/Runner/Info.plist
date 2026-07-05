@@ -38,6 +38,8 @@
 		<false/>
 		<key>LSRequiresIPhoneOS</key>
 		<true/>
+		<key>NSLocationWhenInUseUsageDescription</key>
+		<string>Your location is used to calculate the Qibla direction (towards the Kaaba in Mecca).</string>
 		<key>NSMicrophoneUsageDescription</key>
 		<string>This app does not use the microphone. Access may be referenced by an audio playback library but is never requested or used.</string>
 		<key>UIApplicationSceneManifest</key>

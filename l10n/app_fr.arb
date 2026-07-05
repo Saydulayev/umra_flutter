@@ -344,5 +344,14 @@
   "duaArafatTitle": "Doua à Arafat",
   "notificationPrayerNow": "C'est l'heure de {prayer}",
   "notificationPrayerSoonTitle": "Préparez-vous pour la prochaine prière",
-  "notificationPrayerSoon": "{prayer} dans 30 minutes"
+  "notificationPrayerSoon": "{prayer} dans 30 minutes",
+  "qiblaTitle": "Qibla",
+  "qiblaDegreesFromNorth": "{degrees}° du nord",
+  "qiblaAligned": "Vous êtes orienté vers la Qibla",
+  "qiblaCalibrationHint": "Précision de la boussole faible — déplacez votre téléphone en formant un huit",
+  "qiblaLocationDenied": "L'accès à la localisation est nécessaire pour calculer la direction de la Qibla",
+  "qiblaLocationServicesOff": "Les services de localisation sont désactivés",
+  "qiblaNoCompass": "Cet appareil ne dispose pas de capteur de boussole",
+  "qiblaOpenSettings": "Ouvrir les réglages",
+  "qiblaLocationError": "Impossible de déterminer votre position"
 }

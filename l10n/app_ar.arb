@@ -344,5 +344,14 @@
   "duaArafatTitle": "دعاء عرفة",
   "notificationPrayerNow": "حان وقت {prayer}",
   "notificationPrayerSoonTitle": "استعد للصلاة القادمة",
-  "notificationPrayerSoon": "{prayer} بعد 30 دقيقة"
+  "notificationPrayerSoon": "{prayer} بعد 30 دقيقة",
+  "qiblaTitle": "القبلة",
+  "qiblaDegreesFromNorth": "{degrees}° من الشمال",
+  "qiblaAligned": "أنت متجه نحو القبلة",
+  "qiblaCalibrationHint": "دقة البوصلة منخفضة — حرّك هاتفك على شكل الرقم ثمانية",
+  "qiblaLocationDenied": "يلزم الوصول إلى الموقع لحساب اتجاه القبلة",
+  "qiblaLocationServicesOff": "خدمات الموقع غير مفعّلة",
+  "qiblaNoCompass": "لا يحتوي هذا الجهاز على مستشعر بوصلة",
+  "qiblaOpenSettings": "فتح الإعدادات",
+  "qiblaLocationError": "تعذّر تحديد موقعك"
 }

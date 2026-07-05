@@ -69,6 +69,8 @@ class PlatformIcons {
       _isIOS ? CupertinoIcons.chevron_down : Icons.expand_more;
   static IconData get book =>
       _isIOS ? CupertinoIcons.book : Icons.auto_stories_outlined;
+  static IconData get compass =>
+      _isIOS ? CupertinoIcons.compass : Icons.explore_outlined;
 
   // ─── Bottom tab bar: outline (inactive) / filled (active) pairs ─────────────
   static IconData get home =>

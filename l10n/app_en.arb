@@ -361,5 +361,21 @@
         "type": "String"
       }
     }
-  }
+  },
+  "qiblaTitle": "Qibla",
+  "qiblaDegreesFromNorth": "{degrees}° from North",
+  "@qiblaDegreesFromNorth": {
+    "placeholders": {
+      "degrees": {
+        "type": "String"
+      }
+    }
+  },
+  "qiblaAligned": "You are facing the Qibla",
+  "qiblaCalibrationHint": "Compass accuracy is low — move your phone in a figure-eight motion",
+  "qiblaLocationDenied": "Location access is needed to calculate the Qibla direction",
+  "qiblaLocationServicesOff": "Location services are turned off",
+  "qiblaNoCompass": "This device has no compass sensor",
+  "qiblaOpenSettings": "Open Settings",
+  "qiblaLocationError": "Couldn't determine your location"
 }

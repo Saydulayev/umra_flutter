@@ -344,5 +344,14 @@
   "duaArafatTitle": "Дуа на Арафате",
   "notificationPrayerNow": "Наступило время намаза {prayer}",
   "notificationPrayerSoonTitle": "Скоро намаз",
-  "notificationPrayerSoon": "{prayer} через 30 минут"
+  "notificationPrayerSoon": "{prayer} через 30 минут",
+  "qiblaTitle": "Кибла",
+  "qiblaDegreesFromNorth": "{degrees}° от севера",
+  "qiblaAligned": "Вы направлены на киблу",
+  "qiblaCalibrationHint": "Точность компаса низкая — поводите телефоном восьмёркой",
+  "qiblaLocationDenied": "Для расчёта направления киблы нужен доступ к геолокации",
+  "qiblaLocationServicesOff": "Службы геолокации выключены",
+  "qiblaNoCompass": "На этом устройстве нет датчика компаса",
+  "qiblaOpenSettings": "Открыть настройки",
+  "qiblaLocationError": "Не удалось определить ваше местоположение"
 }

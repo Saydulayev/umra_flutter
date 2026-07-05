@@ -1209,7 +1209,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String notificationPrayerSoon(String prayer) {
     return '$prayer dans 30 minutes';
   }
-
   @override
   String get qiblaTitle => 'Qibla';
 
@@ -1222,24 +1221,17 @@ class AppLocalizationsFr extends AppLocalizations {
   String get qiblaAligned => 'Vous êtes orienté vers la Qibla';
 
   @override
-  String get qiblaCalibrationHint =>
-      'Précision de la boussole faible — déplacez votre téléphone en formant un huit';
+  String get qiblaCalibrationHint => 'Précision de la boussole faible — déplacez votre téléphone en formant un huit';
 
   @override
-  String get qiblaLocationDenied =>
-      'L\'accès à la localisation est nécessaire pour calculer la direction de la Qibla';
+  String get qiblaLocationDenied => 'L\'accès à la localisation est nécessaire pour calculer la direction de la Qibla';
 
   @override
-  String get qiblaLocationServicesOff =>
-      'Les services de localisation sont désactivés';
+  String get qiblaLocationServicesOff => 'Les services de localisation sont désactivés';
 
   @override
-  String get qiblaNoCompass =>
-      'Cet appareil ne dispose pas de capteur de boussole';
+  String get qiblaNoCompass => 'Cet appareil ne dispose pas de capteur de boussole';
 
   @override
   String get qiblaOpenSettings => 'Ouvrir les réglages';
-
-  @override
-  String get qiblaLocationError => 'Impossible de déterminer votre position';
 }

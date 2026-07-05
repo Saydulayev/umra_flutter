@@ -1198,7 +1198,6 @@ class AppLocalizationsRu extends AppLocalizations {
   String notificationPrayerSoon(String prayer) {
     return '$prayer через 30 минут';
   }
-
   @override
   String get qiblaTitle => 'Кибла';
 
@@ -1211,12 +1210,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get qiblaAligned => 'Вы направлены на киблу';
 
   @override
-  String get qiblaCalibrationHint =>
-      'Точность компаса низкая — поводите телефоном восьмёркой';
+  String get qiblaCalibrationHint => 'Точность компаса низкая — поводите телефоном восьмёркой';
 
   @override
-  String get qiblaLocationDenied =>
-      'Для расчёта направления киблы нужен доступ к геолокации';
+  String get qiblaLocationDenied => 'Для расчёта направления киблы нужен доступ к геолокации';
 
   @override
   String get qiblaLocationServicesOff => 'Службы геолокации выключены';
@@ -1226,7 +1223,4 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get qiblaOpenSettings => 'Открыть настройки';
-
-  @override
-  String get qiblaLocationError => 'Не удалось определить ваше местоположение';
 }
