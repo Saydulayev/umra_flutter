@@ -103,8 +103,6 @@ iOS and Android both derive their version from it.
 
 ## Known maintenance debt (track, not blocking)
 
-- `dependency_overrides → audio_service` is a local fork. See
-  `patched_packages/PATCH_NOTES.md`; remove once the NPE fix lands upstream.
 - `test/unit/*` now covers fonts, review config, the review-dialog decision
   procedure (all 6 gating conditions), prayer-time calculations, theme and
   notification-preferences loading, and the purchase state machine;

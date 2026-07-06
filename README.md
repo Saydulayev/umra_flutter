@@ -18,7 +18,7 @@ A mobile companion for performing Umrah: step-by-step ritual instructions, an au
 ## Features
 
 - Step-by-step Umrah and Hajj ritual instructions with audio narration
-- Audio player with background playback (just_audio + audio_service)
+- Audio player for ritual narration (just_audio)
 - Prayer time calculation (adhan_dart) with local notifications
 - Islamic (Hijri) calendar
 - Tawaf lap counter
@@ -66,14 +66,12 @@ lib/
 └── l10n/            # Localization (7 languages)
 ```
 
-`patched_packages/audio_service` contains a local fork of `audio_service` fixing an NPE in `onConnectionFailed`/`onConnected`; it is wired in via `dependency_overrides`.
-
 ## Key dependencies
 
 | Package | Purpose |
 |---|---|
 | `provider` | State management |
-| `just_audio`, `audio_service` | Audio with background playback |
+| `just_audio` | Audio playback |
 | `adhan_dart` | Prayer time calculation |
 | `hijri_date` | Hijri calendar |
 | `flutter_local_notifications`, `timezone` | Prayer notifications |

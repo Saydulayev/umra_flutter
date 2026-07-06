@@ -2,7 +2,7 @@ name: umra_flutter
 description: "Umrah Guide for Muslims - Flutter version"
 publish_to: 'none'
 
-version: 4.4.2+28
+version: 4.4.2+29
 
 environment:
   sdk: ^3.11.0
@@ -22,8 +22,7 @@ dependencies:
   
   # Audio Playback
   just_audio: ^0.9.42
-  audio_service: ^0.18.18
-  
+
   # Prayer Times
   adhan_dart: ^1.2.0
 
@@ -69,11 +68,6 @@ dependencies:
 
   # Liquid Glass (iOS 26) UI — taб-бар со стеклянным эффектом
   liquid_glass_widgets: ^0.18.4
-
-# Исправление NPE в audio_service (onConnectionFailed/onConnected при null clientInterface)
-dependency_overrides:
-  audio_service:
-    path: patched_packages/audio_service
 
 dev_dependencies:
   flutter_test:
