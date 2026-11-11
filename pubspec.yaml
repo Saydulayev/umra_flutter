@@ -21,7 +21,7 @@ dependencies:
   provider: ^6.1.1
   
   # Audio Playback
-  just_audio: ^0.9.42
+  just_audio: ^0.10.5
 
   # Prayer Times
   adhan_dart: ^1.2.0

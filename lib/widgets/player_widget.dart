@@ -32,6 +32,10 @@ class _PlayerWidgetState extends State<PlayerWidget> {
   Duration _position = Duration.zero;
   bool _isLoading = true;
   bool _isHandlingComplete = false;
+  // Значение слайдера, пока пользователь его тянет (в мс). Пока не null,
+  // ползунок показывает его, а не позицию из positionStream, и seek
+  // выполняется один раз — когда палец отпущен.
+  double? _dragValue;
 
   // КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Добавляем подписки для правильной очистки
   StreamSubscription<Duration?>? _durationSubscription;
@@ -46,7 +50,16 @@ class _PlayerWidgetState extends State<PlayerWidget> {
 
   Future<void> _initAudio() async {
     try {
-      _audioPlayer = await AudioService().loadAudio(widget.fileName);
+      final player = await AudioService().loadAudio(widget.fileName);
+      // Виджет мог быть удалён, пока шла загрузка: dispose() уже отработал
+      // с _audioReady == false и плеер не освободил. Освобождаем его здесь,
+      // иначе он утечёт, а его стримы продолжат слать события.
+      if (!mounted) {
+        AudioService().unregisterPlayer(player);
+        await player.dispose();
+        return;
+      }
+      _audioPlayer = player;
       _audioReady = true;
 
       // КРИТИЧЕСКОЕ ИСПРАВЛЕНИЕ: Сохраняем подписки для отмены в dispose
@@ -202,6 +215,17 @@ class _PlayerWidgetState extends State<PlayerWidget> {
     }
   }
 
+  Future<void> _seekTo(double value) async {
+    final target = Duration(milliseconds: value.toInt());
+    // Сразу ставим позицию, чтобы ползунок не прыгнул на старое место,
+    // пока плеер не прислал новую позицию.
+    setState(() {
+      _position = target;
+      _dragValue = null;
+    });
+    await _audioPlayer.seek(target);
+  }
+
   double _clampPosition(double position, double maxDuration) {
     if (maxDuration <= 0) return 0.0;
     // Ограничиваем позицию, чтобы она не превышала длительность
@@ -279,16 +303,19 @@ class _PlayerWidgetState extends State<PlayerWidget> {
           const SizedBox(height: 16),
           Slider(
             value: _clampPosition(
-              _position.inMilliseconds.toDouble(),
+              _dragValue ?? _position.inMilliseconds.toDouble(),
               _duration.inMilliseconds.toDouble(),
             ),
             min: 0,
             max: _duration.inMilliseconds > 0
                 ? _duration.inMilliseconds.toDouble()
                 : 1.0,
-            onChanged: (value) {
-              _audioPlayer.seek(Duration(milliseconds: value.toInt()));
-            },
+            // Если загрузка аудио упала, _audioPlayer не инициализирован —
+            // слайдер отключаем (onChanged: null), иначе LateInitializationError.
+            onChanged: _audioReady
+                ? (value) => setState(() => _dragValue = value)
+                : null,
+            onChangeEnd: _audioReady ? _seekTo : null,
             activeColor: theme.primaryColor,
             inactiveColor: theme.primaryColor.withValues(alpha: 0.3),
           ),
