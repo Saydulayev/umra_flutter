@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:math' as math;
 
+import 'package:flutter/foundation.dart'
+    show TargetPlatform, defaultTargetPlatform;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show HapticFeedback;
+import 'package:flutter/services.dart' show HapticFeedback, MethodChannel;
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
@@ -20,8 +22,9 @@ import '../utils/responsive_metrics.dart';
 /// Направление вычисляется по формуле начального азимута большого круга
 /// (great-circle initial bearing) от текущих GPS-координат к Каабе.
 /// Heading устройства берётся из магнитометра (flutter_compass); на iOS это
-/// trueHeading (с поправкой на склонение), на Android — магнитный север.
-/// Погрешность склонения (обычно ≤ 5–7°) для бытового компаса приемлема.
+/// trueHeading (уже с поправкой на склонение), на Android — магнитный север,
+/// поэтому там к heading прибавляется магнитное склонение из нативного
+/// GeomagneticField (в Москве оно ~12°, что больше допуска «на кибле»).
 class QiblaCompassScreen extends StatefulWidget {
   const QiblaCompassScreen({super.key});
 
@@ -52,6 +55,13 @@ class _QiblaCompassScreenState extends State<QiblaCompassScreen>
   bool _aligned = false;
   bool _needsCalibration = false;
   bool _hasCompassSensor = true;
+
+  // Магнитное склонение (истинный север − магнитный), градусы; + к востоку.
+  // Ненулевое только на Android — см. _fetchDeclination.
+  static const MethodChannel _geomagneticChannel = MethodChannel(
+    'umra/geomagnetic',
+  );
+  double _declination = 0;
 
   StreamSubscription<CompassEvent>? _compassSub;
 
@@ -147,14 +157,37 @@ class _QiblaCompassScreenState extends State<QiblaCompassScreen>
         _kaabaLng,
       );
 
+      final declination = await _fetchDeclination(position);
+
       if (!mounted) return;
       setState(() {
+        _declination = declination;
         _qiblaBearing = bearing;
         _status = _QiblaStatus.ready;
       });
       _subscribeCompass();
     } catch (_) {
       if (mounted) setState(() => _status = _QiblaStatus.error);
+    }
+  }
+
+  /// Склонение в точке пользователя. На iOS плагин уже отдаёт trueHeading,
+  /// поправка не нужна. При сбое канала возвращаем 0 — компас остаётся
+  /// рабочим, просто относительно магнитного севера.
+  Future<double> _fetchDeclination(Position position) async {
+    if (defaultTargetPlatform != TargetPlatform.android) return 0;
+    try {
+      final value = await _geomagneticChannel.invokeMethod<double>(
+        'declination',
+        {
+          'latitude': position.latitude,
+          'longitude': position.longitude,
+          'altitude': position.altitude,
+        },
+      );
+      return (value != null && value.isFinite) ? value : 0;
+    } catch (_) {
+      return 0;
     }
   }
 
@@ -172,13 +205,15 @@ class _QiblaCompassScreenState extends State<QiblaCompassScreen>
     });
     _compassSub = events.listen((event) {
       _compassTimeout?.cancel();
-      final heading = event.heading;
-      if (heading == null) {
+      final rawHeading = event.heading;
+      if (rawHeading == null) {
         if (_hasCompassSensor && mounted) {
           setState(() => _hasCompassSensor = false);
         }
         return;
       }
+      // Магнитный heading → истинный (на iOS _declination == 0).
+      final heading = rawHeading + _declination;
 
       // Накопление кратчайшей дуги: heading 359° → 1° даёт delta +2°,
       // а не −358°, поэтому AnimatedRotation не делает полный оборот.
