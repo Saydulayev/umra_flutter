@@ -4,7 +4,8 @@ import 'dart:math' as math;
 import 'package:flutter/foundation.dart'
     show TargetPlatform, defaultTargetPlatform;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show HapticFeedback, MethodChannel;
+import 'package:flutter/services.dart'
+    show DeviceOrientation, HapticFeedback, MethodChannel, SystemChrome;
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geolocator/geolocator.dart';
@@ -76,12 +77,17 @@ class _QiblaCompassScreenState extends State<QiblaCompassScreen>
   @override
   void initState() {
     super.initState();
+    // Компас — только портрет: в альбомной вёрстка не помещается, а heading
+    // плагина зависит от устаревшего statusBarOrientation.
+    SystemChrome.setPreferredOrientations(const [DeviceOrientation.portraitUp]);
     WidgetsBinding.instance.addObserver(this);
     _init();
   }
 
   @override
   void dispose() {
+    // Пустой список = вернуть ориентации по умолчанию (из Info.plist/манифеста).
+    SystemChrome.setPreferredOrientations(const []);
     WidgetsBinding.instance.removeObserver(this);
     _compassTimeout?.cancel();
     _compassSub?.cancel();
@@ -177,14 +183,12 @@ class _QiblaCompassScreenState extends State<QiblaCompassScreen>
   Future<double> _fetchDeclination(Position position) async {
     if (defaultTargetPlatform != TargetPlatform.android) return 0;
     try {
-      final value = await _geomagneticChannel.invokeMethod<double>(
-        'declination',
-        {
-          'latitude': position.latitude,
-          'longitude': position.longitude,
-          'altitude': position.altitude,
-        },
-      );
+      final value = await _geomagneticChannel
+          .invokeMethod<double>('declination', {
+            'latitude': position.latitude,
+            'longitude': position.longitude,
+            'altitude': position.altitude,
+          });
       return (value != null && value.isFinite) ? value : 0;
     } catch (_) {
       return 0;
@@ -261,8 +265,7 @@ class _QiblaCompassScreenState extends State<QiblaCompassScreen>
     final phi2 = lat2 * deg2rad;
     final dLng = (lng2 - lng1) * deg2rad;
     final y = math.sin(dLng);
-    final x =
-        math.cos(phi1) * math.tan(phi2) - math.sin(phi1) * math.cos(dLng);
+    final x = math.cos(phi1) * math.tan(phi2) - math.sin(phi1) * math.cos(dLng);
     final bearing = math.atan2(y, x) / deg2rad;
     return (bearing + 360) % 360;
   }
