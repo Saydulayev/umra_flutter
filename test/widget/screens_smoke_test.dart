@@ -26,7 +26,7 @@ import '../helpers/fake_purchase_service.dart';
 /// необработанное исключение при построении.
 
 const _themes = ['nur', 'layl', 'emerald'];
-const _locales = [Locale('en'), Locale('ar')];
+const _locales = [Locale('en'), Locale('ar'), Locale('ur')];
 
 /// flutter_local_notifications ходит в платформенный канал даже при
 /// cancelAll (HomeScreen перепланирует уведомления на старте). Стабим канал,

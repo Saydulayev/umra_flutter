@@ -6,6 +6,7 @@ import '../models/app_theme.dart';
 import '../utils/platform_icons.dart';
 import '../widgets/arabic_text_widget.dart';
 import '../utils/responsive_metrics.dart';
+import '../utils/script_detection.dart';
 
 const Color _accentGreen = Color(0xFF10B981);
 
@@ -26,6 +27,8 @@ bool _isLongArabicLine(String s) {
       return false;
     }
   }
+  // Проза на урду тоже в диапазоне U+0600 — это не дуа.
+  if (containsUrduLetters(trimmed)) return false;
   return true;
 }
 

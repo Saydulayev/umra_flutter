@@ -22,7 +22,7 @@ import '../helpers/screen_harness.dart';
 /// усечённый через ellipsis, исключением не является и тест не валит.
 
 const _scales = [1.5, 2.0];
-const _locales = [Locale('en'), Locale('de'), Locale('ar')];
+const _locales = [Locale('en'), Locale('de'), Locale('ar'), Locale('ur')];
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

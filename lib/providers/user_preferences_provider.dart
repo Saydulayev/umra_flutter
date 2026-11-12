@@ -253,6 +253,12 @@ class UserPreferencesProvider extends ChangeNotifier {
           'Jika aplikasi ini bermanfaat, silakan beri rating di Google Play. Ini membantu pengguna lain menemukan kami.';
       rateButton = 'Nilai';
       laterButton = 'Nanti';
+    } else if (locale.languageCode == 'ur') {
+      title = 'ایپ کی درجہ بندی کریں';
+      message =
+          'اگر یہ ایپ آپ کے لیے مفید رہی ہو تو براہِ کرم Google Play پر اس کی درجہ بندی کریں۔ اس سے دوسرے صارفین کو ہمیں تلاش کرنے میں مدد ملے گی۔';
+      rateButton = 'درجہ بندی کریں';
+      laterButton = 'بعد میں';
     } else {
       // Fallback на английский
       title = 'Rate the App';

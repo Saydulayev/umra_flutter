@@ -102,6 +102,7 @@ class AppLanguages {
     (code: 'tr', name: 'Türkçe'),
     (code: 'id', name: 'Bahasa Indonesia'),
     (code: 'ar', name: 'العربية'),
+    (code: 'ur', name: 'اردو'),
   ];
 
   /// Отображаемое имя языка по коду. Если код неизвестен — возвращает сам код.

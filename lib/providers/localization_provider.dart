@@ -19,6 +19,7 @@ class LocalizationProvider extends ChangeNotifier {
     Locale('tr', ''),
     Locale('id', ''),
     Locale('ar', ''),
+    Locale('ur', ''),
   ];
 
   LocalizationProvider() {

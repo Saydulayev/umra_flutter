@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../repositories/preferences_repository.dart';
 import '../constants/app_constants.dart';
+import '../theme/app_fonts.dart';
 
 class FontProvider extends ChangeNotifier {
   List<String> fonts = [
@@ -29,7 +30,7 @@ class FontProvider extends ChangeNotifier {
 
   // Текущий язык интерфейса (ISO 639-1), обновляется через setLanguageCode.
   // Ни один из пользовательских шрифтов (_fontMap) не содержит арабских
-  // глифов, поэтому для 'ar' принудительно используется бандлованный Cairo,
+  // глифов, поэтому для 'ar'/'ur' принудительно используется бандлованный Cairo,
   // а не выбор пользователя.
   String _languageCode = 'ru';
 
@@ -47,9 +48,9 @@ class FontProvider extends ChangeNotifier {
     Color? color,
     FontStyle? fontStyle,
   }) {
-    if (_languageCode == 'ar') {
+    if (AppFonts.usesArabicScript(_languageCode)) {
       return TextStyle(
-        fontFamily: 'Cairo',
+        fontFamily: AppFonts.arabic,
         fontSize: fontSize,
         fontWeight: fontWeight,
         color: color,

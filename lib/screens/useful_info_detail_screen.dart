@@ -8,6 +8,7 @@ import '../models/useful_info_model.dart';
 import '../widgets/app_card.dart';
 import '../widgets/arabic_text_widget.dart';
 import '../utils/responsive_metrics.dart';
+import '../utils/script_detection.dart';
 import '../theme/app_type.dart';
 
 bool _isLongArabicLine(String s) {
@@ -15,8 +16,11 @@ bool _isLongArabicLine(String s) {
   if (trimmed.length < 40) return false;
   final first = trimmed.runes.firstOrNull;
   if (first == null) return false;
-  return (first >= 0x0600 && first <= 0x06FF) ||
+  final isArabicScript =
+      (first >= 0x0600 && first <= 0x06FF) ||
       (first >= 0x0750 && first <= 0x077F);
+  // Проза на урду тоже в диапазоне U+0600 — это не дуа.
+  return isArabicScript && !containsUrduLetters(trimmed);
 }
 
 // Парсинг контента: блоки, разделённые \n\n; строки вида "1) ..." — заголовок

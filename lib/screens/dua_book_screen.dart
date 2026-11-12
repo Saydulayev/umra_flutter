@@ -662,6 +662,9 @@ class _DuaSinglePage extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     final locale = Localizations.localeOf(context).languageCode;
     final showSupportingText = locale != 'ar';
+    // Урду читается арабской графикой — транслитерация латиницей не нужна,
+    // но перевод показываем.
+    final showTransliteration = showSupportingText && locale != 'ur';
 
     final metrics = ResponsiveMetrics.of(context);
     return SingleChildScrollView(
@@ -686,20 +689,22 @@ class _DuaSinglePage extends StatelessWidget {
               ],
 
               if (showSupportingText) ...[
-                // Transliteration
-                const SizedBox(height: 16),
-                _InfoCard(
-                  label: _localized(
-                    l10n,
-                    'duaDetailTranslitLabel',
-                  ).toUpperCase(),
-                  body: _localized(l10n, dua.translitKey),
-                  theme: theme,
-                  italic: true,
-                ),
+                if (showTransliteration) ...[
+                  // Transliteration
+                  const SizedBox(height: 16),
+                  _InfoCard(
+                    label: _localized(
+                      l10n,
+                      'duaDetailTranslitLabel',
+                    ).toUpperCase(),
+                    body: _localized(l10n, dua.translitKey),
+                    theme: theme,
+                    italic: true,
+                  ),
+                ],
 
                 // Translation
-                const SizedBox(height: 12),
+                SizedBox(height: showTransliteration ? 12 : 16),
                 _InfoCard(
                   label: _localized(l10n, 'duaDetailTransLabel').toUpperCase(),
                   body: _localized(l10n, dua.transKey),
